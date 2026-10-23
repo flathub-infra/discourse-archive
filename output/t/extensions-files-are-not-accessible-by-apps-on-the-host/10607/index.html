@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extension&#39;s files are not accessible by apps on the host? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Extension&#39;s files are not accessible by apps on the host?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Extension&#39;s files are not accessible by apps on the host?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 27, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Maibaum</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 27, 2025 9:48 PM">
+            <time itemprop="datePublished" datetime="2025-09-27 21:48:19 +0000">Sep 27, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I am packaging org.kicad.KiCad on flathub.</p>
+<p><strong>TL;DR:</strong> My question is: Is there a way to make an extension’s files accessible on the host? If not, it seems that it’s currently impossible to split the KiCad documentation out into a .Docs extension?</p>
+<p>In detail:</p>
+<p>Currently we include the HTML documentation in the main flatpak, which – as of today – is 118 MB of data for everyone to download with every new install:</p>
+<pre><code class="lang-auto">$ flatpak run --command=sh org.kicad.KiCad
+[📦 org.kicad.KiCad ~]$ du -hs /app/share/doc/kicad/
+118M	/app/share/doc/kicad/
+</code></pre>
+<p>So, I was looking into splitting the HTML documentation off into a dedicated .Docs extension, which would be not installed by default. This seemed straight-forward after I learned about <a href="https://docs.flatpak.org/en/latest/extension.html#bundled-extensions" rel="noopener nofollow ugc">bundled extensions</a>. So I went ahead and added a new .Docs extension to <code>add-extensions</code>, bundling <code>/app/share/doc/kicad</code>:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">add-extensions:
+  org.kicad.KiCad.Docs:
+    version: stable
+    directory: share/doc/kicad
+    bundle: true
+    autodelete: true
+    no-autodownload: true
+</code></pre>
+<p>Running the newly built flatpak locally, by default the extension directory is empty, as expected:</p>
+<pre><code class="lang-auto">$ flatpak run --user --command=sh org.kicad.KiCad
+[📦 org.kicad.KiCad ~]$ ls -lh /app/share/doc/kicad/
+total 0
+</code></pre>
+<p>And, after installing the .Docs extension, the above path contains the <code>help</code> subdirectory. Again, as expected:</p>
+<pre><code class="lang-auto">$ flatpak install --user --reinstall --assumeyes "$(pwd)/.flatpak-builder/cache" org.kicad.KiCad.Docs
+Looking for matches…
+
+
+        ID                              Branch           Op           Remote                Download
+ 1. [✓] org.kicad.KiCad.Docs            stable           i            docs-origin           1.0 kB / 310.3 MB
+
+Installation complete.
+$ flatpak run --user --command=sh org.kicad.KiCad 
+[📦 org.kicad.KiCad ~]$ ls -lh /app/share/doc/kicad/
+total 0
+drwxr-xr-x. 1 me me 44 Jan  1  1970 help
+[📦 org.kicad.KiCad ~]$ ls /app/share/doc/kicad/help
+ca  de	en  es	fr  id	it  ja	pl  ru	zh
+[📦 org.kicad.KiCad ~]$ ls -lh /app/share/doc/kicad/help/en
+total 2.3M
+-rw-r--r--. 3 me me 244K Jan  1  1970 cli.html
+-rw-r--r--. 3 me me 745K Jan  1  1970 eeschema.html
+-rw-r--r--. 3 me me  46K Jan  1  1970 gerbview.html
+-rw-r--r--. 3 me me 121K Jan  1  1970 getting_started_in_kicad.html
+drwxr-xr-x. 1 me me  31K Jan  1  1970 images
+-rw-r--r--. 3 me me  50K Jan  1  1970 introduction.html
+-rw-r--r--. 3 me me 140K Jan  1  1970 kicad.html
+-rw-r--r--. 3 me me  41K Jan  1  1970 pcb_calculator.html
+-rw-r--r--. 3 me me 861K Jan  1  1970 pcbnew.html
+-rw-r--r--. 3 me me  66K Jan  1  1970 pl_editor.html
+</code></pre>
+<p>Great! So everything’s fine, <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc">let’s push and merge!</a></p>
+<p>But, wait! The help file is now not opening in the host browser anymore as it used to do!? Literally <em>nothing happens</em> when you click on Help → Help from KiCad (or any of the other editors) with the .Docs extension installed.</p>
+<p>Without the .Docs extension installed, KiCad detects the missing files and offers to open the online help instead. But with .Docs installed, <em>nothing happens.</em> The Help → Help (or any other help) menu entry seems to be dead.</p>
+<p>So I checked what was going on here, and it seems to be that the files from extensions are <em>not appearing</em> on the host file system. With the .Docs extension installed (and the being accessible <em>from within the flatpak</em>, see above), the path on the host is empty:</p>
+<pre><code class="lang-auto">$ ls -lh ~/.local/share/flatpak/app/org.kicad.KiCad/x86_64/stable/97c4601cfe60b3554deff34f40dbfb04297ad4c231b36891c8f68d6da7dfde6f/files/share/doc/kicad
+total 0
+</code></pre>
+<p>For contrast, the current stable installation of org.kicad.KiCad from flathub still includes the docs in the main flatpak directly, and has them mapped to the host file system:</p>
+<pre><code class="lang-auto">$ ls -lh /var/lib/flatpak/app/org.kicad.KiCad/x86_64/stable/ab46313fe580ec39a6a93e2058668a21728e1689b929bc5ea7b7f0c25da6e88b/files/share/doc/kicad/help/en
+total 2.3M
+-rw-r--r--. 2 root root 228K  Jan 1 1970  cli.html
+-rw-r--r--. 2 root root 736K  Jan 1 1970  eeschema.html
+-rw-r--r--. 2 root root  46K  Jan 1 1970  gerbview.html
+-rw-r--r--. 2 root root 121K  Jan 1 1970  getting_started_in_kicad.html
+drwxr-xr-x. 1 root root  31K  Jan 1 1970  images
+-rw-r--r--. 2 root root  50K  Jan 1 1970  introduction.html
+-rw-r--r--. 2 root root 138K  Jan 1 1970  kicad.html
+-rw-r--r--. 2 root root  41K  Jan 1 1970  pcb_calculator.html
+-rw-r--r--. 2 root root 853K  Jan 1 1970  pcbnew.html
+-rw-r--r--. 2 root root  66K  Jan 1 1970  pl_editor.html
+</code></pre>
+<p>This is the path, I see in my browser URL bar after opening Help → Help:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93.png" data-download-href="/uploads/original/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93.png" title="Firefox showing the help file from the path mapped to the host" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_690x340.png" alt="Firefox showing the help file from the path mapped to the host" data-base62-sha1="2TKVTLWASdhTgzWO3ZbH1uOS6cz" width="690" height="340" srcset="/uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_690x340.png, /uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_1035x510.png 1.5x, /uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_1380x680.png 2x" data-dominant-color="F1F2F2"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Firefox showing the help file from the path mapped to the host</span><span class="informations">1695×837 151 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>If you want to reproduce the issue locally, feel free to <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc">install KiCad and the .Docs extension from the PR</a> (assuming that the test build suceeds. The above tests and screenshots were done with a local build), and compare it to the currently available stable flathub version of org.kicad.KiCad.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 28, 2025 6:04 PM">
+            <time itemprop="datePublished" datetime="2025-09-28 18:04:28 +0000">Sep 28, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Extensions are a kind of runtime &amp; mounted at the correct path when the application is run via Flatpak.</p>
+<p>The actual location on the host should be <code>/var/lib/flatpak/runtime/org.kicad.KiCad.Docs/…</code>. I don’t know if there’s an API to provide file location of the host.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Maibaum</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 28, 2025 9:01 PM">
+            <time itemprop="datePublished" datetime="2025-09-28 21:01:50 +0000">Sep 28, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the hint. At least I have found the files on the host fs now.</p>
+<p>But, shouldn’t flatpak then hand this file path over to the app you are starting on the host? In case of KiCad (which uses wxWidgets), “opening a HTML help file” means “start a web browser to display this file:// URL”.</p>
+<p>The file:// URL KiCad tries to open is <code>file:///app/share/doc/kicad/help/en/kicad.html</code> when you click on Help → Help from the KiCad project manager (i.e. “KiCad”). In the currently published flatpak, this URL gets correctly translated, or re-mapped, to the <code>/var/lib/flatpak/app/...</code> location on the host fs.</p>
+<p>But using an extension, flatpak doesn’t seem to do this translation correctly (or at all?). Is this a bug that should be reported or is this by design? To me it feels like a bug.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Maibaum</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 28, 2025 9:07 PM">
+            <time itemprop="datePublished" datetime="2025-09-28 21:07:40 +0000">Sep 28, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="2" data-topic="10607">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>I don’t know if there’s an API to provide file location of the host.</p>
+</blockquote>
+</aside>
+<p>Maybe just to underline my point: I am not asking for API to <em>get this file’s location on the host</em> from within the app running as flatpak. I would have expected flatpak to translate a file path from within the sandbox to the host fs path automatically, just as it does it already (as long as it’s part of the app). But this assumption broke with a file coming from an extension (a.k.a. <code>/var/lib/flatpak/runtime/...</code>)  and not from the main app (a.k.a. <code>/var/lib/flatpak/app/...</code>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

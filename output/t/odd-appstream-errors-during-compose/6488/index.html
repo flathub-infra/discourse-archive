@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odd appstream errors during compose - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Odd appstream errors during compose</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Odd appstream errors during compose</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 4, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Fandrich</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 4, 2024 6:06 AM">
+            <time itemprop="datePublished" datetime="2024-04-04 06:06:02 +0000">Apr 4, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve tried to update my app’s version and am getting some errors from the <a href="https://buildbot.flathub.org/#/builders/5/builds/13875/steps/7/logs/stdio" rel="noopener nofollow ugc">buildbot run</a> I haven’t seen before (probably related to libappstream) and that I don’t see documented. Building locally shows no issues. The odder of the two errors is:</p>
+<pre><code class="lang-auto">general
+  E: filters-but-no-output
+Refer to the generated issue report data for details on the individual problems.
+Error: ERROR: appstreamcli compose failed: Child process exited with code 1
+</code></pre>
+<p>Naturally, there’s no “generated issue report data” that I can see in the log file.</p>
+<p>I can guess at what the second one means:</p>
+<pre><code class="lang-auto"> E: gui-app-without-icon
+</code></pre>
+<p>except that 1) there <em>is</em> an icon installed, 2) it is at (what I believe is) the right location ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg, and (most importantly) 3) building the Flatpak locally and running it shows the icon actually being used by the window manager. The only thing is that it’s just a single icon and it’s an SVG one.</p>
+<p>Naturally, the previous version (packaged ~14 months ago) worked/works fine.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 4, 2024 12:42 PM">
+            <time itemprop="datePublished" datetime="2024-04-04 12:42:43 +0000">Apr 4, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Do you have a launchable configured in your metadata?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Fandrich</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 4, 2024 3:48 PM">
+            <time itemprop="datePublished" datetime="2024-04-04 15:48:30 +0000">Apr 4, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, pointing to a .desktop file that’s also there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Fandrich</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 4, 2024 11:24 PM">
+            <time itemprop="datePublished" datetime="2024-04-04 23:24:59 +0000">Apr 4, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks to <a href="https://github.com/hfiguiere" rel="noopener nofollow ugc">hfiguiere</a> I think I’ve figure it out. It seems that it’s no longer sufficient to have merely internally-consistent naming between metainfo, desktop and icon files; they now all need to be in files named after the app ID. I added the <code>rename-desktop-file</code> and <code>rename-icon</code> properties to fix that and have moved on past that barrier at least.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

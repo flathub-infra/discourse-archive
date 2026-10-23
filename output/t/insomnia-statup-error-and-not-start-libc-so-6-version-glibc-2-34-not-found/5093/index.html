@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insomnia statup error(and not start), libc.so.6 version GLIBC_2.34 not found - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Insomnia statup error(and not start), libc.so.6 version GLIBC_2.34 not found</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Insomnia statup error(and not start), libc.so.6 version GLIBC_2.34 not found</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 6, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">FraVid</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 6, 2023 9:25 PM">
+            <time itemprop="datePublished" datetime="2023-09-06 21:25:54 +0000">Sep 6, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>The following error appears when trying to start the application:</p>
+<pre><code class="lang-auto">flatpak run rest.insomnia.Insomnia
+[2:0906/181916.988807:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+A JavaScript error occurred in the main process
+Uncaught Exception:
+Error: /usr/lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by /run/user/1000/app/rest.insomnia.Insomnia/.org.chromium.Chromium.QvzDCH)
+    at process.func [as dlopen] (node:electron/js2c/asar_bundle:2:1822)
+    at Module._extensions..node (node:internal/modules/cjs/loader:1354:18)
+    at Object.func [as .node] (node:electron/js2c/asar_bundle:2:2049)
+    at Module.load (node:internal/modules/cjs/loader:1124:32)
+    at Module._load (node:internal/modules/cjs/loader:965:12)
+    at f._load (node:electron/js2c/asar_bundle:2:13330)
+    at Module.require (node:internal/modules/cjs/loader:1148:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at Object.&lt;anonymous&gt; (/app/main/resources/app.asar/node_modules/@getinsomnia/node-libcurl/dist/Easy.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1269:14)
+Gtk-Message: 18:19:18.175: Failed to load module "xapp-gtk3-module"
+[2:0906/181918.238706:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0906/181918.238739:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+</code></pre>
+<p>I’m using Linux Mint 21.2</p>
+<p>Thanks for help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 7, 2023 1:53 AM">
+            <time itemprop="datePublished" datetime="2023-09-07 01:53:51 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The best way to report this is on the project itself.</p>
+<p>but it seems you are not the only one</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flathub/rest.insomnia.Insomnia/issues/58">
+  <header class="source">
+
+      <a href="https://github.com/flathub/rest.insomnia.Insomnia/issues/58" target="_blank" rel="noopener">github.com/flathub/rest.insomnia.Insomnia</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub/rest.insomnia.Insomnia/issues/58" target="_blank" rel="noopener">Shipping broken in flathub</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2023-09-05" data-time="20:26:22" data-timezone="UTC">08:26PM - 05 Sep 23 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/s1nistr4" target="_blank" rel="noopener">
+          <img alt="s1nistr4" src="/uploads/original/2X/6/60434c04e48949ba4d3225b197e125ae4249bc08.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="2E0000">
+          s1nistr4
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">`
+Error: /usr/lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (r<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">equired by /run/user/1000/app/rest.insomnia.Insomnia/.org.chromium.Chromium.7zCTvn)
+    at process.func [as dlopen] (node:electron/js2c/asar_bundle:2:1822)
+    at Module._extensions..node (node:internal/modules/cjs/loader:1354:18)
+    at Object.func [as .node] (node:electron/js2c/asar_bundle:2:2049)
+    at Module.load (node:internal/modules/cjs/loader:1124:32)
+    at Module._load (node:internal/modules/cjs/loader:965:12)
+    at f._load (node:electron/js2c/asar_bundle:2:13330)
+    at Module.require (node:internal/modules/cjs/loader:1148:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at Object.&lt;anonymous&gt; (/app/main/resources/app.asar/node_modules/@getinsomnia/node-libcurl/dist/Easy.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1269:14)
+
+`</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flathub/rest.insomnia.Insomnia/issues/57">
+  <header class="source">
+
+      <a href="https://github.com/flathub/rest.insomnia.Insomnia/issues/57" target="_blank" rel="noopener">github.com/flathub/rest.insomnia.Insomnia</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub/rest.insomnia.Insomnia/issues/57" target="_blank" rel="noopener">Error running latest Insomnia version</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2023-09-05" data-time="13:57:20" data-timezone="UTC">01:57PM - 05 Sep 23 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/hofmmaxi" target="_blank" rel="noopener">
+          <img alt="hofmmaxi" src="/uploads/original/2X/c/c93f823607c11d4a2d84e153a0992b258b483c90.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="A4864F">
+          hofmmaxi
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Running the latest Insomnia version (2023.5.7) returns the following error:
+
+`<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">``shell
+➜ flatpak run rest.insomnia.Insomnia
+[2:0905/154731.267762:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+A JavaScript error occurred in the main process
+Uncaught Exception:
+Error: /usr/lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by /run/user/1000/app/rest.insomnia.Insomnia/.org.chromium.Chromium.6lWrDP)
+    at process.func [as dlopen] (node:electron/js2c/asar_bundle:2:1822)
+    at Module._extensions..node (node:internal/modules/cjs/loader:1354:18)
+    at Object.func [as .node] (node:electron/js2c/asar_bundle:2:2049)
+    at Module.load (node:internal/modules/cjs/loader:1124:32)
+    at Module._load (node:internal/modules/cjs/loader:965:12)
+    at f._load (node:electron/js2c/asar_bundle:2:13330)
+    at Module.require (node:internal/modules/cjs/loader:1148:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at Object.&lt;anonymous&gt; (/app/main/resources/app.asar/node_modules/@getinsomnia/node-libcurl/dist/Easy.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1269:14)
+Gtk-Message: 15:47:32.725: Failed to load module "canberra-gtk-module"
+Gtk-Message: 15:47:32.726: Failed to load module "pk-gtk-module"
+Gtk-Message: 15:47:32.729: Failed to load module "canberra-gtk-module"
+Gtk-Message: 15:47:32.729: Failed to load module "pk-gtk-module"
+[2:0905/154732.755768:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0905/154732.755823:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+```</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 7, 2023 2:02 AM">
+            <time itemprop="datePublished" datetime="2023-09-07 02:02:22 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>also a fix got merged.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">FraVid</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 7, 2023 1:31 PM">
+            <time itemprop="datePublished" datetime="2023-09-07 13:31:20 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the answer.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Disk Space Critically Short - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">System Disk Space Critically Short</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">System Disk Space Critically Short</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 5, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 5, 2021 2:34 PM">
+            <time itemprop="datePublished" datetime="2021-10-05 14:34:04 +0000">Oct 5, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When I created my Fedora system disk partition I didn’t have Flatpaks in mind - they are installed here and use rather more space than RPMs. I am now very short of space.</p>
+<p>IMHO Flatpaks are the future, so next time I will create a larger partition, but rather than re-installing the system on another disk now, as a quick fix I have replaced the Flatpaks with RPMs where they are available.</p>
+<p>However I don’t seem to have regained any space. I have checked the <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc">Flatpak command reference</a> for some sort of purge command, but can’t see one. Am I on the right track and if so how can I do this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Felipe Borges</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 6, 2021 9:31 AM">
+            <time itemprop="datePublished" datetime="2021-10-06 09:31:42 +0000">Oct 6, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Have you tried <code>flatpak remove --unused</code> ?</p>
+<p>Also, if you have a separated /home partition, you could use <code>flatpak --user install &lt;app-name&gt;</code> instead. This way your Flatpaks are per-user but they get stored in <code>~/.local/share/flatpak/...</code></p>
+<p>Alternatively (and a bit more advanced), you can configure Flatpak to use a custom installation with a different path, see <a href="https://docs.flatpak.org/en/latest/tips-and-tricks.html#adding-a-custom-installation" class="inline-onebox" rel="noopener nofollow ugc">Tips and Tricks — Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 6, 2021 10:00 AM">
+            <time itemprop="datePublished" datetime="2021-10-06 10:00:54 +0000">Oct 6, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What? You have read my question thoroughly, understood it, and given a practical answer. In fact three answers. I’m not sure that is permitted on computer help forums <img src="/images/emoji/twitter/grinning.png?v=12" title=":grinning:" class="emoji" alt=":grinning:" loading="lazy" width="20" height="20"></p>
+<blockquote>
+<ol>
+<li>Have you tried <code>flatpak remove --unused</code> ?</li>
+</ol>
+</blockquote>
+<p>An immediate fix. It has removed a Gnome platform which I had been using to develop an application, but which I’m not working on at the moment. It has saved about 1GB, which saves the situation for the moment. [Edit] I think this implies that removed paks don’t leave any junk behind, except perhaps platforms (and configuration files in ~).</p>
+<blockquote>
+<ol start="2">
+<li>use <code>flatpak --user install &lt;app-name&gt;</code></li>
+</ol>
+</blockquote>
+<p>I remember when I used to use Snaps that they were installed in a visible directory in my home directory - which I really didn’t like. However this is at least hidden, although it means my backups must be arranged to exclude it. It will solve the situation for the short term.</p>
+<blockquote>
+<ol start="3">
+<li>a custom installation with a different path</li>
+</ol>
+</blockquote>
+<p>I think this allows me to put the paks anywhere I like, including a separate disk. No real advantage for me in this.</p>
+<p>I have done 1 and will do 2 soon. ASAP I will install Fedora-35Beta on a new disk and double the size of my system partition at the same time. That way system and data will be completely separate and I can just backup the whole of the data disk.<br>
+Thanks for your expert help <span class="mention">@felipeborges</span>!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 6, 2021 5:56 PM">
+            <time itemprop="datePublished" datetime="2021-10-06 17:56:16 +0000">Oct 6, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@felipeborges</span> borges<br>
+Either of these commands works, the ‘flathub’ reference seems optional in this case.</p>
+<blockquote>
+<p>flatpak install com.giuspen.cherrytree<br>
+flatpak install flathub com.giuspen.cherrytree</p>
+</blockquote>
+<p>But both of these fail</p>
+<blockquote>
+<p>flatpak --user install com.giuspen.cherrytree<br>
+flatpak --user install flathub com.giuspen.cherrytree</p>
+</blockquote>
+<p>wherever in the statement the --user is placed.</p>
+<p><a href="https://docs.flatpak.org/" rel="noopener nofollow ugc">docs</a> doesn’t show any detail, but the syntax is correct according to <a href="https://www.linuxandubuntu.com/home/install-manage-flatpak-applications-on-standard-user-accounts" rel="noopener nofollow ugc">linuxandubuntu</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Felipe Borges</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 7, 2021 9:21 AM">
+            <time itemprop="datePublished" datetime="2021-10-07 09:21:34 +0000">Oct 7, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You also need to add the “flathub” remote to the <code>--user</code> installation. Remotes are installation specific.</p>
+<pre><code class="lang-auto">flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 11, 2021 9:26 PM">
+            <time itemprop="datePublished" datetime="2021-10-11 21:26:08 +0000">Oct 11, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@felipeborges</span> that works. I moved all my paks, but there was still a lot in var/lib/flatpak/repo/objects.</p>
+<p>Later…I’ve reinstalled the OS with a much larger system partition.<br>
+[/quote]</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

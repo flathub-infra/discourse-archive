@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Including 3rd-party runtimes - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Including 3rd-party runtimes</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Including 3rd-party runtimes</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 26, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 26, 2021 11:17 AM">
+            <time itemprop="datePublished" datetime="2021-08-26 11:17:33 +0000">Aug 26, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi folks,</p>
+<p>We’ve been considering allowing 3rd party runtimes to be submitted to Flathub, so that it’s possible for different OS and distro vendors to participate in the Flathub ecosystem and give app developers their own choice in tools, support/lifecycle, updates, etc.</p>
+<p>This is partly in response to Elementary OS switching their SDK to a native Flatpak runtime (per <a href="/t/distributing-runtimes-and-sdk/1640/index.html" class="inline-onebox">Distributing runtimes and sdk</a>) and including it on Flathub would make a very smooth process for Elementary apps, and partly recognizing that folks like RedHat and Fedora are now publishing their own Flatpak runtimes which people are interested in using too.</p>
+<p>I appreciate this is a trade-off; the more runtimes we have, the more bandwidth, disk space and memory we’re using on people’s systems, so our recommendation is still that unless you have a specific need to change tracks (eg your app is already developed and tested against an existing platform and you want to maintain that environment in Flatpak too), you stick to Freedesktop SDK derived runtimes wherever possible.</p>
+<p>However ultimately Flathub is trying to reduce friction for app developers, so this move would allow them the choice of what works best for them and their users after evaluating the above caveats. We also want Flathub to remain neutral regarding OS/distro vendors, so there’s no benefit to us being strongly partisan on which runtime/SDK people use if it serves to locks platform providers out of our ecosystem in ways which could be unhelpful in the longer term.</p>
+<p>That said, we need to make sure Flathub continues to provide a good experience for our users and we mitigate some of those adverse affects, so I’ve tried to draft a definition of <a href="https://github.com/flathub/flathub/wiki/Runtimes">what we’d like to see in a Runtime</a> on the Wiki in order for Flathub to be willing to host it. I’d love any feedback and if folks have any suggestions about what a reasonable submission flow would be.</p>
+<p>Thanks,<br>
+Rob</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="8 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          8
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 27, 2021 3:24 AM">
+            <time itemprop="datePublished" datetime="2021-08-27 03:24:08 +0000">Aug 27, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>can’t edit the wiki, but you use <code>amd64</code> for 64-bits intel while Flathub uses <code>x86_64</code>. Just so that the documentation is consistent.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 1, 2021 5:35 PM">
+            <time itemprop="datePublished" datetime="2021-09-01 17:35:29 +0000">Sep 1, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, org.freedesktop, and org.gnome and org.kde based on those are considered first-party? Is it because there are developers from those projects working on and maintaining Flatpak and Flathub?</p>
+<p>I know one doesn’t exist yet, but a hypothetical org.xfce runtime would then be considered third-party, right? What exactly would it need? It’s hard to tell from the links to org.gnome and org.kde what exactly gets generated, and org.gnome.Platform isn’t hosted on flathub’s github account, so I can’t figure out where the manifest is.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Realgrm</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 20, 2021 12:48 AM">
+            <time itemprop="datePublished" datetime="2021-09-20 00:48:54 +0000">Sep 20, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here you can find the links to each repository.<br>
+<a href="https://docs.flatpak.org/en/latest/available-runtimes.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/available-runtimes.html</a></p>
+<p>Here is the conventions to the application’s (and runtime’s) ID.<br>
+The runtime’s ID in these case are their main website with reverse-DNS style (<a href="http://gnome.org" rel="noopener nofollow ugc">gnome.org</a>, <a href="http://kde.org" rel="noopener nofollow ugc">kde.org</a> and <a href="http://freedesktop.org" rel="noopener nofollow ugc">freedesktop.org</a>)<br>
+<a href="https://docs.flatpak.org/en/latest/conventions.html#application-ids" class="inline-onebox" rel="noopener nofollow ugc">Requirements &amp; Conventions — Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 20, 2021 1:08 PM">
+            <time itemprop="datePublished" datetime="2021-09-20 13:08:45 +0000">Sep 20, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Right, those links are exactly what I followed. At least for KDE’s runtime, I found the <a href="https://invent.kde.org/packaging/flatpak-kde-runtime/-/blob/qt5.15lts/org.kde.Sdk.json.in" rel="noopener nofollow ugc">.in fle for the manifest.</a> But with GNOME’s it’s like… I don’t even know where to start looking to find something that would look like the manifest. It almost seems obfuscated on purpose.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 20, 2021 5:37 PM">
+            <time itemprop="datePublished" datetime="2021-09-20 17:37:52 +0000">Sep 20, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The GNOME SDK is built from this:</p>
+<p><a href="https://gitlab.gnome.org/GNOME/gnome-build-meta" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gitlab.gnome.org/GNOME/gnome-build-meta</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 20, 2021 5:50 PM">
+            <time itemprop="datePublished" datetime="2021-09-20 17:50:47 +0000">Sep 20, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I just said that I was there and couldn’t make heads or tails of that system. Okay, so let’s try this instead. Where does the resulting manifest for the SDK and runtime end up?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nick Richards</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 16, 2021 8:02 PM">
+            <time itemprop="datePublished" datetime="2021-10-16 20:02:14 +0000">Oct 16, 2021</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The manifest for each flatpak, be it runtime or app is always distributed inside the flatpak. To see the one for gnome platform you can do something like <code>flatpak run --command=bash org.gnome.Platform</code> and then <code>cat /usr/manifest.json</code>. If you run it with filesystem permissions you can copy it out of the container and examine in your favourite text editor.</p>
+<p>But you can make flatpaks in a number of ways, be it using flatpak-builder manifests, <a href="https://www.buildstream.build/">builstream</a> or likely other esoteric systems. I’m not sure that this is entirely relevant to the initial question though.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Oct 21, 2021 8:10 PM">
+            <time itemprop="datePublished" datetime="2021-10-21 20:10:12 +0000">Oct 21, 2021</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ned, thanks! That was exactly what I was hoping to see. There is a near-overwhelming amount of information in there! But fortunately, the whole reason I was interested in this was for a hypothetical org.xfce.runtime that actually proved unnecessary. I was interested in getting XFCE-affiliated apps onto Flathub, but Mousepad and Ristretto have done just fine tacking on to the FDO platform. <img src="/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

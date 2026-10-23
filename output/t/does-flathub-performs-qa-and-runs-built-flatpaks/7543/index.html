@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does flathub performs QA and runs built flatpaks? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Does flathub performs QA and runs built flatpaks?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Does flathub performs QA and runs built flatpaks?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 24, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 24, 2024 4:47 PM">
+            <time itemprop="datePublished" datetime="2024-08-24 16:47:13 +0000">Aug 24, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Today I have fallen into a trap using Calibre ebook viewer program.</p>
+<ol>
+<li>On Ubuntu 24.04 I have tried to start Calibre and got error:</li>
+</ol>
+<pre><code class="lang-auto">MESA: error: ZINK: failed to choose pdev
+glx: failed to create drisw screen
+</code></pre>
+<ol start="2">
+<li>
+<p>I remembered I have updated Ubuntu packages manually at the morning and I was wrongly convinced Ubuntu installed some broken MESA package.</p>
+</li>
+<li>
+<p>I searched the web to update MESA drivers and found found <a href="https://askubuntu.com/questions/1516040/mesa-and-glx-errors-when-running-glxinfo-ubuntu-24-04" rel="noopener nofollow ugc">askubuntu.com</a> link that suggests to update MESA drivers following <a href="https://itsfoss.com/install-mesa-ubuntu/" rel="noopener nofollow ugc">article</a> and rebooted Ubuntu. Still the problem.</p>
+</li>
+<li>
+<p>Maybe this is not Ubuntu problem… I start testing application after application and I see only Calibre application is affected. I was wrongly convinced (again) that I have installed Calibre using deb package, so I have searched upstream bug tracker and have not found anything reported.</p>
+</li>
+<li>
+<p>Then… I finally found out that I am using Calibre installed as flatpak from <a href="https://flathub.org/apps/com.calibre_ebook.calibre" rel="noopener nofollow ugc">flathub.org</a>.</p>
+</li>
+<li>
+<p>I searched the bug tracker for Calibre on Flathub and found reported bug <a href="https://github.com/flathub/com.calibre_ebook.calibre/issues/225" rel="noopener nofollow ugc">at bug tracker.</a></p>
+</li>
+<li>
+<p>From bug tracker I see new manifest file was updated 23 hours ago, bug was reported 11 hours ago and first respond on bug tracker was 8 hours ago that users should revert flatpak version to previous commit and mask the flatpak.</p>
+</li>
+</ol>
+<hr>
+<p>What I see somehow we are living in a broken word, several issues in quality assurance:</p>
+<ol>
+<li>
+<p>It looks like package is built on Flathub (or underlying Github) and after flatpak is built it is not tested if flatpak is runnable. I assume this, because this flatpak can’t be run at all.</p>
+</li>
+<li>
+<p>Like I understand there is no phasing release, when flatpak gets build on Flathub all of the users gets update (depends of frequency of new flatpak checks).</p>
+</li>
+<li>
+<p>Now to the flatpak’s maintainers. From bug tracker it is clear he/she/it/they have recognized flatpak is broken from bug tracker. It looks to me no testing was done after flatpak was built.</p>
+</li>
+<li>
+<p>When report was performed on bug tracker in my humble opinion the first action should be to immediately revert commit of manifest file and rebuild flatpak, to minimize the number of users affected.</p>
+</li>
+<li>
+<p>They have reported the bug upstream which is fine but step 4 was just cut out.</p>
+</li>
+<li>
+<p>Upstream fixed the bug, this is great and new commit to manifest file and new flatpak is built.</p>
+</li>
+</ol>
+<hr>
+<p>Now I also see that <a href="https://flathub.org/apps/com.calibre_ebook.calibre" rel="noopener nofollow ugc">Calibre flatpak on flathub.org</a> in not maintained by developers but probably by volunteer. Volunteer may not care as much for flatpak stability as original developer, I guess.</p>
+<hr>
+<p>I have finally manage to fix a problem, but instead of this I could read a book… <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<hr>
+<p>QUESTION: Are there any plans to do some improvements of quality:</p>
+<ol>
+<li>After flatpak is built at least run it and see if flatpak is at least runnable?</li>
+<li>Is there any plan for phrased release?</li>
+<li>Do some information on incidents on <a href="http://Flathub.org" rel="noopener nofollow ugc">Flathub.org</a> individual package web site. For example incident reported on this flatpak like 1 day ago (that maintainers are not doing the best job).</li>
+<li>Flatpaks that get incidents reported should not be allowed to automatically publish new versions of flatpak, but should be manually vetted by flathub personnel or/and some testers.</li>
+</ol>
+<hr>
+<p>I know everything can get broken… but it really depends how quality assurance is governed to minimize negative impact.</p>
+<hr>
+<p>Now I remember, few years ago I have had the similar problem with Calibre, but package that was installed from official Ubuntu Software. There was some Python library update that broke Calibre. At the time it was obvious Ubuntu package maintainer packaged some pre-stable release of Calibre and when problem appeared Calibre developers suggested to install new version of program from tar file. For a work-around it is fine. This was not original upstream problem, but Ubuntu’s one, not pushing easy to fix work-around (one line of code needed to be updated), but fix was not getting in for days and a lot of users affected.</p>
+<p>That I why I though flatpak is more stable, because flatpaks are independent from host system, but… it can only be more stable if some testing is really done.</p>
+<p>I would like to see some debate on quality improvements. I know Flathub is run by volunteers, flatpaks are build by volunteers etc but we can’t go back and suggest users to install programs from tar files, we are not in the Linux 90’s.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 24, 2024 7:13 PM">
+            <time itemprop="datePublished" datetime="2024-08-24 19:13:25 +0000">Aug 24, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s up to the individual maintainers of the app to QA their own apps and ensure it runs. You should complain to them.</p>
+<p>We don’t have the capacity to do automated or human QA tests.</p>
+<p>Also the issue you said you were having here:</p>
+<pre><code class="lang-auto">MESA: error: ZINK: failed to choose pdev
+glx: failed to create drisw screen
+</code></pre>
+<p>is not the same issue as the one here</p>
+<blockquote>
+<ul>
+<li>I searched the bug tracker for Calibre on Flathub and found reported bug <a href="https://github.com/flathub/com.calibre_ebook.calibre/issues/225" rel="noopener nofollow ugc">at bug tracker.</a></li>
+</ul>
+</blockquote>
+<p>You should report your issue to the calibre maintainers.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

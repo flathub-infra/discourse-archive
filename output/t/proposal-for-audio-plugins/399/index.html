@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposal for audio plugins - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Proposal for audio plugins</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Proposal for audio plugins</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 22, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 22, 2020 12:13 AM">
+            <time itemprop="datePublished" datetime="2020-04-22 00:13:41 +0000">Apr 22, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak doesn’t make it easy to have Audio plugins for Audio application. There are 4 formats at least: LADSPA, DSSI, LV and VST (native + windows). For now I’ll focus on the first 3, VST will come next.</p>
+<p>Here is my proposal for audio plugins in Flatpak on flathub:</p>
+<p>I created a base app used to build audio application AND plugins. This will provide the base libraries built to support the plugins: See <a href="https://github.com/flathub/flathub/pull/1460" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1460</a> (current status: Pull Request)<br>
+It is based off the KDE 5.14 runtime as to have Qt5 and has gtk2 built, as well as common modules needed for the audio plugins. One of the issues I have run into is that if GNOME 3.36 is required, it’s a bit more complicated.</p>
+<p><strong>Please, feel free to submit feedback on the <a href="https://github.com/flathub/flathub/pull/1460" rel="nofollow noopener">pull request</a>.</strong></p>
+<p>Once it is available on Flathub, plugins shall be submitted (they can’t build otherwise). I already have a few that I did package to actually test this concept, in all 3 formats, with the first being So-SynthLV2: <a href="https://github.com/flathub/flathub/pull/1459" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1459</a></p>
+<p>Also update the following Flatpaks to build against the base app and add the extension point (I have already done the work locally for some):</p>
+<ul>
+<li>Muse3 sequencer (LADSPA, DSSI)</li>
+<li>Hydrogen (LADSPA)</li>
+<li>gsequencer (LADSPA, DSSI and LV2) that ship with some plugins that instead should be build as Flatpak extensions first.</li>
+<li>Audacity (LADSPA, LV2)</li>
+<li>Ardour (current status: Pull Request <a href="https://github.com/flathub/flathub/pull/831" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/831</a>) (LADSPA, LV2) - this one was actually the motivation to push this effort.</li>
+</ul>
+<p>Possibly other apps I haven’t listed here yet.</p>
+<p><strong>Update</strong>:</p>
+<p>The base app is necessary for plugins, not the apps. It only contains DSSI and LV2, but is used for all the plugin types supported. If is now base in freedesktop sdk only, with caveat. Just updated the PR for the base app:</p>
+<p><a href="https://github.com/flathub/flathub/pull/1460" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1460</a></p>
+<p><strong>Update2</strong>:</p>
+<p>The BaseExtension app now contain nothing, it is just necessary to declare the extension points so that extensions can be built. This is all that is needed. It also handle the runtime versioning.</p>
+<p>And this PR is now what’s blocking any further submissions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 22, 2020 9:49 AM">
+            <time itemprop="datePublished" datetime="2020-04-22 09:49:52 +0000">Apr 22, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <span class="mention">@hub</span> - thanks for your work on this. Can you confirm whether all of these plugins /themselves/ need all the dependencies you mention (Qt5, Gtk2, Gtk3, …) or are you trying to capture the dependencies of every program that needs these plugins so they can share the same app?</p>
+<p>The reason I ask is that you don’t need to use a base app just to inherit an extension point - you can also just manually duplicate the extension point - declare it with the same name in another unrelated app - and Flatpak will pick up the matching named extensions. This means if your plugins have more simple/modest requirements - eg they could be built in a <a href="http://freedesktop.org">freedesktop.org</a> runtime, your base app could be a stub, that exists only to build the plugins, and the apps can use any ABI compatible (eg, GNOME or KDE deriving from the same fd.o) runtime to provide their extensions, not use the base app, and then the apps can just import the plugin extension point by name.</p>
+<p>If most/all of these extensions do need these dependencies, then I am inclined to agree this is the least bad approach. But it’s also a little sad because it will mean this base app has to keep piling up all of the dependencies that any audio app might need.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sam Thursfield</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 22, 2020 10:57 AM">
+            <time itemprop="datePublished" datetime="2020-04-22 10:57:59 +0000">Apr 22, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey, it’s really cool that you’re working on this!</p>
+<p>Audio plugins have to be shared objects that are loaded into a host process, so that processing can be as low-latency as possible. With that in mind, why do audio plugins have a separate runtime? Surely they need their dependencies to be present in the runtime of whatever the host app is?</p>
+<p>edit:</p>
+<blockquote>
+<p>I created a base app used to build audio application AND plugins.</p>
+</blockquote>
+<p>OK, so if I understand, the idea is to make “one Pro Audio runtime to rule them all” .</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 22, 2020 9:39 PM">
+            <time itemprop="datePublished" datetime="2020-04-22 21:39:59 +0000">Apr 22, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@ramcq</span></p>
+<p>Plugins usually have the latitude to use the toolkit they want. In general I have seen Gtk2, Qt5 and sometime Gtk3. With Qt4 that I have excluded, they are the 4 toolkits that are “supported” by LV2. Gtk3 being in the Freedesktop SDK and Qt5 in the KDE sdk, it felt only natural to use the KDE sdk as a base. Gtk2 is very popular amongst plugins, and with <code>Ardour</code> (the main motivation to get this going) it becomes a no brainer. <s><code>gsequencer</code> which is on Flathub also uses Gtk2.</s></p>
+<p>As for the dependencies, a lot of plugins want <code>liblo</code> to implement OSC (as do the apps). LV2 plugins need the lv2 package (so do the apps), LADSPA need the SDK, so does DSSI, etc. In addition <code>jack</code> seems to often be a hard require as well as <code>lrdf</code>.<br>
+(the PR needs an update, I forgot to push it)</p>
+<p>For the record, I have run through a few apps and almost a dozen plugins in the 3 formats to refine the list of dependencies. There was already a lot of things in common.</p>
+<p>Things I decided against including are <code>fltk</code> (ZynAddSubFx and Yoshimi seems to like it), <code>python-2.7</code> (required by a few never updated packages and / or <code>waf</code>), and other audio wrapper like <code>portaudio</code> or <code>rtaudio</code>.</p>
+<p>I thought this was the best approach to minimize redundancy, as I could figure out if I could have a BaseApp using freedesktop sdk but the actual app building with GNOME or KDE, and while just using <code>shared-modules</code> for the manifest to build the various dependencies modules could be another option I was also trying to avoid the bloat. Maybe I should still do that.</p>
+<p>And if the app needs the GNOME Platform it can just build independently, still.</p>
+<p>I’ll update the PR later tonight.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 23, 2020 3:01 AM">
+            <time itemprop="datePublished" datetime="2020-04-23 03:01:58 +0000">Apr 23, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="4" data-topic="399">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p><code>gsequencer</code> which is on Flathub also uses Gtk2.</p>
+</blockquote>
+</aside>
+<p>This is actually no true. <code>gsequencer</code> uses Gtk3.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 25, 2020 2:04 AM">
+            <time itemprop="datePublished" datetime="2020-04-25 02:04:36 +0000">Apr 25, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="ssssam" data-post="3" data-topic="399">
+<div class="title">
+<div class="quote-controls"></div>
+ssssam:</div>
+<blockquote>
+<blockquote>
+<p>I created a base app used to build audio application AND plugins.</p>
+</blockquote>
+<p>OK, so if I understand, the idea is to make “one Pro Audio runtime to rule them all” .</p>
+</blockquote>
+</aside>
+<p>I dug a bit more with the corner cases, and here is why this is justified, albeit problematic:</p>
+<p>Carla require Qt5 and is a LV2 plugin. If you build the app that mount LV2Plugins without using the base app but instead using the GNOME runtime, there is no Qt5 and the UI will not run. This is the kind of problem we’ll encounter, and the failure is very silent. While most plugin might not require the BaseApp, several make it necessary.</p>
+<p>It would be simpler if Qt5 was a SDK extension for Freedesktop.</p>
+<p>Suggestions welcome, off course.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 25, 2020 4:23 AM">
+            <time itemprop="datePublished" datetime="2020-04-25 04:23:11 +0000">Apr 25, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have submitted some of the modules to <code>shared-modules</code>:</p>
+<p><a href="https://github.com/flathub/shared-modules/pull/102" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/shared-modules/pull/102</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sam Thursfield</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 25, 2020 12:48 PM">
+            <time itemprop="datePublished" datetime="2020-04-25 12:48:00 +0000">Apr 25, 2020</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think this is a good solution, the most important is that things “just work” even if that does mean a bit of extra disk space and build time usage. I don’t have a better idea <img src="/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 26, 2020 1:04 AM">
+            <time itemprop="datePublished" datetime="2020-04-26 01:04:51 +0000">Apr 26, 2020</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The PR above has been merged.</p>
+<p>I think I’ll try with a mostly empty BaseApp. It is still required to actually build plugins since the extension point have to be defined. But the hosting application doesn’t to and the shared-modules will help building stuff.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 26, 2020 1:49 PM">
+            <time itemprop="datePublished" datetime="2020-04-26 13:49:29 +0000">Apr 26, 2020</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="9" data-topic="399">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>I think I’ll try with a mostly empty BaseApp.</p>
+</blockquote>
+</aside>
+<p>Few plugins can be build with an empty BaseApp. This include LADSPA plugins, VST plugins and plugins built using JUCE.</p>
+<p>DSSI and LV2 plugin (that require the respective packages) and plugins that require Gtk2 are more tricky to build.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 26, 2020 4:08 PM">
+            <time itemprop="datePublished" datetime="2020-04-26 16:08:08 +0000">Apr 26, 2020</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So now the base app is strictly limited to LV2 and DSSI to provide the headers. The plugins don’t link against it.</p>
+<p>It could be treated as a SDK.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 28, 2020 4:19 AM">
+            <time itemprop="datePublished" datetime="2020-04-28 04:19:52 +0000">Apr 28, 2020</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Another update. It got thinned down to just the extension points and renamed “BaseExension”.</p>
+<p>lv2 and dssi have to be build by the respective plugins.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">X</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robin Gareus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="May 3, 2020 7:48 PM">
+            <time itemprop="datePublished" datetime="2020-05-03 19:48:27 +0000">May 3, 2020</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="4" data-topic="399">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>Plugins usually have the latitude to use the toolkit they want. In general I have seen Gtk2, Qt5 and sometime Gtk3.</p>
+</blockquote>
+</aside>
+<p>They really should not use any of those toolkits. Plugins must be self-contained (statically linked).<br>
+gtk2/3/4 cannot co-exist in the same memory space, nor can QT4/5.</p>
+<p>Most LV2 plugins have moved away from gtk and QT in recent years. Also because those toolkits don’t offer any relevant widgets for pro-audio.</p>
+<p>When a plugin host loads a plugin binary, all of the plugin’s public symbols are mapped into the memory space of the host. If the plugin depends on a shared libs, the symbols of those libs are also inherited, and there may be conflicts.</p>
+<p>This is not limited to GUI libs alone. Say you load a plugin that dynamically links against libaubio2, then you cannot load a different plugin that is dynamically linked against libaubio3 in the same session.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="May 3, 2020 9:47 PM">
+            <time itemprop="datePublished" datetime="2020-05-03 21:47:06 +0000">May 3, 2020</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This a problem we can try to mitigate. The good news is that anything in the Freedesktop-sdk is shared, so we already have that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="May 14, 2020 12:07 PM">
+            <time itemprop="datePublished" datetime="2020-05-14 12:07:14 +0000">May 14, 2020</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some update: The base extension, that is needed to build the extensions, is now part of flathub repository.</p>
+<p>I have updated LMMS, Hydrogen, gsequencer to support plugins.</p>
+<p>I have also submitted the LADSPA version of swh and PR for Kdenlive, Flowblade and Shotcut that ship them (as a dependency).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="May 24, 2020 1:43 AM">
+            <time itemprop="datePublished" datetime="2020-05-24 01:43:14 +0000">May 24, 2020</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I now have Ardour 6 ready (no Jack) and it was the big driver for this feature. While it’s not yet approved I think it is in a state that is functional, granted we need also plugins to land.</p>
+<p>Now one thing is the discoverability of plugins.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Jul 1, 2020 2:03 AM">
+            <time itemprop="datePublished" datetime="2020-07-01 02:03:08 +0000">Jul 1, 2020</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some updates:</p>
+<ol>
+<li>
+<p>The discoverability work in GNOME Software, but not per app. It’s about checking the base extension app.</p>
+</li>
+<li>
+<p>I think I was overzealous in setting the extension points, and filed an issue (to myself) to reorganise it. Everything could work with a single extension point.<br>
+That choice was based on certain assumptions, but ignored that there are a few sets of plugins that build in multiple formats with one single source.</p>
+</li>
+</ol>
+<p><a href="https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1</a></p>
+<p>When the runtime switches to 20.08, I intend to move all the plugins to “unified” format.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Takuvata</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Jul 2, 2020 1:43 AM">
+            <time itemprop="datePublished" datetime="2020-07-02 01:43:39 +0000">Jul 2, 2020</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I’ve created a manifest for ZybAddSubFx (Zyn-Fusion) Lv2 Plugins: <a href="https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion</a></p>
+<p>Tested with Flathub versions of Ardour and lmms (via Carla) - seems to be working.</p>
+<p>I have no idea how to submit anything  to be distributed via Flathub. Could someone maybe take a look if that manifest is at all sane (had to do some weird stuff to get it working - details in the README) and give me some directions?</p>
+<p>Thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Jul 2, 2020 2:10 AM">
+            <time itemprop="datePublished" datetime="2020-07-02 02:10:05 +0000">Jul 2, 2020</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is awesome. I had ZynAddSubFx here with the ntk UI but it still had issues showing the UI in Ardour so I didn’t submit it.</p>
+<p>First, stream have crossed. I just changed the extension point to something that is what I call unified to allow shipping multiple formats at once. LMMS, Ardour and Muse3 have already been updated.<br>
+So you need to change the package id to <code>org.freedesktop.LinuxAudio.Plugins.ZynFusion</code>. This allow shipping both the VST and LV2.</p>
+<p>As for submitting it, it is the usual process:<br>
+<a href="https://github.com/flathub/flathub/wiki/App-Submission" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/flathub/wiki/App-Submission</a></p>
+<p>So basically how I would proceed is as follow:</p>
+<ul>
+<li>fork the flathub project above</li>
+<li>from the checkout of the repository you mentionned, add that fork as a remote (let’s name it <code>flathub</code>).</li>
+<li>fetch the remote</li>
+<li>rebase the repostory on top of <code>flathub/new-pr</code>. Push that branch to the remote  you named <code>flathub</code>
+</li>
+<li>Submit a pull request against the branch <code>new-pr</code>.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Takuvata</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Jul 2, 2020 2:17 AM">
+            <time itemprop="datePublished" datetime="2020-07-02 02:17:43 +0000">Jul 2, 2020</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks, I already have a manifest for unified, just wasn’t sure if apps were already updated to use it as other plugins still follows typePlugin style. Will do the submitting tomorrow.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 3</span>
+
+    
+    <a href="/t/proposal-for-audio-plugins/399/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

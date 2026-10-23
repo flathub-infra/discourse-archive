@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freedesktop SDK 25.08.0 released! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/announcements/6/index.html">Announcements</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Freedesktop SDK 25.08.0 released!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Freedesktop SDK 25.08.0 released!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 3, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Javier Jardón</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 3, 2025 12:02 AM">
+            <time itemprop="datePublished" datetime="2025-09-03 00:02:02 +0000">Sep 3, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>We have now released Freedesktop SDK 25.08.0</p>
+<p>Check the NEWS file for all the updates:<br>
+<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/NEWS" class="onebox" target="_blank" rel="noopener">https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/NEWS</a></p>
+<p>Main changes are:</p>
+<ul>
+<li>[BREAKING CHANGE] openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension</li>
+<li>[BREAKING CHANGE] intel-vaapi-driver has been removed (replacement is intel-media-driver)</li>
+<li>[BREAKING CHANGE] Dropped elements from Flatpak SDK/Runtime: vulkan-validation-layers, ruby, tcl, tk, libfdk-aac, gtk-doc, pygobject, python-six</li>
+<li>[BREAKING CHANGE] Dropped elements from project: shellingham, requests-toolbelt, pyexpect, html5lib, clikit, cleo, cachecontrol, cachy, sdl2-(image,ttf)</li>
+<li>[BREAKING CHANGE] It’s now possible to create more minimal runtimes thanks to rework of <code>bootstrap-import.bst</code>. This adds a new stack <code>public-stacks/buildsystem-make.bst</code> which is essentially same as the original <code>bootstrap-import.bst</code>. There is also a new stack <code>public-stacks/runtime-minimal.bst</code> that is intended to provide a minimal environment that you can shell into. More info in the related issues: <span class="hashtag-raw">#1728</span>, <span class="hashtag-raw">#1523</span></li>
+<li>[BREAKING CHANGE]: Perl modules now use major.minor versioned directories and no longer uses the patch version. PERL5LIB or PERLLIB variables may need to be updated.</li>
+<li>[BREAKING CHANGE] gettext: &gt;=0.24 changed location of m4 files. They are now in /usr/share/gettext/m4 Configure scripts etc. needs to updated but this path can also be passed to autoreconf -I /path/to/m4</li>
+<li>[BREAKING CHANGE] automake/autoconf-archive: newer versions perform stricter verifications of flags etc.</li>
+<li>[BREAKING CHANGE] glibc: 2.42 dropped the deprecated and obsolete termio.h header. Anything using it should probably change to termios.h or drop it.</li>
+<li>New “install-licenses” variable: It will install licenses with the default script as defined in freedesktop-sdk; Downstream projects can override that variable with their own script</li>
+<li>Added elements: rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, libtree, libsecret, taglib, pahole, nlohmann-json</li>
+<li>New NVIDIA VA-API driver Flatpak extension</li>
+<li>ZSTD compressed debuginfo resulting in smaller debuginfo size. GCC, LLVM, bitutils, elfutils, valgrind, gdb built with ZSTD support</li>
+<li>GCC 15.1, Cmake 4.0.3 (-DCMAKE_POLICY_VERSION_MINIMUM=3.5 may be required when building), Meson 1.8.2</li>
+<li>OCI images now comes with necessary files and directories like /tmp, /var/tmp, /root, /etc/group etc and the proper permissions on them</li>
+<li>GDB now supports extra targets for cross debugging</li>
+<li>Reproducibility fixes: New buildstream-reprotest utility.</li>
+<li>Reproducibility fixes: binutils, sphinxcontrib-jsmath, oci-image, less, setuptools, gperf, open-iscsi pcsc-lite, python3-cryptography (python3-installer), python3-frozenlist, python3-propcache, ovmf, python3-faust-cchardet and probably more</li>
+<li>RISC-V support has been improved, and we now run daily builds of the RISC-V variant thanks to the support of the community (RISC-V foundation, Codethink and individials that have donated RISC-V hardware)</li>
+<li>Added metainfo files to all apps and runtimes and validate them</li>
+<li>Most of the Python elements are built from git now</li>
+<li>librsvg is built with avif support</li>
+<li>Added libx264, libx265 and nvenc support to codecs-extra extension</li>
+<li>Pipewire is built with LE audio support</li>
+<li>General updates on all elements</li>
+<li>A lot of other fixes and improvements</li>
+</ul>
+<p>If you maintain an application using the Freedesktop SDK runtime, please consider upgrading the version, especially if you are still using 23.08 or earlier as It’s going to be EOL <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Releases#policies">soon</a>.<br>
+In most cases, this mostly requires changing “runtime-version” in the Flatpak builder manifest of the application.</p>
+<p>This is the result of a year of work from all our contributors, thanks a lot to all of them!</p>
+<p>1318  freedesktop_sdk_updater<br>
+1037  bbhtt<br>
+255  Freedesktop SDK Merge Bot<br>
+126  Seppo Yli-Olli<br>
+76  Abderrahim Kitouni<br>
+55  Valentin David<br>
+25  Jordan Petridis<br>
+19  Javier Jardón<br>
+19  Martin Abente Lahaye<br>
+19  Robin Lee<br>
+16  Erick555<br>
+12  Adrian Vovk<br>
+12  Ben Brown<br>
+7  Dor Askayo<br>
+7  Ignacy Kuchciński<br>
+6  Harry Sarson<br>
+4  Sam Thursfield<br>
+3  Dom Rodriguez<br>
+2  Jian-Hong Pan<br>
+2  Joe Melling<br>
+2  Matteo Martelli<br>
+2  ada-magicat<br>
+1  Adrien Plazas<br>
+1  Barrie Lui<br>
+1  Dan Yeaw<br>
+1  Dea Dia<br>
+1  Jeremy Bícha<br>
+1  Joel Williams<br>
+1  John Graham<br>
+1  Marcel Ziswiler<br>
+1  Nazar Kazakov<br>
+1  Tanvir Roshid<br>
+1  Timo Paulssen<br>
+1  axtloss<br>
+1  axtloss2</p>
+<p>Thanks as well to our infrastructure sponsors; without their help this<br>
+project will not be possible:</p>
+<ul>
+<li>Codethink (x86_64, ARM and RISC-V runners)</li>
+<li><a href="https://osuosl.org/">https://osuosl.org/</a> (x86_64, ARM, PPC and RISC-V build servers)</li>
+<li>RISC-V foundation (RISC-V build server)</li>
+<li><a href="https://www.worksonarm.com/">https://www.worksonarm.com/</a> (ARM build server, even though they can not provide it any more)</li>
+</ul>
+<p>Also special thanks to <a href="https://www.codethink.co.uk/">Codethink</a> for some engineering support during the cycle</p>
+<p>If you need assistance or have any issues, please get in touch!</p>
+<ul>
+<li>File issues at <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues" class="inline-onebox">Issues · freedesktop-sdk / freedesktop-sdk · GitLab</a></li>
+<li>Join the our matrix channel: <a href="https://matrix.to/#freedesktop-sdk:matrix.org" class="inline-onebox">You're invited to talk on Matrix</a></li>
+<li>Join the mailing list:<br>
+<a href="https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk">https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk</a></li>
+<li>You can also ask on Flathub’s forum: <a href="/">https://discourse.flathub.org/</a></li>
+</ul>
+<p>Cheers,<br>
+freedesktop-sdk team</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 26, 2025 2:22 AM">
+            <time itemprop="datePublished" datetime="2025-10-26 02:22:19 +0000">Oct 26, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote group-freedesktop-sdk" data-username="jjardon" data-post="1" data-topic="10399">
+<div class="title">
+<div class="quote-controls"></div>
+jjardon:</div>
+<blockquote>
+<p>[BREAKING CHANGE] openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension</p>
+</blockquote>
+</aside>
+<p>Hello, as a follow-up, if you are updating your application manifest to use Freedesktop 25.08+, GNOME 49+, KDE 5.15-25.08+ or KDE 6.10+, and your manifest previously included the <code>ffmpeg-full</code> extension in <code>add-extensions</code> or <code>inherit-extensions</code>, please <em>remove</em> that stanza — it’s no longer needed.</p>
+<p>The <code>codecs-extra</code> extension will be automatically installed along with the runtime when installing the apps or runtimes. No other action is needed.</p>
+<p>If you were using the <code>i386 ffmpeg-full</code> extension, you should migrate to the codecs-extra extension by replacing it in the manifest with:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">add-extensions:
+  org.freedesktop.Platform.codecs_extra.i386:
+    directory: lib/i386-linux-gnu/codecs-extra
+    version: '25.08-extra'
+    autodelete: false
+    add-ld-path: lib
+cleanup-commands:
+- mkdir -p /app/lib/i386-linux-gnu/codecs-extra
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Access to system directories - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Access to system directories</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Access to system directories</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 15, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">lagrang3</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 15, 2023 7:19 AM">
+            <time itemprop="datePublished" datetime="2023-07-15 07:19:29 +0000">Jul 15, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello.</p>
+<p>I’ve started developing an app for the Pinephone, my app would be deployed with a flatpak.<br>
+My application needs access to system directories to read the device camera.<br>
+Doing some testing I’ve discovered that a native Pinephone application called megapixels doesn’t launch if I package it into a flatpak. The error is related to not being able to read a system directory <code>/sys/firmware/devicetree/base</code><br>
+In order to diagnose the problem I’ve run a python terminal inside the container and I’ve verified that neither <code>/sys/firmware</code> nor <code>/dev/video*</code> are visible from within the container:</p>
+<pre><code class="lang-auto">mobian@mobian:~$ /usr/bin/flatpak run --branch=master --arch=aarch64 --command=python3 com.lagrange.myapp
+Python 3.11.4 (main, Jul 13 2023, 12:52:58) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.listdir('/sys')
+['devices', 'dev', 'class', 'bus', 'block']
+&gt;&gt;&gt; os.listdir('/dev')
+['console', 'ptmx', 'pts', 'shm', 'core', 'fd', 'stderr', 'stdout', 'stdin', 'tty', 'urandom', 'random', 'full', 'zero', 'null']
+&gt;&gt;&gt; exit()
+</code></pre>
+<p>they are there, just not visible from the container:</p>
+<pre><code class="lang-auto">mobian@mobian:~$ ls /dev/video*
+/dev/video0  /dev/video1  /dev/video2  /dev/video3
+mobian@mobian:~$ ls /sys
+block  bus  class  dev  devices  firmware  fs  kernel  module  power
+</code></pre>
+<p>Even though I’ve built the flatpak with <code>"finish-args": ["--filesystem=host", "--filesystem=host-os"]</code>.</p>
+<p>What am I missing?<br>
+Any help will be much appreciated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 15, 2023 5:30 PM">
+            <time itemprop="datePublished" datetime="2023-07-15 17:30:22 +0000">Jul 15, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t think you should go via the file system. I’m not even sure if that’s supposed to work.</p>
+<p>You should be using the camera portal, documented here <a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.Camera" class="inline-onebox">Portal Documentation</a></p>
+<p>There might be a convinience wrapper, depending on the language your app is in. For rust, for example there is <a href="https://github.com/bilelmoussaoui/ashpd" class="inline-onebox">GitHub - bilelmoussaoui/ashpd: A Rust wrapper around XDG portals DBus interfaces</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">lagrang3</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 22, 2023 9:55 AM">
+            <time itemprop="datePublished" datetime="2023-07-22 09:55:02 +0000">Jul 22, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Surely that’s what one SHOULD do to follow the good practices. But I am just hacking around.<br>
+Also, it would be faster for the time being to override all the default flatpak protection of access to filesystem than change the code in Megapixels app to use the camera portal.</p>
+<p>Furthermore, the camera in the Pinephone is a very complicated beast. I am not sure that the cameral portal API would be able to handle it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert Mader</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 22, 2023 12:17 PM">
+            <time itemprop="datePublished" datetime="2023-07-22 12:17:20 +0000">Jul 22, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So in order to use the portal the device would need to be supported by libcamera, which is then used by Pipewire as camera backend. This is the case for the Pinephone Pro but not the OG Pinephone (even though there are some patches to make at least one of the cameras work).</p>
+<p>Megapixels in turn uses device specific kernel APIs directly, AFAIK even from non-upstream kernel drivers, and supports features for which we don’t have system APIs yet (like flashlight, which will take a while to plump through libcamera and PW).</p>
+<p>In other words: the main point of Megapixels is to manage things directly, on a per-device basis.</p>
+<p>This arguably makes shipping it on flathub a bit mood: the distros of the supported devices most likely have it already - and they have the advantage of knowing the kernel in use. Yes, kernel upgrades often break Megapixels.</p>
+<p>Coming back to the original question: you can get acces to <code>/dev/video*</code> by adding <code>--device=all</code>.</p>
+<p>I don’t think there’s a way to add <code>/sys/firmware</code> and also assume that any app needing that is likely so device specific that it makes little sense to distribute it independently.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

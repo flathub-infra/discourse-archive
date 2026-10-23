@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To all publishers of Flutter apps, let&#39;s build from source! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">To all publishers of Flutter apps, let&#39;s build from source!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">To all publishers of Flutter apps, let&#39;s build from source!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 17, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 17, 2025 6:48 PM">
+            <time itemprop="datePublished" datetime="2025-01-17 18:48:52 +0000">Jan 17, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi fellow Flutter developers and Flutter app publishers,</p>
+<p>I’m the developer of <a href="https://flathub.org/apps/com.theappgineer.community_remote" rel="noopener nofollow ugc">Community Remote</a>, an app built using the <a href="https://flutter.dev/" rel="noopener nofollow ugc">Flutter</a> framework.</p>
+<p>Over the last couple of weeks I figured out how to build a Flutter app from source while being offline, to be able to perform the full app build on Flathub infra. Recently I published an update of my app that is <a href="https://buildbot.flathub.org/#/builders/6/builds/172617" rel="noopener nofollow ugc">built from source</a>.</p>
+<p>To be of benefit to more Flutter developers who publish on Flathub I now generalized and automated parts of the process to come to an offline build, and open sourced this in the form of the flatpak-flutter tool.</p>
+<aside class="onebox githubrepo" data-onebox-src="https://github.com/TheAppgineer/flatpak-flutter">
+  <header class="source">
+
+      <a href="https://github.com/TheAppgineer/flatpak-flutter" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+  <img width="690" height="344" src="/uploads/optimized/2X/e/ea5fab55e752be1c195933292a1926526c85626c_2_690x344.png" class="thumbnail" data-dominant-color="E9EBED">
+
+  <h3><a href="https://github.com/TheAppgineer/flatpak-flutter" target="_blank" rel="noopener nofollow ugc">GitHub - TheAppgineer/flatpak-flutter: The Flatpak pre-processor for Flutter apps</a></h3>
+
+    <p><span class="github-repo-description">The Flatpak pre-processor for Flutter apps</span></p>
+</div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<h3><a name="p-16528-feature-highlights-1" class="anchor" href="#p-16528-feature-highlights-1" aria-label="Heading link"></a>Feature Highlights</h3>
+<ul>
+<li>Use an online build to generate prerequisite files for offline build</li>
+<li>Generate flatpak-builder <code>modules</code>, snapshotting a specific version of the Flutter SDK</li>
+<li>Generate flatpak-builder <code>sources</code>, parsing <code>pubspec.lock</code> files to create the offline pub-cache</li>
+</ul>
+<h3><a name="p-16528-whats-next-2" class="anchor" href="#p-16528-whats-next-2" aria-label="Heading link"></a>What’s Next?</h3>
+<p>Be aware that this project is very fresh. To bring it to the next level I would like to get in contact with developers who want to test the tool and turn their app manifest into a source level build. It has the benefit to have both the x86_64 and aarch64 architecture supported without the need for local hardware.</p>
+<p>Please create issues on the GitHub project for support and requests. This post is mainly to announce the project and create awareness.</p>
+<p>Hope to hear from you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 21, 2025 2:04 AM">
+            <time itemprop="datePublished" datetime="2025-01-21 02:04:57 +0000">Jan 21, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am working on an app with Flutter, and will need to look in to a Flathub version.  I am an experienced Flutter dev and would like to document the process for building Locally on Flathub.  Is there a Discord where we can meet?  I have a server ready to go.</p>
+<p>Also I’d like to translate the overall process for Flutter Flathub to Electron apps as I have an active app in Flathub that is Electron based.</p>
+<p>Flathub debugging is also very important, need to see which debugger is best to use with Flutter.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 21, 2025 6:55 PM">
+            <time itemprop="datePublished" datetime="2025-01-21 18:55:21 +0000">Jan 21, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tmrdev" data-post="2" data-topic="8682">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>I am working on an app with Flutter, and will need to look in to a Flathub version.</p>
+</blockquote>
+</aside>
+<aside class="quote no-group" data-username="tmrdev" data-post="2" data-topic="8682">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>Is there a Discord where we can meet?</p>
+</blockquote>
+</aside>
+<p>As this is a project I run in my spare time, I can only help with concrete questions. It starts off by looking into it yourself, as you mentioned. The approach I would suggest is:</p>
+<ul>
+<li>Create a Flatpak manifest with a binary build of your app</li>
+<li>Read the flatpak-flutter documentation</li>
+<li>Convert the manifest to a source build</li>
+<li>Report any issues you run into on the GitHub of the project.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 17, 2025 7:33 PM">
+            <time itemprop="datePublished" datetime="2025-02-17 19:33:36 +0000">Feb 17, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Project Milestone: First third party app builds using flatpak-flutter <img src="/images/emoji/twitter/confetti_ball.png?v=12" title=":confetti_ball:" class="emoji" alt=":confetti_ball:" loading="lazy" width="20" height="20"></p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://flathub.org/apps/com.gopeed.Gopeed">
+  <header class="source">
+      <img src="https://flathub.org/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://flathub.org/apps/com.gopeed.Gopeed" target="_blank" rel="noopener nofollow ugc">Flathub - Apps for Linux</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/360;"><img src="/uploads/optimized/2X/3/37d8be1374f295b7bbb673facfb4b66030e43089_2_690x361.png" class="thumbnail" data-dominant-color="E8F0E8" width="690" height="361"></div>
+
+<h3><a href="https://flathub.org/apps/com.gopeed.Gopeed" target="_blank" rel="noopener nofollow ugc">Install Gopeed on Linux | Flathub</a></h3>
+
+  <p>A modern download manager</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 6, 2025 7:58 PM">
+            <time itemprop="datePublished" datetime="2025-03-06 19:58:56 +0000">Mar 6, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h2><a name="p-17153-project-update-1" class="anchor" href="#p-17153-project-update-1" aria-label="Heading link"></a>Project Update</h2>
+<p><strong><a href="https://github.com/TheAppgineer/flatpak-flutter/releases/tag/0.2.0" rel="noopener nofollow ugc">Version 0.2.0</a> released</strong><br>
+Some changes were made over the last couple of weeks to improve the flatpak-flutter workflow. Previously there were two manifest files to maintain (one for online, one for offline build), now there is just one. This single manifest does all Flutter related stuff in the online fashion, and is then automatically converted into the offline manifest. So from a single input file all related files, needed for the offline build, are generated.</p>
+<p>While working together with other developers, who are considering the use of flatpak-flutter, some improvement suggestions were made that are now implemented:</p>
+<p>It is no longer necessary that the app to build is in a subdirectory of the project root, the path to the manifest repo can just be specified as a command line parameter.</p>
+<p>Besides a yaml manifest, now also a json manifest can be used as input file.</p>
+<p><strong>Supporting latest Flutter version</strong><br>
+Recently there was a hick-up in the support of the latest Flutter version (3.29.0). A change was made that broke the working of flatpak-flutter. I participated in the solving of <a href="https://github.com/flutter/flutter/issues/163308" rel="noopener nofollow ugc">this issue</a>, by sharing my workaround and joining the discussion. The issue was picked up by the Flutter team, allowing me to have a proper patch, and today Flutter 3.29.1 is released with the official fix included.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 25, 2025 6:44 PM">
+            <time itemprop="datePublished" datetime="2025-03-25 18:44:13 +0000">Mar 25, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The project is moving, but slowly. To improve visibility I submitted a PR on the <a href="https://docs.flutter.dev/deployment/linux#additional-deployment-resources" class="inline-onebox" rel="noopener nofollow ugc">Linux | Flutter</a> documentation to include a reference to flatpak-flutter, and Yesterday it was merged <img src="/images/emoji/twitter/confetti_ball.png?v=12" title=":confetti_ball:" class="emoji" alt=":confetti_ball:" loading="lazy" width="20" height="20"></p>
+<p>I hope that this makes developers at least aware that there are other options besides the Snap Store.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

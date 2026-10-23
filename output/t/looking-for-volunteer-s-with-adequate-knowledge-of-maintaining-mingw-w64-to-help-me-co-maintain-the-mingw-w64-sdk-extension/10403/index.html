@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Looking for volunteer/s with adequate knowledge of maintaining mingw-w64 to help me co-maintain the mingw-w64 SDK extension - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Looking for volunteer/s with adequate knowledge of maintaining mingw-w64 to help me co-maintain the mingw-w64 SDK extension</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Looking for volunteer/s with adequate knowledge of maintaining mingw-w64 to help me co-maintain the mingw-w64 SDK extension</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 3, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">user1-github</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 3, 2025 3:21 PM">
+            <time itemprop="datePublished" datetime="2025-09-03 15:21:51 +0000">Sep 3, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For some context, the original maintainer of <a href="https://github.com/flathub/org.winehq.Wine" rel="noopener nofollow ugc">org.winehq.Wine</a> has left about 2 years ago and the Flatpak was in low maintenance mode until early this year.</p>
+<p>I really didn’t want to see it rot and potentially removed, so in March I became maintainer of org.winehq.Wine. It’s also used by a lot of popular apps on Flathub as their baseapp.</p>
+<p>Consequentially, I also had to step up and maintain <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.mingw-w64" rel="noopener nofollow ugc">org.freedesktop.Sdk.Extension.mingw-w64</a>, which is needed by Wine for building its PE/dll files, since it was also abandoned by the original maintainer.</p>
+<p>I can handle org.winehq.Wine just fine, but maintaining the mingw-w64 extension hasn’t been a smooth ride.<br>
+Particularly, the issue is that whenever I try to update Binutils to anything newer than 2.43.1 and/or mpfr 4.2.1 to 4.2.2, it causes the new Wine built against the updated version of mingw to throw the following errors, hinting at some ABI incompatibility:</p>
+<blockquote>
+<p>wine: created the configuration directory ‘/var/data/wine’<br>
+002c:fixme:actctx:parse_depend_manifests Could not find dependent assembly L"Microsoft.Windows.Common-Controls" (6.0.0.0)<br>
+wine: Unhandled page fault on write access to 0000000140020AD8 at address 00006FFFFFF550F8 (thread 002c), starting debugger…<br>
+002c:err:seh:start_debugger Couldn’t start debugger L"winedbg --auto 40 80" (2)<br>
+Read the Wine Developers Guide on how to set up winedbg or another debugger<br>
+wine: could not load kernel32.dll, status c0000135<br>
+004c:fixme:actctx:parse_depend_manifests Could not find dependent assembly L"Microsoft.Windows.Common-Controls" (6.0.0.0)<br>
+wine: Unhandled page fault on write access to 000000014001EB38 at address 00006FFFFFF550F8 (thread 004c), starting debugger…<br>
+004c:err:seh:start_debugger Couldn’t start debugger L"winedbg --auto 72 168" (2)<br>
+Read the Wine Developers Guide on how to set up winedbg or another debugger<br>
+wine: Unhandled page fault on write access to 00006FFFFF8B5C10 at address 00006FFFFFF550F8 (thread 0044), starting debugger…<br>
+0044:err:seh:start_debugger Couldn’t start debugger L"winedbg --auto 64 128" (2)<br>
+Read the Wine Developers Guide on how to set up winedbg or another debugger</p>
+</blockquote>
+<p>It has happened to me a few months ago and now, when I created the 25.08 branch for mingw-w64.<br>
+I tried to investigate that and also get various help, but I still have no clue why it happens.</p>
+<p>I’m currently downgrading these dependencies again, which should finally make working Wine 25.08 builds, but this isn’t sustainable for the far future, as these dependencies will still have to be updated at some point for compatibility with future mingw/Wine versions.</p>
+<p>That’s why I’m asking for help. If you happen to have the required knowledge to properly maintain mingw-w64, you’re welcome to join and become co-maintainer.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">user1-github</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 6, 2025 4:52 PM">
+            <time itemprop="datePublished" datetime="2025-09-06 16:52:04 +0000">Sep 6, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><strong>Update:</strong></p>
+<p>It turns out the issue was most likely just an incompatibility between Wine 10.0 and Binutils versions 2.44 and higher.<br>
+I’ll try to update mingw-w64 dependencies again in January towards the release of Wine 11.0 and if everything will work fine, I’ll mark this as solved.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

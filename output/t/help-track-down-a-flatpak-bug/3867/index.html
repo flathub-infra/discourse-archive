@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help Track Down a Flatpak Bug! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help Track Down a Flatpak Bug!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help Track Down a Flatpak Bug!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 16, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 16, 2023 5:55 AM">
+            <time itemprop="datePublished" datetime="2023-03-16 05:55:31 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve discovered something weird, but I can’t figure it out on my own.</p>
+<p>The following Java code <strong>works outside of Flatpak</strong>, and <strong>works inside Flatpak for most distros</strong> - But in Flatpak on Arch Linux, it throws an exception:</p>
+<pre><code class="lang-auto">import java.net.InetAddress;
+
+public final class Main {
+  public static void main(String[] args) {
+    try {
+      InetAddress.getLocalHost();
+      System.out.println("Completed without issue!");
+      System.exit(0);
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.exit(1);
+    }
+  }
+}
+</code></pre>
+<p>Output outside Flatpak or on most distros:</p>
+<pre><code class="lang-auto">Completed without issue!
+</code></pre>
+<p>Output in Flatpak on Arch Linux:</p>
+<pre><code class="lang-auto">java.net.UnknownHostException: archlinux: archlinux: Name or service not known
+        at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1661)
+        at Main.main(Main.java:6)
+Caused by: java.net.UnknownHostException: archlinux: Name or service not known
+        at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+        at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929)
+        at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1534)
+        at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+        at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1524)
+        at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1656)
+        ... 1 more
+</code></pre>
+<p>I’ve created a repo with a reproducible example + simple build steps in the README: <a href="https://github.com/dginovker/FlatpakJavaBug" class="inline-onebox" rel="noopener nofollow ugc">GitHub - dginovker/FlatpakJavaBug: Example bug in Flatpak Java</a></p>
+<hr>
+<ul>
+<li>Granting Flatpak with all the permissions via Flatseal doesn’t resolve the issue</li>
+<li>Issue happens with OpenJDK 11 and OpenJDK17 (although I suspect this isn’t actually a Java issue)</li>
+</ul>
+<p>Anyone have other suggestions on how to narrow this down?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 16, 2023 6:24 AM">
+            <time itemprop="datePublished" datetime="2023-03-16 06:24:45 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems to work on Asahi Linux with the following <code>/etc/hosts</code>:</p>
+<pre><code class="lang-auto"># Host addresses
+127.0.0.1  localhost
+127.0.1.1  asahi-mac
+::1        localhost ip6-localhost ip6-loopback
+ff02::1    ip6-allnodes
+ff02::2    ip6-allrouters
+</code></pre>
+<p>Edit: Matching this hosts file on the computer with issues doesn’t seem to resolve the issue</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 16, 2023 10:30 AM">
+            <time itemprop="datePublished" datetime="2023-03-16 10:30:32 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>On my computer with Arch Linux:<br>
+FlatpakJavaBug]$ flatpak run io.github.flatpakjavabug<br>
+Completed without issue!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 16, 2023 1:56 PM">
+            <time itemprop="datePublished" datetime="2023-03-16 13:56:16 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>does it have <code>--share=network</code> ?</p>
+<p>But the app is buggy. It shouldn’t crash on that kind of conditions?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 16, 2023 2:10 PM">
+            <time itemprop="datePublished" datetime="2023-03-16 14:10:23 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yup, it has <code>--share=network</code></p>
+<blockquote>
+<p>It shouldn’t crash</p>
+</blockquote>
+<p>For clarity it’s not crashing, the code is entering the <code>catch</code> branch above and calling <code>System.exit(1)</code>, but the problem is it doesn’t do this outside Flatpak</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 16, 2023 2:10 PM">
+            <time itemprop="datePublished" datetime="2023-03-16 14:10:45 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>On my computer with Arch Linux:<br>
+FlatpakJavaBug]$ flatpak run io.github.flatpakjavabug<br>
+Completed without issue!</p>
+</blockquote>
+<p>Thanks for checking <img src="/images/emoji/twitter/heart.png?v=12" title=":heart:" class="emoji" alt=":heart:" loading="lazy" width="20" height="20"> . This part is nuts, it’s working haphazadly for different people. Can you post your <code>/etc/hosts</code>? I don’t actually think it is the /etc/hosts causing the issue, but I don’t know enough about Linux to have any other leads</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 16, 2023 2:46 PM">
+            <time itemprop="datePublished" datetime="2023-03-16 14:46:44 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">cat /etc/hosts
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1	localhost
+127.0.1.1	bueroal2
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 17, 2023 12:47 PM">
+            <time itemprop="datePublished" datetime="2023-03-17 12:47:31 +0000">Mar 17, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Someone said this on Discord, but I’m not sure what the before/after of the hosts file was:</p>
+<blockquote>
+<p>I just tested an install of arch Linux and had the same issue initially but fixed by modifying the hosts file &amp; rebooting</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">James Baker</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 17, 2023 1:54 PM">
+            <time itemprop="datePublished" datetime="2023-03-17 13:54:23 +0000">Mar 17, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Figured i’d post here instead of Discord</p>
+<p>Original, Broken Hosts<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950.jpeg" data-download-href="/uploads/original/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950.jpeg" title="broken" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950_2_690x427.jpeg" alt="broken" data-base62-sha1="dufNKPwEk2cDpQeQ6tKrth3ILle" width="690" height="427" srcset="/uploads/optimized/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950_2_690x427.jpeg, /uploads/optimized/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950_2_1035x640.jpeg 1.5x, /uploads/original/2X/5/5e87c93af74fab1197c51383a6febfaa0db3a950.jpeg 2x" data-dominant-color="4B595D"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">broken</span><span class="informations">1307×810 99.6 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">James Baker</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Mar 17, 2023 1:55 PM">
+            <time itemprop="datePublished" datetime="2023-03-17 13:55:25 +0000">Mar 17, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>“New Users Can Only Put One Photo Per Post”</p>
+<p>Modified, Working Hosts<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992.jpeg" data-download-href="/uploads/original/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992.jpeg" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992_2_690x437.jpeg" alt="image" data-base62-sha1="47RlTR0AHWUnmN0H8w8kyQPap5o" width="690" height="437" srcset="/uploads/optimized/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992_2_690x437.jpeg, /uploads/optimized/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992_2_1035x655.jpeg 1.5x, /uploads/original/2X/1/1cec2a95cc6b53bf974ffeb27e56a7d8cae09992.jpeg 2x" data-dominant-color="4A585B"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1282×812 108 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

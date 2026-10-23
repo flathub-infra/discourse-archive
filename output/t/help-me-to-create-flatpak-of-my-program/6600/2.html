@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Help me to create FLATPAK of my program - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page"> Help me to create FLATPAK of my program</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name"> Help me to create FLATPAK of my program</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Apr 27, 2024 6:28 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 18:28:22 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_20">Replying to #20</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for answer. Could give me an example for dir Copertine of this code?:</p>
+<pre><code class="lang-auto">id: org.flatpak.LaMiaVideoteca
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: LaMiaVideoteca
+
+modules:
+  - name: LaMiaVideoteca
+    buildsystem: simple
+    build-commands:
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca
+      - install -D -d Copertine/* /app/bin/Copertine
+      - install -D -d lib/* /app/lib
+
+    sources:
+      - type: file
+        path: LaMiaVideoteca
+      - type: dir
+        path: Copertine
+      - type: dir
+        path: lib
+        
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Apr 27, 2024 6:41 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 18:41:17 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_21">Replying to #21</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Should work like this:</p>
+<pre><code class="lang-auto">    sources:
+      - type: file
+        path: LaMiaVideoteca
+      - type: dir
+        path: Copertine
+        dest: Copertine
+      - type: dir
+        path: lib
+        dest: lib
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_23"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_23" title="Apr 27, 2024 6:43 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 18:43:40 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#23</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks but it still doesn’t copy the files inside.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e.png" data-download-href="/uploads/original/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e.png" title="Schermata del 2024-04-27 20-43-03" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e_2_690x388.png" alt="Schermata del 2024-04-27 20-43-03" data-base62-sha1="uFcMFfN3kvGtDtbp5hvz7jbwmXI" width="690" height="388" srcset="/uploads/optimized/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e_2_690x388.png, /uploads/optimized/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e_2_1035x582.png 1.5x, /uploads/optimized/2X/d/d6e9a8014f6037ece3df309b5a637acb7b8a235e_2_1380x776.png 2x" data-dominant-color="232829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 20-43-03</span><span class="informations">1920×1080 397 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_24"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_24" title="Apr 27, 2024 7:02 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 19:02:39 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#24</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_23">Replying to #23</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Try <code>cp -R</code> (if there are subfolders) or <code>install -D -t /app/lib/ lib/*</code>. Your install commands don’t work.</p>
+<p>Else, as I said, check the build folders in <code>.flatpak-builder/build</code> or use <code>--build-shell</code>, then you’ll see what is available inside the sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_25"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_25" title="Apr 28, 2024 12:07 PM">
+            <time itemprop="datePublished" datetime="2024-04-28 12:07:34 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#25</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_24">Replying to #24</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able to copy all the files with this code. However, I think it is absurd to have to copy the files one by one.</p>
+<pre><code class="lang-auto">id: org.flatpak.LaMiaVideoteca 
+runtime: org.freedesktop.Platform 
+runtime-version: '23.08' 
+sdk: org.freedesktop.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: file 
+        path: Copertine/Supporto Cassetta/1 
+      - type: file 
+        path: Copertine/Supporto Cassetta/2 
+      - type: file 
+        path: Copertine/Supporto Cassetta/3 
+      - type: file 
+        path: Copertine/Supporto Cassetta/Nessuna Immagine Disponibile 
+      - type: file 
+        path: share/applications/LaMiaVideoteca.desktop 
+      - type: file 
+        path: share/icons/LaMiaVideoteca.ico 
+        
+    build-commands: 
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - mkdir /app/bin/Copertine 
+      - mkdir /app/bin/Copertine/'Supporto Cassetta' 
+      - mkdir /app/bin/Copertine/'Supporto Disco' 
+      - mkdir /app/share
+      - mkdir /app/share/applications
+      - mkdir /app/share/icons
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Cassetta'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Cassetta'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Cassetta'/3 
+      - install -T LaMiaVideoteca.desktop /app/share/applications/LaMiaVideoteca.desktop
+      - install -T LaMiaVideoteca.ico /app/share/icons/LaMiaVideoteca.ico
+
+  - name: LaMiaVideotecaDisco
+    buildsystem: simple
+
+    sources: 
+      - type: file 
+        path: Copertine/Supporto Disco/1 
+      - type: file 
+        path: Copertine/Supporto Disco/2 
+      - type: file 
+        path: Copertine/Supporto Disco/3 
+      - type: file 
+        path: Copertine/Supporto Disco/Nessuna Immagine Disponibile 
+        
+    build-commands: 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Disco'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Disco'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Disco'/3 
+      
+  - name: LaMiaVideotecaLibrerie
+    buildsystem: simple
+    
+    sources:
+      - type: file 
+        path: lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbrotlicommon.so.1.0.9
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbrotlidec.so.1.0.9
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbsd.so.0.11.7
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbz2.so.1.0.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/libc.so.6
+      - type: file 
+        path: lib/x86_64-linux-gnu/libcap.so.2.66
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdbus-1.so.3.32.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdl.so.2            
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdouble-conversion.so.3.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libEGL.so.1.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libexpat.so.1.8.10
+      - type: file 
+        path: lib/x86_64-linux-gnu/libfontconfig.so.1.12.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libfreetype.so.6.20.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgcc_s.so.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgcrypt.so.20.4.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGL.so.1.7.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libglib-2.0.so.0.7800.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGLX.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgthread-2.0.so.0.7800.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicudata.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicudata.so.72.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicui18n.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicuuc.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicuuc.so.72.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/liblz4.so.1.9.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/liblzma.so.5.4.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libm.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/libm.so.6
+      - type: file 
+        path: lib/x86_64-linux-gnu/libmd.so.0.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libmd4c.so.0.4.8
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpng16.so.16.40.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpthread.so.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Core.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6DBus.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Gui.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Sql.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Widgets.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6XcbQpa.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/librt.so.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libstdc++.so.6.0.32
+      - type: file 
+        path: lib/x86_64-linux-gnu/libsystemd.so.0.36.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libX11.so.6.4.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libXau.so.6.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libxcb.so.1.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libz.so.1.2.13
+      - type: file 
+        path: lib/x86_64-linux-gnu/libzstd.so.1.5.5   
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/designer/libqquickwidget.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-emu-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-x11-integration.so 
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevkeyboardplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevmouseplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtabletplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtouchplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqlibinputplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqtslibplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqtuiotouchplugin.so       
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqgif.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqico.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqjpeg.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/networkinformation/libqnetworkmanager.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so     
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqeglfs.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqlinuxfb.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimal.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimalegl.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqoffscreen.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvkkhrdisplay.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvnc.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqxcb.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platformthemes/libqgtk3.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/printsupport/libcupsprintersupport.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/sqldrivers/libqsqlite.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/tls/libqcertonlybackend.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/tls/libqopensslbackend.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-egl-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-glx-integration.so
+
+  
+    build-commands: 
+      - mkdir /app/lib/x86_64-linux-gnu
+      - mkdir /app/lib/x86_64-linux-gnu/qt6
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/designer
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/generic
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/networkinformation
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platforms
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platformthemes
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/printsupport
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/sqldrivers
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/tls
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations
+      - install -T ld-linux-x86-64.so.2 /app/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 
+      - install -T libbrotlicommon.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlicommon.so.1.0.9
+      - install -T libbrotlidec.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlidec.so.1.0.9
+      - install -T libbsd.so.0.11.7 /app/lib/x86_64-linux-gnu/libbsd.so.0.11.7 
+      - install -T libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+      - install -T libc.so.6 /app/lib/x86_64-linux-gnu/libc.so.6
+      - install -T libcap.so.2.66 /app/lib/x86_64-linux-gnu/libcap.so.2.66
+      - install -T libdbus-1.so.3.32.4 /app/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4
+      - install -T libdl.so.2 /app/lib/x86_64-linux-gnu/libdl.so.2
+      - install -T libdouble-conversion.so.3.1 /app/lib/x86_64-linux-gnu/libdouble-conversion.so.3.1
+      - install -T libEGL.so.1.1.0 /app/lib/x86_64-linux-gnu/libEGL.so.1.1.0
+      - install -T libexpat.so.1.8.10 /app/lib/x86_64-linux-gnu/libexpat.so.1.8.10
+      - install -T libfontconfig.so.1.12.0 /app/lib/x86_64-linux-gnu/libfontconfig.so.1.12.0
+      - install -T libfreetype.so.6.20.0  /app/lib/x86_64-linux-gnu/libfreetype.so.6.20.0 
+      - install -T libgcc_s.so.1  /app/lib/x86_64-linux-gnu/libgcc_s.so.1 
+      - install -T libgcrypt.so.20.4.2 /app/lib/x86_64-linux-gnu/libgcrypt.so.20.4.2
+      - install -T libGL.so.1.7.0 /app/lib/x86_64-linux-gnu/libGL.so.1.7.0
+      - install -T libGLdispatch.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0 
+      - install -T libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so.0.7800.0  
+      - install -T libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+      - install -T libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so.0.7800.0
+      - install -T libgtk3-nocsd.so.0 /app/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0 
+      - install -T libicudata.so.56.1 /app/lib/x86_64-linux-gnu/libicudata.so.56.1
+      - install -T libicudata.so.72.1 /app/lib/x86_64-linux-gnu/libicudata.so.72.1
+      - install -T libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so.56.1
+      - install -T libicuuc.so.56.1 /app/lib/x86_64-linux-gnu/libicuuc.so.56.1
+      - install -T libicuuc.so.72.1 /app/lib/x86_64-linux-gnu/libicuuc.so.72.1
+      - install -T liblz4.so.1.9.4 /app/lib/x86_64-linux-gnu/liblz4.so.1.9.4   
+      - install -T liblzma.so.5.4.1 /app/lib/x86_64-linux-gnu/liblzma.so.5.4.1
+      - install -T libm.so  /app/lib/x86_64-linux-gnu/libm.so 
+      - install -T libm.so.6 /app/lib/x86_64-linux-gnu/libm.so.6 
+      - install -T libmd.so.0.1.0  /app/lib/x86_64-linux-gnu/libmd.so.0.1.0 
+      - install -T libmd4c.so.0.4.8 /app/lib/x86_64-linux-gnu/libmd4c.so.0.4.8
+      - install -T libpcre2-8.so.0.11.2 /app/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2
+      - install -T libpng16.so.16.40.0 /app/lib/x86_64-linux-gnu/libpng16.so.16.40.0
+      - install -T libpthread.so.0 /app/lib/x86_64-linux-gnu/libpthread.so.0
+      - install -T libQt6Core.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6Core.so.6.6.2 
+      - install -T libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so.6.6.2      
+      - install -T libQt6EglFSDeviceIntegration.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6.6.2
+      - install -T libQt6EglFsKmsSupport.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6.6.2 
+      - install -T libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so.6.6.2
+      - install -T libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so.6.6.2
+      - install -T libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so.6.6.2    
+      - install -T libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so.6.6.2  
+      - install -T librt.so.1 /app/lib/x86_64-linux-gnu/librt.so.1  
+      - install -T libstdc++.so.6.0.32 /app/lib/x86_64-linux-gnu/libstdc++.so.6.0.32  
+      - install -T libsystemd.so.0.36.0 /app/lib/x86_64-linux-gnu/libsystemd.so.0.36.0   
+      - install -T libX11.so.6.4.0  /app/lib/x86_64-linux-gnu/libX11.so.6.4.0  
+      - install -T libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so.6.0.0 
+      - install -T libxcb.so.1.1.0 /app/lib/x86_64-linux-gnu/libxcb.so.1.1.0 
+      - install -T libXdmcp.so.6.0.0 /app/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+      - install -T libxkbcommon.so.0.0.0  /app/lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0 
+      - install -T libz.so.1.2.13 /app/lib/x86_64-linux-gnu/libz.so.1.2.13   
+      - install -T libzstd.so.1.5.5  /app/lib/x86_64-linux-gnu/libzstd.so.1.5.5       
+      - install -T libqquickwidget.so /app/lib/x86_64-linux-gnu/qt6/plugins/designer/libqquickwidget.so 
+      - install -T libqeglfs-emu-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-emu-integration.so
+      - install -T libqeglfs-kms-egldevice-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so   
+      - install -T libqeglfs-kms-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-integration.so  
+      - install -T libqeglfs-x11-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-x11-integration.so   
+      - install -T libqevdevkeyboardplugin.so  /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevkeyboardplugin.so  
+      - install -T libqevdevmouseplugin.so  /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevmouseplugin.so 
+      - install -T libqevdevtabletplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtabletplugin.so  
+      - install -T libqevdevtouchplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtouchplugin.so  
+      - install -T libqlibinputplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqlibinputplugin.so 
+      - install -T libqtslibplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqtslibplugin.so    
+      - install -T libqtuiotouchplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqtuiotouchplugin.so  
+      - install -T libqgif.so /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqgif.so
+      - install -T libqico.so /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqico.so 
+      - install -T libqjpeg.so  /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqjpeg.so 
+      - install -T libqnetworkmanager.so /app/lib/x86_64-linux-gnu/qt6/plugins/networkinformation/libqnetworkmanager.so
+      - install -T libcomposeplatforminputcontextplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so   
+      - install -T libibusplatforminputcontextplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so 
+      - install -T libqeglfs.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqeglfs.so 
+      - install -T libqlinuxfb.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqlinuxfb.so
+      - install -T libqminimal.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimal.so   
+      - install -T libqminimalegl.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimalegl.so
+      - install -T libqoffscreen.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqoffscreen.so
+      - install -T libqvkkhrdisplay.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvkkhrdisplay.so   
+      - install -T libqvnc.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvnc.so
+      - install -T libqxcb.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqxcb.so   
+      - install -T libqgtk3.so  /app/lib/x86_64-linux-gnu/qt6/plugins/platformthemes/libqgtk3.so 
+      - install -T libcupsprintersupport.so /app/lib/x86_64-linux-gnu/qt6/plugins/printsupport/libcupsprintersupport.so
+      - install -T libqsqlite.so  /app/lib/x86_64-linux-gnu/qt6/plugins/sqldrivers/libqsqlite.so   
+      - install -T libqcertonlybackend.so /app/lib/x86_64-linux-gnu/qt6/plugins/tls/libqcertonlybackend.so
+      - install -T libqopensslbackend.so /app/lib/x86_64-linux-gnu/qt6/plugins/tls/libqopensslbackend.so
+      - install -T libqxcb-egl-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-egl-integration.so  
+      - install -T libqxcb-glx-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-glx-integration.so
+      - ln -s libbrotlicommon.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlicommon.so
+      - ln -s libbrotlicommon.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlicommon.so.1
+      - ln -s libbrotlidec.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlidec.so     
+      - ln -s libbrotlidec.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlidec.so.1
+      - ln -s libbsd.so.0.11.7 /app/lib/x86_64-linux-gnu/libbsd.so.0
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so  
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1.0
+      - ln -s libcap.so.2.66  /app/lib/x86_64-linux-gnu/libcap.so.2  
+      - ln -s libdbus-1.so.3.32.4 /app/lib/x86_64-linux-gnu/libdbus-1.so.3 
+      - ln -s libdouble-conversion.so.3.1 /app/lib/x86_64-linux-gnu/libdouble-conversion.so.3     
+      - ln -s  libEGL.so.1.1.0 /app/lib/x86_64-linux-gnu/libEGL.so.1    
+      - ln -s libexpat.so.1.8.10 /app/lib/x86_64-linux-gnu/libexpat.so
+      - ln -s libfontconfig.so.1.12.0  /app/lib/x86_64-linux-gnu/libfontconfig.so.1   
+      - ln -s libfreetype.so.6.20.0 /app/lib/x86_64-linux-gnu/libfreetype.so 
+      - ln -s libfreetype.so.6.20.0 /app/lib/x86_64-linux-gnu/libfreetype.so.6
+      - ln -s libgcrypt.so.20.4.2 /app/lib/x86_64-linux-gnu/libgcrypt.so.20
+      - ln -s libGL.so.1.7.0 /app/lib/x86_64-linux-gnu/libGL.so.1
+      - ln -s libGLdispatch.so.0.0.0  /app/lib/x86_64-linux-gnu/libGLdispatch.so    
+      - ln -s libGLdispatch.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLdispatch.so.0
+      - ln -s libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so
+      - ln -s libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so.0
+      - ln -s libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so
+      - ln -s libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so.0
+      - ln -s libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so
+      - ln -s libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so.0 
+      - ln -s libicudata.so.56.1 /app/lib/x86_64-linux-gnu/libicudata.so
+      - ln -s libicudata.so.72.1  /app/lib/x86_64-linux-gnu/libicudata.so.72  
+      - ln -s libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so
+      - ln -s libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so.72
+      - ln -s libicuuc.so.56.1  /app/lib/x86_64-linux-gnu/libicuuc.so   
+      - ln -s libicuuc.so.72.1 /app/lib/x86_64-linux-gnu/libicuuc.so.72 
+      - ln -s liblz4.so.1.9.4 /app/lib/x86_64-linux-gnu/liblz4.so.1
+      - ln -s liblzma.so.5.4.1  /app/lib/x86_64-linux-gnu/liblzma.so.5
+      - ln -s libmd.so.0.1.0  /app/lib/x86_64-linux-gnu/libmd.so.0    
+      - ln -s libmd4c.so.0.4.8  /app/lib/x86_64-linux-gnu/libmd4c.so.0
+      - ln -s libpcre2-8.so.0.11.2 /app/lib/x86_64-linux-gnu/libpcre2-8.so
+      - ln -s libpcre2-8.so.0.11.2  /app/lib/x86_64-linux-gnu/libpcre2-8.so.0  
+      - ln -s libpng16.so.16.40.0 /app/lib/x86_64-linux-gnu/libpng16.so.16
+      - ln -s libQt6Core.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Core.so  
+      - ln -s libQt6Core.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Core.so.6
+      - ln -s libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so
+      - ln -s libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so.6
+      - ln -s libQt6EglFSDeviceIntegration.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so
+      - ln -s libQt6EglFSDeviceIntegration.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6 
+      - ln -s libQt6EglFsKmsSupport.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so
+      - ln -s libQt6EglFsKmsSupport.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6  
+      - ln -s libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so
+      - ln -s libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so.6
+      - ln -s libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so   
+      - ln -s libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so.6  
+      - ln -s libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so  
+      - ln -s libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so.6  
+      - ln -s libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so  
+      - ln -s libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so.6  
+      - ln -s libstdc++.so.6.0.32 /app/lib/x86_64-linux-gnu/libstdc++.so.6  
+      - ln -s libsystemd.so.0.36.0 /app/lib/x86_64-linux-gnu/libsystemd.so.0  
+      - ln -s libX11.so.6.4.0 /app/lib/x86_64-linux-gnu/libX11.so.6  
+      - ln -s libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so  
+      - ln -s libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so.6   
+      - ln -s libxcb.so.1.1.0  /app/lib/x86_64-linux-gnu/libxcb.so   
+      - ln -s libxcb.so.1.1.0  /app/lib/x86_64-linux-gnu/libxcb.so.1 
+      - ln -s libXdmcp.so.6.0.0  /app/lib/x86_64-linux-gnu/libXdmcp.so  
+      - ln -s libXdmcp.so.6.0.0 /app/lib/x86_64-linux-gnu/libXdmcp.so.6  
+      - ln -s libxkbcommon.so.0.0.0 /app/lib/x86_64-linux-gnu/libxkbcommon.so.0   
+      - ln -s libz.so.1.2.13 /app/lib/x86_64-linux-gnu/libz.so 
+      - ln -s libz.so.1.2.13  /app/lib/x86_64-linux-gnu/libz.so.1 
+      - ln -s libzstd.so.1.5.5  /app/lib/x86_64-linux-gnu/libzstd.so.1 
+
+</code></pre>
+<p>Now I just need to find a way to generate the .flatpak</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_26"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_26" title="Apr 28, 2024 1:59 PM">
+            <time itemprop="datePublished" datetime="2024-04-28 13:59:49 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#26</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_25">Replying to #25</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="enrico94" data-post="25" data-topic="6600">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>However, I think it is absurd to have to copy the files one by one.</p>
+</blockquote>
+</aside>
+<p>You don’t have to. Just use a command which actually works, we have provided two solutions.</p>
+<hr>
+<p>In general: Don’t copy all the libraries. Use what’s provided by the runtimes. Since you seem to require Qt6, you can use <code>org.kde.Platform</code> &amp; <code>org.kde.Sdk</code> (current version 6.7).</p>
+<p>You make your application much bigger than necessary &amp; are now responsible to maintain a whole distribution inside your application to keep it secure.</p>
+<hr>
+<p>And don’t use <code>org.flatpak.LaMiaVideoteca</code> as <code>id</code>. Use your own URL (I guess <code>org.torro.LaMiaVideoteca</code>). The <code>id</code> identifies the developer &amp; the application, not the distribution method.</p>
+<hr>
+<aside class="quote no-group" data-username="enrico94" data-post="25" data-topic="6600">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>Now I just need to find a way to generate the .flatpak</p>
+</blockquote>
+</aside>
+<p>You have to create a local repository &amp; then you can use <code>flatpak build-bundle</code> to create a <code>.flatpak</code> from it. See the documentation I’ve linked.</p>
+<p>You should read the <a href="https://docs.flatpak.org/en/latest/index.html" rel="noopener nofollow ugc">Flatpak documentation</a> anyway because you haven’t set any <code>finish-args</code>. Currently your app is not allowed to access anything, it’s not even allowed to display the GUI.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_27"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_27" title="Apr 28, 2024 8:34 PM">
+            <time itemprop="datePublished" datetime="2024-04-28 20:34:34 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#27</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok… Thanks… I change in this way:</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.freedesktop.Platform 
+runtime-version: '23.08' 
+sdk: org.freedesktop.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: file 
+        path: Copertine/Supporto Cassetta/1 
+      - type: file 
+        path: Copertine/Supporto Cassetta/2 
+      - type: file 
+        path: Copertine/Supporto Cassetta/3 
+      - type: file 
+        path: Copertine/Supporto Cassetta/Nessuna Immagine Disponibile 
+      - type: file 
+        path: share/applications/org.tarro.lamiavideoteca.desktop 
+      - type: file 
+        path: share/icons/org.tarro.lamiavideoteca.ico 
+        
+    build-commands: 
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - mkdir /app/bin/Copertine 
+      - mkdir /app/bin/Copertine/'Supporto Cassetta' 
+      - mkdir /app/bin/Copertine/'Supporto Disco' 
+      - mkdir /app/share
+      - mkdir /app/share/applications
+      - mkdir /app/share/icons
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Cassetta'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Cassetta'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Cassetta'/3 
+      - install -T org.tarro.lamiavideoteca.desktop /app/share/applications/org.tarro.lamiavideoteca.desktop
+      - install -T org.tarro.lamiavideoteca.ico /app/share/icons/org.tarro.lamiavideoteca.ico
+
+  - name: LaMiaVideotecaDisco
+    buildsystem: simple
+
+    sources: 
+      - type: file 
+        path: Copertine/Supporto Disco/1 
+      - type: file 
+        path: Copertine/Supporto Disco/2 
+      - type: file 
+        path: Copertine/Supporto Disco/3 
+      - type: file 
+        path: Copertine/Supporto Disco/Nessuna Immagine Disponibile 
+        
+    build-commands: 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Disco'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Disco'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Disco'/3 
+      
+  - name: LaMiaVideotecaLibrerie
+    buildsystem: simple
+    
+    sources:
+      - type: file 
+        path: lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbrotlicommon.so.1.0.9
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbrotlidec.so.1.0.9
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbsd.so.0.11.7
+      - type: file 
+        path: lib/x86_64-linux-gnu/libbz2.so.1.0.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/libc.so.6
+      - type: file 
+        path: lib/x86_64-linux-gnu/libcap.so.2.66
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdbus-1.so.3.32.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdl.so.2            
+      - type: file 
+        path: lib/x86_64-linux-gnu/libdouble-conversion.so.3.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libEGL.so.1.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libexpat.so.1.8.10
+      - type: file 
+        path: lib/x86_64-linux-gnu/libfontconfig.so.1.12.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libfreetype.so.6.20.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgcc_s.so.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgcrypt.so.20.4.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGL.so.1.7.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libglib-2.0.so.0.7800.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libGLX.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgthread-2.0.so.0.7800.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicudata.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicudata.so.72.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicui18n.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicuuc.so.56.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libicuuc.so.72.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/liblz4.so.1.9.4
+      - type: file 
+        path: lib/x86_64-linux-gnu/liblzma.so.5.4.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libm.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/libm.so.6
+      - type: file 
+        path: lib/x86_64-linux-gnu/libmd.so.0.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libmd4c.so.0.4.8
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpng16.so.16.40.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libpthread.so.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Core.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6DBus.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Gui.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Sql.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6Widgets.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/libQt6XcbQpa.so.6.6.2
+      - type: file 
+        path: lib/x86_64-linux-gnu/librt.so.1
+      - type: file 
+        path: lib/x86_64-linux-gnu/libstdc++.so.6.0.32
+      - type: file 
+        path: lib/x86_64-linux-gnu/libsystemd.so.0.36.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libX11.so.6.4.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libXau.so.6.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libxcb.so.1.1.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0
+      - type: file 
+        path: lib/x86_64-linux-gnu/libz.so.1.2.13
+      - type: file 
+        path: lib/x86_64-linux-gnu/libzstd.so.1.5.5   
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/designer/libqquickwidget.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-emu-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-x11-integration.so 
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevkeyboardplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevmouseplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtabletplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtouchplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqlibinputplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqtslibplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/generic/libqtuiotouchplugin.so       
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqgif.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqico.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqjpeg.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/networkinformation/libqnetworkmanager.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so     
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqeglfs.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqlinuxfb.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimal.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimalegl.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqoffscreen.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvkkhrdisplay.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvnc.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platforms/libqxcb.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/platformthemes/libqgtk3.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/printsupport/libcupsprintersupport.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/sqldrivers/libqsqlite.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/tls/libqcertonlybackend.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/tls/libqopensslbackend.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-egl-integration.so
+      - type: file 
+        path: lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-glx-integration.so
+
+  
+    build-commands: 
+      - mkdir /app/lib/x86_64-linux-gnu
+      - mkdir /app/lib/x86_64-linux-gnu/qt6
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/designer
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/generic
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/networkinformation
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platforms
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/platformthemes
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/printsupport
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/sqldrivers
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/tls
+      - mkdir /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations
+      - install -T ld-linux-x86-64.so.2 /app/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 
+      - install -T libbrotlicommon.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlicommon.so.1.0.9
+      - install -T libbrotlidec.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlidec.so.1.0.9
+      - install -T libbsd.so.0.11.7 /app/lib/x86_64-linux-gnu/libbsd.so.0.11.7 
+      - install -T libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+      - install -T libc.so.6 /app/lib/x86_64-linux-gnu/libc.so.6
+      - install -T libcap.so.2.66 /app/lib/x86_64-linux-gnu/libcap.so.2.66
+      - install -T libdbus-1.so.3.32.4 /app/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4
+      - install -T libdl.so.2 /app/lib/x86_64-linux-gnu/libdl.so.2
+      - install -T libdouble-conversion.so.3.1 /app/lib/x86_64-linux-gnu/libdouble-conversion.so.3.1
+      - install -T libEGL.so.1.1.0 /app/lib/x86_64-linux-gnu/libEGL.so.1.1.0
+      - install -T libexpat.so.1.8.10 /app/lib/x86_64-linux-gnu/libexpat.so.1.8.10
+      - install -T libfontconfig.so.1.12.0 /app/lib/x86_64-linux-gnu/libfontconfig.so.1.12.0
+      - install -T libfreetype.so.6.20.0  /app/lib/x86_64-linux-gnu/libfreetype.so.6.20.0 
+      - install -T libgcc_s.so.1  /app/lib/x86_64-linux-gnu/libgcc_s.so.1 
+      - install -T libgcrypt.so.20.4.2 /app/lib/x86_64-linux-gnu/libgcrypt.so.20.4.2
+      - install -T libGL.so.1.7.0 /app/lib/x86_64-linux-gnu/libGL.so.1.7.0
+      - install -T libGLdispatch.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0 
+      - install -T libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so.0.7800.0  
+      - install -T libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+      - install -T libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so.0.7800.0
+      - install -T libgtk3-nocsd.so.0 /app/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0 
+      - install -T libicudata.so.56.1 /app/lib/x86_64-linux-gnu/libicudata.so.56.1
+      - install -T libicudata.so.72.1 /app/lib/x86_64-linux-gnu/libicudata.so.72.1
+      - install -T libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so.56.1
+      - install -T libicuuc.so.56.1 /app/lib/x86_64-linux-gnu/libicuuc.so.56.1
+      - install -T libicuuc.so.72.1 /app/lib/x86_64-linux-gnu/libicuuc.so.72.1
+      - install -T liblz4.so.1.9.4 /app/lib/x86_64-linux-gnu/liblz4.so.1.9.4   
+      - install -T liblzma.so.5.4.1 /app/lib/x86_64-linux-gnu/liblzma.so.5.4.1
+      - install -T libm.so  /app/lib/x86_64-linux-gnu/libm.so 
+      - install -T libm.so.6 /app/lib/x86_64-linux-gnu/libm.so.6 
+      - install -T libmd.so.0.1.0  /app/lib/x86_64-linux-gnu/libmd.so.0.1.0 
+      - install -T libmd4c.so.0.4.8 /app/lib/x86_64-linux-gnu/libmd4c.so.0.4.8
+      - install -T libpcre2-8.so.0.11.2 /app/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2
+      - install -T libpng16.so.16.40.0 /app/lib/x86_64-linux-gnu/libpng16.so.16.40.0
+      - install -T libpthread.so.0 /app/lib/x86_64-linux-gnu/libpthread.so.0
+      - install -T libQt6Core.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6Core.so.6.6.2 
+      - install -T libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so.6.6.2      
+      - install -T libQt6EglFSDeviceIntegration.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6.6.2
+      - install -T libQt6EglFsKmsSupport.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6.6.2 
+      - install -T libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so.6.6.2
+      - install -T libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so.6.6.2
+      - install -T libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so.6.6.2    
+      - install -T libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so.6.6.2  
+      - install -T librt.so.1 /app/lib/x86_64-linux-gnu/librt.so.1  
+      - install -T libstdc++.so.6.0.32 /app/lib/x86_64-linux-gnu/libstdc++.so.6.0.32  
+      - install -T libsystemd.so.0.36.0 /app/lib/x86_64-linux-gnu/libsystemd.so.0.36.0   
+      - install -T libX11.so.6.4.0  /app/lib/x86_64-linux-gnu/libX11.so.6.4.0  
+      - install -T libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so.6.0.0 
+      - install -T libxcb.so.1.1.0 /app/lib/x86_64-linux-gnu/libxcb.so.1.1.0 
+      - install -T libXdmcp.so.6.0.0 /app/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+      - install -T libxkbcommon.so.0.0.0  /app/lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0 
+      - install -T libz.so.1.2.13 /app/lib/x86_64-linux-gnu/libz.so.1.2.13   
+      - install -T libzstd.so.1.5.5  /app/lib/x86_64-linux-gnu/libzstd.so.1.5.5       
+      - install -T libqquickwidget.so /app/lib/x86_64-linux-gnu/qt6/plugins/designer/libqquickwidget.so 
+      - install -T libqeglfs-emu-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-emu-integration.so
+      - install -T libqeglfs-kms-egldevice-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so   
+      - install -T libqeglfs-kms-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-kms-integration.so  
+      - install -T libqeglfs-x11-integration.so  /app/lib/x86_64-linux-gnu/qt6/plugins/egldeviceintegrations/libqeglfs-x11-integration.so   
+      - install -T libqevdevkeyboardplugin.so  /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevkeyboardplugin.so  
+      - install -T libqevdevmouseplugin.so  /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevmouseplugin.so 
+      - install -T libqevdevtabletplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtabletplugin.so  
+      - install -T libqevdevtouchplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqevdevtouchplugin.so  
+      - install -T libqlibinputplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqlibinputplugin.so 
+      - install -T libqtslibplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqtslibplugin.so    
+      - install -T libqtuiotouchplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/generic/libqtuiotouchplugin.so  
+      - install -T libqgif.so /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqgif.so
+      - install -T libqico.so /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqico.so 
+      - install -T libqjpeg.so  /app/lib/x86_64-linux-gnu/qt6/plugins/imageformats/libqjpeg.so 
+      - install -T libqnetworkmanager.so /app/lib/x86_64-linux-gnu/qt6/plugins/networkinformation/libqnetworkmanager.so
+      - install -T libcomposeplatforminputcontextplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so   
+      - install -T libibusplatforminputcontextplugin.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so 
+      - install -T libqeglfs.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqeglfs.so 
+      - install -T libqlinuxfb.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqlinuxfb.so
+      - install -T libqminimal.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimal.so   
+      - install -T libqminimalegl.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqminimalegl.so
+      - install -T libqoffscreen.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqoffscreen.so
+      - install -T libqvkkhrdisplay.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvkkhrdisplay.so   
+      - install -T libqvnc.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqvnc.so
+      - install -T libqxcb.so /app/lib/x86_64-linux-gnu/qt6/plugins/platforms/libqxcb.so   
+      - install -T libqgtk3.so  /app/lib/x86_64-linux-gnu/qt6/plugins/platformthemes/libqgtk3.so 
+      - install -T libcupsprintersupport.so /app/lib/x86_64-linux-gnu/qt6/plugins/printsupport/libcupsprintersupport.so
+      - install -T libqsqlite.so  /app/lib/x86_64-linux-gnu/qt6/plugins/sqldrivers/libqsqlite.so   
+      - install -T libqcertonlybackend.so /app/lib/x86_64-linux-gnu/qt6/plugins/tls/libqcertonlybackend.so
+      - install -T libqopensslbackend.so /app/lib/x86_64-linux-gnu/qt6/plugins/tls/libqopensslbackend.so
+      - install -T libqxcb-egl-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-egl-integration.so  
+      - install -T libqxcb-glx-integration.so /app/lib/x86_64-linux-gnu/qt6/plugins/xcbglintegrations/libqxcb-glx-integration.so
+      - ln -s libbrotlicommon.so.1.0.9 /app/lib/x86_64-linux-gnu/libbrotlicommon.so
+      - ln -s libbrotlicommon.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlicommon.so.1
+      - ln -s libbrotlidec.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlidec.so     
+      - ln -s libbrotlidec.so.1.0.9  /app/lib/x86_64-linux-gnu/libbrotlidec.so.1
+      - ln -s libbsd.so.0.11.7 /app/lib/x86_64-linux-gnu/libbsd.so.0
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so  
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1
+      - ln -s libbz2.so.1.0.4 /app/lib/x86_64-linux-gnu/libbz2.so.1.0
+      - ln -s libcap.so.2.66  /app/lib/x86_64-linux-gnu/libcap.so.2  
+      - ln -s libdbus-1.so.3.32.4 /app/lib/x86_64-linux-gnu/libdbus-1.so.3 
+      - ln -s libdouble-conversion.so.3.1 /app/lib/x86_64-linux-gnu/libdouble-conversion.so.3     
+      - ln -s  libEGL.so.1.1.0 /app/lib/x86_64-linux-gnu/libEGL.so.1    
+      - ln -s libexpat.so.1.8.10 /app/lib/x86_64-linux-gnu/libexpat.so
+      - ln -s libfontconfig.so.1.12.0  /app/lib/x86_64-linux-gnu/libfontconfig.so.1   
+      - ln -s libfreetype.so.6.20.0 /app/lib/x86_64-linux-gnu/libfreetype.so 
+      - ln -s libfreetype.so.6.20.0 /app/lib/x86_64-linux-gnu/libfreetype.so.6
+      - ln -s libgcrypt.so.20.4.2 /app/lib/x86_64-linux-gnu/libgcrypt.so.20
+      - ln -s libGL.so.1.7.0 /app/lib/x86_64-linux-gnu/libGL.so.1
+      - ln -s libGLdispatch.so.0.0.0  /app/lib/x86_64-linux-gnu/libGLdispatch.so    
+      - ln -s libGLdispatch.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLdispatch.so.0
+      - ln -s libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so
+      - ln -s libglib-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libglib-2.0.so.0
+      - ln -s libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so
+      - ln -s libGLX.so.0.0.0 /app/lib/x86_64-linux-gnu/libGLX.so.0
+      - ln -s libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so
+      - ln -s libgthread-2.0.so.0.7800.0 /app/lib/x86_64-linux-gnu/libgthread-2.0.so.0 
+      - ln -s libicudata.so.56.1 /app/lib/x86_64-linux-gnu/libicudata.so
+      - ln -s libicudata.so.72.1  /app/lib/x86_64-linux-gnu/libicudata.so.72  
+      - ln -s libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so
+      - ln -s libicui18n.so.56.1 /app/lib/x86_64-linux-gnu/libicui18n.so.72
+      - ln -s libicuuc.so.56.1  /app/lib/x86_64-linux-gnu/libicuuc.so   
+      - ln -s libicuuc.so.72.1 /app/lib/x86_64-linux-gnu/libicuuc.so.72 
+      - ln -s liblz4.so.1.9.4 /app/lib/x86_64-linux-gnu/liblz4.so.1
+      - ln -s liblzma.so.5.4.1  /app/lib/x86_64-linux-gnu/liblzma.so.5
+      - ln -s libmd.so.0.1.0  /app/lib/x86_64-linux-gnu/libmd.so.0    
+      - ln -s libmd4c.so.0.4.8  /app/lib/x86_64-linux-gnu/libmd4c.so.0
+      - ln -s libpcre2-8.so.0.11.2 /app/lib/x86_64-linux-gnu/libpcre2-8.so
+      - ln -s libpcre2-8.so.0.11.2  /app/lib/x86_64-linux-gnu/libpcre2-8.so.0  
+      - ln -s libpng16.so.16.40.0 /app/lib/x86_64-linux-gnu/libpng16.so.16
+      - ln -s libQt6Core.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Core.so  
+      - ln -s libQt6Core.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Core.so.6
+      - ln -s libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so
+      - ln -s libQt6DBus.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6DBus.so.6
+      - ln -s libQt6EglFSDeviceIntegration.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so
+      - ln -s libQt6EglFSDeviceIntegration.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6EglFSDeviceIntegration.so.6 
+      - ln -s libQt6EglFsKmsSupport.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so
+      - ln -s libQt6EglFsKmsSupport.so.6.6.2  /app/lib/x86_64-linux-gnu/libQt6EglFsKmsSupport.so.6  
+      - ln -s libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so
+      - ln -s libQt6Gui.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Gui.so.6
+      - ln -s libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so   
+      - ln -s libQt6Sql.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Sql.so.6  
+      - ln -s libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so  
+      - ln -s libQt6Widgets.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6Widgets.so.6  
+      - ln -s libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so  
+      - ln -s libQt6XcbQpa.so.6.6.2 /app/lib/x86_64-linux-gnu/libQt6XcbQpa.so.6  
+      - ln -s libstdc++.so.6.0.32 /app/lib/x86_64-linux-gnu/libstdc++.so.6  
+      - ln -s libsystemd.so.0.36.0 /app/lib/x86_64-linux-gnu/libsystemd.so.0  
+      - ln -s libX11.so.6.4.0 /app/lib/x86_64-linux-gnu/libX11.so.6  
+      - ln -s libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so  
+      - ln -s libXau.so.6.0.0  /app/lib/x86_64-linux-gnu/libXau.so.6   
+      - ln -s libxcb.so.1.1.0  /app/lib/x86_64-linux-gnu/libxcb.so   
+      - ln -s libxcb.so.1.1.0  /app/lib/x86_64-linux-gnu/libxcb.so.1 
+      - ln -s libXdmcp.so.6.0.0  /app/lib/x86_64-linux-gnu/libXdmcp.so  
+      - ln -s libXdmcp.so.6.0.0 /app/lib/x86_64-linux-gnu/libXdmcp.so.6  
+      - ln -s libxkbcommon.so.0.0.0 /app/lib/x86_64-linux-gnu/libxkbcommon.so.0   
+      - ln -s libz.so.1.2.13 /app/lib/x86_64-linux-gnu/libz.so 
+      - ln -s libz.so.1.2.13  /app/lib/x86_64-linux-gnu/libz.so.1 
+      - ln -s libzstd.so.1.5.5  /app/lib/x86_64-linux-gnu/libzstd.so.1 
+      
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --filesystem=host
+
+</code></pre>
+<p>I compiled everything with this command <code>flatpak-builder --repo=repo build-dir org.tarro.lamiavideoteca.yml</code> (I should have created the repo which I simply called repo)<br>
+Now I look this: <a>https://docs.flatpak.org/en/latest/single-file-bundles.html</a><br>
+And I tried this command <code>flatpak build-bundle lamiavideoteca.flatpak org.tarro.lamiavideoteca</code> but not works.<br>
+Furthermore, as regards the libraries, I used the <code>ldd</code> command on the executable that I wrote to obtain the libraries necessary for its operation and I then took them. I would like to know if the method I used is by chance wrong, since you told me I also put some unnecessary libs. Thanks<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a.png" data-download-href="/uploads/original/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a.png" title="Schermata del 2024-04-28 22-29-45" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a_2_690x388.png" alt="Schermata del 2024-04-28 22-29-45" data-base62-sha1="dOzHfAc2Eqa1BB2MfXK5kYWJAqC" width="690" height="388" srcset="/uploads/optimized/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a_2_690x388.png, /uploads/optimized/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a_2_1035x582.png 1.5x, /uploads/optimized/2X/6/60d3d67b77df9325528d7c7389830273fbb48b3a_2_1380x776.png 2x" data-dominant-color="242424"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-28 22-29-45</span><span class="informations">1920×1080 211 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_28"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_28" title="Apr 28, 2024 8:35 PM">
+            <time itemprop="datePublished" datetime="2024-04-28 20:35:39 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#28</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/4/4518e8803499d4baef2a610996a7144e4039bb66.png" data-download-href="/uploads/original/2X/4/4518e8803499d4baef2a610996a7144e4039bb66.png" title="Schermata del 2024-04-28 22-32-25" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/4/4518e8803499d4baef2a610996a7144e4039bb66_2_690x388.png" alt="Schermata del 2024-04-28 22-32-25" data-base62-sha1="9RgjhF9Hrfo4cA3aUs6R3jd09U2" width="690" height="388" srcset="/uploads/optimized/2X/4/4518e8803499d4baef2a610996a7144e4039bb66_2_690x388.png, /uploads/optimized/2X/4/4518e8803499d4baef2a610996a7144e4039bb66_2_1035x582.png 1.5x, /uploads/optimized/2X/4/4518e8803499d4baef2a610996a7144e4039bb66_2_1380x776.png 2x" data-dominant-color="262728"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-28 22-32-25</span><span class="informations">1920×1080 116 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_29"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_29" title="Apr 29, 2024 3:59 PM">
+            <time itemprop="datePublished" datetime="2024-04-29 15:59:02 +0000">Apr 29, 2024</time>
+          </a>
+          <span class="post-number">#29</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_27">Replying to #27</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="enrico94" data-post="27" data-topic="6600">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>And I tried this command <code>flatpak build-bundle lamiavideoteca.flatpak org.tarro.lamiavideoteca</code> but not works.</p>
+</blockquote>
+</aside>
+<p>There should be an error, the command requires 3 arguments.</p>
+<aside class="quote no-group" data-username="enrico94" data-post="27" data-topic="6600">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>Furthermore, as regards the libraries, I used the <code>ldd</code> command on the executable that I wrote to obtain the libraries necessary for its operation and I then took them. I would like to know if the method I used is by chance wrong, since you told me I also put some unnecessary libs. Thanks</p>
+</blockquote>
+</aside>
+<p>The method is ok. But you don’t want to copy all the libraries from your system. You should remove all libs &amp; then execute <code>ldd</code> from within the Flatpak sandbox (see <code>flatpak-builder --run</code>). Then only a few libraries should be missing. The list should become even shorter if you switch to <code>org.kde.Platform</code>.</p>
+<p>If possible, you would then build the missing dependencies from source (see the Flatpak documentation &amp; the existing manifests at <a href="https://github.com/flathub/" class="inline-onebox" rel="noopener nofollow ugc">Flathub · GitHub</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_30"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_30" title="Apr 29, 2024 5:31 PM">
+            <time itemprop="datePublished" datetime="2024-04-29 17:31:45 +0000">Apr 29, 2024</time>
+          </a>
+          <span class="post-number">#30</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for answering me. So I deleted all the libraries and changed my manifest like this:</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: file 
+        path: Copertine/Supporto Cassetta/1 
+      - type: file 
+        path: Copertine/Supporto Cassetta/2 
+      - type: file 
+        path: Copertine/Supporto Cassetta/3 
+      - type: file 
+        path: Copertine/Supporto Cassetta/Nessuna Immagine Disponibile 
+      - type: file 
+        path: share/applications/org.tarro.lamiavideoteca.desktop 
+      - type: file 
+        path: share/icons/org.tarro.lamiavideoteca.ico 
+        
+    build-commands: 
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - mkdir /app/bin/Copertine 
+      - mkdir /app/bin/Copertine/'Supporto Cassetta' 
+      - mkdir /app/bin/Copertine/'Supporto Disco' 
+      - mkdir /app/share
+      - mkdir /app/share/applications
+      - mkdir /app/share/icons
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Cassetta'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Cassetta'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Cassetta'/3 
+      - install -T org.tarro.lamiavideoteca.desktop /app/share/applications/org.tarro.lamiavideoteca.desktop
+      - install -T org.tarro.lamiavideoteca.ico /app/share/icons/org.tarro.lamiavideoteca.ico
+
+  - name: LaMiaVideotecaDisco
+    buildsystem: simple
+
+    sources: 
+      - type: file 
+        path: Copertine/Supporto Disco/1 
+      - type: file 
+        path: Copertine/Supporto Disco/2 
+      - type: file 
+        path: Copertine/Supporto Disco/3 
+      - type: file 
+        path: Copertine/Supporto Disco/Nessuna Immagine Disponibile 
+        
+    build-commands: 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Disco'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Disco'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Disco'/3 
+      
+      
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=host
+
+</code></pre>
+<p>I’m also looking for information through artificial intelligence (TalkAI) in addition to the source you linked. But I can’t understand with what command can I, after creating the build-dir (flatpak-builder build-dir org.tarro.lamiavideoteca.yml), check the libraries missing from my app. Thanks again for your courtesy. I was used to creating programs/management programs on Windows and then creating the setup with InnoSetup, now I would like to learn how to create flatpaks as I think they are excellent for porting applications to any linux distribution.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_31"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_31" title="Apr 30, 2024 9:41 AM">
+            <time itemprop="datePublished" datetime="2024-04-30 09:41:36 +0000">Apr 30, 2024</time>
+          </a>
+          <span class="post-number">#31</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_30">Replying to #30</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can run your flatpak and then open a terminal and use <code>flatpak enter name.of.flatpak sh</code> to open a terminal inside of that flatpak, then you can go explore.</p>
+<p>But that needs a working/starting flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_32"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_32" title="Apr 30, 2024 4:08 PM">
+            <time itemprop="datePublished" datetime="2024-04-30 16:08:37 +0000">Apr 30, 2024</time>
+          </a>
+          <span class="post-number">#32</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_30">Replying to #30</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just the command I provided (after the build is finished):</p>
+<blockquote>
+<p>flatpak-builder --run DIRECTORY MANIFEST COMMAND</p>
+</blockquote>
+<p>See the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">documentaton</a>:</p>
+<blockquote>
+<p>–run<br>
+Run a command in a sandbox based on the build dir. This starts flatpak build, with some extra arguments to give the same environment as the build, and the same permissions the final app will have (except filesystem permissions). The command to run must be the last argument passed to flatpak-builder, after the directory and the manifest.</p>
+<p>Only the --arch=ARCH, --ccache and --verbose options can be combined with this option.</p>
+</blockquote>
+<p>DIRECTORY is your build-dir, MANIFEST your yml &amp; COMMAND what you want executed in the sandbox, in this case <code>ldd /app/bin/LaMiaVideoteca</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_35"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_35" title="May 1, 2024 6:06 PM">
+            <time itemprop="datePublished" datetime="2024-05-01 18:06:38 +0000">May 1, 2024</time>
+          </a>
+          <span class="post-number">#35</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Okay. I was able to copy the folder this way:</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: file 
+        path: Copertine/Supporto Cassetta/1 
+      - type: file 
+        path: Copertine/Supporto Cassetta/2 
+      - type: file 
+        path: Copertine/Supporto Cassetta/3 
+      - type: file 
+        path: Copertine/Supporto Cassetta/Nessuna Immagine Disponibile 
+      - type: file 
+        path: share/applications/org.tarro.lamiavideoteca.desktop 
+      - type: file 
+        path: share/icons/org.tarro.lamiavideoteca.ico 
+        
+    build-commands: 
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - mkdir /app/bin/Copertine 
+      - mkdir /app/bin/Copertine/'Supporto Cassetta' 
+      - mkdir /app/bin/Copertine/'Supporto Disco' 
+      - mkdir /app/share
+      - mkdir /app/share/applications
+      - mkdir /app/share/icons
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Cassetta'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Cassetta'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Cassetta'/3 
+      - install -T org.tarro.lamiavideoteca.desktop /app/share/applications/org.tarro.lamiavideoteca.desktop
+      - install -T org.tarro.lamiavideoteca.ico /app/share/icons/org.tarro.lamiavideoteca.ico
+
+  - name: LaMiaVideotecaDisco
+    buildsystem: simple
+
+    sources: 
+      - type: file 
+        path: Copertine/Supporto Disco/1 
+      - type: file 
+        path: Copertine/Supporto Disco/2 
+      - type: file 
+        path: Copertine/Supporto Disco/3 
+      - type: file 
+        path: Copertine/Supporto Disco/Nessuna Immagine Disponibile 
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+    build-commands: 
+      - install -T 'Nessuna Immagine Disponibile' /app/bin/Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile' 
+      - install -T 1 /app/bin/Copertine/'Supporto Disco'/1 
+      - install -T 2 /app/bin/Copertine/'Supporto Disco'/2 
+      - install -T 3 /app/bin/Copertine/'Supporto Disco'/3 
+      - cp -r lib/* /app/lib
+      
+      
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=host
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_36"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_36" title="May 1, 2024 6:38 PM">
+            <time itemprop="datePublished" datetime="2024-05-01 18:38:50 +0000">May 1, 2024</time>
+          </a>
+          <span class="post-number">#36</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Improved it further:</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+               
+    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir /app/bin/Copertine
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - cp -r Copertine/* /app/bin/Copertine
+        
+             
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=host
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_37"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_37" title="May 1, 2024 7:35 PM">
+            <time itemprop="datePublished" datetime="2024-05-01 19:35:47 +0000">May 1, 2024</time>
+          </a>
+          <span class="post-number">#37</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think I’m almost there in the creation of the flatpak:<br>
+I created a folder on my home called myflatpakrepo<br>
+I created a local repo with the command: <code>flatpak remote-add --user myflatpakrepo ~/myflatpakrepo</code><br>
+Now I need to give the last command:<code> flatpak build-bundle /home/enrico/lamiavideoteca.flatpak org.tarro.lamiavideoteca --runtime-repo=~/myflatpakrepo</code> But I get the error: error: LOCATION, FILENAME and NAME must be specified<br>
+See ‘flatpak build-bundle --help’ So I tried: <code>flatpak build-bundle /home/enrico/lamiavideoteca.flatpak org.tarro.lamiavideoteca --runtime-repo=~/myflatpakrepo --name=org.tarro.lamiavideoteca --runtime=org.kde.Platform</code> and <code>flatpak build-bundle /home/enrico/lamiavideoteca.flatpak org.tarro.lamiavideoteca --runtime-repo=~/myflatpakrepo --app-id=org.tarro.lamiavideoteca --runtime=org.kde.Platform</code> but nothing<br>
+Do you know where I’m going wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_38"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_38" title="May 2, 2024 7:49 PM">
+            <time itemprop="datePublished" datetime="2024-05-02 19:49:03 +0000">May 2, 2024</time>
+          </a>
+          <span class="post-number">#38</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So I’m getting closer and closer to the solution:<br>
+I installed my application on the PC through the command:<br>
+<code>flatpak-builder build-dir org.tarro.lamiavideoteca.yml --install --user</code><br>
+Or then checked that the program started (I noticed that there is no integration as shown in the first figure):<br>
+<code>flatpak run org.tarro.lamiavideoteca</code><br>
+I further verified that my application was installed figure 2.<br>
+Then I tried to generate the flatpak with the command:<br>
+<code>flatpak build-export lamiavideoteca.flatpak build-dir org.tarro.lamiavideoteca</code><br>
+What I got was a .flatpak folder as shown in figure 3a and 3b. I think I am now very close to the solution. I need to figure out why it’s not a package (archive) in .flatpak and “fix” the problem. Obviously I will then have to test the package.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_39"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_39" title="May 2, 2024 7:49 PM">
+            <time itemprop="datePublished" datetime="2024-05-02 19:49:24 +0000">May 2, 2024</time>
+          </a>
+          <span class="post-number">#39</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/34d6597d4d2570d446796e10788553328c96e118.jpeg" data-download-href="/uploads/original/2X/3/34d6597d4d2570d446796e10788553328c96e118.jpeg" title="Schermata del 2024-05-02 21-47-55" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/34d6597d4d2570d446796e10788553328c96e118_2_690x388.jpeg" alt="Schermata del 2024-05-02 21-47-55" data-base62-sha1="7xq4mdjFFrYHQjtpkecjLVhNMYE" width="690" height="388" srcset="/uploads/optimized/2X/3/34d6597d4d2570d446796e10788553328c96e118_2_690x388.jpeg, /uploads/optimized/2X/3/34d6597d4d2570d446796e10788553328c96e118_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/3/34d6597d4d2570d446796e10788553328c96e118_2_1380x776.jpeg 2x" data-dominant-color="BEBEBD"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-02 21-47-55</span><span class="informations">1920×1080 205 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+Figura 1</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_40"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_40" title="May 2, 2024 7:49 PM">
+            <time itemprop="datePublished" datetime="2024-05-02 19:49:41 +0000">May 2, 2024</time>
+          </a>
+          <span class="post-number">#40</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0.png" data-download-href="/uploads/original/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0.png" title="Schermata del 2024-05-02 21-48-22" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0_2_690x388.png" alt="Schermata del 2024-05-02 21-48-22" data-base62-sha1="xXnRXtAoxsXinAEiKYXzAQUrVS" width="690" height="388" srcset="/uploads/optimized/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0_2_690x388.png, /uploads/optimized/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0_2_1035x582.png 1.5x, /uploads/optimized/2X/0/03d6ae6a95de93c394353b0bca50ff716f6f6bb0_2_1380x776.png 2x" data-dominant-color="282828"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-02 21-48-22</span><span class="informations">1920×1080 254 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+Figura 2</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_41"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_41" title="May 2, 2024 7:49 PM">
+            <time itemprop="datePublished" datetime="2024-05-02 19:49:56 +0000">May 2, 2024</time>
+          </a>
+          <span class="post-number">#41</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942.png" data-download-href="/uploads/original/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942.png" title="Schermata del 2024-05-02 21-48-42" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942_2_690x388.png" alt="Schermata del 2024-05-02 21-48-42" data-base62-sha1="u8efMjFk7zJuqyCYgNIQeUhnFw6" width="690" height="388" srcset="/uploads/optimized/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942_2_690x388.png, /uploads/optimized/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942_2_1035x582.png 1.5x, /uploads/optimized/2X/d/d32f60edb357e7b8e9f69e839a629536099e7942_2_1380x776.png 2x" data-dominant-color="272829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-02 21-48-42</span><span class="informations">1920×1080 128 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+Figra 3a</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_42"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_42" title="May 2, 2024 7:50 PM">
+            <time itemprop="datePublished" datetime="2024-05-02 19:50:11 +0000">May 2, 2024</time>
+          </a>
+          <span class="post-number">#42</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5.png" data-download-href="/uploads/original/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5.png" title="Schermata del 2024-05-02 21-48-57" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5_2_690x388.png" alt="Schermata del 2024-05-02 21-48-57" data-base62-sha1="cKpNHzoVJonLt82h88Z0aBnBrmd" width="690" height="388" srcset="/uploads/optimized/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5_2_690x388.png, /uploads/optimized/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5_2_1035x582.png 1.5x, /uploads/optimized/2X/5/59594ab30b62e07febec5bdec55f64f5c47198f5_2_1380x776.png 2x" data-dominant-color="242425"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-02 21-48-57</span><span class="informations">1920×1080 55.3 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+Figura 3b</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/help-me-to-create-flatpak-of-my-program/6600/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 3</span>
+
+    
+    <a href="/t/help-me-to-create-flatpak-of-my-program/6600/3.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

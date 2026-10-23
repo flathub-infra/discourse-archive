@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpakrun org.flatpak.myapp ... myapp command not found - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpakrun org.flatpak.myapp ... myapp command not found</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpakrun org.flatpak.myapp ... myapp command not found</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 25, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 25, 2022 12:49 PM">
+            <time itemprop="datePublished" datetime="2022-10-25 12:49:06 +0000">Oct 25, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear all,<br>
+I successfully, or so it seems, build and installed a flatpak for my app, but whenever I try to test it using</p>
+<p><code>flatpak run org.flatpak.myapp</code></p>
+<p>It always fail with the following error message:</p>
+<p><code>bwrap: execvp  myapp: No such file or directory</code></p>
+<p>I even try to edit the metadata file and change:</p>
+<p><code>command=myapp</code></p>
+<p>to</p>
+<p><code>command=$HOME/.local/share/flatpak/app/org.flatpak.myapp/x86_64/master/active/files/bin/myapp</code></p>
+<p>With <code>myapp</code> actually located in <code>$HOME/.local/share/flatpak/app/org.flatpak.myapp/x86_64/master/active/files/bin</code></p>
+<p>But the <code>flatpak run</code> command always fails with the same error message saying that it cannot find it …<br>
+any idea to help me ?</p>
+<p>Thanks in advance.</p>
+<p>S.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 26, 2022 1:43 PM">
+            <time itemprop="datePublished" datetime="2022-10-26 13:43:37 +0000">Oct 26, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Changing the command like you suggest show a misunderstanding on how flatpak works.</p>
+<p>The problem here is what is <code>myapp</code>? a binary? A script with an interpreter?</p>
+<p>Also now seeing the manifest of “myapp” doesn’t help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 26, 2022 3:10 PM">
+            <time itemprop="datePublished" datetime="2022-10-26 15:10:48 +0000">Oct 26, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for taking the time to answer,<br>
+well I am trying to figure out how it works so I guess that’s why <img src="/images/emoji/twitter/wink.png?v=12" title=":wink:" class="emoji" alt=":wink:"><br>
+you know my idea was: ok it’s trying to pick ‘myapp’ somwhere, so I search where from,<br>
+and try to change it … you will find the manifest here (‘myapp’ is actually ‘atomes’)</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/Slookeur/Atomes-flatpak-build">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/Slookeur/Atomes-flatpak-build" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/3/33e753a01447c23c6fa9df083cee32aa42ab66f5_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/3/33e753a01447c23c6fa9df083cee32aa42ab66f5_2_690x345.png, /uploads/optimized/2X/3/33e753a01447c23c6fa9df083cee32aa42ab66f5_2_1035x517.png 1.5x, /uploads/original/2X/3/33e753a01447c23c6fa9df083cee32aa42ab66f5.png 2x" data-small-upload="/uploads/optimized/2X/3/33e753a01447c23c6fa9df083cee32aa42ab66f5_2_10x10.png"></div>
+
+<h3><a href="https://github.com/Slookeur/Atomes-flatpak-build" target="_blank" rel="noopener nofollow ugc">GitHub - Slookeur/Atomes-flatpak-build: Flatpak package for the Atomes program</a></h3>
+
+  <p>Flatpak package for the Atomes program. Contribute to Slookeur/Atomes-flatpak-build development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Thanks in advance for you lights !</p>
+<p>PS: this started here: <a href="/t/fotran-modules-not-found-vs-command-not-found/2909/index.html" class="inline-onebox">Fotran modules not found VS Command not found ?!</a> but since I did not get any reply after a long time, I thought I simplified the problem to try<br>
+to get somewhere.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 26, 2022 10:42 PM">
+            <time itemprop="datePublished" datetime="2022-10-26 22:42:14 +0000">Oct 26, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>‘runtime’ is definitely wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 27, 2022 8:49 AM">
+            <time itemprop="datePublished" datetime="2022-10-27 08:49:04 +0000">Oct 27, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, that’s a start, but then again I thought  that I had to use this one<br>
+because ‘atomes’ uses OpenGL … what should I put there then ?<br>
+Sorry to bother you, but please consider that I am a total beginner with<br>
+Flatpak, I tried to follow the tutorials to build my app and ended up<br>
+where I am now, do not hesitate to point me towards material that<br>
+illustrates your reasoning, I just want to do the proper thing here but<br>
+I do not have the knowledge nether to do so directly or even to find out<br>
+the proper tutorials/documentation … and I tried !</p>
+<p>[EdIt]</p>
+<p>So I changed the runtime a few times, no success so far, but the error message does change,<br>
+so I figured maybe I am not using the proper runtime yet, then question is how to know which one<br>
+to use ?<br>
+I would really appreciate any help on the matter <img src="/images/emoji/twitter/wink.png?v=12" title=":wink:" class="emoji" alt=":wink:"></p>
+<p>[/Edit]</p>
+<p>Thanks again.</p>
+<p>S.</p>
+<p>PS: in the mean time I will give a try to changing the ‘runtime’ <img src="/images/emoji/twitter/wink.png?v=12" title=":wink:" class="emoji" alt=":wink:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 27, 2022 12:18 PM">
+            <time itemprop="datePublished" datetime="2022-10-27 12:18:33 +0000">Oct 27, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Please tell us what is unclear about the docs here;</p>
+<p><a href="https://docs.flatpak.org/en/latest/available-runtimes.html" class="onebox" target="_blank" rel="noopener">https://docs.flatpak.org/en/latest/available-runtimes.html</a></p>
+<p>BTW i you thin that runtime thing is just a detail, it’s not.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 27, 2022 1:00 PM">
+            <time itemprop="datePublished" datetime="2022-10-27 13:00:55 +0000">Oct 27, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Re,<br>
+I am sorry but I would really appreciate if you could elaborate your answers,<br>
+I tried to pick a proper SDK/runtime reading the doc carefully (many times),<br>
+not sure that anything is unclear, but it clearly lack examples, also why listing all the<br>
+available extensions, and if these are extensions and not separate runtimes with extra options,<br>
+then how to use them in the manifest ?<br>
+I tried Freedesktop (both 20.08 and 22.08), doesn’t seem to do the trick, then when I try the flatpak I got the following error:</p>
+<pre><code class="lang-auto">Failed to register: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: org.freedesktop.DBus.Error.ServiceUnknown
+</code></pre>
+<p>Tried to find out more about this message of course but so far no luck.<br>
+If the runtime is not appropriate, how to pick one ?<br>
+More examples, in the doc, would be more than appropriate.</p>
+<p>And I absolutely do not think that it is a detail, I think that it is important to know what<br>
+to do and how, so my program uses Gtk3 (pango, libxml2 …), OpenGL (requires Glu, Glut, libepoxy) basically it builds with any SDK that I tried so far … of course as long as I include the shared glu module.<br>
+But then how to pick the proper SDK/runtime without spending hours trying one after another<br>
+in the hope that one will work, what are the rules ?<br>
+I cannot find that by myself without your help, so please elaborate,<br>
+or please point me to some doc that will help me understand.</p>
+<p>Please be sure that I am serious about doing this, and I need help because if the doc lists options available it does not help to understand their purpose or how to use them when you are a beginner.<br>
+If you are willing to help, which seems to be the case then point me in the proper direction, instead of pointing out the obvious, and that is: I need to learn how to things properly.</p>
+<p>Because indeed I do.<br>
+Please be sure that I really appreciate your efforts educating me.</p>
+<p>[Edit]<br>
+Something to add/correct in the doc: details about what happens behind the rope with the build systems, how does it works, for instance my program should build with the <code>autotool</code> build systems,<br>
+because it is using it, but it does not when I declare it in the manifest, I wish I could understand why, but for that I would need to have info, info that does not appear in the doc, that simply states<br>
+that several build systems are available and what are the keywords to use.<br>
+[/Edit]<br>
+S.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 28, 2022 9:35 PM">
+            <time itemprop="datePublished" datetime="2022-10-28 21:35:05 +0000">Oct 28, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Solved the autotools build system issue that I had, see here for details:</p>
+<aside class="quote quote-modified" data-post="2" data-topic="2909">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <a href="/t/fotran-modules-not-found-vs-command-not-found/2909/index.html#post_2">Fotran modules not found VS Command not found ?!</a> <a class="badge-category__wrapper " href="/c/feedback/9/index.html"><span data-category-id="9" style="--category-badge-color: #0088CC; --category-badge-text-color: #FFFFFF;" data-drop-close="true" class="badge-category " title="Welcome to the site, this section is for us to discuss improvements to this site so that we can communicate better."><span class="badge-category__name">Site Help and Feedback</span></span></a>
+  </div>
+  <blockquote>
+    This is  a reply to my-self, it might help others: 
+I noticed that with autotools the build is automatically // (-j option), 
+and that is why I had the issue with the missing fortran modules. 
+To avoid having errors it is mandatory to ask for the fortran modules to be built first, 
+and that happens in the file ‘Makefile.am’, in my case I had: 
+atomes_fortran = $(atomes_fortran_modules) $(atomes_fortran_files)
+
+And I needed to add the following line: 
+atomes_fortran = $(atomes_fortran_modules) $(…
+  </blockquote>
+</aside>
+
+<p>And I managed to run my app using:</p>
+<pre><code class="lang-auto">flatpak run --socket=session-bus --nosocket=fallback-x11 --socket=x11 org.flatpak.atomes
+</code></pre>
+<p>The ‘–socket=session-bus’ correct the DBus error, while ‘x11’ related options correct a GTK display error, so now the flatpak seems to run fine, not sure that this way of doing is appropriate,<br>
+any advise would be appreciated.</p>
+<p>S.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ferenc </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 31, 2022 12:05 PM">
+            <time itemprop="datePublished" datetime="2022-10-31 12:05:41 +0000">Oct 31, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>--socket=session-bus</code>  should never be used in normal applications, that are not d-bus debuggers etc.<br>
+Such applications, which still do so without an exceptional reason are tracked on <a href="https://github.com/flathub/flathub/issues/2785" rel="noopener nofollow ugc">this list of bad boys</a>.</p>
+<p>Steps to resolve this issue:</p>
+<ol>
+<li>Remove <code>--socket=session-bus</code>
+</li>
+<li>Run the application with <code>--log-session-bus</code>. This will print a log of which dbus calls are actually used and blocked.</li>
+<li>Add specific <code>--talk-name=org.example.Name</code> to talk to a service. Occasionally you’ll need to add <code>--own-name=org.example.Name</code> to own a name but this is less common.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

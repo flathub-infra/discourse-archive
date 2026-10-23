@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak of Java 8 application - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak of Java 8 application</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak of Java 8 application</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 25, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vongillus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 25, 2024 4:45 PM">
+            <time itemprop="datePublished" datetime="2024-11-25 16:45:38 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I packaged an application which has the requirement of running with Java 8. I have 2 issues:</p>
+<ul>
+<li>
+<p>if I package the application with the runtime org.freedesktop.Platform 24.08 or down to 19.08, opening a file browser from within the application takes ages (until it gives a timeout). The only way I found was to use the runtime 18.08 and then the file browser appears directly. When I try to open a file browser, I get from the logs "Could not query portal version on interface ‘org.freedesktop.portal.FileChooser’ Error calling StartByServiceByName for org.freedesktop.portal.Desktop: Timeout was reached. And additionally: “GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER is not supported by GtkChooseNativePortal because portal is too old”.</p>
+</li>
+<li>
+<p>within the application, it’s possible to open a PDF with the default PDF application but this doesn’t work with the flatpak. I have checked from the system and the following command works:</p>
+</li>
+</ul>
+<blockquote>
+<p>xdg-mime query default application/pdf<br>
+org.gnome.Evince.desktop</p>
+</blockquote>
+<p>At the moment, the flatpak application has all possible permissions so I believe that’s not the problem, I suspect that the Java 8 doesn’t speak properly with the portal I have.</p>
+<p>I am running the application on a RHEL 9 system with all xdg-portal packages installed.</p>
+<p>Any ideas, hints would be welcome!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 26, 2024 3:50 PM">
+            <time itemprop="datePublished" datetime="2024-11-26 15:50:35 +0000">Nov 26, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="vongillus" data-post="1" data-topic="8158">
+<div class="title">
+<div class="quote-controls"></div>
+vongillus:</div>
+<blockquote>
+<p>within the application, it’s possible to open a PDF with the default PDF application but this doesn’t work with the flatpak. I have checked from the system and the following command works:</p>
+</blockquote>
+</aside>
+<p>Shouldn’t this be using <code>xdg-open</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vongillus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 27, 2024 7:10 AM">
+            <time itemprop="datePublished" datetime="2024-11-27 07:10:41 +0000">Nov 27, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="vongillus" data-post="1" data-topic="8158">
+<div class="title">
+<div class="quote-controls"></div>
+vongillus:</div>
+<blockquote>
+<p>xdg-mime query default application/pdf</p>
+</blockquote>
+</aside>
+<p>Well I am not really sure. But if I run a xdg-open test.pdf on the host system it works, but inside a shell in the flatpak it just doesn’t do anything.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vongillus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 27, 2024 4:51 PM">
+            <time itemprop="datePublished" datetime="2024-11-27 16:51:45 +0000">Nov 27, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Actually I think the problem comes from RHEL9 or the way I have the operating system configured. I have tried with another flatpak org.kde.dolphin and I get the same behavior. I will try from another OS like Ubuntu to see if I get this working.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

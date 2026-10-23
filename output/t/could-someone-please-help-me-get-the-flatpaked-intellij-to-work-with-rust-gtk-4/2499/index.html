@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Could someone please help me get the Flatpaked IntelliJ to work with Rust + Gtk 4? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Could someone please help me get the Flatpaked IntelliJ to work with Rust + Gtk 4?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Could someone please help me get the Flatpaked IntelliJ to work with Rust + Gtk 4?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 9, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">s3a</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 9, 2022 8:48 AM">
+            <time itemprop="datePublished" datetime="2022-05-09 08:48:23 +0000">May 9, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got Rust + Gtk 4 ( <a href="https://crates.io/crates/gtk4" rel="noopener nofollow ugc">https://crates.io/crates/gtk4</a> ) working in the upstream (tar.gz file) / non-Flatpaked IntelliJ IDEA Community Edition IDE, but I can’t seem to get it to work in the Flatpaked one.</p>
+<p>This is what I do to get it working in the non-Flatpaked IDE.:</p>
+<ol>
+<li>
+<p>curl --proto ‘=https’ --tlsv1.2 -sSf <a href="https://sh.rustup.rs" rel="noopener nofollow ugc">https://sh.rustup.rs</a> | sh</p>
+</li>
+<li>
+<p>Follow the instructions of the script from the previous line.</p>
+</li>
+<li>
+<p>Toolchain location or wtv is the following if I recall correctly: /home/myusername/.cargo/bin</p>
+</li>
+<li>
+<p>Run the following command.: rustup component add rust-src</p>
+</li>
+<li>
+<p>Standard library or wtv is the following if I recall correctly: /home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src</p>
+</li>
+<li>
+<p>Run → Edit Configurations</p>
+</li>
+<li>
+<p>Environment variables: PKG_CONFIG_PATH=/var/run/host/usr/lib/x86_64-linux-gnu/pkgconfig/;PATH=/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld:/home/myusername/.cargo/bin:/var/run/host/usr/local/bin:/var/run/host/usr/bin:/bin:/var/run/host/usr/local/games:/var/run/host/usr/games</p>
+</li>
+<li>
+<p>Working directory: /home/myusername/IdeaProjects/untitled12</p>
+</li>
+<li>
+<p>Make main.rs be as follows.:</p>
+</li>
+</ol>
+<pre><code class="lang-auto">use gtk4 as gtk;
+use gtk::prelude::*;
+use gtk::{Application, ApplicationWindow};
+
+fn main() {
+    println!("Hello, world!");
+
+    let app = Application::builder()
+        .application_id("org.example.HelloWorld")
+        .build();
+
+    app.connect_activate(|app| {
+        // We create the main window.
+        let window = ApplicationWindow::builder()
+            .application(app)
+            .default_width(320)
+            .default_height(200)
+            .title("Hello, World!")
+            .build();
+
+        // Show the window.
+        window.show();
+    });
+
+    app.run();
+
+    println!("Goodbye, world!");
+}
+</code></pre>
+<ol start="10">
+<li>Make Cargo.toml be as follows.:</li>
+</ol>
+<pre><code class="lang-auto">[package]
+name = "untitled12"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+gtk4 = "0.4.7"
+gdk4-sys = "0.4.2"
+gsk4-sys = "0.4.2"
+graphene-sys = "0.15.10"
+</code></pre>
+<p>But, when I try to do it in the Flatpaked IntelliJ IDEA Community Edition IDE, I get the following error.:</p>
+<pre><code class="lang-auto">error: linking with `cc` failed: exit status: 1
+  |
+  = note: "cc" "-m64" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.143cbefya22s2u14.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.145jeavqho73qjm9.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.1a06ydxfllht0hus.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.1i9zx9edha2qex5x.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.1w7mybzopgskabss.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.1ys195vx6akv7z97.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.1zcxsoy4a8e0eywn.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.20cvzochebdhwd6p.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.21ew2v9c0nn3zvh6.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.23w9mbmfnghnscw1.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.25q5o31v4mb6jxrv.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.297bd778li4p2czm.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.2aal6wm7z5vj8eu4.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.2hzoz1daskfv966m.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.2ovbhkh7sqgat8wm.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.36fssa5ap3aaanwb.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.38cddkmw87se7k1t.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.3d0m3ymzk673jvzv.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.3feurxnmpmevbsbs.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.3iif71qg43oluoah.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.3mccsqiauqqdqpn6.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.3x30eth8ldbnklau.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.40plrzzzbldtvj91.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.48i1nntxua988u81.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.4bflb0x6kyiaf3lk.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.4elgbyo7a7muzplm.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.4hhiwmc0s3beb2xo.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.4rqre5f4fr53w1wy.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.4tbcfm7ryux92fg6.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.53d9r75b32r94lh8.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.54r7u1cwhhd2cdq7.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.55gev68w9hq5gax0.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.59wj7oem0pk1ni57.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.5m3qcvkvmfehtju.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.aqnsygsb6ax17dl.rcgu.o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd.mrwapxv4ta5yy9r.rcgu.o" "-Wl,--as-needed" "-L" "/home/myusername/IdeaProjects/untitled10/target/debug/deps" "-L" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib" "-Wl,-Bstatic" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgtk4-ca902c7f7eba28c6.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgsk4-f86fc15a1fed60f1.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgraphene-d3971d917bbfbf49.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgdk4-cf80e7127fed318c.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libpango-04d385c4353719c1.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgdk_pixbuf-6f013e886d9ed80d.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgio-763da2eaa5fe9719.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_io-ae8d0cc855367cbf.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libcairo-646c5927ff279be1.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libglib-c6f2f6866365728f.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_executor-22921000605cf671.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_util-ef36e67040a629ab.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libslab-ae59c7b6e0d36368.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libpin_project_lite-ff7ec06daf2cd9b9.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libpin_utils-6c669315cfadfec5.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libsmallvec-068ac8185082e6f5.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libthiserror-b186ca3ff4e664c6.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_channel-0fceb783f1ba6f1e.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_task-ecde0fd8afc76364.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfutures_core-e4d3a2040637810a.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libonce_cell-d4edd22523d7b9ae.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libbitflags-f1ca410388ec357f.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgtk4_sys-96fa244889173473.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgsk4_sys-c4f8eb77d97ab30f.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgraphene_sys-23e65496c528a782.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgdk4_sys-8edf29ea7bb9aad4.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgdk_pixbuf_sys-cdf2ac238dd517ec.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libpango_sys-9ccfbf95bd0d8e4a.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libcairo_sys-6ed51310430022c6.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgio_sys-ad3999ab84f22338.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libgobject_sys-440edb70b0cd853f.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libglib_sys-156b714538c596d6.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/liblibc-c8abee9503293ab0.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libfield_offset-34477f9ac2df78c9.rlib" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/libmemoffset-9c9e2ab89dd01fb6.rlib" "-Wl,--start-group" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd-8d61b92a0a02f53a.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_unwind-fc45202bb435016b.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libminiz_oxide-f2400674c7513725.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libadler-605c3a7d1a5d300d.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libobject-3d4fb4efa907e4e8.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libmemchr-65207f030ab23308.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libaddr2line-76ca199cb0186109.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgimli-1e3e01ed4f561dc1.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_demangle-dd8dddcba7c13fee.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd_detect-00b13d31c3420656.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libhashbrown-e4c8460b81557bd5.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_alloc-600d46e5f0005455.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunwind-e4a08a2585b62d37.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcfg_if-fbc21ec567cb9dc7.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/liblibc-10b3fa8e49bd978f.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/liballoc-64625b73694ffce7.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_core-fb6b78ac543a58ee.rlib" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcore-1d1f2d1bec6f51b8.rlib" "-Wl,--end-group" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcompiler_builtins-acf5ff6e9595d982.rlib" "-Wl,-Bdynamic" "-lgobject-2.0" "-lgtk-4" "-lpangocairo-1.0" "-lpango-1.0" "-lharfbuzz" "-lgdk_pixbuf-2.0" "-lcairo-gobject" "-lcairo" "-lgraphene-1.0" "-lgio-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgtk-4" "-lpangocairo-1.0" "-lpango-1.0" "-lharfbuzz" "-lgdk_pixbuf-2.0" "-lcairo-gobject" "-lcairo" "-lgraphene-1.0" "-lgio-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgraphene-1.0" "-lgobject-2.0" "-lglib-2.0" "-lgtk-4" "-lpangocairo-1.0" "-lpango-1.0" "-lharfbuzz" "-lgdk_pixbuf-2.0" "-lcairo-gobject" "-lcairo" "-lgraphene-1.0" "-lgio-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgdk_pixbuf-2.0" "-lgobject-2.0" "-lglib-2.0" "-lpango-1.0" "-lgobject-2.0" "-lglib-2.0" "-lharfbuzz" "-lcairo-gobject" "-lcairo" "-lgobject-2.0" "-lglib-2.0" "-lgio-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgobject-2.0" "-lglib-2.0" "-lgcc_s" "-lutil" "-lrt" "-lpthread" "-lm" "-ldl" "-lc" "-Wl,--eh-frame-hdr" "-Wl,-znoexecstack" "-L" "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib" "-o" "/home/myusername/IdeaProjects/untitled10/target/debug/deps/untitled10-5f1fe85ad9a91cbd" "-Wl,--gc-sections" "-pie" "-Wl,-zrelro,-znow" "-nodefaultlibs"
+  = note: /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgtk-4
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgraphene-1.0
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgtk-4
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgraphene-1.0
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgraphene-1.0
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgtk-4
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgraphene-1.0
+          collect2: error: ld returned 1 exit status
+</code></pre>
+<p>I even tried to make a /home/myusername/.cargo/config.toml file with the following contents (but I’m very confused with rustflags stuff).:</p>
+<pre><code class="lang-auto">rustflags = ["-L", "/home/myusername/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld"]
+</code></pre>
+<p>By the way, here are the sandboxing details (which is kind of a mess because I’ve tried many different things, all of which failed, before posting here).:</p>
+<pre><code class="lang-auto">root@debian:~# flatpak override --show
+[Context]
+filesystems=/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/lib/x86_64-linux-gnu;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/x86_64-unknown-linux-gnu/bin;/var/lib/flatpak/runtime/org.gnome.Sdk;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/active/files/sbin;/var;/usr/lib/x86_64-linux-gnu/pkgconfig;/var/lib/flatpak/runtime/org.kde.Platform/x86_64/5.15/2c9e014e7d60da0f002c9d9d7a620bcedf59546007a7ae16accb3ee3e6335430/files/lib/x86_64-linux-gnu;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/bin;host;/home/guest;
+root@debian:~# flatpak override --show com.jetbrains.IntelliJ-IDEA-Community 
+[Context]
+filesystems=/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/x86_64-unknown-linux-gnu/bin;/usr/share/cargo/registry/graphene-sys-0.14.8;/var/lib/flatpak/runtime:ro;/usr/share/cargo/registry/gdk4-sys-0.3.1:ro;/home/myusername/IdeaProjects;/var/lib/flatpak/runtime/org.kde.Platform/x86_64/5.15/2c9e014e7d60da0f002c9d9d7a620bcedf59546007a7ae16accb3ee3e6335430/files/lib/x86_64-linux-gnu;/var;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/lib/x86_64-linux-gnu/pkgconfig;/home/guest;/usr/lib/x86_64-linux-gnu/gtk-4.0/4.0.0:ro;/var/lib/flatpak/runtime/org.gnome.Sdk;/usr/share/cargo/registry/gsk4-sys-0.3.1:ro;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/bin;host;/home/myusername;/usr/lib/x86_64-linux-gnu/graphene-1.0:ro;/home/myusername/.cargo;/usr/lib/x86_64-linux-gnu/pkgconfig;/usr/include/graphene-1.0;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/active/files/sbin;/var/lib/flatpak/runtime/org.gnome.Sdk/x86_64/42/bd5cf2646c70337561c1a2bf214e3ca797fd2ea96d981baf8fd537cb931eeebb/files/lib/x86_64-linux-gnu;
+root@debian:~#
+</code></pre>
+<p>Ideally, I’d like to use everything, including the Rust and GNOME runtimes, from Flatpak and Flathub, but I can accept using the IDE as a Flatpak with Rustup from upstream and with GNOME and GTK-related stuff being from the Debian repositories or upstream. (I don’t think Rust stuff in the Debian (stable) repositories would be new enough for my needs. For example, right now, Gtk 4 requires Rust to be at version 1.56.0 or newer, but the Debian repository’s rustc package is currently at version 1.48.0.)</p>
+<p>I’m trying to avoid upstream’s IntelliJ, one reason being that I’d like to upgrade my whole system in one shot, but if I can’t figure out how to do it, I guess I can sandbox the upstream version with Firejail and use that.</p>
+<p>So, could someone please help me with what I am trying to achieve?</p>
+<p>Any input would be GREATLY appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

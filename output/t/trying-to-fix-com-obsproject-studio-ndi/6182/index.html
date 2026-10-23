@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trying to fix com.obsproject.Studio.NDI - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Trying to fix com.obsproject.Studio.NDI</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Trying to fix com.obsproject.Studio.NDI</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 25, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dominik &quot;Socek&quot; Długajczyk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 25, 2024 11:31 PM">
+            <time itemprop="datePublished" datetime="2024-02-25 23:31:29 +0000">Feb 25, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to install plugin <code>com.obsproject.Studio.NDI</code>, but trying to install it ended in error:</p>
+<pre><code class="lang-auto">error: Failed to install com.obsproject.Studio.Plugin.NDI: Wrong size for extra data https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz
+</code></pre>
+<p>So I’ve tried to get the package and build it, but I was unable to:</p>
+<pre><code class="lang-auto">$ flatpak-builder --user --install --force-clean build com.obsproject.Studio.NDI.json
+(...)
+make[1]: Entering directory '/run/build/avahi/avahi-common'
+ /usr/bin/mkdir -p '/app/lib/ndi'
+/usr/bin/mkdir: cannot create directory ‘/app/lib/ndi’: Read-only file system
+make[1]: *** [Makefile:708: install-libLTLIBRARIES] Error 1
+make[1]: Leaving directory '/run/build/avahi/avahi-common'
+make: *** [Makefile:1432: install-am] Error 2
+make: Leaving directory '/run/build/avahi/avahi-common'
+Error: module avahi: Child process exited with code 2
+</code></pre>
+<p>I’ve tried to add this:</p>
+<pre><code class="lang-auto">"ensure-writable" : [
+        "/lib/ndi"
+      ],
+</code></pre>
+<p>But it did not work. I have no idea what I’m doing wrong. Please help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 26, 2024 2:12 AM">
+            <time itemprop="datePublished" datetime="2024-02-26 02:12:20 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Wouldn’t you need to make /lib writable instead of /lib/ndi? You are trying to mkdir ndi inside the /lib directory. The next question is whether flathub will publish a flatpak that modifies /app/lib because there are some directories with shared runtimes that are not allowed to be modified. I forgot which ones, but I suspect /app/lib is one.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dominik &quot;Socek&quot; Długajczyk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 26, 2024 12:11 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 12:11:45 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="OzarkShepherd" data-post="2" data-topic="6182">
+<div class="title">
+<div class="quote-controls"></div>
+OzarkShepherd:</div>
+<blockquote>
+<p>Wouldn’t you need to make /lib writable instead of /lib/ndi?</p>
+</blockquote>
+</aside>
+<pre><code class="lang-auto">"ensure-writable" : [
+        "/app/lib",
+        "/lib",
+        "/lib/ndi"
+      ],
+</code></pre>
+<p>Did not worked.</p>
+<aside class="quote no-group" data-username="OzarkShepherd" data-post="2" data-topic="6182">
+<div class="title">
+<div class="quote-controls"></div>
+OzarkShepherd:</div>
+<blockquote>
+<p>The next question is whether flathub will publish a flatpak that modifies /app/lib because there are some directories with shared runtimes that are not allowed to be modified.</p>
+</blockquote>
+</aside>
+<p>So maybe I’m trying to do workaround for something that needs to be fixed in another way? This is my first flatpack package, so I walking blind here.</p>
+<pre><code class="lang-auto">make -C avahi-common install
+</code></pre>
+<p>This command is making changes in the <code>/app/lib</code>.</p>
+<pre><code class="lang-auto">make[1]: Entering directory '/run/build/avahi/avahi-common'
+ /usr/bin/mkdir -p '/app/lib/ndi'
+/usr/bin/mkdir: cannot create directory ‘/app/lib/ndi’: Read-only file system
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 26, 2024 2:07 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 14:07:39 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It looks like you are using the “simple” buildsystem instead of “autotools”. Posting or linking to your manifest would make it easier for others to help you. I usually use “simple” for python commands and “autotools” or “cmake-ninja” for cmake commands. When cmake requires extra options like for environment, I add config-opts and such. Even though below is yml form, you can see an example of what I am saying at this link below. Check lines 41-47 for autotools with config-opts and make-install-args (I doubt you need the gi commands because they are for a python app, but the “–prefix=/app” command might or might not be helpful for you), and lines 82-87 for a “cmake-ninja” example with config-opts.</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/org.gramps_project.Gramps/blob/master/org.gramps_project.Gramps.yml">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.gramps_project.Gramps/blob/master/org.gramps_project.Gramps.yml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.gramps_project.Gramps/blob/master/org.gramps_project.Gramps.yml" target="_blank" rel="noopener nofollow ugc">flathub/org.gramps_project.Gramps/blob/master/org.gramps_project.Gramps.yml</a></h4>
+
+
+      <pre><code class="lang-yml">app-id: org.gramps_project.Gramps
+# flatpak-builder will not take hyphen in com.gramps-project.Gramps
+runtime: org.gnome.Platform
+runtime-version: '45'
+sdk: org.gnome.Sdk
+command: gramps
+finish-args:
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-pictures
+#  - --filesystem=~/.gramps:create
+# needs to own upstream name
+  - --own-name=org.gramps-project.Gramps
+# for gui
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+#needs network access for maps
+  - --share=network
+cleanup:
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/org.gramps_project.Gramps/blob/master/org.gramps_project.Gramps.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dominik &quot;Socek&quot; Długajczyk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 26, 2024 3:44 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 15:44:48 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/com.obsproject.Studio/blob/master/com.obsproject.Studio.NDI.json">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.obsproject.Studio/blob/master/com.obsproject.Studio.NDI.json" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.obsproject.Studio/blob/master/com.obsproject.Studio.NDI.json" target="_blank" rel="noopener nofollow ugc">flathub/com.obsproject.Studio/blob/master/com.obsproject.Studio.NDI.json</a></h4>
+
+
+      <pre><code class="lang-json">{
+  "id": "com.obsproject.Studio.NDI",
+  "branch": "stable",
+  "runtime": "com.obsproject.Studio",
+  "runtime-version": "stable",
+  "sdk": "org.kde.Sdk//5.15-21.08",
+  "build-extension": true,
+  "separate-locales": false,
+  "appstream-compose": false,
+  "modules": [
+    {
+      "name": "avahi",
+      "no-make-install": true,
+      "config-opts": [
+        "--with-distro=none",
+        "--disable-qt3",
+        "--disable-qt4",
+        "--disable-qt5",
+        "--disable-gtk",
+        "--disable-gtk3",
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/com.obsproject.Studio/blob/master/com.obsproject.Studio.NDI.json" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>But I see that the author use “post-install” instead of “build system”.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 26, 2024 5:27 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 17:27:50 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s an archived repo; OBS is no longer built on flathub infrastructure. I think you’re looking for <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.NDI" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/com.obsproject.Studio.Plugin.NDI</a>, and in particular:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flathub/com.obsproject.Studio.Plugin.NDI/issues/3">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.NDI/issues/3" target="_blank" rel="noopener nofollow ugc">github.com/flathub/com.obsproject.Studio.Plugin.NDI</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.NDI/issues/3" target="_blank" rel="noopener nofollow ugc">Aborted due to failure (Wrong size for extra data)</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2023-11-23" data-time="07:52:59" data-timezone="UTC">07:52AM - 23 Nov 23 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2023-11-23" data-time="08:32:57" data-timezone="UTC">08:32AM - 23 Nov 23 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/pollux56" target="_blank" rel="noopener nofollow ugc">
+          <img alt="pollux56" src="/uploads/original/2X/8/8fab63a95d4b7e43d0e28a28c05f48d38c950d61.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="5F5556">
+          pollux56
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">&gt; [!IMPORTANT]  
+&gt; **Word from the maintainer: If it happens again, post a comm<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ent here rather than opening another issue**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+trying to download the plugin through discover i get this error 
+
+Aborted due to failure (Wrong size for extra data https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz)
+
+same error when trying to install through terminal
+
+error: Failed to install com.obsproject.Studio.Plugin.NDI: Wrong size for extra data https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz
+
+opensuse tumbleweed
+plasma 5.27.9</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dominik &quot;Socek&quot; Długajczyk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 26, 2024 6:18 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 18:18:31 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I thought that the the repo I choosed was the newest and I need to fix it.<br>
+After using the one you gave me <span class="mention">@chrisawi</span>, everything works.<br>
+Thanks a lot.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

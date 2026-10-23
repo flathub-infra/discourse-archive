@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Permanently punching through Flatpak Sandbox (how do you get &quot;dynamic&quot; read/write access?) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Permanently punching through Flatpak Sandbox (how do you get &quot;dynamic&quot; read/write access?)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Permanently punching through Flatpak Sandbox (how do you get &quot;dynamic&quot; read/write access?)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 1, 2026</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Allexio</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 1, 2026 8:13 AM">
+            <time itemprop="datePublished" datetime="2026-05-01 08:13:56 +0000">May 1, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I am developing a mod manager app for Linux, developed with Python and GTK4.</p>
+<p>I wanted my app to be available as a Flatpak, and seeing as the whole point is to sandbox the app, I want to try and do this as much as possible to reassure the user.</p>
+<p>My app needs access to a few very specific paths which are defined in my finish-args like so:</p>
+<pre><code class="lang-auto">  # Heroic
+  - --filesystem=~/.config/heroic:ro # Standard
+  - --filesystem=~/.var/app/com.heroicgameslauncher.hgl/config/heroic:ro # Flatpak
+  # Steam
+  - --filesystem=~/.local/share/Steam:ro # Standard
+  - --filesystem=~/.var/app/com.valvesoftware.Steam:ro # Flatpak
+</code></pre>
+<p>These work just fine!</p>
+<p>However, during the app’s first startup I also want the user to define two paths which are custom and can be set wherever they want.</p>
+<p>After the user has selected those paths, I need read/write access to them.</p>
+<p>To do this, I am using a standard <code>Gtk.FileDialog</code> which from what I understood is meant to punch through the flatpack sandbox, which it doesn’t do. Or at the very least not in the way I expected?</p>
+<p>Here’s a snippet of what I currently do:</p>
+<pre><code class="lang-auto">def on_select_downloads_folder_clicked(self, btn):
+    dialog = Gtk.FileDialog(title=_("Select Mod Downloads Folder"))
+    dialog.select_folder(self.win, None,  self.on_downloads_folder_selected_callback)
+</code></pre>
+<p>My problem here is twofold:</p>
+<ol>
+<li>This returns an internal flatpak sandboxed path, which is unuseable for me (<code>run/user/1000/...</code>) → this is my biggest problem</li>
+<li>This does not actually give me write or even read access to that path (at least it’s not visible when I check with Flatseal).
+<ul>
+<li>This I could potentially find a way to workaround by generating a command for the user to execute in their terminal that will give me read/write access to the path they have provided</li>
+</ul>
+</li>
+</ol>
+<p>After a bit more research I’ve come to understand that the file picker only temporarily punches through the portal to get access to a single file, and then the access is immediately lost or some such.</p>
+<p>Then how am I supposed to do what I’m trying to?</p>
+<p>am I forced to simply have <code>  - --filesystem=host</code> ?</p>
+<p>This seems to defeat the entire purpose of sandboxing…</p>
+<p>Is there any way to just ask the user to confirm that I should have access to a specific path?</p>
+<p>Thank you for any help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 1, 2026 8:43 AM">
+            <time itemprop="datePublished" datetime="2026-05-01 08:43:55 +0000">May 1, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The paths selected by the <code>Gtk.FileDialog</code> are not using the same system as the filesystem permissions you set in your manifest.</p>
+<p>Filesystem permissions are set before an application is run and their paths are bind-mounted into the sandbox on startup. <br>
+<code>Gtk.FileDialog</code> however uses the Document portal, which can grant access to paths during runtime. However, these files are mounted in the Document portal path <code>run/user/1000/...</code>.</p>
+<p>Paths granted over the Document portal using the file dialog stay accessible over this path, even over restarts of the application. But since they are dynamic permissions managed over the portal, they do not show up in the static filesystem permissions. And Flatseal only shows the static filesystem permissions. <br>
+If you wish to check what paths your application has been granted access to over the Document portal, you can use <code>flatpak documents $APP_ID</code>.</p>
+<p>There is an API you can use to retrieve the host path for paths accessed over the Document portal as well. See a <a href="/t/how-to-have-persistent-unix-file-descriptors-between-sandbox-and-host/10469/index.html#post_2">previous comment</a> I made about it for more details.</p>
+<p>I hope that clears things up a bit.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

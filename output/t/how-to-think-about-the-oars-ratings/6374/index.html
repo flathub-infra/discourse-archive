@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to think about the OARS ratings? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to think about the OARS ratings?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to think about the OARS ratings?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 15, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Peter87</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 15, 2024 5:32 PM">
+            <time itemprop="datePublished" datetime="2024-03-15 17:32:56 +0000">Mar 15, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello. I have some doubts about the OARS ratings that flathub require applications to have, especially the part about Violence in relation to games.</p>
+<p>The docs have a link to <a href="https://hughsie.github.io/oars/generate.html" rel="noopener nofollow ugc">this generator</a>. Is that all or is there a more detailed specification somewhere?</p>
+<p>I wonder, should we take the text descriptions literally, or should we essentially ignore them and just choose between “Mild”, “Moderate” and “Intense” based on what we think makes sense and what we think users would expect them to mean?</p>
+<p>I’m asking because it seems like most games would get a very high rating if you followed it literally but it seems like most games on flathub uses a milder rating (which makes more sense in my opinion).</p>
+<p>For example, the Cartoon Violence rating have the following options:</p>
+<p><strong>Mild: Cartoon characters in unsafe situations</strong><br>
+(Doesn’t almost all games have “unsafe situations”? E.g. you’re standing close to the edge, you’re riding a bike without a helmet or there are enemies nearby.)</p>
+<p><strong>Moderate: Cartoon characters in aggressive conflict</strong><br>
+(Enemies are usually “aggressive” and there is a “conflict” with them even in pretty cute games.)</p>
+<p><strong>Intense: Cartoon characters showing graphic violence</strong><br>
+(You kill and get killed in pretty innocent games such as “Mario” and what’s more violent than killing?)</p>
+<p>Based on this I would say that SuperTux should be rated as at least “Moderate” but when looking at the appdata it’s only <a href="https://github.com/flathub/org.supertuxproject.SuperTux/blob/master/supertux-appdata.patch#L11-L12" rel="noopener nofollow ugc">mild</a>, and Bombermaaan is a bit more graphic but is also only <a href="https://github.com/flathub/com.github.bjaraujo.Bombermaaan/blob/master/appdata.patch#L217" rel="noopener nofollow ugc">mild</a>.</p>
+<p>Bloodshed is another rating that is confusing to me. If it really means “killing or wounding of people” (whatever they mean by “people”) then I think this is happening in almost every game. When you lose HP you get wounded.</p>
+<p>The Desecration rating talks about “dead human remains” but does that include skeletons? Skeletons on the ground? Skeletons that are alive? Doesn’t “desecration” usually imply that you actually disturb them somehow? If you find a skull in a cave does that even need to be as high as “mild”?</p>
+<p>So how to think about this? The <a href="https://hughsie.github.io/oars/index.html" rel="noopener nofollow ugc">OARS website</a> says it relies on <strong>honest</strong> answers but it’s difficult to be honest if it’s not clear what each rating means, especially when knowing that a high rating might scare away users.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 17, 2024 6:01 PM">
+            <time itemprop="datePublished" datetime="2024-03-17 18:01:32 +0000">Mar 17, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Peter87" data-post="1" data-topic="6374">
+<div class="title">
+<div class="quote-controls"></div>
+Peter87:</div>
+<blockquote>
+<p>The docs have a link to <a href="https://hughsie.github.io/oars/generate.html">this generator</a>. Is that all or is there a more detailed specification somewhere?</p>
+</blockquote>
+</aside>
+<p>You might want to look at <a href="https://github.com/hughsie/oars/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc" class="inline-onebox">Issues · hughsie/oars · GitHub</a> and raise concerns over there, some of the questions you’re asking seem to already be raised in that issue tracker <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help in building Flatpak for Pyside6+Python app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help in building Flatpak for Pyside6+Python app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help in building Flatpak for Pyside6+Python app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 11, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 11, 2023 11:06 AM">
+            <time itemprop="datePublished" datetime="2023-08-11 11:06:04 +0000">Aug 11, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello. I want to build (and later publish this app in Flathub) that is written in Python with PySide6. I successfully built Snap package, but I have problems with Flatpak.</p>
+<p>Project structure:</p>
+<pre data-code-wrap="md"><code class="lang-plaintext">├── flatpak
+├── requirements.txt
+├── setup.py
+├── snap
+│   ├── gui
+│   │   ├── tabela.desktop
+│   │   └── tabela.png
+│   └── snapcraft.yaml
+├── tabela
+│   ├── addItemDialog.py
+│   ├── fileProcessing.py
+│   ├── __init__.py
+│   ├── LICENSE
+│   ├── main.py
+│   ├── mainwindow.py
+│   ├── myTableModel.py
+│   ├── README.md
+│   └── saveDataDialog.py
+└── tabela.json
+</code></pre>
+<p>setup.py:</p>
+<pre><code class="lang-python">from setuptools import setup
+
+package_name = 'tabela'
+filename = 'tabela/__init__.py'
+
+setup(
+    name='tabela',
+    version='1.0',
+    description='Simple app that shows CSV content in table.',
+    author='cichy1173',
+    author_email='grzegorz@cichy1173.eu',
+    packages=['tabela'],
+    install_requires=[
+        'pyside6',  # Add any other dependencies your app requires
+    ],
+    entry_points={
+        'console_scripts': [
+            'tabela=tabela.main:main',  # Replace 'yourappname' with the desired command
+        ],
+    },
+)
+</code></pre>
+<p>tabela.json (flatpak manifest):</p>
+<pre><code class="lang-json">{
+  "app-id": "eu.cichy1173.tabela",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "6.2",
+  "sdk": " org.kde.Sdk",
+  "command": "tabela",
+  "finish-args": ["--share=ipc", "--share=x11", "--share=wayland", "filesystem=host", "device=dri"],
+  "modules": [
+    {
+      "name": "tabela",
+      "buildsystem": "simple",
+      "build-commands": [
+        "python -m pip install ."
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "/home/cichy1173/Projekty/Tabela"
+        }
+      ],
+      "build-extensions": ["org.freedesktop.Sdk.Extension.python3.8"]
+    }
+  ]
+}
+</code></pre>
+<p>I am trying to build flatpak with command <code>flatpak-builder --user --install flatpak tabela.json</code> but I have this error:</p>
+<pre><code class="lang-bash">(flatpak-builder:364858): flatpak-builder-WARNING **: 13:04:45.674: Unknown property build-extensions for type BuilderModule
+error: Invalid id  org.kde.Sdk: Name can't start with  
+Failed to init: Unable to find sdk  org.kde.Sdk version 6.2
+</code></pre>
+<p>But if I check installed sdks:</p>
+<pre><code class="lang-bash">[cichy1173@starbook Tabela]$ flatpak list | grep org.kde.Sdk
+KDE Software Development Kit    org.kde.Sdk             5.15-21.08      flathub system
+KDE Software Development Kit    org.kde.Sdk             6.2     flathub system
+</code></pre>
+<p>I think, the lack of org.kde.Sdk (but i have it) it is not the only issue. My app is really basic, it uses only one dependency (PySide6), but I still have a lot of problems with building Flatpak. How can I do this in the right way?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 11, 2023 12:21 PM">
+            <time itemprop="datePublished" datetime="2023-08-11 12:21:11 +0000">Aug 11, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It seems the issue is that you have added a space at the start of:</p>
+<pre><code class="lang-auto">"sdk": "org.kde.Sdk",
+</code></pre>
+<p>so that it is instead:</p>
+<pre><code class="lang-auto">"sdk": " org.kde.Sdk",
+</code></pre>
+<p>I even had to diff the manifest with a known good one to notice the issue.</p>
+<p>It might be useful for flatpak-builder to check stuff like this, as i dont think runtime-id can have spaces in them in the first place.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 11, 2023 12:27 PM">
+            <time itemprop="datePublished" datetime="2023-08-11 12:27:45 +0000">Aug 11, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes. Thank you. Now I can build app with GNOME Builder. I had to also change finish-args, because it wouldnt let me start the app.</p>
+<pre><code class="lang-json">{
+  "app-id": "eu.cichy1173.tabela",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "6.2",
+  "sdk": "org.kde.Sdk",
+  "command": "tabela",
+  "finish-args": ["--share=ipc", "--share=network"],
+  "modules": [
+    {
+      "name": "tabela",
+      "buildsystem": "simple",
+      "build-commands": [
+        "python -m pip install ."
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "/home/cichy1173/Projekty/Tabela"
+        }
+      ],
+      "build-extensions": ["org.freedesktop.Sdk.Extension.python3.8"]
+    }
+  ]
+}
+</code></pre>
+<p>But now I have this issue:</p>
+<pre><code class="lang-bash">bwrap: execvp tabela: No such file or directory
+Application exited
+</code></pre>
+<p>But If i try build an app in VSCodium using terminal and command <code>flatpak-builder --user --install flatpak tabela.json</code> I have this issue:</p>
+<pre><code class="lang-bash">Processing /run/build/tabela
+  Preparing metadata (setup.py) ... done
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fe7360e1820&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyside6/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fe7360ff130&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyside6/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fe7360ff580&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyside6/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fe7360ffeb0&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyside6/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fe7360fff70&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyside6/
+ERROR: Could not find a version that satisfies the requirement PySide6 (from tabela) (from versions: none)
+ERROR: No matching distribution found for PySide6
+WARNING: There was an error checking the latest version of pip.
+Error: module tabela: Proces potomny został zakończony z kodem 1
+</code></pre>
+<p>How can i fix this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 11, 2023 12:50 PM">
+            <time itemprop="datePublished" datetime="2023-08-11 12:50:27 +0000">Aug 11, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak-builder builds the application without network access, so you cant download the dependencies during the build step. So you will need to tell flatpak-builder to download the sources beforehand.</p>
+<p>As i can see you have a <code>requiremets.txt</code> file you can use this:</p><aside class="onebox githubfolder" data-onebox-src="https://github.com/flatpak/flatpak-builder-tools/tree/master/pip">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/pip" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h3><a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/pip" target="_blank" rel="noopener nofollow ugc"></a></h3>
+
+  <p><a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/pip" target="_blank" rel="noopener nofollow ugc">//github.com/flatpak/flatpak-builder-tools/tree/master/pip</a></p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>To automatically generate a json file with the necessary modules you can then include in your manifest to handle dependency downloads.</p>
+<p>Another python app also adds <code>--prefix=${FLATPAK_DEST}</code> to build commands for python components, so that might be related to the error with Gnome Builder see:</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/net.jenyay.Outwiker/blob/513bea3297676f7f2b8828824e8cd019f12812b1/net.jenyay.Outwiker.yml">
+  <header class="source">
+
+      <a href="https://github.com/flathub/net.jenyay.Outwiker/blob/513bea3297676f7f2b8828824e8cd019f12812b1/net.jenyay.Outwiker.yml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/net.jenyay.Outwiker/blob/513bea3297676f7f2b8828824e8cd019f12812b1/net.jenyay.Outwiker.yml" target="_blank" rel="noopener nofollow ugc">flathub/net.jenyay.Outwiker/blob/513bea3297676f7f2b8828824e8cd019f12812b1/net.jenyay.Outwiker.yml</a></h4>
+
+
+      <pre><code class="lang-yml">app-id: net.jenyay.Outwiker
+runtime: org.gnome.Platform
+runtime-version: '44'
+sdk: org.gnome.Sdk
+command: outwiker
+rename-icon: net.jenyay.Outwiker
+finish-args:
+  - --share=network
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+  - --device=dri
+  - --socket=pulseaudio
+  - --filesystem=host
+modules:
+  # Borrowed from: https://github.com/flathub/in.cinny.Cinny/blob/master/in.cinny.Cinny.yml
+  - name: webkit2gtk-4.0
+    sources:
+      - type: archive
+        url: https://webkitgtk.org/releases/webkitgtk-2.38.6.tar.xz
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/net.jenyay.Outwiker/blob/513bea3297676f7f2b8828824e8cd019f12812b1/net.jenyay.Outwiker.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

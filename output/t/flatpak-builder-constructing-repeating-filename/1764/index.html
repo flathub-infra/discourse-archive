@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder constructing repeating filename - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder constructing repeating filename</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder constructing repeating filename</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 11, 2021</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 11, 2021 9:46 PM">
+            <time itemprop="datePublished" datetime="2021-10-11 21:46:34 +0000">Oct 11, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m doing some basic checks (on a cut-down version) before updating my app from</p>
+<blockquote>
+<p>runtime: org.gnome.Platform<br>
+runtime-version: “3.38”</p>
+</blockquote>
+<p>to</p>
+<blockquote>
+<p>runtime-version: “40”</p>
+</blockquote>
+<p>This is the relevant bit of the manifest:</p>
+<blockquote>
+<p>modules:</p>
+<ul>
+<li>name: python3-pillow<br>
+buildsystem: simple<br>
+build-commands:
+<ul>
+<li>pip3 install --no-index --find-links=“file://${PWD}” --prefix=${FLATPAK_DEST} Pillow<br>
+sources:</li>
+<li>type: file<br>
+url: <a href="https://files.pythonhosted.org/packages/3c/7e/443be24431324bd34d22dd9d11cc845d995bcd3b500676bcf23142756975/Pillow-5.4.1.tar.gz" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/3c/7e/443be24431324bd34d22dd9d11cc845d995bcd3b500676bcf23142756975/Pillow-5.4.1.tar.gz</a><br>
+sha256: 5233664eadfa342c639b9b9977190d64ad7aca4edc51a966394d7e08e7f38a9f</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>I keep getting the error (on either runtime):</p>
+<blockquote>
+<p>Successfully installed Pillow<br>
+Error: module python3-pillow: Error when getting information for file “/home/chris/flatpak/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/rofiles/rofiles-sXgi2S/.flatpak-builder/git/https_github.com_myapp/objects/pack/pack-da9b70b334cbb58385a7a9d43d76a07248816692.idx”: File name too long<br>
+FB: Unmounting read-only fs: fusermount -uz /home/chris/flatpak/.flatpak-builder/rofiles/rofiles-sXgi2S</p>
+</blockquote>
+<p>I have edited out many lines. It seems this filename is in an endless loop of adding to itself over and over again. I’ve seen this before and wasn’t able to fix it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 13, 2021 8:07 AM">
+            <time itemprop="datePublished" datetime="2021-10-13 08:07:25 +0000">Oct 13, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve never seen this before. I have no idea and I could only make some trial&amp;error attempts. Can you put a link to the repository so we can test it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 13, 2021 2:24 PM">
+            <time itemprop="datePublished" datetime="2021-10-13 14:24:17 +0000">Oct 13, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@fedelibre</span> No bugs have been reported, so I haven’t looked at this for about 6 months, so I might be a bit rusty and have done something stupid. (I’m running it on Fedora-35-Beta, but that isn’t the problem as it did it on Ubuntu Budgie 20.10 or 21.04) This is just a cut down version without the main part of the app to test the basics:</p>
+<p>app-id: com.github.test.test</p>
+<p>runtime: org.gnome.Platform<br>
+runtime-version: “40”<br>
+sdk: org.gnome.Sdk</p>
+<p>command: test<br>
+copy-icon: true<br>
+finish-args:</p>
+<ul>
+<li>–share=ipc</li>
+<li>–socket=fallback-x11</li>
+<li>–socket=wayland</li>
+<li>–filesystem=host:rw</li>
+</ul>
+<p>modules:</p>
+<ul>
+<li>name: python3-pillow<br>
+buildsystem: simple<br>
+build-commands:
+<ul>
+<li>pip3 install --no-index --find-links=“file://${PWD}” --prefix=${FLATPAK_DEST} Pillow Pillow-PIL<br>
+sources:</li>
+<li>type: file<br>
+url: <a href="https://files.pythonhosted.org/packages/3c/7e/443be24431324bd34d22dd9d11cc845d995bcd3b500676bcf23142756975/Pillow-5.4.1.tar.gz" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/3c/7e/443be24431324bd34d22dd9d11cc845d995bcd3b500676bcf23142756975/Pillow-5.4.1.tar.gz</a><br>
+sha256: 5233664eadfa342c639b9b9977190d64ad7aca4edc51a966394d7e08e7f38a9f</li>
+<li>type: file<br>
+url: <a href="https://files.pythonhosted.org/packages/5d/e1/d298934cd78984a5e8d616945349ed66a74b9df0337fb1941ce76b8a2b7b/Pillow-PIL-0.1dev.tar.gz" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/5d/e1/d298934cd78984a5e8d616945349ed66a74b9df0337fb1941ce76b8a2b7b/Pillow-PIL-0.1dev.tar.gz</a><br>
+sha256: d80ee30805f10bf898df9ce7495f46e88990e8f90b5c2b917722d87526252b2c</li>
+</ul>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 13, 2021 8:42 PM">
+            <time itemprop="datePublished" datetime="2021-10-13 20:42:14 +0000">Oct 13, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@fedelibre</span> Solved by deleting ~/.flatpak-builder.<br>
+I’ve been using --force-clean but forgotten about a cache of previous attempts in ~./flatpak-builder. There’s probably a command-line parameter to delete this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 15, 2021 1:29 PM">
+            <time itemprop="datePublished" datetime="2021-10-15 13:29:08 +0000">Oct 15, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It started when I tried switching from using the .yml format for my manifest to the .json format.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Delphi251189</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 25, 2024 11:25 AM">
+            <time itemprop="datePublished" datetime="2024-04-25 11:25:45 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@ChrisOfBristol</span> , I faced the same issue.<br>
+But in my case even deleting ~/.flatpack-builder doesn’t helps.</p>
+<p>Do You have any ideas???</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Delphi251189</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 25, 2024 11:28 AM">
+            <time itemprop="datePublished" datetime="2024-04-25 11:28:46 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3.png" data-download-href="/uploads/original/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3.png" title="Screenshot from 2024-04-25 15-26-56" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3_2_690x380.png" alt="Screenshot from 2024-04-25 15-26-56" data-base62-sha1="dSP1RDJqcFinusfpkp8Ay09BiaT" width="690" height="380" srcset="/uploads/optimized/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3_2_690x380.png, /uploads/optimized/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3_2_1035x570.png 1.5x, /uploads/optimized/2X/6/614ebf5344526932ae560e0cd8470612c0743bd3_2_1380x760.png 2x" data-dominant-color="705969"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot from 2024-04-25 15-26-56</span><span class="informations">1917×1057 300 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>bellow is screenshot of error<br>
+System - Ubuntu 22.04<br>
+Flatpak 1.12.7<br>
+flatpak-builder 1.4.1</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Delphi251189</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 25, 2024 11:35 AM">
+            <time itemprop="datePublished" datetime="2024-04-25 11:35:14 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7.png" data-download-href="/uploads/original/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7.png" title="Screenshot from 2024-04-25 15-32-53" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7_2_690x380.png" alt="Screenshot from 2024-04-25 15-32-53" data-base62-sha1="p8b6WlPQP1JvpHnZyp9pb6WnZKD" width="690" height="380" srcset="/uploads/optimized/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7_2_690x380.png, /uploads/optimized/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7_2_1035x570.png 1.5x, /uploads/optimized/2X/b/b0230ac10428e3f99372d7b19e2aad6cb2e34ba7_2_1380x760.png 2x" data-dominant-color="3D1732"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot from 2024-04-25 15-32-53</span><span class="informations">1917×1057 350 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Can anybody explain what is the purpose of “rofiles” and why their file structure repeated recursively?<br>
+Is it Ok? maybe I need some other Filesystem (XFS for example ) to be able handle such long file names ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 25, 2024 11:55 AM">
+            <time itemprop="datePublished" datetime="2024-04-25 11:55:00 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s not to do with file systems. I’m not sure what causes it, but I think it’s related to caching or possibly glew and/or glew versions. My notes say:</p>
+<blockquote>
+<p>BEWARE OF ~/flatpak-builder which contains a cache of previous efforts - if not deleted can cause a loop of filename.</p>
+</blockquote>
+<pre><code class="lang-auto"># This removes previous efforts recursively, so beware!
+# Used to avoid filename loop or module version problems. For speed do not use normally.
+rm -r .flatpak-builder
+</code></pre>
+<p>Although you mention that you have already tried that.</p>
+<pre><code class="lang-auto">echo --disable-cache removes all previous attempts but takes ages doing some dependencies
+flatpak-builder ~/git/build ~/git/build/{your app}.yml --install --force-clean --user --disable-cache
+</code></pre>
+<pre><code class="lang-auto">
+ --force-clean -or --disable-cache might help.
+</code></pre>
+<p>I also noted, but didn’t use:</p>
+<blockquote>
+<pre><code>   --disable-rofiles-fuse
+       Disable the use of rofiles-fuse to optimize the cache use via
+       hardlink checkouts.
+</code></pre>
+</blockquote>
+<p>I don’t really know what this is all about, but I did fix it with the first two statements.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Delphi251189</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 25, 2024 4:18 PM">
+            <time itemprop="datePublished" datetime="2024-04-25 16:18:04 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Before I’m packed my app with snapcraft, and compared with snapcraft flatpak reminds me of the stone age…so maybe 2 more questions?</p>
+<ol>
+<li>are --cchache and --disable-cache options mutually exclusive ?</li>
+<li>Is there any way to publish closed source app in Flathub?</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Apr 25, 2024 4:43 PM">
+            <time itemprop="datePublished" datetime="2024-04-25 16:43:54 +0000">Apr 25, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I found Flatpaks so much more straightforward and the support for making them so much better that I switched from Snap to Flatpak.<br>
+[edited to remove inaccurate information.]</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Apr 26, 2024 1:41 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 13:41:59 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Delphi251189" data-post="12" data-topic="1764">
+<div class="title">
+<div class="quote-controls"></div>
+Delphi251189:</div>
+<blockquote>
+<p>Is there any way to publish closed source app in Flathub?</p>
+</blockquote>
+</aside>
+<p>Yes, shouldn’t be a problem at all, but be careful with architecture support.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Delphi251189</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Apr 26, 2024 1:59 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 13:59:13 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@razzeee</span><br>
+Basically, as far as I understand, I need to build flatpak app on my own infrastructure and somehow tell flatpak to take already built binaries from somewhere ( instead of building from src. )…<br>
+But is there any instructions how to actually do it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Apr 26, 2024 9:51 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 21:51:55 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>not sure if we have a separate walk through for that, in essence it’s just like doing a normal flatpak, but you skip the building part and download your binaries as sources instead - hopefully architecture aware (you can tag them in your instructions) and the rest is as in every other flatpak. with the difference, that you want your metainfo to say proprietary</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

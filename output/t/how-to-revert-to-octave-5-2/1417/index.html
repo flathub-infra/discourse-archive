@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to revert to Octave 5.2? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to revert to Octave 5.2?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to revert to Octave 5.2?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 7, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Timur Delahaye</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 7, 2021 6:35 AM">
+            <time itemprop="datePublished" datetime="2021-05-07 06:35:34 +0000">May 7, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have 2 computers that I wish to use with the same version of Octave, namely 5.2.0 (commit 4c5f24159e70054f4a276f58ac6e0669f8993d902612a7339d93701ee0f71e88 from 2020-10-08). One computer already has the correct version, the second is stuck on Octave 6.2.</p>
+<p>What I used to do to install the desired version of Octave was</p>
+<pre><code class="lang-auto">flatpak install flathub org.octave.Octave
+sudo flatpak update --assumeyes --commit=4c5f24159e70054f4a276f58ac6e0669f8993d902612a7339d93701ee0f71e88 org.octave.Octave
+</code></pre>
+<p>This however does not work anymore (It used to a few months ago) and I get<br>
+<code>error: Server returned status 404: Not Found</code></p>
+<p>Also, and I believe it is a related issue, when I run</p>
+<pre><code class="lang-auto">flatpak remote-info --commit=4c5f24159e70054f4a276f58ac6e0669f8993d902612a7339d93701ee0f71e88 flathub org.octave.Octave
+</code></pre>
+<p>from the computer where Octave 5.2 is installed, I get the correct information but when I try the same command from the computer where Octave 6.2 is installed, I get again the  <code>error: Server returned status 404: Not Found</code>. I find this error highly confusing since my first computer is able to fetch the remote information.</p>
+<p>Does <code>flatpak remote-info</code> really fetch remote information or does it default to local information when it is available?</p>
+<p>When I run <code>flatpak remote-info --log flathub org.octave.Octave</code> I get information only up to 2021-03-23 and my desired commit (from 2020-10-08) is hence not in the list. Is this the reason I cannot revert to Octave 5.2?</p>
+<p>What procedure should I follow to install Octave with the desired commit?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 8, 2021 10:47 AM">
+            <time itemprop="datePublished" datetime="2021-05-08 10:47:25 +0000">May 8, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since the commit does in fact not exist (execute <code>remote-info --verbose</code> to show the url it tries to access) I’d assume that it was deleted, see <a href="/t/availability-of-old-versions-of-a-flatpak-at-flathub/670/index.html" class="inline-onebox">Availability of old versions of a Flatpak at Flathub</a>.</p>
+<p>flatpak uses local data of the commit if available (you’ll see this with <code>--verbose</code>, too).<br>
+But you can try to export the desired version to move it between the computers:<br>
+<a href="https://docs.flatpak.org/en/latest/usb-drives.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/usb-drives.html</a><br>
+<a href="https://docs.flatpak.org/en/latest/single-file-bundles.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/single-file-bundles.html</a></p>
+<p>The only other option I see is to build it yourself.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

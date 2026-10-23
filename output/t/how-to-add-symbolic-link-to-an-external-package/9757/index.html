@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to add symbolic link to an external package - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to add symbolic link to an external package</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to add symbolic link to an external package</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 31, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">André Luiz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 31, 2025 3:20 PM">
+            <time itemprop="datePublished" datetime="2025-05-31 15:20:46 +0000">May 31, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have installed the latest version of LibreOffice through Flatpak, and the newest version of a LibreOffice extension, WritingTool (meant as an offline grammar and orthographic checker, instead of using LanguageTool online feature), which requires Java RE enabled.<br>
+Although with WritingTool extension active and the buttons appearing in the toolbar and the file bar, clicking on any buttons do nothing. The dependency of Java active seems to make the extension slow to respond, and prone to crashes… My LibreOffice install specifications are:</p>
+<p>Version: 25.2.2.2 (X86_64) / LibreOffice Community<br>
+Build ID: 7370d4be9e3cf6031a51beef54ff3bda878e3fac<br>
+CPU threads: 4; OS: Linux 6.12; UI render: default; VCL: gtk3<br>
+Locale: pt-BR (pt_BR.UTF-8); UI: pt-BR<br>
+<strong>Flatpak</strong><br>
+Calc: threaded</p>
+<p>I have the package ‘libreoffice-java-common’ installed from the repositories of my Linux distro (MX Linux 23.6), but apparently LibreOffice Flatpak install doesn’t ‘recognise’ it… And, unfortunately, libreoffice-java-common isn’t available at Flatpak repositories (neither flathub nor flathub-verified …)</p>
+<p>Supposing that, in my case, the trouble is due to absence / non-recognition of package libreoffice-java-common, <em><strong>how to add a symbolic link in flatpak to an external package?</strong></em>…</p>
+<p>A quick search with Google returned this:&gt;</p>
+<blockquote>
+<p>To create a symbolic link to an external package within a Flatpak, you’ll primarily use the <code>ln -s</code> command, similar to how you would on a standard Linux system. This creates a symbolic link (a pointer) from within the Flatpak’s environment to a file or directory located on the host system outside the Flatpak.</p>
+<p>Steps:</p>
+<ol>
+<li><strong>1.</strong> <strong>Identify the External Package:</strong></li>
+</ol>
+<p>Determine the exact path of the file or directory you want to link to from the host system.</p>
+<ul>
+<li><strong>2.</strong> <strong>Determine the Target Path Inside the Flatpak:</strong></li>
+</ul>
+<p>Decide where you want the symbolic link to be created within the Flatpak’s file system. This might be within the app’s config directory, or another location accessible to the app.</p>
+<ul>
+<li><strong>3.</strong> <strong>Create the Symbolic Link:</strong></li>
+</ul>
+<p>Use the <code>ln -s</code> command from inside the Flatpak’s environment to create the link. The command syntax is: <code>ln -s &lt;path_to_external_file&gt; &lt;path_to_symlink_in_flatpak&gt;</code>.</p>
+<p>Example:</p>
+<p>Let’s say you want to symlink a configuration file located at <code>~/my_configs/app_config.ini</code> on your host system to a Flatpak application that expects this config file in its <code>~/.var/app/com.example.app/config/</code> directory.</p>
+<ol>
+<li><strong>External Package:</strong> <code>~/my_configs/app_config.ini</code></li>
+<li><strong>Target Path (Inside Flatpak):</strong> <code>~/.var/app/com.example.app/config/</code></li>
+</ol>
+<p>The command to create the symlink would be (from within a Flatpak terminal, or using <code>flatpak run --filesystem=host com.example.app --command=bash</code>):</p>
+<p><code>ln -s ~/my_configs/app_config.ini ~/.var/app/com.example.app/config/app_config.ini</code></p>
+<p>Important Considerations:</p>
+<ul>
+<li><strong>Permissions:</strong></li>
+</ul>
+<p>Ensure the Flatpak application has the necessary permissions to access the external file or directory, especially if it’s outside your home directory. This might require using <code>flatseal</code> or other tools to configure the Flatpak’s permissions.</p>
+<ul>
+<li><strong>Flatpak Sandboxing:</strong></li>
+</ul>
+<p>Flatpak sandboxing can restrict access to certain parts of the host file system. If the external file is in a directory not explicitly allowed in the Flatpak’s configuration, the symlink might not function as expected.</p>
+<ul>
+<li><strong>File Systems:</strong></li>
+</ul>
+<p>Symbolic links can span different file systems. However, Flatpak sandboxing can limit the visibility of certain file systems.</p>
+<ul>
+<li><strong>Persistence:</strong></li>
+</ul>
+<p>If you want the symbolic link to persist across Flatpak updates or reboots, make sure it’s created in a location that is not cleared on updates or reboots. For example, <code>/var/lib/flatpak</code> is a good place for persistent symlinks.</p>
+<ul>
+<li><strong>Testing:</strong></li>
+</ul>
+<p>Verify that the symbolic link is working correctly by accessing the linked file or directory from within the Flatpak application.</p>
+<p>In summary, creating a symbolic link to an external package within a Flatpak is a straightforward process, but you need to be aware of Flatpak’s sandboxing and permission mechanisms to ensure it functions correctly.</p>
+</blockquote>
+<p>In short, I’d like to assure the aforementioned procedures suffice to make the Java dependent extension works correctly within Flatpak’s LibreOffice…<br>
+Thanks in advance!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 31, 2025 4:05 PM">
+            <time itemprop="datePublished" datetime="2025-05-31 16:05:22 +0000">May 31, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Symbolic links to places outside of an Flatpak application are difficult. To keep it short: The filesystem an Flatpak application sees is a sandbox, into which the files of the runtime, the application and other permitted folders are mounted to. A symbolic link to <code>/usr</code> for example will link to files of the runtime inside the sandbox, not your system.</p>
+<p>That being aside, symlinking random files does not seem like a good solution to fixing an issue.<br>
+The LibreOffice Flatpak comes with an OpenJDK 21 installation, so I presume that the contents of <code>libreoffice-java-common</code> is also included in the Flatpak.</p>
+<p>If the extension fails, this could be for two issues. First, the extension might be configured wrongly or makes expectations which aren’t true in the sandbox. Second, there might be some other component which isn’t included in the Flatpak.</p>
+<p>For the second case, it seems like you can extend LibreOffice with an extension, which could add additional files to the sandbox.</p>
+<p>With all that said, this seems more an issue to be discussed with the developers of LibreOffice or the extension in question.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">André Luiz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 29, 2025 5:28 PM">
+            <time itemprop="datePublished" datetime="2025-06-29 17:28:53 +0000">Jun 29, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I’m returning to this discussion after a while. Unfortunately, your last reply didn’t bring a solution… The missing package <code>libreoffice-java-common</code> isn’t included among LibreOffice stable release available at Flatpak. And I couldn’t find out so far a way to install it <em>inside</em> Flatpak, neither make some sort of symbolic link to that package I have installed in my system (from my own Distro’s repositories), although that way isn’t advised… I don’t want to resource to install LibreOffice from another source rather than Flatpak, but the absence of one single file seems to be the culprit of the almost complete inoperative condition of LibreOffice extension I need (a grammar checking resource, without depending on online connection…)<br>
+Whom I might contact to ask for the inclusion of aforementioned file into LibreOffice install at Flatpak?<br>
+Thanks in advance.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 29, 2025 7:56 PM">
+            <time itemprop="datePublished" datetime="2025-06-29 19:56:34 +0000">Jun 29, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, I have checked the Debian version of the <code>libreoffice-java-common</code> package, and it seems like the Flatpak contains pretty much all files in there already. In the app sandbox, they can be found under <code>/app/libreoffice/…</code>.<br>
+So the files are already included in the Flatpak.</p>
+<p>It seems to me then that the extension fails to detect their presence then. Granted the <code>/app</code> prefix Flatpak uses for the files of an app is unusual, and it doesn’t help that LibreOffice itself seems to break the prefix conventions itself a bit…</p>
+<p>I would first discuss this with the developers of the extension. If the extension uses some hard path, like expecting the files under <code>/usr</code>, this might be the issue. If needed, an additional issue can be raised on the LibreOffice bugtracker later on.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">André Luiz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 29, 2025 9:40 PM">
+            <time itemprop="datePublished" datetime="2025-06-29 21:40:02 +0000">Jun 29, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I thank you your kind attention and interest on helping me with this issue. Nevertheless, I couldn’t find the files referred to libreoffice-java-common at the place you mentioned: <code>/home/~/.var/org.libreoffice.LibreOffice/</code> …?</p>
+<p>But your remarks referred to how unusual are the " <code>/app</code> prefix" Flatpak uses for the files, and how about LibreOffice itself seems to break loose on using of prefix conventions, which could be eventually another trouble… Or, further, in case WritingTool extension uses some hard path, expecting the files under <code>/usr</code>, be the real culprit.</p>
+<p>I will try to discuss these findings with the developers of the extension, as per your suggestion. And I’ll try to add this discussion into LibreOffice bugtracker as well.<br>
+Thank you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 30, 2025 4:12 AM">
+            <time itemprop="datePublished" datetime="2025-06-30 04:12:15 +0000">Jun 30, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="aldQueiroz" data-post="5" data-topic="9757">
+<div class="title">
+<div class="quote-controls"></div>
+aldQueiroz:</div>
+<blockquote>
+<p>Nevertheless, I couldn’t find the files referred to libreoffice-java-common at the place you mentioned: <code>/home/~/.var/org.libreoffice.LibreOffice/</code> …?</p>
+</blockquote>
+</aside>
+<p>The folder <code>~/.var/app/org.libreoffice.LibreOffice</code> contains user data and configuration.</p>
+<p>What you’re looking for would be found in the app installation.</p>
+<p>There are two common installation folders:<br>
+<code>/var/lib/flatpak</code> for the system installation, and <code>~/.local/share/flatpak</code> for the user installation.<br>
+In there, in the folder <code>app/org.libreoffice.LibreOffice/current/active/files</code> you find the files that will be mounted to <code>/app</code> inside the sandbox.</p>
+<aside class="quote no-group" data-username="aldQueiroz" data-post="5" data-topic="9757">
+<div class="title">
+<div class="quote-controls"></div>
+aldQueiroz:</div>
+<blockquote>
+<p>But your remarks referred to how unusual are the " <code>/app</code> prefix" Flatpak uses for the files, and how about LibreOffice itself seems to break loose on using of prefix conventions, which could be eventually another trouble… Or, further, in case WritingTool extension uses some hard path, expecting the files under <code>/usr</code>, be the real culprit.</p>
+</blockquote>
+</aside>
+<p>Well, considering that in the sandbox the <code>/usr</code> prefix is reserved for the runtime, the <code>/app</code> prefix is used to mount the files an application itselfs provides. Also, LibreOffice stores its data files under <code>/app/libreoffice/share</code>, while I think it should be ideally under <code>/app/share/libreoffice </code>, which in turn would follow the filesystem conventions better.</p>
+<p>While Flatpak and LibreOffice itself should account for this, there could be some expectation in the extension that looks at <code>/usr</code> still. But that’s just a wild guess.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

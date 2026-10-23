@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[SOLVED] Installed Emacs Flatpak on KDE Manjaro, Failing to Find Modules &quot;xapp-gtk3-module&quot; and &quot;canberra-gtk-module&quot; even though I have libcanberra and xapp installed - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">[SOLVED] Installed Emacs Flatpak on KDE Manjaro, Failing to Find Modules &quot;xapp-gtk3-module&quot; and &quot;canberra-gtk-module&quot; even though I have libcanberra and xapp installed</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">[SOLVED] Installed Emacs Flatpak on KDE Manjaro, Failing to Find Modules &quot;xapp-gtk3-module&quot; and &quot;canberra-gtk-module&quot; even though I have libcanberra and xapp installed</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 31, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">munh</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 31, 2021 6:01 AM">
+            <time itemprop="datePublished" datetime="2021-05-31 06:01:12 +0000">May 31, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Title says pretty much everything.</p>
+<p>I checked, and I have all the lib32 packages for libcanberra, including the -gstreamer and -pulse packages, same with the 64-bit packages.</p>
+<p>There’s only one package for xapp in the Arch repository, and I have it installed.</p>
+<p>I considered I need lxappearance for xapp, but I already have lxappearance-gtk3 as part of Customize Look and Feel. I uninstalled CLaF and installed lxappearance anyways just to check, and it didn’t work.</p>
+<p>What do, flathub?</p>
+<p>EDIT: Here’s the output.</p>
+<p>[andyr@andydesktop flatpaks]$ flatpak run --share=ipc org.gnu.emacs<br>
+emacs-wrapper-wrapper: Setting up NPM packages<br>
+emacs-wrapper-wrapper: Setting up Cargo packages<br>
+emacs-wrapper-wrapper: Setting up Python packages<br>
+Gtk-Message: 23:00:39.159: Failed to load module “xapp-gtk3-module”<br>
+Gtk-Message: 23:00:39.159: Failed to load module “canberra-gtk-module”<br>
+Undefined color: “WINDOW_FOREGROUND”</p>
+<p>2ndEDIT: I at first used “flatpak run org.gnu.emacs” but changed it to “flatpak run --share=ipc org.gnu.emacs” after seeing that proposed solution in an answer to someone else who had a similar problem on Zorin OS.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">munh</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 31, 2021 6:48 AM">
+            <time itemprop="datePublished" datetime="2021-05-31 06:48:01 +0000">May 31, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>NEVERMIND!</p>
+<p>I went into /etc/xdg/kcmdisplayrc and changed ExportKDEColors to FALSE!</p>
+<p>THE PROBLEM IS SOLVED!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

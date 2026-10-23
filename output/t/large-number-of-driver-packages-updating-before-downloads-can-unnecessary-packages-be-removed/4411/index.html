@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Large Number of Driver Packages Updating Before Downloads - Can Unnecessary Packages Be Removed? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Large Number of Driver Packages Updating Before Downloads - Can Unnecessary Packages Be Removed?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Large Number of Driver Packages Updating Before Downloads - Can Unnecessary Packages Be Removed?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 12, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roy</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 12, 2023 10:02 AM">
+            <time itemprop="datePublished" datetime="2023-06-12 10:02:31 +0000">Jun 12, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone,</p>
+<p>I’ve recently noticed that every time I download an application from Flathub using Flatpak, a substantial number of driver packages are updated before the application download begins.</p>
+<p>Here is a typical example of what I’m encountering:</p>
+<pre><code class="lang-auto">        ID                                                        Branch                  Op             Remote              Download
+ 1. [✓] org.freedesktop.Platform.GL.default                       22.08                   u              flathub                41.4 MB / 143.1 MB
+ 2. [✓] org.freedesktop.Platform.GL.default                       22.08-extra             u              flathub                21.5 MB / 143.1 MB
+ 3. [✓] org.freedesktop.Platform.GL.nvidia-515-65-01              1.4                     u              flathub               364.2 MB / 365.1 MB
+ 4. [✓] org.freedesktop.Platform.GL.nvidia-515-76                 1.4                     u              flathub               364.9 MB / 365.8 MB
+ 5. [|] org.freedesktop.Platform.GL.nvidia-520-56-06              1.4                     u              flathub                40.0 MB / 407.1 MB
+ 6. [ ] org.freedesktop.Platform.GL.nvidia-525-60-11              1.4                     u              flathub             &lt; 414.8 MB
+ 7. [ ] org.freedesktop.Platform.GL.nvidia-525-85-05              1.4                     u              flathub             &lt; 416.0 MB
+ 8. [ ] org.freedesktop.Platform.GL.nvidia-525-89-02              1.4                     u              flathub             &lt; 415.0 MB
+ 9. [ ] org.freedesktop.Platform.GL.nvidia-530-41-03              1.4                     u              flathub             &lt; 345.2 MB
+10. [ ] org.gnome.Platform.Locale                                 44                      u              flathub             &lt; 340.5 MB (partial)
+11. [ ] org.gnome.Platform        
+</code></pre>
+<p>I understand the concept of sandboxed apps and the need for certain runtimes, but it seems like there are multiple versions of Nvidia driver packages updating each time. These additional updates make the entire process quite lengthy.</p>
+<p>My question is, has anyone else encountered this process of updating a significant number of driver packages before an application download?</p>
+<p>Additionally, is there a reliable method to remove unnecessary driver packages that are not needed for my system? I want to reduce the duration of these updates but want to make sure I don’t accidentally remove something crucial for the apps I’m using.</p>
+<p>Any insights, experiences, or suggestions are greatly appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 12, 2023 12:05 PM">
+            <time itemprop="datePublished" datetime="2023-06-12 12:05:16 +0000">Jun 12, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can run <code>flatpak uninstall --unused</code> and <code>flatpak uninstall --unused --user</code> and see if that cleans it up. Otherwise you have stuff referencing those platforms.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

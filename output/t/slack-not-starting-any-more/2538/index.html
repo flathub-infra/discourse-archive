@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slack not starting any more - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Slack not starting any more</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Slack not starting any more</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 20, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Reinout van Schouwen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 20, 2022 7:45 AM">
+            <time itemprop="datePublished" datetime="2022-05-20 07:45:51 +0000">May 20, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,<br>
+Upon the latest Slack update it’s not starting any more. Console output below. It appears Electron has trouble writing to a log file. Any clues?</p>
+<p>OS: Ubuntu 20.04.</p>
+<pre><code class="lang-auto">$ flatpak run com.slack.Slack
+[2 zypak-helper] Portal v4 is not available
+Initializing local storage instance
+(electron) Sending uncompressed crash reports is deprecated and will be removed in a future version of Electron. Set { compress: true } to opt-in to the new behavior. Crash reports will be uploaded gzipped, which most crash reporting servers support.
+Gtk-Message: 09:39:25.745: Failed to load module "canberra-gtk-module"
+Gtk-Message: 09:39:25.745: Failed to load module "canberra-gtk-module"
+[2:0520/093925.761642:ERROR:bus.cc(397)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: Bestand of map bestaat niet
+[2:0520/093925.761737:ERROR:bus.cc(397)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: Bestand of map bestaat niet
+Gkr-Message: 09:39:25.811: secret service operation failed: org.freedesktop.DBus.Error.ServiceUnknown
+LaunchProcess: failed to execvp:
+xdg-settings
+[2:0520/093925.944398:ERROR:bus.cc(397)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: Bestand of map bestaat niet
+[2:0520/093925.944496:ERROR:bus.cc(397)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: Bestand of map bestaat niet
+[2:0520/093925.944595:ERROR:bus.cc(397)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: Bestand of map bestaat niet
+[2:0520/093927.441631:ERROR:browser_main_loop.cc(269)] Gtk: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+[2:0520/093927.441715:ERROR:browser_main_loop.cc(269)] Gtk: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+[40:0520/093927.531680:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[0520/093927.654523:FATAL:logging.cc(144)] Failed to init logging: Bestand of map bestaat niet (2)
+Renderer process crashed - see https://www.electronjs.org/docs/tutorial/application-debugging for potential debugging information.
+Error sending from webFrameMain:  Error: Render frame was disposed before WebFrameMain could be accessed
+    at EventEmitter.n.send (node:electron/js2c/browser_init:165:417)
+    at EventEmitter.b.send (node:electron/js2c/browser_init:161:2494)
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:286:6544
+    at Array.forEach (&lt;anonymous&gt;)
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:286:6522
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:123:7146
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:110:21553
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:287:922
+    at dispatch (/app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:110:18457)
+    at Object.next (/app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:342:86816)
+[0520/093930.320468:FATAL:logging.cc(144)] Failed to init logging: Bestand of map bestaat niet (2)
+Renderer process crashed - see https://www.electronjs.org/docs/tutorial/application-debugging for potential debugging information.
+Error sending from webFrameMain:  Error: Render frame was disposed before WebFrameMain could be accessed
+    at EventEmitter.n.send (node:electron/js2c/browser_init:165:417)
+    at EventEmitter.b.send (node:electron/js2c/browser_init:161:2494)
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:286:6544
+    at Array.forEach (&lt;anonymous&gt;)
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:286:6522
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:123:7146
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:110:21553
+    at /app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:287:922
+    at dispatch (/app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:110:18457)
+    at Object.next (/app/extra/lib/slack/resources/app.asar/dist/main.bundle.js:342:86816)
+[0520/093931.820333:FATAL:logging.cc(144)] Failed to init logging: Bestand of map bestaat niet (2)
+
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Fedulov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 28, 2022 1:44 PM">
+            <time itemprop="datePublished" datetime="2022-06-28 13:44:24 +0000">Jun 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have the same exact issue. Linux Mint:</p>
+<pre><code class="lang-auto">$ cat /etc/os-release                                                                                                                                                                                                                      
+NAME="Linux Mint"
+VERSION="20.2 (Uma)"
+ID=linuxmint
+ID_LIKE=ubuntu
+PRETTY_NAME="Linux Mint 20.2"
+</code></pre>
+<p>Are there any fixes/workarounds?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Fedulov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 28, 2022 1:50 PM">
+            <time itemprop="datePublished" datetime="2022-06-28 13:50:29 +0000">Jun 28, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>OK, the issue seems to be with the latest Slack flatpak version: 4.26.1. After downgrading to 4.25.0 Slack starts again:</p>
+<pre><code class="lang-auto">sudo flatpak update --commit=e42dd12ad288509cb4c7f94c7a370f9c72f7ddf03b202fbe3c2a7c9f6979b249 com.slack.Slack
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Daniel Davidson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 7, 2022 2:06 PM">
+            <time itemprop="datePublished" datetime="2022-07-07 14:06:56 +0000">Jul 7, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the workaround, can confirm downgrading to 4.25.0 also works for me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

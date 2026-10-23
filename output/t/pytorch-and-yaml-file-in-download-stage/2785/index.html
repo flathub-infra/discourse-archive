@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pytorch and yaml file in download stage - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Pytorch and yaml file in download stage</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Pytorch and yaml file in download stage</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 8, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 8, 2022 12:56 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 12:56:56 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to build pytorch for a flatpak from source. I have the following in my yaml file. I don’t know if the build commands are right, but that doesn’t concern me right now. For some reason the googletest repo isn’t downloading.</p>
+<ul>
+<li>
+<p>name: torch<br>
+buildsystem: simple<br>
+build-commands:</p>
+<ul>
+<li>git submodule update --init --jobs 0</li>
+<li>pip3 install --prefix=/app .<br>
+sources:</li>
+<li>type: git<br>
+url: <a href="https://github.com/pytorch/pytorch" rel="noopener nofollow ugc">https://github.com/pytorch/pytorch</a><br>
+commit: 67ece03c8cd632cce9523cd96efde6f2d1cc8121</li>
+</ul>
+</li>
+</ul>
+<p>I get the message below.</p>
+<pre><code>    Downloading sources
+    Fetching git repo https://github.com/pytorch/pytorch, ref refs/tags/v1.12.0-rc8
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching git repo https://github.com/pybind/pybind11.git, ref refs/tags/v2.6.2
+    remote: Enumerating objects: 1, done.
+    remote: Counting objects: 100% (1/1), done.
+    remote: Total 1 (delta 0), reused 1 (delta 0), pack-reused 0
+    Receiving objects: 100% (1/1), 176 bytes | 176.00 KiB/s, done.
+    Fetching git repo https://github.com/NVlabs/cub.git, ref refs/tags/1.9.10
+    remote: Enumerating objects: 1, done.
+    remote: Counting objects: 100% (1/1), done.
+    remote: Total 1 (delta 0), reused 1 (delta 0), pack-reused 0
+    Receiving objects: 100% (1/1), 199 bytes | 199.00 KiB/s, done.
+    Fetching git repo https://gitlab.com/libeigen/eigen.git, ref refs/tags/3.4.0
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching full git repo https://github.com/google/googletest.git
+    remote: Enumerating objects: 30, done.
+    remote: Counting objects: 100% (26/26), done.
+    remote: Compressing objects: 100% (8/8), done.
+    remote: Total 30 (delta 17), reused 18 (delta 17), pack-reused 4
+    Receiving objects: 100% (30/30), 36.83 KiB | 7.37 MiB/s, done.
+    Resolving deltas: 100% (17/17), completed with 9 local objects.
+    From https://github.com/google/googletest
+     + 08a2a8e7...0813e1ac refs/pull/3695/merge -&gt; refs/pull/3695/merge  (forced update)
+    Fetching git repo https://github.com/google/benchmark.git, ref refs/heads/master
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching git repo https://github.com/protocolbuffers/protobuf.git, ref refs/heads/3.13.x
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching git repo https://github.com/google/benchmark.git, ref refs/tags/v1.2.0
+    remote: Enumerating objects: 1, done.
+    remote: Counting objects: 100% (1/1), done.
+    remote: Total 1 (delta 0), reused 1 (delta 0), pack-reused 0
+    Receiving objects: 100% (1/1), 157 bytes | 157.00 KiB/s, done.
+    Fetching full git repo https://github.com/google/googletest.git
+    Fetching git repo https://github.com/Yangqing/ios-cmake.git, ref refs/heads/master
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching git repo https://github.com/Maratyszcza/NNPACK.git, ref refs/heads/master
+    remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    Fetching full git repo https://github.com/facebookincubator/gloo
+    Failed to download sources: module torch: Not a gitlink tree: third-party/googletest
+</code></pre>
+<p>Thanks for your time. Any help would be great. I was hoping there would be some kind of flag that I could set that would make this part of the flatpak build work. That may not be the case.</p>
+<p>EDIT: it seems that the forum has messed up the indentation on my yaml snippet. I’m going to leave it as it is.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 8, 2022 3:55 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 15:55:57 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you can’t do <code>git submodule</code> in the build phase since there is not network access. However git submodules are by default automatically setup.</p>
+<p>Also you probably need to use the <code>flatpak-builder-tools</code> to generate the manifest for the python dependencies so <code>pip</code> can install offline as needed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 8, 2022 3:57 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 15:57:40 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>as for google test try adding <code>disable-shallow-clone: true</code> to the source.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 8, 2022 5:14 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 17:14:28 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>where does the ‘disable-shallow-clones: true’ go? Also, pytorch should be built from source (I think). Also, this is what I get when I run flatpak-pip-generator. This is with just happytransformer, but the output is similar when I add torch.</p>
+<pre><code>    ========================================================================
+    Downloading sources
+    ========================================================================
+    Running: "flatpak --filesystem=/home/dave/workspace/electron-gpt/py/requirements.txt --devel --share=network --filesystem=/tmp --command=pip3 run org.freedesktop.Platform download --exists-action=i --dest /tmp/pip-generator-py-packagepex81f3g -r ./../py/requirements.txt"
+    bwrap: execvp pip3: No such file or directory
+    Failed to download
+    Please fix the module manually in the generated file
+    ========================================================================
+    Downloading arch independent packages
+    ========================================================================
+    ========================================================================
+    Obtaining hashes and urls
+    ========================================================================
+    ========================================================================
+    Generating dependencies
+    ========================================================================
+    Generating dependencies for happytransformer
+    bwrap: execvp pip3: No such file or directory
+    Failed to download happytransformer
+
+    Output saved to py-package.json
+</code></pre>
+<p>The actual output is below:</p>
+<pre><code>    {
+        "name": "python3-happytransformer",
+        "buildsystem": "simple",
+        "build-commands": [
+            "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"happytransformer==2.4.1\" --no-build-isolation"
+        ],
+        "sources": []
+    }
+</code></pre>
+<p>This is the requirements.txt. You can see, I’ve tried to use torch as a requirement:</p>
+<pre><code>    #--extra-index-url https://download.pytorch.org/whl/cpu
+    #torch==1.12.1
+    happytransformer==2.4.1
+</code></pre>
+<p>Thanks for getting back to me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 8, 2022 5:28 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 17:28:26 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>oh, and this is the line where I call flatpak pip generator. I include the name of the runtime…</p>
+<pre><code class="lang-auto">flatpak-pip-generator -r ./../py/requirements.txt --output py-package  --runtime org.freedesktop.Platform 
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 8, 2022 6:37 PM">
+            <time itemprop="datePublished" datetime="2022-08-08 18:37:39 +0000">Aug 8, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If I remove the runtime option from the flatpak-pip-generator call and <em>comment-in</em> the torch and extra-index-url lines in the requirements.txt file, I get a lot of output that ends up here:</p>
+<pre><code>    Successfully downloaded torch happytransformer datasets tqdm transformers protobuf sentencepiece typing-extensions dill huggingface-hub numpy packaging pyarrow pyyaml regex requests responses tokenizers aiohttp filelock multiprocess pandas xxhash aiosignal async-timeout attrs certifi charset-normalizer frozenlist idna multidict pyparsing python-dateutil pytz urllib3 yarl fsspec six
+    ========================================================================
+    Downloading arch independent packages
+    ========================================================================
+    Traceback (most recent call last):
+      File "/home/dave/workspace/electron-gpt/flatpak/./tools/pip/flatpak-pip-generator", line 259, in &lt;module&gt;
+        url = get_tar_package_url_pypi(name, version)
+      File "/home/dave/workspace/electron-gpt/flatpak/./tools/pip/flatpak-pip-generator", line 72, in get_tar_package_url_pypi
+        with urllib.request.urlopen(url) as response:
+      File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+        return opener.open(url, data, timeout)
+      File "/usr/lib/python3.10/urllib/request.py", line 525, in open
+        response = meth(req, response)
+      File "/usr/lib/python3.10/urllib/request.py", line 634, in http_response
+        response = self.parent.error(
+      File "/usr/lib/python3.10/urllib/request.py", line 563, in error
+        return self._call_chain(*args)
+      File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+        result = func(*args)
+      File "/usr/lib/python3.10/urllib/request.py", line 643, in http_error_default
+        raise HTTPError(req.full_url, code, msg, hdrs, fp)
+    urllib.error.HTTPError: HTTP Error 404: Not Found
+</code></pre>
+<p>I don’t really know what this means, but I thought it would be good to show the output.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

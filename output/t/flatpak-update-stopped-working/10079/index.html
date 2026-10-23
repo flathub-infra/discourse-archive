@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak update stopped working - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak update stopped working</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak update stopped working</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 25, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mongo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 25, 2025 1:30 PM">
+            <time itemprop="datePublished" datetime="2025-07-25 13:30:28 +0000">Jul 25, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi all,<br>
+Last night, I updated my kernel (Ubuntu 20.04; kernel v5.15.0-144) and along with it several NVidia dependencies.  Usually, when there is an NVIDIA update, I just have to run ‘flatpak update’ and then all is well with the world again. This time, when I try the flatpak update, I get the following:</p>
+<pre><code class="lang-auto">~&gt; Your Command, Oh Master? flatpak update
+Looking for updates…
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.winehq.Wine.mono/x86_64/stable-24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.winehq.Wine.mono/x86_64/stable-24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.winehq.Wine.gecko/x86_64/stable-24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.winehq.Wine.gecko/x86_64/stable-24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gtk.Gtk3theme.Yaru-dark/x86_64/3.22 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gtk.Gtk3theme.Yaru-dark/x86_64/3.22 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gnome.Platform/x86_64/48 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gnome.Platform/x86_64/48 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gnome.Platform/x86_64/47 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gnome.Platform/x86_64/47 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gnome.Platform.Locale/x86_64/48 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gnome.Platform.Locale/x86_64/48 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gnome.Platform.Locale/x86_64/47 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gnome.Platform.Locale/x86_64/47 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.gnome.Platform.Compat.i386/x86_64/47 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.gnome.Platform.Compat.i386/x86_64/47 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.openh264/x86_64/2.5.1 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.openh264/x86_64/2.5.1 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.openh264/x86_64/2.4.1 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.openh264/x86_64/2.4.1 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL32.nvidia-535-230-02/x86_64/1.4 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL32.nvidia-535-230-02/x86_64/1.4 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL32.nvidia-535-183-01/x86_64/1.4 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL32.nvidia-535-183-01/x86_64/1.4 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL32.default/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL32.default/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL32.Debug.default/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL32.Debug.default/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.nvidia-535-230-02/x86_64/1.4 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.nvidia-535-230-02/x86_64/1.4 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.nvidia-535-183-01/x86_64/1.4 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.nvidia-535-183-01/x86_64/1.4 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/24.08extra is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.default/x86_64/24.08extra metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.default/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.Debug.default/x86_64/24.08extra is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.Debug.default/x86_64/24.08extra metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.Debug.default/x86_64/24.08 is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/org.freedesktop.Platform.GL.Debug.default/x86_64/24.08 metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since runtime/com.usebottles.bottles.Locale/x86_64/stable is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find runtime/com.usebottles.bottles.Locale/x86_64/stable metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since app/com.usebottles.bottles/x86_64/stable is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find app/com.usebottles.bottles/x86_64/stable metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Treating remote fetch error as non-fatal since app/com.github.tchx84.Flatseal/x86_64/stable is already installed: Unable to load summary from remote flathub: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+F: Warning: Can't find app/com.github.tchx84.Flatseal/x86_64/stable metadata for dependencies: Unable to load metadata from remote flathub: summary fetch error: URI https://dl.flathub.org/repo/summary exceeded maximum size of 10485760 bytes
+Nothing to do.
+~&gt; Your Command, Oh Master? 
+
+</code></pre>
+<p>I tried to do a flatpak repair (w/ root privileges), which completed successfully, and said that all was OK. The update command still gives the same stuff.  Is anybody else seeing the same thing? Any suggestions as to what I am missing? Thanks!</p>
+<p>Mongo</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 25, 2025 3:54 PM">
+            <time itemprop="datePublished" datetime="2025-07-25 15:54:22 +0000">Jul 25, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ubuntu 20.04 is EOL, the provided flatpak version is probably too old. You must upgrade your system:</p>
+<aside class="quote" data-post="1" data-topic="9971">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <a href="/t/error-failed-to-install-org-gnome-builder-while-runtime-exceeded-maximum-size-of-10485760-bytes/9971/index.html">Error: Failed to install org.gnome.Builder: While runtime… exceeded maximum size of 10485760 bytes</a> 
+  </div>
+  <blockquote>
+    Im trying to install Builder but take error  Unable to load summary from remote flathub: URI <a href="https://dl.flathub.org/repo/summary" rel="noopener nofollow ugc">https://dl.flathub.org/repo/summary</a> exceeded maximum size of 10485760 b. 
+It’s hossible resolve the problem?
+  </blockquote>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mongo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 26, 2025 1:04 AM">
+            <time itemprop="datePublished" datetime="2025-07-26 01:04:08 +0000">Jul 26, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>cxrvh, thanks for the quick reply.  I was afraid that was the case (I rather like 20.04), but it is what it is…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Graham Lees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 26, 2025 7:23 AM">
+            <time itemprop="datePublished" datetime="2025-07-26 07:23:22 +0000">Jul 26, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>IIRC there wasn’t much of a difference between 20.04 and 22.04 (which receives standard support and security updates to April 2027) - plenty of time for you spin up a “Try Ubuntu” live USB of the current LTS 24.04 to check it out more thoroughly.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

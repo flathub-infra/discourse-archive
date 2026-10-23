@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How can I package a python tkinter application? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How can I package a python tkinter application?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How can I package a python tkinter application?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 2, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">tralph3</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 2, 2023 2:09 AM">
+            <time itemprop="datePublished" datetime="2023-03-02 02:09:20 +0000">Mar 2, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I’m trying to package some of my programs for Flatpak. They use python tkinter, and since it’s not distributed as a pip package, I’m wondering how do you ensure the dependency is present in the manifest file.</p>
+<p>This is my manifest so far:</p>
+<pre><code class="lang-auto">app-id: com.github.tralph3.Steam_Metadata_Editor
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+modules:
+  - name: Steam_Metadata_Editor
+    sources:
+      - type: git
+        url: https://github.com/tralph3/Steam-Metadata-Editor
+finish-args:
+  - --filesystem=home:rw
+  - --socket=x11
+  - --socket=wayland
+</code></pre>
+<p>The application as it is gets installed in <code>/opt</code>, and creates a config file in <code>~/.local/share/Steam-Metadata-Editor</code>. It also needs access to the <code>appinfo.vdf</code> file that Steam creates in its installation directory, which can vary from system to system. It could theoretically be in any path in the home directory, although there is a default which is in <code>~/.local/share/Steam</code> which is where the vast majority of installations will be.</p>
+<p>So how can I install tkinter? I’ve read the docs, but I still don’t quite grasp how Flatpaks work. I’m trying to make connections as to how docker containers work, which I’m very familiar with, but they don’t seem to behave quite the same.</p>
+<p>Some clarification would be appreciated, thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 2, 2023 8:11 PM">
+            <time itemprop="datePublished" datetime="2023-03-02 20:11:52 +0000">Mar 2, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Scribus and Inkscape both install tkinter separately. You can use that as an example.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">tralph3</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 2, 2023 10:33 PM">
+            <time itemprop="datePublished" datetime="2023-03-02 22:33:36 +0000">Mar 2, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>How can I see their manifest files? I’ve been looking for a way to get Scribus’ one, but I can’t seem to be able to do so.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">yodatak</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 2, 2023 10:55 PM">
+            <time itemprop="datePublished" datetime="2023-03-02 22:55:06 +0000">Mar 2, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>the flatpak manifest of scribus</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/net.scribus.Scribus/blob/master/net.scribus.Scribus.yaml#L40">
+  <header class="source">
+
+      <a href="https://github.com/flathub/net.scribus.Scribus/blob/master/net.scribus.Scribus.yaml#L40" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/net.scribus.Scribus/blob/master/net.scribus.Scribus.yaml#L40" target="_blank" rel="noopener nofollow ugc">flathub/net.scribus.Scribus/blob/master/net.scribus.Scribus.yaml#L40</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-yaml">
+      <ol class="start lines" start="30" style="counter-reset: li-counter 29 ;">
+          <li>  - --share=network</li>
+          <li>
+          </li>
+<li>modules:</li>
+          <li>  - shared-modules/python2.7/python-2.7.json</li>
+          <li>  # The `tkinter` module is missing from the Freedesktop Sdk's Python installation.</li>
+          <li>  - name: tkinter</li>
+          <li>    buildsystem: simple</li>
+          <li>    build-commands:</li>
+          <li>      - pip3 install --prefix=${FLATPAK_DEST} .</li>
+          <li>    sources:</li>
+          <li class="selected">      - type: git</li>
+          <li>        url: https://github.com/iwalton3/tkinter-standalone</li>
+          <li>        commit: ba946536054f9d27a08aafde21aa18330ce05729</li>
+          <li>    modules:</li>
+          <li>      - name: tcl</li>
+          <li>        buildsystem: autotools</li>
+          <li>        subdir: unix</li>
+          <li>        post-install:</li>
+          <li>          - chmod 755 /app/lib/libtcl*.so</li>
+          <li>        cleanup:</li>
+          <li>          - /bin</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Inkscape</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub/org.inkscape.Inkscape">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/org.inkscape.Inkscape" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/b/bf8cc012815f0055d7d0ca86ad79e142c1ecf05f_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/b/bf8cc012815f0055d7d0ca86ad79e142c1ecf05f_2_690x345.png, /uploads/optimized/2X/b/bf8cc012815f0055d7d0ca86ad79e142c1ecf05f_2_1035x517.png 1.5x, /uploads/original/2X/b/bf8cc012815f0055d7d0ca86ad79e142c1ecf05f.png 2x" data-dominant-color="F7F8F9"></div>
+
+<h3><a href="https://github.com/flathub/org.inkscape.Inkscape" target="_blank" rel="noopener nofollow ugc">GitHub - flathub/org.inkscape.Inkscape</a></h3>
+
+  <p>Contribute to flathub/org.inkscape.Inkscape development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<p>
+and the module they use</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/org.inkscape.Inkscape/blob/master/python3-tkinter.yaml">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.inkscape.Inkscape/blob/master/python3-tkinter.yaml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.inkscape.Inkscape/blob/master/python3-tkinter.yaml" target="_blank" rel="noopener nofollow ugc">flathub/org.inkscape.Inkscape/blob/master/python3-tkinter.yaml</a></h4>
+
+
+      <pre><code class="lang-yaml">name: tkinter
+buildsystem: simple
+build-commands:
+  - pip3 install --prefix=${FLATPAK_DEST} .
+sources:
+  - type: git
+    url: https://github.com/iwalton3/tkinter-standalone
+    commit: ba946536054f9d27a08aafde21aa18330ce05729
+modules:
+  - name: tcl
+    buildsystem: autotools
+    subdir: unix
+    post-install:
+      - chmod 755 /app/lib/libtcl*.so
+    cleanup:
+      - /bin
+      - /lib/pkgconfig
+      - /man
+    sources:
+      - type: archive
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/org.inkscape.Inkscape/blob/master/python3-tkinter.yaml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>you can search in manifest here</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/original/2X/3/30dff0a00cc225c3180062d4ab24929bd0efc85d.png" class="thumbnail onebox-avatar" width="256" height="256">
+
+<h3><a href="https://github.com/flathub" target="_blank" rel="noopener nofollow ugc">Flathub</a></h3>
+
+  <p>Flathub is a build and distribution service for Flatpak applications. Its goal is to act as a central hub for making desktop applications available to users. - Flathub</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">yodatak</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 2, 2023 10:57 PM">
+            <time itemprop="datePublished" datetime="2023-03-02 22:57:19 +0000">Mar 2, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some apps that use tkinyter ( i hope some day a generic way to maintain this)</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/search?q=org%3Aflathub%2Btkinter&amp;type=code">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/search?q=org%3Aflathub%2Btkinter&amp;type=code" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/optimized/2X/3/337b7cc06184984e148c075df20ef009e0e6ecaa_2_500x500.png" class="thumbnail onebox-avatar" width="500" height="500" srcset="/uploads/optimized/2X/3/337b7cc06184984e148c075df20ef009e0e6ecaa_2_500x500.png, /uploads/optimized/2X/3/337b7cc06184984e148c075df20ef009e0e6ecaa_2_750x750.png 1.5x, /uploads/optimized/2X/3/337b7cc06184984e148c075df20ef009e0e6ecaa_2_1000x1000.png 2x" data-dominant-color="E1E1E1">
+
+<h3><a href="https://github.com/search?q=org%3Aflathub%2Btkinter&amp;type=code" target="_blank" rel="noopener nofollow ugc">Build software better, together</a></h3>
+
+  <p>GitHub is where people build software. More than 100 million people use GitHub to discover, fork, and contribute to over 330 million projects.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">tralph3</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 12, 2023 10:27 PM">
+            <time itemprop="datePublished" datetime="2023-03-12 22:27:18 +0000">Mar 12, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry for the late reply. Thank you, this has been really helpful.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

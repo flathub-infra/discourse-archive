@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bundle of third parties stuff - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Bundle of third parties stuff</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Bundle of third parties stuff</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 27, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Papoteur</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 27, 2022 10:37 AM">
+            <time itemprop="datePublished" datetime="2022-04-27 10:37:50 +0000">Apr 27, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,<br>
+I plan to build a flatpak application for voice recognition. This application uses pieces from different sources:</p>
+<ul>
+<li>vosk python bindings, available on <a href="http://pypi.org" rel="noopener nofollow ugc">pypi.org</a>
+</li>
+<li>nerd-dictation, a python script using vosk bindings</li>
+<li>parec for voice capture</li>
+<li>xdotool for simulate keyboard</li>
+<li>elograf for adding an entry in systray, using PyQt5.</li>
+</ul>
+<p>I have build something in a whole which I can install locally.<br>
+I’m the author of only elograf.<br>
+Is there recommendations about the way to package, i.e. has some pieces to be split or is the whole be acceptable?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 28, 2022 12:43 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 12:43:38 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I find it hard to answer your question, because I’m unsure of your definitions of “split” and “whole”.<br>
+Could you please explain in more detail what you mean?</p>
+<p>Typically I would say that you would want to use separate modules for each component that you need. Also please refer to the licenses of the dependencies to see if there are any special requirements there.</p>
+<p>Since the sandbox cannot access the internet during the build process (except for setting up the environment), you might need to build some dependencies as you cannot just install them using pip.</p>
+<p>See: <a href="https://docs.flatpak.org/en/latest/python.html" class="inline-onebox" rel="noopener nofollow ugc">Python — Flatpak documentation</a> for more information.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Papoteur</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 28, 2022 1:29 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 13:29:56 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="4c0n" data-post="2" data-topic="2473">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>I find it hard to answer your question, because I’m unsure of your definitions of “split” and “whole”.<br>
+Could you please explain in more detail what you mean?</p>
+</blockquote>
+</aside>
+<p>I know the packaging with rpm, thus in such case, we would have a package for python-vosk-api, one for xdotool, one for parec, one for nerd-dictation. At last, elograf would provide its code and requires all other pieces. This is what I name the split form.<br>
+All these pieces are open source projects.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Papoteur</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 28, 2022 1:32 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 13:32:35 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="4c0n" data-post="2" data-topic="2473">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>Since the sandbox cannot access the internet during the build process (except for setting up the environment), you might need to build some dependencies as you cannot just install them using pip.</p>
+</blockquote>
+</aside>
+<p>Which sandbox do you refer to in this case? I know that a sand box is used at run time on the final user machine, but you refer to a build time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 28, 2022 2:46 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 14:46:00 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes so typically these would be separate modules in the manifest. If there are subdependencies then there is a good chance they also need to be bundled. Please see the link to the documentation.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 28, 2022 2:47 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 14:47:24 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So except for downloading the sources of a module during builds you cannot access the network, so in a way your also building the flatpak in a sandboxed environment.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 29, 2022 2:18 PM">
+            <time itemprop="datePublished" datetime="2022-04-29 14:18:29 +0000">Apr 29, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it the same sandbox, flatpak-builder will run the build in the same sandbox (WITH the sdk) as the resulting package. Development support is provided by the SDK which is a superset of the platform. There is no network access during the build phase.</p>
+<p>As for python you might want to look at <a href="https://github.com/flatpak/flatpak-builder-tools" class="inline-onebox">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a> that contains tooling to generate manifests for python dependencies.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

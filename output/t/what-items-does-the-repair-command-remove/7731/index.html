@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What items does the &quot;repair&quot; command remove? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What items does the &quot;repair&quot; command remove?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What items does the &quot;repair&quot; command remove?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 23, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roman Riabenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 23, 2024 3:55 PM">
+            <time itemprop="datePublished" datetime="2024-09-23 15:55:55 +0000">Sep 23, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have installed a dozen of applications. When I look at their “Installed size”, their sizes sum up to something around 6.7 GB. After the installation, I checked the size of the Flatpak objects store, ran a repair, and checked again. The “Installed size” output did not change. The numbers in the brackets when running the “repair” command ran to almost a hundred.</p>
+<ul>
+<li>What files does the “repair” command remove? Where do they come from?</li>
+<li>What are the numbers in the brackets when the “repair” command runs?</li>
+<li>Where does the “Installed size” value come from?</li>
+<li>How to keep track of the space occupied by individual applications and by the whole Flatpak installation?</li>
+</ul>
+<pre><code class="lang-auto">$ du -sh ~/.local/share/flatpak/repo/objects
+5,4G	/home/purism/.local/share/flatpak/repo/objects
+$ flatpak --user repair
+$ du -sh ~/.local/share/flatpak/repo/objects
+4,6G	/home/purism/.local/share/flatpak/repo/objects
+$ du -sh ~/.local/share/flatpak/
+6,3G	/home/purism/.local/share/flatpak/
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 24, 2024 5:38 AM">
+            <time itemprop="datePublished" datetime="2024-09-24 05:38:48 +0000">Sep 24, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is more of a Flatpak question, not related to Flathub.</p>
+<p>If repair didn’t free up space that means there was nothing to prune. You can take a look at <code>man flatpak-repair</code> to see what it does. Installed size is not supposed to change on running repair, the repo (<code>~/.local/share/flatpak/repo/</code>) size may change.</p>
+<blockquote>
+<ul>
+<li>What are the numbers in the brackets when the “repair” command runs?</li>
+</ul>
+</blockquote>
+<p>Size of the hash table of all refs.</p>
+<blockquote>
+<p>How to keep track of the space occupied by individual applications and by the whole Flatpak installation?</p>
+</blockquote>
+<p>What do you mean by space occupied by installed applications? Does that count the app’s cache, config etc. ? Or the space occupied by the installation ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roman Riabenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 24, 2024 6:54 PM">
+            <time itemprop="datePublished" datetime="2024-09-24 18:54:23 +0000">Sep 24, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello. Thank you for the answers!</p>
+<aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>This is more of a Flatpak question, not related to Flathub.</p>
+</blockquote>
+</aside>
+<p>Sorry, it did not occur to me that my questions may be off-topic here. I now looked at the “About” page which says that it is “a place for Flathub Contributors and Users”. My questions are probably too specific to Flatpak itself. However, the <a href="https://www.flatpak.org/about/" rel="noopener nofollow ugc">“Contact” page on flatpak.org</a> links here for the forum. I find that confusing.</p>
+<blockquote>
+<p>Forum <a href="/">discourse.flathub.org</a></p>
+</blockquote>
+<p>Could you suggest a more appropriate forum for general questions about Flatpak and the <code>flatpak</code> command?</p>
+<aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>Installed size is not supposed to change on running repair</p>
+</blockquote>
+</aside>
+<p>I wonder what the “Installed size” in <code>flatpak list --columns=app,size</code> output means. The <code>man flatpak-list</code> does not seem to clarify. I am confused because I summed up the individual “Installed size” of each application and it resulted in a larger size than the <code>objects</code> directory and even the <code>flatpak</code> directory has.</p>
+<aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>What do you mean by space occupied by installed applications? Does that count the app’s cache, config etc. ? Or the space occupied by the installation ?</p>
+</blockquote>
+</aside>
+<p>My primary concern is the free space left on the disk. So, anything that occupies it because of Flatpak operation could be of concern. However, I assume that an application installed with Flatpak has some data files, which depend on the application, are supposed to be controlled and managed by such application, and are, hopefully, stored somewhere in the user’s home directory. Instead, I am mostly concerned by the aggregate size of the binaries written to the disk for installation of the application and its dependencies by Flatpak.</p>
+<aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>You can take a look at <code>man flatpak-repair</code> to see what it does.</p>
+</blockquote>
+</aside>
+<p>Thank you for the suggestion. I have looked through the list of the items being removed per the manual page of <code>flatpak-repair</code>. Why would I have any of those? Is it normal?</p>
+<aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>the repo (<code>~/.local/share/flatpak/repo/</code>) size may change.</p>
+</blockquote>
+</aside>
+<p>I used to run <code>flatpak remove --unused --delete-data</code> regularly. However, when I first ran <code>flatpak --user repair</code> a few days ago, it reduced the size of the <code>flatpak</code> directory threefold due to reduction of the <code>objects</code> directory. Yesterday, I removed all applications and started afresh. Still, right after a fresh installation of the applications, the command freed almost a gigabyte. Is it normal? Should I be concerned? Do you happen to know why are those redundant items not removed automatically and require user interaction if they are not required?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 28, 2024 1:38 PM">
+            <time itemprop="datePublished" datetime="2024-09-28 13:38:37 +0000">Sep 28, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Roman" data-post="1" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+Roman:</div>
+<blockquote>
+<p>How to keep track of the space occupied by individual applications and by the whole Flatpak installation?</p>
+</blockquote>
+</aside>
+<pre><code class="lang-auto">flatpak list --columns name,application,size
+</code></pre>
+<p>It’s the installed size. Doesn’t care about the user data.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 28, 2024 1:44 PM">
+            <time itemprop="datePublished" datetime="2024-09-28 13:44:09 +0000">Sep 28, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Roman" data-post="3" data-topic="7731">
+<div class="title">
+<div class="quote-controls"></div>
+Roman:</div>
+<blockquote>
+<p>I wonder what the “Installed size” in <code>flatpak list --columns=app,size</code> output means. The <code>man flatpak-list</code> does not seem to clarify. I am confused because I summed up the individual “Installed size” of each application and it resulted in a larger size than the <code>objects</code> directory and even the <code>flatpak</code> directory has.</p>
+</blockquote>
+</aside>
+<p>That’s because there is deduplication. Some data is shared between applications or runtimes by way of ostree.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

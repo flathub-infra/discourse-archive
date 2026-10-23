@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kodi flatpak crashes on startup - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Kodi flatpak crashes on startup</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Kodi flatpak crashes on startup</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 21, 2022</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">sjuk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 21, 2022 10:14 PM">
+            <time itemprop="datePublished" datetime="2022-01-21 22:14:04 +0000">Jan 21, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello Everybody,</p>
+<p>Kodi (19.<strong>2</strong>-Matrix) flatpak from <a href="https://flathub.org/apps/details/tv.kodi.Kodi" rel="noopener nofollow ugc">https://flathub.org/apps/details/tv.kodi.Kodi</a> crashes on startup.</p>
+<pre><code>$ flatpak run tv.kodi.Kodi
+libva info: VA-API version 1.12.0
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/intel-vaapi-driver/iHD_drv_video.so
+libva info: Found init function __vaDriverInit_1_12
+libva info: va_openDriver() returns 0
+/app/bin/kodi: line 187:     7 Segmentation fault      (core dumped) ${KODI_BINARY} $SAVED_ARGS
+</code></pre>
+<p>Kodi (19.<strong>3</strong>-Matrix) debian package from official Team Kodi PPA works fine.<br>
+<a href="https://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux" rel="noopener nofollow ugc">https://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux</a></p>
+<pre><code>$ kodi
+libva info: VA-API version 1.7.0
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: va_openDriver() returns -1
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/i965_drv_video.so
+libva info: Found init function __vaDriverInit_1_6
+libva info: va_openDriver() returns 0
+</code></pre>
+<p><strong>Does anyone have got an idea what’s wrong with the flatpak?</strong></p>
+<p>Thanks in advance &amp; best regards<br>
+sjuk</p>
+<pre><code>$ neofetch 
+            .-/+oossssoo+/-.               sjuk@asterix 
+        `:+ssssssssssssssssss+:`           ------------ 
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04.3 LTS x86_64 
+    .ossssssssssssssssssdMMMNysssso.       Host: B365M H 
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.4.0-96-generic 
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 1 hour, 31 mins 
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 2285 (dpkg), 12 (flatpak), 6 (snap) 
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: bash 5.0.17 
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1920x1080 
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: GNOME 
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter 
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   WM Theme: Adwaita 
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Theme: Yaru [GTK2/3] 
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Icons: Yaru [GTK2/3] 
+  +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal: gnome-terminal 
+   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i3-9100 (4) @ 4.200GHz 
+    .ossssssssssssssssssdMMMNysssso.       GPU: Intel 8th Gen Core Processor Gaussian Mixture Model 
+      -+sssssssssssssssssyyyssss+-         Memory: 2992MiB / 15881MiB 
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 22, 2022 3:08 PM">
+            <time itemprop="datePublished" datetime="2022-01-22 15:08:27 +0000">Jan 22, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Bug reports for the flatpak are more likely to be noticed when actually filed in the issue tracker of the flatpak</p>
+<aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/tv.kodi.Kodi/issues" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/f/fc4d76a6b8410d5b1ffdbe1ec33b5b02923a5bf0_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/f/fc4d76a6b8410d5b1ffdbe1ec33b5b02923a5bf0_2_690x345.png, /uploads/optimized/2X/f/fc4d76a6b8410d5b1ffdbe1ec33b5b02923a5bf0_2_1035x517.png 1.5x, /uploads/original/2X/f/fc4d76a6b8410d5b1ffdbe1ec33b5b02923a5bf0.png 2x" data-small-upload="/uploads/optimized/2X/f/fc4d76a6b8410d5b1ffdbe1ec33b5b02923a5bf0_2_10x10.png"></div>
+
+<h3><a href="https://github.com/flathub/tv.kodi.Kodi/issues" target="_blank" rel="noopener nofollow ugc">Issues · flathub/tv.kodi.Kodi</a></h3>
+
+  <p><a href="https://github.com/flathub/tv.kodi.Kodi/issues" target="_blank" rel="noopener nofollow ugc">s</a></p>
+
+  <p><span class="label1">Contribute to flathub/tv.kodi.Kodi development by creating an account on GitHub.</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">Z</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Zmaint</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 22, 2022 7:59 PM">
+            <time itemprop="datePublished" datetime="2022-01-22 19:59:03 +0000">Jan 22, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is a known issue, workaround here: <a href="https://forum.kodi.tv/showthread.php?tid=366614&amp;pid=3082491#pid3082491" class="inline-onebox" rel="noopener nofollow ugc">Kodi Flatpak crashes after about 15 sec of being opened.</a></p>
+<p>Fix in next release.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">sjuk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 23, 2022 11:56 AM">
+            <time itemprop="datePublished" datetime="2022-01-23 11:56:58 +0000">Jan 23, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The workaround doesn’t work for me. But thanks for sharing your knowledge.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">sjuk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jan 23, 2022 11:58 AM">
+            <time itemprop="datePublished" datetime="2022-01-23 11:58:41 +0000">Jan 23, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for that information. I was not aware of that. I will create a new issue on GitHub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">sjuk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 23, 2022 12:05 PM">
+            <time itemprop="datePublished" datetime="2022-01-23 12:05:48 +0000">Jan 23, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Created a new issue on GitHub: <a href="https://github.com/flathub/tv.kodi.Kodi/issues/149" rel="noopener nofollow ugc">https://github.com/flathub/tv.kodi.Kodi/issues/149</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

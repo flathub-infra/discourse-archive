@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&quot;desktop-used-apps&quot; is not good design - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">&quot;desktop-used-apps&quot; is not good design</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">&quot;desktop-used-apps&quot; is not good design</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 2, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Q</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">提及</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 2, 2025 3:42 AM">
+            <time itemprop="datePublished" datetime="2025-12-02 03:42:25 +0000">Dec 2, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The <code>mime-apps-spec</code> draft specifies the default launch method. Although it’s only a draft, it actually exists. The <code>defaults.list</code> file is still valid.</p>
+<p><code>desktop-used-apps</code> caches the launch application IDs corresponding to MIME types.</p>
+<p><code>xdg-permission-store</code> records the number of times an application has been launched. When an application has been launched less than 3 times, an application selector pops up on each launch. The cached launch applications are used as the default launch applications.</p>
+<p>If the default launch application changes afterward, <code>xdg-permission-store</code> will not be updated.</p>
+<p>Therefore, my recommendation is to remove the <code>desktop-used-apps</code> file and use <code>mimeapps.list</code> and <code>defaults.list</code> files instead.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Q</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">提及</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 2, 2025 3:48 AM">
+            <time itemprop="datePublished" datetime="2025-12-02 03:48:12 +0000">Dec 2, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This issue occurs when using xdg-open.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 3, 2025 10:53 AM">
+            <time itemprop="datePublished" datetime="2025-12-03 10:53:24 +0000">Dec 3, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="q962" data-post="1" data-topic="11114">
+<div class="title">
+<div class="quote-controls"></div>
+q962:</div>
+<blockquote>
+<p>desktop-used-apps</p>
+</blockquote>
+</aside>
+<p>You probably want to raise that here <a href="https://github.com/flatpak/flatpak/issues/new/choose" class="inline-onebox">Sign in to GitHub · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Q</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">提及</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 3, 2025 12:28 PM">
+            <time itemprop="datePublished" datetime="2025-12-03 12:28:47 +0000">Dec 3, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What is the connection between this and the flatpak project? Is it solely because of xdg-open?</p>
+<p>The flatpak version of xdg-open simply calls OpenUri.</p>
+<p>While ‘desktop-used-apps’ is controlled by the code at</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flatpak/xdg-desktop-portal/blob/main/document-portal/xdg-permission-store.c#L68">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/xdg-desktop-portal/blob/main/document-portal/xdg-permission-store.c#L68" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/xdg-desktop-portal</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flatpak/xdg-desktop-portal/blob/main/document-portal/xdg-permission-store.c#L68" target="_blank" rel="noopener nofollow ugc">document-portal/xdg-permission-store.c</a></h4>
+
+<div class="git-blob-info">
+  <a href="https://github.com/flatpak/xdg-desktop-portal/blob/main/document-portal/xdg-permission-store.c#L68" rel="noopener nofollow ugc"><code>main</code></a>
+</div>
+
+
+
+    <pre class="onebox"><code class="lang-c">
+      <ol class="start lines" start="58" style="counter-reset: li-counter 57 ;">
+          <li>PermissionDb *db;</li>
+          <li>g_autofree char *dir = NULL;</li>
+          <li>g_autofree char *path = NULL;</li>
+          <li></li>
+          <li>g_autoptr(GError) error = NULL;</li>
+          <li></li>
+          <li>table = g_hash_table_lookup (tables, name);</li>
+          <li>if (table != NULL)</li>
+          <li>  return table;</li>
+          <li></li>
+          <li class="selected">dir = g_build_filename (g_get_user_data_dir (), "flatpak/db", NULL);</li>
+          <li>g_mkdir_with_parents (dir, 0755);</li>
+          <li></li>
+          <li>path = g_build_filename (dir, name, NULL);</li>
+          <li>db = permission_db_new (path, FALSE, &amp;error);</li>
+          <li>if (db == NULL)</li>
+          <li>  {</li>
+          <li>    g_dbus_method_invocation_return_error (invocation,</li>
+          <li>                                           XDG_DESKTOP_PORTAL_ERROR, XDG_DESKTOP_PORTAL_ERROR_FAILED,</li>
+          <li>                                           "Unable to load db file %s: %s", name, error-&gt;message);</li>
+          <li>    return NULL;</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 3, 2025 2:43 PM">
+            <time itemprop="datePublished" datetime="2025-12-03 14:43:29 +0000">Dec 3, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="q962" data-post="4" data-topic="11114">
+<div class="title">
+<div class="quote-controls"></div>
+q962:</div>
+<blockquote>
+<p>What is the connection between this and the flatpak project? Is it solely because of xdg-open?</p>
+</blockquote>
+</aside>
+<p>You’re posting in the flathub forum. Flathub has no code - that does any of this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Q</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">提及</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Dec 3, 2025 3:54 PM">
+            <time itemprop="datePublished" datetime="2025-12-03 15:54:46 +0000">Dec 3, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, is this not the right place to discuss “portals”?</p>
+<p>I see, I should go to <a href="https://github.com/flatpak/xdg-desktop-portal/discussions" class="inline-onebox" rel="noopener nofollow ugc">flatpak/xdg-desktop-portal · Discussions · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

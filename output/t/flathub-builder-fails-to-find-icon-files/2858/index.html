@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flathub builder fails to find icon files - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flathub builder fails to find icon files</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flathub builder fails to find icon files</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 28, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andres Almiray</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 28, 2022 7:27 PM">
+            <time itemprop="datePublished" datetime="2022-08-28 19:27:44 +0000">Aug 28, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone,</p>
+<p>I’ve recently updated the JReleaser flatpak repository (<a href="https://github.com/flathub/org.jreleaser.cli" rel="noopener nofollow ugc">https://github.com/flathub/org.jreleaser.cli</a>) with new settings. One of which copies icons found in <code>icons/256x256/jreleaser.png</code> into the target app install.</p>
+<p>As you may appreciate the file does exist in the repository. Build instructions specify where to get this file<br>
+<a href="https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122" rel="noopener nofollow ugc">https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122</a> and copy it</p>
+<pre><code class="lang-auto">      - install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png
+    sources:
+      - type: archive
+        url: https://github.com/jreleaser/jreleaser/releases/download/v1.2.0/jreleaser-1.2.0.zip
+        sha256: cff8a16fa52356d4d7bb9abebffdb4534e6b7bfb545b0f0cbd459513050472a3
+      - type: file
+        path: org.jreleaser.cli.metainfo.xml
+      - type: file
+        path: icons/256x256/jreleaser.png
+</code></pre>
+<p>However, the Flathub build files because it cannot find the icon file <a href="https://buildbot.flathub.org/#/builders/28/builds/12844" class="inline-onebox" rel="noopener nofollow ugc">Flathub builds</a></p>
+<pre><code class="lang-auto">Running: install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png
+FB: Running 'flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/jreleaser --nofilesystem=host:reset --filesystem=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/build/jreleaser-1 --bind-mount=/run/build/jreleaser=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/build/jreleaser-1 --build-dir=/run/build/jreleaser --bind-mount=/run/ccache=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/ccache --unshare=network --env=SOURCE_DATE_EPOCH=1661619706 '--env=CFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=48 /srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/rofiles/rofiles-48mpAm /bin/sh -c 'install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png'' on host
+install: cannot stat 'icons/256x256/jreleaser.png': No such file or directory
+FB: host_command_exited_cb 1490685 256
+</code></pre>
+<p>What am I missing?</p>
+<p>TIA</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 28, 2022 9:19 PM">
+            <time itemprop="datePublished" datetime="2022-08-28 21:19:44 +0000">Aug 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>path</code> just tell where to find the file. By default it is copied into the top source directory. So it is in <code>jreleaser.png</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andres Almiray</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 29, 2022 6:29 AM">
+            <time itemprop="datePublished" datetime="2022-08-29 06:29:43 +0000">Aug 29, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks. I suppose I can use <code>dest-filename</code> to place it where I want to, right?</p>
+<p>Correction, <code>dest</code> should be used to place the file into a different location.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 29, 2022 12:51 PM">
+            <time itemprop="datePublished" datetime="2022-08-29 12:51:15 +0000">Aug 29, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>but there is no point. It’s for situations where a build system is expected to find things. Like when there are instruction “download this and put it there before starting the build”</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andres Almiray</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 29, 2022 1:04 PM">
+            <time itemprop="datePublished" datetime="2022-08-29 13:04:42 +0000">Aug 29, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, without <code>dest</code> I get a build failure. With it, I get a green build. <a href="https://buildbot.flathub.org/#/builders/8/builds/12923" rel="noopener nofollow ugc">https://buildbot.flathub.org/#/builders/8/builds/12923</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 29, 2022 2:45 PM">
+            <time itemprop="datePublished" datetime="2022-08-29 14:45:10 +0000">Aug 29, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>because you’d need to change the install line too.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

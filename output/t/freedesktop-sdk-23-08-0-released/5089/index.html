@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freedesktop SDK 23.08.0 released! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/announcements/6/index.html">Announcements</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Freedesktop SDK 23.08.0 released!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Freedesktop SDK 23.08.0 released!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 6, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Javier Jardón</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 6, 2023 2:47 PM">
+            <time itemprop="datePublished" datetime="2023-09-06 14:47:28 +0000">Sep 6, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>We have now released Freedesktop SDK 23.08.0. It is already available<br>
+on Flathub!</p>
+<p>Check the NEWS file for all the updates:<br>
+<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/23.08/NEWS">https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/23.08/NEWS </a></p>
+<p>Main changes are:</p>
+<ul>
+<li>freedesktop-sdk is now “bootstrappable”; This means freedesktop-sdk doesnt depend on previous freedesktop-sdk versions  to build, but it uses instead freedesktop-sdk-binary-seed for its bootstrap     to depend on the minimal binary seed possible. See <a href="https://bootstrappable.org/">https://bootstrappable.org/</a> for more info</li>
+<li>ppc64le is again a supported architecture</li>
+<li>Update all the components to the latest version available, check specific versions at <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Release-Contents#contents" class="inline-onebox">Release Contents · Wiki · freedesktop-sdk / freedesktop-sdk · GitLab</a></li>
+<li>freedesktop-sdk project has been ported to buildstream 2</li>
+<li>A lot of other small fixes and improvements</li>
+</ul>
+<p>If you maintain an application using the Freedesktop SDK runtime, please<br>
+consider upgrading the version, especially if you are still using<br>
+21.08 or earlier as It’s going to be EOL <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Releases#policies">soon </a>.<br>
+In most cases, this mostly requires changing “runtime-version”<br>
+in the Flatpak builder manifest of the application.</p>
+<p>This is the result of a year of work from all our contributors, thanks<br>
+a lot to all of them! (including our beloved freedesktop_sdk_updater bot and<br>
+the person that put it in place, Christpher Phang :)):</p>
+<p>1124  freedesktop_sdk_updater<br>
+363  Freedesktop SDK Merge Bot<br>
+364  Seppo Yli-Olli<br>
+136  Dor Askayo<br>
+122  Ben Brown<br>
+114  Robin Lee<br>
+108  Valentin David<br>
+37  Javier Jardón<br>
+29  Jordan Petridis<br>
+23  Abderrahim Kitouni<br>
+7  Tristan van Berkom<br>
+4  Robert Mader<br>
+3  Erick555<br>
+2  Akira TAGOH<br>
+2  Michael Catanzaro<br>
+2  Nicolas Guichard<br>
+1  Ao Zhong<br>
+1  Basti<br>
+1  Benjamin Schubert<br>
+1  Cassidy James Blaede<br>
+1  Hubert Figuière<br>
+1  Martin Blanchard<br>
+1  Matthias Clasen<br>
+1  Nazar Kazakov<br>
+1  Tom Coldrick<br>
+1  catsout<br>
+1  proletarius101</p>
+<p>Thanks as well to our infrastructure sponsors; without their help this<br>
+project will not be possible:</p>
+<ul>
+<li><a href="https://osuosl.org/">https://osuosl.org/ </a> (x86_64, ARM and PPC build servers)</li>
+<li><a href="https://www.worksonarm.com/">https://www.worksonarm.com/ </a> (ARM build servers)</li>
+</ul>
+<p>Also special thanks to Codethink for some engineering support during the cycle</p>
+<p>If you need assistance or have any issues, please get in touch!</p>
+<ul>
+<li>File issues at <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues">https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues </a></li>
+<li>Join the our matrix channel: <a href="https://matrix.to/#freedesktop-sdk:matrix.org">https://matrix.to/#freedesktop-sdk:matrix.org </a></li>
+<li>Join the mailing list:<br>
+<a href="https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk">https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk </a></li>
+<li>You can also ask on Flathub’s forum: <a href="/">https://discourse.flathub.org/ </a></li>
+</ul>
+<p>Cheers,<br>
+freedesktop-sdk team</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="5 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          5
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 6, 2023 3:40 PM">
+            <time itemprop="datePublished" datetime="2023-09-06 15:40:53 +0000">Sep 6, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Also available, the SDK extensions for the following:</p>
+<ul>
+<li>llvm16</li>
+<li>rust-stable</li>
+<li>golang</li>
+<li>openjdk (20)</li>
+<li>openjdk 17</li>
+<li>openjdk 11</li>
+<li>ldc</li>
+<li>freepascal</li>
+</ul>
+<p>SDK extension missing need to be handled.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 6, 2023 3:52 PM">
+            <time itemprop="datePublished" datetime="2023-09-06 15:52:18 +0000">Sep 6, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If you want to know more about “bootstrappable”, I can recommend this fascinating talk by Dor Askayo at Linux App Summit (starts at 10:20)</p>
+<div class="youtube-onebox lazy-video-container" data-video-id="jwMEDI4WsAE" data-video-title="Linux App Summit 2023 - Day 2 - Room 2" data-video-start-time="620s" data-provider-name="youtube">
+  <a href="https://www.youtube.com/watch?v=jwMEDI4WsAE&amp;t=620s" target="_blank" rel="noopener nofollow ugc">
+    <img class="youtube-thumbnail" src="/uploads/original/2X/4/4854358df3de28de733995d2ffe1962d30bfebab.jpeg" title="Linux App Summit 2023 - Day 2 - Room 2" data-dominant-color="D8D7D6" width="690" height="388">
+  </a>
+</div>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Yves Auxier</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 6, 2023 4:11 PM">
+            <time itemprop="datePublished" datetime="2023-09-06 16:11:32 +0000">Sep 6, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great to see libdecor being added for SDL2! Now we don’t need to maintain it in shared-modules <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Angelo Verlain Shema</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 7, 2023 11:41 AM">
+            <time itemprop="datePublished" datetime="2023-09-07 11:41:31 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah, I was wondering why my builds were failing. turns out <code>org.freedesktop.Sdk.Extension.node18//23.08</code> is not yet released</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

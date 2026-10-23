@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Use home folder rather than `~/.var`, for config files - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Use home folder rather than `~/.var`, for config files</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Use home folder rather than `~/.var`, for config files</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 20, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flategg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 20, 2024 5:34 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 05:34:35 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is it possible to put configuration files of <code>Flatpak</code>’s on the home folder (<code>~/.config</code>, <code>~/.local</code> same as regular programs) rather than in  <code>~/.var</code></p>
+<p>I am a user, who wants to transition some programs from Arch packages to Flatpak, and I do not want to create 100s of symlinks<br>
+I understand that the current behavior is done to make isolating access permissions easier, but it comes at the cost of usability</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 20, 2024 9:44 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 09:44:11 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can add <code>--filesystem=xdg-config</code> and <code>--filesystem=xdg-data</code> as a global override through Flatseal.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flategg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 20, 2024 9:57 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 09:57:43 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey thanks,<br>
+i can figure out where to put those arguments on flatseal (I am interacting from the GUI program, i can not find its config files)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 20, 2024 10:10 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 10:10:00 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Hey thanks,<br>
+i can figure out where to put those arguments on flatseal (I am interacting from the GUI program, i can not find its config files)</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0.png" data-download-href="/uploads/original/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0_2_690x146.png" alt="image" data-base62-sha1="8OKISXjTEgtOXcvSBkwbdJagpt6" width="690" height="146" srcset="/uploads/optimized/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0_2_690x146.png, /uploads/original/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0.png 1.5x, /uploads/original/2X/3/3dce1d4fc9221181bcfa44d6c9429788d53c46b0.png 2x" data-dominant-color="35393E"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">953×202 26.8 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p><img src="/uploads/original/2X/4/4c32c6feb05ceb2a390ea70c92c13c45de0cfae7.png" alt="image" data-base62-sha1="aS54OyA6iCLSYLKedAn7xAxLDyT" width="644" height="427"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flategg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 20, 2024 10:11 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 10:11:22 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/uploads/original/2X/5/5cd484cf4b833a883606228a28fb74bde217006f.png" alt="image" data-base62-sha1="dfdfifU7DMDIyDgN29hK3pxAv1B" width="622" height="127"><br>
+hopefull this works</p>
+<p>edit: it does not work)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 20, 2024 10:13 AM">
+            <time itemprop="datePublished" datetime="2024-10-20 10:13:11 +0000">Oct 20, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No just put <code>xdg-config</code>, click the + button on right corner, add <code>xdg-data</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flategg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 21, 2024 7:54 AM">
+            <time itemprop="datePublished" datetime="2024-10-21 07:54:14 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/uploads/original/2X/e/ed46ec1dfab585a4d047e0c347b9b6ce3f638439.png" alt="image" data-base62-sha1="xR36SgSS99iIJJWt2YVFP3ktOC5" width="675" height="161"><br>
+Does not work, the apps still use <code>.var/app</code> for their config files</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 21, 2024 7:40 PM">
+            <time itemprop="datePublished" datetime="2024-10-21 19:40:55 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t think it’s implemented to be changeable, the values for XDG_CACHE_HOME, XDG_CONFIG_HOME &amp; XDG_DATA_HOME get hardcoded when the application runs (<a href="https://github.com/flatpak/flatpak/blob/dc2ce2cb0bed88e5206917346220784b383aac3b/common/flatpak-context.c#L3175" class="inline-onebox" rel="noopener nofollow ugc">flatpak/common/flatpak-context.c at dc2ce2cb0bed88e5206917346220784b383aac3b · flatpak/flatpak · GitHub</a>). There’s no easy or clean way around that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 21, 2024 8:28 PM">
+            <time itemprop="datePublished" datetime="2024-10-21 20:28:58 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>xdg-config</code> is supposed to bind mount host’s xdg-config into <code>~/.var/app/$FLATPAK_ID/config</code> but looks like it only works when a subdirectory is specified like <code>xdg-config/foobar:create</code>, presumably for security reasons.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Oct 21, 2024 8:38 PM">
+            <time itemprop="datePublished" datetime="2024-10-21 20:38:36 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So basically instead of a global override, you have to do this on a per-app basis, by checking what the config directory of each app is and add that as an override in Flatseal liks <code>xdg-config/foo</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flategg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Oct 22, 2024 5:16 AM">
+            <time itemprop="datePublished" datetime="2024-10-22 05:16:08 +0000">Oct 22, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you please send screenshot (sorry, I do not understand GUI options from text)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

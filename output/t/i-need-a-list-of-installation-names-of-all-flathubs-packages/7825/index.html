@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I need a list of installation names of all flathub&#39;s packages - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">I need a list of installation names of all flathub&#39;s packages</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">I need a list of installation names of all flathub&#39;s packages</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 11, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 11, 2024 10:10 AM">
+            <time itemprop="datePublished" datetime="2024-10-11 10:10:41 +0000">Oct 11, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using fedora 40. fedora has rpm repo. also rpm fusion has free and non-free rpm repos. besides rpm repos fedora has fedora flatpaks repo called <a href="http://registry.fedoraproject.org" rel="noopener nofollow ugc">registry.fedoraproject.org</a>, also flathub repo called <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a>. I  want to write a script that deletes the rpm packages and installs the equivalent flatpak or flathub packages instead. the reason is that i want to use packages that are in isolated boxes to avoid conflicts, to avoid telemetry and data flow between applications and to avoid conflicts. I am going to write a script that will check the installation names of the rpm packages installed from the fedora rpm repository on my system, if there is a fedora flatpaks equivalent it will delete the rpm package and install the fedora flatpaks package. if there is no fedora flatpaks equivalent it will look for a flathub equivalent, if there is a flathub equivalent it will delete the rpm package and install the flathub package. Then it will do the same for rpm packages installed from rpm fusion free and rpm fusion non-free repos. if there is an equivalent, it will delete the rpm packages and install the equivalent fedora flatpak and/or flathub package. To do this, I need to identify the equivalents of rpm packages and flathub packages and fedora flatpaks packages. I need to prepare the rpm package list and flathub package list and the rpm package list and fedora flatpaks package list. Then I need to match the installation names in these lists and introduce the mathematically equal ones into the script.<br>
+for example, the name of audacity in fedora’s rpm repository is audacity . install with<br>
+<code>sudo dnf install audacity</code><br>
+the name of audacity in the rpm fusion free rpm repository is audacity . although it is installed with the same command, it is necessary to install it with the following command to separate them:<br>
+<code>sudo dnf install --enablerepo=rpmfusion-free audacity</code><br>
+The name of flathub installation is org.audacityteam.Audacity . install with<br>
+<code>flatpak install flathub org.audacityteam.Audacity</code><br>
+İnstallation name in the fedora flatpaks repo: org.audacityteam.Audacity .<br>
+<code>flatpak install fedora org.audacityteam.Audacity</code><br>
+is installed with the terminal command. in the name matching list I will show the equivalents as follows.<br>
+Table example of the list;</p>
+<blockquote>
+<p>fedora-rpm rpm-fusion-free-rpm rpm-fusion-non-free-rpm flathub-flatpak fedora-flatpaks<br>
+audacity = audacity = - = org.audacityteam.Audacity = org.audacityteam.Audacity</p>
+</blockquote>
+<p>In this example the names were the same. but I have analyzed hundreds of applications. there are applications with very different names. so it is very important to create this list. So in order to create this script I need a list of all packages in the flathub repository with the installation names of all applications. How can I do it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 11, 2024 10:21 AM">
+            <time itemprop="datePublished" datetime="2024-10-11 10:21:06 +0000">Oct 11, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">dnf repolist
+</code></pre>
+<ol>
+<li>List Installation Names of All Packages in the Fedora RPM Repository</li>
+</ol>
+<p>You can use the dnf command to list all packages in Fedora’s official RPM repository. The following command lists all packages in Fedora’s current repository:<br>
+1.1. Listing the Fedora 40 - x86_64 Repository:</p>
+<p>You can use the following command for this repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=fedora &gt; fedora_40_x86_64_packages.txt
+</code></pre>
+<p>1.2. Listing the Fedora 40 openh264 (From Cisco) - x86_64 Repository:</p>
+<p>To list packages in the openh264 repository provided by Cisco:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=fedora-cisco-openh264 &gt; fedora_40_openh264_packages.txt
+</code></pre>
+<p>1.3. List the Fedora 40 - x86_64 - Updates Repository:</p>
+<p>You can use this command to list the updated packages in this repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=updates &gt; fedora_40_updates_packages.txt
+</code></pre>
+<p>1.4. All rpm repos’s list (All rpm-fusion repos, including all repos added later):</p>
+<pre><code class="lang-auto">dnf repoquery --all
+</code></pre>
+<p>This command lists all Fedora RPM packages. You can save the output to a file for further inspection:</p>
+<pre><code class="lang-auto">dnf repoquery --all &gt; fedora_rpm_packages.txt
+</code></pre>
+<ol start="2">
+<li>RPM Fusion Free List Installation Names of All Packages in the RPM Repository</li>
+</ol>
+<p>2.1. RPM Fusion for Fedora 40 - Listing the Free Repository:<br>
+You can also use the dnf command to list all packages in the RPM Fusion Free repository. However, here you need to use the --enablerepo option to list only the packages in the RPM Fusion Free repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-free
+</code></pre>
+<p>This command only lists packages from the RPM Fusion Free repository. Again, you can save the results to a file:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-free &gt; rpmfusion_free_packages.txt
+</code></pre>
+<p>2.2. RPM Fusion for Fedora 40 - Free - List Updates Repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-free-updates &gt; rpmfusion_free_updates_packages.txt
+</code></pre>
+<ol start="3">
+<li>List Installation Names of All Packages in the RPM Fusion Non-Free RPM Repository</li>
+</ol>
+<p>3.1. List RPM Fusion for Fedora 40 - Nonfree Repository:</p>
+<p>You can use the following command to list all packages in the RPM Fusion Non-Free repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-nonfree
+</code></pre>
+<p>This command only lists packages from the RPM Fusion Non-Free repository. If you want to save the results to a file:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-nonfree &gt; rpmfusion_nonfree_packages.txt
+</code></pre>
+<p>3.2. RPM Fusion for Fedora 40 - Nonfree - Listing the NVIDIA Driver Repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-nonfree-nvidia-driver &gt; rpmfusion_nonfree_nvidia_packages.txt
+
+</code></pre>
+<p>3.3. RPM Fusion for Fedora 40 - Nonfree - List Steam Repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-nonfree-steam &gt; rpmfusion_nonfree_steam_packages.txt
+</code></pre>
+<p>3.4. Listing the RPM Fusion for Fedora 40 - Nonfree - Updates Repository:</p>
+<pre><code class="lang-auto">dnf repoquery --repo=rpmfusion-nonfree-updates &gt; rpmfusion_nonfree_updates_packages.txt
+</code></pre>
+<ol start="4">
+<li>List Installation Names of All Packages in the Fedora Flatpaks Repository</li>
+</ol>
+<p>You can use the flatpak command to list all applications in the Fedora Flatpak repository. Since the Fedora Flatpak repository is OCI based, you can use flatpak remote-ls to list all packages in Fedora’s Flatpak repository:</p>
+<pre><code class="lang-auto">flatpak remote-ls fedora --columns=ref
+</code></pre>
+<p>This command will show the installation names of all applications in the Fedora Flatpak repository. To save the results to a file:</p>
+<pre><code class="lang-auto">flatpak remote-ls fedora --columns=ref &gt; fedora_flatpak_packages.txt
+</code></pre>
+<pre><code class="lang-auto">flatpak remote-ls fedora --columns=name,ref,version &gt; fedora_flatpak_packages_name_ref_version.txt
+</code></pre>
+<pre><code class="lang-auto">flatpak remote-ls fedora --columns=name,ref &gt; fedora_flatpak_packages_name_ref.txt
+</code></pre>
+<ol start="5">
+<li>List the Installation Names of All Packages in the Flathub Flatpak Repository</li>
+</ol>
+<p>You can use the flatpak command to list all applications in the Flathub Flatpak repository. Since the Flathub Flatpak repository is OCI based, you can use flatpak remote-ls to list all packages in Flathub’s Flatpak repository:</p>
+<pre><code class="lang-auto">flatpak remote-ls flathub --columns=ref
+</code></pre>
+<p>This command will show the installation names of all apps in the Flathub Flatpak repository. To save the results to a file:</p>
+<pre><code class="lang-auto">flatpak remote-ls flathub --columns=ref &gt; flathub_flatpak_packages.txt
+</code></pre>
+<pre><code class="lang-auto">flatpak remote-ls flathub --columns=name,ref,version &gt; flathub_flatpak_packages_name_ref_version.txt
+</code></pre>
+<pre><code class="lang-auto">flatpak remote-ls flathub --columns=name,ref &gt; flathub_flatpak_packages_name_ref.txt
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 12, 2024 10:45 AM">
+            <time itemprop="datePublished" datetime="2024-10-12 10:45:49 +0000">Oct 12, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The 11 master list files (txt) created look unorganized. need to convert them all to the same format. It should contain only the installation name of the application. directories versions types should be deleted. Here are the commands of the python .py file for this:<br>
+python file code for editing and format matching for flatpak files ( fedora_flatpak_packages_name_ref.txt and flathub_flatpak_packages_name_ref.txt ) :</p>
+<pre><code class="lang-auto"># Input and output file names
+input_file = "input_flatpak_packages_name_ref.txt"
+output_file = "output_flatpak_packages_name_ref_duzgun.txt"
+
+# Open and process the file
+with open(input_file, "r", encoding="utf-8") as infile, open(output_file, "w", encoding="utf-8") as outfile:
+    for line in infile:
+        # Split the line from the gap (pre-excretion and after the gap)
+        parts = line.split("\t")
+        if len(parts) == 2:
+            name = parts[0].strip()  # Boşluktan önceki kısım
+            app_part = parts[1].strip()  # Boşluktan sonraki kısım
+            
+            # Take the first / and second /
+            app_name = app_part.split("/")[1]
+            
+            # Write to file in desired format
+            outfile.write(f"{name}\t{app_name}\n")
+
+print(f"Data was successfully written in the {output_file} .")
+
+</code></pre>
+<p>Replace input_flatpak_packages_name_ref and output_flatpak_packages_name_ref with the name of the file.</p>
+<p>python file code for editing and format matching for rpm files ( fedora_40_x86_64_packages.txt , fedora_40_openh264_packages.txt , fedora_40_updates_packages.txt , rpmfusion_free_packages_duzgun.txt , rpmfusion_free_updates_packages.txt , rpmfusion_nonfree_packages.txt , rpmfusion_nonfree_updates_packages.txt , rpmfusion_nonfree_nvidia_packages.txt , rpmfusion_nonfree_steam_packages_.txt ) :</p>
+<pre><code class="lang-auto"># Name of the file to be processed
+input_file = "input_packages.txt"
+# Name of the output file
+output_file = "output_packages_duzgun.txt"
+
+# Open and process the file
+with open(input_file, "r") as infile, open(output_file, "w") as outfile:
+    for line in infile:
+        # Get the part before the first '-0:'
+        package_name = line.split('-0:')[0]
+        # Write the name of the package to the output file
+        outfile.write(package_name + "\n")
+
+print(f"Package names were written to the {output_file} file.")
+
+</code></pre>
+<p>Replace input_packages and output_packages with the name of the file.</p>
+<p>In some txt files, a line was skipped, left blank, that is, there are empty lines. remove_empty_lines.sh to delete these empty lines:</p>
+<pre><code class="lang-auto">#!/bin/bash
+
+# Get the name of the file from which you want to delete blank lines
+file=$1
+
+# Delete empty lines and write to a temporary file
+grep -v '^$' "$file" &gt; temp_file.txt
+
+# Overwrite original file with temporary file
+mv temp_file.txt "$file"
+
+echo "Empty lines have been deleted from '$file'."
+
+
+</code></pre>
+<p>Contents of the .py python file to separate the application names from the application installation names from the fedora_flatpak_packages_name_ref.txt and flathub_flatpak_packages_name_ref.txt files and to combine the application names by avoiding repetition to create a txt list named combined_apps_list.txt:</p>
+<pre><code class="lang-auto"># Names of two TXT files
+file1 = "flathub_flatpak_packages_name_ref.txt"  # First list file
+file2 = "fedora_flatpak_packages_name_ref.txt"  # Second list file
+output_file = "combined_apps_list.txt"  # output file
+
+# Create a cluster (set) to store application names
+apps_set = set()
+
+# Read first file
+with open(file1, "r", encoding="utf-8") as f1:
+    for line in f1:
+        app_name = line.rsplit(maxsplit=1)[0]  # Splits the line from the end, delete after the last space
+        apps_set.add(app_name)  # Add application name to cluster
+
+# Read second file
+with open(file2, "r", encoding="utf-8") as f2:
+    for line in f2:
+        app_name = line.rsplit(maxsplit=1)[0]  # Splits the line from the end, delete after the last space
+        apps_set.add(app_name)  # Add application name to cluster
+
+# Convert the results to an ordered list and write to file
+with open(output_file, "w", encoding="utf-8") as out:
+    for app in sorted(apps_set):  # Write the application names in order
+        out.write(app + "\n")
+
+print(f"Application names were successfully written to {output_file}.")
+
+</code></pre>
+<p>If you want to combine these files into a 12 txt file so that the artificial intelligence software can match these applications and write their equivalents side by side in a table:<br>
+.bat file:</p>
+<pre><code class="lang-auto">for file in *.txt *.csv; do
+    echo "=============================" &gt;&gt; merged.txt
+    echo "Dosya: ${file}" &gt;&gt; merged.txt
+    echo "=============================" &gt;&gt; merged.txt
+    grep -v '^$' "$file" &gt;&gt; merged.txt  # Filter empty rows
+    echo "" &gt;&gt; merged.txt
+done
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 12, 2024 10:57 AM">
+            <time itemprop="datePublished" datetime="2024-10-12 10:57:44 +0000">Oct 12, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We have 12 lists. Each list is a separate file in txt format:<br>
+fedora_40_x86_64_packages_duzgun.txt ; fedora_40_openh264_packages_duzgun.txt ; fedora_40_updates_packages_duzgun.txt ; rpmfusion_free_packages_duzgun.txt ; rpmfusion_free_updates_packages_duzgun.txt ; rpmfusion_nonfree_packages_duzgun.txt ; rpmfusion_nonfree_updates_packages_duzgun.txt ; rpmfusion_nonfree_nvidia_packages_duzgun.txt ; rpmfusion_nonfree_steam_packages_duzgun.txt ; fedora_flatpak_packages_name_ref_duzgun.txt ; flathub_flatpak_packages_name_ref_duzgun.txt ; combined_apps_list.txt</p>
+<p>Based on the 12 lists, we can create an updated Python script. Below I’m sharing a Python script with the updates you want. This script will read the 12 lists and create a CSV file with the equivalents for each application side by side.</p>
+<ol>
+<li>
+<p>Summary of Required Steps:</p>
+<p>You will read the five separate lists.<br>
+By comparing the application names, you will find equivalents by combining the same ones.<br>
+For each application, you will find the installation names in the Fedora RPM, Fedora RPM-Updates, Fedora RPM openh264,  RPM Fusion Free, RPM Fusion Free-Updates, RPM Fusion Non-Free, RPM Fusion Non-Free-Updates, RPM Fusion Non-Free Nvidia-Driver, RPM Fusion Non-Free Steam,  Flathub and Fedora Flatpaks repositories and write them to a CSV file.</p>
+</li>
+</ol>
+<p>You can do this using Python. I am sharing a step-by-step Python script for the process below:<br>
+2. Python Script</p>
+<p>The following Python script will read five separate lists and merge and write the equivalent applications in CSV format:</p>
+<pre><code class="lang-auto">import csv
+
+# Function to load lists (reads each file line by line)
+def load_list(filename):
+    with open(filename, "r", encoding="utf-8") as file:
+        return [line.strip() for line in file]
+
+# Names of list files
+repo_names = [
+    "fedora_40_x86_64_packages_duzgun.txt",
+    "fedora_40_openh264_packages_duzgun.txt",
+    "fedora_40_updates_packages_duzgun.txt",
+    "rpmfusion_free_packages_duzgun.txt",
+    "rpmfusion_free_updates_packages_duzgun.txt",
+    "rpmfusion_nonfree_packages_duzgun.txt",
+    "rpmfusion_nonfree_updates_packages_duzgun.txt",
+    "rpmfusion_nonfree_nvidia_packages_duzgun.txt",
+    "rpmfusion_nonfree_steam_packages_duzgun.txt",
+    "fedora_flatpak_packages_name_ref_duzgun.txt",
+    "flathub_flatpak_packages_name_ref_duzgun.txt"
+]
+
+# Read combined application list file
+combined_apps_file = "combined_apps_list.txt"
+combined_apps = load_list(combined_apps_file)
+
+# Load all lists and store them in a dictionary structure
+repos = {repo_name: load_list(repo_name) for repo_name in repo_names}
+
+# Get a unique combination of all package names (sum the names from each repo)
+all_packages = set(combined_apps)  # Initially only app names in combined_apps
+
+for package_list in repos.values():
+    all_packages.update(package_list)
+
+# write to CSV file
+with open("merged_packages.csv", "w", newline="", encoding="utf-8") as csvfile:
+    csvwriter = csv.writer(csvfile)
+    
+    # Headings (1st column represents application name, other columns represent repo names)
+    headers = ["Application Name"] + [name.replace("_duzgun.txt", "") for name in repo_names]
+    csvwriter.writerow(headers)
+
+    # Navigate through all package names and create a row based on which repo each package is in
+    for package in sorted(all_packages):
+        row = [package]  # First column application name
+
+        # Add the corresponding package or "-" sign to the line for each repo
+        for repo_name in repo_names:
+            if package in repos[repo_name]:
+                row.append(package)
+            else:
+                row.append("-")
+        
+        # Write row to CSV
+        csvwriter.writerow(row)
+
+print("Packages have been successfully written to merged_packages.csv.")
+
+
+</code></pre>
+<ol start="3">
+<li>
+<p>Python Script Description:</p>
+<p>The load_list(filename) function reads each .txt file and returns a list of lines.<br>
+We collect all app names in a set data structure so that app names are not repeated.<br>
+When writing to CSV there will be 11 columns for each application name:<br>
+Application: Application name<br>
+Fedora RPM Repos Installation name in Fedora RPM repositories<br>
+RPM Fusion Free Repos: Installation name in the RPM Fusion Free repositories<br>
+RPM Fusion Non-Free Repos: Installation name in the RPM Fusion Non-Free repositories<br>
+Flathub Installation name on Flathub<br>
+Fedora Flatpak Installation name in Fedora Flatpaks<br>
+In each repository, we write the installation name if that application is available, or the “-” sign if it is not.</p>
+</li>
+<li>
+<p>Run the script:</p>
+<p>Make sure Python is installed on your system. If not, you can install it using the following command in the terminal:</p>
+</li>
+</ol>
+<pre><code class="lang-auto">sudo dnf install python3
+</code></pre>
+<p>Put the five .txt files in the same directory and save the Python script above as a file (e.g. create_csv.py).</p>
+<p>Run the script by running the following command in the terminal:</p>
+<pre><code class="lang-auto">python3 create_csv.py
+</code></pre>
+<p>After running this command, the app_equivalents.csv file will be created in the same directory. You can view this CSV file as a table.</p>
+<p>He combined these lists and created a table. But he could not match the installation names of the packages, he could not write the equivalent package side by side. because in order to do this, he would have to check and understand individual words. Then he had to compare the words, hypothesize, and find the equivalent. He had to have intelligence for this. It seems that there is no alternative other than artificial intelligence that can combine and balance these databases. Please share with me if you know an open source artificial intelligence model that can equalize txt lists and write their equivalents on the same line. I need this for data analysis and data processing. I will post the results here.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 12, 2024 11:05 AM">
+            <time itemprop="datePublished" datetime="2024-10-12 11:05:47 +0000">Oct 12, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Additionally, I prepared a python script to edit the fedora_flatpak_packages_name_ref.txt and flathub_flatpak_packages_name_ref.txt files and export them to csv files. csv content is as follows: application name, application installation name. Python code is as follows:</p>
+<pre><code class="lang-auto">import csv
+
+# Input and output file names
+input_file = "input_flatpak_packages_name_ref.txt"  # input file
+output_file = "output_flatpak_packages_name_ref_duzgun.csv"  # output file
+
+# Open and process the file
+with open(input_file, "r", encoding="utf-8") as infile, open(output_file, "w", newline='', encoding="utf-8") as outfile:
+    csvwriter = csv.writer(outfile)
+    
+    for line in infile:
+        # Cut line at last space
+        parts = line.rsplit("\t", 1)  # Separate from the right by the last space
+        if len(parts) == 2:
+            app_name = parts[0].strip()  # Application name section
+            app_part = parts[1].strip()  # The part after the space
+
+            # Get between first and second / sign
+            processed_name = app_part.split("/")[1]  # Get after first /
+            processed_name = processed_name.split("/")[0]  # Take before second /
+
+            # Write application name and rendered name to CSV
+            csvwriter.writerow([app_name, processed_name])
+
+print(f"Data was successfully written to {output_file}.")
+
+</code></pre>
+<p>Replace input_flatpak_packages_name_ref.txt with the name of the file. Repeat the process for both txt files.<br>
+Replace output_flatpak_packages_name_ref_duzgun with the name of the file. for example: flathub_flatpak_packages_name_ref_duzgun.csv . Repeat the process for both files.<br>
+The reason I prepared these csv files was so that the artificial intelligence could at least synchronize the name of the flatpak applications with the installation names of the applications.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">universish</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 12, 2024 12:08 PM">
+            <time itemprop="datePublished" datetime="2024-10-12 12:08:27 +0000">Oct 12, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For scripts: <a href="https://drive.google.com/drive/folders/12VVveeowuYYbLAbDXlNpVSqmAI8ttyfV?usp=sharing" rel="noopener nofollow ugc">google drive scripts link</a><br>
+For lists: <a href="https://drive.google.com/drive/folders/17FQjIY8UTby0gShqpXYaJcbWBwwui6eo?usp=sharing" rel="noopener nofollow ugc">google drive link - packages lists txt and csv files</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

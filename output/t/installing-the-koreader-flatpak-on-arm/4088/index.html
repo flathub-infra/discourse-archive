@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installing the KOReader flatpak on ARM - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Installing the KOReader flatpak on ARM</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Installing the KOReader flatpak on ARM</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 24, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bjesus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 24, 2023 3:37 PM">
+            <time itemprop="datePublished" datetime="2023-04-24 15:37:47 +0000">Apr 24, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey,<br>
+I’m trying to install the <a href="https://flathub.org/apps/rocks.koreader.KOReader" rel="noopener nofollow ugc">KOReader</a> flatpak on my arm7l machine.</p>
+<pre><code class="lang-auto">$ flatpak install rocks.koreader.KOReader -v
+F: No installations directory in /etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/bjesus/.local/share/flatpak
+Looking for matches…
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loaded indexed summary file c61cf0b6918fb1b895c9c2278d6bfbb1a040176dad364c2015aafc06ef0b9c29 from cache for remote ‘flathub’
+error: No remote refs found for ‘rocks.koreader.KOReader’
+</code></pre>
+<p>Initially I thought this was because it isn’t built for my architecture. The page lists aarch64, x86_64 as the supported ones. Then I noticed that other flatpaks with the same support work just fine, for example <a href="https://flathub.org/apps/org.sugarlabs.Sliderule" rel="noopener nofollow ugc">Sliderule</a>.</p>
+<p>Why does Sliderule work and KOReader doesn’t, if they’re both have the same architectures supported?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 24, 2023 9:25 PM">
+            <time itemprop="datePublished" datetime="2023-04-24 21:25:55 +0000">Apr 24, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>arm7 is no longer supported on flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bjesus</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 25, 2023 6:02 AM">
+            <time itemprop="datePublished" datetime="2023-04-25 06:02:43 +0000">Apr 25, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks <span class="mention">@hub</span> ! So is the reason one app works and the other doesn’t simply that it has arm7 support, but it’s just not listed in the page?</p>
+<p>Is there anything I can do about it? I don’t know much about flatpaks - can I “compile” my own arm7 variant based on the flatpak “recipe” somehow?</p>
+<p>Thank you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mr. Beedell, Roke Julian Lockhart</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 25, 2023 5:44 PM">
+            <time itemprop="datePublished" datetime="2023-04-25 17:44:04 +0000">Apr 25, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Why is it not supported anymore?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App can&#39;t launch when build with KDE SDK 6.8 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">App can&#39;t launch when build with KDE SDK 6.8</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">App can&#39;t launch when build with KDE SDK 6.8</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 16, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matt Milner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 16, 2024 4:36 PM">
+            <time itemprop="datePublished" datetime="2024-11-16 16:36:15 +0000">Nov 16, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I am helping to maintain the <a href="https://flathub.org/apps/org.openchemistry.Avogadro2" rel="noopener nofollow ugc"><code>org.openchemistry.Avogadro2</code></a> Flatpak of <a href="https://two.avogadro.cc/" rel="noopener nofollow ugc">Avogadro</a>. I’m having an issue and was hoping someone might be able to provide some help or advice as to what’s going on.</p>
+<p>Our <code>beta</code> branch is currently building against version 6.7 of the KDE runtime, but we’d like to bump it to 6.8, see my PR <a href="https://github.com/flathub/org.openchemistry.Avogadro2/pull/179" rel="noopener nofollow ugc">here</a>. Running the beta with 6.8 using <code>flatpak run --runtime-version=6.8 org.openchemistry.Avogadro2//beta</code> works fine (haven’t checked everything in detail but it starts correctly), but running the <code>test</code> build created by Buildbot<sup class="footnote-ref"><a href="#footnote-15584-1" id="footnote-ref-15584-1">[1]</a></sup> results in the error:</p>
+<pre><code class="lang-auto">$ flatpak run org.openchemistry.Avogadro2//test
+avogadro2: error while loading shared libraries: libAvogadroQtOpenGL.so.1: cannot open shared object file: No such file or directory
+</code></pre>
+<p>Over on the KDE discourse the <a href="https://discuss.kde.org/t/flatpak-org-kde-sdk-6-8-runtime-is-now-available/24717/2?u=matterhorn103" rel="noopener nofollow ugc">announcement</a> from <span class="mention">@bbhtt</span> included the note that</p>
+<aside class="quote no-group quote-post-not-found" data-username="bbhtt" data-post="2" data-topic="24717" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+</div>
+<blockquote>
+<p>Please note that if you are building something against the 6.8 runtime, use only the latest <strong>Flatpak Builder 1.4.4</strong>.</p>
+<p>Details</p>
+<p>On Freedesktop runtime 24.08 we did some changes to Cmake libdir configuration that instructed apps to use <code>/app/lib</code> as the install path.</p>
+<p>This was previously a patch to Cmake in Freedesktop SDK, but in 24.08 we dropped that patch and instead set <code>CMAKE_INSTALL_LIBDIR</code> in Flatpak Builder.</p>
+</blockquote>
+</aside>
+<p>So this clearly had an effect on the way that Avogadro is being bundled; the <code>beta</code> branch has everything in <code>/app/lib</code> whereas this <code>test</code> branch has stuff split between <code>/app/lib</code> and <code>/app/lib64</code>, and the library that can’t be loaded is now in the latter.</p>
+<p>The thing is, I don’t know why this should break the Flatpak; a normal local non-Flatpak build (against Qt 6.8) also splits things between <code>lib</code> and <code>lib64</code>, but the resulting binary launches absolutely fine.</p>
+<p>The <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/beta/org.openchemistry.Avogadro2.yaml" rel="noopener nofollow ugc">manifest</a> doesn’t have anything weird in it I don’t think. It uses <code>builddir: true</code> and <code>no-make-install: true</code> because the umbrella project doesn’t have <code>install</code> command defined, which means there’s a post-install step where the entire prefix directory is copied into <code>/app</code>. But I don’t see why those things should pose an issue.</p>
+<p>Is it maybe incorrect to use <code>/app/lib64</code> with a Flatpak?</p>
+<hr class="footnotes-sep">
+
+<ol class="footnotes-list">
+<li id="footnote-15584-1" class="footnote-item"><p>Downloadable using <code>flatpak install --user https://dl.flathub.org/build-repo/145201/org.openchemistry.Avogadro2.flatpakref</code> <a href="#footnote-ref-15584-1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 16, 2024 5:03 PM">
+            <time itemprop="datePublished" datetime="2024-11-16 17:03:55 +0000">Nov 16, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The idea is that <code>/app/lib64</code> should not exist, everything should go to <code>/app/lib</code>.</p>
+<p>My guess is since most of your dependencies are vendored, when flatpak-builder sets <code>-DCMAKE_INSTALL_LIBDIR="lib"</code>, avogadro is consuming the value but it is not being passed down the chain to the individual libraries, which is why they are ending up the upstream cmake default of <code>/app/lib64</code>.</p>
+<p>Previously this was working because cmake inside the runtime was itself patched, but now it is using the cmake arg.</p>
+<p>The solution is to devendor the individual libraries and build them as separate modules or set <code>--env=LD_LIBRARY_PATH=/app/lib64</code> or symlink everything from <code>/app/lib64</code> to <code>/app/lib</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matt Milner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 16, 2024 5:11 PM">
+            <time itemprop="datePublished" datetime="2024-11-16 17:11:50 +0000">Nov 16, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah I see, thanks very much for both the explanation and suggested fixes!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

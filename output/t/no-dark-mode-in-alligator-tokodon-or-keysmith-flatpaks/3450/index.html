@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>No dark mode in Alligator, Tokodon, or Keysmith flatpaks - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">No dark mode in Alligator, Tokodon, or Keysmith flatpaks</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">No dark mode in Alligator, Tokodon, or Keysmith flatpaks</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 19, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 19, 2022 10:41 PM">
+            <time itemprop="datePublished" datetime="2022-12-19 22:41:35 +0000">Dec 19, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Synopsis:<br>
+Three particular KDE flatpak apps refuse to use a dark theme when the host system has a GTK-based desktop: Alligator, Tokodon, and Keysmith.  The native versions of these apps all use dark mode automatically if the host desktop is set to a dark theme.  Other KDE flatpak apps <em>do</em> use the host system’s dark theme, it’s just these three that won’t (of the apps I’ve tried).</p>
+<p>System information:<br>
+I have reproduced the issue on all of the following distros:<br>
+Linux Mint Cinnamon 21, flatpak 1.12.7<br>
+Ubuntu Gnome 22.04, flatpak 1.12.7<br>
+Ubuntu Mate 22.04, flatpak 1.12.7<br>
+Fedora Cinnamon 37, flatpak 1.12.7<br>
+On Fedora, I was also able to try the rpm versions of the three mentioned apps, and they automatically used the system dark theme: this issue is only present in the flatpak version.  None of the relevant apps are in the Ubuntu/Debian deb repositories, so I can’t test them there.<br>
+I ran all of the distros mentioned here in a virtual machine, except Mint.</p>
+<p>Detailed steps to reproduce:<br>
+1)Run <code>flatpak install flathub org.kde.alligator org.kde.tokodon org.kde.keysmith</code><br>
+2)Perform the necessary steps to allow QT flatpak apps to use the system theme.  This will depend on the desktop enviroment:<br>
+2a)<a href="https://docs.flatpak.org/en/latest/desktop-integration.html#instructions-for-qt" rel="noopener nofollow ugc">In Gnome</a>, install <code>org.gtk.Gtk3theme.Adwaita-dark</code>, <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and <code>org.kde.PlatformTheme.QGnomePlatform//5.15-21.08</code>.<br>
+2b)<a href="https://forums.linuxmint.com/viewtopic.php?p=2172752&amp;sid=d8230c85d94e2becbbd122fd03b22ab1#p2172752" rel="noopener nofollow ugc">In Mate or Cinnamon</a>, install <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and run <code>sudo flatpak override --env=QT_STYLE_OVERRIDE=Adwaita-dark</code>.</p>
+<p>Expected result: QT-based flatpak apps which can use the system theme automatically switch to dark mode.<br>
+Actual result: <em>Most</em> QT-based flatpak apps which can use the system theme automatically switch to dark mode, including VLC, Kate, Dolphin, and KolourPaint.  However, the three apps mentioned in the title, Alligator, Tokodon, and Keysmith, continue to use light mode, and there is thus seemingly no way to make them use a dark theme.  I don’t know what about these three apps is different from all the other KDE/QT apps I’ve used.</p>
+<p>Other information:<br>
+I also tried testing on Kubuntu.  All three mentioned flatpaks were able to switch to dark mode when the host system was using breeze dark.  So, it only seems to be an issue with GTK-based desktops.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

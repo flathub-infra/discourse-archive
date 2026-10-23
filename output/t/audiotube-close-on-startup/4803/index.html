@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AudioTube close on startup - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">AudioTube close on startup</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">AudioTube close on startup</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 5, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Njic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 5, 2023 8:46 AM">
+            <time itemprop="datePublished" datetime="2023-08-05 08:46:24 +0000">Aug 5, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m having troubles to run AudioTube on POP OS.</p>
+<p>This is what I get in treminal:</p>
+<pre><code class="lang-auto">rambos@pop-os:~/Desktop/Apps$ flatpak run org.kde.audiotube
+Gtk-Message: 10:42:39.548: Failed to load module "canberra-gtk-module"
+Gtk-Message: 10:42:39.549: Failed to load module "canberra-gtk-module"
+qt.qpa.qgnomeplatform: Could not find color scheme  ""
+Qt: Session management error: None of the authentication protocols specified are supported
+asyncdatabase: Checking whether migration "2022-05-20-194850_init" is already applied
+asyncdatabase: … yes
+asyncdatabase: Checking whether migration "2022-05-25-212054_playlists" is already applied
+asyncdatabase: … yes
+asyncdatabase: Migrations finished
+asyncdatabase: Running "select distinct (search_query) from searches order by search_id desc"
+asyncdatabase: Running "select * from favourites natural join songs order by favourites.rowid desc"
+asyncdatabase: Running "select * from played_songs natural join songs"
+asyncdatabase: Running "select * from played_songs natural join songs order by plays desc limit 10"
+Cannot initialize model with data QJsonObject(). missing: QJsonValue(string, "urls")
+Cannot initialize model with data QJsonObject(). missing: QJsonValue(string, "urls")
+asyncdatabase: Running "select * from playlists"
+Cannot initialize model with data QJsonObject(). missing: QJsonValue(string, "urls")
+Cannot initialize model with data QJsonObject(). missing: QJsonValue(string, "urls")
+asyncdatabase: Running "select * from playlists"
+asyncdatabase: Running "select * from playlists"
+qrc:/main.qml:97:17: Unable to assign null to double
+qrc:/MinimizedPlayerControls.qml:245:13: Unable to assign bool to int
+qrc:/LibraryPage.qml:28:13: Unable to assign [undefined] to double
+qrc:/LibraryPage.qml:322:13: Unable to assign [undefined] to double
+qrc:/LibraryPage.qml:609:13: Unable to assign [undefined] to double
+qrc:/dialogs/RenamePlaylistDialog.qml:25: TypeError: Cannot read property 'title' of undefined
+qrc:/dialogs/RenamePlaylistDialog.qml:31: TypeError: Cannot read property 'description' of undefined
+qrc:/dialogs/AddPlaylistDialog.qml:19:15: QML FormLayout: Binding loop detected for property "implicitHeight"
+qrc:/dialogs/RenamePlaylistDialog.qml:20:15: QML FormLayout: Binding loop detected for property "implicitHeight"
+qrc:/dialogs/AddPlaylistDialog.qml:19:15: QML FormLayout: Binding loop detected for property "implicitHeight"
+qrc:/dialogs/PlaylistDialog.qml:38:9: QML AddPlaylistDialog: Binding loop detected for property "implicitHeight"
+qrc:/LibraryPage.qml:661:9: QML RenamePlaylistDialog: Binding loop detected for property "implicitHeight"
+qrc:/dialogs/PlaylistDialog.qml:38:9: QML AddPlaylistDialog: Binding loop detected for property "implicitHeight"
+
+</code></pre>
+<p>The window appear for a moment, then just disappears. Any tips?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 5, 2023 4:19 PM">
+            <time itemprop="datePublished" datetime="2023-08-05 16:19:44 +0000">Aug 5, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you might want the developer to look at it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 6, 2023 12:25 AM">
+            <time itemprop="datePublished" datetime="2023-08-06 00:25:10 +0000">Aug 6, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I wonder if it is not “just crashing”.</p>
+<p>There is very little feedback when this happens.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 6, 2023 12:34 AM">
+            <time itemprop="datePublished" datetime="2023-08-06 00:34:10 +0000">Aug 6, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Filed this <a href="https://github.com/flathub/org.kde.audiotube/issues/34" class="inline-onebox">Crashes on startup · Issue #34 · flathub/org.kde.audiotube · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Justin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 6, 2023 3:16 AM">
+            <time itemprop="datePublished" datetime="2023-08-06 03:16:29 +0000">Aug 6, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@njic</span> Pop OS is still using GNOME/Mutter right? They haven’t switched over to COSMIC yet?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Njic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 6, 2023 6:02 AM">
+            <time itemprop="datePublished" datetime="2023-08-06 06:02:41 +0000">Aug 6, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I know its gnome, but never heared of mutter ot cosmic sorry. Do I have problems with gnome desktop?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Justin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 6, 2023 6:09 AM">
+            <time itemprop="datePublished" datetime="2023-08-06 06:09:06 +0000">Aug 6, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m just trying to gather similarities between your setup and hub’s so that once the developers look at it they can determine the cause of the issue.</p>
+<p>If you want to try provide more information you could try seeing if yours is crashing like hub’s by following this guide: <a href="https://blogs.gnome.org/mclasen/2017/01/20/debugging-a-flatpak-application/" class="inline-onebox" rel="noopener nofollow ugc">Debugging a Flatpak application | Goings on</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

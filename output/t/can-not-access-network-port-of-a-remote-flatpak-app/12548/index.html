@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can not access network port of a remote Flatpak app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Can not access network port of a remote Flatpak app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Can not access network port of a remote Flatpak app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 6, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vortex Acherontic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 6, 2026 3:45 PM">
+            <time itemprop="datePublished" datetime="2026-08-06 15:45:01 +0000">Aug 6, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello there,</p>
+<p>this is a rather weird issue I have and I have not found a solution. Not even in existing posts regarding similar issues like this one: <a href="/t/can-flatpak-access-hosts-network-port/8540/index.html" class="inline-onebox">Can flatpak access host's network port?</a> I even ask “The AI (Claude Sonnet 4.6)” which … well … did not helped either.</p>
+<p>Here is the situation:</p>
+<p>Today I wired up the aarch64 build of my OpenSeeFace Wrapper App <a href="https://flathub.org/en/apps/de.z_ray.Facetracker" rel="noopener nofollow ugc">Facetracker</a> and tested it on my Pi 400.</p>
+<p>The app builds, and runs, all good. However in order to fully test it I have also to run any type of VTubbing Software. But all of them are Windows only and of course x86_64. My Pi 400 is not powerful enough to run Fex-Emu + Steam + VTube Studio + Facetracker to test things locally.</p>
+<p>So the only logical solution is to run the VTubbing App on my Desktop and connect to the Facetracker instance running on my Pi 400. This does not work. The port is claimed to be closed. According to netstat (running on the local device) and nmap from a remote device. No tracking data is received by VTube Studio on my Desktop.</p>
+<p>I run the tracker on all network interfaces 0.0.0.0 with port 11573. Over on my Desktop I set VTube Stdio to access the IPv4 of my PI 400 at my home. Both devices running on the same network.</p>
+<p>My app already uses `–share=network` but I am not sure if this also allows to open ports and let other apps access to it.</p>
+<p>Same for the x86_64 build on my desktop. I can’t access the port form my Pi 400 either. However running VTube Studio + Facetracker on the same machine works fine. While you have to tell VTube Studio to access 0.0.0.0 11573 so it also talks to Facetracker using the network as well.</p>
+<p>Am I missing something here?</p>
+<p>Development Flatpak Manifest an be found here: <a href="https://codeberg.org/ZRayEntertainment/Facetracker" class="inline-onebox" rel="noopener nofollow ugc">ZRayEntertainment/Facetracker: Wrapper UI for OpenSeeFace's facetracker - Codeberg.org</a></p>
+<p>Many thanks in advance,</p>
+<p>Vortex.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vortex Acherontic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 7, 2026 8:32 PM">
+            <time itemprop="datePublished" datetime="2026-08-07 20:32:59 +0000">Aug 7, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Nevermind. All good. All working</p>
+<p>I missed that my app wrapps a UDP application which means I have to SEND the data from my flatpak. They are not RECEIVED … geeeez I feel so silly rn … remote tracking works now. Sorry for bothering you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fotran modules not found VS Command not found ?! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Fotran modules not found VS Command not found ?!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Fotran modules not found VS Command not found ?!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 8, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 8, 2022 3:11 PM">
+            <time itemprop="datePublished" datetime="2022-09-08 15:11:13 +0000">Sep 8, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear all,<br>
+hope this is the right place to ask for help, if not please just direct me to the appropriate one and I will delete this topic.</p>
+<p>Trying to build a Flatpak for my program Atomes: <a href="https://atomes.ipcms.fr/" rel="noopener nofollow ugc">https://atomes.ipcms.fr/</a></p>
+<p>I am having some issue(s), the issue depending on the method I use to build the Flatpak, with the following command:</p>
+<pre><code class="lang-auto">$ flatpak-builder atomes org.flatpak.atomes.yml
+</code></pre>
+<ol>
+<li>I use the <strong><code>autotools</code></strong> buildsystem:</li>
+</ol>
+<pre><code class="lang-auto">app-id: org.flatpak.atomes
+runtime: org.freedesktop.Platform.GL.default
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: atomes
+modules:
+  - shared-modules/glu/glu-9.json
+  - name: atomes 
+    buildsystem: autotools
+    no-autogen: true
+    config-opts:
+      - --enable-flatpak
+    sources:
+      - type: archive
+        url: https://raw.githubusercontent.com/Slookeur/Atomes-flatpak-build/main/atomes-1.1.0.tar.gz
+        sha256: 5be58a89f03775f22612b09199b355dd081e9ad1df4ce9f7454fffac211573e9
+</code></pre>
+<p>Then I cannot build the Flatpak, during the compilation gfortran is yelling at me that he cannot find the fortran modules (that were compiled previously, and are located in the appropriate place … go figure).<br>
+I tried to used all the related gfortran options here (<code>-I, -J, -fintrinsic-modules-path</code>) to try to correct this issue … nothing works, and gfortran remains unhappy, so I decided to try something else …</p>
+<ol start="2">
+<li>Using the <strong><code>simple</code></strong> buildsystem</li>
+</ol>
+<pre><code class="lang-auto">app-id: org.flatpak.atomes
+runtime: org.freedesktop.Platform.GL.default
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: atomes
+modules:
+  - shared-modules/glu/glu-9.json
+  - name: atomes 
+    buildsystem: simple
+    build-commands:
+      - ./configure --prefix=/app --enable-flatpak
+      - make
+      - make install
+    sources:
+      - type: archive
+        url: https://raw.githubusercontent.com/Slookeur/Atomes-flatpak-build/main/atomes-1.1.0.tar.gz
+        sha256: 5be58a89f03775f22612b09199b355dd081e9ad1df4ce9f7454fffac211573e9
+</code></pre>
+<p>Then no problem to build the Flatpak !<br>
+For some reason here, gfortran is perfectly happy, no issue what so ever … but when I test it, using:</p>
+<pre><code class="lang-auto">$ flatpak-builder --user --install --force-clean build-dir org.flatpak.atomes.yml
+$ flatpak run org.flatpak.atomes
+</code></pre>
+<p>Then Flatpak is trying to launch the app but fails saying that it cannot find the ‘<code>atomes</code>’ command:</p>
+<pre><code class="lang-auto">bwrap: execvp /app/bin/atomes: No such file or directory
+</code></pre>
+<p>I would really appreciate your ideas/help on the matter.<br>
+Thanks in advance.</p>
+<p>Sébastien Le Roux</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sébastien Le Roux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 28, 2022 9:32 PM">
+            <time itemprop="datePublished" datetime="2022-10-28 21:32:40 +0000">Oct 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is  a reply to my-self, it might help others:</p>
+<p>I noticed that with autotools the build is automatically // (-j option),<br>
+and that is why I had the issue with the missing fortran modules.<br>
+To avoid having errors it is mandatory to ask for the fortran modules to be built first,<br>
+and that happens in the file ‘Makefile.am’, in my case I had:</p>
+<pre><code class="lang-auto">atomes_fortran = $(atomes_fortran_modules) $(atomes_fortran_files)
+</code></pre>
+<p>And I needed to add the following line:</p>
+<pre><code class="lang-auto">atomes_fortran = $(atomes_fortran_modules) $(atomes_fortran_files)
+$(patsubst %.F90,%.o,$(atomes_fortran_files)): $(patsubst %.F90,%.o,$(atomes_fortran_modules))
+</code></pre>
+<p>And that allows the ‘autotools’ build system to work as expected.</p>
+<p>After the build I managed to run my app using:</p>
+<pre><code class="lang-auto">flatpak run --socket=session-bus --nosocket=fallback-x11 --socket=x11 org.flatpak.atomes
+</code></pre>
+<p>The ‘–socket=session-bus’ correct the DBus error, while ‘x11’ related options correct a GTK display error, so now the flatpak seems to run fine, not sure that this way of doing is appropriate,<br>
+any advise would be appreciated.</p>
+<p>S.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

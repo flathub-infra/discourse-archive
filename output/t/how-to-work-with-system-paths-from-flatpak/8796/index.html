@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to work with system paths from flatpak? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to work with system paths from flatpak?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to work with system paths from flatpak?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 28, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 28, 2025 2:40 PM">
+            <time itemprop="datePublished" datetime="2025-01-28 14:40:26 +0000">Jan 28, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I’m making a Quick Web Apps, app for creating some sort of web apps. It need to read some paths, mainly system paths to find installed browsers, and other apps. For now, I’m doing this ugly thing: <a href="https://github.com/cosmic-utils/web-apps/blob/master/src/common.rs#L76-L82" class="inline-onebox" rel="noopener nofollow ugc">web-apps/src/common.rs at master · cosmic-utils/web-apps · GitHub</a></p>
+<p>So appending sandboxed (and allowed) paths to this create: <a href="https://github.com/pop-os/freedesktop-desktop-entry" class="inline-onebox" rel="noopener nofollow ugc">GitHub - pop-os/freedesktop-desktop-entry: Rust crate for navigating Freedesktop desktop entries</a><br>
+so it can find all desktop entries and it can read what browsers user can use.</p>
+<p>I think this approach is really bad. Does anyone have any better idea how to work with it? For not sandboxed environment, this mentioned crate (fde) works beautifully. It reads system paths and gives me results. For flatpak I need to append something and use not common paths. Maybe somehow we can (i don’t know ^^) redirect those sandboxed paths to normal paths, so <code>fde</code> crate will works as expected?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 29, 2025 2:07 AM">
+            <time itemprop="datePublished" datetime="2025-01-29 02:07:10 +0000">Jan 29, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Unfortunately, this simply isn’t something that Flatpak is well-suited for.</p>
+<p>One approach would be to create a statically linked (or dynamically linked with minimal dependencies) executable that you run on the host using <code>flatpak-spawn --host</code>. Your main app would still run inside the sandbox, but you’d communicate with this ‘agent’ process to interact with the host. This is what Ptyxis does to spawn shells on the host, for example.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 31, 2025 7:04 AM">
+            <time itemprop="datePublished" datetime="2025-01-31 07:04:34 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, that sounds like a solution. So basically I need those 2 permissions,<br>
+<code>--talk-name=org.freedesktop.Flatpak</code><br>
+and<br>
+<code>--filesystem=host</code></p>
+<p>and running my app with <code>flatpak-spawn --host</code> right? How to “automatic” this thing, so desktop file will have this setup? I want to make it as simple as possible for end user.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 31, 2025 4:12 PM">
+            <time itemprop="datePublished" datetime="2025-01-31 16:12:11 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just using <code>flatpak-spawn</code> to run the whole app outside of the sandbox is an terrible idea, if you ask me.</p>
+<p>Its also not how Ptyxis works.</p>
+<p>AFAIK Ptyxis works the following way:<br>
+The app itself is run normally inside the sandbox. However, it uses the Flatpak portal to launch a small process, which performs the task which need to be run on the host, outside of the sandbox. This is the agent.<br>
+The app and the agent communicate over dbus.</p>
+<p>That way, Ptyxis can perform certain actions on the host without it running fully outside the sandbox.</p>
+<p>To be honest, you current code, which appends the additional paths when running in Flatpak, is the best solution as of now, as your app stays in the sandbox.</p>
+<p>If I recall correctly there was an proposal for an XDG desktop portal to request a list of desktop files, might want to keep an eye on that.</p>
+<p>Finally: While this won’t solve your issue when running inside Flatpak, you should look into using paths relative to <code>XDG_DATA_HOME</code> and <code>XDG_DATA_DIRS</code>, otherwise there might be environments where the absolute paths could lead to wrong folders.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jan 31, 2025 6:04 PM">
+            <time itemprop="datePublished" datetime="2025-01-31 18:04:11 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, thanks!</p>
+<p>I’m gonna stay with it for now, as you say. Gonna look into this XDP enhancements tho.</p>
+<p>If we are now here, so maybe I can ask one more thing.</p>
+<p>I wonder how to “beautify” those permissions for files in my manifest: <a href="https://github.com/cosmic-utils/web-apps/blob/master/dev.heppen.webapps.json" class="inline-onebox" rel="noopener nofollow ugc">web-apps/dev.heppen.webapps.json at master · cosmic-utils/web-apps · GitHub</a></p>
+<p>I require access to some folders to read, and some for writing browser profiles there. Any ideas if I can improve this somehow?<br>
+Ofc, you mentioned <code>XDG_DATA_HOME</code> so I will look into it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 31, 2025 7:15 PM">
+            <time itemprop="datePublished" datetime="2025-01-31 19:15:11 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, the issue for a portal regarding desktop entries can be found here:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/xdg-desktop-portal/issues/809">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/809" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/xdg-desktop-portal</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/809" target="_blank" rel="noopener nofollow ugc">Desktop entries / App list portal</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2022-05-29" data-time="23:47:59" data-timezone="UTC">11:47PM - 29 May 22 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/GeoffreyCoulaud" target="_blank" rel="noopener nofollow ugc">
+          <img alt="GeoffreyCoulaud" src="/uploads/original/2X/a/ac5a96aa19ee90168f8fe9390597742644a00f1d.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="5267A8">
+          GeoffreyCoulaud
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          help wanted
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          new portals
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Hello,
+
+Would it be possible to create an app list portal ? Something that cou<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ld give the entries from Gnome shell's app grid for example.
+This would be useful for launcher apps, like [Boatswain](https://gitlab.gnome.org/World/boatswain) or [Gali](https://github.com/GeoffreyCoulaud/gali/).
+
+It would be great to have access to the `.desktop` files contents to have feature parity with the desktop environment launchers.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<aside class="quote no-group" data-username="hepp3n" data-post="5" data-topic="8796">
+<div class="title">
+<div class="quote-controls"></div>
+hepp3n:</div>
+<blockquote>
+<p>I wonder how to “beautify” those permissions for files in my manifest: <a href="https://github.com/cosmic-utils/web-apps/blob/master/dev.heppen.webapps.json" rel="noopener nofollow ugc">web-apps/dev.heppen.webapps.json at master · cosmic-utils/web-apps · GitHub</a></p>
+</blockquote>
+</aside>
+<p>Since I have not looked at your app in detail, I cant give much detail, bu well, I can give a few thoughts on the permissions:</p>
+<pre><code class="lang-auto">"--filesystem=host-os",
+"--filesystem=/var/lib/flatpak:ro",
+"--filesystem=~/.local/share/flatpak:ro",
+</code></pre>
+<p>Considering you need the system desktop files, for which no portal exists as of yet, you probably won’t get around those right now. But you should probably use <code>:ro</code> on <code>host-os</code>.</p>
+<pre><code class="lang-auto">"--filesystem=~/.local/share/applications:rw",
+"--filesystem=~/.local/share/icons:create",
+</code></pre>
+<p>You may want to look if using the Dynamic Launcher Portal might be an option for you.<br>
+But if you need to keep these permissions, you should use <code>xdg-data</code> instead of <code>~/.local/share</code>, as <code>xdg-data</code> maps to <code>XDG_DATA_HOME</code>.</p>
+<pre><code class="lang-auto">"--filesystem=~/.local/share/quick-webapps:create",
+"--filesystem=~/.var/app:rw"
+</code></pre>
+<p>These I don’t think are necessary. Especially on the first, you should read your app data from <code>XDG_DATA_HOME/quick-webapps</code>, which is on Flatpak provided under <code>~/.var/app</code>.</p>
+<p>And for the second I’m not sure where you would use this… The data folder for your own app is mounted automatically, so there’s no need to add that.</p>
+<p>A note on <code>XDG_DATA_HOME</code> and the likes for config and cache: While the default, if they are not defined, is indeed <code>~/.local/share</code>, these can be changes by the user (or sandbox systems like Flatpak), so you should always read the setting first. Your UI toolkit probably has a method that makes this check for you, or you could use the <code>dirs</code> crate.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jan 31, 2025 8:21 PM">
+            <time itemprop="datePublished" datetime="2025-01-31 20:21:23 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for details!</p>
+<blockquote>
+<p>But you should probably use :ro on host-os.</p>
+</blockquote>
+<p>Good idea.</p>
+<blockquote>
+<p>You may want to look if using the Dynamic Launcher Portal might be an option for you.</p>
+</blockquote>
+<p>Never heard of it yet <img src="/images/emoji/twitter/sweat_smile.png?v=12" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"> I’m gonna learn something!</p>
+<blockquote>
+<p>These I don’t think are necessary. Especially on the first, you should read your app data from XDG_DATA_HOME/quick-webapps, which is on Flatpak provided under ~/.var/app.</p>
+</blockquote>
+<p>Yeah, but I want to keep also “native” version not sandboxed in works. So gonna consider this change. But wait, <code>XDG_DATA_HOME</code> will points to <code>~/.local/share</code> if not sandboxed?</p>
+<blockquote>
+<p>And for the second I’m not sure where you would use this… The data folder for your own app is mounted automatically, so there’s no need to add that.</p>
+</blockquote>
+<p>Ok, so this what I’m doing here is kind of dirty ^^ Browsers require profiles to work. For example firefox. If we use flatpak firefox, it will need to adjust permissions to read profiles from outside. I just decided, I will write to <code>~/.var/app/org.mozilla.firefox/data/profiles/firefox</code> path. So created web app wil works, firefox flatpak will see profiles because it will be in it’s own path with permissions and everyone will be happy ^^</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 1, 2025 9:47 AM">
+            <time itemprop="datePublished" datetime="2025-02-01 09:47:35 +0000">Feb 1, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hepp3n" data-post="7" data-topic="8796">
+<div class="title">
+<div class="quote-controls"></div>
+hepp3n:</div>
+<blockquote>
+<p>Yeah, but I want to keep also “native” version not sandboxed in works. So gonna consider this change.</p>
+</blockquote>
+</aside>
+<p>Well, the Flatpak should always store its data in its sandboxed folder. If users have used that native version before, providing a guide on how to migrate the data should suffice.</p>
+<aside class="quote no-group" data-username="hepp3n" data-post="7" data-topic="8796">
+<div class="title">
+<div class="quote-controls"></div>
+hepp3n:</div>
+<blockquote>
+<p>But wait, <code>XDG_DATA_HOME</code> will points to <code>~/.local/share</code> if not sandboxed?</p>
+</blockquote>
+</aside>
+<p>If <code>XDG_DATA_HOME</code> is not set, <code>~/.local/share</code> is considered the default location. But it is important to respect it if it is set. Like a mentioned before, look if your UI kit has methods to check for the location of the data directory or consider using the <code>dirs</code> crate.</p>
+<aside class="quote no-group" data-username="hepp3n" data-post="7" data-topic="8796">
+<div class="title">
+<div class="quote-controls"></div>
+hepp3n:</div>
+<blockquote>
+<p>Ok, so this what I’m doing here is kind of dirty ^^ Browsers require profiles to work. For example firefox. If we use flatpak firefox, it will need to adjust permissions to read profiles from outside. I just decided, I will write to <code>~/.var/app/org.mozilla.firefox/data/profiles/firefox</code> path. So created web app wil works, firefox flatpak will see profiles because it will be in it’s own path with permissions and everyone will be happy ^^</p>
+</blockquote>
+</aside>
+<p>That does make sense. However, you probably should narrow down the permission then to the folders of the browsers you actually supoort. So, <code>~/.var/app/org.mozilla.firefox</code> for Firefox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 1, 2025 1:03 PM">
+            <time itemprop="datePublished" datetime="2025-02-01 13:03:59 +0000">Feb 1, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Well, the Flatpak should always store its data in its sandboxed folder. If users have used that native version before, providing a guide on how to migrate the data should suffice.</p>
+</blockquote>
+<p>Ok, I will think how to solve this.</p>
+<blockquote>
+<p>If <code>XDG_DATA_HOME</code> is not set, <code>~/.local/share</code> is considered the default location. But it is important to respect it if it is set. Like a mentioned before, look if your UI kit has methods to check for the location of the data directory or consider using the <code>dirs</code> crate.</p>
+</blockquote>
+<p>Yeah, I’m even using this crate as a helper for my needs. But maybe I will integrate it better.</p>
+<blockquote>
+<p>That does make sense. However, you probably should narrow down the permission then to the folders of the browsers you actually supoort. So, <code>~/.var/app/org.mozilla.firefox</code> for Firefox.</p>
+</blockquote>
+<p>Well, current implementations is kind of optimal in that sense, even if browser change it’s app_id it will be updated in Quick Web Apps, so it will be still using proper path. Otherwise, I would like to change it and make new release each time and for each new supported browsers.<br>
+Let me ask. Do you think I should change this permission? For each browser separate or leave it as it is? I know by this I’m losing some trust so I don’t know…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Piotr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 1, 2025 5:20 PM">
+            <time itemprop="datePublished" datetime="2025-02-01 17:20:44 +0000">Feb 1, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, so for now I got…</p>
+<p>Dynamic Launcher Portal to install web apps. Appended paths will leave as it is.<br>
+My permissions are cut down to those:</p>
+<pre><code class="lang-auto">    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--share=network",
+    "--filesystem=host-os:ro",
+    "--talk-name=com.system76.CosmicSettingsDaemon"
+</code></pre>
+<p>So still I need <code>host-os</code> but at least <code>:ro</code>. Imho it looks better. The downside is… User will have to adjust browser permissions to read our folder with profiles (probably…) but I think they will be used to it since using flatpak and also Flatseal will help with this process a bit which I will document and make a short guide <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>Thank you for assistance <span class="mention">@CodedOre</span></p>
+<p>If you have any ideas what else, let me know <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p><span class="hashtag-raw">#edit</span> oh right, I still need to somehow find user installed flatpak browsers, so they are located in ~/.local/share/flatpak I guess.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

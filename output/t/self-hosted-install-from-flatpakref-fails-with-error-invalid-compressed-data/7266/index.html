@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Self-hosted install from flatpakref fails with error: Invalid compressed data - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Self-hosted install from flatpakref fails with error: Invalid compressed data</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Self-hosted install from flatpakref fails with error: Invalid compressed data</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 11, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 11, 2024 6:19 AM">
+            <time itemprop="datePublished" datetime="2024-07-11 06:19:07 +0000">Jul 11, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m building our own program with flatpak, with the goal of putting it on our own server and enable installation via a .flatpakref file. With previous versions, this used to work. Yesterday I tried to build a new version of our program, and do the same procedure; building the app and running it locally works just fine. After moving the repo to our server, I noticed however that any installation via .flatpakref just leads to an error outupt:</p>
+<pre><code class="lang-auto">$ sudo flatpak install --verbose https://flatpak.3dct.at/openia.flatpakref
+F: No installations directory in /etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /root/.local/share/flatpak
+F: Loading https://flatpak.3dct.at/openia.flatpakref using curl
+F: Received 3186 bytes
+F: Loading https://flathub.org/repo/flathub.flatpakrepo using curl
+F: Received 4040 bytes
+F: Fetching summary index file for remote ‘openia-origin’
+F: Loading https://flatpak.3dct.at/summary.idx using curl
+F: Received 334 bytes
+F: Fetching indexed summary file ac86708263c25ca318b4ca8e999c455dfc88790ec01b4284862e2ead894e5070.gz for remote ‘openia-origin’
+F: Loading https://flatpak.3dct.at/summaries/ac86708263c25ca318b4ca8e999c455dfc88790ec01b4284862e2ead894e5070.gz using curl
+F: Received 810 bytes
+error: Invalid compressed data
+</code></pre>
+<p>Searching for this error didn’t give me any results that seemed to apply for my case - the only thing that stuck out as possibly remotely relevant is <a href="https://github.com/flatpak/flatpak/issues/5452" rel="noopener nofollow ugc">some bug in ostree a while back, which should be fixed by now</a>.</p>
+<p>Later, I noticed that I even got the same error when I host the “old” repository which I had backed up (a repository only containing the old version of our program, where installation previously used to work).</p>
+<p>I have tested both building and installing on Fedora 40 and Ubuntu 24.04; in both cases, building, local installation and running works fine, but installing from .flatpakref fails with above error.</p>
+<p>How can I get more information on what is actually failing here? The verbose output suggests there is something wrong with the content of <em>summaries/ac86708263c25ca318b4ca8e999c455dfc88790ec01b4284862e2ead894e5070.gz</em> but I have no idea what. When extracting the .gz, the resulting file does look strange (mixing text with binary data), but from what I can gather this has always looked that way?</p>
+<p><code>build-update-repo</code>, which as far as I can tell produces these summary files, ran through successfully;  I have tried the build/sign/upload procedure multiple times, and as I said, installation fails even with a repo that I’m pretty sure was working before.</p>
+<p>So I have no clue how to figure out what’s wrong with the files or how I can produce “correct” ones?</p>
+<p>I guess there could also be something wrong with my hosting environment that leads to this error?</p>
+<p>In order to keep this post reasonably short I have skipped the commands I use in my build/sign procedure, but If required I can of course provide them.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 12, 2024 5:39 AM">
+            <time itemprop="datePublished" datetime="2024-07-12 05:39:02 +0000">Jul 12, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Checking the extracted summaries/ac86708263c25ca318b4ca8e999c455dfc88790ec01b4284862e2ead894e5070.gz (which has the 810 bytes reported by flatpak), this is what the content looks like:</p>
+<pre><code class="lang-auto">app/at.zfp.openia/x86_64/stable^@d^C^@^@^@^@^@^@Ñ&lt;88&gt;´®ªc7ÄZZ¼^O¦¡&lt;9f&gt;^O^NwI&lt;92&gt;³&lt;88&gt;^?Çü0ÙÔóãHÈxa.data^@^@^@^@^@^PB&lt;8e&gt;^@^@^@^@^@^D®oØ[Application]
+name=at.zfp.openia
+runtime=org.kde.Platform/x86_64/6.4
+sdk=org.kde.Sdk/x86_64/6.4
+command=open_iA
+
+[Context]
+shared=network;ipc;
+sockets=x11;wayland;
+devices=dri;
+filesystems=home;xdg-run/dconf;~/.config/dconf:ro;xdg-config/kdeglobals:ro;host;
+
+[Session Bus Policy]
+com.canonical.AppMenu.Registrar=talk
+ca.desrt.dconf=talk
+
+[Environment]
+DCONF_USER_CONFIG_DIR=.config/dconf
+^@^@(tts)^H^@^@^@^@ot.ts^@^@^@^@^@^@^@d-f^A^@t^F¥^A»^A(^@ ^@^@^@^@^@^@appstream/x86_64^@^@^@^@^@^@^@^@Î^@^@^@^@^@^@^@&lt;90&gt;½t&lt;84&gt;±±O&lt;80&gt;&lt;8d&gt;ûº^M^T«ÑøÎ^E&lt;81&gt;f%S¸Û|òêª&lt;9d&gt;H÷¿xa.data^@^@^@^@^@^@^@
+^@^@^@^@^@^@^@  h^@^@(tts)^Hot.ts^@^@^@^@^@^@^@f&lt;8f&gt;^@ ^@t^F 3(^Q^@appstream2/x86_64^@^@^@^@^@^@^@Ö^@^@^@^@^@^@^@F¬&lt;8a&gt;^A_&lt;92&gt;õ:¨æx£¾jà^^B&lt;8c&gt;øc^@,_&lt;91&gt;^BRa¿'ÏØjxa.data^@^@^@^@^@^@^@^R^@^@^@^@^@^@^@  U^@^@(tts)^Hot.ts^@^@^@^@^@^@^@d-l¡^@t^F 3(^R^K^B&lt;87&gt;^Bÿ^B^@^@^@xa.summary-version^@^@^@^@^@^@^A^@^@^@^@u^S^_^E^C
+</code></pre>
+<p>Are these binary chunks within the file (in the first and last two lines) normal?</p>
+<p>The <em>compression</em> actually doesn’t seem to be the problem - gzip can decompress the file just fine, and re-compression with gzip produces a file of a bit larger size (probably different compression level), which however produces the same error.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 16, 2024 11:17 AM">
+            <time itemprop="datePublished" datetime="2024-07-16 11:17:18 +0000">Jul 16, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry to push this, but I really want to solve this issue as soon as possible. Some small hint where I possibly could look for more information would be enough! I just am very stuck at this point and have no more idea what to check…</p>
+<p>By the way, I hope I am asking the question in the right place (got here from the forum link on <a href="http://flatpak.org" rel="noopener nofollow ugc">flatpak.org</a>) - or if it’s not, maybe someone can point me to a more suitable one?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 17, 2024 7:24 AM">
+            <time itemprop="datePublished" datetime="2024-07-17 07:24:42 +0000">Jul 17, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>can you try another host system, as far as I know, those can be pretty simlpe and only need to offer tha data (github/gitlab pages work for this for e.g.)</p>
+<p>wondering, how you move the files around, but usually that shouldn’t cause this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 17, 2024 8:39 AM">
+            <time itemprop="datePublished" datetime="2024-07-17 08:39:21 +0000">Jul 17, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="razzeee" data-post="4" data-topic="7266" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+razzeee:</div>
+<blockquote>
+<p>can you try another host system, as far as I know, those can be pretty simlpe and only need to offer tha data (github/gitlab pages work for this for e.g.)</p>
+</blockquote>
+</aside>
+<p>Thanks for the suggestion. Shame on me, I did suspect it was a host issue but didn’t follow up on that. And indeed it somehow seems specific to the host! I switched to another, there it works.</p>
+<p>Now I “only” need to find out what’s wrong on the original host…</p>
+<aside class="quote no-group" data-username="razzeee" data-post="4" data-topic="7266">
+<div class="title">
+<div class="quote-controls"></div>
+razzeee:</div>
+<blockquote>
+<p>wondering, how you move the files around, but usually that shouldn’t cause this.</p>
+</blockquote>
+</aside>
+<p>First time, I transferred via FTP, then realized this could cause issues; back when I reported the issue I already was transmitting a .tar.gz’ed or .zip’ed repo folder.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 17, 2024 10:15 AM">
+            <time itemprop="datePublished" datetime="2024-07-17 10:15:11 +0000">Jul 17, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There is something weird going on - I tried downloading the same summaries file from both the affected host and the non-affected host via curl and wget (the file mentioned in the verbose output of flatpak, right before the “error: Invalid compressed data” output).</p>
+<p>The resulting files are always IDENTICAL.</p>
+<p>I noticed that curl wasn’t installed on the machine where I did this (where I also tried the flatpak install from the .flatpakref) - so apparently flatpak uses its own internal version of curl (library probably). It seems that the curl included in flatpak seems to have some problems with the one host (which neither standalone wget nor curl have).</p>
+<p>So it probably has something to do with server configuration.</p>
+<p>This seems however like a flatpak bug to me - if both wget and curl can download the files properly, but flatpak just reports a somewhat cryptic error…</p>
+<p>EDIT: On a quick glance I didn’t see any major differences (both use HTTP/2, compression), and I don’t have more time for this at the moment. If somebody cares to look into it, here are the two base URLs:</p>
+<ul>
+<li><a href="https://flatpak.3dct.at" rel="noopener nofollow ugc">https://flatpak.3dct.at</a> (faulty)</li>
+<li><a href="https://flatpak.froehler.org" rel="noopener nofollow ugc">https://flatpak.froehler.org</a> (working)</li>
+</ul>
+<p>The summaries file is called <code>/summaries/0770ef8de810232dc14247c5a08c89b9f296c81559195d61c140b0d37251216d.gz</code><br>
+I have changed to the “full” repository again with all previous versions included, that’s why the file has a different name than in my original error message.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">codeling</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 10, 2024 10:51 AM">
+            <time itemprop="datePublished" datetime="2024-09-10 10:51:49 +0000">Sep 10, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="razzeee" data-post="4" data-topic="7266">
+<div class="title">
+<div class="quote-controls"></div>
+razzeee:</div>
+<blockquote>
+<p>can you try another host system, as far as I know, those can be pretty simlpe and only need to offer tha data (github/gitlab pages work for this for e.g.)</p>
+</blockquote>
+</aside>
+<p>I’ve given up on finding out why the original server did not work. I do suspect some kind of bug in (the curl library used by) flatpak, since the server does work for serving other static pages without a flaw.</p>
+<p>I’m using github pages now, thanks for the hint.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

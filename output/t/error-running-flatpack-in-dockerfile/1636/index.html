@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error running flatpack in Dockerfile - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Error running flatpack in Dockerfile</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Error running flatpack in Dockerfile</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 13, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gabriel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 13, 2021 4:20 PM">
+            <time itemprop="datePublished" datetime="2021-08-13 16:20:49 +0000">Aug 13, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello</p>
+<p>I am trying to install flatpak together with some apps in docker container and build the application in Dockerfile based on ubuntu 20.04.<br>
+I managed to install flatpak, but when I try to instrall WPS office or Spotify I get this warning:<br>
+<code>bwrap: Creating new namespace failed: Operation not permitted</code><br>
+<code>Warning: While trying to apply extra data: apply_extra script failed, exit status 256</code><br>
+then in next step I get:<br>
+<code> error: Failed to install com.wps.Office: While trying to apply extra data: apply_extra script failed, exit status 256</code><br>
+<code>The command '/bin/sh -c flatpak install flathub com.wps.Office -y' returned a non-zero code: 1</code><br>
+The same error i got if I try to install spotify.<br>
+On the other hand, if I install other apps like chess I got only the first warning and the apps was installed.</p>
+<p>Any ideas how to solve this error?</p>
+<p>Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 15, 2021 12:43 AM">
+            <time itemprop="datePublished" datetime="2021-08-15 00:43:00 +0000">Aug 15, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="gpopesc" data-post="1" data-topic="1636">
+<div class="title">
+<div class="quote-controls"></div>
+gpopesc:</div>
+<blockquote>
+<p><code>bwrap: Creating new namespace failed: Operation not permitted</code></p>
+</blockquote>
+</aside>
+<p>Looks like Docker doesn’t like bwrap. Not surprising, it’s container-ception.</p>
+<p>(maybe there is a trick, I don’t know,</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 15, 2021 10:09 AM">
+            <time itemprop="datePublished" datetime="2021-08-15 10:09:57 +0000">Aug 15, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>IIRC you need to run the docker container with a modified seccomp filter. I found <a href="https://github.com/flatpak/flatpak-docker-images/blob/master/flatpak-seccomp.json" rel="noopener nofollow ugc">this</a> which may or may not be up-to-date.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leamas</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 17, 2021 8:04 PM">
+            <time itemprop="datePublished" datetime="2021-08-17 20:04:57 +0000">Aug 17, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Or run docker with the --privileged option. This is the simple, brute-force way. Similar as  for modifying seccomp you typically cannot do this on some service in the cloud based on docker. But if you are running in a local machine or in a VM you should be fine.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gabriel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 18, 2021 8:54 AM">
+            <time itemprop="datePublished" datetime="2021-08-18 08:54:33 +0000">Aug 18, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>thank you all  for your messages.</p>
+<p>what I discovered:<br>
+If I try to run container --privileged option, it doesn’t work if you try to run as user, I get some errors when I try to run sudo command. (probably works when you run as root, but in this case other apps are not working)</p>
+<ul>
+<li>
+<p>if I want to build flatpak in Dockerfile, it is working only for installing the main app flatpak, but not WPS office or spotify. It can be install only simple apps like flatpak Chess with Dockerfile.</p>
+</li>
+<li>
+<p>after I build the container, running ubuntu, I can install WPS office with following setting in docker-compose. Only with NET_ADMIN and SYS_ADMIN is not enough. On top of that I had to execute following command in order to avoid bwrap error:<br>
+<code>chmod u+s /usr/bin/bwrap</code></p>
+<p><code>cap_add:</code><br>
+<code>  - NET_ADMIN</code><br>
+<code>  - SYS_ADMIN</code><br>
+<code>  - SYS_PTRACE</code><br>
+<code>  - SYS_CHROOT</code><br>
+<code>  security_opt:</code><br>
+<code>     - seccomp:unconfined</code><br>
+<code>    - apparmor:unconfined</code></p>
+</li>
+</ul>
+<p>Finally after installation I had to copy desktop icons and mount home inside flatpak<br>
+<code>sudo cp /var/lib/flatpak/exports/share/applications/* wps*.desktop     /usr/share/applications/ </code></p>
+<p><code>sudo flatpak override com.wps.Office  --filesystem=home</code></p>
+<p>I am not very happy with so many rights assigned to the container, but otherwise it is not working.<br>
+On the other hand it is self build and I know that it safe.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

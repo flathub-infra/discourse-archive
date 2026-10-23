@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Would Flathub accept Windows apps run through Wine? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Would Flathub accept Windows apps run through Wine?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Would Flathub accept Windows apps run through Wine?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 28, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 28, 2022 4:07 AM">
+            <time itemprop="datePublished" datetime="2022-07-28 04:07:06 +0000">Jul 28, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I know there’s Bottles/Lutris/PlayOnLinux/whatever, but I’m still curious - If I packaged <a href="https://www.realmofthemadgod.com/" rel="noopener nofollow ugc">Realm of the Mad God</a> (Windows &amp; MacOS game) for Flatpak, would Flathub accept the package?</p>
+<p>The running method would be to have the executable call <code>wine launcher.exe</code>, with <code>wine</code> installed as part of the build.</p>
+<p>I don’t see anything in <a href="https://github.com/flathub/flathub/wiki/App-Submission" rel="noopener nofollow ugc">App Submission</a> that would restrict this, but figured I’d ask since I don’t see any precedence of this</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 28, 2022 4:23 AM">
+            <time itemprop="datePublished" datetime="2022-07-28 04:23:59 +0000">Jul 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Looks like Flightcade is using Wine via a custom Wine script:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/com.fightcade.Fightcade/blob/master/com.fightcade.Fightcade.yml#L138">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.fightcade.Fightcade/blob/master/com.fightcade.Fightcade.yml#L138" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.fightcade.Fightcade/blob/master/com.fightcade.Fightcade.yml#L138" target="_blank" rel="noopener nofollow ugc">flathub/com.fightcade.Fightcade/blob/master/com.fightcade.Fightcade.yml#L138</a></h4>
+
+
+
+    <pre class="onebox">      <code class="lang-yml">
+        <ol class="start lines" start="128" style="counter-reset: li-counter 127 ;">
+            <li>  - ln -s /var/data/config/snes9x/stderr.txt emulator/snes9x/stderr.txt</li>
+            <li>  # Flycast config</li>
+            <li>  - ln -s /var/data/config/flycast/emu.cfg emulator/flycast/emu.cfg</li>
+            <li>  - rm -rf emulator/flycast/mappings</li>
+            <li>  - ln -s /var/data/config/flycast/mappings emulator/flycast/mappings</li>
+            <li>  # Backup the original data directory. We copy the savestates out of</li>
+            <li>  # the original directory at runtime.</li>
+            <li>  - mv emulator/flycast/data emulator/flycast/data_orig</li>
+            <li>  - ln -s /var/data/config/flycast/data emulator/flycast/data</li>
+            <li>  # Wine wrapper</li>
+            <li class="selected">  - install -Dm755 wine.sh /app/fightcade/Resources/wine.sh</li>
+            <li>  - cp -R * /app/fightcade/Fightcade</li>
+            <li>sources:</li>
+            <li>  - type: archive</li>
+            <li>    url: https://web.fightcade.com/download/Fightcade-linux-v2.1.31.tar.gz</li>
+            <li>    sha256: 9c15f06be4353f4016bd16536b3fd992836613a4bfe352fc9f1b5d0236aae6a4</li>
+            <li>    x-checker-data:</li>
+            <li>      type: html</li>
+            <li>      url: https://web.fightcade.com/download/update.json</li>
+            <li>      version-pattern: Fightcade-linux-v([\d.]+).tar.gz</li>
+            <li>      url-template: https://web.fightcade.com/download/Fightcade-linux-v${version}.tar.gz</li>
+        </ol>
+      </code>
+    </pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/com.fightcade.Fightcade/blob/master/scripts/wine.sh">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.fightcade.Fightcade/blob/master/scripts/wine.sh" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.fightcade.Fightcade/blob/master/scripts/wine.sh" target="_blank" rel="noopener nofollow ugc">flathub/com.fightcade.Fightcade/blob/master/scripts/wine.sh</a></h4>
+
+
+      <pre><code class="lang-sh">#!/bin/sh
+
+WINEERROR=$(cat &lt;&lt;-END
+&lt;i&gt;/app/wine/bin/wine&lt;/i&gt; is missing.
+
+&lt;b&gt;com.fightcade.Fightcade.Wine&lt;/b&gt; is required to run FinalBurn and Snes9x games
+END
+)
+
+WINEPATH="/app/wine/bin/wine"
+export WINEPREFIX=/var/data/winepfx
+
+if [[ -f ${WINEPATH} ]]; then
+	/app/wine/bin/wine "$@"
+else
+	zenity \
+	  --warning \
+	  --title "Flatpak extension required" \
+	  --text "${WINEERROR}"
+fi
+</code></pre>
+
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>There’s also <code>org.winehq.Wine</code> that can be used as a <code>base</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bayazid B. Halim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 26, 2022 7:24 AM">
+            <time itemprop="datePublished" datetime="2022-08-26 07:24:32 +0000">Aug 26, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I wasn’t there back then, but from some googling, we used to have <a href="https://winepak.github.io/" rel="noopener nofollow ugc">winepak</a> for Windows Apps flatpak’d with wine, but I think <a href="https://github.com/winepak/winepak" rel="noopener nofollow ugc">it has died</a>.</p>
+<p>There is <a href="https://github.com/fastrizwaan/winepak-x86_64" rel="noopener nofollow ugc">a fork</a> (I think?) by the same person who makes <a href="https://github.com/fastrizwaan/flatpak-wine" rel="noopener nofollow ugc">flatpak-wine</a> (and WineZGUI) but I’m unsure of any project that uses it, given that projects such as FFXIVLauncher and an-anime-game-launcher seems to prefer just downloading Wine in the launcher to the app’s user data folder.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

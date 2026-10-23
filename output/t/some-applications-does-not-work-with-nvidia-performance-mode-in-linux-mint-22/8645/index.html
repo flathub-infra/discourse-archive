@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Some applications does not work with NVIDIA (Performance Mode) in Linux Mint 22 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Some applications does not work with NVIDIA (Performance Mode) in Linux Mint 22</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Some applications does not work with NVIDIA (Performance Mode) in Linux Mint 22</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 11, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Shohrukh</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 11, 2025 1:55 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 13:55:07 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, Flathub Team!</p>
+<p>I installed some programs from Flathub on my laptop with Linux Mint 22 installed. They work fine with the integrated Intel UHD 610 graphics card, but when I switch to NVIDIA GTX 1650 (Performance Mode) some of them stop working.</p>
+<p>Here are some of them: Mission Center, GPU Viewer, Disk Usage Analyzer, Amberol. The list is probably incomplete.</p>
+<p>What’s interesting is that the same software installed from another store works with NVIDIA, but does not work from Flathub.</p>
+<p>Can you please tell me what is the reason for this?</p>
+<p>Thanks for such a great service and Flathub is actually an AppStore for Linux😎</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 11, 2025 4:41 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 16:41:14 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Those are all GTK4 apps. Can you run one of them in a terminal? e.g. <code>flatpak run io.bassi.Amberol</code></p>
+<p>Are you using the proprietary NVIDIA driver? If so, what version? Try running <code>flatpak update</code> to install the matching flatpak driver extension.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Shohrukh</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 11, 2025 5:25 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 17:25:21 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="chrisawi" data-post="2" data-topic="8645">
+<div class="title">
+<div class="quote-controls"></div>
+chrisawi:</div>
+<blockquote>
+<p>flatpak run io.bassi.Amberol</p>
+</blockquote>
+</aside>
+<p>I got this error when running through terminal</p>
+<pre><code class="lang-auto">flatpak run io.bassi.Amberol
+MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:782: FINISHME: support YUV colorspace with DRM format modifiers
+MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:814: FINISHME: support more multi-planar formats with DRM modifiers
+
+(amberol:2): Gdk-WARNING **: 22:11:17.501: The program 'amberol' received an X Window System error.
+This probably reflects a bug in the program.
+The error was 'BadMatch (invalid parameter attributes)'.
+  (Details: serial 554 error_code 8 request_code 149 (unknown) minor_code 4)
+  (Note to programmers: normally, X errors are reported asynchronously;
+   that is, you will receive the error a while after causing it.
+   To debug your program, run it with the GDK_SYNCHRONIZE environment
+   variable to change this behavior. You can then get a meaningful
+   backtrace from your debugger if you break on the gdk_x_error() function.)
+</code></pre>
+<p>I wondering why it referencing Intel while I using my NVIDIA GPU?</p>
+<aside class="quote no-group" data-username="chrisawi" data-post="2" data-topic="8645">
+<div class="title">
+<div class="quote-controls"></div>
+chrisawi:</div>
+<blockquote>
+<p>Are you using the proprietary NVIDIA driver?</p>
+</blockquote>
+</aside>
+<p>Yes, I use the proprietary NVIDIA driver, version 550.120</p>
+<p>I will try <code>flatpak update</code>, thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Shohrukh</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 12, 2025 4:52 AM">
+            <time itemprop="datePublished" datetime="2025-01-12 04:52:09 +0000">Jan 12, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks again!</p>
+<p>Running <code>flatpak update</code> really solve the problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

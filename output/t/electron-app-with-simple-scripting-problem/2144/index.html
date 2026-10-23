@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electron app with simple scripting problem - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Electron app with simple scripting problem</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Electron app with simple scripting problem</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 30, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 30, 2022 3:39 PM">
+            <time itemprop="datePublished" datetime="2022-01-30 15:39:03 +0000">Jan 30, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to modify the code in the sample electron app.</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/electron-sample-app/blob/master/flatpak/org.flathub.electron-sample-app.yml">
+  <header class="source">
+
+      <a href="https://github.com/flathub/electron-sample-app/blob/master/flatpak/org.flathub.electron-sample-app.yml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/electron-sample-app/blob/master/flatpak/org.flathub.electron-sample-app.yml" target="_blank" rel="noopener nofollow ugc">flathub/electron-sample-app/blob/master/flatpak/org.flathub.electron-sample-app.yml</a></h4>
+
+
+      <pre><code class="lang-yml">app-id: org.flathub.electron-sample-app
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '20.08'
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node14
+command: run.sh
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=network
+build-options:
+  append-path: /usr/lib/sdk/node14/bin
+  cflags: -O2 -g
+  cxxflags: -O2 -g
+  env:
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/electron-sample-app/blob/master/flatpak/org.flathub.electron-sample-app.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I get an error and I don’t know what it means. Up to the very end everything works well and I am comforted by the message:</p>
+<pre><code>    npm timing npm Completed in 2922ms
+    npm info ok
+</code></pre>
+<p>I get down to the end, and then I get this:</p>
+<pre><code>    Running: cp -a dist/linux*unpacked /app/main
+    F: Unexpected filesystem suffix reset, ignoring
+    Running: install -Dm755 -t /app/bin/ ../run.sh
+    F: Unexpected filesystem suffix reset, ignoring
+    install: omitting directory '../run.sh'
+    Error: module TheGuy: Child process exited with code 1
+</code></pre>
+<p>Here I will include my complete yaml file.</p>
+<pre><code class="lang-auto">
+app-id: org.theguy.TheGuy
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '20.08'
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node14
+command: run.sh
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=network
+build-options:
+  append-path: /usr/lib/sdk/node14/bin
+  cflags: -O2 -g
+  cxxflags: -O2 -g
+  env:
+    NPM_CONFIG_LOGLEVEL: info
+modules:
+  - name: TheGuy
+    buildsystem: simple
+    build-options:
+      env:
+        # electron_config_cache: /run/build/TheGuy/npm-cache
+        XDG_CACHE_HOME: /run/build/TheGuy/flatpak-node/cache
+        npm_config_cache: /run/build/TheGuy/flatpak-node/npm-cache
+        npm_config_nodedir: /usr/lib/sdk/node14
+        npm_config_offline: 'true'
+    subdir: main
+    sources:
+      - type: dir
+        path: ..
+        dest: main
+      - generated-sources.json
+      # Wrapper to launch the app
+      - type: script
+        dest: run.sh
+        commands:
+          - zypak-wrapper.sh /app/main/TheGuy "$@"
+    build-commands:
+      # Install npm dependencies
+      - npm install --offline
+      # Build the app; in this example the `dist` script
+      # in package.json runs electron-builder
+      - |
+        . ../flatpak-node/electron-builder-arch-args.sh
+        npm run dist -- $ELECTRON_BUILDER_ARCH_ARGS   --linux --dir
+      # Bundle app and dependencies
+      - cp -a dist/linux*unpacked /app/main
+      # Install app wrapper
+      - install -Dm755 -t /app/bin/ ../run.sh
+</code></pre>
+<p>As you can see, my problem is with the very last of the build commands.</p>
+<p>EDIT: One other thing. I needed to build flatpak-builder from source because it was not recognizing my ‘generated-sources.json’ file. I did not specify any special build flags in the ‘./configure’ stage. Might this mess me up? I could not find any online tutorial about building flatpak-builder from scratch.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 31, 2022 3:50 PM">
+            <time itemprop="datePublished" datetime="2022-01-31 15:50:47 +0000">Jan 31, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I checked out flatpak-builder 1.2.1 and built that. Doing so got rid of the message about ‘F: Unexpected filesystem suffix reset, ignoring’. Still, though, the ‘run.sh’ file is somehow turned into a directory. I get some text at the end that says:</p>
+<pre><code>    Running: install -Dm755 -t /app/bin/ ../run.sh
+    install: omitting directory '../run.sh'
+    Error: module TheGuy: Child process exited with code 1</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 31, 2022 10:13 PM">
+            <time itemprop="datePublished" datetime="2022-01-31 22:13:46 +0000">Jan 31, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I seem to have gotten it to work. I had a typo in the section that creates the run.sh file. Mine read ‘dest: run.sh’ and it should be ‘dest-filename: run.sh’.</p>
+<p>The other thing is that in some places the name of the app needs to be in lowercase. I ended up using Camel Case for the ‘app-id’ and using kebab-case for everything else.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

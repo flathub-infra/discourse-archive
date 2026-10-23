@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpaks Won&#39;t Run after Fedora 43 Upgrade - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpaks Won&#39;t Run after Fedora 43 Upgrade</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpaks Won&#39;t Run after Fedora 43 Upgrade</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 4, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Raymond</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 4, 2025 9:42 PM">
+            <time itemprop="datePublished" datetime="2025-11-04 21:42:11 +0000">Nov 4, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I upgraded to F43 using <a href="https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/" rel="noopener nofollow ugc">DNF System Plugin</a>.  After which some of my previously installed flatpaks will not run with the error:</p>
+<pre><code class="lang-auto">bwrap: Can't mkdir parents for /home/rkroeker/.var/app/${app-name}/config/user-dirs.dirs: No such file or directory
+</code></pre>
+<p>(where ${app-name} is replaced with the literal application name). Unfortunately I didn’t check what versions of the runtime existed before the upgrade.  I’m running 1.16.1 right now.</p>
+<p>They are ‘system’ installed (vs user) and I’ve attempted to reinstall them both at system and user scope.  What are my next steps here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 14, 2025 4:04 PM">
+            <time itemprop="datePublished" datetime="2025-11-14 16:04:12 +0000">Nov 14, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Did you figure this out? I didn’t get this problem after upgrading to Fedora 43 through Gnome Software, but I have two things you could try looking at:</p>
+<ol>
+<li>Fedora 43 (actually throughout RHEL) dropped x11 support. If an app was written for x11 and does not work with xWayland, it won’t work. For me, my manual install of the minecraft launcher stopped working on both Fedora 43 computers. (Ironically considering the topic, my solution was to switch to flatpaked minecraft launchers.) Still, you could check if the flatpaks you are having trouble with have only <code>–socket=x11</code> or if they have <code>–socket=wayland</code>You can check this in the manifest or with flatseal. If the flatpak only has x11 socket access, perhaps that is the problem?</li>
+<li>Last I checked the default flatpak source for Fedora is not Flathub. Fedora makes its own flatpaks, and enables their own repository by default while disabling Flathub. Go into your software sources and make sure that Flathub is enabled. Even if you used terminal to install your flatpaks from flathub, the system will not automatically update them unless you manually enable the Flathub repository. Otherwise, you must run <code>flatpak update</code> in terminal to update any flatpaks from Flathub.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Raymond</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 14, 2025 4:52 PM">
+            <time itemprop="datePublished" datetime="2025-11-14 16:52:15 +0000">Nov 14, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I did not figure it out.  After a number of re-install attempts and removing the directory roots I rolled back to Fedora 42.</p>
+<p>I can setup a VM in which I can likely test this.  I looked around for more advanced troubleshooting / debugging techniques, but couldn’t find the underlying root cause.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 14, 2025 5:28 PM">
+            <time itemprop="datePublished" datetime="2025-11-14 17:28:26 +0000">Nov 14, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you name the apps, that stopped working?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

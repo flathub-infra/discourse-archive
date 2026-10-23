@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problem with building a new package and then running the app in the sandbox - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Problem with building a new package and then running the app in the sandbox</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Problem with building a new package and then running the app in the sandbox</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 24, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 24, 2023 2:54 PM">
+            <time itemprop="datePublished" datetime="2023-02-24 14:54:06 +0000">Feb 24, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried to build a flatpak package from ffDiaporama without success. (The app is from here: <a href="https://ffdiaporama.tuxfamily.org/" rel="noopener nofollow ugc">https://ffdiaporama.tuxfamily.org</a>)</p>
+<p>I used <strong>org.kde.Platform/x86_64/5.12</strong> and <strong>org.kde.Sdk/x86_64/5.12</strong> and I built with the command<br>
+<strong>flatpak-builder –force-clean –repo=~/flatpak/ffdiarepo ~/flatpak/myflatbuilddir2 ~/flatpak/yaml-files/ffDiaporama.yaml</strong><br>
+in Ubuntu 20.04.</p>
+<p>After building the app <strong>~/flatpak/myflatbuilddir2/files/bin/ffDiaporama</strong> works in Ubuntu 20.04.<br>
+But (in the sandbox)<br>
+<strong>flatpak build ~/flatpak/myflatbuilddir2 ffDiaporama</strong> doesn’t work.<br>
+The same is with <strong>flatpak run --devel --command=bash …</strong></p>
+<p>The gdb says:<br>
+Thread 1 “ffDiaporama” received signal SIGSEGV, Segmentation fault.<br>
+0x00007fffdd7e238c in ?? () from /usr/lib/x86_64-linux-gnu/libsqlite3.so.0</p>
+<p>I built and published a snap packages from ffDiaporama with success. The same in Flatpak would be nice.</p>
+<p>I hope someone from here can help me to fix the problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 24, 2023 5:07 PM">
+            <time itemprop="datePublished" datetime="2023-02-24 17:07:46 +0000">Feb 24, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="frank.fh" data-post="1" data-topic="3765">
+<div class="title">
+<div class="quote-controls"></div>
+frank.fh:</div>
+<blockquote>
+<p>I used <strong>org.kde.Platform/x86_64/5.12</strong></p>
+</blockquote>
+</aside>
+<p>This runtime has been EOL for a long time. Use 5.15-22.08</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 24, 2023 6:03 PM">
+            <time itemprop="datePublished" datetime="2023-02-24 18:03:46 +0000">Feb 24, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>the other thing is I don’t see how you run it, nor do I see if you actually installed the flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 25, 2023 10:14 AM">
+            <time itemprop="datePublished" datetime="2023-02-25 10:14:34 +0000">Feb 25, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>flatpak install --reinstall ffdiarepo fh.frank.ffdiaporama<br>
+flatpak install ffdiarepo fh.frank.ffdiaporama.Debug<br>
+flatpak run --devel --command=bash fh.frank.ffdiaporama<br>
+gdb ffDiaporama<br>
+r -loglevel=1</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 25, 2023 11:40 AM">
+            <time itemprop="datePublished" datetime="2023-02-25 11:40:25 +0000">Feb 25, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="2" data-topic="3765">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>This runtime has been EOL for a long time. Use 5.15-22.08</p>
+</blockquote>
+</aside>
+<p>I built and ran it with version 5.15-22.08 with the same problem.</p>
+<p>In Ubuntu 20.04 is libQt5Core.so.5.12.8 installed.<br>
+When I use version 5.12, I can compare with Ubuntu 20.04.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 25, 2023 3:51 PM">
+            <time itemprop="datePublished" datetime="2023-02-25 15:51:47 +0000">Feb 25, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>so my guess is there is a bug in your program.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 25, 2023 4:46 PM">
+            <time itemprop="datePublished" datetime="2023-02-25 16:46:38 +0000">Feb 25, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is not my program. The stable version of ffDiaporama is 9 years old and from here: <a href="https://ffdiaporama.tuxfamily.org" rel="noopener nofollow ugc">https://ffdiaporama.tuxfamily.org</a><br>
+I just want to build a Flatpak package like I did with a Snap package and I just want to be the packager.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 26, 2023 11:37 AM">
+            <time itemprop="datePublished" datetime="2023-02-26 11:37:06 +0000">Feb 26, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think it would be much easier to help if you provide your Flatpak manifest. Maybe there is an issue how the application is build.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 26, 2023 2:46 PM">
+            <time itemprop="datePublished" datetime="2023-02-26 14:46:46 +0000">Feb 26, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">app-id: fh.frank.ffdiaporama
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
+command: ffDiaporama
+copy-icon: true
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --socket=pulseaudio
+  - --socket=wayland
+  - --filesystem=host
+  - --device=dri
+  - --env=PATH=/app/bin:/usr/bin
+modules:
+  - ffmpeg.yaml
+
+  - name: exiv2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DEXIV2_BUILD_DOC:BOOL=OFF
+      - -DEXIV2_BUILD_SAMPLES:BOOL=OFF
+      - -DEXIV2_BUILD_EXIV2_COMMAND:BOOL=OFF
+    sources:
+      - type: archive
+        url: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
+        sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
+        
+  - /home/frank/flatpak/flat-src/ffdiaporama-flat/shared-modules/SDL/SDL-1.2.15.json
+
+  - name: ffdiaporama
+    buildsystem: qmake
+    config-opts:
+      - LIBS+=-L/app/lib
+    sources:
+      - type: dir
+        path: /home/frank/flatpak/flat-src/ffdiaporama-flat/ffDiaporama
+</code></pre>
+<p>I will soon put the source code of ffDiaporama on GitLab. And I will inform you about that here.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 27, 2023 2:36 PM">
+            <time itemprop="datePublished" datetime="2023-02-27 14:36:15 +0000">Feb 27, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The source code is here:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/frank-1/ffdiaporama-flatpak">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/frank-1/ffdiaporama-flatpak" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_690x345.png, /uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_1035x517.png 1.5x, /uploads/original/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400.png 2x" data-dominant-color="F3EFF0"></div>
+
+<h3><a href="https://github.com/frank-1/ffdiaporama-flatpak" target="_blank" rel="noopener nofollow ugc">GitHub - frank-1/ffdiaporama-flatpak</a></h3>
+
+  <p>Contribute to frank-1/ffdiaporama-flatpak development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 28, 2023 5:35 PM">
+            <time itemprop="datePublished" datetime="2023-02-28 17:35:53 +0000">Feb 28, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able to build &amp; start the application with the following manifest (I only added two patches from your repository). But I didn’t test anything more.</p>
+<pre><code class="lang-auto">---
+app-id: fh.frank.ffdiaporama
+runtime: org.kde.Platform
+runtime-version: '5.15-22.08'
+sdk: org.kde.Sdk
+command: ffDiaporama
+copy-icon: true
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --socket=pulseaudio
+  - --socket=wayland
+#  - --filesystem=host
+  - --device=dri
+#  - --env=PATH=/app/bin:/usr/bin
+modules:
+  - name: ffmpeg,
+    config-opts:
+      - --enable-gpl
+      - --disable-static
+      - --enable-shared
+      - --disable-doc
+      - --disable-ffplay
+      - --disable-ffprobe
+    cleanup:
+      - /share/ffmpeg/examples
+    sources:
+      - type: archive
+        url: "https://ffmpeg.org/releases/ffmpeg-2.1.8.tar.gz"
+        sha256: "96855a237291ed7390137bfeaf4ebdb114aa62261f14f914f4d00dd930cfb446"
+
+  - name: exiv2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DEXIV2_BUILD_DOC:BOOL=OFF
+      - -DEXIV2_BUILD_SAMPLES:BOOL=OFF
+      - -DEXIV2_BUILD_EXIV2_COMMAND:BOOL=OFF
+    sources:
+      - type: archive
+        url: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
+        sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
+        
+  - shared-modules/SDL/SDL-1.2.15.json
+
+  - name: ffdiaporama
+    buildsystem: qmake
+    config-opts:
+      - LIBS+=-L/app/lib
+    sources:
+      - type: archive
+        url: http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
+        sha256: a1f55367a3d915045a5f4ce5db20419c2e8ea26a8cd4d56bef2e3d525e55acaa
+      - type: patch
+        path: 8a3e887ee1a87c53ee8415f6961a4e787d5528e3.patch
+      - type: patch
+        path: 1a093b91a04fa64dc2a2d50c6d14f125f3016711.patch
+</code></pre>
+<p>Since you are using an absolute path on your filesystem: Are you certain that it’s clean &amp; doesn’t contain anything incompatible from a previous build?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Mar 1, 2023 3:03 PM">
+            <time itemprop="datePublished" datetime="2023-03-01 15:03:32 +0000">Mar 1, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried it with the new manifest. Thanks. After<br>
+<strong>flatpak run --devel --command=bash --filesystem=xdg-documents --filesystem=xdg-pictures fh.frank.ffdiaporama</strong> and <strong>ffDiaporama</strong><br>
+I cannot open pictures or a project file in the folder documents. I saw the same problem with the database as before.<br>
+After <strong>exit</strong>, the folder .ffDiaporama disapears.</p>
+<p>I think <strong>myflatpakbuildir2</strong> is clean because I use<br>
+<strong>flatpak-builder --force-clean …</strong><br>
+I switched to relative paths.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Mar 7, 2023 3:23 PM">
+            <time itemprop="datePublished" datetime="2023-03-07 15:23:04 +0000">Mar 7, 2023</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I went a different way and built my own runtime. I built the packages without the flatpak-builder. The package of ffDiaporama works with flatpak version 1.15 (Arch Linux) but is not stable yet.</p>
+<p><strong>Hera are my steps:</strong><br>
+<strong>Building fh.frank.myBaseSdk on Ubuntu 20.04</strong></p>
+<p>mkdir -p myflatpakbuilddir-u20/ffdiaruntime/usr</p>
+<p>cd myflatpakbuilddir-u20</p>
+<p>flatpak build-init myBaseSdk fh.frank.myBaseSdk org.kde.Sdk/x86_64/5.12 org.kde.Sdk/x86_64/5.12</p>
+<p><code>fakechroot fakeroot debootstrap --variant=minbase --arch=amd64 focal myBaseSdk/usr http://de.archive.ubuntu.com/ubuntu</code></p>
+<p>fakeroot fakechroot chroot myBaseSdk/usr apt install nano</p>
+<p>fakeroot fakechroot chroot myBaseSdk/usr apt install locales</p>
+<p>nano myBaseSdk/usr/etc/locale.gen and I removed the appropriate comment marks</p>
+<p>fakechroot chroot myBaseSdk/usr locale-gen</p>
+<p>fakechroot chroot myBaseSdk/usr apt-get clean</p>
+<p>I changed in myBaseSdk/metadata [Application] in [Runtime]</p>
+<p>flatpak build-finish myBaseSdk</p>
+<p>flatpak build-export -r …/ffdiarepo myBaseSdk</p>
+<p>flatpak --user remote-add --no-gpg-verify …/ffdiarepo ffdiarepo</p>
+<p>flatpak install ffdiarepo fh.frank.myBaseSdk</p>
+<p><strong>Runtime test:</strong><br>
+flatpak run --command=/usr/bin/bash --filesystem=home fh.frank.myBaseSdk<br>
+exit</p>
+<hr>
+<p><strong>Building ffdiaruntime:</strong><br>
+flatpak build-init -w ffdiaruntime fh.frank.ffdiaruntime fh.frank.myBaseSdk fh.frank.myBaseSdk</p>
+<p>flatpak build ffdiaruntime ln -s /usr/usr/share /usr/share</p>
+<p>flatpak build ffdiaruntime ln -s /usr/usr/include /usr/include</p>
+<p>flatpak build ffdiaruntime ln -s /usr/usr/local /usr/local</p>
+<p>flatpak build ffdiaruntime ln -s /usr/var/lib /var/lib</p>
+<p>flatpak build ffdiaruntime ln -s /usr/usr/lib/apt /usr/lib/apt</p>
+<p>flatpak build ffdiaruntime ln -s /usr/usr/lib/x86_64-linux-gnu/coreutils /usr/lib/x86_64-linux-gnu/coreutils</p>
+<p>fakeroot fakechroot chroot ffdiaruntime/usr/<br>
+nano /etc/apt/sources.list<br>
+<code>changed in deb http://de.archive.ubuntu.com/ubuntu bionic main restricted universe multiverse</code><br>
+apt update<br>
+apt upgrade<br>
+apt install ffdiaporama<br>
+apt install libqt5concurrent5<br>
+ln -s /usr/usr/lib/locale /usr/lib/locale<br>
+ln -s /usr/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0 /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0<br>
+exit</p>
+<hr>
+<p><strong>Patching ffdiaporama_2.1+dfsg-1build2_amd64.deb because of ‘Unable to find codec h264’:</strong><br>
+sudo apt-get source ffdiaporama</p>
+<p>cd ffdiaporama-2.1+dfsg</p>
+<p>sudo nano src/ffDiaporama/engine/_EncodeVideo.cpp:</p>
+<pre><code class="lang-auto">t349c349,351
+&lt;     *codec=avcodec_find_encoder_by_name(CodecName);
+---
+&gt;     if (strcmp(CodecName,"h264") == 0) *codec=avcodec_find_encoder_by_name("libx264");
+&gt;         else *codec=avcodec_find_encoder_by_name(CodecName);
+&gt;
+</code></pre>
+<p>sudo apt-get -y build-dep ffdiaporama</p>
+<p>sudo dpkg-source --commit</p>
+<p>sudo debuild</p>
+<p>cp ffdiaporama_2.1+dfsg-1build2_amd64.deb ffdiaruntime/usr/home/</p>
+<p>fakeroot fakechroot chroot ffdiaruntime/usr/</p>
+<p>apt remove ffdiaporama<br>
+dpkg -i /home/ffdiaporama_2.1+dfsg-1build2_amd64.deb<br>
+exit</p>
+<hr>
+<p><strong>Finishing runtime on Arch Linux with flatpak 1.15:</strong><br>
+nano ffdiaruntime/metadata (changed [Application] in [Runtime])</p>
+<p>flatpak build-finish ffdiaruntime</p>
+<p>flatpak build-export -r …/ffdiarepo ffdiaruntime</p>
+<p>flatpak install --user ffdiarepo fh.frank.ffdiaruntime</p>
+<p><strong>Dummy App:</strong><br>
+flatpak build-init ffdiaapp fh.frank.u20.ffdiaporama fh.frank.ffdiaruntime fh.frank.ffdiaruntime</p>
+<p>flatpak build-finish ffdiaapp –share=network --share=ipc --socket=x11 --socket=pulseaudio –filesystem=home --command=ffDiaporama</p>
+<p>flatpak build-export …/ffdiarepo ffdiaapp</p>
+<p>flatpak install --user ffdiarepo fh.frank.u20.ffdiaporama</p>
+<hr>
+<p>This website (point 4) helped me: <a href="https://wiki.archlinux.org/title/Flatpak" class="inline-onebox" rel="noopener nofollow ugc">Flatpak - ArchWiki</a><br>
+And also <a href="https://wiki.ubuntuusers.de/Installation_mit_debootstrap/" class="inline-onebox" rel="noopener nofollow ugc">Installation mit debootstrap › Wiki › ubuntuusers.de</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Frank Hasterok</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Mar 14, 2023 8:49 AM">
+            <time itemprop="datePublished" datetime="2023-03-14 08:49:57 +0000">Mar 14, 2023</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I changed my steps here:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/frank-1/ffdiaporama-flatpak/wiki">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/frank-1/ffdiaporama-flatpak/wiki" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_690x345.png, /uploads/optimized/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400_2_1035x517.png 1.5x, /uploads/original/2X/1/12298c5189fc9fa1b2dd1706b16e46beee85e400.png 2x" data-dominant-color="F3EFF0"></div>
+
+<h3><a href="https://github.com/frank-1/ffdiaporama-flatpak/wiki" target="_blank" rel="noopener nofollow ugc">Home</a></h3>
+
+  <p>Contribute to frank-1/ffdiaporama-flatpak development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vmp</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Aug 21, 2025 10:19 AM">
+            <time itemprop="datePublished" datetime="2025-08-21 10:19:19 +0000">Aug 21, 2025</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can try ffDiaporama 2.1 from <a href="https://sourceforge.net/projects/ffdiaporama" rel="noopener nofollow ugc">https://sourceforge.net/projects/ffdiaporama</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

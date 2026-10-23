@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best way to submit new app: sources or binary? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Best way to submit new app: sources or binary?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Best way to submit new app: sources or binary?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 15, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Guryanov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 15, 2025 6:55 AM">
+            <time itemprop="datePublished" datetime="2025-01-15 06:55:53 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I am the author of the DOS Browser project.</p>
+<p>This is a browser with hardware acceleration for DOS games, allowing you to play them much faster than in Chrome, for example.</p>
+<p>I want to publish it on Flathub.I am new to Flathub, but I have already built a Flatpak for my app, and it works fine. Now, I am trying to figure out how to publish it correctly.</p>
+<p>This browser is based on Electron (electron-forge) and speeds up emulation by running DOSBox and DOSBox-X natively.</p>
+<p>I read the following in the documentation (Best Practices section):</p>
+<blockquote>
+<p>Patches that add or remove application functionality, large and complicated patchsets, <strong>binary files</strong>, source code, <strong>or any additional tooling must not be in the submission</strong>.</p>
+</blockquote>
+<p>However, when I looked at the PRs section, I noticed many submissions include binaries. Often, the submission is just a wrapper for a binary. So, is this “best practice” guideline strictly enforced, or is it acceptable to provide a wrapper for a binary?</p>
+<p>Here are the options I am considering for publishing:</p>
+<ol>
+<li><strong>Build everything from source</strong><br>
+This would require significant effort. I would need to create a Flatpak that builds DOSBox, DOSBox-X, and the Electron client app. It’s doable but is the most challenging option.</li>
+<li><strong>Build the client app (Electron) from source and ship the DOSBox and DOSBox-X backends as binaries</strong> .<br>
+This approach is much simpler. However, it makes using electron-forge somewhat pointless. Electron-forge handles building the Flatpak for me, but in this case, I would need to write my own build scripts. While this is acceptable, it adds complexity.</li>
+<li><strong>Build everything on my side with electron-forge and provide a wrapper script for the binary</strong><br>
+This is the simplest approach, but I’m unsure if it’s acceptable.</li>
+</ol>
+<p>Could you help me decide which option is better? Also, is it okay to publish such an app on Flathub? I don’t want to invest a lot of time in Option 1, only to have the submission rejected for other reasons.</p>
+<p>Additionally, I have a question about the runtime: electron-forge builds against the old runtime (20.08). Is it valid to use this for submission?</p>
+<p>–<br>
+Project refreneces:<br>
+<strong>emulation engine</strong> (I am an author): <a href="https://github.com/caiiiycuk/js-dos" class="inline-onebox" rel="noopener nofollow ugc">GitHub - caiiiycuk/js-dos: The best API for running dos programs in browser</a> GPL-2.0. js-dos allows to run DOS/Win 9x program in browser, so the DOS Browser is made to accelerate such websites.<br>
+<strong>dos.zone</strong> - is a community driven library of DOS games which can be viewed by DOS Browser.<br>
+<strong>DOS Browser</strong> download page: <a href="https://dos.zone/download/" class="inline-onebox" rel="noopener nofollow ugc">Download | DOS games in browser</a> (already have deb/rpm)</p>
+<p>–<br>
+<strong>P.S.</strong> DOS Browser is a just browser + emulation layer, it does not break any legal rights. Currently it able to view only dos.zone website but soon it will support any site that based on actual js-dos library (working on it).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 15, 2025 9:58 AM">
+            <time itemprop="datePublished" datetime="2025-01-15 09:58:18 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="caiiiycuk" data-post="1" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>So, is this “best practice” guideline strictly enforced,</p>
+</blockquote>
+</aside>
+<p>No, building from source is preferred if you can’t use binary packages.</p>
+<blockquote>
+<p>Patches that add or remove application functionality, large and complicated patchsets, <strong>binary files</strong>, source code, <strong>or any additional tooling must not be in the submission</strong>.</p>
+</blockquote>
+<p>This means “don’t <code>git add</code> a binary file and open a PR with that”, you are free to build from binary packages in the Flatpak manifest.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 15, 2025 10:07 AM">
+            <time itemprop="datePublished" datetime="2025-01-15 10:07:12 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Why we usually want people to build from source, is that you also get ARM support then. So that’s something to consider.</p>
+<aside class="quote no-group" data-username="caiiiycuk" data-post="1" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>Additionally, I have a question about the runtime: electron-forge builds against the old runtime (20.08). Is it valid to use this for submission?</p>
+</blockquote>
+</aside>
+<p>I don’t think that would be a problem, but users might get warnings (in the cli) with that runtime.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 15, 2025 11:16 AM">
+            <time itemprop="datePublished" datetime="2025-01-15 11:16:51 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Submissions using EOL runtimes aren’t accepted.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Guryanov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jan 15, 2025 12:36 PM">
+            <time itemprop="datePublished" datetime="2025-01-15 12:36:14 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ohh, this means that Electron Forge is actually useless. Okay, then I can go with option 2, because building DOSBox or DOSBox-X is not trivial.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 15, 2025 2:02 PM">
+            <time itemprop="datePublished" datetime="2025-01-15 14:02:20 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>While redistributing the binaries would probably be the easiest way, you could base a source-build on existing manifests.</p>
+<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc">the manifest</a> correctly.<br>
+You could take the modules there as a base for building it in your app.</p>
+<aside class="quote no-group" data-username="caiiiycuk" data-post="1" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>Additionally, I have a question about the runtime: electron-forge builds against the old runtime (20.08). Is it valid to use this for submission?</p>
+</blockquote>
+</aside>
+<p>I don’t know about electron-forge, but two things:<br>
+First, if it can build a Flatpak, shouldn’t the runtime version be a configurable value?</p>
+<p>And second, more importantly, when submitting to Flathub, you submit a manifest which the Flathub CI builds. So you probably be best of to base the manifest on the Electron Base app.<br>
+And if you need to run electron-forge for some reason, it would run inside the environment defined by the manifest.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Guryanov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jan 15, 2025 2:17 PM">
+            <time itemprop="datePublished" datetime="2025-01-15 14:17:08 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="CodedOre" data-post="6" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc">the manifest</a> correctly.<br>
+You could take the modules there as a base for building it in your app.</p>
+</blockquote>
+</aside>
+<p>Wow, this is very helpful. I mean, yeah, I could probably build everything from source, but since I’m very new here, it seems like a difficult task to build SDL, SDL2, and an Electron app all together for Flatpak (it is easier to build each in isolated environment).</p>
+<p>This is also why I’m using Electron Forge—it has a lot of builders, so you can build for many platforms like Windows, *Nix, macOS, etc. It can also build for Flatpak and Snap. However, I think the Flatpak builder is unmaintained and relatively outdated. I can set the runtime, but when the runtime is &gt;20.08, Flatpak fails during the build process. Since I don’t know much about it, it’s hard to understand how to solve this issue. Additionally, the documentation for Electron Forge is very poor, so it’s probably better to avoid using it for Flatpak, at least for now, because it works well for other platforms.</p>
+<p>So, can I start with option 2 and then migrate to option 1 later?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jan 15, 2025 2:42 PM">
+            <time itemprop="datePublished" datetime="2025-01-15 14:42:44 +0000">Jan 15, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="caiiiycuk" data-post="7" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>Wow, this is very helpful. I mean, yeah, I could probably build everything from source, but since I’m very new here, it seems like a difficult task to build SDL, SDL2, and an Electron app all together for Flatpak (it is easier to build each in isolated environment).</p>
+</blockquote>
+</aside>
+<p>There are shared-modules for SDL at least <a href="https://github.com/flathub/shared-modules" class="inline-onebox">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a></p>
+<p>And you will want to use <a href="https://github.com/flathub/org.electronjs.Electron2.BaseApp" class="inline-onebox">GitHub - flathub/org.electronjs.Electron2.BaseApp</a> as it should make your life easier.</p>
+<aside class="quote no-group" data-username="caiiiycuk" data-post="7" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>It can also build for Flatpak and Snap. However, I think the Flatpak builder is unmaintained and relatively outdated.</p>
+</blockquote>
+</aside>
+<p>As far as I know, that builder wouldn’t even help you, as they build a flatpak and we don’t accept flatpaks, but only build manifests.</p>
+<aside class="quote no-group" data-username="caiiiycuk" data-post="7" data-topic="8668">
+<div class="title">
+<div class="quote-controls"></div>
+caiiiycuk:</div>
+<blockquote>
+<p>So, can I start with option 2 and then migrate to option 1 later?</p>
+</blockquote>
+</aside>
+<p>Yes, you’ll probably need <a href="https://docs.flathub.org/docs/for-app-authors/maintenance#only-build-on-x86_64" class="inline-onebox">Maintenance | Flathub Documentation</a> then.<br>
+And maybe take inspiration from other electron apps, we have<br>
+<a href="https://github.com/flathub/electron-sample-app" class="inline-onebox">GitHub - flathub/electron-sample-app: Sample application based on electron</a> or <a href="https://github.com/flathub/im.riot.Riot" class="inline-onebox">GitHub - flathub/im.riot.Riot</a> or <a href="https://github.com/flathub/org.signal.Signal" class="inline-onebox">GitHub - flathub/org.signal.Signal</a> come to mind</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Guryanov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jan 16, 2025 12:15 PM">
+            <time itemprop="datePublished" datetime="2025-01-16 12:15:04 +0000">Jan 16, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Oh, I’m really frustrated. I’m trying to create an Electron Forge app but no luck, it should be a simple task but I’ve spent too much time on it…</p>
+<p>I created an issue: <a href="https://github.com/flatpak/flatpak-builder/issues/629" class="inline-onebox" rel="noopener nofollow ugc">Unable to build simple eletron-forge application using yarn / npm, failing on node-gyp · Issue #629 · flatpak/flatpak-builder · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jan 17, 2025 6:43 AM">
+            <time itemprop="datePublished" datetime="2025-01-17 06:43:01 +0000">Jan 17, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>From the practical perspective, it will be always easier to repackage a binary. I suggest you submit that for starters, and try to figure out if you can make it work from source with our offline build environment.</p>
+<p>FTR im.riot.Riot and org.signal.Signal mentioned by razzee are also repackaging binaries.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander Guryanov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jan 21, 2025 10:40 AM">
+            <time itemprop="datePublished" datetime="2025-01-21 10:40:10 +0000">Jan 21, 2025</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, this is my submission <a href="https://github.com/flathub/flathub/pull/6053" class="inline-onebox" rel="noopener nofollow ugc">Add zone.dos.Browser by caiiiycuk · Pull Request #6053 · flathub/flathub · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Please remove &quot;Hardware Probe&quot; — it is not a desktop application, and has surprising network activity - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Please remove &quot;Hardware Probe&quot; — it is not a desktop application, and has surprising network activity</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Please remove &quot;Hardware Probe&quot; — it is not a desktop application, and has surprising network activity</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 26, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 26, 2021 10:21 PM">
+            <time itemprop="datePublished" datetime="2021-10-26 22:21:34 +0000">Oct 26, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was looking for applications which show detailed hardware / driver information, and  <a href="https://flathub.org/apps/details/org.linux_hardware.hw-probe" rel="noopener nofollow ugc">Hardware Probe</a> seemed to fit the bill. However, when I ran it, it appeared to do nothing. However, I tried <code>flatpak run  org.linux_hardware.hw-probe</code> to see what would happen, and to my surprise, it did this in the terminal:</p>
+<pre><code class="lang-auto">Executing hw-probe -all -upload
+
+WARNING: run as root for better results
+Probe for hardware ... Ok
+Reading logs ... Ok
+Uploaded to DB, Thank you!
+
+Probe URL: https://linux-hardware.org/?probe=136c409f1a
+</code></pre>
+<p>Woah, that’s not cool. I didn’t expect that at all. I guess I should take that “unsafe” icon a little more seriously. I don’t think there is malicious intent here, but it is certainly misleading. It turns out the “screenshots” are images of the website, not of any application, and the automatic, silent <code>-all -upload</code> shouldn’t happen.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 28, 2021 3:19 PM">
+            <time itemprop="datePublished" datetime="2021-10-28 15:19:51 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>While I agree it’s not cool - I don’t think an application should be removed from Flathub because it doesn’t behave the way you expected.</p>
+<p>Did you contact the author / maintainer? Maybe try reporting the problems upstream first?</p>
+<ul>
+<li><a href="https://github.com/flathub/org.linux_hardware.hw-probe" rel="noopener nofollow ugc">https://github.com/flathub/org.linux_hardware.hw-probe</a></li>
+<li><a href="https://github.com/linuxhw/hw-probe" rel="noopener nofollow ugc">https://github.com/linuxhw/hw-probe</a></li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 28, 2021 3:21 PM">
+            <time itemprop="datePublished" datetime="2021-10-28 15:21:12 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There are other non desktop applications on Flathub - they’re not listed though so that could be an option.</p>
+<p>For example <a href="https://github.com/flathub/org.mosh.mosh" rel="noopener nofollow ugc">https://github.com/flathub/org.mosh.mosh</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 28, 2021 7:24 PM">
+            <time itemprop="datePublished" datetime="2021-10-28 19:24:57 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="/uploads/optimized/2X/2/2088d6f7505761df14fdf7fb2f875f21ce6e3259_2_690x345.png" class="thumbnail" data-dominant-color="F6F7F7" width="690" height="345"></div>
+
+<h3><a href="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration" target="_blank" rel="noopener nofollow ugc">App Requirements</a></h3>
+
+  <p>Issue tracker and new submissions. Contribute to flathub/flathub development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>Flathub is primarily focused on graphical desktop applications and not CLI/TUI applications. The following requirements ensure effective desktop integration.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 30, 2021 6:14 PM">
+            <time itemprop="datePublished" datetime="2021-10-30 18:14:44 +0000">Oct 30, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There are various CLI applications, they are just not exposed through the Flathub website because we don’t support that yet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 30, 2021 9:43 PM">
+            <time itemprop="datePublished" datetime="2021-10-30 21:43:14 +0000">Oct 30, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When that support is in place, this tool might indeed have a place. But the issue I am flagging here is that, as it is now packaged, it is <em>intentionally masquerading as a desktop application</em> in order to subvert that rule.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Nov 15, 2021 5:20 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 17:20:33 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We already mentioned there are multiple CLI applications on Flathub.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="https://opengraph.githubassets.com/82b6ba2a523e0ae9b8d1f92ce8f9423504b7a9b2668795457500330749d71940/flathub/flathub" class="thumbnail" width="690" height="345"></div>
+
+<h3><a href="https://github.com/flathub/flathub/wiki/App-Requirements#desktop-integration" target="_blank" rel="noopener nofollow ugc">App Requirements</a></h3>
+
+  <p>Issue tracker and new submissions. Contribute to flathub/flathub development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>Do note that CLI applications do not require a <code>.desktop</code> file but TUI applications <em>should</em> have a <code>.desktop</code> file with <code>Terminal=true</code>.</p>
+</blockquote>
+<p>There is no rule that says only desktop applications are welcome on Flathub or that CLI applications cannot have a desktop file.</p>
+<blockquote>
+<p>it is <em>intentionally masquerading as a desktop application</em> in order to subvert that rule.</p>
+</blockquote>
+<p>Source? I have respect for what you do but I don’t understand how you can accuse upstream publicly like this.</p>
+<p>Your original complain is valid but it’s a grudge with upstream and it has nothing to do with the app being a desktop or cli program.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Nov 15, 2021 5:38 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 17:38:43 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Reported upstream</p>
+<aside class="onebox githubissue">
+  <header class="source">
+
+      <a href="https://github.com/linuxhw/hw-probe/issues/110" target="_blank" rel="noopener nofollow ugc">github.com/linuxhw/hw-probe</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/linuxhw/hw-probe/issues/110" target="_blank" rel="noopener nofollow ugc">PRIVACY: hw-probe uploads without user consent</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2021-11-15" data-time="17:38:27" data-timezone="UTC">05:38PM - 15 Nov 21 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/sonnyp" target="_blank" rel="noopener nofollow ugc">
+          <img alt="sonnyp" src="/uploads/original/1X/2d3bf74e6cedb93259aeb2e2c82ad5a2124fd4e1.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          sonnyp
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">https://discourse.flathub.org/t/please-remove-hardware-probe-it-is-not-a-desktop<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">-application-and-has-surprising-network-activity/1803
+
+Please do not upload without user consent - no matter if it's from GUI, CLI or `flatpak run`
+
+See also https://github.com/linuxhw/hw-probe/issues/90</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Nov 15, 2021 7:48 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 19:48:38 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sonny" data-post="8" data-topic="1803">
+<div class="title">
+<div class="quote-controls"></div>
+sonny:</div>
+<blockquote>
+<p>Source? I have respect for what you do but I don’t understand how you can accuse upstream publicly like this.</p>
+</blockquote>
+</aside>
+<p>Source? I mean, <em>look at it</em>?</p>
+<p>It’s not a grudge. It’s <em>alarm.</em> I found it on Flathub, thought it might be interesting and useful, but it appeared to do nothing when I ran it. It’s only because I decided to deeper investigation that I found out that it <em>does</em> do something: it instantly and without any indication, let alone permission, sends a profile of your system to a website where it is posted publicly.</p>
+<p>And I’m mentioning it here because, as I said, this one has actual malicious intent, it’s easy to see that something else <em>could</em>. So it’s a systematic problem that Flathub should address.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Nov 15, 2021 9:37 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 21:37:07 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t understand how you can insist when we’ve already established there is no such rule to subvert in the first place. I am not discussing further on the topic of upstream’s intention to deceive if you don’t come forward with evidence other than “look at it”.</p>
+<p>The problem with the app doing nothing when launched from GNOME Software is documented <a href="https://github.com/linuxhw/hw-probe/blob/b7ddda6266e482fb916d545971f69e60b46dd6fa/README.md#app-center" rel="noopener nofollow ugc">here</a>.</p>
+<p>Regarding the problem of uploading without user consent - someone reported the issue already <a href="https://github.com/linuxhw/hw-probe/issues/100" rel="noopener nofollow ugc">https://github.com/linuxhw/hw-probe/issues/100</a> and while upstream didn’t fix it yet - they’ve admitted it’s a bug, expressed intention to fix and requested for help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Nov 15, 2021 11:21 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 23:21:27 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello!</p>
+<p>Developer is here. Thanks for reporting this!</p>
+<p>This is due to bug <a href="https://gitlab.gnome.org/GNOME/gnome-software/issues/552" rel="noopener nofollow ugc">https://gitlab.gnome.org/GNOME/gnome-software/issues/552</a></p>
+<p>Running from the AppCenter just don’t show anything where we can say “Yes, I confirm uploading of anonymized hardware info to the public database”.</p>
+<p>Can we just change the description of the app somehow to let people understand clearly how the app works while waiting for the bugfix?</p>
+<p>I will try to rebuild it right now with updated description.</p>
+<p>BTW: Do you want to remove all your probes from the database?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Nov 15, 2021 11:48 PM">
+            <time itemprop="datePublished" datetime="2021-11-15 23:48:03 +0000">Nov 15, 2021</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Started a new build: <a href="https://flathub.org/builds/#/builders/32/builds/67237" class="inline-onebox" rel="noopener nofollow ugc">Flathub builds</a></p>
+<p>I’ve described clearly how the app works. It will be updated in the AppCenter and on the Flathub site soon.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Nov 16, 2021 12:21 AM">
+            <time itemprop="datePublished" datetime="2021-11-16 00:21:43 +0000">Nov 16, 2021</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Working on adding interactive question to the app. Need to understand how it will work if not answering the question after hitting the Launch button multiple times. Can we disable the Launch button somehow and add a Tip? Can we launch the desktop app instead when hitting on the Launch button?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Nov 16, 2021 12:28 AM">
+            <time itemprop="datePublished" datetime="2021-11-16 00:28:12 +0000">Nov 16, 2021</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks <span class="mention">@linuxhw</span>, I appreciate it.</p>
+<p>Updating the description is a good start. Have you considered shipping a rudimentary GUI tool? Maybe with wxPython?</p>
+<p>But I think this really is a larger issue. Many users installing Flatpaks are not experts, and the command line esoteric and intimidating. If Flathub is going to allow command-line tools, they need to be clearly separated in some way, or else they’re going to have a bad experience. This may not be a Flathub policy, but it <em>definitely</em> is a GNOME Software design decision.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Nov 16, 2021 7:15 AM">
+            <time itemprop="datePublished" datetime="2021-11-16 07:15:27 +0000">Nov 16, 2021</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We have a PyQt5 app for FreeBSD: <a href="https://github.com/bsdhw/helloSystem-Utilities/tree/master/Utilities/Hardware%20Probe.app" rel="noopener nofollow ugc">https://github.com/bsdhw/helloSystem-Utilities/tree/master/Utilities/Hardware%20Probe.app</a></p>
+<p>Need to add it to the Flatpak to execute by hitting the Launch button.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Miller</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Nov 16, 2021 3:08 PM">
+            <time itemprop="datePublished" datetime="2021-11-16 15:08:05 +0000">Nov 16, 2021</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks <span class="mention">@linuxhw</span>. That removes my immediate concern.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Nov 17, 2021 2:53 PM">
+            <time itemprop="datePublished" datetime="2021-11-17 14:53:52 +0000">Nov 17, 2021</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@sonny</span></p>
+<p>I’ve prepared the graphical app instead of the terminal one: <a href="https://github.com/linuxhw/org.linux_hardware.hw-probe/blob/master/org.linux_hardware.hw-probe.yaml" rel="noopener nofollow ugc">https://github.com/linuxhw/org.linux_hardware.hw-probe/blob/master/org.linux_hardware.hw-probe.yaml</a></p>
+<p>It uses org.kde.Platform instead of org.freedesktop.Platform.</p>
+<p>Should I just push it to flathub to replace the old one? No further actions required?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sonny Piers</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Nov 17, 2021 5:11 PM">
+            <time itemprop="datePublished" datetime="2021-11-17 17:11:38 +0000">Nov 17, 2021</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@linuxhw</span> as long as it asks the user for consent before uploading - I guess that solves it.</p>
+<p>Heads up - the desktop file still has <code>Terminal=True</code></p>
+<aside class="onebox githubblob">
+  <header class="source">
+
+      <a href="https://github.com/linuxhw/hw-probe/blob/master/flatpak/hw-probe.desktop#L3" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/linuxhw/hw-probe/blob/master/flatpak/hw-probe.desktop#L3" target="_blank" rel="noopener nofollow ugc">linuxhw/hw-probe/blob/master/flatpak/hw-probe.desktop#L3</a></h4>
+
+
+
+  <pre class="onebox">    <code class="lang-desktop">
+      <ol class="start lines" start="1" style="counter-reset: li-counter 0 ;">
+          <li>[Desktop Entry]</li>
+          <li>Type=Application</li>
+          <li class="selected">Terminal=true</li>
+          <li>StartupNotify=true</li>
+          <li>Name=Hardware Probe</li>
+          <li>Comment=Probe for hardware, check operability and find drivers</li>
+          <li>Icon=org.linux_hardware.hw-probe</li>
+          <li>Exec=hw-probe</li>
+          <li>Categories=Utility;Development;System;</li>
+          <li>Keywords=HW Probe;Hardware;Probe;</li>
+      </ol>
+    </code>
+  </pre>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>If you submit a PR to <a href="https://github.com/flathub/org.linux_hardware.hw-probe" rel="noopener nofollow ugc">https://github.com/flathub/org.linux_hardware.hw-probe</a> I’m happy to test and report</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Nov 18, 2021 11:42 AM">
+            <time itemprop="datePublished" datetime="2021-11-18 11:42:42 +0000">Nov 18, 2021</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@sonny</span></p>
+<p>Created PR 77 for flathub/org.linux_hardware.hw-probe</p>
+<p>Please look.</p>
+<p>BTW:</p>
+<p>For some reason it downloads org.freedesktop.Platform.GL.default 20.08. Why it’s needed?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Linux Hardware Project</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Nov 18, 2021 1:53 PM">
+            <time itemprop="datePublished" datetime="2021-11-18 13:53:13 +0000">Nov 18, 2021</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_21">Replying to #21</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@sonny</span></p>
+<p>If running as root, the app can’t call <code>xdg-open</code> on url with the error:</p>
+<pre><code>Failed to connect to session bus: Failed to execute child process ?dbus-launch? (No such file or directory)
+</code></pre>
+<p>Is it a known bug?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/please-remove-hardware-probe-it-is-not-a-desktop-application-and-has-surprising-network-activity/1803/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

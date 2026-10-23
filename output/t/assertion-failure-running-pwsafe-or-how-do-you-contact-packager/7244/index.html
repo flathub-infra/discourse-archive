@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assertion failure running pwsafe (or how do you contact packager?) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Assertion failure running pwsafe (or how do you contact packager?)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Assertion failure running pwsafe (or how do you contact packager?)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 6, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bill Wohler</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 6, 2024 9:44 PM">
+            <time itemprop="datePublished" datetime="2024-07-06 21:44:41 +0000">Jul 6, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I just installed flatpak to install the latest version of darktable (from flathub) on Debian GNU/Linux 12 (bookworm) and that went easily.</p>
+<p>I then installed pwsafe for the same reason. But then I got this:</p>
+<pre><code>$ flatpak run org.pwsafe.pwsafe
+/usr/include/c++/13.2.0/bits/stl_vector.h:1125: std::vector&lt;_Tp,
+_Alloc&gt;::reference std::vector&lt;_Tp, _Alloc&gt;::operator[](size_type)
+[with _Tp = std::__cxx11::basic_string&lt;wchar_t&gt;; _Alloc =
+std::allocator&lt;std::__cxx11::basic_string&lt;wchar_t&gt; &gt;; reference =
+std::__cxx11::basic_string&lt;wchar_t&gt;&amp;; size_type = long unsigned
+int]: Assertion '__n &lt; this-&gt;size()' failed.
+</code></pre>
+<p>Is there anything I can do to resolve this?</p>
+<p>Or, is this a pwsafe bug that I should report at [1] or is this a flatpak packaging issue that I should report at [2]? How would you recommend that I proceed to resolve this issue?</p>
+<ol>
+<li><a href="https://github.com/pwsafe/pwsafe/issues" class="inline-onebox" rel="noopener nofollow ugc">Issues · pwsafe/pwsafe · GitHub</a></li>
+<li><a href="https://github.com/flathub/org.pwsafe.pwsafe/issues" class="inline-onebox" rel="noopener nofollow ugc">Issues · flathub/org.pwsafe.pwsafe · GitHub</a></li>
+</ol>
+<p>Also, <code>flatpak info org.pwsafe.pwsafe</code> shows v1.18.2, although I was expecting 1.19.1 since it appeared in my flatpak installation at work this week (Red Hat 8).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 7, 2024 10:01 AM">
+            <time itemprop="datePublished" datetime="2024-07-07 10:01:51 +0000">Jul 7, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In case of a verified app like this you should use the upstream issue tracker (unless a project states otherwise).</p>
+<p>In case of an unverified app it depends on the issue. If some feature is not working as expected due to sandboxing (e.g. missing file access), you would report it in the Flathub project.</p>
+<p>An issue like this I’d probably still report in the upstream project if Flathub distributes the latest upstream release.</p>
+<p>You can also try to search for existing flatpak issues in the upstream project to see how these are handled.</p>
+<hr>
+<p>Make sure you update your system &amp; test the issue with the newest release of the app &amp; runtime before reporting it.</p>
+<p>Search for existing issues to avoid duplicates.</p>
+<p>It looks like your issue was already reported &amp; fixed: <a href="https://github.com/pwsafe/pwsafe/issues/1327" class="inline-onebox" rel="noopener nofollow ugc">pwsafe stop with error message (/usr/include/c++/.....) · Issue #1327 · pwsafe/pwsafe · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bill Wohler</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 7, 2024 4:34 PM">
+            <time itemprop="datePublished" datetime="2024-07-07 16:34:37 +0000">Jul 7, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks very much for clarifying where issues should go.</p>
+<p>I’m a little disappointed that my own searching didn’t turn up that issue in the pwsafe issue tracker, so thanks for pointing it out.</p>
+<p>Rony says that this issue should be fixed in 1.19.1. The Version field says v1.18.2, but the commit says 1.19.1, which doesn’t make any sense to me. Since I still have the error, I would presume I actually have 1.18.2, or perhaps even 1.19.0.</p>
+<pre><code>$ flatpak info org.pwsafe.pwsafe
+Password Safe - Password management utility
+
+      ID: org.pwsafe.pwsafe
+     Ref: app/org.pwsafe.pwsafe/x86_64/stable
+    Arch: x86_64
+  Branch: stable
+ Version: v1.18.2
+ License: Artistic-2.0
+  Origin: flathub
+  Collection: org.flathub.Stable
+Installation: user
+   Installed: 45.3 MB
+ Runtime: org.freedesktop.Platform/x86_64/23.08
+     Sdk: org.freedesktop.Sdk/x86_64/23.08
+
+  Commit: 871486fabf4e6f7c8ae62b3625fe4bd3ccd9272a767599e731a1af0950d966c6
+  Parent: 17893d5acce968a86b739d30910f7f4f9099393c9ac109c2caaf9037569c0841
+ Subject: Update flatpak to 1.19.1 (9ebe6b5e)
+    Date: 2024-07-05 11:27:35 +0000
+
+$ flatpak info --show-commit  org.pwsafe.pwsafe
+871486fabf4e6f7c8ae62b3625fe4bd3ccd9272a767599e731a1af0950d966c6
+
+$ flatpak info --show-ref  org.pwsafe.pwsafe
+app/org.pwsafe.pwsafe/x86_64/stable
+
+$ ls ~/.local/share/flatpak/app/org.pwsafe.pwsafe/x86_64/stable
+871486fabf4e6f7c8ae62b3625fe4bd3ccd9272a767599e731a1af0950d966c6/  active@
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 7, 2024 7:12 PM">
+            <time itemprop="datePublished" datetime="2024-07-07 19:12:37 +0000">Jul 7, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The version field is just metadata &amp; not tied to the actual application version. If it’s not updated then Flatpak will display the wrong one (that would be another bug to report upstream).</p>
+<p>The commit &amp; its message are the actual indicator for the version. Since the source in the Flathub repo does indeed point to 1.19.1, it seems the bug is not fixed yet or you encountered another very similar issue.</p>
+<p>Either way, you should report this upstream.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bill Wohler</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 8, 2024 12:57 AM">
+            <time itemprop="datePublished" datetime="2024-07-08 00:57:36 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks, Martin! Will do.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

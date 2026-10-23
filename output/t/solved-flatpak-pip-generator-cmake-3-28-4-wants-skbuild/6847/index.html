@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Solved] Flatpak-pip-generator: cmake 3.28.4 wants skbuild - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">[Solved] Flatpak-pip-generator: cmake 3.28.4 wants skbuild</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">[Solved] Flatpak-pip-generator: cmake 3.28.4 wants skbuild</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 4, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jed Reynolds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 4, 2024 7:49 PM">
+            <time itemprop="datePublished" datetime="2024-06-04 19:49:33 +0000">Jun 4, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Skbuild is not a pypi package. I thought that by focusing on wheels I didn’t have to build all the way down to the leaves. This is extraordinarily tedious! Not sure how to get past this at the moment:</p>
+<pre><code class="lang-auto">========================================================================
+Building module python3-cmake in /home/jreynolds/btbits/x64_btbits/tools/flatpak/ct_flatpak_py3-08/.flatpak-builder/build/python3-cmake-1
+========================================================================
+Running: pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "cmake==3.28.4" --no-build-isolation
+FB: Running: flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/python3-cmake --nofilesystem=host:reset --filesystem=/home/jreynolds/btbits/x64_btbits/tools/flatpak/ct_flatpak_py3-08/.flatpak-builder/build/python3-cmake-1 --bind-mount=/run/build/python3-cmake=/home/jreynolds/btbits/x64_btbits/tools/flatpak/ct_flatpak_py3-08/.flatpak-builder/build/python3-cmake-1 --build-dir=/run/build/python3-cmake --bind-mount=/run/ccache=/home/jreynolds/btbits/x64_btbits/tools/flatpak/ct_flatpak_py3-08/.flatpak-builder/ccache --env=SOURCE_DATE_EPOCH=1717528803 '--env=CFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=24 /home/jreynolds/btbits/x64_btbits/tools/flatpak/ct_flatpak_py3-08/.flatpak-builder/rofiles/rofiles-RzRksV /bin/sh -c 'pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "cmake==3.28.4" --no-build-isolation'
+Using pip 23.0.1 from /app/lib/python3.8/site-packages/pip (python 3.8)
+Looking in links: file:///run/build/python3-cmake
+Processing ./cmake-3.28.4.tar.gz
+  Running command Preparing metadata (pyproject.toml)
+  Traceback (most recent call last):
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 353, in &lt;module&gt;
+      main()
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 335, in main
+      json_out['return_val'] = hook(**hook_input['kwargs'])
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 149, in prepare_metadata_for_build_wheel
+      return hook(metadata_directory, config_settings)
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 166, in prepare_metadata_for_build_wheel
+      self.run_setup()
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 150, in run_setup
+      exec(compile(code, __file__, 'exec'), locals())
+    File "setup.py", line 8, in &lt;module&gt;
+      from skbuild import setup
+  ModuleNotFoundError: No module named 'skbuild'
+  error: subprocess-exited-with-error
+
+  × Preparing metadata (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─&gt; See above for output.
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  full command: /app/bin/python3.8 /app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py prepare_metadata_for_build_wheel /tmp/tmpi_ky8ojd
+  cwd: /tmp/pip-install-25htqlt6/cmake_f45285a7a6b746748fe53712a57820d5
+  Preparing metadata (pyproject.toml) ... error
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─&gt; See above for output.
+</code></pre>
+<p>Here is the segment of my json requirements manifest:</p>
+<pre><code class="lang-auto">        {
+            "name": "python3-cmake",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"cmake==3.28.4\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e7/90/39fc3e549f434ae8e9e9a8af96337de6556c82447321b4bc0e39bc68b55d/cmake-3.28.4.tar.gz",
+                    "sha256": "b9dd1010ebe951e1acce054c295d5f891a8ae12b295d158b66020c955ae861b4"
+                }
+            ]
+        },
+        {
+            "name": "python3-skbuild-conan",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"skbuild-conan==1.2.0\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/18/01/ac55f9823d48aeadb04dadb85fcd82ad2bd85e8645669012d7c4ff9d9962/skbuild_conan-1.2.0-py3-none-any.whl",
+                    "sha256": "cc8262727a7835750eb710f2c88e2f12903b0ebee6842ae65a2264d62e051247"
+                }
+            ]
+        },
+</code></pre>
+<p>Any suggestions?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 5, 2024 12:54 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 00:54:15 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Why does it run <code>/app/bin/python3.8</code> ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jed Reynolds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 5, 2024 4:05 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:05:30 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Python 3.8? Because it’s more recent than F24’s py 3.5. I started with python 3.10 but at the start I couldn’t tell the difference between what kind of errors I was getting. Now that I’ve got some practice, Py 3.10 is still probably going to be 48 hours of work untangling what the pip packages want and not what pipdeptree says they require.</p>
+<p>Because the pip build requirements a different than the runtime requirements. This one fact explains a lot about why <code>pip3 install -r requirements.txt</code> does not solve the build dependency problems.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jed Reynolds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 5, 2024 4:07 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:07:51 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I took a guess and figured skbuild is some alias for scikit-build, and then I built new manifest:</p>
+<pre><code class="lang-auto">       {
+            "name": "python3-skbuild-conan",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"skbuild-conan==1.2.0\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/18/01/ac55f9823d48aeadb04dadb85fcd82ad2bd85e8645669012d7c4ff9d9962/skbuild_conan-1.2.0-py3-none-any.whl",
+                    "sha256": "cc8262727a7835750eb710f2c88e2f12903b0ebee6842ae65a2264d62e051247"
+                },
+                {
+                    "type":"file",
+                    "url":"https://files.pythonhosted.org/packages/fa/af/b3ef8fe0bb96bf7308e1f9d196fc069f0c75d9c74cfaad851e418cc704f4/scikit_build-0.17.6-py3-none-any.whl",
+                    "sha256":"18bd55e81841106eec93f30a297df4f301003791c41be46ef6428d58bd42d6b3"
+                },
+                {
+                    "type":"file",
+                    "//url":"https://files.pythonhosted.org/packages/37/2c/d717d13a413d6f7579cdaa1e28e6e2c98de95461549b08d311c8a5bf4c51/ninja-1.11.1.1.tar.gz",
+                    "//sha256":"9d793b08dd857e38d0b6ffe9e6b7145d7c485a42dcfea04905ca0cdb6017cc3c",
+                    "url":"https://files.pythonhosted.org/packages/6d/92/8d7aebd4430ab5ff65df2bfee6d5745f95c004284db2d8ca76dcbfd9de47/ninja-1.11.1.1-py2.py3-none-manylinux1_x86_64
+.manylinux_2_5_x86_64.whl",
+                    "sha256": "84502ec98f02a037a169c4b0d5d86075eaf6afc55e1879003d6cab51ced2ea4b"
+                },
+                {
+                    "type": "file",
+                    "//url": "https://files.pythonhosted.org/packages/e7/90/39fc3e549f434ae8e9e9a8af96337de6556c82447321b4bc0e39bc68b55d/cmake-3.28.4.tar.gz",
+                    "//sha256": "b9dd1010ebe951e1acce054c295d5f891a8ae12b295d158b66020c955ae861b4",
+                    "url": "https://files.pythonhosted.org/packages/2f/a1/aed90f63609db7af7bbd9a6ad8bcc28b710ed58db3ebf0e7c92ce1d04f26/cmake-3.28.4-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+                    "sha256": "bc06b483cb2bcaf78184e66ac7fd0f3bbe4ed9a690369b1e4897b19568d566dd"
+                }
+            ]
+        },
+        {
+            "name": "python3-cmake",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"cmake==3.28.4\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e7/90/39fc3e549f434ae8e9e9a8af96337de6556c82447321b4bc0e39bc68b55d/cmake-3.28.4.tar.gz",
+                    "sha256": "b9dd1010ebe951e1acce054c295d5f891a8ae12b295d158b66020c955ae861b4"
+                }
+            ]
+        },
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 5, 2024 4:18 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:18:03 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The runtime has 3.11. And you don’t need build your own.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jed Reynolds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 5, 2024 4:32 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:32:44 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Runtime 21.08.<br>
+Trying <code>flatpak list --app --app-runtime org.freedesktop.Platform//21.08</code><br>
+I do not see anything helpful, no output.</p>
+<p>What would I have been missing to have had to go through all the extra trouble?</p>
+<pre><code class="lang-auto"> $ flatpak list --runtime
+Name                                                            Application ID                                 Version             Branch     
+Freedesktop.org Application Platform version 1.6                org.freedesktop.Platform                       1.6                 1.6        
+Freedesktop Platform                                            org.freedesktop.Platform                       21.08.22            21.08      
+Freedesktop Platform                                            org.freedesktop.Platform                       22.08.24            22.08      
+Freedesktop Platform                                            org.freedesktop.Platform                       23.08.17            23.08      
+Mesa                                                            org.freedesktop.Platform.GL.default            21.3.9              21.08      
+Mesa                                                            org.freedesktop.Platform.GL.default            24.0.4              22.08      
+Mesa (Extra)                                                    org.freedesktop.Platform.GL.default            24.0.4              22.08-extra
+Mesa                                                            org.freedesktop.Platform.GL.default            24.0.6              23.08      
+Mesa (Extra)                                                    org.freedesktop.Platform.GL.default            24.0.6              23.08-extra
+FFmpeg extension                                                org.freedesktop.Platform.ffmpeg                                    1.6        
+openh264                                                        org.freedesktop.Platform.openh264              2.1.0               2.0        
+openh264                                                        org.freedesktop.Platform.openh264              2.1.0               2.2.0      
+Freedesktop.org Software Development Kit version 1.6            org.freedesktop.Sdk                            1.6                 1.6        
+Freedesktop SDK                                                 org.freedesktop.Sdk                            21.08.22            21.08      
+Freedesktop SDK                                                 org.freedesktop.Sdk                            22.08.24            22.08      
+Freedesktop SDK                                                 org.freedesktop.Sdk                            23.08.17            23.08      
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jun 5, 2024 4:44 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:44:22 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>21.08 has been EOL for almost a year.<br>
+23.08 is the current.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

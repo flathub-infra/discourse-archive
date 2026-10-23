@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak no audio output | [ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak no audio output | [ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak no audio output | [ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 10, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kingkor Roy Tirtho</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 10, 2022 2:46 AM">
+            <time itemprop="datePublished" datetime="2022-07-10 02:46:07 +0000">Jul 10, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My <a href="https://flathub.org/apps/details/com.github.KRTirtho.Spotube" rel="noopener nofollow ugc">app</a> is using gstreamer to play audio &amp; its MPRIS compatible. Locally, it runs fine as long as <code>gstreamer</code>, <code>gst-plugins-base</code> &amp; <code>gst-plugins-good</code> are installed. But in flatpak sandbox there’s no audio output although the track in the app is progressing &amp; is seekable</p>
+<p>When run it &amp; play a audio track from the app following errors occur</p>
+<pre><code class="lang-bash">❯ env -i DISPLAY=:0 flatpak run com.github.KRTirtho.Spotube                           
+
+(spotube:2): dbind-WARNING **: 08:31:27.958: Couldn't connect to accessibility bus: Failed to connect to socket /run/user/1000/at-spi/bus: No such file or directory
+Gtk-Message: 08:31:28.080: Failed to load module "canberra-gtk-module"
+Gtk-Message: 08:31:28.101: Failed to load module "canberra-gtk-module"
+[ERROR:flutter/lib/ui/ui_dart_state.cc(198)] Unhandled Exception: SocketException: Connection failed (OS Error: No such file or directory, errno = 2), address = /run/user/1000/bus, port = 0
+#0      _NativeSocket.startConnect (dart:io-patch/socket_patch.dart:682)
+#1      _NativeSocket.connect (dart:io-patch/socket_patch.dart:948)
+#2      _RawSocket.connect (dart:io-patch/socket_patch.dart:1805)
+#3      RawSocket.connect (dart:io-patch/socket_patch.dart:21)
+#4      DBusClient._openSocket (package:dbus/src/dbus_client.dart:768)
+#5      DBusClient._connect (package:dbus/src/dbus_client.dart:788)
+#6      DBusClient.registerObject (package:dbus/src/dbus_client.dart:674)
+#7      new _MprisMediaPlayer2 (package:spotube/services/LinuxAudioService.dart:14)
+#8      new LinuxAudioService (package:spotube/services/LinuxAudioService.dart:690)
+#9      new Playback (package:spotube/provider/Playback.dart:77)
+#10     main.&lt;anonymous closure&gt; (package:spotube/main.dart:45)
+#11     _NotifierProvider.create (package:flutter_riverpod/src/change_notifier_provider/base.dart:107)
+#12     ProviderElementBase._buildState (package:riverpod/src/framework/provider_base.dart:481)
+#13     ProviderElementBase.mount (package:riverpod/src/framework/provider_base.dart:382)
+#14     _StateReader._create (package:riverpod/src/framework/container.dart:104)
+#15     _StateReader.getElement (package:riverpod/src/framework/container.dart:92)
+#16     ProviderContainer.readProviderElement (package:riverpod/src/framework/container.dart:506)
+#17     ProviderElementBase.watch (package:riverpod/src/framework/provider_base.dart:732)
+#18     ChangeNotifierProvider.create (package:flutter_riverpod/src/change_notifier_provider/base.dart:71)
+#19     ProviderElementBase._buildState (package:riverpod/src/framework/provider_base.dart:481)
+#20     ProviderElementBase.mount (package:riverpod/src/framework/provider_base.dart:382)
+#21     _StateReader._create (package:riverpod/src/framework/container.dart:104)
+#22     _StateReader.getElement (package:riverpod/src/framework/container.dart:92)
+#23     ProviderContainer.readProviderElement (package:riverpod/src/framework/container.dart:506)
+#24     ProviderContainer.listen (package:riverpod/src/framework/container.dart:327)
+// ..... (unneeded probably) //
+#858    Timer._createTimer.&lt;anonymous closure&gt; (dart:async-patch/timer_patch.dart:18)
+#859    _Timer._runTimers (dart:isolate-patch/timer_impl.dart:398)
+#860    _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429)
+#861    _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192)
+
+AudioPlayers: Could not query current position.
+AudioPlayers: Could not query current position.
+AudioPlayers: Could not query current duration.
+AudioPlayers: Could not query current position.
+AudioPlayers: Could not query current duration.
+[ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)
+</code></pre>
+<p>Here’s the latest manifest if anyone needs it</p>
+<pre><code class="lang-auto"># yaml-language-server: $schema=https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json
+
+app-id: com.github.KRTirtho.Spotube
+runtime: org.gnome.Platform
+runtime-version: "42"
+sdk: org.gnome.Sdk
+command: spotube
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --share=ipc
+  - --device=dri
+  - --filesystem=xdg-download
+  - --filesystem=xdg-documents
+  - --talk-name=org.freedesktop.Notifications
+
+modules:
+  - name: spotube
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 spotube/com.github.KRTirtho.Spotube.appdata.xml /app/share/appdata/com.github.KRTirtho.Spotube.appdata.xml
+      - desktop-file-edit spotube/spotube.desktop --set-key=Exec --set-value="spotube
+        %u" --set-icon=com.github.KRTirtho.Spotube
+      - install -Dm644 spotube/spotube-logo.png /app/share/icons/hicolor/128x128/apps/com.github.KRTirtho.Spotube.png
+      - install -Dm644 spotube/spotube.desktop /app/share/applications/com.github.KRTirtho.Spotube.desktop
+      - install -dm755 /app/bin /app/spotube
+      - cp -R spotube/ /app
+      - ln -s /app/spotube/spotube /app/bin/spotube
+    sources:
+      - type: archive
+        path: Spotube-linux-x86_64.tar.xz
+        dest: spotube
+        sha256: &lt;needs fill up&gt;
+</code></pre>
+<p>Download the archive from <a href="https://nightly.link/KRTirtho/spotube/workflows/spotube-nightly/build/Spotube-Linux-Bundle.zip" rel="noopener nofollow ugc">here</a> and extract it &amp; move <code>Spotube-linux-x86_64.tar.xz</code> in the same directory as the manifest &amp; get a <code>sha256sum</code> of the <code>Spotube-linux-x86_64.tar.xz</code> &amp; past the sha256 hash in the manifest</p>
+<p>Please help</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kingkor Roy Tirtho</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 10, 2022 3:41 PM">
+            <time itemprop="datePublished" datetime="2022-07-10 15:41:37 +0000">Jul 10, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, after trying different solutions for 13 hours finally I’ve managed to get the App Work again perfectly just like it should</p>
+<p>Turns out as my application is using Gstreamer which uses Gnome’s GVFS which an virtual filesystem by Gnome which is designed to work with the I/O abstraction of GIO, it needs access to that. Since gvfs is a virtual <em>filesystem</em> I need permissions to access it from my application</p>
+<p>This stupid line has cost me 13 hours🤦</p>
+<pre><code class="lang-auto">  - --filesystem=xdg-run/gvfs
+</code></pre>
+<p>Summary, your app needs permissions to play Audio from Gstreamer when being used inside Flatpak. Just append <code>--filesystem=xdg-run/gvfs</code> to <code>finish-args</code> of your manifest</p>
+<p>BTW, if your app uses Dbus MPRIS than you’ve to also use <code>--own-name=org.mpris.MediaPlayer2.&lt;you-app-name&gt;</code> in the <code>finish-args</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 11, 2022 2:57 PM">
+            <time itemprop="datePublished" datetime="2022-07-11 14:57:15 +0000">Jul 11, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>GVFS access permission are documented here:</p>
+<p><a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#gvfs-access" class="onebox" target="_blank" rel="noopener">https://docs.flatpak.org/en/latest/sandbox-permissions.html#gvfs-access</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

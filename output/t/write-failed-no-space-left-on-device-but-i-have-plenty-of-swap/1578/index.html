@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write() failed: No space left on device, but I have plenty of swap - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Write() failed: No space left on device, but I have plenty of swap</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Write() failed: No space left on device, but I have plenty of swap</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 20, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 20, 2021 12:32 PM">
+            <time itemprop="datePublished" datetime="2021-07-20 12:32:11 +0000">Jul 20, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<h1>========================================================================<br>
+Building module gsl in /home/kev/Desktop/Software/Flatpak/com.github.buddhi1980.mandelbulber2/.flatpak-builder/build/gsl-2</h1>
+<p>error: Failed to write file “/run/user/1000/.flatpak/1493562964/info.B2ST60”: write() failed: No space left on device<br>
+Error: module gsl: Child process exited with code 1<br>
+kev@localhost:~/Desktop/Software/Flatpak/com.github.buddhi1980.mandelbulber2&gt; free -h<br>
+total        used        free      shared  buff/cache   available<br>
+Mem:           7.1Gi       6.3Gi       129Mi       309Mi       738Mi       283Mi<br>
+Swap:           31Gi        11Gi        20Gi</p>
+</blockquote>
+<p>So from the error, it look like it need more memory to compile gsl. However, I do have plenty of Swap left with the command free -h</p>
+<p>What happen?</p>
+<blockquote>
+<p>Operating System: openSUSE Tumbleweed 20210716<br>
+KDE Plasma Version: 5.22.3<br>
+KDE Frameworks Version: 5.84.0<br>
+Qt Version: 5.15.2<br>
+Kernel Version: 5.13.1-1-default (64-bit)<br>
+Graphics Platform: X11<br>
+Processors: 12 × AMD Ryzen 5 4600H with Radeon Graphics<br>
+Memory: 7.1 GiB of RAM<br>
+Graphics Processor: GeForce GTX 1650 Ti/PCIe/SSE2</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 20, 2021 12:51 PM">
+            <time itemprop="datePublished" datetime="2021-07-20 12:51:06 +0000">Jul 20, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>this is disk space, no swap.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 20, 2021 12:55 PM">
+            <time itemprop="datePublished" datetime="2021-07-20 12:55:29 +0000">Jul 20, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for reply. But I do have plenty of space left.</p>
+<blockquote>
+<p>kev@localhost:~/Desktop/Software/Flatpak/com.github.buddhi1980.mandelbulber2&gt; sudo df -h<br>
+[sudo] password for root:<br>
+Filesystem           Size  Used Avail Use% Mounted on<br>
+devtmpfs             3.6G     0  3.6G   0% /dev<br>
+tmpfs                3.6G     0  3.6G   0% /dev/shm<br>
+tmpfs                1.5G  2.0M  1.5G   1% /run<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /<br>
+tmpfs                3.6G     0  3.6G   0% /tmp<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /.snapshots<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /boot/grub2/i386-pc<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /boot/grub2/x86_64-efi<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /home<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /opt<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /srv<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /root<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /usr/local<br>
+/dev/mapper/cr_root  477G  306G  169G  65% /var<br>
+/dev/nvme0n1p1       511M  5.1M  506M   1% /boot/efi<br>
+tmpfs                730M  730M     0 100% /run/user/1000</p>
+</blockquote>
+<p>However,  /run/user/1000 does not, I will look into why my  /run/user/1000 have only 730M.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

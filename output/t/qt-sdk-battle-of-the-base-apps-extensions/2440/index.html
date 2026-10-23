@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qt - SDK - Battle of the base apps - Extensions - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Qt - SDK - Battle of the base apps - Extensions</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Qt - SDK - Battle of the base apps - Extensions</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 19, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 19, 2022 7:06 PM">
+            <time itemprop="datePublished" datetime="2022-04-19 19:06:06 +0000">Apr 19, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>So I’ve noticed there is some controversy going on regarding SDK extensions or it would seem so anyway. I recently opened a PR to add SDK extensions for the Qt framework, personally I think it would be very useful to have Qt available in SDK extensions, however the common consensus so far seems to indicate that the flatpak/flathub community seems to disagree and prefers the KDE SDK in combination with Base apps.</p>
+<p>I’ve also noticed that the SDK and Base apps unfortunately in certain cases do not suffice. I guess that methodology is not the most flexible and comes with a set of challenges, for example when a package needs Qt WebEngine (for which a Base app exists) but also needs the python bindings (for which another Base app exists).<br>
+Another example is when a package requires other Qt modules that are for whatever reason not available in the KDE SDK, in this case the flatpak docs state that it would be better to bundle the modules with the package manually instead of using the KDE SDK (<a href="https://docs.flatpak.org/en/latest/qt.html" class="inline-onebox" rel="noopener nofollow ugc">Qt — Flatpak documentation</a>). However that will produce long build times and just adding the modules in the app package and still using the SDK makes it harder to keep the exact versions of the modules in sync (when you want to use the external data checker in your app package there is no guarantee that the SDK is already updated and uses the same minor/micro version).</p>
+<p>So if we want to save (build) time and not build the same things over and over again (and maintain building those parts as well) for different apps we can use a Base app if we’re lucky enough to be in such a situation where we just require one, otherwise it doesn’t work for some part of it (in the case where we require multiple dependencies like that).</p>
+<p>To me it seems very similar to a polymorphism paradigm that we come across in Object Oriented Programming, especially in languages that do not support multiple-inheritance. As that is exactly what we’re facing here. We can only inherit from 1 source.<br>
+Now in software development we often solve this issue by using the composition over inheritance principle, which works quite nicely there, however in the case of flatpak we end up with losing out on disk space as we’d be copying things out of SDK extensions into our packages (although if we build/include it as modules it would be similar). It does provide much more flexibility that way though. As even the Base Apps and SDK’s could be composed using SDK extensions.<br>
+It’s also common practice when building containers with Docker for example using <code>COPY --from=...</code></p>
+<p>It would be great if there was some nice way to inherit (parts of) SDK extensions, but it seems we can only inherit the extension points and not so much the actual content of an extension or define a dependency on an SDK extension (for an app package, to have it available in a runtime), so we can only copy things from it at this point in time.</p>
+<p>I would like to propose for flathub to provide some sort of policy or guidelines when it comes to this, as what is currently happening seems messy and doesn’t always provide an adequate solution.</p>
+<p>What are your thoughts on this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 25, 2022 3:55 PM">
+            <time itemprop="datePublished" datetime="2022-04-25 15:55:36 +0000">Apr 25, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Nobody wants to register with Qtc to pull down the “OpenSource” version which really isn’t OpenSource anymore. The sales team will continually badger you to buy a license once you do.</p>
+<p>There are no Ubuntu/Debian Qt maintainers anymore. Distros use what KDE has or they simply don’t include Qt and Qt based apps.</p>
+<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc">CopperSpice</a>.</p>
+<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc">CsScintilla</a>.</p>
+<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc">RedDiamond</a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
+<p>There are <em>huge</em> political and licensing issues with including Qt. The definition of who needs a commercial license seems to change by the hour. It appears that Qtc is not on sound financial footing given the licensing hi-jinks that went on over the past year. The Debian/Ubuntu maintainers stepped away at the time all of the licensing issues cropped up. The “official” reason was lack of time. The reality is they didn’t want to be the registered user drug into court for payment.</p>
+<p>Qt isn’t an OpenSource project. The community does not determine the contents, Qtc does. The community is barred from maintaining an LTS version at their own expense. Qtc wants the community to work for free donating code then to turn around a buy many licenses. You can’t even get a perpetual license anymore.</p>
+<p>CopperSpice on the other hand, is 100% OpenSource. It’s a fork of Qt 4.8 with all that nasty QML stuff removed. Long ago it moved to CMake. They’ve already made many of the container and other changes Qt community claims to want to make.</p>
+<p>They do not currently have an ARM release, but they do have Linux, Windows, and non-ARM MAC.</p>
+<p>A great many packages/companies are making the jump to CopperSpice.</p>
+<p>Oh, I may have misspoke. According to the timeline they added M1 Arm support January 2022.</p>
+<p><a href="https://www.copperspice.com/docs/cs_overview/timeline.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://www.copperspice.com/docs/cs_overview/timeline.html</a></p>
+<p>The bottom line is the legal liability. With Qtc changing the definition of who needs a commercial license on a whim, the only safe harbor is to let KDE be the legal shield.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 26, 2022 7:33 AM">
+            <time itemprop="datePublished" datetime="2022-04-26 07:33:30 +0000">Apr 26, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for responding. Currently packages can and are distributing Qt modules besides the KDE fork anyway, so I’m not sure that the Legal shield is working. Also the question really isn’t about licensing, but about the preference of a SDK runtime build on it’s own, over having a SDK extension that can be used to create the SDK runtime, but can also be used separately and thus providing more flexibility (using KDE or not).</p>
+<p>In response to some of your other comments:</p>
+<aside class="quote no-group" data-username="RolandHughes" data-post="2" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+RolandHughes:</div>
+<blockquote>
+<p>Nobody wants to register with Qtc to pull down the “OpenSource” version which really isn’t OpenSource anymore. The sales team will continually badger you to buy a license once you do.</p>
+</blockquote>
+</aside>
+<p>You don’t need to register to get the Qt source code if that’s what you mean. It’s available on their publicly accessible git server or through github.</p>
+<aside class="quote no-group" data-username="RolandHughes" data-post="2" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+RolandHughes:</div>
+<blockquote>
+<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc">CopperSpice</a>.</p>
+<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc">CsScintilla </a>.</p>
+<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc">RedDiamond </a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
+</blockquote>
+</aside>
+<p>That’s great, but this question isn’t about CopperSpice.</p>
+<aside class="quote no-group" data-username="RolandHughes" data-post="2" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+RolandHughes:</div>
+<blockquote>
+<p>There are <em>huge</em> political and licensing issues with including Qt. The definition of who needs a commercial license seems to change by the hour. It appears that Qtc is not on sound financial footing given the licensing hi-jinks that went on over the past year. The Debian/Ubuntu maintainers stepped away at the time all of the licensing issues cropped up. The “official” reason was lack of time. The reality is they didn’t want to be the registered user drug into court for payment.</p>
+</blockquote>
+</aside>
+<p>I’ve heard rumors about the licensing, but from what I can tell it’s pretty much up to the app developer to figure that out and use it or not. Anyway the question is really not about that.</p>
+<aside class="quote no-group" data-username="RolandHughes" data-post="2" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+RolandHughes:</div>
+<blockquote>
+<p>Qt isn’t an OpenSource project. The community does not determine the contents, Qtc does. The community is barred from maintaining an LTS version at their own expense. Qtc wants the community to work for free donating code then to turn around a buy many licenses. You can’t even get a perpetual license anymore.</p>
+</blockquote>
+</aside>
+<p>There is a big difference between a community ran project and an Open Source project. Given there is a company behind it, they need to have some sort of business model and make money to keep the business running. I’m not here to debate their choices in how they do that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 26, 2022 12:13 PM">
+            <time itemprop="datePublished" datetime="2022-04-26 12:13:59 +0000">Apr 26, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p><br>
+Thanks for responding. Currently packages can and are distributing Qt modules besides the KDE fork anyway, so I’m not sure that the Legal shield is working. Also the question really isn’t about licensing, but about the preference of a SDK runtime build on it’s own, over having a SDK extension that can be used to create the SDK runtime, but can also be used separately and thus providing more flexibility (using KDE or not).</p>
+</blockquote>
+<p>Like it or not, with Qt it is <strong>ALWAYS</strong> about the licensing and the whack-a-mole definitions of what does not qualify as “OpenSource use.”</p>
+<p>KDE is the only official OpenSource maintainer. As such you have to get them to package what you want.</p>
+<p>The shield is working perfectly right now. Flathub is simply providing a medium. KDE combined with the fake OpenSource project for Qt is providing what, at the point in time when they released it was deemed the OpenSource version. <em>If</em> a developer chooses to bundle Qt in their App Flathub is once again immune.</p>
+<p>The instant the Flathub organization puts a Qt package up here all shielding is gone. They can be held responsible for all non-qualifying uses.</p>
+<aside class="quote no-group" data-username="4c0n" data-post="3" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>You don’t need to register to get the Qt source code if that’s what you mean. It’s available on their publicly accessible git server or through github.</p>
+</blockquote>
+</aside>
+<p>This is no longer true. It was completely true back in the day before Qt got into obvious financial trouble given the licensing roulette. On the Qt-Interest mailing list there were vicious howls about how all of the latest Qt 5.x releases that became part of the commercial LTS were pulled. Many of the older versions are pulled now. They are deliberately making it harder and harder to download anything other than the worthless Qt 6 releases without registering.</p>
+<aside class="quote no-group" data-username="4c0n" data-post="3" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>I’ve heard rumors about the licensing, but from what I can tell it’s pretty much up to the app developer to figure that out and use it or not. Anyway the question is really not about that.</p>
+</blockquote>
+</aside>
+<p>The question is really about that, you just don’t want it to be. The financial liability and exposure Flathub will have by putting its own Qt packages together cannot be overstated. I had a client that chose not to fight the legal battle like all my other medical device clients had. They paid north of $600,000 U.S. for <strong>five</strong> developer seats as a result.</p>
+<p>Because of these legal and financial issues you will find many Linux distros have dropped KDE and removed all pieces of it from their repos. A growing number aren’t including Qt or anything that uses it in their “default” install.</p>
+<p>I get it.</p>
+<p>You “just wanna use it” and you want Flathub to make it easy.</p>
+<p>Qtc made certain you couldn’t do that without Flathub placing itself at immense financial risk.</p>
+<p>I realize you don’t want this to be about the licensing, but when Qtc is involved it is <strong>always</strong> about the licensing. That’s why CopperSpice exists. They forked Qt 4.8, the last true OpenSource version of Qt.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 26, 2022 12:47 PM">
+            <time itemprop="datePublished" datetime="2022-04-26 12:47:29 +0000">Apr 26, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry, but I don’t think it has anything to do with the problem 4c0n has raised. I would rather you to take this discussion elsewhere.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 26, 2022 1:02 PM">
+            <time itemprop="datePublished" datetime="2022-04-26 13:02:20 +0000">Apr 26, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It does, but that won’t change your belief. Go ahead, put Flathub at legal peril.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 26, 2022 2:25 PM">
+            <time itemprop="datePublished" datetime="2022-04-26 14:25:00 +0000">Apr 26, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Qt is just an example I used in this case. The same discussion applies to the GNOME SDK or any other SDK should they become/be available.</p>
+<p>The point is that by using an SDK extension as the root it would be possible to compose a SDK, base app or just bundling required parts with an app package, allowing for the building of those dependencies to be done only once instead of separately for each one of those components and as such providing more flexibility/re-usability/efficiency.</p>
+<p>In short: Why not provide SDK extensions to allow composition in addition to inheritance?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 15, 2022 2:37 PM">
+            <time itemprop="datePublished" datetime="2022-06-15 14:37:23 +0000">Jun 15, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In the meantime several PR’s for SDK extensions are just sitting in limbo. No single admin response.<br>
+<a href="https://github.com/flathub/flathub/pull/3077" rel="noopener nofollow ugc">https://github.com/flathub/flathub/pull/3077</a> being one of them.</p>
+<p>Having these kind of things available as extensions could prove very useful, but if no one is willing to even have a serious discussion about it… It’s a little disappointing when you invest your time and energy into something and it is just ignored. It is also very much possible to close the PR by denying it, or at least expressing that a policy is yet to be determined.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jul 5, 2022 7:21 PM">
+            <time itemprop="datePublished" datetime="2022-07-05 19:21:11 +0000">Jul 5, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>With CopperSpice it could be done. That is a true OpenSource project.<br>
+KDE is the <strong>only</strong> official OpenSource maintainer of Qt and per the Flathub rules, KDE has to be the one to provide Qt. You cannot. Qt is not your OpenSource project.</p>
+<p>What you have to ask yourself though is what do you want your flatpak to weigh in as? This?</p>
+<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://cdn3.vectorstock.com/i/1000x1000/80/67/feather-falling-light-small-vector-788067.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc" class="onebox">
+            <img src="/uploads/original/2X/7/71fd1916ee61751b777801c7ea362a261b62351d.jpeg" width="513" height="499">
+          </a>
+</p>
+<p>or this?</p>
+<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://thumbs.dreamstime.com/b/red-brick-mountain-clipping-path-12181367.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc" class="onebox">
+            <img src="/uploads/original/2X/2/2b1beae589cd713b530118f4bdc51aa50903adcf.jpeg" width="690" height="457">
+          </a>
+</p>
+<p>Every package put into the base package will tag along for all including those who don’t use it.</p>
+<p>I haven’t looked at the guts of flatpak. I don’t know if they are doing a Docker layer type thing so the 80,000 pound gorilla only has to be pulled down once.</p>
+<p>When I started with Linux we used floppy disks and dial-up modems. A complete Linux system could boot from 1.2MEG floppy. A system with a 20MEG hard drive was a big system.</p>
+<p>Linux rather quickly bloated past the download-with-a-modem size limit. “Live” systems with most of what you needed easily fit onto a 650MEG CD. Only a few scan versions of Ubuntu later and they needed a 4.7GB DVD for the “Live” disk. Adding insult to injury it doesn’t have much of what you need.</p>
+<p>During the days of DOS people wailed at MS Bloatware. Linux is eating fast enough at the all-you-can-eat-desert-buffet to surpass it now.</p>
+<p>In large part I see what you want. Qt can never be included in the base because it is just a monster <strong>and</strong> <em>comes with severe legal jeopardy if bundled</em>.</p>
+<p>If everything is included in the base though, where do you stop? Just installing Flatpak would be a 4.7GB footprint.</p>
+<p>Now, if they had some kind of layering and dependence system, theoretically the first pak to list CopperSpice, wxWidgets, etc. as a pre-req or dependency would pay the download cost of retrieving the 1200 pound gorilla. As long as it could be shared by all that wouldn’t be as bad.</p>
+<p>Here’s the dirty little secret from someone who has developer software for nearly 40 years.</p>
+<p>The first poor sap to package something like CopperSpice and put it into the repos as some kind of Flatpak component other components could use would never have a life again. They would constantly be dealing with versions and whiny emails from people who just gotta have that version upstream released 15 minutes ago.</p>
+<p>So, you make each Flatpak builder build in what they need. Yes, we get a lot of 800 pound gorillas begin downloaded, but, a person can have a life.</p>
+<p>I’ve done Debian and RPM packaging in prior lives. Just kicking the tires on Flatpak.</p>
+<p>Why don’t you look into the doc to see if Flatpak can support a Depends-on concept then see how you would have to build the dependency and park it some place in the hub where all can use?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jul 6, 2022 9:00 AM">
+            <time itemprop="datePublished" datetime="2022-07-06 09:00:18 +0000">Jul 6, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I feel you’re still missing the point. Qt for example is already being packaged as an Sdk and it’s fine, however it would be more flexible to package it as an Sdk extension and then use it in the flatpak Sdk runtime and make it available separately as well. That’s not that big of a change for the maintainer.</p>
+<p>Maybe you should study how Flatpak works a little better, because it actually does work based on either OCI (“Docker layer type thing”, which is what the Fedora repo uses) or OSTree (which uses deduplication and is what flathub uses). So your analogy is incorrect.</p>
+<p>Anyway, I’ve pretty much given up on getting any useful response, apparently there is no room for these kind of ideas and the Flathub admins do not seem willing to discuss this or suggest a policy on the matter of SDK extensions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jul 6, 2022 8:26 PM">
+            <time itemprop="datePublished" datetime="2022-07-06 20:26:00 +0000">Jul 6, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="4c0n" data-post="1" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>Another example is when a package requires other Qt modules that are for whatever reason not available in the KDE SDK,</p>
+</blockquote>
+</aside>
+<p>per Flathub rules, KDE is the “owner” of the OpenSource Qt project. They get to decide what is and is not packaged for flathub.</p>
+<aside class="quote no-group" data-username="4c0n" data-post="10" data-topic="2440">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>I feel you’re still missing the point. Qt for example is already being packaged as an Sdk and it’s fine, however it would be more flexible to package it as an Sdk extension and then use it in the flatpak Sdk runtime and make it available separately as well. That’s not that big of a change for the maintainer.</p>
+</blockquote>
+</aside>
+<p>It is true that I do not know how the internals of Flatpak work. I’m just wading into it and there really isn’t much for documentation. It has the Linux “expert friendly” issue right now. I have spent almost 40 years in software development from PDP-11, to IBM Mainframe, to other midrange, to OS/2, DOS, and Linux when it used to fit on a single 1.2 MEG floppy. I create RPMs and Debian packages.  Every 18 months a new solve-all-the-problems distribution method comes out. Thank God I didn’t waste much time on Snap.</p>
+<p>No, I think I’ve got the point.</p>
+<ol>
+<li>
+<p>It’s always just a little bit of work when someone else has to do it. Oceans too much when one has to do it themselves.</p>
+</li>
+<li>
+<p>You want someone to do it for you rather than do it yourself</p>
+</li>
+<li>
+<p>Many of the Qt modules “missing” from the KDE SDK are missing because they aren’t really OpenSource due to the licensing shenanigans going on <strong>or</strong> they have a different non-compatible OpenSource license. This last part is pretty rampant in later Qt features. WebEngine in particular is a dog’s breakfast of <a href="https://doc.qt.io/qt-6/qtwebengine-licensing.html" rel="noopener nofollow ugc">conflicting licenses</a>. The “dual license” becomes a commercial-only license if you in any way make money or so the last interpretation I was given went. If you earn even a nickle with it you have to have a commercial license.</p>
+</li>
+<li>
+<p>There’s no good documentation on how to create an extension that uses C/C++. One has to thieve <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.openjdk/blob/branch/21.08/org.freedesktop.Sdk.Extension.openjdk.yaml" rel="noopener nofollow ugc">the OpenJDK one</a> and hack it down to what you need. I’m actually investigating this right now to do it for CopperSpice.</p>
+</li>
+<li>
+<p>The people creating the stuff for Flatpak aren’t getting paid to do it. Many of the KDE team are actually being paid via Qt Corporation. They do actually “maintain” webengine libraries for Debian.</p>
+</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22.png" data-download-href="/uploads/original/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22.png" title="debian-webengine" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22_2_690x191.png" alt="debian-webengine" data-base62-sha1="ePHf5ZEzzW4nN54tMQlsUlElaQG" width="690" height="191" srcset="/uploads/optimized/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22_2_690x191.png, /uploads/original/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22.png 1.5x, /uploads/original/2X/6/67f678db8a30f3c06c329ae8bb740aa99ad90a22.png 2x" data-dominant-color="E8E8E8"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">debian-webengine</span><span class="informations">990×275 61.3 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<ol start="5">
+<li>
+<p><strong>The individuals working on the KDE project would be the proper place to push an extension request</strong> because they have already waded through the myriad of licensing issues. Keep in mind their focus is on promoting KDE and using it for Qt experiments. It’s not on bringing Qt to the masses. You <em>might</em> get them to add WebEngine to the KDE base but I suspect the reason it isn’t there is a licensing issue. See link above for the bushel basket full of licenses needed by QWebEngine.</p>
+</li>
+<li>
+<p>No new development is actually going on with Qt. People are maintaining “Legacy” products while porting to other libraries after the combination of licensing shenanigans at the end of Qt 5 and Qt 6 being mostly dysfunctional (especially QML) for desktops.</p>
+</li>
+<li>
+<p>I just followed your link and poked around to find <a href="https://github.com/flathub/flathub/pull/3013" rel="noopener nofollow ugc">this PR created by you</a>. <span class="mention">@Erick555</span> has valid concerns on their April 15 (tax day!) message. You should really have the KDE team add what you want. As far as wxWidgets, one of the platforms people are abandoning Qt for just because it is there, I didn’t see any valid concerns/issues with the PR. I did notice that there are only 15 people listed as being members of Flathub and wxWidgets is a 12,000 pound gorilla. It would be nice to not have to include CodeBlocks to get it, but . . . one has to make a good case for having it split off. (i.e. you have 8 other pull requests that will use it.)</p>
+</li>
+</ol>
+<p>After reading through all of the brew-ha-ha on several of the Extension PRs not yet in I <em>suspect</em> the philosophy is <strong>new RunTime</strong>.</p>
+<p>How does one find an extension? Until I saw this message I didn’t know they existed. There are a tiny list of SDK in the doc, but it took an awful lot of searching with DuckDuckGo and other engines to actually find Flatpak Extension and have it be something close to what I was looking for.</p>
+<p>Why don’t you build a new RunTime that can <a href="https://docs.flatpak.org/en/latest/available-runtimes.html" rel="noopener nofollow ugc">be listed here</a>? You probably cannot call it the Qt RunTime due to trademark issues.</p>
+<p>Otherwise beg KDE to add in the libraries you want. They are the ones maintaining the code you would need to use.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Jul 7, 2022 6:38 AM">
+            <time itemprop="datePublished" datetime="2022-07-07 06:38:13 +0000">Jul 7, 2022</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/uploads/original/2X/0/0123aa148ef298566408326a321cca0c22c1deb8.png" alt="the-point-you-24487436" data-base62-sha1="a4T3DLe91Bqx4hftmBZcIrQ1vy" width="500" height="320"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

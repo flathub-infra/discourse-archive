@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GUI flatpak hanging when launched only when built/bundled - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">GUI flatpak hanging when launched only when built/bundled</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">GUI flatpak hanging when launched only when built/bundled</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 5, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 5, 2024 7:00 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 07:00:06 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The app I packaged seems to hang during launch with no errors.<br>
+It works when run inside <code>flatpak-builder --run build-dir manifest.json sh</code> using the launch script <code>/app/rimpy-wrapper.sh</code>:</p>
+<pre><code class="lang-auto">Launching RimPy
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+
+(RimPy:4): dbind-WARNING **: 01:07:23.040: Couldn't connect to accessibility bus: Failed to connect to socket /run/user/1000/at-spi/bus_0: No such file or directory
+Gtk-Message: 01:07:23.065: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:07:23.065: Failed to load module "pk-gtk-module"
+Gtk-Message: 01:07:23.066: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:07:23.066: Failed to load module "pk-gtk-module"
+Sandboxing disabled by user.
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+[47:70:0605/010733.116505:ERROR:nss_util.cc(283)] After loading Root Certs, loaded==false: /usr/lib/x86_64-linux-gnu/libnssckbi.so: undefined symbol: C_GetInterface
+[47:65:0605/010733.118596:ERROR:ssl_client_socket_impl.cc(959)] handshake failed; returned -1, SSL error code 1, net_error -202
+js: Uncaught TypeError: Cannot read property 'lastChild' of undefined
+js: Uncaught TypeError: Cannot read property 'parentElement' of null
+</code></pre>
+<p>(Any errors/warnings in the output above are normal for this program and it still launches/runs)</p>
+<p>After it is packaged, this is the only output when run:</p>
+<pre><code class="lang-auto">Launching RimPy
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+</code></pre>
+<p>It just sits on that line, never crashing or continuing.</p>
+<p>Here is the manifest.json:</p>
+<pre data-code-wrap="json"><code class="lang-json">{
+  "app-id": "io.github.kuuchuu.RimPy",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "6.7",
+  "sdk": "org.kde.Sdk",
+  "command": "/app/rimpy-wrapper.sh",
+  "finish-args": [
+    "--share=network",
+    "--filesystem=home",
+    "--filesystem=xdg-config/RimPy Mod Manager:create",
+    "--filesystem=xdg-data/RimPy:create",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--share=ipc"
+  ],
+  "modules": [
+    {
+      "name": "rimpy",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app",
+        "mv src/* /app",
+        "install -D io.github.kuuchuu.RimPy.png /app/share/icons/hicolor/256x256/apps/io.github.kuuchuu.RimPy.png",
+        "install -D rimpy.desktop /app/share/applications/io.github.kuuchuu.RimPy.desktop",
+        "install -D rimpy-wrapper.sh /app/rimpy-wrapper.sh",
+        "chmod +x /app/rimpy-wrapper.sh",
+        "chmod +x /app/RimPy",
+        "chmod +x /app/RimPy.sh"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/rimpy-custom/RimPy/releases/download/$RIMPYVERSION/RimPy_Linux.tar.gz",
+          "sha256": "$RIMPYSHA",
+          "dest": "src",
+          "strip-components": 0
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/io.github.kuuchuu.RimPy.png"
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/rimpy.desktop"
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/rimpy-wrapper.sh"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>Here is my build.sh:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">#!/bin/bash
+
+PAKID="io.github.kuuchuu.RimPy"
+
+cd $PAKID || exit
+
+RIMPYVERSION=$(awk -F '/' '{print $1}' rimpy.version)
+RIMPYSHA=$(awk -F '/' '{print $2}' rimpy.version)
+
+WKDIR=$(readlink -f $PAKID | sed 's,/*[^/]\+/*$,,')
+
+JSON=$(sed "s/\$RIMPYVERSION/$RIMPYVERSION/g" &lt; manifest.json | sed "s/\$RIMPYSHA/$RIMPYSHA/g" | sed "s/\\\$WKDIR/$(echo "$WKDIR" | sed 's/\//\\\//g')/g")
+
+echo "$JSON" | flatpak-builder --repo=repo --force-clean build-dir /dev/stdin
+flatpak build-bundle repo "rimpy.$RIMPYVERSION.flatpak" io.github.kuuchuu.RimPy
+
+echo -e "\nFlatpak built!"
+#rm -rdf .flatpak-builder build-dir repo
+echo -e "\nRun \`flatpak install '$PWD/rimpy.$RIMPYVERSION.flatpak'\` to install."
+</code></pre>
+<p>rimpy-wrapper.sh:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">#!/bin/sh
+echo "RimPy Log: $HOME/.config/RimPy Mod Manager/rimpy.flatpak.log"
+exec 3&gt;&amp;1 4&gt;&amp;2
+trap 'exec 2&gt;&amp;4 1&gt;&amp;3' 0 1 2 3
+exec 1&gt;"$HOME/.config/RimPy Mod Manager/rimpy.flatpak.log" 2&gt;&amp;1
+cd /app || exit
+echo "Launching RimPy"
+exec /app/RimPy.sh
+</code></pre>
+<p>rimpy.version:</p>
+<pre><code class="lang-auto">1.2.6.29/2c83a0c3446b8391e9ab98bf5e2332e718d0f0fb10e6b0035ffa45b55311a705
+</code></pre>
+<p>temporary rimpy.desktop:</p>
+<pre><code class="lang-auto">[Desktop Entry]
+Version=1.0
+Name=RimPy
+Comment=A Mod Manager for RimWorld
+Exec=/app/rimpy-wrapper.sh
+Icon=io.github.kuuchuu.RimPy
+Terminal=false
+Type=Application
+Categories=Game;Utility;
+</code></pre>
+<p>Folder structure:</p>
+<pre><code class="lang-auto">.
+├── build.sh
+├── io.github.kuuchuu.RimPy
+│  ├── io.github.kuuchuu.RimPy.png
+│  ├── manifest.json
+│  ├── rimpy-wrapper.sh
+│  ├── rimpy.desktop
+│  └── rimpy.version
+</code></pre>
+<p>Any help figuring this out would be really appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 5, 2024 9:43 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 09:43:17 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think it might increase your chance, of getting help, if you share a git repo <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 5, 2024 11:58 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 11:58:24 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Kuuchuu" data-post="1" data-topic="6853">
+<div class="title">
+<div class="quote-controls"></div>
+Kuuchuu:</div>
+<blockquote>
+<p>It works when run inside <code>flatpak-builder --run build-dir manifest.json sh</code> using the launch script <code>/app/rimpy-wrapper.sh</code>:</p>
+</blockquote>
+</aside>
+<p>First this is not the proper way to test the build. You should tell flatpak-builder to install it with <code>--install --user</code> and the use <code>flatpak run</code></p>
+<p>Second, you unpack a prebuild binary and that might be the problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 5, 2024 3:09 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 15:09:29 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="3" data-topic="6853">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>ll flatpak-builder to install it with <code>--install --user</code> and the use <code>flatpak run</code></p>
+</blockquote>
+</aside>
+<p>Currently nothing has been pushed to a repo, was hoping to get it working first. Minus the png file (which is the window.ico packaged in the RimPy_Linux.tar.gz), these are all the files. I can go ahead and push it to my repo soon.</p>
+<p>EDIT: If you’re referencing the repo of the app I’m attempting to package, this is it: <a href="https://github.com/rimpy-custom/RimPy" class="inline-onebox" rel="noopener nofollow ugc">GitHub - rimpy-custom/RimPy: Mod Manager For Rimworld game</a><br>
+The only file really provided by the repo is the pre-built application though.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 5, 2024 3:14 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 15:14:02 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry, this is my first time packaging a flatpak so I’m still working on learning the correct process.</p>
+<p>The program I am attempting to package does not have available source code, it is only provided pre-compiled (released in Nov. 2022). The pre-compiled version has various issues if the environment it’s running in isn’t just right, but all the features worked properly when I was (incorrectly) testing with <code>flatpak-builder --run build-dir manifest.json sh</code>, when they fail to work when running the program normally on my computer.</p>
+<p>EDIT: Just wanted to add, I did already attempt to run it using <code>flatpak run</code> as well:<br>
+<code>flatpak run io.github.kuuchuu.RimPy</code><br>
+<code>flatpak run --devel --command=sh io.github.kuuchuu.RimPy</code><br>
+Which is when it fails to launch:</p>
+<pre><code class="lang-auto">blase@solus-blase ~/D/W/git❥ flatpak run --devel --command=sh io.github.kuuchuu.RimPy
+[📦 io.github.kuuchuu.RimPy git]$ /app/rimpy-wrapper.sh
+RimPy Log: /home/blase/.config/RimPy Mod Manager/rimpy.flatpak.log
+</code></pre>
+<p>rimpy.flatpak.log:</p>
+<pre><code class="lang-auto">Launching RimPy
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+# HANGS AFTER ABOVE LINE
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 5, 2024 3:42 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 15:42:21 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Kuuchuu" data-post="4" data-topic="6853">
+<div class="title">
+<div class="quote-controls"></div>
+Kuuchuu:</div>
+<blockquote>
+<p>Currently nothing has been pushed to a repo, was hoping to get it working first. Minus the png file (which is the window.ico packaged in the RimPy_Linux.tar.gz), these are all the files. I can go ahead and push it to my repo soon.</p>
+</blockquote>
+</aside>
+<p>I don’t see what this relate to testing the build as explained. The lack a repo is irrelevant. This is the local build.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jun 5, 2024 3:50 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 15:50:56 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Kuuchuu" data-post="5" data-topic="6853">
+<div class="title">
+<div class="quote-controls"></div>
+Kuuchuu:</div>
+<blockquote>
+<pre><code class="lang-auto">Launching RimPy
+ERROR: ld.so: object 'libpcre.so.3' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+# HANGS AFTER ABOVE LINE
+</code></pre>
+</blockquote>
+</aside>
+<p>There is no <code>libpcre3.so</code> in the runtime so it can’t invent it. The message is pretty clear.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 5, 2024 4:18 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 16:18:12 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That message is there when the application works as well.</p>
+<p>EDIT: I have fixed that issue. Still hangs in the same spot after bundling it into the .flatpak</p>
+<p>New rimpy-wrapper.sh:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">#!/bin/sh
+#echo "RimPy Log: $HOME/.config/RimPy Mod Manager/rimpy.flatpak.log"
+#exec 3&gt;&amp;1 4&gt;&amp;2
+#trap 'exec 2&gt;&amp;4 1&gt;&amp;3' 0 1 2 3
+#exec 1&gt;"$HOME/.config/RimPy Mod Manager/rimpy.flatpak.log" 2&gt;&amp;1
+cd /app || exit
+echo "Launching RimPy"
+#export LD_DEBUG=libs,files
+LD_PRELOAD="/app/lib/libpcre.so.3:$LD_PRELOAD" ./RimPy
+</code></pre>
+<p>New manifest.json:</p>
+<pre data-code-wrap="json"><code class="lang-json">{
+  "app-id": "io.github.kuuchuu.RimPy",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "6.7",
+  "sdk": "org.kde.Sdk",
+  "command": "/app/rimpy-wrapper.sh",
+  "finish-args": [
+    "--share=network",
+    "--filesystem=home",
+    "--filesystem=xdg-config/RimPy Mod Manager:create",
+    "--filesystem=xdg-data/RimPy:create",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--share=ipc"
+  ],
+  "modules": [
+    {
+      "name": "pcre",
+      "buildsystem": "autotools",
+      "config-opts": [
+        "--prefix=/app/lib",
+        "--enable-utf",
+        "--enable-unicode-properties",
+        "--enable-pcre16",
+        "--enable-pcre32",
+        "--enable-jit",
+        "--enable-pcregrep-libz",
+        "--enable-pcregrep-libbz2",
+        "--enable-pcretest-libreadline"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://deb.debian.org/debian/pool/main/p/pcre3/pcre3_8.39.orig.tar.bz2",
+          "sha256": "b858099f82483031ee02092711689e7245586ada49e534a06e678b8ea9549e8b"
+        }
+      ],
+      "build-commands": [
+        "./configure --prefix=/app",
+        "make",
+        "make install",
+        "ln -s /app/lib/libpcre.so.1 /app/lib/libpcre.so.3"
+      ]
+    },
+    {
+      "name": "rimpy",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app",
+        "mv src/* /app",
+        "install -D io.github.kuuchuu.RimPy.png /app/share/icons/hicolor/256x256/apps/io.github.kuuchuu.RimPy.png",
+        "install -D rimpy.desktop /app/share/applications/io.github.kuuchuu.RimPy.desktop",
+        "install -D rimpy-wrapper.sh /app/rimpy-wrapper.sh",
+        "chmod +x /app/rimpy-wrapper.sh",
+        "chmod +x /app/RimPy",
+        "chmod +x /app/RimPy.sh"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/rimpy-custom/RimPy/releases/download/$RIMPYVERSION/RimPy_Linux.tar.gz",
+          "sha256": "$RIMPYSHA",
+          "dest": "src",
+          "strip-components": 0
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/io.github.kuuchuu.RimPy.png"
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/rimpy.desktop"
+        },
+        {
+          "type": "file",
+          "path": "$WKDIR/rimpy-wrapper.sh"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>Going to look at the output when it’s launched with “LD_DEBUG=libs,files”</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jun 5, 2024 7:04 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 19:04:34 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Not working, Bundled flatpak, <code>flatpak run --devel --command=sh io.github.kuuchuu.RimPy</code>:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">blase@solus-blase ~/D/W/git [SIGINT]❥ flatpak run --devel --command=sh io.github.kuuchuu.RimPy
+[📦 io.github.kuuchuu.RimPy git]$ /tmp/templauncher.sh # rimpy-wrapper.sh with LD_DEBUG=libs,files
+</code></pre>
+<p>Output log: <a href="https://0x0.st/XqR8.log" rel="noopener nofollow ugc">https://0x0.st/XqR8.log</a></p>
+<p>Working, Unbundled flatpak, <code>flatpak-builder --run build-dir manifest.json sh</code>:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">blase@solus-blase ~/D/W/git [SIGINT]❥ flatpak-builder --run build-dir manifest.json sh
+[📦 io.github.kuuchuu.RimPy git]$ /tmp/templauncher.sh # rimpy-wrapper.sh with LD_DEBUG=libs,files
+</code></pre>
+<p>Output log: <a href="https://0x0.st/XqRP.log" rel="noopener nofollow ugc">https://0x0.st/XqRP.log</a></p>
+<p>The output is pretty identical until it reaches</p>
+<pre data-code-wrap="bash"><code class="lang-bash">       #:	calling init: /app/pyexpat.so
+       #:	
+       #:	opening file=/app/pyexpat.so [0]; direct_opencount=1
+</code></pre>
+<p>After that line the bundled flatpak doesn’t have any further output, while the unbundled continues:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">    ....
+       177:	calling init: /app/pyexpat.so
+       177:	
+       177:	opening file=/app/pyexpat.so [0]; direct_opencount=1
+       177:	
+       177:	
+       177:	file=/app/PyQt5/qt-plugins/platforms/libqxcb.so.avx2 [0];  dynamically loaded by /app/PyQt5/../libQt5Core.so.5 [0]
+       177:	
+       177:	file=/app/PyQt5/qt-plugins/platforms/libqxcb.so [0];  dynamically loaded by /app/PyQt5/../libQt5Core.so.5 [0]
+       177:	file=/app/PyQt5/qt-plugins/platforms/libqxcb.so [0];  generating link map
+       177:	  dynamic: 0x00007f91a5402bd0  base: 0x00007f91a5200000   size: 0x00000000002030d8
+       177:	    entry: 0x00007f91a5201420  phdr: 0x00007f91a5200040  phnum:                  7
+       177:	
+       177:	
+       177:	file=libQt5XcbQpa.so.5 [0];  needed by /app/PyQt5/qt-plugins/platforms/libqxcb.so [0]
+       177:	find library=libQt5XcbQpa.so.5 [0]; searching
+       177:	 search path=/app/lib:/usr/lib/x86_64-linux-gnu/GL/default/lib:/usr/lib/x86_64-linux-gnu/GL/nvidia-550-78/lib:/usr/lib/x86_64-linux-gnu/openh264/extra		(LD_LIBRARY_PATH)
+       177:	  trying file=/app/lib/libQt5XcbQpa.so.5
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/GL/default/lib/libQt5XcbQpa.so.5
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/GL/nvidia-550-78/lib/libQt5XcbQpa.so.5
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/openh264/extra/libQt5XcbQpa.so.5
+       177:	 search path=/app/PyQt5/qt-plugins/platforms/../../../glibc-hwcaps/x86-64-v3:/app/PyQt5/qt-plugins/platforms/../../../glibc-hwcaps/x86-64-v2:/app/PyQt5/qt-plugins/platforms/../../..		(RUNPATH from file /app/PyQt5/qt-plugins/platforms/libqxcb.so)
+       177:	  trying file=/app/PyQt5/qt-plugins/platforms/../../../glibc-hwcaps/x86-64-v3/libQt5XcbQpa.so.5
+       177:	  trying file=/app/PyQt5/qt-plugins/platforms/../../../glibc-hwcaps/x86-64-v2/libQt5XcbQpa.so.5
+       177:	  trying file=/app/PyQt5/qt-plugins/platforms/../../../libQt5XcbQpa.so.5
+       177:	
+       177:	file=libQt5XcbQpa.so.5 [0];  generating link map
+       177:	  dynamic: 0x00007f91a4f53a10  base: 0x00007f91a4c00000   size: 0x00000000003584f0
+       177:	    entry: 0x00007f91a4c37530  phdr: 0x00007f91a4c00040  phnum:                  7
+       177:	
+       177:	
+       177:	file=libxcb-icccm.so.4 [0];  needed by /app/PyQt5/qt-plugins/platforms/libqxcb.so [0]
+       177:	find library=libxcb-icccm.so.4 [0]; searching
+       177:	 search path=/app/lib:/usr/lib/x86_64-linux-gnu/GL/default/lib:/usr/lib/x86_64-linux-gnu/GL/nvidia-550-78/lib:/usr/lib/x86_64-linux-gnu/openh264/extra		(LD_LIBRARY_PATH)
+       177:	  trying file=/app/lib/libxcb-icccm.so.4
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/GL/default/lib/libxcb-icccm.so.4
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/GL/nvidia-550-78/lib/libxcb-icccm.so.4
+       177:	  trying file=/usr/lib/x86_64-linux-gnu/openh264/extra/libxcb-icccm.so.4
+       177:	 search path=/app/PyQt5/qt-plugins/platforms/../../..		(RUNPATH from file /app/PyQt5/qt-plugins/platforms/libqxcb.so)
+       177:	  trying file=/app/PyQt5/qt-plugins/platforms/../../../libxcb-icccm.so.4
+       177:	
+       177:	file=libxcb-icccm.so.4 [0];  generating link map
+       177:	  dynamic: 0x00007f91b8396000  base: 0x00007f91b838f000   size: 0x00000000000080f8
+       177:	    entry: 0x00007f91b8391330  phdr: 0x00007f91b838f040  phnum:                 12
+    ....
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jun 5, 2024 7:40 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 19:40:59 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think I got it figured out. It seems that because “/app” is a read-only file system after packaging it fails to launch.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leora</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jun 5, 2024 8:07 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 20:07:54 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here is my unconventional and likely frowned upon solution / rimpy-wrapper.sh modification:</p>
+<pre><code class="lang-auto">#!/bin/sh
+app_dir="/app"
+rimpy_dir="/var/rimpy"
+
+rimpyLink() {
+    mkdir -p "$rimpy_dir"
+
+    find "$app_dir" -type d | while read -r dir; do
+        new_dir="${dir/$app_dir/$rimpy_dir}"
+        mkdir -p "$new_dir"
+    done
+
+    find "$app_dir" -type f | while read -r file; do
+        new_file="${file/$app_dir/$rimpy_dir}"
+        ln -s "$file" "$new_file"
+    done
+
+    echo "Directory structure replicated and files linked from $app_dir to $rimpy_dir."
+}
+
+if [ ! -f "$rimpy_dir/RimPy" ]; then
+    rimpyLink
+fi
+
+echo
+echo "Launching RimPy"
+
+echo "RimPy Log: $HOME/.config/RimPy Mod Manager/rimpy.flatpak.log"
+exec 3&gt;&amp;1 4&gt;&amp;2
+trap 'exec 2&gt;&amp;4 1&gt;&amp;3' 0 1 2 3
+exec 1&gt;"$HOME/.config/RimPy Mod Manager/rimpy.flatpak.log" 2&gt;&amp;1
+#export LD_DEBUG=libs,files
+cd /var/rimpy || exit
+LD_PRELOAD="/app/lib/libpcre.so.3:$LD_PRELOAD" ./RimPy
+</code></pre>
+<p>It is currently sym linking all the files in /app into a directory in /var, then launching from there.</p>
+<p>If there is a better way to set up the application so that it runs in a read/write file system rather than a read-only file system, I’d be interested in trying it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Jun 9, 2024 7:49 AM">
+            <time itemprop="datePublished" datetime="2024-06-09 07:49:19 +0000">Jun 9, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In general, the application files in <code>/app</code> are always read-only &amp; there is no way to change that. Copying them would be the only way.</p>
+<p>But since it works with the symlinks (which still point to read-only files), I’d assume the application itself can be read-only. Is it just creating additional files / directories inside the application directory?</p>
+<p>If that’s the case then you can try to just symlink these files / directories at build time into writable locations (i.e. via the manifest, <code>ln -s &lt;destination&gt; /app/&lt;source&gt;</code>). Your script then just has to ensure that the destinations of the symlinks are created.</p>
+<p>User data you can put into the corresponding locations (<code>XDG_DATA_HOME</code>, <code>XDG_CACHE_HOME</code> &amp; <code>XDG_CONFIG_HOME</code>) to persist it:<br>
+The app-specific variants (inside <code>~/.var/app/&lt;ID&gt;</code>) are available at the static, user independent, locations <code>/var/data</code>, <code>/var/cache</code> &amp; <code>/var/config</code>, to be easily symlinked at build time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Jun 9, 2024 7:59 AM">
+            <time itemprop="datePublished" datetime="2024-06-09 07:59:07 +0000">Jun 9, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Speaking of XDG base directories:<br>
+You shouldn’t hard code <code>$HOME/.config</code> into the application. This will work most of the time but the location can be changed by the user.</p>
+<p>You can just use <code>$XDG_CONFIG_HOME/&lt;your folders&gt;</code>: The directories from <code>--filesystem=&lt;your folders&gt;</code> will be available in the app specific folder, too (see <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#f3" rel="noopener nofollow ugc">Sandbox Permissions Footnote #3</a>).</p>
+<p>An alternative would be to use <code>$HOST_XDG_CONFIG_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). But unlike <code>XDG_CONFIG_HOME</code> this is not always set (so you’ll have to handle the fallback).<br>
+If a user decides to remove the filesystem access then the files won’t be persisted anymore. With <code>$XDG_CONFIG_HOME</code> there’s always a fallback inside <code>.var/app/&lt;id&gt;/config</code>.</p>
+<p>(As a suggestion: I’d argue a log file is either cache or data but never config)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

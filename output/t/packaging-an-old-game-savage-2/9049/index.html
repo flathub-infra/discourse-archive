@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Packaging an old game, Savage 2 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Packaging an old game, Savage 2</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Packaging an old game, Savage 2</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 5, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">khumarahn</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 5, 2025 3:37 PM">
+            <time itemprop="datePublished" datetime="2025-03-05 15:37:44 +0000">Mar 5, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi there!</p>
+<p>I’m trying to package Savage 2, a 2008 linux game, in flatpak. The objective is to be able to run it everywhere, in particular on a steam deck. And I’m very new to flatpak.</p>
+<p>I wrote a manifest that works on debian 12 and on gentoo, see below. But the game does not start on a steam deck, and I struggle to understand how to debug it.</p>
+<p>I don’t see an easy way to rebuild the game from source, so I have to use the binary from <a href="http://savage2.net" rel="noopener nofollow ugc">savage2.net</a>. The manifest is pretty straightforward:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">id: net.savage2.game
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: savage2
+
+modules:
+  - name: ncurses
+    config-opts:
+      - --with-shared
+      - --without-manpageus
+      - --with-abi-version=5
+    cleanup:
+      - /bin
+      - /include
+      - /share
+      - "*.a"
+    sources:
+      - type: archive
+        url: http://ftp.gnu.org/gnu/ncurses/ncurses-6.3.tar.gz
+        sha256: 97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059
+  
+  - name: glu
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+
+  - name: savage2
+    buildsystem: simple
+    build-commands:
+      - chmod +x Savage2-2.1.1.1-linux-x64-installer.run
+      - ./Savage2-2.1.1.1-linux-x64-installer.run --prefix /app/savage2 --mode unattended
+      - rm /app/savage2/libs/libstdc++.so.6
+      - install -Dm755 savage2.sh /app/bin/savage2
+    sources:
+      - type: file
+        url: https://masterserver1.talesofnewerth.com/downloads/Savage2-2.1.1.1-linux-x64-installer.run
+        sha256: 438e37a997aad2655b27aff01732bebc4adbc3f105b0b3357ca2723c3cccc604
+      - type: script
+        dest-filename: savage2.sh
+        commands:
+          - cd /app/savage2
+          # With flatpak-builder on debian 12, the game does not find libGLU.so.1 which is in /app/lib64.
+          # This is a strange thing because it does not reproduce on gentoo with newer flatpak-builder.
+          # I didn't understand the problem, but here's a workaround:
+          - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib64
+          - ./savage2.bin
+
+finish-args:
+  - --share=network
+  - --socket=x11
+  - --share=ipc
+  - --socket=pulseaudio
+  - --device=dri
+  - --filesystem=~/.savage2:create
+</code></pre>
+<p>On gentoo and debian, the game starts and works. On a steam deck, I see instead</p>
+<pre><code class="lang-auto">(deck@steamdeck ~)$ flatpak run net.savage2.game
+warning: The VAD has been replaced by a hack pending a complete rewrite
+X Error of failed request:  BadValue (integer parameter out of range for operation)
+  Major opcode of failed request:  1 (X_CreateWindow)
+  Value in failed request:  0x0
+  Serial number of failed request:  56
+  Current serial number in output stream:  68
+</code></pre>
+<p>How does one debug this?<br>
+(The line <code>warning: The VAD...</code> is normal and expected)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 6, 2025 10:01 AM">
+            <time itemprop="datePublished" datetime="2025-03-06 10:01:06 +0000">Mar 6, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Could you provide a list of all *.so files inside of the game archive? Some of those might need to be replaced</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">khumarahn</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 6, 2025 3:22 PM">
+            <time itemprop="datePublished" datetime="2025-03-06 15:22:25 +0000">Mar 6, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi. Sure, here they are:</p>
+<pre><code class="lang-auto">/app/savage2/game/game.so
+/app/savage2/game/cgame.so
+/app/savage2/game/libgame_shared.so
+/app/savage2/updater_x11.so
+/app/savage2/editor/cgame.so
+/app/savage2/vid_gl2.so
+/app/savage2/libk2.so
+/app/savage2/modelviewer/cgame.so
+/app/savage2/libs/libcurl.so.4
+/app/savage2/libs/libspeex.so.1
+/app/savage2/libs/libfreetype.so.6
+/app/savage2/libs/libfmodex64.so
+/app/savage2/libs/libpng12.so.0
+/app/savage2/libs/libspeexdsp.so.1
+/app/savage2/libs/libgcc_s.so.1
+</code></pre>
+<p>I already remove some libraries in the manifest, and that’s enough to get the game running on both debian and gentoo.</p>
+<p>In the meanwhile, I could launch the game on the steam deck if I set <code>SetSave vid_xrandr "false"</code>. This, if I understand correctly, turns off using xrandr to detect screen settings. But on other systems this wasn’t necessary.</p>
+<p>Inside the game, the xrandr business is probably happening in <code>/app/savage2/vid_gl2.so</code>. This is a part of the k2 game engine, and it should be close to <a href="https://github.com/shawwn/noh/tree/main/src/vid_gl2" class="inline-onebox" rel="noopener nofollow ugc">noh/src/vid_gl2 at main · shawwn/noh · GitHub</a><br>
+So, if the problem is with the game and not the environment, it may be possible to fix something inside vid_gl2.so.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

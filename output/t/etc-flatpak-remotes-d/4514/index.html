@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>/etc/flatpak/remotes.d - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">/etc/flatpak/remotes.d</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">/etc/flatpak/remotes.d</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 4, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">genson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 4, 2023 4:08 AM">
+            <time itemprop="datePublished" datetime="2023-07-04 04:08:51 +0000">Jul 4, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am currently trying to install flathub as a repository on NixOS from within my configuration.nix (so that I don’t have manual steps to run every install).  The <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc">flatpak command reference</a> has a comment which states that a flatpakrepo dropped into /etc/flatpak/remotes can be used to setup static system-wide repos.  A nice gentlemen from the NixOS discourse helped me come up with the code for that:</p>
+<pre><code class="lang-auto">  environment.etc = {
+    "flatpak/remotes.d/flathub.flatpakrepo".source = pkgs.fetchurl {
+      url = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      # Let this run once and you will get the hash as an error.
+      hash = "";
+    };
+  };
+</code></pre>
+<p>The file is created at /etc/flatpak/remotes.d/flathub.flatpakrepo when I switch into the new configuration, but flatpak still does not list flathub as a remote and gnome-software does not find any repositories or applications.</p>
+<p>Does anyone here have any idea what might be going wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 5, 2023 5:36 PM">
+            <time itemprop="datePublished" datetime="2023-07-05 17:36:36 +0000">Jul 5, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just to be safe: This is not a very old Flatpak version? The behaviour was changed with <a href="https://github.com/flatpak/flatpak/blob/ad1797901845001d6b5f7052d81ef8907f211835/NEWS#L1107C1-L1107C17" rel="noopener nofollow ugc">version 1.3.4</a>.</p>
+<p>The repository is only added to <strong>system-wide repositories</strong>. If you’re using <code>--user</code> then this won’t work.</p>
+<p>At least for 1.15.4 I can confirm that it works:</p>
+<pre><code class="lang-auto">$ cat /etc/flatpak/remotes.d/flathub.flatpakrepo 
+[Flatpak Repo]
+Title=Flathub
+Url=https://dl.flathub.org/repo/
+Homepage=https://flathub.org/
+Comment=Central repository of Flatpak applications
+Description=Central repository of Flatpak applications
+Icon=https://dl.flathub.org/repo/logo.svg
+GPGKey=…
+</code></pre>
+<p>On the next run the repository is added to the system-wide installation (<code>remotes --system</code> is only an example, you can directly use another command):</p>
+<pre><code class="lang-auto">$ flatpak remotes --system -v
+F: Calling system helper: EnsureRepo [This seems to add the repo]
+F: Opening system flatpak installation at path /var/lib/flatpak
+flathub	system
+</code></pre>
+<p>The repository is then imported to the installation’s ostree repo:</p>
+<pre><code class="lang-auto">$ cat /var/lib/flatpak/repo/config 
+[core]
+…
+xa.applied-remotes=flathub;
+
+[remote "flathub"]
+url=https://dl.flathub.org/repo/
+xa.title=Flathub
+…
+</code></pre>
+<p>I think <code>xa.applied-remotes</code> tells flatpak that the repository was already imported. If I just remove the remote, it’s not added again until I remove that line.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">genson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 6, 2023 2:26 AM">
+            <time itemprop="datePublished" datetime="2023-07-06 02:26:27 +0000">Jul 6, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi cxrv!  Thanks for the reply!</p>
+<p>I don’t see anything about about “Calling system helper:”</p>
+<pre><code class="lang-auto">[ladmin@nixos:/var/lib/flatpak/repo]$ flatpak --version
+Flatpak 1.14.4
+[ladmin@nixos:/var/lib/flatpak/repo]$ flatpak remotes --system -v
+F: Opening system flatpak installation at path /var/lib/flatpak
+
+
+[ladmin@nixos:/var/lib/flatpak/repo]$ ls -l /etc/flatpak/remotes.d/flathub.flatpakrepo 
+lrwxrwxrwx 1 root root 49 Jul  5 22:17 /etc/flatpak/remotes.d/flathub.flatpakrepo -&gt; /etc/static/flatpak/remotes.d/flathub.flatpakrepo
+[ladmin@nixos:/var/lib/flatpak/repo]$ ls -l /etc/static/flatpak/remotes.d/flathub.flatpakrepo 
+lrwxrwxrwx 1 root root 63 Dec 31  1969 /etc/static/flatpak/remotes.d/flathub.flatpakrepo -&gt; /nix/store/y84yyx1s86haylxkdc3yvmzy0lyha6k1-flathub.flatpakrepo
+ladmin@nixos:/var/lib/flatpak/repo]$ ls -l /nix/store/y84yyx1s86haylxkdc3yvmzy0lyha6k1-flathub.flatpakrepo 
+-r--r--r-- 1 root root 4040 Dec 31  1969 /nix/store/y84yyx1s86haylxkdc3yvmzy0lyha6k1-flathub.flatpakrepo
+[ladmin@nixos:/var/lib/flatpak/repo]$ cat config 
+[core]
+repo_version=1
+mode=bare-user-only
+min-free-space-size=500MB
+</code></pre>
+<p>All of the symbolic links are a result of the nix config system.<br>
+Do you think that could be messing it up?  Does the file need to be more than read only?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 7, 2023 5:40 PM">
+            <time itemprop="datePublished" datetime="2023-07-07 17:40:31 +0000">Jul 7, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It works here with a symbolic link to a read-only file, this shouldn’t be the problem. You could manually copy the file to verify this (I’m still testing on 1.15.4).</p>
+<p>What about authorization? My local user has the necessary rights via the <code>wheel</code> group. The system-helper requires authorization to change system installations (<a href="https://github.com/flatpak/flatpak/blob/main/CONTRIBUTING.md#more-info" rel="noopener nofollow ugc">CONTRIBUTING.md</a>):</p>
+<blockquote>
+<ul>
+<li><code>system-helper</code>: The flatpak-system-helper service, which runs as root on the system bus and allows non-root users to modify system installations</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Secondly, Flatpak ships with a root-privileged PolicyKit helper for system-wide installation, called <code>flatpak-system-helper</code>. It is D-Bus activated (on the system bus) and if you install in a non-standard location it is likely that D-Bus will not find it and PolicyKit integration will not work. However, if the system installation is synchronized, you can often use the system installed helper instead— at least if the two versions are close enough.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">genson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 7, 2023 6:23 PM">
+            <time itemprop="datePublished" datetime="2023-07-07 18:23:04 +0000">Jul 7, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The strange thing is that:<br>
+<code>flatpak --system remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</code><br>
+works just fine.</p>
+<p>But without manually adding the repo, when I have /etc/remotes.d/flathub.flatpakrepo present, even sudo flatpak remotes --system doesn’t show anything.<br>
+If it was a permission problem, I would expect sudo flatpak not to suffer from it.</p>
+<p>This option is part of the 1.14.4 documentation, but perhaps it doesn’t really work until 1.15.4?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 7, 2023 9:09 PM">
+            <time itemprop="datePublished" datetime="2023-07-07 21:09:19 +0000">Jul 7, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried 1.14.4 on Fedora 37 &amp; NixOS (Live system, nix-shell): It does work on Fedora but not on NixOS.</p>
+<p>I also added an installation to <code>/etc/flatpak/installation.d/</code> with the same result: It’s not found on NixOS.</p>
+<p>Given the issue with the installation, it seems that the configuration folder is not used at all. But I’ve actually no idea how NixOS works so that’s just a guess.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

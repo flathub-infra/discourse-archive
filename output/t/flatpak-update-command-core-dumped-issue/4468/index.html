@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak Update Command core dumped issue - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak Update Command core dumped issue</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak Update Command core dumped issue</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 23, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scotty Trees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 23, 2023 3:01 PM">
+            <time itemprop="datePublished" datetime="2023-06-23 15:01:54 +0000">Jun 23, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Greetings,</p>
+<p>I am not sure if I am posting in the correct forum, so please let me know otherwise. My issue just happened this morning. Running <code>flatpak update</code> gives me the following error:</p>
+<pre><code class="lang-auto">[scott@fedora ~]$ flatpak update
+Looking for updates…
+
+New org.nickvision.tubeconverter permissions:
+    file access [1]
+
+    [1] xdg-download
+
+
+        ID                                  Branch Op Remote        Download
+ 1. [|] org.gnome.Platform                  master u  gnome-nightly   871.6 kB / 346.2 MB
+ 2. [ ] org.nickvision.money                stable u  flathub        &lt; 46.2 MB
+ 3. [ ] io.gitlab.adhami3310.Footage        stable u  flathub        &lt; 24.2 MB
+ 4. [ ] org.nickvision.tubeconverter.Locale stable u  flathub       &lt; 378.8 kB (partial)
+ 5. [ ] org.nickvision.tubeconverter        stable u  flathub        &lt; 58.5 MB
+
+Updating 1/5… ██                    10%  871.6 kB/sBus error (core dumped)
+[scott@fedora ~]$ 
+</code></pre>
+<p>I assume there is something wrong with the Gnome Nightly platform package, or could be a server issue on their end perhaps. Just thought I’d point this out in case anyone else comes across it. No idea what other logs to provide, so feel free to ask.</p>
+<p>Anyone else having this issue or am I alone? Hopefully in a couple hours it can correct itself.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 23, 2023 3:55 PM">
+            <time itemprop="datePublished" datetime="2023-06-23 15:55:34 +0000">Jun 23, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>apparently an ostree upate on fedora broke everything.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scotty Trees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 23, 2023 3:58 PM">
+            <time itemprop="datePublished" datetime="2023-06-23 15:58:04 +0000">Jun 23, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Oh by chance you have a link to a thread or bug report somewhere by any chance? I just assume if I update again in a couple hours (or less), I’m hoping it gets resolved.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 23, 2023 3:58 PM">
+            <time itemprop="datePublished" datetime="2023-06-23 15:58:27 +0000">Jun 23, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox allowlistedgeneric" data-onebox-src="https://discussion.fedoraproject.org/t/flatpak-updating-bug-due-to-libostree-update-with-solution/84696">
+  <header class="source">
+      <img src="/uploads/original/2X/e/e5a6a39edbe8e9c669420b83887282915a4eebf5.png" class="site-icon" width="32" height="32">
+
+      <a href="https://discussion.fedoraproject.org/t/flatpak-updating-bug-due-to-libostree-update-with-solution/84696" target="_blank" rel="noopener" title="02:53PM - 23 June 2023">Fedora Discussion – 23 Jun 23</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/optimized/2X/e/e535eac63936105354ba82677074f7bf0ba950e3_2_500x500.png" class="thumbnail onebox-avatar" width="500" height="500" srcset="/uploads/optimized/2X/e/e535eac63936105354ba82677074f7bf0ba950e3_2_500x500.png, /uploads/original/2X/e/e535eac63936105354ba82677074f7bf0ba950e3.png 1.5x, /uploads/original/2X/e/e535eac63936105354ba82677074f7bf0ba950e3.png 2x" data-dominant-color="7DB0D8">
+
+<h3><a href="https://discussion.fedoraproject.org/t/flatpak-updating-bug-due-to-libostree-update-with-solution/84696" target="_blank" rel="noopener">Flatpak updating bug, due to libostree update (with solution)</a></h3>
+
+  <p>Problem
+When updating your flatpak apps… as of yesterday’s update of libostree, it won’t work. 
+You’ll see some errors like Writing content object: Need more input. 
+
+Cause
+ostree was updated, including libostree. There’s some change that broke...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

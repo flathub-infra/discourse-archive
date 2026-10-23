@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>File chooser dialog; permission for enire home folder or individual xdgs? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">File chooser dialog; permission for enire home folder or individual xdgs?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">File chooser dialog; permission for enire home folder or individual xdgs?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 27, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gustavo Peredo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 27, 2020 12:55 PM">
+            <time itemprop="datePublished" datetime="2020-09-27 12:55:05 +0000">Sep 27, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When publishing a flatpak application, developers need to specify which directories the app is     going to have access to, this is done by adding the --filesystem argument in your flatpak manifest, these can be:</p>
+<ul>
+<li>‘home’, which gives access to the user’s home directory</li>
+<li>‘xdg-something’, which gives access to specific XDG folder (such as user’s Downloads and Documents)</li>
+<li>Others, see <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" rel="nofollow noopener">docs</a>
+</li>
+</ul>
+<p>This has direct consequences with file choosing dialogs (such as GtkFileChooser), where the user will have limited directory access, this can be annoying with applications such as Discord only allowing access to Downloads and Pictures folders, but is completely understandable from a privacy/security point of view (you don’t want apps reading your bash history :P[or messing your config files more importantly!]).</p>
+<p>While thinking about this, I came to the conclusion that a middle ground between security and ease of use would be enabling all or most XDG directories (such as Desktop, Videos, Pictures, Downloads and etc…) without enabling ‘home’ access, this way configuration files will be safe while the user will have an enjoyable experience saving and selecting files/folders. That, however, might not be what users prefer, e. g. I use fonts on a website project I’m working on, the project is saved under ~/Projects (which is not a XDG directory) and I’d like my font downloader program to save files directly there, unfortunately GtkFileChooser dialog won’t display that directory, I could technically ‘solve’ this by using <code>flatpak override --filesystem=~/Projects</code>, but users might not know this/want to do this.</p>
+<p>So.</p>
+<p>TL;DR  What do you personally think is a better option for applications that use file chooser dialogs: Entire home folder access or only most relevant XDG directories?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

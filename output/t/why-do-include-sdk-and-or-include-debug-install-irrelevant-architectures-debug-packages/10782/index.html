@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why do `--include-sdk` and/or `--include-debug` install irrelevant architectures&#39; debug packages? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Why do `--include-sdk` and/or `--include-debug` install irrelevant architectures&#39; debug packages?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Why do `--include-sdk` and/or `--include-debug` install irrelevant architectures&#39; debug packages?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 24, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mr. Beedell, Roke Julian Lockhart (RJLB)</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 24, 2025 9:33 PM">
+            <time itemprop="datePublished" datetime="2025-10-24 21:33:00 +0000">Oct 24, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h4><a name="p-20099-context-1" class="anchor" href="#p-20099-context-1" aria-label="Heading link"></a>Context</h4>
+<p>I have adhered to:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flatpak/flatpak-docs/blob/3bb6aabb45d30a2e27b201f482b704f89f78c92a/docs/debugging.rst?plain=1#L13C5-L13C62:~:text=flatpak%20install%20%2D%2Dinclude%2Dsdk%20%2D%2Dinclude%2Ddebug%20$FLATPAK_ID">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak-docs/blob/3bb6aabb45d30a2e27b201f482b704f89f78c92a/docs/debugging.rst?plain=1#L13C5-L13C62:~:text=flatpak%20install%20%2D%2Dinclude%2Dsdk%20%2D%2Dinclude%2Ddebug%20$FLATPAK_ID" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak-docs</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flatpak/flatpak-docs/blob/3bb6aabb45d30a2e27b201f482b704f89f78c92a/docs/debugging.rst?plain=1#L13C5-L13C62:~:text=flatpak%20install%20%2D%2Dinclude%2Dsdk%20%2D%2Dinclude%2Ddebug%20$FLATPAK_ID" target="_blank" rel="noopener nofollow ugc">docs/debugging.rst?plain=1</a></h4>
+
+<div class="git-blob-info">
+  <a href="https://github.com/flatpak/flatpak-docs/blob/3bb6aabb45d30a2e27b201f482b704f89f78c92a/docs/debugging.rst?plain=1#L13C5-L13C62:~:text=flatpak%20install%20%2D%2Dinclude%2Dsdk%20%2D%2Dinclude%2Ddebug%20$FLATPAK_ID" rel="noopener nofollow ugc"><code>3bb6aabb4</code></a>
+</div>
+
+
+
+    <pre class="onebox"><code class="lang-rst?plain=1">
+      <ol class="start lines" start="13" style="counter-reset: li-counter 12 ;">
+          <li>$ flatpak install --include-sdk --include-debug $FLATPAK_ID</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<details>
+<p>…in order to diagnose:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/alainm23/planify/issues/1748#issuecomment-3336172672">
+  <header class="source">
+
+      <a href="https://github.com/alainm23/planify/issues/1748#issuecomment-3336172672" target="_blank" rel="noopener nofollow ugc">github.com/alainm23/planify</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/alainm23/planify/issues/1748#issuecomment-3336172672" target="_blank" rel="noopener nofollow ugc">[Bug] Adding and deleting my NextCloud account causes `4.13.4` to hang.</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2025-09-02" data-time="13:33:27" data-timezone="UTC">01:33PM - 02 Sep 25 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2025-09-24" data-time="01:31:37" data-timezone="UTC">01:31AM - 24 Sep 25 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/RokeJulianLockhart" target="_blank" rel="noopener nofollow ugc">
+          <img alt="" src="/uploads/original/2X/9/94f996a9ffe582634f74e44fbacf01b160841470.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="7D6E64">
+          RokeJulianLockhart
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          Type: Bug
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          Sync: Nextcloud
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          Sync: CalDav
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">#### **Description**
+
+When added, it hangs, and the DE offers to kill it.
+
+&lt;p&gt;&lt;/<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">p&gt;&lt;details&gt;&lt;p&gt;&lt;/p&gt;
+
+To demonstrate, `abrt info` [^5] returns:
+
+&lt;blockquote&gt;
+
+~~~R
+Id            50e2181  
+Executable    /app/bin/io.github.alainm23.planify  
+Count         1  
+Time          2025-09-02 13:30:48  
+Command line  io.github.alainm23.planify  
+User id       1000 (RokeJulianLockhart)  
+Path          /var/spool/abrt/ccpp-2025-09-02-13:30:48.181198-31085
+~~~
+
+&lt;/blockquote&gt;
+
+Of it, [`ccpp-2025-09-02-13:30:48.181198-31085.zip`][4] is attached:
+
+[4]: https://github.com/user-attachments/files/22095617/ccpp-2025-09-02-13.30.48.181198-31085.zip
+
+&lt;blockquote&gt;
+
+~~~MA
+ccpp-2025-09-02-13:30:48.181198-31085.zip
+└── ccpp-2025-09-02-13:30:48.181198-31085.tar.lzma
+    ├── abrt_version
+    ├── analyzer
+    ├── architecture
+    ├── cgroup
+    ├── cmdline
+    ├── container_cmdline
+    ├── coredump
+    ├── count
+    ├── cpuinfo
+    ├── environ
+    ├── executable
+    ├── hostname
+    ├── journald_cursor
+    ├── kernel
+    ├── last_occurrence
+    ├── limits
+    ├── maps
+    ├── mountinfo
+    ├── open_fds
+    ├── os_info
+    ├── os_release
+    ├── pid
+    ├── proc_pid_status
+    ├── pwd
+    ├── reason
+    ├── rootdir
+    ├── runlevel
+    ├── time
+    ├── type
+    ├── uid
+    ├── username
+    └── uuid
+
+2 directories, 32 files
+~~~
+
+&lt;/blockquote&gt;
+
+`coredumpctl info` doesn't provide much more useful information:
+
+&lt;blockquote&gt;
+
+~~~YAML
+           PID: 31085 (io.github.alain)
+           UID: 1000 (RokeJulianLockhart)
+           GID: 1000 (RokeJulianLockhart)
+        Signal: 6 (ABRT)
+     Timestamp: Tue 2025-09-02 13:30:45 BST (55min ago)
+  Command Line: io.github.alainm23.planify
+    Executable: /app/bin/io.github.alainm23.planify
+ Control Group: /user.slice/user-1000.slice/user@1000.service/app.slice/app-flatpak-io.github.alainm23.planify-2505835906.scope
+          Unit: user@1000.service
+     User Unit: app-flatpak-io.github.alainm23.planify-2505835906.scope
+         Slice: user-1000.slice
+     Owner UID: 1000 (RokeJulianLockhart)
+       Boot ID: a9ce8479a7924302a0693a79acdf0860
+    Machine ID: 427143abd98046a4b2c750e2ca0036ea
+      Hostname: Beedell.RokeJulianLockhart.laptop.SKQY07
+       Storage: /var/lib/systemd/coredump/core.io\x2egithub\x2ealain.1000.a9ce8479a7924302a0693a79acdf0860.31085.1756816245000000.zst (present)
+  Size on Disk: 35.6M
+       Message: Process 31085 (io.github.alain) of user 1000 dumped core.
+                
+                Module /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-6.0.so.1.5.8 without build-id.
+                Module /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-6.0.so.1.5.8
+                Module /usr/lib/x86_64-linux-gnu/libwebkitgtk-6.0.so.4.11.10 without build-id.
+                Module /usr/lib/x86_64-linux-gnu/libwebkitgtk-6.0.so.4.11.10
+                Stack trace of thread 2:
+                #0  0x00007fcdae52fb8c n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x3fb8c)
+                #1  0x00007fcdae7f9131 n/a (/app/lib/libplanify.so.0.1 + 0x72131)
+                #2  0x00007fcdae86572a n/a (/app/lib/libplanify.so.0.1 + 0xde72a)
+                #3  0x00007fcdae866fc8 n/a (/app/lib/libplanify.so.0.1 + 0xdffc8)
+                #4  0x00007fcdae7fa90d n/a (/app/lib/libplanify.so.0.1 + 0x7390d)
+                #5  0x00007fcdae86e32d n/a (/app/lib/libplanify.so.0.1 + 0xe732d)
+                #6  0x00007fcdae86fc8e n/a (/app/lib/libplanify.so.0.1 + 0xe8c8e)
+                #7  0x00007fcdae50894a n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x1894a)
+                #8  0x00007fcdae51e4c3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x2e4c3)
+                #9  0x00007fcdae51ff71 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x2ff71)
+                #10 0x00007fcdae525ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #11 0x00007fcdae5260b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #12 0x00007fcdae872bce n/a (/app/lib/libplanify.so.0.1 + 0xebbce)
+                #13 0x00007fcdae8126a0 n/a (/app/lib/libplanify.so.0.1 + 0x8b6a0)
+                #14 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #15 0x00007fcdad8cd07b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xcb07b)
+                #16 0x00007fcdad3cfa0d n/a (/usr/lib/x86_64-linux-gnu/libsoup-3.0.so.0.7.4 + 0x73a0d)
+                #17 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #18 0x00007fcdad8cd07b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xcb07b)
+                #19 0x00007fcdad3c9c2f n/a (/usr/lib/x86_64-linux-gnu/libsoup-3.0.so.0.7.4 + 0x6dc2f)
+                #20 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #21 0x00007fcdad8cd07b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xcb07b)
+                #22 0x00007fcdad8aae9b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xa8e9b)
+                #23 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #24 0x00007fcdad8cd07b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xcb07b)
+                #25 0x00007fcdad8a72cd n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xa52cd)
+                #26 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #27 0x00007fcdad8cd07b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xcb07b)
+                #28 0x00007fcdad8a723d n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xa523d)
+                #29 0x00007fcdad8cc05b n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca05b)
+                #30 0x00007fcdad8cc095 n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xca095)
+                #31 0x00007fcdae68bbba n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x62bba)
+                #32 0x00007fcdae68ded7 n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x64ed7)
+                #33 0x00007fcdae68e6c3 n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x656c3)
+                #34 0x00007fcdad8fe5bd n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xfc5bd)
+                #35 0x00005567d07db7a9 n/a (/app/bin/io.github.alainm23.planify + 0x3c7a9)
+                #36 0x00007fcda7a2b3c8 n/a (/usr/lib/x86_64-linux-gnu/libc.so.6 + 0x2a3c8)
+                #37 0x00007fcda7a2b48b n/a (/usr/lib/x86_64-linux-gnu/libc.so.6 + 0x2a48b)
+                #38 0x00005567d07db805 n/a (/app/bin/io.github.alainm23.planify + 0x3c805)
+                ELF object binary architecture: AMD x86-64
+~~~
+
+&lt;/blockquote&gt;
+
+Because `abrt`'s `retrace` (and `coredumpctl`'s `debug`) functionality shan't work in this case: [^6]
+
+&lt;p&gt;&lt;/p&gt;&lt;/details&gt;&lt;p&gt;&lt;/p&gt;
+
+1. 1. ~~~sh
+      #!/usr/bin/env sh
+      coredumpctl list -r | grep -m 1 planify
+      ~~~
+
+   1. &lt;blockquote&gt;
+
+      ~~~MA
+      Tue 2025-09-02 13:30:47 BST  31085 1000 1000 SIGABRT present  /app/bin/io.github.alainm23.planify
+      ~~~
+
+      &lt;/blockquote&gt;
+
+1. 1. ~~~sh
+      #!/usr/bin/env sh
+      flatpak-coredumpctl -m 31085 io.github.alainm23.planify
+      ~~~
+
+   1. &lt;blockquote&gt;
+
+      ~~~MA
+      Core was generated by `io.github.alainm23.planify'.
+      Program terminated with signal SIGABRT, Aborted.
+      #0  0x00007fcdae52fb8c in g_type_check_instance_is_fundamentally_a (type_instance=type_instance@entry=0x556804ce2e40, fundamental_type=fundamental_type@entry=80) at ../gobject/gtype.c:3916
+      3916      if (!type_instance || !type_instance-&gt;g_class)
+      [Current thread is 1 (Thread 0x7fcda0466b40 (LWP 2))]
+      warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+      of file /usr/lib/x86_64-linux-gnu/GL/default/lib/libvulkan_nouveau.so.
+      Use `info auto-load python-scripts [REGEXP]' to list them.
+      (gdb) bt
+      #0  0x00007fcdae52fb8c in g_type_check_instance_is_fundamentally_a (type_instance=type_instance@entry=0x556804ce2e40 [ObjectsItem], fundamental_type=fundamental_type@entry=0x50 [GObject])
+          at ../gobject/gtype.c:3916
+      #1  0x00007fcdae50eb37 in g_object_ref (_object=0x556804ce2e40) at ../gobject/gobject.c:4263
+      #2  0x00007fcdae7f9131 in services_store_get_item (self=0x556802335b90 [ServicesStore], id=0x55681739fba0 "") at ../core/Services/Store.vala:660
+      #3  0x00007fcdae86572a in objects_item_get_has_parent (self=0x5568173aaf50 [ObjectsItem]) at ../core/Objects/Item.vala:158
+      #4  0x00007fcdae866fc8 in objects_item_exists_project (self=self@entry=0x5568173aaf50 [ObjectsItem], project=project@entry=0x5568060c66d0 [ObjectsProject]) at ../core/Objects/Item.vala:1531
+      #5  0x00007fcdae7fa90d in services_store_get_items_by_project (self=0x556802335b90 [ServicesStore], project=project@entry=0x5568060c66d0 [ObjectsProject]) at ../core/Services/Store.vala:762
+      #6  0x00007fcdae86e32d in objects_project_update_project_count (self=self@entry=0x5568060c66d0 [ObjectsProject]) at ../core/Objects/Project.vala:743
+      #7  0x00007fcdae86fc8e in objects_project_project_count_update (self=0x5568060c66d0 [ObjectsProject]) at ../core/Objects/Project.vala:304
+      #12 0x00007fcdae5260b3 in &lt;emit signal 'item-added' on instance 0x5568060c66d0 [ObjectsProject]&gt; (instance=&lt;optimized out&gt;, signal_id=&lt;optimized out&gt;, detail=&lt;optimized out&gt;) at ../gobject/gsignal.c:3597
+          #8  0x00007fcdae50894a in g_closure_invoke
+          (closure=0x5568055f03f0, return_value=0x0, n_param_values=n_param_values@entry=2, param_values=param_values@entry=0x7ffdf351fe10, invocation_hint=invocation_hint@entry=0x7ffdf351fd60)
+          at ../gobject/gclosure.c:835
+          #9  0x00007fcdae51e4c3 in signal_emit_unlocked_R
+          (node=node@entry=0x7ffdf351fef0, detail=detail@entry=0, instance=instance@entry=0x5568060c66d0, emission_return=emission_return@entry=0x0, instance_and_params=instance_and_params@entry=0x7ffdf351fe10)
+          at ../gobject/gsignal.c:3902
+          #10 0x00007fcdae51ff71 in signal_emit_valist_unlocked (instance=instance@entry=0x5568060c66d0, signal_id=signal_id@entry=400, detail=detail@entry=0, var_args=var_args@entry=0x7ffdf3520060)
+          at ../gobject/gsignal.c:3534
+          #11 0x00007fcdae525ff1 in g_signal_emit_valist (instance=0x5568060c66d0, signal_id=400, detail=0, var_args=0x7ffdf3520060) at ../gobject/gsignal.c:3277
+      #13 0x00007fcdae872bce in objects_project_add_item_if_not_exists (self=self@entry=0x5568060c66d0 [ObjectsProject], new_item=0x5568174a9990 [ObjectsItem], insert=1) at ../core/Objects/Project.vala:544
+      #14 0x00007fcdae8126a0 in services_cal_dav_core_add_item_if_not_exists (self=&lt;optimized out&gt;, element=&lt;optimized out&gt;, project=0x5568060c66d0 [ObjectsProject]) at ../core/Services/CalDAV/Core.vala:215
+      #15 services_cal_dav_core_get_all_tasks_by_tasklist_co (_data_=0x556804cc7a60) at ../core/Services/CalDAV/Core.vala:196
+      #16 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x556804ca9f40 [GTask]) at ../gio/gtask.c:1363
+      #17 0x00007fcdad8cd07b in g_task_return (type=&lt;optimized out&gt;, task=0x556804ca9f40 [GTask]) at ../gio/gtask.c:1432
+      #18 g_task_return (task=0x556804ca9f40 [GTask], type=&lt;optimized out&gt;) at ../gio/gtask.c:1389
+      #19 0x00007fcdad3cfa0d in send_and_read_splice_ready_cb (session=0x556804ba7430 [SoupSession], result=0x556804caa000, task=0x556804ca9f40 [GTask]) at ../libsoup/soup-session.c:3365
+      #20 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x556804caa000 [GTask]) at ../gio/gtask.c:1363
+      #21 0x00007fcdad8cd07b in g_task_return (type=&lt;optimized out&gt;, task=0x556804caa000 [GTask]) at ../gio/gtask.c:1432
+      #22 g_task_return (task=0x556804caa000 [GTask], type=&lt;optimized out&gt;) at ../gio/gtask.c:1389
+      #23 0x00007fcdad3c9c2f in send_and_splice_ready_cb (ostream=&lt;optimized out&gt;, result=&lt;optimized out&gt;, task=0x556804caa000 [GTask]) at ../libsoup/soup-session.c:3507
+      #24 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x5568056320f0 [GTask]) at ../gio/gtask.c:1363
+      #25 0x00007fcdad8cd07b in g_task_return (type=&lt;optimized out&gt;, task=0x5568056320f0 [GTask]) at ../gio/gtask.c:1432
+      #26 g_task_return (task=0x5568056320f0 [GTask], type=&lt;optimized out&gt;) at ../gio/gtask.c:1389
+      #27 0x00007fcdad8aae9b in async_ready_splice_callback_wrapper (source_object=0x556804ca9f10 [GMemoryOutputStream], res=0x55680613a5d0, _data=0x5568056320f0) at ../gio/goutputstream.c:1719
+      #28 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x55680613a5d0 [GTask]) at ../gio/gtask.c:1363
+      #29 0x00007fcdad8cd07b in g_task_return (type=&lt;optimized out&gt;, task=0x55680613a5d0 [GTask]) at ../gio/gtask.c:1432
+      #30 g_task_return (task=0x55680613a5d0 [GTask], type=&lt;optimized out&gt;) at ../gio/gtask.c:1389
+      #31 0x00007fcdad8a72cd in real_splice_async_complete_cb (task=0x55680613a5d0 [GTask]) at ../gio/goutputstream.c:2694
+      #32 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x556804e942d0 [GTask]) at ../gio/gtask.c:1363
+      #33 0x00007fcdad8cd07b in g_task_return (type=&lt;optimized out&gt;, task=0x556804e942d0 [GTask]) at ../gio/gtask.c:1432
+      #34 g_task_return (task=0x556804e942d0 [GTask], type=&lt;optimized out&gt;) at ../gio/gtask.c:1389
+      #35 0x00007fcdad8a723d in async_ready_close_callback_wrapper (source_object=0x556804ca9f10 [GMemoryOutputStream], res=0x5568056122a0, user_data=0x556804e942d0) at ../gio/goutputstream.c:1950
+      #36 0x00007fcdad8cc05b in g_task_return_now (task=task@entry=0x5568056122a0 [GTask]) at ../gio/gtask.c:1363
+      #37 0x00007fcdad8cc095 in complete_in_idle_cb (task=0x5568056122a0) at ../gio/gtask.c:1377
+      #38 0x00007fcdae68bbba in g_main_dispatch (context=context@entry=0x556802074db0) at ../glib/gmain.c:3398
+      #39 0x00007fcdae68ded7 in g_main_context_dispatch_unlocked (context=0x556802074db0) at ../glib/gmain.c:4249
+      #40 g_main_context_iterate_unlocked (context=context@entry=0x556802074db0, block=block@entry=1, dispatch=dispatch@entry=1, self=&lt;optimized out&gt;) at ../glib/gmain.c:4314
+      #41 0x00007fcdae68e6c3 in g_main_context_iteration (context=context@entry=0x556802074db0, may_block=may_block@entry=1) at ../glib/gmain.c:4379
+      #42 0x00007fcdad8fe5bd in g_application_run (application=application@entry=0x556802052800 [Planify], argc=argc@entry=1, argv=argv@entry=0x7ffdf35207d8) at ../gio/gapplication.c:2715
+      --Type &lt;RET&gt; for more, q to quit, c to continue without paging--c
+      #43 0x00005567d07db7a9 in planify_main (args=0x7ffdf35207d8, args_length1=1) at ../src/App.vala:180
+      #44 main (argc=1, argv=0x7ffdf35207d8) at ../src/App.vala:173
+      ~~~
+
+      &lt;/blockquote&gt;
+
+When deleted, I see:
+
+&lt;p&gt;&lt;/p&gt;&lt;details&gt;&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+~~~R
+Id            fdf2c3d  
+Executable    /app/bin/io.github.alainm23.planify  
+Count         1  
+Time          2025-09-02 13:33:24  
+Command line  io.github.alainm23.planify  
+User id       1000 (RokeJulianLockhart)  
+Path          /var/spool/abrt/ccpp-2025-09-02-13:33:24.724939-32933
+~~~
+
+&lt;/blockquote&gt;
+
+As before, [`ccpp-2025-09-02-13:33:24.724939-32933.zip`][3] is attached:
+
+[3]: https://github.com/user-attachments/files/22094740/ccpp-2025-09-02-13.33.24.724939-32933.zip
+
+&lt;blockquote&gt;
+
+~~~MA
+ccpp-2025-09-02-13:33:24.724939-32933.zip
+└── ccpp-2025-09-02-13:33:24.724939-32933.tar.lzma
+    ├── abrt_version
+    ├── analyzer
+    ├── architecture
+    ├── cgroup
+    ├── cmdline
+    ├── container_cmdline
+    ├── coredump
+    ├── count
+    ├── cpuinfo
+    ├── environ
+    ├── executable
+    ├── hostname
+    ├── journald_cursor
+    ├── kernel
+    ├── last_occurrence
+    ├── limits
+    ├── maps
+    ├── mountinfo
+    ├── open_fds
+    ├── os_info
+    ├── os_release
+    ├── pid
+    ├── proc_pid_status
+    ├── pwd
+    ├── reason
+    ├── rootdir
+    ├── runlevel
+    ├── time
+    ├── type
+    ├── uid
+    ├── username
+    └── uuid
+
+2 directories, 32 files
+~~~
+
+&lt;/blockquote&gt;
+
+Again, as before, `coredumpctl info` doesn't provide much more:
+
+&lt;blockquote&gt;
+
+~~~YAML
+           PID: 32933 (io.github.alain)
+           UID: 1000 (RokeJulianLockhart)
+           GID: 1000 (RokeJulianLockhart)
+        Signal: 6 (ABRT)
+     Timestamp: Tue 2025-09-02 13:33:23 BST (52min ago)
+  Command Line: io.github.alainm23.planify
+    Executable: /app/bin/io.github.alainm23.planify
+ Control Group: /user.slice/user-1000.slice/user@1000.service/app.slice/app-flatpak-io.github.alainm23.planify-1923138187.scope
+          Unit: user@1000.service
+     User Unit: app-flatpak-io.github.alainm23.planify-1923138187.scope
+         Slice: user-1000.slice
+     Owner UID: 1000 (RokeJulianLockhart)
+       Boot ID: a9ce8479a7924302a0693a79acdf0860
+    Machine ID: 427143abd98046a4b2c750e2ca0036ea
+      Hostname: Beedell.RokeJulianLockhart.laptop.SKQY07
+       Storage: /var/lib/systemd/coredump/core.io\x2egithub\x2ealain.1000.a9ce8479a7924302a0693a79acdf0860.32933.1756816403000000.zst (present)
+  Size on Disk: 16M
+       Message: Process 32933 (io.github.alain) of user 1000 dumped core.
+                
+                Module /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-6.0.so.1.5.8 without build-id.
+                Module /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-6.0.so.1.5.8
+                Module /usr/lib/x86_64-linux-gnu/libwebkitgtk-6.0.so.4.11.10 without build-id.
+                Module /usr/lib/x86_64-linux-gnu/libwebkitgtk-6.0.so.4.11.10
+                Stack trace of thread 2:
+                #0  0x00007f74d3188348 n/a (/usr/lib/x86_64-linux-gnu/libc.so.6 + 0x187348)
+                #1  0x00007f74d9e2872a n/a (/app/lib/libplanify.so.0.1 + 0xde72a)
+                #2  0x00007f74d9e2d545 n/a (/app/lib/libplanify.so.0.1 + 0xe3545)
+                #3  0x00007f74d9dbe8de n/a (/app/lib/libplanify.so.0.1 + 0x748de)
+                #4  0x00007f74d9e45a4b n/a (/app/lib/libplanify.so.0.1 + 0xfba4b)
+                #5  0x00007f74d9acb94a n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x1894a)
+                #6  0x00007f74d9ae14c3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x2e4c3)
+                #7  0x00007f74d9ae2f71 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x2ff71)
+                #8  0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #9  0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #10 0x00007f74d9dbcbb3 n/a (/app/lib/libplanify.so.0.1 + 0x72bb3)
+                #11 0x00007f74d9dbdab9 n/a (/app/lib/libplanify.so.0.1 + 0x73ab9)
+                #12 0x00007f74d9dbdc69 n/a (/app/lib/libplanify.so.0.1 + 0x73c69)
+                #13 0x00007f74d9acec1e n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x1bc1e)
+                #14 0x00007f74d9acbb52 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x18b52)
+                #15 0x00007f74d9ae30c0 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x300c0)
+                #16 0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #17 0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #18 0x00007f74d8b29ef1 n/a (/usr/lib/x86_64-linux-gnu/libadwaita-1.so.0 + 0x129ef1)
+                #19 0x00007f74d9acbb52 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x18b52)
+                #20 0x00007f74d9ae30c0 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x300c0)
+                #21 0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #22 0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #23 0x00007f74d90eca3c n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0xeca3c)
+                #24 0x00007f74d9acbb52 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x18b52)
+                #25 0x00007f74d9ae30c0 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x300c0)
+                #26 0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #27 0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #28 0x00007f74d91b0493 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1b0493)
+                #29 0x00007f74d9acefa5 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x1bfa5)
+                #30 0x00007f74d9acbb52 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x18b52)
+                #31 0x00007f74d9ae30c0 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x300c0)
+                #32 0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #33 0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #34 0x00007f74d91ad1d0 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1ad1d0)
+                #35 0x00007f74d91aea5b n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1aea5b)
+                #36 0x00007f74d91b1c95 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1b1c95)
+                #37 0x00007f74d917a08c n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x17a08c)
+                #38 0x00007f74d92e14a6 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x2e14a6)
+                #39 0x00007f74d92e93b8 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x2e93b8)
+                #40 0x00007f74d91f514a n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1f514a)
+                #41 0x00007f74d91f5783 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x1f5783)
+                #42 0x00007f74d949746e n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x49746e)
+                #43 0x00007f74d95362ba n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x5362ba)
+                #44 0x00007f74d9acbb52 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x18b52)
+                #45 0x00007f74d9ae22e3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x2f2e3)
+                #46 0x00007f74d9ae8ff1 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x35ff1)
+                #47 0x00007f74d9ae90b3 n/a (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8400.4 + 0x360b3)
+                #48 0x00007f74d953a4d7 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x53a4d7)
+                #49 0x00007f74d94af156 n/a (/usr/lib/x86_64-linux-gnu/libgtk-4.so.1.1800.6 + 0x4af156)
+                #50 0x00007f74d9c4ebba n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x62bba)
+                #51 0x00007f74d9c50ed7 n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x64ed7)
+                #52 0x00007f74d9c516c3 n/a (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8400.4 + 0x656c3)
+                #53 0x00007f74d8efe5bd n/a (/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8400.4 + 0xfc5bd)
+                #54 0x00005651911277a9 n/a (/app/bin/io.github.alainm23.planify + 0x3c7a9)
+                #55 0x00007f74d302b3c8 n/a (/usr/lib/x86_64-linux-gnu/libc.so.6 + 0x2a3c8)
+                #56 0x00007f74d302b48b n/a (/usr/lib/x86_64-linux-gnu/libc.so.6 + 0x2a48b)
+                #57 0x0000565191127805 n/a (/app/bin/io.github.alainm23.planify + 0x3c805)
+                ELF object binary architecture: AMD x86-64
+~~~
+
+&lt;/blockquote&gt;
+
+However, the trace does:
+
+&lt;p&gt;&lt;/p&gt;&lt;/details&gt;&lt;p&gt;&lt;/p&gt;
+
+1. 1. ~~~sh
+      #!/usr/bin/env sh
+      coredumpctl list -r | grep -m 2 planify | tail -n1
+      ~~~
+
+   1. &lt;blockquote&gt;
+
+      ~~~MA
+      Tue 2025-09-02 13:33:24 BST  32933 1000 1000 SIGABRT present  /app/bin/io.github.alainm23.planify                                                                      16M
+      ~~~
+
+      &lt;/blockquote&gt;
+
+1. 1. ~~~sh
+      #!/usr/bin/env sh
+      flatpak-coredumpctl -m 32933 io.github.alainm23.planify
+      ~~~
+
+   1. &lt;blockquote&gt;
+
+      ~~~MA
+      Core was generated by `io.github.alainm23.planify'.
+      Program terminated with signal SIGABRT, Aborted.
+      #0  __strcmp_evex () at ../sysdeps/x86_64/multiarch/strcmp-evex.S:319
+      319             KMOV    %k1, %VRCX
+      [Current thread is 1 (Thread 0x7f74cba47b40 (LWP 2))]
+      warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+      of file /usr/lib/x86_64-linux-gnu/GL/default/lib/libvulkan_nouveau.so.
+      Use `info auto-load python-scripts [REGEXP]' to list them.
+      (gdb) bt
+      #0  __strcmp_evex () at ../sysdeps/x86_64/multiarch/strcmp-evex.S:319
+      #1  0x00007f74d9dbc147 in services_store_get_item (self=0x5651ac71a060 [ServicesStore], id=0x5651ad26d1c0 "272c2124-7f81-40f3-ae5a-7ef353920609") at ../core/Services/Store.vala:661
+      #2  0x00007f74d9e2872a in objects_item_get_has_parent (self=0x5651ad26d850 [ObjectsItem]) at ../core/Objects/Item.vala:158
+      #3  0x00007f74d9e2d545 in objects_item_was_archived (self=self@entry=0x5651ad26d850 [ObjectsItem]) at ../core/Objects/Item.vala:1519
+      #4  0x00007f74d9dbe8de in services_store_get_items_completed (self=0x5651ac71a060 [ServicesStore]) at ../core/Services/Store.vala:879
+      #5  0x00007f74d9e45a4b in _objects_filters_completed___lambda292_ (self=0x5651ad523f90 [ObjectsFiltersCompleted]) at ../core/Objects/Filters/Completed.vala:56
+      #10 0x00007f74d9ae90b3 in &lt;emit signal 'item-deleted' on instance 0x5651ac71a060 [ServicesStore]&gt; (instance=instance@entry=0x5651ac71a060, signal_id=&lt;optimized out&gt;, detail=detail@entry=0)
+          at ../gobject/gsignal.c:3597
+          #6  0x00007f74d9acb94a in g_closure_invoke
+          (closure=0x5651ad524430, return_value=0x0, n_param_values=n_param_values@entry=2, param_values=param_values@entry=0x7ffc1ce28f60, invocation_hint=invocation_hint@entry=0x7ffc1ce28eb0)
+          at ../gobject/gclosure.c:835
+          #7  0x00007f74d9ae14c3 in signal_emit_unlocked_R
+          (node=node@entry=0x7ffc1ce29040, detail=detail@entry=0, instance=instance@entry=0x5651ac71a060, emission_return=emission_return@entry=0x0, instance_and_params=instance_and_params@entry=0x7ffc1ce28f60)
+          at ../gobject/gsignal.c:3902
+          #8  0x00007f74d9ae2f71 in signal_emit_valist_unlocked (instance=instance@entry=0x5651ac71a060, signal_id=signal_id@entry=334, detail=detail@entry=0, var_args=var_args@entry=0x7ffc1ce291b0)
+          at ../gobject/gsignal.c:3534
+          #9  0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651ac71a060, signal_id=334, detail=0, var_args=0x7ffc1ce291b0) at ../gobject/gsignal.c:3277
+      #11 0x00007f74d9dbcbb3 in services_store_delete_item (self=self@entry=0x5651ac71a060 [ServicesStore], item=item@entry=0x5651ad25af60 [ObjectsItem]) at ../core/Services/Store.vala:563
+      #12 0x00007f74d9dbdab9 in services_store_delete_project (self=0x5651ac71a060 [ServicesStore], project=0x5651acfd76f0 [ObjectsProject]) at ../core/Services/Store.vala:272
+      #13 0x00007f74d9dbdc69 in services_store_delete_source (self=0x5651ac71a060 [ServicesStore], source=0x5651acf263b0 [ObjectsSource]) at ../core/Services/Store.vala:174
+      #18 0x00007f74d9ae90b3 in &lt;emit signal 'response:delete' on instance 0x5651ada3b790 [AdwAlertDialog]&gt; (instance=instance@entry=0x5651ada3b790, signal_id=&lt;optimized out&gt;, detail=detail@entry=3306)
+          at ../gobject/gsignal.c:3597
+          #14 0x00007f74d9acec1e in g_cclosure_marshal_VOID__STRINGv
+          (closure=0x5651adf5f5f0, return_value=&lt;optimized out&gt;, instance=&lt;optimized out&gt;, args=&lt;optimized out&gt;, marshal_data=&lt;optimized out&gt;, n_params=&lt;optimized out&gt;, param_types=0x5651b4af30c0)
+          at ../gobject/gmarshal.c:1462
+          #15 0x00007f74d9acbb52 in _g_closure_invoke_va
+          (closure=closure@entry=0x5651adf5f5f0, return_value=return_value@entry=0x0, instance=instance@entry=0x5651ada3b790, args=args@entry=0x7ffc1ce29690, n_params=n_params@entry=1, param_types=param_types@entry=0x5651b4af30c0) at ../gobject/gclosure.c:898
+          #16 0x00007f74d9ae30c0 in signal_emit_valist_unlocked (instance=instance@entry=0x5651ada3b790, signal_id=signal_id@entry=515, detail=detail@entry=3306, var_args=var_args@entry=0x7ffc1ce29690)
+          at ../gobject/gsignal.c:3438
+          #17 0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651ada3b790, signal_id=515, detail=3306, var_args=0x7ffc1ce29690) at ../gobject/gsignal.c:3277
+      #19 0x00007f74d8b29ef1 in emit_response (self=0x5651ada3b790 [AdwAlertDialog], response=3306) at ../src/adw-alert-dialog.c:277
+      #20 button_clicked_cb (info=&lt;optimized out&gt;) at ../src/adw-alert-dialog.c:287
+      #24 0x00007f74d9ae90b3 in &lt;emit signal 'clicked' on instance 0x5651b4b39120 [GtkButton]&gt; (instance=&lt;optimized out&gt;, signal_id=&lt;optimized out&gt;, detail=&lt;optimized out&gt;) at ../gobject/gsignal.c:3597
+          #21 0x00007f74d9acbb52 in _g_closure_invoke_va
+          (closure=closure@entry=0x5651b4b3a680, return_value=return_value@entry=0x0, instance=instance@entry=0x5651b4b39120, args=args@entry=0x7ffc1ce29a40, n_params=n_params@entry=0, param_types=param_types@entry=0x0) at ../gobject/gclosure.c:898
+          #22 0x00007f74d9ae30c0 in signal_emit_valist_unlocked (instance=instance@entry=0x5651b4b39120, signal_id=signal_id@entry=147, detail=detail@entry=0, var_args=var_args@entry=0x7ffc1ce29a40)
+          at ../gobject/gsignal.c:3438
+          #23 0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651b4b39120, signal_id=147, detail=0, var_args=0x7ffc1ce29a40) at ../gobject/gsignal.c:3277
+      #29 0x00007f74d9ae90b3 in &lt;emit signal 'released' on instance 0x5651b4b39760 [GtkGestureClick]&gt; (instance=instance@entry=0x5651b4b39760, signal_id=&lt;optimized out&gt;, detail=detail@entry=0)
+          at ../gobject/gsignal.c:3597
+          #25 0x00007f74d90eca3c in _gtk_marshal_VOID__INT_DOUBLE_DOUBLEv
+          (closure=&lt;optimized out&gt;, return_value=&lt;optimized out&gt;, instance=&lt;optimized out&gt;, args=&lt;optimized out&gt;, marshal_data=&lt;optimized out&gt;, n_params=&lt;optimized out&gt;, param_types=0x5651ac5a4fd0)
+          at gtk/gtkmarshalers.c:3688
+          #26 0x00007f74d9acbb52 in _g_closure_invoke_va
+          (closure=closure@entry=0x5651b4b39890, return_value=return_value@entry=0x0, instance=instance@entry=0x5651b4b39760, args=args@entry=0x7ffc1ce29df0, n_params=n_params@entry=3, param_types=param_types@entry=0x5651ac5a4fd0) at ../gobject/gclosure.c:898
+          #27 0x00007f74d9ae30c0 in signal_emit_valist_unlocked (instance=instance@entry=0x5651b4b39760, signal_id=signal_id@entry=156, detail=detail@entry=0, var_args=var_args@entry=0x7ffc1ce29df0)
+      --Type &lt;RET&gt; for more, q to quit, c to continue without paging--c
+          at ../gobject/gsignal.c:3438
+          #28 0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651b4b39760, signal_id=156, detail=0, var_args=0x7ffc1ce29df0) at ../gobject/gsignal.c:3277
+      #30 0x00007f74d91b0493 in gtk_gesture_click_end (gesture=0x5651b4b39760 [GtkGestureClick], sequence=sequence@entry=0x0) at ../gtk/gtkgestureclick.c:275
+      #35 0x00007f74d9ae90b3 in &lt;emit signal 'end' on instance 0x5651b4b39760 [GtkGestureClick]&gt; (instance=instance@entry=0x5651b4b39760, signal_id=&lt;optimized out&gt;, detail=detail@entry=0)
+          at ../gobject/gsignal.c:3597
+          #31 0x00007f74d9acefa5 in g_cclosure_marshal_VOID__BOXEDv
+          (closure=0x5651ac431ed0, return_value=&lt;optimized out&gt;, instance=&lt;optimized out&gt;, args=&lt;optimized out&gt;, marshal_data=&lt;optimized out&gt;, n_params=&lt;optimized out&gt;, param_types=0x5651ac431f00)
+          at ../gobject/gmarshal.c:1686
+          #32 0x00007f74d9acbb52 in _g_closure_invoke_va
+          (closure=closure@entry=0x5651ac431ed0, return_value=return_value@entry=0x0, instance=instance@entry=0x5651b4b39760, args=args@entry=0x7ffc1ce2a240, n_params=n_params@entry=1, param_types=param_types@entry=0x5651ac431f00) at ../gobject/gclosure.c:898
+          #33 0x00007f74d9ae30c0 in signal_emit_valist_unlocked (instance=instance@entry=0x5651b4b39760, signal_id=signal_id@entry=151, detail=detail@entry=0, var_args=var_args@entry=0x7ffc1ce2a240)
+          at ../gobject/gsignal.c:3438
+          #34 0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651b4b39760, signal_id=151, detail=0, var_args=0x7ffc1ce2a240) at ../gobject/gsignal.c:3277
+      #36 0x00007f74d91ad1d0 in _gtk_gesture_set_recognized (gesture=0x5651b4b39760 [GtkGestureClick], recognized=0, sequence=0x0) at ../gtk/gtkgesture.c:340
+      #37 _gtk_gesture_check_recognized (gesture=gesture@entry=0x5651b4b39760 [GtkGestureClick], sequence=sequence@entry=0x0) at ../gtk/gtkgesture.c:381
+      #38 0x00007f74d91aea5b in gtk_gesture_handle_event (controller=0x5651b4b39760 [GtkGestureClick], event=0x5651acd80a20 [GdkButtonEvent], x=29.773439407348633, y=11.812500953674316) at ../gtk/gtkgesture.c:686
+      #39 0x00007f74d91b1c95 in gtk_gesture_single_handle_event (controller=0x5651b4b39760 [GtkGestureClick], event=0x5651acd80a20 [GdkButtonEvent], x=29.773439407348633, y=11.812500953674316)
+          at ../gtk/gtkgesturesingle.c:226
+      #40 0x00007f74d917a08c in gtk_event_controller_handle_event
+          (controller=controller@entry=0x5651b4b39760 [GtkGestureClick], event=event@entry=0x5651acd80a20 [GdkButtonEvent], target=target@entry=0x5651b4b39d20 [GtkLabel], x=x@entry=29.773439407348633, y=y@entry=11.812500953674316) at ../gtk/gtkeventcontroller.c:381
+      #41 0x00007f74d92e14a6 in gtk_widget_run_controllers
+          (widget=widget@entry=0x5651b4b39120 [GtkButton], event=event@entry=0x5651acd80a20 [GdkButtonEvent], target=target@entry=0x5651b4b39d20 [GtkLabel], x=29.773439407348633, y=11.812500953674316, phase=phase@entry=GTK_PHASE_CAPTURE) at ../gtk/gtkwidget.c:4713
+      #42 0x00007f74d92e93b8 in _gtk_widget_captured_event (widget=widget@entry=0x5651b4b39120 [GtkButton], event=event@entry=0x5651acd80a20 [GdkButtonEvent], target=target@entry=0x5651b4b39d20 [GtkLabel])
+          at ../gtk/gtkwidget.c:4876
+      #43 0x00007f74d91f514a in gtk_propagate_event_internal (widget=0x5651b4b39120 [GtkButton], widget@entry=0x5651b4b39d20 [GtkLabel], event=event@entry=0x5651acd80a20 [GdkButtonEvent], topmost=&lt;optimized out&gt;)
+          at ../gtk/gtkmain.c:1950
+      #44 0x00007f74d91f5295 in gtk_propagate_event (widget=widget@entry=0x5651b4b39d20 [GtkLabel], event=event@entry=0x5651acd80a20 [GdkButtonEvent]) at ../gtk/gtkmain.c:2032
+      #45 0x00007f74d91f5783 in gtk_main_do_event (event=0x5651acd80a20 [GdkButtonEvent]) at ../gtk/gtkmain.c:1722
+      #51 0x00007f74d9ae90b3 in &lt;emit signal 'event' on instance 0x5651ac92b590 [GdkWaylandToplevel]&gt; (instance=instance@entry=0x5651ac92b590, signal_id=&lt;optimized out&gt;, detail=detail@entry=0)
+          at ../gobject/gsignal.c:3597
+          #46 0x00007f74d949746e in _gdk_marshal_BOOLEAN__POINTERv
+          (closure=closure@entry=0x5651acd0c6b0, return_value=return_value@entry=0x7ffc1ce2a940, instance=instance@entry=0x5651ac92b590, args=args@entry=0x7ffc1ce2aa50, marshal_data=marshal_data@entry=0x0, n_params=n_params@entry=1, param_types=0x5651aca29b40) at gdk/gdkmarshalers.c:302
+          #47 0x00007f74d95362ba in gdk_surface_event_marshallerv
+          (closure=0x5651acd0c6b0, return_value=0x7ffc1ce2a940, instance=0x5651ac92b590, args=0x7ffc1ce2aa50, marshal_data=0x0, n_params=1, param_types=0x5651aca29b40) at ../gdk/gdksurface.c:470
+          #48 0x00007f74d9acbb52 in _g_closure_invoke_va
+          (closure=closure@entry=0x5651acd0c6b0, return_value=return_value@entry=0x7ffc1ce2a940, instance=instance@entry=0x5651ac92b590, args=args@entry=0x7ffc1ce2aa50, n_params=n_params@entry=1, param_types=param_types@entry=0x5651aca29b40) at ../gobject/gclosure.c:898
+          #49 0x00007f74d9ae22e3 in signal_emit_valist_unlocked (instance=instance@entry=0x5651ac92b590, signal_id=signal_id@entry=372, detail=detail@entry=0, var_args=var_args@entry=0x7ffc1ce2aa50)
+          at ../gobject/gsignal.c:3438
+          #50 0x00007f74d9ae8ff1 in g_signal_emit_valist (instance=0x5651ac92b590, signal_id=372, detail=0, var_args=0x7ffc1ce2aa50) at ../gobject/gsignal.c:3277
+      #52 0x00007f74d953a4d7 in gdk_surface_handle_event (event=event@entry=0x5651acd80a20 [GdkButtonEvent]) at ../gdk/gdksurface.c:3100
+      #53 0x00007f74d9515ef5 in _gdk_event_emit (event=event@entry=0x5651acd80a20 [GdkButtonEvent]) at ../gdk/gdkevents.c:491
+      #54 0x00007f74d94af156 in gdk_wayland_event_source_dispatch (base=base@entry=0x5651ac3afb20, callback=&lt;optimized out&gt;, data=&lt;optimized out&gt;) at ../gdk/wayland/gdkeventsource.c:95
+      #55 0x00007f74d9c4ebba in g_main_dispatch (context=context@entry=0x5651ac385db0) at ../glib/gmain.c:3398
+      #56 0x00007f74d9c50ed7 in g_main_context_dispatch_unlocked (context=0x5651ac385db0) at ../glib/gmain.c:4249
+      #57 g_main_context_iterate_unlocked (context=context@entry=0x5651ac385db0, block=block@entry=1, dispatch=dispatch@entry=1, self=&lt;optimized out&gt;) at ../glib/gmain.c:4314
+      #58 0x00007f74d9c516c3 in g_main_context_iteration (context=context@entry=0x5651ac385db0, may_block=may_block@entry=1) at ../glib/gmain.c:4379
+      #59 0x00007f74d8efe5bd in g_application_run (application=application@entry=0x5651ac363800 [Planify], argc=argc@entry=1, argv=argv@entry=0x7ffc1ce2af08) at ../gio/gapplication.c:2715
+      #60 0x00005651911277a9 in planify_main (args=0x7ffc1ce2af08, args_length1=1) at ../src/App.vala:180
+      #61 main (argc=1, argv=0x7ffc1ce2af08) at ../src/App.vala:173
+      ~~~
+
+      &lt;/blockquote&gt;
+
+#### **Reproduction**
+
+1. ~~~sh
+   #!/usr/bin/env sh
+   sudo dnf5 install flatpak-1.16.1-1.fc42.x86_64 &amp;&amp; \
+   flatpak install https://dl.flathub.org/repo/appstream/io.github.alainm23.planify.flatpakref &amp;&amp; \
+   flatpak update app/io.github.alainm23.planify/x86_64/stable --commit=f8a0dfc4fd639392db67c6f75498f6394127409b0a251155709aedea4bd4241c &amp;&amp; \
+   flatpak run app/io.github.alainm23.planify/x86_64/stable
+   ~~~
+
+1. Added `https://wim.nl.tab.digital/`.
+
+1. Authenticated the OAuth2 request (in `firefox-142.0.1-1.fc42.x86_64`).
+
+#### **Expected behaviour**
+
+It shouldn't hang. Instead, I should see evidence of the synchronisation progressing.
+
+
+
+#### **Desktop**
+
+1. #### OS And DE
+
+   &lt;blockquote&gt;
+
+   ~~~desktop
+   NAME="Fedora Linux"
+   VERSION_ID=42
+   VARIANT="KDE Plasma Desktop Edition"
+   ~~~
+
+   &lt;/blockquote&gt;
+
+   [^3]
+
+1. #### Application
+
+   &lt;blockquote&gt;
+
+   ~~~YAML
+             ID: io.github.alainm23.planify
+            Ref: app/io.github.alainm23.planify/x86_64/stable
+           Arch: x86_64
+         Branch: stable
+        Version: 4.13.4
+        License: GPL-3.0+
+         Origin: flathub
+     Collection: org.flathub.Stable
+   Installation: system
+      Installed: 34.7&nbsp;MB
+        Runtime: org.gnome.Platform/x86_64/48
+            Sdk: org.gnome.Sdk/x86_64/48
+   
+         Commit: f8a0dfc4fd639392db67c6f75498f6394127409b0a251155709aedea4bd4241c
+         Parent: 0efaf46852ee4008083fcf784d2114fa0eb276c2dc3d4e11706dcdb25e17344a
+        Subject: Merge pull request #98 from flathub/alainm23-patch-3 (e492fb76a6d5)
+           Date: 2025-08-29 11:50:40 +0000
+   ~~~
+
+   &lt;/blockquote&gt;
+
+   [^4]
+
+#### **Additional context**
+
+The cause may relate to https://github.com/tasks/tasks/issues/3333#issuecomment-2654997090.
+
+[^2]: ~~~sh
+    #!/usr/bin/env sh
+    coredumpctl debug
+    ~~~
+
+[^3]: ~~~sh
+    #!/usr/bin/env sh
+    cat /etc/os-release
+    ~~~
+
+[^4]: ~~~sh
+    #!/usr/bin/env sh
+    flatpak info app/io.github.alainm23.planify/x86_64/stable
+    ~~~
+
+[^5]: [`abrt/abrt/issues/1675`][1]
+
+[1]: https://github.com/abrt/abrt/issues/1675#issue-3375917648
+
+[^6]: [`abrt/abrt/issues/1196#issuecomment-276026682`][2]
+
+[2]: https://github.com/abrt/abrt/issues/1196#issuecomment-276026682</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+</details>
+<h4><a name="p-20099-an-example-2" class="anchor" href="#p-20099-an-example-2" aria-label="Heading link"></a>An Example</h4>
+<p>I’m using x86-64, yet:</p>
+<ol>
+<li>
+<pre data-code-wrap="sh"><code class="lang-sh">#!/usr/bin/env sh
+flatpak install --include-sdk --include-debug flathub app/io.github.alainm23.planify/x86_64/stable
+</code></pre>
+</li>
+<li>
+<blockquote>
+<pre data-code-wrap="YAML"><code class="lang-YAML">Looking for matches…
+Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Platform/x86_64/48) found in remote flathub
+Do you want to install it? [Y/n]: y
+Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Sdk/x86_64/48) found in remote flathub
+Do you want to install it? [Y/n]: y
+
+io.github.alainm23.planify permissions:
+    ipc     network     fallback-x11    pulseaudio    wayland    x11    dri    dbus access [1]
+
+    [1] org.gnome.evolution.dataserver.Calendar8, org.gnome.evolution.dataserver.Sources5
+
+
+        ID                                            Branch           Op           Remote            Download
+ 1.     io.github.alainm23.planify.Debug              stable           i            flathub            &lt; 28.7 MB
+ 2.     io.github.alainm23.planify.Locale             stable           i            flathub             &lt; 3.1 MB (partial)
+ 3.     org.gnome.Platform.Locale                     48               i            flathub           &lt; 394.5 MB (partial)
+ 4.     org.gnome.Sdk.Compat.aarch64.Debug            48               i            flathub             &lt; 1.9 GB
+ 5.     org.gnome.Sdk.Compat.i386.Debug               48               i            flathub             &lt; 1.1 GB
+ 6.     org.gnome.Sdk.Debug                           48               i            flathub             &lt; 4.4 GB
+ 7.     org.gnome.Sdk.Locale                          48               i            flathub           &lt; 399.8 MB (partial)
+ 8.     org.gnome.Sdk                                 48               i            flathub           &lt; 814.3 MB
+ 9.     org.gnome.Platform                            48               i            flathub           &lt; 404.8 MB
+10.     io.github.alainm23.planify                    stable           i            flathub            &lt; 12.5 MB
+</code></pre>
+</blockquote>
+</li>
+</ol>
+<h4><a name="p-20099-my-environment-3" class="anchor" href="#p-20099-my-environment-3" aria-label="Heading link"></a>My Environment</h4>
+<details>
+<blockquote>
+<pre data-code-wrap="YAML"><code class="lang-YAML">Name         : flatpak
+Version      : 1.16.1
+Release      : 1.fc42
+Architecture : x86_64
+Install Date : Thu 15 May 2025 12:44:39 BST
+Size         : 6836181
+Signature    : RSA/SHA256, Mon 12 May 2025 11:06:32 BST, Key ID c8ac4916105ef944
+Source RPM   : flatpak-1.16.1-1.fc42.src.rpm
+Build Date   : Mon 12 May 2025 10:54:00 BST
+Build Host   : buildhw-x86-08.iad2.fedoraproject.org
+Packager     : Fedora Project
+Vendor       : Fedora Project
+Bug URL      : https://bugz.fedoraproject.org/flatpak
+</code></pre>
+</blockquote>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 26, 2025 2:33 AM">
+            <time itemprop="datePublished" datetime="2025-10-26 02:33:05 +0000">Oct 26, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s a bug, you should open an issue in Flatpak if there isn’t already one.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mr. Beedell, Roke Julian Lockhart (RJLB)</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 26, 2025 11:15 AM">
+            <time itemprop="datePublished" datetime="2025-10-26 11:15:48 +0000">Oct 26, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="10782" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>It’s a bug, you should open an issue in Flatpak if there isn’t already one.</p>
+</blockquote>
+</aside>
+<p><span class="mention">@bbhtt</span>, thanks! <a href="https://github.com/flatpak/flatpak/issues?q=is%3Aissue%20state%3Aopen%20wrong%20arch%20installed" rel="noopener nofollow ugc"><code>flatpak/issues?q=is%3Aissue%20state%3Aopen%20wrong%20arch%20installed</code></a> doesn’t return anything of relevance:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748.png" data-download-href="/uploads/original/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748.png" title="`@{'Date'='20251026T100753+0000'; 'Type'='Photo'; 'Origin'='Issues · flatpak_flatpak — Mozilla Firefox'}#`" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748_2_454x500.png" alt="`@{'Date'='20251026T100753+0000'; 'Type'='Photo'; 'Origin'='Issues · flatpak_flatpak — Mozilla Firefox'}#`" data-base62-sha1="6YDkqymDw01c70c1Dkm3AWS8sTC" width="454" height="500" srcset="/uploads/optimized/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748_2_454x500.png, /uploads/optimized/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748_2_681x750.png 1.5x, /uploads/optimized/2X/3/30e7b2b7358462f3a42a742d5bbc4af38aee3748_2_908x1000.png 2x" data-dominant-color="171B21"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">`@{'Date'='20251026T100753+0000'; 'Type'='Photo'; 'Origin'='Issues · flatpak_flatpak — Mozilla Firefox'}#`</span><span class="informations">1279×1408 198 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>…so I’ve filed <a href="https://github.com/flatpak/flatpak/issues/6368#issue-3553783593" rel="noopener nofollow ugc"><code>flatpak/issues/6368</code></a>:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak/issues/6368#issue-3553783593">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak/issues/6368#issue-3553783593" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak/issues/6368#issue-3553783593" target="_blank" rel="noopener nofollow ugc">[Bug]: `--include-sdk --include-debug` automatically download `org.gnome.Sdk`'s `.Compat`s for `i386` and `aarch64` on an `x86_64` host.</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2025-10-26" data-time="11:15:12" data-timezone="UTC">11:15AM - 26 Oct 25 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/roke-julian-lockhart" target="_blank" rel="noopener nofollow ugc">
+          <img alt="" src="/uploads/original/2X/9/94f996a9ffe582634f74e44fbacf01b160841470.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="7D6E64">
+          roke-julian-lockhart
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          needs triage
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">### Checklist
+
+- [x] I agree to follow the [Code of Conduct](https://github.com/<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">flatpak/flatpak/blob/main/CODE_OF_CONDUCT.md) that this project adheres to.
+- [x] I have searched the [issue tracker](https://www.github.com/flatpak/flatpak/issues) for a bug that matches the one I want to file, without success.
+- [ ] If this is an issue with a particular app, I have tried filing it in the appropriate issue tracker for the app (e.g. under https://github.com/flathub/) and determined that it is an issue with Flatpak itself.
+- [x] This issue is not a report of a security vulnerability (see [here](https://github.com/flatpak/flatpak/blob/main/SECURITY.md) if you need to report a security issue).
+
+### Flatpak version
+
+&lt;blockquote&gt;
+
+~~~YAML
+Version      : 1.16.1
+Release      : 1.fc42
+Architecture : x86_64
+Source RPM   : flatpak-1.16.1-1.fc42.src.rpm
+Build Host   : buildhw-x86-13.iad2.fedoraproject.org
+Packager     : Fedora Project
+Vendor       : Fedora Project
+Bug URL      : https://bugz.fedoraproject.org/flatpak
+~~~
+
+&lt;/blockquote&gt;
+
+### What Linux distribution are you using?
+
+Fedora Linux
+
+### Linux distribution version
+
+&lt;blockquote&gt;
+
+~~~ini
+VERSION_ID=42
+VARIANT="KDE Plasma Desktop Edition"
+~~~
+
+&lt;/blockquote&gt;
+
+### What architecture are you using?
+
+x86_64
+
+### How to reproduce
+
+~~~sh
+#!/usr/bin/env sh
+flatpak install --include-sdk --include-debug flathub app/io.github.alainm23.planify/x86_64/stable
+~~~
+
+### Expected Behavior
+
+@bbhtt helpfully informs me that this is not expected behaviour, [^1] so:
+
+[^1]: [`discourse.flathub.org/t/10782/2`](https://discourse.flathub.org/t/why-do-include-sdk-and-or-include-debug-install-irrelevant-architectures-debug-packages/10782/2)
+
+~~~diff
+  Looking for matches…
+  Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Platform/x86_64/48) found in remote flathub
+  Do you want to install it? [Y/n]: y
+  Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Sdk/x86_64/48) found in remote flathub
+  Do you want to install it? [Y/n]: y
+
+  io.github.alainm23.planify permissions:
+      ipc     network     fallback-x11    pulseaudio    wayland    x11    dri    dbus access [1]
+
+      [1] org.gnome.evolution.dataserver.Calendar8, org.gnome.evolution.dataserver.Sources5
+
+
+          ID                                            Branch           Op           Remote            Download
+   1.     io.github.alainm23.planify.Debug              stable           i            flathub            &lt; 28.7 MB
+   2.     io.github.alainm23.planify.Locale             stable           i            flathub             &lt; 3.1 MB (partial)
+   3.     org.gnome.Platform.Locale                     48               i            flathub           &lt; 394.5 MB (partial)
+-  4.     org.gnome.Sdk.Compat.aarch64.Debug            48               i            flathub             &lt; 1.9 GB
+-  5.     org.gnome.Sdk.Compat.i386.Debug               48               i            flathub             &lt; 1.1 GB
+   6.     org.gnome.Sdk.Debug                           48               i            flathub             &lt; 4.4 GB
+   7.     org.gnome.Sdk.Locale                          48               i            flathub           &lt; 399.8 MB (partial)
+   8.     org.gnome.Sdk                                 48               i            flathub           &lt; 814.3 MB
+   9.     org.gnome.Platform                            48               i            flathub           &lt; 404.8 MB
+  10.     io.github.alainm23.planify                    stable           i            flathub            &lt; 12.5 MB
+~~~
+
+### Actual Behavior
+
+&lt;blockquote&gt;
+
+~~~diff
+  Looking for matches…
+  Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Platform/x86_64/48) found in remote flathub
+  Do you want to install it? [Y/n]: y
+  Required runtime for io.github.alainm23.planify/x86_64/stable (runtime/org.gnome.Sdk/x86_64/48) found in remote flathub
+  Do you want to install it? [Y/n]: y
+
+  io.github.alainm23.planify permissions:
+      ipc     network     fallback-x11    pulseaudio    wayland    x11    dri    dbus access [1]
+
+      [1] org.gnome.evolution.dataserver.Calendar8, org.gnome.evolution.dataserver.Sources5
+
+
+          ID                                            Branch           Op           Remote            Download
+   1.     io.github.alainm23.planify.Debug              stable           i            flathub            &lt; 28.7 MB
+   2.     io.github.alainm23.planify.Locale             stable           i            flathub             &lt; 3.1 MB (partial)
+   3.     org.gnome.Platform.Locale                     48               i            flathub           &lt; 394.5 MB (partial)
++  4.     org.gnome.Sdk.Compat.aarch64.Debug            48               i            flathub             &lt; 1.9 GB
++  5.     org.gnome.Sdk.Compat.i386.Debug               48               i            flathub             &lt; 1.1 GB
+   6.     org.gnome.Sdk.Debug                           48               i            flathub             &lt; 4.4 GB
+   7.     org.gnome.Sdk.Locale                          48               i            flathub           &lt; 399.8 MB (partial)
+   8.     org.gnome.Sdk                                 48               i            flathub           &lt; 814.3 MB
+   9.     org.gnome.Platform                            48               i            flathub           &lt; 404.8 MB
+  10.     io.github.alainm23.planify                    stable           i            flathub            &lt; 12.5 MB
+~~~
+
+&lt;/blockquote&gt;
+
+### Additional Information
+
+1. I did verify this behaviour in the cited versions, despite [`discussion.fedoraproject.org/t/169996`](https://discussion.fedoraproject.org/t/how-can-one-ascertain-when-an-installed-package-was-last-updated/169996).
+
+1. I'd provide confirmation of what `flathub` refers to, but what [`issues/1983#issuecomment-414754338`](https://github.com/flatpak/flatpak/issues/1983#issuecomment-414754338) describes doesn't exist. Regardless, [`dl.flathub.org/repo/appstream/io.github.alainm23.planify.flatpakref`](https://dl.flathub.org/repo/appstream/io.github.alainm23.planify.flatpakref) also reproduces this.
+
+1. Providing the versions of every related package (`rpm -qi` for `flatpak`, and `flatpak info` for all else) would require a significant amount of space, so I have omitted them, considering that no part of the issue template requests them.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

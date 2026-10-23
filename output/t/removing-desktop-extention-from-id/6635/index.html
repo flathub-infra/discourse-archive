@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Removing desktop extention from ID - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Removing desktop extention from ID</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Removing desktop extention from ID</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 3, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sabri Ünal</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 3, 2024 1:51 AM">
+            <time itemprop="datePublished" datetime="2024-05-03 01:51:20 +0000">May 3, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, it’s a question related to AppData, and while there are some documents available, I wanted to be sure.</p>
+<p>There are several apps that use their ID with the <code>.desktop</code> extension.</p>
+<pre data-code-wrap="xml"><code class="lang-xml">&lt;id&gt;org.gnome.SwellFoop.desktop&lt;/id&gt;
+</code></pre>
+<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc">say</a> it’s not recommended?</p>
+<pre data-code-wrap="xml"><code class="lang-xml">&lt;!-- Good --&gt;
+&lt;id&gt;org.flatpak.qtdemo&lt;/id&gt;
+
+&lt;!-- Bad --&gt;
+&lt;id&gt;org.flatpak.qtdemo.desktop&lt;/id&gt;
+&lt;id&gt;qtdemo.desktop&lt;/id&gt;
+</code></pre>
+<p>Is the <code>.desktop</code> considered part of the ID?</p>
+<p>Because the guidelines discourage renaming the app ID.</p>
+<blockquote>
+<h3>Renaming ID tag</h3>
+<p>The ID tag in the MetaInfo file is supposed to be a constant and unique identifier of an application and should not be renamed unless absolutely necessary. <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc">source</a></p>
+</blockquote>
+<p>If I understand correctly, after changing<br>
+<code>&lt;id&gt;org.gnome.SwellFoop.desktop</code> to<br>
+<code>&lt;id&gt;org.gnome.SwellFoop&lt;/id&gt;</code>,</p>
+<p>I also need to use the <code>&lt;replaces&gt;</code> and <code>&lt;provides&gt;</code> tags as shown in the following example.</p>
+<pre data-code-wrap="xml"><code class="lang-xml">&lt;id&gt;org.gnome.SwellFoop&lt;/id&gt;
+...
+  &lt;replaces&gt;
+    &lt;id&gt;org.gnome.SwellFoop.desktop&lt;/id&gt;
+  &lt;/replaces&gt;
+...
+  &lt;provides&gt;
+    &lt;id&gt;org.gnome.SwellFoop.desktop&lt;/id&gt;
+  &lt;/provides&gt;
+</code></pre>
+<p>Thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 3, 2024 11:42 AM">
+            <time itemprop="datePublished" datetime="2024-05-03 11:42:13 +0000">May 3, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="yakushabb" data-post="1" data-topic="6635">
+<div class="title">
+<div class="quote-controls"></div>
+yakushabb:</div>
+<blockquote>
+<p>There are several apps that use their ID with the <code>.desktop</code> extension.</p>
+</blockquote>
+</aside>
+<p>Adding a <code>.desktop</code> suffix to appstream <code>id</code> tag is a legacy convention and should not be used today.</p>
+<blockquote>
+<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id">say</a> it’s not recommended?</p>
+</blockquote>
+<p>That’s a recommendation for new apps.</p>
+<blockquote>
+<p>Because the guidelines discourage renaming the app ID.</p>
+</blockquote>
+<p>I would avoid renaming unless absolutely necessary. There is a possibility that the change causes multiple copies of the app to show up in Discover/Software.</p>
+<p>In general renaming should be avoided like <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag">https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag</a> says.</p>
+<p>The issue with <code>replaces</code> is it is all theoretical and in the spec only, no software app supports that tag. So even if the tag is present software apps won’t merge the two separate instances.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

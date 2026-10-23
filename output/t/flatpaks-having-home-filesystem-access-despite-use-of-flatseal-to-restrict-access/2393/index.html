@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpaks having home filesystem access despite use of Flatseal to restrict access - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpaks having home filesystem access despite use of Flatseal to restrict access</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpaks having home filesystem access despite use of Flatseal to restrict access</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 1, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Pepper Dark</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 1, 2022 10:28 AM">
+            <time itemprop="datePublished" datetime="2022-04-01 10:28:54 +0000">Apr 1, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am new to Flatpaks.<br>
+I noticed that a lot of Flatpaks (eg. Krita, Firefox) I installed have access to the home filesystem despite me choosing to toggle off all filesystem related options in Flatseal.<br>
+I am aware that some of them are using portals as I see that when I try to open a file with them, I see Open File - Portal at the top in the file selector.<br>
+Is this the general behavior?<br>
+That even if one explicitly restricts/denies home filesystem access, the File Picker using Portal will have access to everything.</p>
+<p>I am aware about the fact that the applications won’t have any access to the files if they use portals, they will only have access to that certain file that is passed through.<br>
+But yeah, please clarify on that a bit more or guide me to a place where I can read more in depth.<br>
+I do notice a lot of other applications (eg. GIMP, Geany) respect the restrictions I have set in Flatseal and the file picker only sees the folders I pass and nothing else.</p>
+<p>I would also like to add that I have tested for this behavior in multiple distros (eg. Elementary, Mint, Fedora) just to be sure that this is not limited to my current distro.<br>
+I would love to have some clarity about how all of this works and what is the norm and why.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Taiko2k</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 4, 2022 3:32 AM">
+            <time itemprop="datePublished" datetime="2022-04-04 03:32:16 +0000">Apr 4, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As you say, the filepicker will typically show everything and pass the just file you choose to the app. But not all apps may use this special portal type filepicker.</p>
+<p>If you’re comfortable with the terminal you can verify yourself what an app can or cannot see by entering its sandbox using <code>flatpak run --command=sh org.gimp.GIMP</code> for example, then you can navigate using <code>cd</code> / <code>ls</code> etc and see what it can see.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Pepper Dark</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 5, 2022 3:36 AM">
+            <time itemprop="datePublished" datetime="2022-04-05 03:36:23 +0000">Apr 5, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Taiko2k" data-post="2" data-topic="2393">
+<div class="title">
+<div class="quote-controls"></div>
+Taiko2k:</div>
+<blockquote>
+<p>what an app can or cannot see by entering its sandbox using <code>flatpak run --command=sh org.gimp.GIMP</code> for example</p>
+</blockquote>
+</aside>
+<p>That would be really handy and I will be checking this out.<br>
+I really appreciate your reply. <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>I did read about it a bit more, searching all around the web.</p>
+<blockquote>
+<p>Portals are designed as dynamic exception with guaranteed user interaction for most of them (including filesystem access). So yeah, they did not go the Windows way of adding yet another popup saying “You are about to give access to a file to application X that is not in the default permitted list. Are you sure? Yes/No/Maybe”. But doing so would grow old very fast.</p>
+<p>For instance I much prefer that my video player does not have access to anything at all but grant access to files on a case-to-case basis rather than granting access to all my home by default.</p>
+</blockquote>
+<blockquote>
+<p>It’s setting a permission for the app, not for yourself. It could be worded better in flatseal, but it’s the files that the application can access <em>by itself</em>. The app itself can’t access it. Your system and yourself can.</p>
+<p>The basic idea here is that if you are opening a file in a file browser, you “give” the file to the app. The same way that if you give something from your fridge to a friend one time, it doesn’t mean that they can access it 24/24.</p>
+</blockquote>
+<blockquote>
+<p>Flatseal’s permissions are the silent ones. They are things the app can access, always, at any time, without the user ever knowing.</p>
+<p>The file portal is a convenient way for the user to explicitly (i.e. <em>not</em> silently) temporarily grant access to a file.</p>
+</blockquote>
+<p><a href="https://libredd.it/r/flatpak/comments/m8mklu/response_to_flatkillorg/grjfoks/?context=3" rel="noopener nofollow ugc">Original Reddit Post</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

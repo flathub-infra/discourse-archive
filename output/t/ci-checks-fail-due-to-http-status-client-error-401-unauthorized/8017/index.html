@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CI checks fail due to HTTP status client error (401 Unauthorized) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">CI checks fail due to HTTP status client error (401 Unauthorized)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">CI checks fail due to HTTP status client error (401 Unauthorized)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 4, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">UENO, M.</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 4, 2024 4:10 PM">
+            <time itemprop="datePublished" datetime="2024-11-04 16:10:07 +0000">Nov 4, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In a certain Flatpak repository PR, the CI check before merging into the <code>master</code> branch gives the following error and CI fails.</p>
+<p>I have looked into it and can’t find the cause. metainfo and desktop files have been modified in the PR, could there be a problem with the PR?</p>
+<pre data-code-wrap="log"><code class="lang-log">| Error: HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)
+| 
+| Stack backtrace:
+|    0: anyhow::error::&lt;impl core::convert::From&lt;E&gt; for anyhow::Error&gt;::from
+|    1: &lt;flathub_hooks::config::RegularConfig as flathub_hooks::config::ValidateConfig&gt;::get_build
+|    2: flathub_hooks::review::do_review
+|    3: flathub_hooks::main
+|    4: std::sys_common::backtrace::__rust_begin_short_backtrace
+|    5: std::rt::lang_start::{{closure}}
+|    6: core::ops::function::impls::&lt;impl core::ops::function::FnOnce&lt;A&gt; for &amp;F&gt;::call_once
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/core/src/ops/function.rs:284:13
+|    7: std::panicking::try::do_call
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40
+|    8: std::panicking::try
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19
+|    9: std::panic::catch_unwind
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14
+|   10: std::rt::lang_start_internal::{{closure}}
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:48
+|   11: std::panicking::try::do_call
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40
+|   12: std::panicking::try
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19
+|   13: std::panic::catch_unwind
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14
+|   14: std::rt::lang_start_internal
+|              at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:20
+|   15: main
+|   16: __libc_start_call_main
+|              at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+|   17: __libc_start_main_impl
+|              at ./csu/../csu/libc-start.c:392:3
+|   18: _start
+| 
+| Check status updated to Failed("Check command cd \"/tank/repo/builds/142003\" &amp;&amp; FLAT_MANAGER_BUILD_ID=\"142003\" FLAT_MANAGER_JOB_ID=\"259169\" \"/usr/local/bin/flathub-hooks\" \"review\" \"-c\" \"/etc/flathub-hooks.json\" exited unsuccessfully: exit status: 1, stderr: [2024-11-04T13:51:44Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:44Z INFO  flathub_hooks::utils] Retrying (1/5) in 1 seconds...\n[2024-11-04T13:51:45Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:45Z INFO  flathub_hooks::utils] Retrying (2/5) in 2 seconds...\n[2024-11-04T13:51:47Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:47Z INFO  flathub_hooks::utils] Retrying (3/5) in 4 seconds...\n[2024-11-04T13:51:51Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:51Z INFO  flathub_hooks::utils] Retrying (4/5) in 8 seconds...\n[2024-11-04T13:51:59Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:59Z INFO  flathub_hooks::utils] Retrying (5/5) in 16 seconds...\n[2024-11-04T13:52:15Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\nError: HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n\nStack backtrace:\n   0: anyhow::error::&lt;impl core::convert::From&lt;E&gt; for anyhow::Error&gt;::from\n   1: &lt;flathub_hooks::config::RegularConfig as flathub_hooks::config::ValidateConfig&gt;::get_build\n   2: flathub_hooks::review::do_review\n   3: flathub_hooks::main\n   4: std::sys_common::backtrace::__rust_begin_short_backtrace\n   5: std::rt::lang_start::{{closure}}\n   6: core::ops::function::impls::&lt;impl core::ops::function::FnOnce&lt;A&gt; for &amp;F&gt;::call_once\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/core/src/ops/function.rs:284:13\n   7: std::panicking::try::do_call\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40\n   8: std::panicking::try\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19\n   9: std::panic::catch_unwind\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14\n  10: std::rt::lang_start_internal::{{closure}}\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:48\n  11: std::panicking::try::do_call\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40\n  12: std::panicking::try\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19\n  13: std::panic::catch_unwind\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14\n  14: std::rt::lang_start_internal\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:20\n  15: main\n  16: __libc_start_call_main\n             at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16\n  17: __libc_start_main_impl\n             at ./csu/../csu/libc-start.c:392:3\n  18: _start\n")
+\ Job completed successfully
+\ Check flathub-hooks has failed
+Job failed: {'check_name': 'flathub-hooks', 'build_id': 142003, 'job_id': 259169, 'status': 3, 'status_reason': 'Check command cd "/tank/repo/builds/142003" &amp;&amp; FLAT_MANAGER_BUILD_ID="142003" FLAT_MANAGER_JOB_ID="259169" "/usr/local/bin/flathub-hooks" "review" "-c" "/etc/flathub-hooks.json" exited unsuccessfully: exit status: 1, stderr: [2024-11-04T13:51:44Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:44Z INFO  flathub_hooks::utils] Retrying (1/5) in 1 seconds...\n[2024-11-04T13:51:45Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:45Z INFO  flathub_hooks::utils] Retrying (2/5) in 2 seconds...\n[2024-11-04T13:51:47Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:47Z INFO  flathub_hooks::utils] Retrying (3/5) in 4 seconds...\n[2024-11-04T13:51:51Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:51Z INFO  flathub_hooks::utils] Retrying (4/5) in 8 seconds...\n[2024-11-04T13:51:59Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n[2024-11-04T13:51:59Z INFO  flathub_hooks::utils] Retrying (5/5) in 16 seconds...\n[2024-11-04T13:52:15Z INFO  flathub_hooks::utils] HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\nError: HTTP status client error (401 Unauthorized) for url (https://hub.flathub.org/api/v1/build/142003/extended)\n\nStack backtrace:\n   0: anyhow::error::&lt;impl core::convert::From&lt;E&gt; for anyhow::Error&gt;::from\n   1: &lt;flathub_hooks::config::RegularConfig as flathub_hooks::config::ValidateConfig&gt;::get_build\n   2: flathub_hooks::review::do_review\n   3: flathub_hooks::main\n   4: std::sys_common::backtrace::__rust_begin_short_backtrace\n   5: std::rt::lang_start::{{closure}}\n   6: core::ops::function::impls::&lt;impl core::ops::function::FnOnce&lt;A&gt; for &amp;F&gt;::call_once\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/core/src/ops/function.rs:284:13\n   7: std::panicking::try::do_call\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40\n   8: std::panicking::try\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19\n   9: std::panic::catch_unwind\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14\n  10: std::rt::lang_start_internal::{{closure}}\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:48\n  11: std::panicking::try::do_call\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:504:40\n  12: std::panicking::try\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panicking.rs:468:19\n  13: std::panic::catch_unwind\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/panic.rs:142:14\n  14: std::rt::lang_start_internal\n             at /rustc/79e9716c980570bfd1f666e3b16ac583f0168962/library/std/src/rt.rs:148:20\n  15: main\n  16: __libc_start_call_main\n             at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16\n  17: __libc_start_main_impl\n             at ./csu/../csu/libc-start.c:392:3\n  18: _start\n', 'results': None}
+program finished with exit code 1
+elapsedTime=72.885543
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 5, 2024 10:48 AM">
+            <time itemprop="datePublished" datetime="2024-11-05 10:48:09 +0000">Nov 5, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This was probably a symptom of <a href="https://status.flathub.org/issues/2024-11-03-repo-exp/" class="inline-onebox">Build service outage | Flathub Status</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">UENO, M.</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 5, 2024 10:56 AM">
+            <time itemprop="datePublished" datetime="2024-11-05 10:56:24 +0000">Nov 5, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@razzeee</span><br>
+Now CI checks pass without any problem.</p>
+<p>Thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory order failure - Assertion &#39;__b2 &lt;= __b1&#39; failed - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Memory order failure - Assertion &#39;__b2 &lt;= __b1&#39; failed</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Memory order failure - Assertion &#39;__b2 &lt;= __b1&#39; failed</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 8, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 8, 2022 8:41 PM">
+            <time itemprop="datePublished" datetime="2022-07-08 20:41:48 +0000">Jul 8, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Let me preface this by saying I’m certain it is probably my fault. I’ve been in IT almost 40 years, but this is my first flatpak. I create .deb and .rpm fine.</p>
+<p>I’m porting my <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc">RedDiamond</a> editor to flatpak and running into a run-time snag. There are Debian and RPM packages at the SourceForge link for anyone who cares.</p>
+<p>Using this json</p>
+<pre><code class="lang-auto">{
+  "app-id": "org.flatpak.reddiamond",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "21.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "reddiamond",
+  "finish-args": [
+    "--share=ipc", "--socket=x11",  /* X11 + XShm access */
+    "--filesystem=host",            /* Filesystem Access */
+    "--share=network",
+    "--device=dri",
+    "--socket=system-bus"
+  ],
+  "cleanup": [
+        "/include"
+  ],
+  "modules": [
+    {
+        "name": "copperspice",
+        "buildsystem": "cmake-ninja",
+        "builddir": true,
+        "build-options" : { 
+            "cxxflags": "-Wno-error"
+        },
+        "no-parallel-make": false,
+        "config-opts": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-Wno-dev"
+        ],
+        "sources": [
+            {
+                "type": "git",
+                "url": "https://github.com/copperspice/copperspice.git"
+            }
+        ]
+    },
+    {
+        "name": "lexilla",
+        "buildsystem": "simple",
+        "build-commands": [
+            "cd lexilla/src &amp;&amp; ls &amp;&amp; make",
+            "cd lexilla/bin &amp;&amp; install liblexilla.* /app/lib",
+            "cd lexilla/include &amp;&amp; install *.h /app/include"
+        ],
+        "sources": [
+            {
+                "type": "archive",
+                "strip-components": 0,
+                "url": "https://www.scintilla.org/scite523.zip",
+                "sha256": "78614a7bd7e7238a064cdf81fa31d3f4aa2fe5ce23d690bbddbe6387f9c264b4"
+            }
+        ]
+    },
+    {
+        "name": "csscintilla",
+        "buildsystem": "simple",
+        "build-commands": [
+            "mkdir csscintilla_build",
+            "cmake -G \"Ninja\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/app/lib/cmake/CopperSpice -DCMAKE_INSTALL_PREFIX=/app -S copperspice -B csscintilla_build",
+            "cd csscintilla_build &amp;&amp; ninja install",
+            "rm -rf csscintilla_build"
+        ],
+        "sources": [
+            {
+                "type": "archive",
+                "strip-components": 0,
+                "url": "https://sourceforge.net/projects/csscintilla/files/csscintilla_1-0-1.zip",
+                "sha256": "1ec451ae5a95405a335f97b09c3021705e788bfb2b3cb855072775d1a5319912"
+            }
+        ]
+    },
+    {
+        "name": "reddiamond",
+        "buildsystem": "cmake-ninja",
+        "builddir": true,
+        "build-options" : { 
+            "cxxflags": "-Wno-error"
+        },
+        "no-parallel-make": false,
+        "config-opts": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DCMAKE_LIBRARY_PATH=/app/lib",
+            "-DCMAKE_INCLUDE_PATH=/app/include",
+            "-DCMAKE_INSTALL_PREFIX:path=/app/bin",
+            "-Wno-dev"
+        ],
+        "sources": [
+            {
+                "type": "git",
+                "url": "git://git.code.sf.net/p/reddiamond/code"
+            }
+        ]
+    }
+
+  ]
+}
+</code></pre>
+<p>It builds and local installs fine. CopperSpice doesn’t currently have a flatpak extensions or sdk, so I have to build it in my project. Not a big deal but 3819 files take a bit.</p>
+<p>When I attempt to run I see the following, the first part is normal:</p>
+<pre><code class="lang-auto">roland@roland-HP-EliteDesk-800-G2-SFF:~/sf_projects/reddiamond$ flatpak run org.flatpak.reddiamond
+adding QXcbScreen(0x55d328962d80, name=:99.0-32, geometry=1920x1080+0+0, availableGeometry=1848x1053+72+27, devicePixelRatio=1.0, logicalDpi=QPair(96.0,96.0), physicalSize=508.0x285.0mm, screenNumber=0, virtualSize=3840x1080 (3840.0x1080.0mm), orientation=0, depth=24, refreshRate=60.0, root=77b, windowManagerName=GNOME Shell) (Primary: false )
+adding QXcbScreen(0x55d328976aa0, name=:99.0-40, geometry=1920x1080+1920+0, availableGeometry=1920x1053+1920+27, devicePixelRatio=1.0, logicalDpi=QPair(96.0,96.0), physicalSize=508.0x285.0mm, screenNumber=0, virtualSize=3840x1080 (3840.0x1080.0mm), orientation=0, depth=24, refreshRate=60.0, root=77b, windowManagerName=GNOME Shell) (Primary: false )
+primary output is :99.0-32
+Choosing xcb gl-integration based on following priority
+ (xcb_glx, xcb_egl)
+No OpenGL integration plugin was found, this is only required for programs which use OpenGL.
+</code></pre>
+<p>Nothing wrong there. This is the error happening somewhere deep in the startup code.</p>
+<p><code>/usr/include/c++/11.3.0/bits/atomic_base.h:569: bool std::__atomic_base&lt;_IntTp&gt;::compare_exchange_strong(std::__atomic_base&lt;_IntTp&gt;::__int_type&amp;, std::__atomic_base&lt;_IntTp&gt;::__int_type, std::memory_order, std::memory_order) [with _ITp = int; std::__atomic_base&lt;_IntTp&gt;::__int_type = int; std::memory_order = std::memory_order]: Assertion '__b2 &lt;= __b1' failed.</code></p>
+<p>I assume I’m missing something in my json. I built on Ubuntu 20.04 with all updates applied. I have done some poking around and seen some Docker stuff having same issue in May of this year.</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/facebook/mcrouter/issues/373">
+  <header class="source">
+
+      <a href="https://github.com/facebook/mcrouter/issues/373" target="_blank" rel="noopener nofollow ugc">github.com/facebook/mcrouter</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/facebook/mcrouter/issues/373" target="_blank" rel="noopener nofollow ugc"> std::memory_order]: Assertion '__b2 &lt;= __b1' failed.</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2021-05-02" data-time="10:34:52" data-timezone="UTC">10:34AM - 02 May 21 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/davidkarlsen" target="_blank" rel="noopener nofollow ugc">
+          <img alt="davidkarlsen" src="/uploads/original/2X/1/1666643ce256a4f23753a0f43e7c261b8ae90e79.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="ACACAC">
+          davidkarlsen
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">What's going on here?
+
+```
+[root@ab161d6fbf83 /]# mcrouter -p 5000 --config f<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ile:/config.json -v 99 -a /tmp
+I0502 10:31:46.638723    20 StandaloneUtils.cpp:479] 0.41.0.00.41.0 mcrouter startup (20)
+I0502 10:31:46.638798    20 StandaloneUtils.cpp:192] Starting Memcache router
+I0502 10:31:46.638820    20 Server-inl.h:493] Spawning AsyncMcServer
+/usr/include/c++/11/bits/atomic_base.h:567: bool std::__atomic_base&lt;_IntTp&gt;::compare_exchange_strong(std::__atomic_base&lt;_IntTp&gt;::__int_type&amp;, std::__atomic_base&lt;_IntTp&gt;::__int_type, std::memory_order, std::memory_order) [with _ITp = unsigned int; std::__atomic_base&lt;_IntTp&gt;::__int_type = unsigned int; std::memory_order = std::memory_order]: Assertion '__b2 &lt;= __b1' failed.
+Aborted
+```
+
+image used: https://github.com/evryfs/docker-mcrouter/blob/centos/Dockerfile</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>If it was <a href="https://stackoverflow.com/questions/66892158/assertion-builtin-expect-n-this-size-true-failed-error-in-visual" rel="noopener nofollow ugc">this error</a> it would make sense. That went past the end of an allocated space.</p>
+<p>This error appears to fail the integer types. Is there some shiny new compiler option I need to use when compiling for Flatpak that I don’t need to use when building for Ubuntu and Fedora? If so, what is it please.</p>
+<p>Has anyone seen and hopefully solved this error before?</p>
+<p><strong>Note:</strong> This computer does have NVIDIA. Seems to be related to incompatibility with NVIDIA.</p>
+<p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1674271" class="onebox" target="_blank" rel="noopener nofollow ugc">https://bugzilla.redhat.com/show_bug.cgi?id=1674271</a></p>
+<p>Per one of the other links above, is flatpak-builder enabling <code>_GLIBCXX_ASSERTIONS</code></p>
+<blockquote>
+<p>Author of the library here. There was a bug in the code which would only trigger when the setup has defined a macro <code>_GLIBCXX_ASSERTIONS</code> and would otherwise not show up. It should be fixed now in the latest version (1.7.0) - please try again (<code>pip install -U outliertree</code>) and comment in the github issue tracker if the problem persists.</p>
+</blockquote>
+<p>Thanks,</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

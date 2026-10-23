@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repository hierarchy in Forgejo - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Repository hierarchy in Forgejo</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Repository hierarchy in Forgejo</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 3, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 3, 2026 9:08 PM">
+            <time itemprop="datePublished" datetime="2026-06-03 21:08:57 +0000">Jun 3, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve been hinting over at Fediverse that I’m getting somewhere with deploying a Forgejo instance: <a href="https://social.treehouse.systems/@barthalion/116675657303611793" class="inline-onebox">Bart Piotrowski: "something may be happening" - Treehouse Mastodon</a></p>
+<p>Ignoring the technical part of it (i.e. where it will be hosted, what about CI, etc), the area I would like to have some alignment on with The Community™ is the future repository setup, should we ever migrate.</p>
+<p>It’s worth keeping in mind that contrary to GitLab, Forgejo does not allow “unbound” root-level repositories. Each repo has to belong to some user or organization.</p>
+<p>In the current GitHub world, I would differentiate these spaces:</p>
+<ul>
+<li><code>flathub-infra</code> org which would map directly to something like <code>infrastructure/</code></li>
+<li><code>flathub/flathub</code> which is a kitchen sink of general issue tracker and target repo of the submission PRs. This would likely be <code>meta/</code>, with separate projects for issue tracking and new apps. Also where <code>flathub-infra/memberships</code> should go.</li>
+<li>Actual applications. Probably <code>apps/</code>? Doesn’t fit exactly because there are also extensions and BaseApps over there.</li>
+</ul>
+<p>Anyone with strong opinions is welcome to chime in!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 3, 2026 9:13 PM">
+            <time itemprop="datePublished" datetime="2026-06-03 21:13:30 +0000">Jun 3, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>instead of <code>apps</code>, maybe <code>packages</code> or <code>manifests</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">U</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">user1-github</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 6, 2026 6:48 PM">
+            <time itemprop="datePublished" datetime="2026-06-06 18:48:42 +0000">Jun 6, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="barthalion" data-post="1" data-topic="12300">
+<div class="title">
+<div class="quote-controls"></div>
+barthalion:</div>
+<blockquote>
+<p>Actual applications. Probably <code>apps/</code>? Doesn’t fit exactly because there are also extensions and BaseApps over there.</p>
+</blockquote>
+</aside>
+<p>Just my 2 cents: Maybe apps and baseapps should go into the same repo (apps/ or packages/), while SDK extensions will go into their own separate repo? (e.g extensions/)<br>
+org.winehq.Wine for example is technically a baseapp, but it can also be installed and used as a regular app. Though idk if there are more such baseapps on Flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 6, 2026 7:38 PM">
+            <time itemprop="datePublished" datetime="2026-06-06 19:38:01 +0000">Jun 6, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="user1-github" data-post="3" data-topic="12300">
+<div class="title">
+<div class="quote-controls"></div>
+user1-github:</div>
+<blockquote>
+<p>Just my 2 cents: Maybe apps and baseapps should go into the same repo (apps/ or packages/), while SDK extensions will go into their own separate repo? (e.g extensions/)</p>
+</blockquote>
+</aside>
+<p>Keep in mind that extensions points can also be for specific applications. OBS for example has an extension point for their own plugin system.</p>
+<p>As for the general discussion on the naming, I’d go with <code>manifests</code>, as its a good general term for what the repos contain.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mahlzahn</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 31, 2026 7:44 AM">
+            <time itemprop="datePublished" datetime="2026-07-31 07:44:39 +0000">Jul 31, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Given that people will need to register and their usernames all end up in the same namespace, it may make sense to keep the `flathub-` prefix, e.g., `flathub`, `flathub-infrastructure`, `flathub-manifests`, … That makes it easier in the explore page to find the important organizations. At least, for Forgejo’s own developer instance, the organizations are called `forgejo` (main), `forgejo-integration`, `forgejo-helm`, etc.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

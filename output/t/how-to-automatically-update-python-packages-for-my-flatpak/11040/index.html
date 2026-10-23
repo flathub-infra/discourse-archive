@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to automatically update python packages for my flatpak? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to automatically update python packages for my flatpak?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to automatically update python packages for my flatpak?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 22, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Archisman Panigrahi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 22, 2025 3:50 AM">
+            <time itemprop="datePublished" datetime="2025-11-22 03:50:59 +0000">Nov 22, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using a lot of python packages in my manifest <a href="https://github.com/flathub/io.github.archisman_panigrahi.QuickBib/blob/master/io.github.archisman_panigrahi.QuickBib.json" class="inline-onebox" rel="noopener nofollow ugc">io.github.archisman_panigrahi.QuickBib/io.github.archisman_panigrahi.QuickBib.json at master · flathub/io.github.archisman_panigrahi.QuickBib · GitHub</a></p>
+<p>I saw somewhere that there is a bot which sends PRs for python package updates. How do I enable something like that in my repo?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 22, 2025 12:20 PM">
+            <time itemprop="datePublished" datetime="2025-11-22 12:20:43 +0000">Nov 22, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To quote the <a href="https://docs.flathub.org/docs/for-app-authors/updates#creating-updates" rel="noopener nofollow ugc">documentation on updates</a>:</p>
+<aside class="quote no-group" data-username="Flathub Documentation - Updates">
+<div class="title">
+<div class="quote-controls"></div>
+ Flathub Documentation - Updates:</div>
+<blockquote>
+<p>Pull requests with updates can be automated with <a href="https://docs.flathub.org/docs/for-app-authors/external-data-checker" rel="noopener nofollow ugc">External Data Checker</a> or by using a custom workflow that will submit a pull request to the Flathub repository.</p>
+<p>Any action from Flathub and <code>peter-evans/create-pull-request</code> is allowed to be used.</p>
+</blockquote>
+</aside>
+<p>The bot you’ve seen is likely the External Data Checker.<br>
+This works by adding information to your manifest on where to look for updates. The bot will then regularly check for updates. If it finds some, it will create an Merge Request with the updated modules.</p>
+<p>If you use <code>flatpak-pip-generator</code> to generate the manifest for your Python packages, you could, in theory, use the <code>--checker-data</code> argument to add this information automatically.</p>
+<p>That being said, I assume that would lead to a lot of updates, since every updated Python package would result in a new Merge Request. Not great for your users in my view.</p>
+<p>I’m not sure if this is possible with the allowed actions provided by Flathub, but what I would attempt would be this:<br>
+I would create a workflow which uses External Data Checker to check the modules you have in your main manifest, so the application and main libraries. If the External Data Checker finds an update, I would then run the <code>flatpak-pip-generator</code> to update the additional pip packages. Then you could use the <code>create-pull-request</code> action to create a new Merge Request.</p>
+<p>Keep in mind that even with such a system you still need to merge it manually, and importantly check if the updated app works as expected.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Archisman Panigrahi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 22, 2025 2:26 PM">
+            <time itemprop="datePublished" datetime="2025-11-22 14:26:13 +0000">Nov 22, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="CodedOre" data-post="2" data-topic="11040">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>create a workflow which uses External Data Checker to check the modules you have in your main manifest, so the application and main libraries</p>
+</blockquote>
+</aside>
+<p>How do I limit the data checker to the main libraries?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 22, 2025 3:14 PM">
+            <time itemprop="datePublished" datetime="2025-11-22 15:14:30 +0000">Nov 22, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since the External Data Checker only checks on modules for which it was configured, you can omit modules by just not providing an configuration.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 23, 2025 1:19 AM">
+            <time itemprop="datePublished" datetime="2025-11-23 01:19:38 +0000">Nov 23, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>but why do you need to update?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Archisman Panigrahi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Nov 23, 2025 6:33 PM">
+            <time itemprop="datePublished" datetime="2025-11-23 18:33:39 +0000">Nov 23, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am also the author of doi2bib3, which is the python backend of quickbib. When I add new features to doi2bib3 and release a new version, I want to automate the quickbib flatpak update without manually looking for the correct download link or the SHA256 hash.</p>
+<p>I mostly want to update this single python dep. The other python deps really don’t need any update right now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

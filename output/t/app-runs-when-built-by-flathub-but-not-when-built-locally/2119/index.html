@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App runs when built by flathub but not when built locally - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">App runs when built by flathub but not when built locally</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">App runs when built by flathub but not when built locally</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 25, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nick J Allen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 25, 2022 7:47 AM">
+            <time itemprop="datePublished" datetime="2022-01-25 07:47:41 +0000">Jan 25, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I have a problem that when I build flatpak locally and try to install from local repository or from a flatpak bundle that was created locally that I get an error that does not happen when running from a build made on the flathub server. I can run manually from the flatpak build folder just fine however. Just doesn’t work when installing like a user would. The app in question is com.bitwig.BitwigStudio.</p>
+<p>The error I get is this when I try to run the app after installation:</p>
+<p>bwrap: Can’t mkdir /app/lib/i386-linux-gnu: Read-only file system<br>
+error: ldconfig failed, exit status 256</p>
+<p>We need the i386 compatibiility extension in order to be able to run i386 audio plug-ins (VST2).</p>
+<p>Here is how our manifest looks:</p>
+<pre><code>---
+</code></pre>
+<p>app-id: com.bitwig.BitwigStudio<br>
+command: bitwig-studio<br>
+runtime-version: “21.08”<br>
+runtime: org.freedesktop.Platform<br>
+sdk: org.freedesktop.Sdk<br>
+finish-args:</p>
+<h1><a name="p-4469-we-need-midi-audio-usb-dri-and-realtime-performances-1" class="anchor" href="#p-4469-we-need-midi-audio-usb-dri-and-realtime-performances-1" aria-label="Heading link"></a>We need MIDI, Audio, USB, DRI, and realtime performances</h1>
+<ul>
+<li>–device=all</li>
+</ul>
+<h1><a name="p-4469-needed-to-talk-with-x11-wayland-pulseaudio-and-pipewire-2" class="anchor" href="#p-4469-needed-to-talk-with-x11-wayland-pulseaudio-and-pipewire-2" aria-label="Heading link"></a>Needed to talk with X11, Wayland, pulseaudio and pipewire</h1>
+<ul>
+<li>–share=ipc</li>
+<li>–filesystem=xdg-run/pipewire-0</li>
+<li>–socket=pulseaudio</li>
+<li>–socket=x11</li>
+</ul>
+<h1><a name="p-4469-needed-for-updating-the-sound-content-checking-for-online-notifications-and-authentication-3" class="anchor" href="#p-4469-needed-for-updating-the-sound-content-checking-for-online-notifications-and-authentication-3" aria-label="Heading link"></a>Needed for updating the sound content, checking for online notifications and authentication</h1>
+<ul>
+<li>–share=network</li>
+</ul>
+<h1><a name="p-4469-for-desktop-notifications-4" class="anchor" href="#p-4469-for-desktop-notifications-4" aria-label="Heading link"></a>For desktop notifications</h1>
+<ul>
+<li>–talk-name=org.freedesktop.Notifications</li>
+</ul>
+<h1><a name="p-4469-give-access-to-the-host-filesystem-5" class="anchor" href="#p-4469-give-access-to-the-host-filesystem-5" aria-label="Heading link"></a>Give access to the host filesystem</h1>
+<h1><a name="p-4469-bitwig-studio-is-a-media-application-and-many-users-have-files-6" class="anchor" href="#p-4469-bitwig-studio-is-a-media-application-and-many-users-have-files-6" aria-label="Heading link"></a>Bitwig Studio is a media application, and many users have files</h1>
+<h1><a name="p-4469-on-removable-media-and-various-locations-7" class="anchor" href="#p-4469-on-removable-media-and-various-locations-7" aria-label="Heading link"></a>on removable media and various locations.</h1>
+<h1><a name="p-4469-as-of-today-it-is-too-complicated-to-ask-the-user-to-run-commands-in-8" class="anchor" href="#p-4469-as-of-today-it-is-too-complicated-to-ask-the-user-to-run-commands-in-8" aria-label="Heading link"></a>As of today it is too complicated to ask the user to run commands in</h1>
+<h1><a name="p-4469-the-terminal-to-grant-more-permissions-to-bitwig-studio-9" class="anchor" href="#p-4469-the-terminal-to-grant-more-permissions-to-bitwig-studio-9" aria-label="Heading link"></a>the terminal to grant more permissions to Bitwig Studio.</h1>
+<h1><a name="p-4469-once-there-is-an-easy-and-graphical-way-to-tweak-the-sandbox-permission-10" class="anchor" href="#p-4469-once-there-is-an-easy-and-graphical-way-to-tweak-the-sandbox-permission-10" aria-label="Heading link"></a>Once there is an easy and graphical way to tweak the sandbox permission</h1>
+<h1><a name="p-4469-we-may-switch-to-the-home-only-11" class="anchor" href="#p-4469-we-may-switch-to-the-home-only-11" aria-label="Heading link"></a>we may switch to the home only.</h1>
+<ul>
+<li>–filesystem=host</li>
+</ul>
+<h1><a name="p-4469-java-stuff-12" class="anchor" href="#p-4469-java-stuff-12" aria-label="Heading link"></a>Java stuff</h1>
+<ul>
+<li>
+<p>–persist=.java</p>
+</li>
+<li>
+<p>–persist=.BitwigStudio</p>
+</li>
+<li>
+<p>–persist=Bitwig Studio</p>
+</li>
+<li>
+<p>–env=ALSA_CONFIG_PATH=</p>
+</li>
+<li>
+<p>–env=VST_PATH=/app/extensions/Plugins/lxvst</p>
+</li>
+<li>
+<p>–env=VST3_PATH=/app/extensions/Plugins/vst3</p>
+</li>
+</ul>
+<h1><a name="p-4469-for-32-bits-plugin-host-13" class="anchor" href="#p-4469-for-32-bits-plugin-host-13" aria-label="Heading link"></a>For 32 bits plugin host</h1>
+<ul>
+<li>–allow=multiarch</li>
+</ul>
+<p>add-extensions:<br>
+org.freedesktop.LinuxAudio.Plugins:<br>
+directory: extensions/Plugins<br>
+version: ‘21.08’<br>
+add-ld-path: lib<br>
+merge-dirs: lxvst;vst3<br>
+subdirectories: true<br>
+no-autodownload: true</p>
+<p>org.freedesktop.Platform.Compat.i386:<br>
+directory: /lib/i386-linux-gnu<br>
+version: ‘21.08’</p>
+<p>org.freedesktop.Platform.GL32:<br>
+directory: /lib/i386-linux-gnu/GL<br>
+version: ‘1.4’<br>
+versions: 21.08;1.4<br>
+subdirectories: true<br>
+no-autodownload: true<br>
+autodelete: false<br>
+add-ld-path: lib<br>
+merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d<br>
+download-if: active-gl-driver<br>
+enable-if: active-gl-driver</p>
+<p>modules:</p>
+<ul>
+<li>name: “bitwig-studio”<br>
+buildsystem: simple<br>
+build-options:<br>
+strip: false<br>
+no-debuginfo: true<br>
+build-commands:
+<ul>
+<li>unzip BitwigStudio.zip -d ${FLATPAK_DEST}<br>
+post-install:</li>
+<li>ln -sf ../bitwig-studio ${FLATPAK_DEST}/bin/</li>
+<li>install -d /app/extensions/Plugins<br>
+sources:</li>
+<li>type: file<br>
+path: /home/nick/dev/bitwig/nick-dev/float/installer/target/BitwigStudio.zip<br>
+sha512: 1cf6a17168b70b45d33425b6a7a445055d8b9c680a3d29674a15c2ff29a7fa35b83f2b7c6f0d43db85692ef037e424513c9626ab89920ae5de343d3f30742794<br>
+only-arches:
+<ul>
+<li>x86_64</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1><a name="p-4469-vim-set-expandtab-tabstop2-sw2-14" class="anchor" href="#p-4469-vim-set-expandtab-tabstop2-sw2-14" aria-label="Heading link"></a>vim: set expandtab tabstop=2 sw=2:</h1>
+<p>The manifest is basically the same when we build on flathub apart from how we obtain the source which we download from a server ranther than it being a local file.</p>
+<p>I’m not sure how to debug this to find out where the problem lies. Any help greatly appreciated.</p>
+<p>Kind regards,</p>
+<p>Nicholas Allen</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nick J Allen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 25, 2022 8:03 AM">
+            <time itemprop="datePublished" datetime="2022-01-25 08:03:26 +0000">Jan 25, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok maybe I found the problem. Seems I need to make sure the mount point exists in the /app folder where I’m trying to install these extensions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nick J Allen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 25, 2022 9:18 AM">
+            <time itemprop="datePublished" datetime="2022-01-25 09:18:39 +0000">Jan 25, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think the error message could have been much more obvious. It’s weird that the error happens when you try to run the app rather that at build or publish time. Maybe when specifying a directory to mount an extension at flatpak-builder should report an error if that’s not there or just automatically create that path so it can be mounted there?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

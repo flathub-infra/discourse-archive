@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What command from the appstream workflow enables localizations? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What command from the appstream workflow enables localizations?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What command from the appstream workflow enables localizations?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 25, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 25, 2024 3:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-25 15:59:32 +0000">Feb 25, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I made a Gramps flatpak file available at the upstream repository for archival purposes as well as pushing the update faster to users who wanted to test the update. <a href="https://github.com/gramps-project/flatpak/releases/tag/v5.2.0-0" class="inline-onebox" rel="noopener nofollow ugc">Release Gramps flatpak 5.2.0-0 · gramps-project/flatpak · GitHub</a></p>
+<p>It has come to my attention that the flatpak I linked above does not allow localizations, in this case changing the locale to French. <a href="https://gramps.discourse.group/t/5-2-flatpak-no-valid-locale-settings-found/4974" class="inline-onebox" rel="noopener nofollow ugc">5.2 flatpak "No valid locale settings found" - Development - The Gramps Project (Discourse Forum &amp; Mailing List)</a></p>
+<p>However, the older versions of Gramps available at flathub (5.1 series) apparently followed system locales. I am guessing that the workflow I made is missing a command that enables the resulting flatpak to use system locales. Is there a command I can add to <a href="https://github.com/gramps-project/flatpak/blob/main/.github/workflows/main.yml" class="inline-onebox" rel="noopener nofollow ugc">flatpak/.github/workflows/main.yml at main · gramps-project/flatpak · GitHub</a> to enable the gramps-project flatpak archives to use system locales?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 26, 2024 2:52 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 14:52:08 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The biggest reason I want an archive of a prior version of this flatpak, is that several changes were made to the Gramps 5.2 release. User database information has to be updated regardless of whether they installed Gramps from repo, source, or flatpak. Furthermore, changes were also made to the flatpak, including the restriction of directory access from full home access down to specific xdg directories, and also the dropping of an old version of BSDDB3 that does not require Oracle’s manual license agreement. Before Oracle acquired BSDDB3, Gramps used to use BSDDB3 as the default database. Even though Gramps switched to SQLite as the default database years ago, the developers have been trying to phase users over to SQLite for a long time (apparently SQLite is also less prone to corrupting user files). However, there are still old files from the BSDDB3 days that users still try to restore, and users who for whatever reason did not switch over. Since it has been so long since there was an update to pre-Oracle versions of BSDDB3 it probably has all kinds of security holes, and since including that BSDDB3 to the gramps flatpak adds extra compile time and download size, I have wanted to drop BSDDB3 from the flatpak for a long time. However much we might discuss or warn users to switch over to SQLite, of course most users don’t actively follow the discourse or read ChangeLogs at the Github. This is especially relevant to people who aren’t proficient in English, since many discourse posts are in English and the ChangeLog is in English. That is why I especially want an archive of the old 5.1.6 Gramps flatpak capable of using system locales at the gramps-project github, to help people who didn’t know about the changes for 5.2 despite developer efforts and were not ready for it.</p>
+<p>The only possible solution I can think of is to get the github workflow (Ubuntu) to install every single language pack possible, and then list every single language pack in the flatpak build command. There has to be a better way, right?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 26, 2024 5:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 17:59:14 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak/issues/165">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak/issues/165" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak/issues/165" target="_blank" rel="noopener nofollow ugc">Figure out some way to handle extensions (like locales) when using bundles</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2016-07-01" data-time="11:16:02" data-timezone="UTC">11:16AM - 01 Jul 16 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/alexlarsson" target="_blank" rel="noopener nofollow ugc">
+          <img alt="alexlarsson" src="/uploads/original/2X/0/0a79840d208657e03f046df6c1b8a84fabbfa95d.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="CB9A74">
+          alexlarsson
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          enhancement
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Right now the bundle files just don't have the locale data. You have to get that<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden"> from the repository, or disable separate extensions when building the app.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>The only way to make this work is to set <code>separate-locales: false</code> in your manifest.</p>
+<p>I’ll also note that it is possible (though inconvenient) to install old versions of an app from Flathub: <a href="https://docs.flatpak.org/en/latest/tips-and-tricks.html#downgrading" class="inline-onebox" rel="noopener nofollow ugc">Tips and Tricks - Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 26, 2024 7:36 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 19:36:00 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you, I am testing the separate-locales command now.</p>
+<p>So if I understand correctly, it is not the flathub appstream commands during compiling that cause flatpaks from flathub to use different languages. Rather, flathub sends a Locale file with the appropriate runtime to match the user’s computer’s locale?</p>
+<p>Would it be possible to give a “flatpak install (locale)” command that would allow the archived gramps.flatpak file to use other languages than English? In this case, the locale for Gnome Runtime 44 for Gramps 5.1.6.</p>
+<p>—edit— setting “separate-locales: false” in the manifest worked in forcing the archive to use the system locale. Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 26, 2024 9:29 PM">
+            <time itemprop="datePublished" datetime="2024-02-26 21:29:32 +0000">Feb 26, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="OzarkShepherd" data-post="4" data-topic="6178">
+<div class="title">
+<div class="quote-controls"></div>
+OzarkShepherd:</div>
+<blockquote>
+<p>So if I understand correctly, it is not the flathub appstream commands during compiling that cause flatpaks from flathub to use different languages. Rather, flathub sends a Locale file with the appropriate runtime to match the user’s computer’s locale?</p>
+</blockquote>
+</aside>
+<p>By default, flatpak-builder splits out your app’s locale data into an extension with the suffix <code>.Locale</code>. On installation, flatpak only downloads and installs the system language subset from that extension.</p>
+<p>The bundle still used a runtime from Flathub with its own Locale extension, so the locale definitions should have been present, just not the application-specific message catalog.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

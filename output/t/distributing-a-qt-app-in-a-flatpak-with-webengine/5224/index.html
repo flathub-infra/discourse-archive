@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distributing a Qt app in a flatpak with WebEngine - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Distributing a Qt app in a flatpak with WebEngine</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Distributing a Qt app in a flatpak with WebEngine</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 27, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 27, 2023 9:34 AM">
+            <time itemprop="datePublished" datetime="2023-09-27 09:34:32 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am attempting to package my Qt app as a flatpak.<br>
+It relies heavily on QtWebEngine, so I used this as a base app: <a href="https://github.com/flathub/io.qt.qtwebengine.BaseApp" rel="noopener nofollow ugc">GitHub - flathub/io.qt.qtwebengine.BaseApp</a></p>
+<p>I am using qt6 with org.kde.Sdk and org.kde.Platform.<br>
+It packages successfully but then I get this error immediately when the app opens: module “QtWebEngine” plugin “qtwebenginequickplugin” not found.</p>
+<p>The line in question is simply “import QtWebEngine” (QML).<br>
+The reason I am posting this here is because when the app is run on the host system (without flatpak) it works completely fine.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 27, 2023 9:37 AM">
+            <time itemprop="datePublished" datetime="2023-09-27 09:37:07 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey, while I haven’t experienced this problem, it’s usually easier, if you can share your manifest etc. if that’s possible for your application.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 27, 2023 11:14 AM">
+            <time itemprop="datePublished" datetime="2023-09-27 11:14:42 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here is the manifest:</p>
+<p>app-id: ca.stevestudios.Swirl<br>
+runtime: org.kde.Platform<br>
+runtime-version: ‘6.5’<br>
+sdk: org.kde.Sdk<br>
+base: io.qt.qtwebengine.BaseApp<br>
+base-version: ‘6.5’<br>
+command: swirl<br>
+finish-args:</p>
+<ul>
+<li>–share=ipc</li>
+<li>–socket=x11</li>
+<li>–socket=wayland</li>
+<li>–filesystem=host</li>
+<li>–device=dri</li>
+<li>–env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess<br>
+cleanup-commands:</li>
+<li>/app/cleanup-BaseApp.sh<br>
+modules:</li>
+<li>name: swirl<br>
+buildsystem: simple<br>
+build-commands:
+<ul>
+<li>install -D ca.stevestudios.Swirl.appdata.xml /app/share/metainfo/ca.stevestudios.Swirl.appdata.xml</li>
+<li>install -D ca.stevestudios.Swirl.desktop /app/share/applications/ca.stevestudios.Swirl.desktop</li>
+<li>install -D ca.stevestudios.Swirl.svg /app/share/icons/hicolor/scalable/apps/ca.stevestudios.Swirl.svg</li>
+<li>install -D ca.stevestudios.Swirl-symbolic.svg /app/share/icons/hicolor/symbolic/apps/ca.stevestudios.Swirl-symbolic.svg<br>
+sources:</li>
+<li>type: file<br>
+path: ca.stevestudios.Swirl.desktop</li>
+<li>type: file<br>
+path: ca.stevestudios.Swirl.svg</li>
+<li>type: file<br>
+path: ca.stevestudios.Swirl-symbolic.svg</li>
+<li>type: file<br>
+path: ca.stevestudios.Swirl.appdata.xml</li>
+</ul>
+</li>
+<li>name: swirl-bin<br>
+buildsystem: cmake-ninja<br>
+config-opts:
+<ul>
+<li>-DCMAKE_BUILD_TYPE=Release<br>
+sources:</li>
+<li>type: archive<br>
+path: swirl-bin.tar.gz</li>
+</ul>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 27, 2023 11:17 AM">
+            <time itemprop="datePublished" datetime="2023-09-27 11:17:17 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>…where swirl-bin is the Qt app source code.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 27, 2023 11:21 AM">
+            <time itemprop="datePublished" datetime="2023-09-27 11:21:26 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>qt.qpa.qgnomeplatform: Could not find color scheme  “”<br>
+QQmlApplicationEngine failed to load component</p>
+<p>It’s also worth mentioning that these errors (or maybe warnings) appear right before the main problem I have just described.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 27, 2023 7:50 PM">
+            <time itemprop="datePublished" datetime="2023-09-27 19:50:21 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am starting to think it is a bug with the base app (Not only am I sure I’ve tried everything in my power, but there is zero info on the web about this issue). I made an issue here: <a href="https://github.com/flathub/io.qt.qtwebengine.BaseApp/issues/290" class="inline-onebox" rel="noopener nofollow ugc">QtWebEngine import not found in QML · Issue #290 · flathub/io.qt.qtwebengine.BaseApp · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 27, 2023 7:51 PM">
+            <time itemprop="datePublished" datetime="2023-09-27 19:51:34 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Also, it seems to only be a problem in QML, the C++ headers work fine.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ell1e</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 17, 2025 1:08 AM">
+            <time itemprop="datePublished" datetime="2025-06-17 01:08:14 +0000">Jun 17, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I seem to have the same problem, but with a cmake project trying to reference Qt5’s webengine in the qt5.15-24.08 version of org.Kde.Sdk. It works fine on my regular Alpine machine with their qt5-qtwebengine package with the same cmake project. Is there something weird or incomplete about QtWebengine is contained in the SDK in regards to build files and such? It seems prone for some reason to confusing other dev tools that are looking for QtWebengine.</p>
+<pre><code class="lang-auto">-- Detecting CXX compile features - done
+CMake Error at CMakeLists.txt:13 (find_package):
+  By not providing "FindQt5WebEngine.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "Qt5WebEngine", but CMake did not find one.
+
+  Could not find a package configuration file provided by "Qt5WebEngine" with
+  any of the following names:
+
+    Qt5WebEngineConfig.cmake
+    qt5webengine-config.cmake
+
+  Add the installation prefix of "Qt5WebEngine" to CMAKE_PREFIX_PATH or set
+  "Qt5WebEngine_DIR" to a directory containing one of the above files.  If
+  "Qt5WebEngine" provides a separate development package or SDK, be sure it
+  has been installed.
+
+
+-- Configuring incomplete, errors occurred!
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jun 17, 2025 1:23 AM">
+            <time itemprop="datePublished" datetime="2025-06-17 01:23:39 +0000">Jun 17, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Qtwebengine is not in the SDK, It’s in the baseapp here <a href="https://github.com/flathub/io.qt.qtwebengine.BaseApp" class="inline-onebox">GitHub - flathub/io.qt.qtwebengine.BaseApp</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ell1e</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jun 17, 2025 1:26 AM">
+            <time itemprop="datePublished" datetime="2025-06-17 01:26:59 +0000">Jun 17, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you so much, that explains a lot and you saved me from much confusion!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

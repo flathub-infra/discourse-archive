@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help with Sideload-Repo - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help with Sideload-Repo</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help with Sideload-Repo</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 17, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Clayton Carney</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 17, 2025 10:10 PM">
+            <time itemprop="datePublished" datetime="2025-05-17 22:10:43 +0000">May 17, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I lost the flatpak install of Chromium v134 (the last one to support manifest v2) on my host computer. This version is longer available at flathub, so I can’t restore via commit ID. However, I still have a virtual machine (VM) with a working v134 install.</p>
+<p>I used create-usb on the VM to create the repo.</p>
+<details>
+<summary>
+create repo</summary>
+<pre><code class="lang-auto">clayton@fedora:~$ flatpak create-usb -vv ~/dookie org.chromium.Chromium
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/clayton/.local/share/flatpak
+F: Finding the runtime for ‘app/org.chromium.Chromium/x86_64/stable’
+F: Finding related refs for ‘runtime/org.freedesktop.Platform/x86_64/24.08’
+F: No installations directory in /etc/flatpak/installations.d. Skipping
+Warning: Related ref ‘runtime/org.freedesktop.Platform.Locale/x86_64/24.08’ is partially installed. Use --allow-partial to suppress this message.
+Warning: Omitting related ref ‘runtime/org.freedesktop.Platform.openh264/x86_64/2.5.1’ because it's extra-data.
+F: Finding related refs for ‘app/org.chromium.Chromium/x86_64/stable’
+Warning: Related ref ‘runtime/org.chromium.Chromium.Locale/x86_64/stable’ is partially installed. Use --allow-partial to suppress this message.
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loaded indexed summary file cb93e1b659dd6480c82f7af27e36be28e82ef0ee294d40e6d40dab512eadbff0 from cache for remote ‘flathub’
+F: flathub:x86_64 appstream age 88721 is greater than ttl 0
+F: flatpak_dir_pull: Using commit 460a0d00bdcc10132b6e2a69dcb4a3c70680547ad234c379719f602f4e45b7e1 for pull of ref appstream2/x86_64 from remote flathub
+F: Calling system helper: DeployAppstream
+F: Calling system helper: UpdateSummary
+F: Copying the following refs: (org.flathub.Stable, appstream2/x86_64) (org.flathub.Stable, runtime/org.freedesktop.Platform.GL.default/x86_64/24.08) (org.flathub.Stable, runtime/org.chromium.Chromium.Codecs/x86_64/stable) (org.flathub.Stable, runtime/org.freedesktop.Platform.GL.default/x86_64/24.08extra) (org.flathub.Stable, runtime/org.gtk.Gtk3theme.Breeze/x86_64/3.22) (org.flathub.Stable, app/org.chromium.Chromium/x86_64/stable) (org.flathub.Stable, runtime/org.freedesktop.Platform.Locale/x86_64/24.08) (org.flathub.Stable, runtime/org.freedesktop.Platform/x86_64/24.08) (org.flathub.Stable, runtime/org.chromium.Chromium.Locale/x86_64/stable)
+F: ostree_create_usb: Creating repository in mode 1
+
+5 metadata, 3 content objects imported; 39.3 MB content written
+
+Copied 9/9 refs successfully from ‘/var/lib/flatpak/repo’ to ‘.ostree/repo’ repository in ‘/home/clayton/dookie’.
+clayton@fedora:~$
+
+</code></pre>
+</details>
+<p>I transferred the repo to the host. When I try to install, I get an error:</p>
+<pre><code class="lang-auto">sudo flatpak install --no-pull --no-deploy --no-related --no-deps --no-auto-pin --no-static-deltas --reinstall --sideload-repo=~/dookie/ org.chromium.Chromium
+[sudo] password for clayton: 
+Looking for matches…
+error: No remote refs found for ‘org.chromium.Chromium’
+</code></pre>
+<p>What am I doing wrong?</p>
+<p>Follow up:</p>
+<p>When I attempt to reinstall the latest version, it fails and I don’t understand why…</p>
+<details>
+<summary>
+install</summary>
+<pre><code class="lang-auto">clayton@voron:~$ flatpak install org.chromium.Chromium
+Looking for matches…
+Remotes found with refs similar to ‘org.chromium.Chromium’:
+
+   1) ‘fedora’ (system)
+   2) ‘flathub’ (system)
+
+Which do you want to use (0 to abort)? [0-2]: 2
+
+org.chromium.Chromium permissions:
+    ipc                      network                    cups                           pulseaudio
+    wayland                  x11                        devices                        file access [1]
+    dbus access [2]          bus ownership [3]          system dbus access [4]
+
+    [1] /run/.heim_org.h5l.kcm-socket, home
+    [2] com.canonical.AppMenu.Registrar, org.freedesktop.FileManager1, org.freedesktop.Notifications,
+        org.freedesktop.ScreenSaver, org.freedesktop.secrets, org.gnome.SessionManager, org.kde.kwalletd5,
+        org.kde.kwalletd6
+    [3] org.mpris.MediaPlayer2.chromium.*
+    [4] org.bluez, org.freedesktop.Avahi, org.freedesktop.UPower
+
+
+        ID                                    Branch         Op         Remote          Download
+ 1. [✓] org.chromium.Chromium.Codecs          stable         i          flathub           2.3 kB / 973.7 kB
+ 2. [✗] org.chromium.Chromium.Locale          stable         i          flathub           1.0 kB / 192.3 kB
+ 3. [✗] org.chromium.Chromium                 stable         i          flathub         139.0 MB / 150.3 MB
+
+Warning: While pulling runtime/org.chromium.Chromium.Locale/x86_64/stable from remote flathub: Commit 3f259908adf3cf50fbde5b7168789a43b8a0f6b127c2ab08ca7cc2d9889db7eb: Commit has collection ID ‘org.flathub.Stable’ in collection binding metadata, while the remote it came from has collection ID ‘org.chromium.Chromium’
+error: Failed to install org.chromium.Chromium: While pulling app/org.chromium.Chromium/x86_64/stable from remote flathub: Commit 9ebd025b873cb07f51ad275bd105c7bbc9ece2eedff36d1c695f5c65e63ab455: Commit has collection ID ‘org.flathub.Stable’ in collection binding metadata, while the remote it came from has collection ID ‘org.chromium.Chromium’
+
+</code></pre>
+</details>
+<p>UPDATE:</p>
+<p>OK, my bad. Omitted <code>flathub</code> after <code>install</code>. However, still receive a warning I don’t understand:</p>
+<details>
+<summary>
+warning</summary>
+<pre><code class="lang-auto">Warning: While pulling runtime/org.chromium.Chromium.Locale/x86_64/stable from remote flathub: Commit 3f259908adf3cf50fbde5b7168789a43b8a0f6b127c2ab08ca7cc2d9889db7eb: Commit has collection ID ‘org.flathub.Stable’ in collection binding metadata, while the remote it came from has collection ID ‘org.chromium.Chromium’
+Installation complete.
+
+</code></pre>
+</details>
+<p>WORKAROUND</p>
+<p>Lacking alternatives, I tried the following:</p>
+<p>Deleted <code>/var/lib/flatpak/app/org.chromium.Chromium</code> on the Host. Copied the same directory from the VM to the Host. It worked! Chromium v134 has returned.</p>
+<p>If anyone can answer my original question, I would prefer to do it the official way…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 19, 2025 2:52 PM">
+            <time itemprop="datePublished" datetime="2025-05-19 14:52:56 +0000">May 19, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="claytoncarney" data-post="1" data-topic="9642">
+<div class="title">
+<div class="quote-controls"></div>
+claytoncarney:</div>
+<blockquote>
+<p>I lost the flatpak install of Chromium v134 (the last one to support manifest v2)</p>
+</blockquote>
+</aside>
+<p>Then use Firefox. Because that version of Chrome will not be updated (therefor no security updates)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 20, 2025 6:23 PM">
+            <time itemprop="datePublished" datetime="2025-05-20 18:23:44 +0000">May 20, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To your initial question: Presumably because you didn’t provide the correct repository path (which resides in <strong>.ostree/repo</strong>). As described in the documentation:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flatpak.org/en/latest/usb-drives.html">
+  <header class="source">
+      <img src="/uploads/original/2X/d/d071f3b774076ad3d17e1025581cbc0c5f5b5cdb.png" class="site-icon" data-dominant-color="4A90D9" width="180" height="180">
+
+      <a href="https://docs.flatpak.org/en/latest/usb-drives.html" target="_blank" rel="noopener nofollow ugc">Flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/360;"><img src="/uploads/optimized/2X/b/b0b778dfbe5af543c7037a5bc4f2fe9ca951e9db_2_690x361.png" class="thumbnail" data-dominant-color="F6F6F7" width="690" height="361"></div>
+
+<h3><a href="https://docs.flatpak.org/en/latest/usb-drives.html" target="_blank" rel="noopener nofollow ugc">USB Drives</a></h3>
+
+  <p>One can distribute flatpaks along with their dependencies on USB drives (or network shares, etc.) which is especially helpful in situations where Internet access is limited or non-existent. For off...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>$ flatpak create-usb <strong>/media/user/FLATPAKS</strong> org.gnome.gedit</p>
+</blockquote>
+<blockquote>
+<p>$ flatpak install <strong>–sideload-repo=/media/user/FLATPAKS/.ostree/repo</strong> flathub org.gnome.gedit</p>
+</blockquote>
+<p>Or in your case:</p>
+<blockquote>
+<p>flatpak install --no-pull --no-deploy --no-related --no-deps --no-auto-pin --no-static-deltas --reinstall <strong>–sideload-repo=~/dookie/.ostree/repo</strong> org.chromium.Chromium</p>
+</blockquote>
+<hr>
+<p>Another note: Do these options work together?</p>
+<pre><code>   --no-deploy
+       Download the latest version, but don't deploy it.
+
+   --no-pull
+       Don't download the latest version, deploy whatever is locally available.
+</code></pre>
+<hr>
+<p>And as was said: Don’t use an outdated web browser.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

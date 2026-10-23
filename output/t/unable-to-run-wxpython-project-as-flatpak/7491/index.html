@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unable to run wxPython project as Flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Unable to run wxPython project as Flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Unable to run wxPython project as Flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 13, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 13, 2024 5:24 PM">
+            <time itemprop="datePublished" datetime="2024-08-13 17:24:17 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, despite being flagged as spam, I was able to resolve the issue with PyYAML preventing the Amulet Flatpak project from being built, but now I have another problem: When loading a Minecraft world in the 3D editor (which is rendered on the canvas created by wxPython), it crashes. Since pastebin links get me flagged for spam, I’ll copy the error here:</p>
+<pre><code class="lang-auto">INFO - PyMCTranslate Version 291
+Gtk-Message: 13:20:08.646: Failed to load module "xapp-gtk3-module"
+INFO - Loading level /home/evilsupahfly/.minecraft/saves/Otherwhere
+INFO - Loading level /home/evilsupahfly/.minecraft/saves/Otherwhere
+CRITICAL - NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+CRITICAL - NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+CRITICAL - NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+During handling of the above exception, another exception occurred:
+
+NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+CRITICAL - NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+During handling of the above exception, another exception occurred:
+
+NotImplementedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/framework/pages/world_page.py", line 178, in _enable_page
+    self.GetPage(page).enable()
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/edit.py", line 69, in enable
+    self._canvas = EditCanvas(self, self._world)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/edit_canvas.py", line 150, in __init__
+    super().__init__(parent, world)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/programs/edit/api/canvas/base_edit_canvas.py", line 63, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/event_canvas.py", line 15, in __init__
+    super().__init__(parent)
+  File "/app/lib/python3.11/site-packages/amulet_map_editor/api/opengl/canvas/canvas.py", line 41, in __init__
+    display_attributes = GLAttributes()
+                         ^^^^^^^^^^^^^^
+SystemError: &lt;class 'wx._glcanvas.GLAttributes'&gt; returned a result with an exception set
+
+
+(amulet_map_editor:2): GLib-GObject-CRITICAL **: 13:20:40.497: ../gobject/gsignal.c:2778: instance '0x65340a9834c0' has no handler with id '3836'
+</code></pre>
+<p>Specifics, in case somebody needs to know:</p>
+<pre><code class="lang-auto">runtime-extensions:
+  - org.freedesktop.Platform.GL.default
+
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+</code></pre>
+<p>TLDR; I can load the app just fine but it crashes when attempting to render a Minecraft world in the editor.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 14, 2024 3:31 AM">
+            <time itemprop="datePublished" datetime="2024-08-14 03:31:50 +0000">Aug 14, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>what is that runtime extension? and what part of the documentation said to add it? (so that we can fix it)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 14, 2024 2:46 PM">
+            <time itemprop="datePublished" datetime="2024-08-14 14:46:55 +0000">Aug 14, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can’t find the post now, but are you saying that just adding <code>--device=dri</code> is enough? I don’t need <code>Platform.GL.default</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 14, 2024 2:51 PM">
+            <time itemprop="datePublished" datetime="2024-08-14 14:51:05 +0000">Aug 14, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Now that I think about it, it could have been an external site.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

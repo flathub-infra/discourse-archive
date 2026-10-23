@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translating Changelog? Validation Error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Translating Changelog? Validation Error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Translating Changelog? Validation Error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 1, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nicco Kunzmann</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 1, 2024 9:43 PM">
+            <time itemprop="datePublished" datetime="2024-04-01 21:43:30 +0000">Apr 1, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am wondering if the data of the changelog can actually be translated.</p>
+<p>When I use this description in the release, I get an error:</p>
+<pre><code class="lang-auto">    &lt;release version='1.0.1' date='2024-03-25'&gt;
+      &lt;url type='details'&gt;https://github.com/niccokunzmann/open_chakra_toning/releases/tag/v1.0.1&lt;/url&gt;
+      &lt;description xml:lang='de'&gt;
+        &lt;p&gt;Erste Version&lt;/p&gt;
+      &lt;/description&gt;
+      &lt;description &gt;
+        &lt;ul&gt;
+        &lt;li&gt;Release initial version&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/description&gt;
+    &lt;/release&gt;
+</code></pre>
+<p>Error:</p>
+<pre><code class="lang-auto">"appstream": [
+        "E: eu.quelltext.open_chakra_toning:121: metainfo-localized-description-tag description"
+    ],
+    "message": "Please consult the documentation at https://docs.flathub.org/docs/for-app-authors/linter"
+
+</code></pre>
+<p>Is it possible to translate the changelog at the moment?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nicco Kunzmann</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 1, 2024 9:47 PM">
+            <time itemprop="datePublished" datetime="2024-04-01 21:47:32 +0000">Apr 1, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I found the answer: It seems that only the <code>&lt;li&gt;</code> and <code>&lt;p&gt;</code> tags can carry the langauge.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description">
+  <header class="source">
+
+      <a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description" target="_blank" rel="noopener nofollow ugc">freedesktop.org</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description" target="_blank" rel="noopener nofollow ugc">Upstream Metadata | AppStream | AppStream 1.0</a></h3>
+
+  <p>AppStream allows upstream projects to define metadata about the components they provide using small XML files, metainfo files, which get installed into locations on the client system and are used by distribuors to enhance their metadata. A component...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

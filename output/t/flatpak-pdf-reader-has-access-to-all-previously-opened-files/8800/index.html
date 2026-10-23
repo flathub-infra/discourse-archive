@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak pdf reader has access to all previously opened files - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak pdf reader has access to all previously opened files</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak pdf reader has access to all previously opened files</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 28, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jack_l2</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 28, 2025 10:26 PM">
+            <time itemprop="datePublished" datetime="2025-01-28 22:26:11 +0000">Jan 28, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m a user, not a developer, and I’m trying to use flatpak apps for better security.  This includes, for example, firefox and okular (a KDE pdf reader), that I’ve locked down in flatpak.  But I have an issue with how okular in flatpak is apparently able to access (and likely modify) any past file it has visited and I have been unable to find a way to roll back that access.  I’m using Kubuntu 24.04.1</p>
+<p>If I run the following command, I can see all files I have so far opened in flatpak’s okular:  ls -lR /run/user/1000/doc/by-app/org.kde.okular/* .  The same is true in “flatpak run --command=sh org.kde.okular” when I run ls -lR /run/user/1000/doc/* .</p>
+<p>In the event that there is malware in a pdf I’m using in okular, I don’t want that malware to have access to all these pdf’s because some of them contain personal information.  However, if I try to erase anything in either /run/user/1000/doc or in /run/user/1000/doc/by-app/org.kde.okular, it also erases the file on my host filesystem (aka home directory / subdirectories).  Were it not for a backup, I’d now be missing a half dozen pdfs.  Restarting my computer does nothing–the files are still there.</p>
+<p>ChatGPT seems to think that what I’m experiencing is a problem with flatpak security–namely that flatpak okular seems to have direct access to files on my filesystem.  I don’t know that that’s accurate, but it is concerning.</p>
+<p>Is there some way for me to remove previously opened files from access by flatpak okular, without erasing the files from my home directory?  Is flatpak’s apparent direct access to my files a security issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 28, 2025 11:16 PM">
+            <time itemprop="datePublished" datetime="2025-01-28 23:16:16 +0000">Jan 28, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, selecting a file using the file chooser portal provides the app access to that file persistently because the app may need it again.</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/xdg-desktop-portal/issues/1349">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/1349" target="_blank" rel="noopener">github.com/flatpak/xdg-desktop-portal</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/1349" target="_blank" rel="noopener">Once a file is opened with FileChooser, the permissions remain permanently in flatpak</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2024-04-24" data-time="13:16:27" data-timezone="UTC">01:16PM - 24 Apr 24 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/gentoo-root" target="_blank" rel="noopener">
+          <img alt="gentoo-root" src="/uploads/original/2X/f/f24eda7f7e197f4993a3a19044704ecc89554217.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="C8D8A1">
+          gentoo-root
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          bug
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">### Operating System
+
+Arch Linux
+
+### XDG Desktop Portal version
+
+1.18
+
+### XDG <span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">Desktop Portal version (Other)
+
+1.18.2
+
+### Desktop Environment
+
+GNOME
+
+### Desktop Environment (Other)
+
+_No response_
+
+### Expected Behavior
+
+The documents entries should be removed from `flatpak permission-show ...` at some point, for example, on application restart, or (better) when the application is done working with the file.
+
+### Current Behavior
+
+Once a file is opened with FileChooser in a flatpak application, that application gets permanent permissions to access that file. This poses a security risk (the application can access the file when the user doesn't expect it) and a privacy risk (it's possible to dump a full history of all opened file names, even when those files no longer exist; clearing this "history" isn't obvious).
+
+### Steps to Reproduce
+
+1. Using Telegram installed with Flatpak, send a file to someone.
+2. Observe the file added to `flatpak permission-show -v org.telegram.desktop`
+3. The permission is never removed from that list anymore.
+
+
+### Anything else we should know?
+
+I saw https://github.com/flatpak/xdg-desktop-portal/issues/689 and https://github.com/flatpak/flatpak/issues/4303, but those seem to refer to the FDs not being released, while I'm reporting flatpak permissions not being removed.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>The document portal does has a <code>persistent</code> option, but the file chooser portal always enables it. By contrast, opening a file from the file manager will go through the app’s .desktop file and Flatpak’s <code>--file-forwarding</code> feature which has persistence disabled. That means the permission is never written to disk and is lost when your session is restarted.</p>
+<p>You should be able to clear all of an app’s permissions with <code>flatpak permission-reset</code>, but that <a href="https://github.com/flatpak/xdg-desktop-portal/issues/197">doesn’t work properly</a> for the document store. Instead, you can use the <code>flatpak documents</code> and <code>flatpak document-unexport</code> commands.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jack_l2</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 29, 2025 6:49 PM">
+            <time itemprop="datePublished" datetime="2025-01-29 18:49:18 +0000">Jan 29, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks so much!  I was able to use flatpak document-unexport to remove access to the handful of documents I had used okular on without permanently erasing them, which was very helpful.  Of course, doing this one document at a time isn’t esp. efficient.  Would be ideal if something like permission-reset worked, but it doesn’t for me–as you said.  The trick of opening a file from the file manager is a useful one.  I’m still waiting to see that it is removed from access.  Perhaps after I restart my system (which could be a while because I use hibernation).</p>
+<p>I looked at the earlier discussion, I’m definitely with the folks who suggest that there should be access to a limited number of recent files rather than permanent access to all previously opened pdf’s.  I’d add a time limit as well–a week or two–and make sure there is a command to revoke all previous access grants.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&quot;File Missing&quot; Error in Sandbox Only - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">&quot;File Missing&quot; Error in Sandbox Only</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">&quot;File Missing&quot; Error in Sandbox Only</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 2, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 2, 2025 1:49 AM">
+            <time itemprop="datePublished" datetime="2025-09-02 01:49:04 +0000">Sep 2, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>First, here’s the core of my manifest showing everything the flatpak should have access to:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">id: io.github.evilsupahfly.amulet_flatpak
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: amulet_map_editor
+
+finish-args:
+  - --device=all
+  - --device=dri
+  - --allow=devel
+  - --allow=per-app-dev-shm
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=host
+  - --filesystem=host-os
+  - --filesystem=home
+  - --filesystem=/tmp
+  - --filesystem=xdg-config/AmuletMapEditor:create
+  - --filesystem=xdg-cache/AmuletMapEditor:create
+  - --filesystem=xdg-run/gvfs
+  - --filesystem=xdg-run/gvfsd
+  - --talk-name=org.freedesktop.Notifications
+  - --env=LIBGL_ALWAYS_SOFTWARE="0"
+  - --env=OPENGL_VERSION=3.3
+  - --env=OPENGL_LIB=/usr/lib/x86_64-linux-gnu/libGL.so
+  - --env=PS1=[ AMULET_FLATPAK &gt; \w ] &gt;
+  - --env=PYTHONPATH=/app/lib/python3.12
+# Uncomment the following options to increase debug output verbosity in the terminal
+#  - --env=PYTHONDEBUG=3
+#  - --env=PYTHONVERBOSE=3
+#  - --env=PYTHONTRACEMALLOC=10
+#  - --env=G_MESSAGES_DEBUG=all
+
+modules:
+  - shared-modules/libjpeg8/libjpeg8.json
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
+  - pip-gen.yaml
+  - flatpak-debug-build.yaml
+  - name: metainfo-xml
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.metainfo.xml
+  - name: metainfo-desktop
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.evilsupahfly.amulet_flatpak.desktop -t ${FLATPAK_DEST}/share/applications/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.desktop
+  - name: metainfo-ico
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.png
+  - name: amulet-debug
+    buildsystem: simple
+    build-commands:
+      - install -Dm555 debug.sh -t ${FLATPAK_DEST}/bin/
+    sources:
+      - type: file
+        path: debug.sh
+</code></pre>
+<p>In theory, this should give me unfettered (or as close as possible) access to HOME and the XDG folders. Now, here’s the background. I am (still) attempting to turn the Python-built Amulet Map Editor into a Flatpak app, but I’m encountering issues with bundled files. When I install Amulet into a Python VENV, it works fine. But when I run the flatpak, I get errors:</p>
+<pre data-code-wrap="python"><code class="lang-python">2025-09-01 19:11:37.261 | DEBUG    | resource_pack_manager.py:247 | get_texture_path() | [PROBE:TEXTURE] Called with ns=minecraft, rel=block/water
+2025-09-01 19:11:37.261 | DEBUG    | resource_pack_manager.py:258 | get_texture_path() | [TEXTURE FOUND - PRIMARY] ns=minecraft, rel=block/water, abs=/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png
+2025-09-01 19:11:37.262 | ERROR    | resource_pack_manager.py:303 | _get_model() | Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+Call stack:
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/programs/edit/api/chunk_generator.py", line 32, in _generate_chunks
+    self.thread_action()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/thread_generator.py", line 48, in thread_action
+    self._objects[self._obj_index].thread_action()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/level.py", line 168, in thread_action
+    chunk.create_geometry()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/chunk/chunk.py", line 185, in create_geometry
+    chunk_verts, chunk_verts_translucent = self._create_lod0_multi(
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/chunk/chunk_builder.py", line 73, in _create_lod0_multi
+    return create_lod0_chunk(
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/resource_pack/resource_pack.py", line 203, in get_block_model
+    self._block_models[universal_block] = self._resource_pack.get_block_model(version_block)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/base/resource_pack_manager.py", line 74, in get_block_model
+    + tuple(self._get_model(block_) for block_ in block.extra_blocks)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/base/resource_pack_manager.py", line 74, in &lt;genexpr&gt;
+    + tuple(self._get_model(block_) for block_ in block.extra_blocks)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 303, in _get_model
+    log.error(f"Failed to load block model {model}\n{e}\nCall stack:\n" + "".join(traceback.format_stack(limit=10)))
+</code></pre>
+<p>The files are all there. I can run a shell prompt inside my flatpak, and list the files right where it says they’re missing. All these .png and .json files, and all the subfolders they reside in under the folder <code>java_vanilla_fix</code> are <strong>ALL</strong> bundled with the “minecraft_resource_pack” package and they’re all present in the source wheel used in the flatpak construction. The <code>DEBUG</code> output proves this:</p>
+<pre><code class="lang-auto">2025-09-01 19:11:33.385 | DEBUG    | resource_pack_manager.py:235 | _load_iter() | [SANITY:PRIMARY] {('minecraft', 'block/water_still'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water_still.png', True), ('minecraft', 'block/lava_flow'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava_flow.png', True), ('minecraft', 'block/lava_still'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava_still.png', True), ('minecraft', 'block/water_flow'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water_flow.png', True), ('minecraft', 'block/water_overlay'): ('/home/seann/.var/app/io.github.evilsupahfly.amulet_flatpak/cache/AmuletMapEditor/resource_packs/java/vanilla/assets/minecraft/textures/block/water_overlay.png', True), ('minecraft', 'block/lava'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png', True), ('minecraft', 'block/water'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png', True)}
+2025-09-01 19:11:33.385 | DEBUG    | resource_pack_manager.py:236 | _load_iter() | [SANITY:BACKUP ] {('minecraft', 'block/water_still'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water_still.png', True), ('minecraft', 'block/lava_flow'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava_flow.png', True), ('minecraft', 'block/lava_still'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava_still.png', True), ('minecraft', 'block/water_flow'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water_flow.png', True), ('minecraft', 'block/water_overlay'): ('/home/seann/.var/app/io.github.evilsupahfly.amulet_flatpak/cache/AmuletMapEditor/resource_packs/java/vanilla/assets/minecraft/textures/block/water_overlay.png', True), ('minecraft', 'block/lava'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png', True), ('minecraft', 'block/water'): ('/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png', True)}
+</code></pre>
+<p>Also, Amulet is able to download the minecraft version-secific textures from the Minecraft launcher website after loading a Minecraft save from the user’s <code>$HOME/.minecraft/saves</code> folder, and save them to the XDG-defined cache, but it fails to read the files bundled with its own component, <code>minecraft_model_reader</code>.</p>
+<p>To get around this, I figured I would simply have the bundled texture folder copied to cache, and use them from that location instead, so I modified the <code>minecraft_model_reader</code> module to do just this, and it still failed. Inside Amulet, the paths are defined as follows:</p>
+<pre data-code-wrap="python"><code class="lang-python">data_dir = platformdirs.user_data_dir("AmuletMapEditor", "AmuletTeam")
+os.environ.setdefault("DATA_DIR", data_dir)
+config_dir = platformdirs.user_config_dir("AmuletMapEditor", "AmuletTeam")
+if config_dir == data_dir:
+    config_dir = os.path.join(data_dir, "Config")
+os.environ.setdefault("CONFIG_DIR", config_dir)
+os.environ.setdefault("CACHE_DIR", platformdirs.user_cache_dir("AmuletMapEditor", "AmuletTeam"))
+os.environ.setdefault("LOG_DIR", platformdirs.user_log_dir("AmuletMapEditor", "AmuletTeam"))
+</code></pre>
+<p>So… Can somebody please explain to me why this works fine when I install it into a VENV with PIP but fails when the exact same code is built into a flatpak?</p>
+<p>The <code>java_vanilla_fix</code> folder bundled with <code>minecraft_model_reader</code> contains about 400 files, while the primary cache contains about 9,900 - am I up against a <code>ulimit</code> cap or limit, and if so, can I extend that ceiling within the flatpak or am I bound by the <code>ulimit</code> defined by the host system? If it’s not <code>ulimit</code>, what other reason is there for the app to successfully locate the files, then suddenly say it can’t find them?</p>
+<p>The Python code itself is sound, because there are no issues at all when installed inside a VENV. And while I suppose everybody could just do that, I figured making it into a flatpak would be easier for novice users who might not understand the complexities of creating and maintaining a Python virtual environment.</p>
+<p>If you need anything clarified or want to see anything, the entire flatpak project is located <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc">in my GIT repo</a>. The sum total of this project is all there: all the YAML/JSON manifest files, all the packages I modified for debug logging, even the shell scripts I run locally to automate everything so I don’t have to keep entering commands each step of the way. Literally <strong>EVERYTHING</strong>.</p>
+<p>Amulet is a fantastic tool, but it’s not very effective with missing textures so I would love to get to the bottom of this!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 2, 2025 6:56 AM">
+            <time itemprop="datePublished" datetime="2025-09-02 06:56:07 +0000">Sep 2, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, about this:</p>
+<pre><code class="lang-auto">  - --filesystem=host
+  - --filesystem=host-os
+  - --filesystem=home
+  - --filesystem=/tmp
+  - --filesystem=xdg-config/AmuletMapEditor:create
+  - --filesystem=xdg-cache/AmuletMapEditor:create
+  - --filesystem=xdg-run/gvfs
+  - --filesystem=xdg-run/gvfsd
+</code></pre>
+<p>You really, really don’t need this and shouldn’t do this. Why not a simple <code>--filesystem=~/.minecraft</code>, if you need the <code>.minecraft</code> folder?</p>
+<p>As for your cache directory:<br>
+Flatpak uses a custom location for data, cache and config folders. In your case, you would find them under <code>~/.var/app/io.github.evilsupahfly.amulet_flatpak</code>. It could just be that you have a mismatch here when writing and reading, so the file lands in a place where it isn’t expected.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 3, 2025 4:05 AM">
+            <time itemprop="datePublished" datetime="2025-09-03 04:05:57 +0000">Sep 3, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, initially I just had</p>
+<pre><code class="lang-auto">- --filesystem=home
+</code></pre>
+<p>which would allow access to ~/.minecraft by default, as well as non-standard locations, accounting for third party launchers, modded installations, etc. The problem is that the missing textures have been a problem since day 1 and all those extras got added during troubleshooting.</p>
+<p>The app-specific locations for cache, config, and logging all work fine inside the flatpak sandbox, both before and after the addition of these extra lines but the problem files aren’t in the cache - they’re bundled with one of the installed packages. The failures come from trying to read the files in <code>/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix</code>. As I explained above, the log shows that Python acknowledges the files are where they’re supposed to be but something still causes Amulet to trip up:</p>
+<pre><code class="lang-auto">2025-09-01 19:11:37.261 | DEBUG    | resource_pack_manager.py:247 | get_texture_path() | [PROBE:TEXTURE] Called with ns=minecraft, rel=block/water
+2025-09-01 19:11:37.261 | DEBUG    | resource_pack_manager.py:258 | get_texture_path() | [TEXTURE FOUND - PRIMARY] ns=minecraft, rel=block/water, abs=/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png
+2025-09-01 19:11:37.262 | ERROR    | resource_pack_manager.py:303 | _get_model() | Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+Call stack:
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/programs/edit/api/chunk_generator.py", line 32, in _generate_chunks
+    self.thread_action()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/thread_generator.py", line 48, in thread_action
+    self._objects[self._obj_index].thread_action()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/level.py", line 168, in thread_action
+    chunk.create_geometry()
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/chunk/chunk.py", line 185, in create_geometry
+    chunk_verts, chunk_verts_translucent = self._create_lod0_multi(
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/mesh/level/chunk/chunk_builder.py", line 73, in _create_lod0_multi
+    return create_lod0_chunk(
+  File "/app/lib/python3.12/site-packages/amulet_map_editor/api/opengl/resource_pack/resource_pack.py", line 203, in get_block_model
+    self._block_models[universal_block] = self._resource_pack.get_block_model(version_block)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/base/resource_pack_manager.py", line 74, in get_block_model
+    + tuple(self._get_model(block_) for block_ in block.extra_blocks)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/base/resource_pack_manager.py", line 74, in &lt;genexpr&gt;
+    + tuple(self._get_model(block_) for block_ in block.extra_blocks)
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 303, in _get_model
+    log.error(f"Failed to load block model {model}\n{e}\nCall stack:\n" + "".join(traceback.format_stack(limit=10)))
+</code></pre>
+<p>The Python 3.12 interpreter running in the flatpak sandbox confirms that the “missing” files do in fact exist, and they are located exactly where they should be. However, some fundamental difference between the flatpak sandbox and a Python 3.12 VENV running the same packages from the same local install causes these files to fail after being located by Python and before being loaded into Pillow.</p>
+<p>The textures downloaded to the cache from the Minecraft site all work just fine, although strangely enough, copying the files from the bundled location to the cache also failed to resolve the issue. The problem is that this only happens in the flatpak build. I can run this same build in a VENV with all the same packages and it runs just fine. Logging hasn’t offered any new insights because Python itself tells me the files are there, then promptly fails to load them without telling me why.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

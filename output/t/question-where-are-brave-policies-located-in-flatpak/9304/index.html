@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Question: Where are Brave policies located in Flatpak? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Question: Where are Brave policies located in Flatpak?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Question: Where are Brave policies located in Flatpak?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 4, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kees1958</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 4, 2025 7:51 AM">
+            <time itemprop="datePublished" datetime="2025-04-04 07:51:44 +0000">Apr 4, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, Googled and tried following some posted suggestions for Chromium policies in Linux, but when I test with below json I can’t get it to work with /etc/opt/brave/policies/managed</p>
+<p>{<br>
+“BraveShieldsDisabledForUrls”: [<br>
+“<a href="https://malwaretips.com/" rel="noopener nofollow ugc">https://malwaretips.com</a>”<br>
+]<br>
+}</p>
+<p>I tried looking in<br>
+/home/kees/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser and<br>
+/var/lib/flatpak/app/com.brave.Browser</p>
+<p>But have no idea where policies are stored</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 4, 2025 9:07 AM">
+            <time itemprop="datePublished" datetime="2025-04-04 09:07:21 +0000">Apr 4, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The folder <code>/etc</code> is not readable inside the Flatpak sandbox, so the file won’t be read.</p>
+<p>Also, Chromium (and Brave) policies are designed to set settings for many deployments of an app, often in an enterprise setting.</p>
+<p>If you only wish to disable Shields for a page on your personal computer, you can use the UI of the browser:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings">
+  <header class="source">
+      
+
+      <a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc">Brave Help Center</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc">How do I configure global and site-specific Shields settings?</a></h3>
+
+  <p>Shields protects you from tracking on the web but can sometimes cause sites to break. If your general Shields settings break a site, you can use the Shields panel to turn Shields off for that site,...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kees1958</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 4, 2025 3:17 PM">
+            <time itemprop="datePublished" datetime="2025-04-04 15:17:19 +0000">Apr 4, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, I don’t wat to disable shields for a website. Figured out this was the easiest way to check whether these policies are active <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 4, 2025 4:39 PM">
+            <time itemprop="datePublished" datetime="2025-04-04 16:39:55 +0000">Apr 4, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, if you only want to check them, according to <a href="https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:" rel="noopener nofollow ugc">https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:</a></p>
+<blockquote>
+<p>Additionally, the <code>brave://policy</code> page is a great place to see what policies are in effect, so you know that they are being enforced.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kees1958</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 5, 2025 8:23 AM">
+            <time itemprop="datePublished" datetime="2025-04-05 08:23:35 +0000">Apr 5, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes I know that, but when Brave runs in Flatpak these policies are located elsewhere because Brave is sandboxed. I want to know the policy json location for Brave running in Flatpak sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 5, 2025 12:07 PM">
+            <time itemprop="datePublished" datetime="2025-04-05 12:07:09 +0000">Apr 5, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, seems I misunderstood you a bit then.</p>
+<p>I have looked a bit at this again, and it seems I have a few corrections to make.</p>
+<p>The proper solution would be to have a extension point for policies. As an example, the <a href="https://github.com/flathub/org.chromium.Chromium" rel="noopener nofollow ugc">Chromium Flatpak</a> offers an extension point. A extension containing the policy can be created and installed. This would be picked up by Chromium then.</p>
+<p>However, Brave currently does not provide a extension point.</p>
+<p>But, as it turns out, the <a href="https://github.com/flathub/com.brave.Browser/blob/master/brave.sh" rel="noopener nofollow ugc">launch script</a> links the policy folder from the host <code>/etc</code> at startup, so it can actually read the policies in <code>/etc/brave/policies/</code>. This is possible as Brave sets the <code>filesystem=host-etc</code> permission, which gives it read access to the <code>/etc</code> folder.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kees1958</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 5, 2025 7:12 PM">
+            <time itemprop="datePublished" datetime="2025-04-05 19:12:22 +0000">Apr 5, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I will Brave flatpack read access to  /etc/brave/policies/ with flatseal and try it again. Will report back whether that worked. Thanks for your time</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

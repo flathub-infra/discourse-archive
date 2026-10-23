@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to get rsync to work for my flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to get rsync to work for my flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to get rsync to work for my flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 13, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Niv Mordechai Gal Waizer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 13, 2022 12:01 PM">
+            <time itemprop="datePublished" datetime="2022-06-13 12:01:45 +0000">Jun 13, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,<br>
+I am using the Goland flatpak, and in it I want to invoke the rsync installed in my system.<br>
+This fails due to a missing shared library:</p>
+<pre><code class="lang-auto">$ /var/run/host/usr/bin/ldd /var/run/host/usr/bin/rsync
+        linux-vdso.so.1 (0x00007ffd750cc000)
+        libattr.so.1 =&gt; /usr/lib/x86_64-linux-gnu/libattr.so.1 (0x00007f3cd7c4e000)
+        libacl.so.1 =&gt; /usr/lib/x86_64-linux-gnu/libacl.so.1 (0x00007f3cd7c44000)
+        libpopt.so.0 =&gt; not found
+        libc.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007f3cd7a64000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f3cd7ef4000)
+</code></pre>
+<p>If I replace this rsync binary with one build statically , it works fine.</p>
+<p>Here is the yaml used by the flatpak, no special access to lib files is granted:</p>
+<pre><code class="lang-auto">app-id: com.jetbrains.GoLand
+runtime: org.freedesktop.Sdk
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: goland.sh
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --share=network
+  - --socket=pulseaudio
+  - --filesystem=host
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --filesystem=xdg-run/keyring
+  - --filesystem=xdg-run/gnupg:ro
+  - --device=all
+  - --env=GOLAND_JDK=${FLATPAK_DEST}/goland/jbr/
+  - --allow=devel
+modules:
+  - name: goland
+    buildsystem: simple
+    build-commands:
+      - mkdir goland
+      - tar xzfv goland.tar.gz --directory=${FLATPAK_DEST}/ --strip-components=1
+      - install -T -Dm644 ${FLATPAK_DEST}/bin/goland.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 ${FLATPAK_ID}.desktop
+      - install -t ${FLATPAK_DEST}/share/metainfo/ -Dm644 ${FLATPAK_ID}.metainfo.xml
+      - icon_in="${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg";
+        icon_out="${FLATPAK_ID}.png"; for s in {32,64,128,256,512}; do rsvg-convert
+        "${icon_in}" -w "${s}" -h "${s}" -a -f png -o "${icon_out}"; install -p -Dm644
+        "${icon_out}" -t "${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/"; done;
+    sources:
+      - type: file
+        url: https://download.jetbrains.com/go/goland-2022.1.2.tar.gz
+        sha256: eb1a09c7a94f15d19786266694482df273307e1f36d900a894472cdde67c66ea
+        x-checker-data:
+          type: jetbrains
+          code: GO
+        dest-filename: goland.tar.gz
+      - type: file
+        path: com.jetbrains.GoLand.metainfo.xml
+      - type: file
+        path: com.jetbrains.GoLand.desktop
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 14, 2022 4:26 PM">
+            <time itemprop="datePublished" datetime="2022-06-14 16:26:32 +0000">Jun 14, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s not supposed to work. This is not what the <code>filesystem=host</code> is for.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

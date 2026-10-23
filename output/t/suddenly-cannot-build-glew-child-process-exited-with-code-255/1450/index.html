@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suddenly cannot build GLEW. Child process exited with code 255 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Suddenly cannot build GLEW. Child process exited with code 255</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Suddenly cannot build GLEW. Child process exited with code 255</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 22, 2021</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 22, 2021 9:12 AM">
+            <time itemprop="datePublished" datetime="2021-05-22 09:12:42 +0000">May 22, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have been building Flatpak for a while. But suddenly, any package with GLEW fail to build on my machine, flathub bot did it just fine.<br>
+I even tried re-installing my openSUSE Tumbleweed KDE.</p>
+<blockquote>
+<h1>========================================================================<br>
+Building module glew in /home/kev/Desktop/Software/Flatpak/org.gazebosim.Gazebo/flathub/.flatpak-builder/build/glew-2</h1>
+<p>sed <br>
+-e “s|@prefix@|/app|g” <br>
+-e “s|@libdir@|/app/lib|g” <br>
+-e “s|@exec_prefix@|/app/bin|g” <br>
+-e “s|@includedir@|/app/include/GL|g” <br>
+-e “s|@version@|2.2.0|g” <br>
+-e “s|@cflags@||g” <br>
+-e “s|@libname@|GLEW|g” <br>
+-e “s|@libgl@|-lGL -lX11|g” <br>
+-e “s|@requireslib@|glu|g” <br>
+&lt; glew.pc.in &gt; glew.pc<br>
+cc -DGLEW_NO_GLU -DGLEW_BUILD -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC  -o tmp/linux/default/shared/glew.o -c src/glew.c<br>
+cc -DGLEW_NO_GLU -DGLEW_STATIC -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC  -o tmp/linux/default/static/glew.o -c src/glew.c<br>
+cc -DGLEW_NO_GLU -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC  -o tmp/linux/default/shared/visualinfo.o -c src/visualinfo.c<br>
+cc -DGLEW_NO_GLU -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC  -o tmp/linux/default/shared/glewinfo.o -c src/glewinfo.c<br>
+ar rv lib/libGLEW.a tmp/linux/default/static/glew.o<br>
+cc -shared -Wl,-soname=libGLEW.so.2.2 -o lib/libGLEW.so.2.2.0 tmp/linux/default/shared/glew.o -L/app/lib -Wl,-z,relro,-z,now -Wl,–as-needed  -lGL -lX11<br>
+ar: creating lib/libGLEW.a<br>
+a - tmp/linux/default/static/glew.o<br>
+strip -x lib/libGLEW.a<br>
+ln -sf libGLEW.so.2.2.0 lib/libGLEW.so.2.2<br>
+ln -sf libGLEW.so.2.2.0 lib/libGLEW.so<br>
+strip -x lib/libGLEW.so.2.2.0<br>
+cc -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC -o bin/glewinfo tmp/linux/default/shared/glewinfo.o -Llib -Wl,-Bdynamic -lGLEW -L/app/lib -Wl,-z,relro,-z,now -Wl,–as-needed  -lGL -lX11<br>
+cc -O2 -Wall -W -Wshadow -pedantic -Iinclude -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fPIC -o bin/visualinfo tmp/linux/default/shared/visualinfo.o -Llib -Wl,-Bdynamic -lGLEW -L/app/lib -Wl,-z,relro,-z,now -Wl,–as-needed  -lGL -lX11<br>
+strip -x bin/visualinfo<br>
+strip -x bin/glewinfo<br>
+install -d -m 0755 “/app/include/GL”<br>
+install -m 0644 include/GL/wglew.h “/app/include/GL/”<br>
+install -m 0644 include/GL/glew.h “/app/include/GL/”<br>
+install -m 0644 include/GL/glxew.h “/app/include/GL/”<br>
+sed <br>
+-e “s|@prefix@|/app|g” <br>
+-e “s|@libdir@|/app/lib|g” <br>
+-e “s|@exec_prefix@|/app/bin|g” <br>
+-e “s|@includedir@|/app/include/GL|g” <br>
+-e “s|@version@|2.2.0|g” <br>
+-e “s|@cflags@||g” <br>
+-e “s|@libname@|GLEW|g” <br>
+-e “s|@libgl@|-lGL -lX11|g” <br>
+-e “s|@requireslib@|glu|g” <br>
+&lt; glew.pc.in &gt; glew.pc<br>
+install -d -m 0755 “/app/lib”<br>
+install -m 0644 lib/libGLEW.so.2.2.0 “/app/lib/”<br>
+ln -sf libGLEW.so.2.2.0 “/app/lib/libGLEW.so.2.2”<br>
+ln -sf libGLEW.so.2.2.0 “/app/lib/libGLEW.so”<br>
+install -m 0644 lib/libGLEW.a “/app/lib/”<br>
+install -d -m 0755 “/app/lib/pkgconfig”<br>
+install -d -m 0755 “/app/lib/pkgconfig”<br>
+install -m 0644 glew.pc “/app/lib/pkgconfig/”<br>
+compressing debuginfo in: /home/kev/Desktop/Software/Flatpak/org.gazebosim.Gazebo/flathub/.flatpak-builder/rofiles/rofiles-wHh76G/files/lib/libGLEW.so.2.2.0<br>
+processing: /home/kev/Desktop/Software/Flatpak/org.gazebosim.Gazebo/flathub/.flatpak-builder/rofiles/rofiles-wHh76G/files/lib/libGLEW.so.2.2.0<br>
+Nothing to do.<br>
+Error: module glew: Child process exited with code 255</p>
+</blockquote>
+<p>Flatpak 1.11.1<br>
+flatpak-builder 1.0.12</p>
+<p>Operating System: openSUSE Tumbleweed 20210519<br>
+KDE Plasma Version: 5.21.5<br>
+KDE Frameworks Version: 5.82.0<br>
+Qt Version: 5.15.2<br>
+Kernel Version: 5.12.3-1-default<br>
+OS Type: 64-bit<br>
+Graphics Platform: X11<br>
+Processors: 8 × Intel® Core™ i7-3770 CPU @ 3.40GHz<br>
+Memory: 7.5 GiB of RAM<br>
+Graphics Processor: Mesa DRI Intel® HD Graphics 4000</p>
+<p>Any idea?<br>
+Thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Richard Giesige</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 24, 2021 2:30 AM">
+            <time itemprop="datePublished" datetime="2021-05-24 02:30:38 +0000">May 24, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Usually the error code 255 means that it is missing a file. So is module glew trying to call something that isn’t there?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 24, 2021 8:20 PM">
+            <time itemprop="datePublished" datetime="2021-05-24 20:20:21 +0000">May 24, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I believe GLEW is self-contain and don’t need anything else. This GLEW is from shared-modules.</p><aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/shared-modules" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/1X/39ee3a656976ef625eeff45c914072fd370bea3d_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/1X/39ee3a656976ef625eeff45c914072fd370bea3d_2_690x345.png, /uploads/optimized/1X/39ee3a656976ef625eeff45c914072fd370bea3d_2_1035x517.png 1.5x, /uploads/original/1X/39ee3a656976ef625eeff45c914072fd370bea3d.png 2x" data-small-upload="/uploads/optimized/1X/39ee3a656976ef625eeff45c914072fd370bea3d_2_10x10.png"></div>
+
+<h3><a href="https://github.com/flathub/shared-modules" target="_blank" rel="noopener nofollow ugc">flathub/shared-modules</a></h3>
+
+
+  <p><span class="label1">Common Flatpak modules that can be used as a git submodule</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 24, 2021 8:25 PM">
+            <time itemprop="datePublished" datetime="2021-05-24 20:25:38 +0000">May 24, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I use cmake for GLEW, now it work. Don’t know what wrong with make.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

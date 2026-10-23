@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can x-data-checker be used to detect a change in the sha256 binary? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Can x-data-checker be used to detect a change in the sha256 binary?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Can x-data-checker be used to detect a change in the sha256 binary?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 1, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 1, 2023 9:33 AM">
+            <time itemprop="datePublished" datetime="2023-02-01 09:33:33 +0000">Feb 1, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Upstream doesn’t provide version numbers on the webpage where the binaries are found (the webpage download link simply points to the latest build on their Gitlab CICD). Is there any way to use <code>x-data-checker</code> to simply check if the sha256 has changed, and if yes, update it?</p>
+<p>Here’s what I tried (it doesn’t work):</p>
+<pre><code class="lang-json">"type": "file",
+"url": "https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/artifacts/master/raw/Saradomin/2009scape-launcher-sc?job=pack_linux_sc",
+"sha256": "totallyOutdatedSha256",
+"only-arches": ["x86_64"],
+"dest-filename": "2009scape-launcher",
+"x-checker-data": {
+  "type": "archive",
+  "url": "https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/artifacts/master/raw/Saradomin/2009scape-launcher-sc?job=pack_linux_sc",
+}
+</code></pre>
+<p>Output is simply <code>src.manifest: Skipped check [x/y] file 2009scape/2009scape-launcher (from org._2009scape.Launcher.json)</code></p>
+<p>Is there an easy way to get this working, or alternatively am I going about it completely wrong?</p>
+<p>Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 1, 2023 9:44 AM">
+            <time itemprop="datePublished" datetime="2023-02-01 09:44:46 +0000">Feb 1, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Gitlab is smart. Despite the download URL being</p>
+<p><code>https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/artifacts/master/raw/Saradomin/2009scape-launcher-sc?job=pack_linux_sc</code></p>
+<p>Clicking it and checking the download URL in your browser download history shows the URL as:</p>
+<p><code>https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/3602367826/artifacts/raw/Saradomin/2009scape-launcher-sc</code></p>
+<p>So you can use the rotating-url type to get it to work:</p>
+<pre><code class="lang-json">"type": "file",
+"url": "https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/123123123/artifacts/raw/Saradomin/2009scape-launcher-arm-sc",
+"sha256": "outdatedSha",
+"only-arches": ["aarch64"],
+"dest-filename": "2009scape-launcher",
+"x-checker-data": {
+    "type": "rotating-url",
+    "url": "https://gitlab.com/2009scape/Saradomin-Launcher/-/jobs/artifacts/master/raw/Saradomin/2009scape-launcher-arm-sc?job=pack_linux_arm_sc"
+}
+</code></pre>
+<p><strong>This doesn’t solve the issue of non-Gitlab download links though (i.e. where the download link is straight to a file)</strong>. If anyone knows how to do that still, let me know!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

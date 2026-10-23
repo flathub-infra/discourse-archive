@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inhibit suspend with flatpak applications? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Inhibit suspend with flatpak applications?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Inhibit suspend with flatpak applications?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 27, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Rohr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 27, 2020 8:11 AM">
+            <time itemprop="datePublished" datetime="2020-12-27 08:11:23 +0000">Dec 27, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear all,<br>
+using the debian derivate Mobian on the Pinephone, I would like to be able to inhibit suspend for <a href="https://wiki.gnome.org/Apps/Podcasts" rel="noopener nofollow ugc">gnome-podcasts</a> which is available only as  a flatpak app. Because, be default, the phone goes into suspend after two minutes or so.<br>
+Wrapping it with gnome-session-inhibit does not work.<br>
+<a href="https://docs.flatpak.org/en/latest/desktop-integration.html?highlight=suspend#portals" rel="noopener nofollow ugc">The flatpak documentation says</a> that portals provide functions to allow apps to inhibit suspend. But I guess that’s what packagers / app developers have to implement. Or is there any way for a user to launch a flatpak app in such a way as to inhibit suspend?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 28, 2020 6:12 PM">
+            <time itemprop="datePublished" datetime="2020-12-28 18:12:37 +0000">Dec 28, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think what you want is D-Bus access for <code>org.freedesktop.ScreenSaver</code></p>
+<p>You can do that by allowing the D-Bus interface like VLC does:<br>
+</p><aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc">flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15</a></h4>
+<pre class="onebox"><code class="lang-json"><ol class="start lines" start="5" style="counter-reset: li-counter 4 ;">
+<li>"sdk": "org.kde.Sdk",</li><li>"command": "vlc",</li><li>"finish-args": [</li><li>  "--require-version=0.11.4",</li><li>  "--share=ipc",</li><li>  "--socket=x11",</li><li>  "--socket=pulseaudio",</li><li>  "--share=network",</li><li>  "--filesystem=host",</li><li>  "--talk-name=org.freedesktop.Notifications",</li><li class="selected">  "--talk-name=org.freedesktop.ScreenSaver",</li><li>  "--talk-name=org.freedesktop.secrets",</li><li>  "--talk-name=org.kde.kwalletd5",</li><li>  "--talk-name=org.kde.kwalletd",</li><li>  "--talk-name=org.mpris.MediaPlayer2.Player",</li><li>  "--own-name=org.mpris.MediaPlayer2.vlc",</li><li>  "--device=all",</li><li>  "--filesystem=xdg-run/gvfs"</li><li>],</li><li>"add-extensions": {</li><li>  "org.videolan.VLC.Plugin": {</li>
+</ol></code></pre>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Rohr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 28, 2020 6:26 PM">
+            <time itemprop="datePublished" datetime="2020-12-28 18:26:51 +0000">Dec 28, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks! That sounds like something the packager has to do, though. Plus of course, the program itself then has to use it.<br>
+BTW, for audio podcasts, it is not about the screensaver. The screen is supposed to turn itself off, just the device should not go into suspend</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 28, 2020 6:37 PM">
+            <time itemprop="datePublished" datetime="2020-12-28 18:37:35 +0000">Dec 28, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It seems that the problem is with the upstream application:</p>
+<p><a href="https://gitlab.gnome.org/World/podcasts/-/issues/189" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gitlab.gnome.org/World/podcasts/-/issues/189</a></p>
+<p>So none of this will be useful.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Johannes Rohr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 28, 2020 6:58 PM">
+            <time itemprop="datePublished" datetime="2020-12-28 18:58:26 +0000">Dec 28, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I submitted this bug. But  with native applications, which lack support for power management functions, you can work around this by launching them with gnome-session-inhibit as a wrapper. For flatpak applications, this does not work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

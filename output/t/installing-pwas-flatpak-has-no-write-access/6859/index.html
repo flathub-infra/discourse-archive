@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installing PWAs - Flatpak has no write access - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Installing PWAs - Flatpak has no write access</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Installing PWAs - Flatpak has no write access</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 5, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">attisimon</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 5, 2024 12:35 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 12:35:41 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello!</p>
+<p>When trying to install a PWA from Google Chrome, I got an error saying that the Flatpak does not have write access to two locations, so it cannot create shortcuts for the PWA:<br>
+<img src="/uploads/original/2X/0/0c714c56202c57f8e05984435403bcda31700ad1.png" alt="PWA-flatpak-has-no-write-access-to" data-base62-sha1="1M4t8hpWsfFNnkPSnrsyAtWxC13" width="526" height="192"><br>
+<em>(screenshot made by <span class="mention">@Aqualung</span>, taken from the topic linked below)</em></p>
+<p>There is an existing topic about this, however, for me, the error message kept appearing, no matter which solution I used. Please have a quick look here: <a href="/t/pwas-this-flatpak-does-not-have-write-access-to/3830/index.html">PWAs: This Flatpak does not have write access to</a></p>
+<p>In order to give access to these locations to the Google Chrome flatpak, we can use <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" rel="noopener nofollow ugc">Flatseal</a> or the <code>flatpak override</code> CLI command as mentioned in the other post:</p>
+<pre><code class="lang-auto">flatpak override --user --filesystem=~/.local/share/applications --filesystem=~/.local/share/icons com.google.Chrome
+</code></pre>
+<p>These overrides added in the CLI will appear in Flatseal too, in the “Filesystem / Other files” section, so both solutions will do the same thing.</p>
+<p>The error message did not go away after setting the overrides, because the <code>~/.local/share/icons</code> folder was missing from my system, so I had to create it manually. After doing that, the message went away and all shortcuts appeared as expected.</p>
+<p>Another thing to note is that, although all my flatpaks are installed system-wide by default (<code>--system</code>), I have added the filesystem overrides only for my user (<code>--user</code>).</p>
+<p>Useful commands</p>
+<ul>
+<li>
+<p>double-check where are my overrides saved (<code>--system</code> is default, but <code>--user</code> is handled separately):<br>
+<code>flatpak override --user --show com.google.Chrome</code><br>
+<code>flatpak override --system --show com.google.Chrome</code></p>
+</li>
+<li>
+<p>reset all overrides either from <code>--user</code> or <code>--system</code>:<br>
+<code>flatpak override --user --reset com.google.Chrome</code><br>
+<code>sudo flatpak override --system --reset com.google.Chrome</code></p>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 5, 2024 2:34 PM">
+            <time itemprop="datePublished" datetime="2024-06-05 14:34:48 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="attisimon" data-post="1" data-topic="6859">
+<div class="title">
+<div class="quote-controls"></div>
+attisimon:</div>
+<blockquote>
+<p>The error message did not go away after setting the overrides, because the <code>~/.local/share/icons</code> folder was missing from my system, so I had to create it manually. After doing that, the message went away and all shortcuts appeared as expected.</p>
+</blockquote>
+</aside>
+<p>You can avoid that by adding <code>:create</code> to the permissions, e.g. <code>~/.local/share/icons:create</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Noberto Pessoa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 25, 2026 4:24 PM">
+            <time itemprop="datePublished" datetime="2026-05-25 16:24:47 +0000">May 25, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks! Just added the path like this for in Flatseal and it worked.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

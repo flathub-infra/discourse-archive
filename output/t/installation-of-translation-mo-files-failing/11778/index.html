@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installation of translation (.mo) files - failing - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Installation of translation (.mo) files - failing</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Installation of translation (.mo) files - failing</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 25, 2026</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">technosf</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 25, 2026 1:39 AM">
+            <time itemprop="datePublished" datetime="2026-02-25 01:39:46 +0000">Feb 25, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hullo, I am working on <a href="https://github.com/tuner-labs/tuner" rel="noopener nofollow ugc">com.github.louis77.tuner</a>, a Vala radio app, and I’ve been cleaning up the  portable object translation code, but I am finding that the translations are not making it into the flakpak.</p>
+<p>I had split the translations into two .pot files (which generate fine with i18n.gettext) in subdirectories under /po, use Weblate to generate the .po files (fine) and I use a meson setup-hook to concatenate the language .po’s into the /po dir before generating the .mo’s at build time. This all works great for local builds.</p>
+<p>However for flatpak build, which apprear to show the .mo’s being moved:</p>
+<pre><code class="lang-auto">[79/79] Linking target com.github.louis77.tuner
+
+[0/1] Installing files
+
+Installing po/ar/LC_MESSAGES/com.github.louis77.tuner.mo to /app/share/locale/ar/LC_MESSAGES
+</code></pre>
+<p>etc.</p>
+<p>But I don’t see the .mo’s once its installed and neither does the code, which looks in:</p>
+<pre><code class="lang-auto">config_data.set_quoted('LOCALEDIR',
+
+  join_paths(get_option('prefix'), get_option('localedir')))
+
+config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+</code></pre>
+<p>Any help or pointers appreciated!</p>
+<p>T</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">technosf</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 25, 2026 11:38 PM">
+            <time itemprop="datePublished" datetime="2026-02-25 23:38:03 +0000">Feb 25, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>And the answer, in the short term, is adding <code>separate-locales: false</code> to the manifest .yml</p>
+<p>However this begs an architecture review and how to manage locales in app and flatpak locales.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 26, 2026 1:17 AM">
+            <time itemprop="datePublished" datetime="2026-02-26 01:17:38 +0000">Feb 26, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak only installs the Locales for the languages the system uses.</p>
+<p>You can use <code>flatpak config</code> to see which languages are set to be installed, or use <code>flatpak config --set languages *</code> to install the Locales for all languages.</p>
+<p>See also the documentation about <code>flatpak config</code>:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-config">
+  <header class="source">
+      <img src="/uploads/original/2X/6/6224f19a3c8960ba2ad7eee811e49cf0be0a2fc8.png" class="site-icon" alt="" data-dominant-color="4A90D9" width="180" height="180">
+
+      <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-config" target="_blank" rel="noopener nofollow ugc">Flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/360;"><img src="/uploads/optimized/2X/7/78f8dfe36b87b709b234e9d74705821090f1fd98_2_690x361.png" class="thumbnail" alt="" data-dominant-color="F6F6F6" width="690" height="361"></div>
+
+<h3><a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-config" target="_blank" rel="noopener nofollow ugc">Flatpak Command Reference</a></h3>
+
+  <p>Version 1.17.0</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

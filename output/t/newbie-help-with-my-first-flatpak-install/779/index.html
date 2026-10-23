@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Newbie help with my first flatpak install - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Newbie help with my first flatpak install</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Newbie help with my first flatpak install</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 1, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jlgerber</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 1, 2020 9:45 PM">
+            <time itemprop="datePublished" datetime="2020-10-01 21:45:48 +0000">Oct 1, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to install a flatpak to the --user context and run it. Seems like it should be straightforward but so far, no dice.</p>
+<p>first, I installed flatpak itself to cent 7. Nothing to see here.</p>
+<p>Second I added flathub to --user (actually this was trial and error. I first added it to the system, but realized that I had to add it to user as well. It is odd to me that I seemingly have to register flathub explicitly for --user. I would assume that I should be able to install flatpaks to the user location without being forced to configure it separately)</p>
+<pre><code class="lang-bash">sudo flatpak add-remote  flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+....
+sudo flatpak add-remote --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+<p>next I install a flatpak</p>
+<pre><code class="lang-bash">sudo flatpak install --user flathub com.obsproject.Studio
+...
+</code></pre>
+<p>That seems to work. At least there are no errors. However, this doesnt work:</p>
+<pre><code class="lang-bash">flatpak run com.obsproject.Studio
+error: app/com.obsproject.Studio/x86_64/master not installed
+</code></pre>
+<p>Huh, well let me try again. Maybe there were errors that i missed somehow…</p>
+<pre><code class="lang-bash">sudo flatpak install flathub com.obsproject.Studio
+Skipping: com.obsproject.Studio/x86_64/stable is already installed
+</code></pre>
+<p>So is installed or not? Well it is talking about stable instead of master, maybe I have to specify stable?</p>
+<pre><code class="lang-bash">flatpak run --user com/obsproject.Studio/x86_64/stable
+error: app/com.obsproject.Studio/x86_64/stable not installed
+</code></pre>
+<p>What does flatpak list say?</p>
+<pre><code class="lang-bash">flatpak list
+flatpak list --user
+</code></pre>
+<p>Huh… So any ideas on where to go from here? Am I missing something (or a whole bunch of things?)</p>
+<p>It would be really nice if the documentation was clearer on where these artifacts were actually stored. For instance the section that talks about using the --user flag makes no mention of where the flatpaks end up in the home directory…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Taiko2k</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 2, 2020 7:02 AM">
+            <time itemprop="datePublished" datetime="2020-10-02 07:02:20 +0000">Oct 2, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just one thing I notice, when installing as user, I believe you’re not supposed to use <code>sudo</code>, just run the install command as a regular user.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 2, 2020 9:09 AM">
+            <time itemprop="datePublished" datetime="2020-10-02 09:09:01 +0000">Oct 2, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@jlgerber</span> In flatpak documentation you’ll see that sudo is never used. All the commands start with the <code>$</code> symbol, which means that the regular user is logged in. So no root privilege is needed even when installing system-wide (default). <a href="https://docs.flatpak.org/en/latest/using-flatpak.html#system-versus-user" rel="nofollow noopener">System versus user</a> section explains it well: applications installed system-wide are available for all users, while apps installed at user level are obviously available for the single user.</p>
+<p>I guess that if you run <code>sudo flatpak list</code> you might see the installed apps. I suggest you remove the applications and reinstall them without sudo.</p>
+<p><code>flatpak remotes -v</code> shows that <code>/var/lib/flatpak</code> and <code>~/.local/share/flatpak</code> are the system and user installation paths respectively:</p>
+<pre><code class="lang-auto">$ flatpak remotes -v
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/fede/.local/share/flatpak
+fedora	system,oci
+flathub	system
+gnome-nightly	system
+</code></pre>
+<p>This is explained in the documentation <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak" rel="nofollow noopener">here</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chrisdrew789</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 28, 2020 9:12 PM">
+            <time itemprop="datePublished" datetime="2020-10-28 21:12:07 +0000">Oct 28, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/uploads/original/1X/93b2db00b364c9e3450e4bcfd1a8b5dabefee616.png" alt="image" data-base62-sha1="l4BnP4lRTTSfGvKF76ZnUjtB314" width="617" height="469"></p>
+<p>Can anyone help? I am trying to install an app and have no idea what I am doing. See screenshot</p>
+<p>Many thanks (also have noted not to use sudo but did not before)<br>
+Chris</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kukuh Syafaat</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 29, 2020 12:41 PM">
+            <time itemprop="datePublished" datetime="2020-10-29 12:41:39 +0000">Oct 29, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Chris. Looks like your computer is aarch64, <code>md.obsidian.Obsidian</code> only available in <a href="https://github.com/flathub/md.obsidian.Obsidian/blob/master/flathub.json" rel="nofollow noopener">x86_64</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chrisdrew789</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 29, 2020 6:29 PM">
+            <time itemprop="datePublished" datetime="2020-10-29 18:29:19 +0000">Oct 29, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you, I have now discovered it is 32bit so think you are correct.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Dec 8, 2020 6:26 PM">
+            <time itemprop="datePublished" datetime="2020-12-08 18:26:11 +0000">Dec 8, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It appears that now there is an <code>aarch64</code> (ARM in 64bit) build for that package that you should be able to install.</p>
+<p>(btw neither is “32bit”)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

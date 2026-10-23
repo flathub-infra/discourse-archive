@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenRGB does not run via flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">OpenRGB does not run via flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">OpenRGB does not run via flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 14, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vildnex</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 14, 2024 1:28 PM">
+            <time itemprop="datePublished" datetime="2024-04-14 13:28:40 +0000">Apr 14, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m using Ubuntu 23.10 and I’ve installed OpenRGB via:</p>
+<pre><code class="lang-auto">flatpak install org.openrgb.OpenRGB
+</code></pre>
+<p>I’ve also installed the rules via <code>openrgb-udev-install.sh</code></p>
+<pre><code class="lang-auto">ls /usr/lib/udev/rules.d/60-open*
+/usr/lib/udev/rules.d/60-openrgb.rules
+</code></pre>
+<p>But when I am trying to run the OpenRGB via:</p>
+<pre><code class="lang-auto">flatpak run org.openrgb.OpenRGB
+</code></pre>
+<p>I get this output in the console:</p>
+<pre data-code-wrap="none"><code class="lang-none">Attempting to connect to local OpenRGB server.
+Connection attempt failed
+Local OpenRGB server unavailable.
+Running standalone.
+[i2c_smbus_linux] Failed to read i2c device PCI device ID
+[i2c_smbus_linux] Failed to read i2c device PCI device ID
+QSocketNotifier: Can only be used with threads started with QThread
+qt.qpa.qgnomeplatform: Could not find color scheme  ""
+QObject::connect: No such signal QPlatformNativeInterface::systemTrayWindowChanged(QScreen*)
+libEGL warning: wayland-egl: could not open /dev/dri/renderD128 (No such file or directory)
+MESA: error: ZINK: failed to choose pdev
+libEGL warning: egl: failed to create dri2 screen
+&lt;h2&gt;WARNING:&lt;/h2&gt;&lt;p&gt;The OpenRGB udev rules are not installed.&lt;/p&gt;&lt;p&gt;Most devices will not be available unless running OpenRGB as root.&lt;/p&gt;&lt;p&gt;If using AppImage, Flatpak, or self-compiled versions of OpenRGB you must install the udev rules manually&lt;/p&gt;&lt;p&gt;See &lt;a href='https://openrgb.org/udev'&gt;https://openrgb.org/udev&lt;/a&gt; to install the udev rules manually&lt;/p&gt;
+</code></pre>
+<p>I also have a pop-up with this text:</p>
+<pre><code class="lang-auto">WARNING:
+The OpenRGB udev rules are not installed.
+Most devices will not be available unless running OpenRGB as root.
+If using AppImage, Flatpak, or self-compiled versions of OpenRGB you must install the udev rules manually
+See https://openrgb.org/udev to install the udev rules manually
+</code></pre>
+<p>Even if I have the rules installed is not able to see them and every time when I am trying to click on any button the whole OpenRGB closes with no log entries at all.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 14, 2024 1:32 PM">
+            <time itemprop="datePublished" datetime="2024-04-14 13:32:16 +0000">Apr 14, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You likely want to read <a href="https://github.com/flathub/org.openrgb.OpenRGB/issues/1" class="inline-onebox">Flathub specific instructions? · Issue #1 · flathub/org.openrgb.OpenRGB · GitHub</a> and get into the mix here.</p>
+<p>This is not the place for help with specific apps.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

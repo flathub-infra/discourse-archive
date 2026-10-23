@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adding panda3d to a flatpak manifest - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Adding panda3d to a flatpak manifest</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Adding panda3d to a flatpak manifest</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Diego C Sampaio</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 26, 2025 8:38 PM">
+            <time itemprop="datePublished" datetime="2025-04-26 20:38:07 +0000">Apr 26, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to add <code>panda3d</code> to a manifest but <code>flatpak-pip-generator</code> doesn’t work with it. I even found the link with the download and the SHA but <code>panda3d</code> is not installed and generates a generic compilation error, probably because there are dependencies that I’m not covering because I didn’t find anywhere the list of mandatory <code>panda3d</code> dependencies.</p>
+<p>The error:</p>
+<pre><code class="lang-auto">Unresolved dependencies. Handle them manually
+- ERROR: Failed to get panda3d-1.10.15 source from https://pypi.org/pypi/panda3d/1.10.15/json
+Traceback (most recent call last):
+  File "/var/home/k/Projetos/flatpak-pip-generator.py", line 533, in &lt;module&gt;
+    raise Exception(f"Not all dependencies can be determined. Handle them manually.\n{workaround}")
+Exception: Not all dependencies can be determined. Handle them manually.
+Example how to handle wheels which only support specific architectures:
+    - type: file
+      url: https://files.pythonhosted.org/packages/79/ae/7e5b85136806f9dadf4878bf73cf223fe5c2636818ba3ab1c585d0403164/numpy-1.26.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+      sha256: 7ab55401287bfec946ced39700c053796e7cc0e3acbef09993a9ad2adba6ca6e
+      only-arches:
+      - aarch64
+    - type: file
+      url: https://files.pythonhosted.org/packages/3a/d0/edc009c27b406c4f9cbc79274d6e46d634d139075492ad055e3d68445925/numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      sha256: 666dbfb6ec68962c033a450943ded891bed2d54e6755e35e5835d63f4f6931d5
+      only-arches:
+      - x86_64
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 27, 2025 1:25 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 13:25:57 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you should be able to install it from .whl file similar to this:</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/org.pgadmin.pgadmin4/blob/46ac7f6aae866aa06bb0b18534c1edf150968d3c/org.pgadmin.pgadmin4.yml#L88C1-L99C1">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.pgadmin.pgadmin4/blob/46ac7f6aae866aa06bb0b18534c1edf150968d3c/org.pgadmin.pgadmin4.yml#L88C1-L99C1" target="_blank" rel="noopener nofollow ugc">github.com/flathub/org.pgadmin.pgadmin4</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.pgadmin.pgadmin4/blob/46ac7f6aae866aa06bb0b18534c1edf150968d3c/org.pgadmin.pgadmin4.yml#L88C1-L99C1" target="_blank" rel="noopener nofollow ugc">org.pgadmin.pgadmin4.yml</a></h4>
+
+<div class="git-blob-info">
+  <a href="https://github.com/flathub/org.pgadmin.pgadmin4/blob/46ac7f6aae866aa06bb0b18534c1edf150968d3c/org.pgadmin.pgadmin4.yml#L88C1-L99C1" rel="noopener nofollow ugc"><code>46ac7f6aa</code></a>
+</div>
+
+
+
+    <pre class="onebox"><code class="lang-yml">
+      <ol class="start lines" start="88" style="counter-reset: li-counter 87 ;">
+          <li>- name: python3-cryptography</li>
+          <li>  buildsystem: simple</li>
+          <li>  only-arches:</li>
+          <li>    - x86_64</li>
+          <li>  build-commands:</li>
+          <li>    - pip3 install --no-index --find-links=file://${PWD} --prefix=${FLATPAK_DEST}</li>
+          <li>      cryptography</li>
+          <li>  sources:</li>
+          <li>    - type: file</li>
+          <li>      url: https://files.pythonhosted.org/packages/ef/82/72403624f197af0db6bac4e58153bc9ac0e6020e57234115db9596eee85d/cryptography-44.0.0-cp39-abi3-manylinux_2_28_x86_64.whl</li>
+          <li>      sha256: f53c2c87e0fb4b0c00fa9571082a057e37690a8f12233306161c8f4b819960b7</li>
+          <li></li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Diego C Sampaio</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 27, 2025 5:33 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 17:33:49 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I had already tried this but it doesn’t work.</p>
+<pre><code class="lang-auto">
+ - name: python3-panda3d
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "panda3d" --no-build-isolation
+    sources:
+      - type: file
+        url: 'https://files.pythonhosted.org/packages/ca/99/4f385683203646e81ad25f1ff880c7d46b2e1843b580bbbeb5a6643ca22d/panda3d-1.10.15-cp313-cp313t-manylinux2014_x86_64.whl'
+        sha256: db8ad9ff7f48ee1d6b67716124aa8201aa49a92f95b58bb99822208bfbd32a8e
+</code></pre>
+<p>The error:</p>
+<pre><code class="lang-auto">
+ERROR: Could not find a version that satisfies the requirement panda3d (from versions: none)
+ERROR: No matching distribution found for panda3d
+Error: module python3-panda3d: Processo filho concluiu com código 1
+&gt;&gt;&gt; Error: Child process exited with code 1
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 27, 2025 5:45 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 17:45:26 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is the error coming from <code>flatpak-pip-generator</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 27, 2025 5:51 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 17:51:30 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Also, your yaml snippet has bad indentation</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Diego C Sampaio</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 27, 2025 6:05 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 18:05:28 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The error in the first post is from the pip generator, the second error is the flatpak compilation error. Can you tell me where the indentation is incorrect? I don’t believe that’s the problem, but you never know.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 27, 2025 6:06 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 18:06:33 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>the labels under <code>name</code> should be on the same level as <code>name</code> itself</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Thomas Kluyver</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 29, 2025 8:23 AM">
+            <time itemprop="datePublished" datetime="2025-04-29 08:23:07 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="kriptolix" data-post="3" data-topic="9463">
+<div class="title">
+<div class="quote-controls"></div>
+kriptolix:</div>
+<blockquote>
+<p><code>.../panda3d-1.10.15-cp313-cp313t-manylinux2014_x86_64.whl</code></p>
+</blockquote>
+</aside>
+<p>It’s likely that you want the wheel with <code>cp313-cp313-</code> (no <code>t</code>) in the name. The <code>cp313t</code> marker is an ABI tag for free-threading Python, which is an experimental new thing, so unless you know you’re using it, you’re probably not. A regular Python build won’t see that wheel as compatible, which would fit with the “from versions: none” error message.</p>
+<p>Also, if you haven’t already, make sure to get the wheel for the Python version you’re using. cp313 means Python 3.13.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">john</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 29, 2025 9:15 AM">
+            <time itemprop="datePublished" datetime="2025-04-29 09:15:19 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="kriptolix" data-post="1" data-topic="9463" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+kriptolix:</div>
+<blockquote>
+<p>I’m trying to add <code>panda3d</code> to a manifest, but <code>flatpak-pip-generator</code> doesn’t work with it. I even found the link with the download and the SHA<a href="https://tirafficridorgame.com/" rel="noopener nofollow ugc">,</a> but <code>panda3d</code> is not installed and generates a generic compilation error, probably because there are dependencies that I’m not covering, because I didn’t find anywhere the list of mandatory <code>panda3d</code> dependencies.</p>
+<p>The error:</p>
+<pre><code class="lang-auto">Unresolved dependencies. Handle them manually
+- ERROR: Failed to get panda3d-1.10.15 source from https://pypi.org/pypi/panda3d/1.10.15/json
+Traceback (most recent call last):
+  File "/var/home/k/Projetos/flatpak-pip-generator.py", line 533, in &lt;module&gt;
+    raise Exception(f"Not all dependencies can be determined. Handle them manually.\n{workaround}")
+Exception: Not all dependencies can be determined. Handle them manually.
+Example how to handle wheels which only support specific architectures:
+    - type: file
+      url: https://files.pythonhosted.org/packages/79/ae/7e5b85136806f9dadf4878bf73cf223fe5c2636818ba3ab1c585d0403164/numpy-1.26.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+      sha256: 7ab55401287bfec946ced39700c053796e7cc0e3acbef09993a9ad2adba6ca6e
+      only-arches:
+      - aarch64
+    - type: file
+      url: https://files.pythonhosted.org/packages/3a/d0/edc009c27b406c4f9cbc79274d6e46d634d139075492ad055e3d68445925/numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      sha256: 666dbfb6ec68962c033a450943ded891bed2d54e6755e35e5835d63f4f6931d5
+      only-arches:
+      - x86_64
+</code></pre>
+</blockquote>
+</aside>
+<p>Adding <code>panda3d</code> to a Flatpak manifest can indeed be tricky because it doesn’t publish platform-agnostic wheels on PyPI, and <code>flatpak-pip-generator</code> struggles with packages that require native compilation or depend on external libraries.</p>
+<h3><a name="p-17902-why-it-fails-1" class="anchor" href="#p-17902-why-it-fails-1" aria-label="Heading link"></a>Why it Fails</h3>
+<p><code>panda3d</code> builds native C++ code during installation, and its wheel (when available) is architecture- and environment-specific. The error you’re seeing means the generator can’t resolve all build-time dependencies automatically—likely because Panda3D’s wheel isn’t universal or it’s missing altogether for your target architecture.</p>
+<h3><a name="p-17902-how-to-work-around-it-2" class="anchor" href="#p-17902-how-to-work-around-it-2" aria-label="Heading link"></a>How to Work Around It</h3>
+<p>You have a few options:</p>
+<h4><a name="p-17902-h-1-build-from-source-in-your-manifest-3" class="anchor" href="#p-17902-h-1-build-from-source-in-your-manifest-3" aria-label="Heading link"></a><strong>1. Build from Source in Your Manifest</strong></h4>
+<p>Instead of relying on <code>flatpak-pip-generator</code>, manually build <code>panda3d</code> using a <code>buildsystem: simple</code> step inside your Flatpak manifest. Here’s a rough example (ensure you add all required dependencies):</p>
+<p>yaml</p>
+<p>CopyEdit</p>
+<pre><code class="lang-auto">- name: panda3d
+  buildsystem: simple
+  build-commands:
+    - python3 setup.py build
+    - python3 setup.py install --prefix=/app
+  sources:
+    - type: git
+      url: https://github.com/panda3d/panda3d.git
+      tag: v1.10.15
+  build-options:
+    env:
+      CXXFLAGS: "-O2"
+</code></pre>
+<h4><a name="p-17902-h-2-use-prebuilt-wheels-per-architecture-4" class="anchor" href="#p-17902-h-2-use-prebuilt-wheels-per-architecture-4" aria-label="Heading link"></a><strong>2. Use Prebuilt Wheels per Architecture</strong></h4>
+<p>If you find precompiled <code>.whl</code> files for your architecture (e.g., from the Panda3D GitHub Actions or official site), you can include them like this:</p>
+<p>yaml</p>
+<p>CopyEdit</p>
+<pre><code class="lang-auto">- type: file
+  url: https://your-source-url/panda3d-1.10.15-cp311-cp311-manylinux2014_x86_64.whl
+  sha256: &lt;insert-sha256&gt;
+  only-arches:
+    - x86_64
+</code></pre>
+<blockquote>
+<p>Unfortunately, these wheels aren’t always published or maintained. You’ll need to host them yourself or build them locally and extract them.</p>
+</blockquote>
+<h4><a name="p-17902-h-3-include-required-native-dependencies-5" class="anchor" href="#p-17902-h-3-include-required-native-dependencies-5" aria-label="Heading link"></a><strong>3. Include Required Native Dependencies</strong></h4>
+<p>Panda3D needs several native libraries like OpenGL, SDL2, eigen3, freetype, zlib, and others. You’ll need to add these to your Flatpak manifest under <code>build-dependencies</code>.</p>
+<p>Example (assuming a <code>python3</code> module in Flatpak manifest):</p>
+<p>yaml</p>
+<p>CopyEdit</p>
+<pre><code class="lang-auto">  build-dependencies:
+    - python3
+    - python3-pip
+    - mesa-libGL
+    - eigen
+    - freetype
+    - zlib
+    - libpng
+    - openssl
+    - sdl2
+</code></pre>
+<hr>
+<h3><a name="p-17902-tldr-6" class="anchor" href="#p-17902-tldr-6" aria-label="Heading link"></a>TL;DR</h3>
+<ul>
+<li><code>panda3d</code> isn’t Flatpak- or pip-friendly due to native compilation.</li>
+<li>Use a <code>git</code> source with <code>setup.py</code>, or manually add wheels per architecture.</li>
+<li>Ensure all system dependencies are included in the manifest.</li>
+</ul>
+<p>Let me know if you’d like a working manifest sample for a particular architecture or runtime (e.g., <code>org.freedesktop.Platform</code> 23.08, Python 3.11).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Diego C Sampaio</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 29, 2025 11:58 AM">
+            <time itemprop="datePublished" datetime="2025-04-29 11:58:36 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you very much, this is a wonderfully complete answer. I’ll try adding the .whl files for each architecture first, since I already found them on panda3d’s github and since they are available via release I don’t think they will be changed or deleted. If and when I need to update panda3d I’ll reconsider this choice.</p>
+<p><span class="mention">@takluyver</span> Thanks, I’ll check that too.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

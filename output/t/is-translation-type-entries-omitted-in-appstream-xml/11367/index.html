@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is translation type entries omitted in appstream.xml? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Is translation type entries omitted in appstream.xml?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Is translation type entries omitted in appstream.xml?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 21, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sabri Ünal</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 21, 2025 1:25 AM">
+            <time itemprop="datePublished" datetime="2025-12-21 01:25:59 +0000">Dec 21, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I couldn’t find any raw data to analyze, but I found that Flatpak-related appstream.xml data is already present in this location: “/var/lib/flatpak/appstream/flathub/x86_64/(hash)/appstream.xml”.</p>
+<p>I checked, and there are only 29 entries related to the<code> &lt;translation type="gettext"&gt;</code> tag.</p>
+<p>For example, Collision provides this translation type tag via <a href="https://github.com/GeopJr/Collision/blob/main/data/dev.geopjr.Collision.metainfo.xml.in#L259" rel="noopener nofollow ugc">its metainfo file, see</a></p>
+<p>When I check the tag in the appstream.xml file, I find nothing. It seems the tag is mostly omitted.</p>
+<p>The result GNOME Software says <code>Bu uygulama Amerikan İngilizcesinde görünecek</code> (meaning: <code>This app will appear in US English</code>). On the other hand, I’m sure I have translated the app, and it is already Turkish.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447.png" data-download-href="/uploads/original/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447.png" title="ekrang" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447_2_588x500.png" alt="ekrang" data-base62-sha1="8QZ4REfg3H6DfGq98J5fjDPSQiX" width="588" height="500" srcset="/uploads/optimized/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447_2_588x500.png, /uploads/optimized/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447_2_882x750.png 1.5x, /uploads/original/2X/3/3e0eb0e4d78857d1c556e763311cd00397b7c447.png 2x" data-dominant-color="F3F3F2"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">ekrang</span><span class="informations">1001×850 74 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22.png" data-download-href="/uploads/original/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22.png" title="hash" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22_2_442x500.png" alt="hash" data-base62-sha1="upVtr0dGWKQUl4t9PGvYTc6ZWeu" width="442" height="500" srcset="/uploads/optimized/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22_2_442x500.png, /uploads/original/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22.png 1.5x, /uploads/original/2X/d/d52f80a18609c6c4f532bcbaa4fa33891fb63d22.png 2x" data-dominant-color="F0F0F1"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">hash</span><span class="informations">588×664 22.2 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 21, 2025 2:36 PM">
+            <time itemprop="datePublished" datetime="2025-12-21 14:36:51 +0000">Dec 21, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The warning banner in GNOME software is shows based on the language tag. Looks like the app has somehow only:</p>
+<pre><code class="lang-auto">    &lt;languages&gt;
+      &lt;lang percentage="100"&gt;en_US&lt;/lang&gt;
+    &lt;/languages&gt;
+</code></pre>
+<p>libappstream drops the translation tag when composing.</p>
+<p>It seems to have the correct language tags on a local build, so it could be a transient error. I’ve triggered a rebuild to check.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

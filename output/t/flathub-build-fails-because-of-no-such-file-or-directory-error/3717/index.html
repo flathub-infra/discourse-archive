@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flathub build fails because of &quot;No such file or directory&quot; error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flathub build fails because of &quot;No such file or directory&quot; error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flathub build fails because of &quot;No such file or directory&quot; error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 9, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scrivanolabs</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 9, 2023 10:54 PM">
+            <time itemprop="datePublished" datetime="2023-02-09 22:54:32 +0000">Feb 9, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I’m having a problem with building my Flathub submission <a href="https://github.com/flathub/com.github.scrivanolabs.scrivano/pull/7" rel="noopener nofollow ugc">here</a>. The build fails because of the following error:</p>
+<blockquote>
+<p>install: cannot stat ‘icons/icon.svg’: No such file or directory</p>
+</blockquote>
+<p>Now the source for the build is a zip file downloaded from <a href="https://github.com/scrivanolabs/ScrivanoFlatpak/releases/download/0.16.7/Scrivano_flatpak_files_0.16.7.zip" rel="noopener nofollow ugc">Github</a> which contains an “icon” folder containing a file called “icon.svg” and other png files.</p>
+<p>To install the icons I am using the following commands:</p>
+<pre><code class="lang-auto">    - install -Dm644 icons/icon.svg /app/share/icons/hicolor/scalable/apps/com.github.scrivanolabs.scrivano.svg
+    - install -Dm644 icons/scrivano_64.png /app/share/icons/hicolor/64x64/apps/com.github.scrivanolabs.scrivano.png
+    - install -Dm644 icons/scrivano_128.png /app/share/icons/hicolor/128x128/apps/com.github.scrivanolabs.scrivano.png
+    - install -Dm644 icons/scrivano_256.png /app/share/icons/hicolor/256x256/apps/com.github.scrivanolabs.scrivano.png
+    - install -Dm644 icons/scrivano_512.png /app/share/icons/hicolor/512x512/apps/com.github.scrivanolabs.scrivano.png
+</code></pre>
+<p>The build (see <a href="https://buildbot.flathub.org/#/builders/5/builds/2759" rel="noopener nofollow ugc">here</a>) successfully copies the png icons but somehow when copying the svg icon triggers an error.</p>
+<p>Locally everything installs correctly using the following command:</p>
+<pre><code class="lang-auto">flatpak-builder --user --install --force-clean build-dir com.github.scrivanolabs.scrivano.yml
+</code></pre>
+<p>Does anyone has any clue on what might be the issue here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scrivanolabs</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 11, 2023 11:44 AM">
+            <time itemprop="datePublished" datetime="2023-02-11 11:44:05 +0000">Feb 11, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok someone in the flatpak matrix channel pointed out that I accidentally changed the directory structure of the sources and this was the problem. It appears, for some unknown reasons, that the Flathub builder relies on the files in the sources to be contained in a folder (i.e. the zip file should contain all the files inside some folder, instead of the files being in the root directory).<br>
+Not exactly why this is the case and why the PNG icons were installed correctly, while the SVG file had trouble. However, restoring the previous directory has fixed my issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

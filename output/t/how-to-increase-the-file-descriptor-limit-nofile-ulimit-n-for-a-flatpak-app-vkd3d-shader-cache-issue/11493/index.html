@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to increase the file descriptor limit (NOFILE/ulimit -n) for a Flatpak app? VKD3D shader cache issue - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to increase the file descriptor limit (NOFILE/ulimit -n) for a Flatpak app? VKD3D shader cache issue</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to increase the file descriptor limit (NOFILE/ulimit -n) for a Flatpak app? VKD3D shader cache issue</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 7, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">4 Vertikal4</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 7, 2026 1:04 AM">
+            <time itemprop="datePublished" datetime="2026-01-07 01:04:08 +0000">Jan 7, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><strong>Hello,</strong></p>
+<p>I’m facing a problem with the <strong>Heroic Games Launcher (com.heroicgameslauncher.hgl)</strong> and a game (<strong>Horizon Forbidden West</strong>) running via Wine/Proton. The game uses VKD3D-Proton to cache DX12 shaders.</p>
+<p><strong>The Problem:</strong><br>
+Every time I exit the game, the shader cache merge process (from <code>vkd3d-proton.cache.write</code> to <code>vkd3d-proton.cache</code>) seems to fail. I suspect this is because the file descriptor limit (<code>ulimit -n</code>) inside the Flatpak sandbox is only <strong>1024</strong>. The process likely needs to open thousands of files to merge the cache and hits this limit.</p>
+<ul>
+<li>
+<p>Proof: <code>flatpak run --command=sh com.heroicgameslauncher.hgl -c "ulimit -n"</code> returns <strong>1024</strong>.</p>
+</li>
+<li>
+<p>Result: The <code>.write</code> file is left behind, the main <code>.cache</code> doesn’t update, and the game recompiles all shaders from scratch on every launch (taking several minutes).</p>
+</li>
+</ul>
+<p><strong>My Question:</strong><br>
+Is there an official or recommended way to <strong>increase this <code>RLIMIT_NOFILE</code> for a specific Flatpak application</strong>?</p>
+<p><strong>What I’ve tried (unsuccessfully):</strong></p>
+<ol>
+<li>
+<p>Creating a systemd user override for the app’s scope (e.g., <code>app-flatpak-com.heroicgameslauncher.hgl-*.scope</code>). This didn’t work because the limit seems to be enforced earlier by the sandbox (<code>bwrap</code>).</p>
+</li>
+<li>
+<p>Setting the <code>WINE_FD_LIMIT=1048576</code> environment variable inside the sandbox. This does not affect the actual OS-level limit.</p>
+</li>
+</ol>
+<p><strong>Is this the right approach?</strong><br>
+Would a <code>flatpak override</code> command like the one below work? If so, is there a specific parameter that directly controls the file descriptor limit for the sandboxed process?</p>
+<pre data-code-wrap="bash"><code class="lang-bash">flatpak override --user com.heroicgameslauncher.hgl --env=WINE_FD_LIMIT=1048576 # (plus other necessary permissions)
+</code></pre>
+<p>Or is there another mechanism I should use? If possible, could you provide an example of a working configuration?</p>
+<p><strong>System Information:</strong></p>
+<ul>
+<li>
+<p>Distribution: Fedora Linux 42 (Rawhide)</p>
+</li>
+<li>
+<p>Flatpak version: <code>flatpak --version</code> → <strong>1.16.2</strong></p>
+</li>
+<li>
+<p>Affected application: <code>com.heroicgameslauncher.hgl</code></p>
+</li>
+</ul>
+<p>Any guidance would be greatly appreciated. This issue severely impacts the usability of demanding DX12 games through Flatpak.</p>
+<p>Thank you for your help!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">4 Vertikal4</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 25, 2026 2:31 PM">
+            <time itemprop="datePublished" datetime="2026-01-25 14:31:01 +0000">Jan 25, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have updated my approach. It prevents data loss, but I am not seeing cache growth yet.</p>
+<p><strong>1. Cache Saving (Stalemate):</strong></p>
+<p>I implemented a “Smart Wrapper” script that compares file sizes before overwriting to prevent data loss.</p>
+<p>Result: The main cache file is preserved (no longer overwritten by empty files), BUT it is not growing.</p>
+<p>I restored a backup cache (~22MB). After a 20+ minute session, the file size remained exactly the same (22849104 bytes).<br>
+My wrapper log reports: INFO: No .write file found. on exit.<br>
+This implies that while VKD3D_CONFIG=pipeline_library_app_cache stopped the errors in the log, the game is still not flushing new compilation data to the disk on exit.</p>
+<p><strong>2. The Audio Issue:</strong><br>
+To address the CPU starvation hypothesis, I increased PULSE_LATENCY_MSEC.</p>
+<p>Change: Increased from 90 to 300.<br>
+Status: Audio worked in the last session, but given the randomness of this issue, I need more runs to confirm stability.</p>
+<p><strong>3. Settings:</strong><br>
+Disabled GameMode and EAC in Heroic settings.</p>
+<p>CURRENT CONFIGURATION</p>
+<p>A. The “Smart” Wrapper Script:<br>
+Currently testing this script in Heroic’s “Wrapper Command”.</p>
+<pre><code class="lang-auto">#!/bin/bash
+
+ulimit -n 524288
+
+export PROTON_LOG=1
+export PROTON_LOG_DIR="$HOME/Games/Heroic/HorizonForbiddenWestCE"
+export VKD3D_DEBUG=warn
+
+echo "--- NEW SESSION: $(date) ---" &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+
+"$@"
+
+echo "Game closed. Checking cache files..." &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+
+if [ -f "vkd3d-proton.cache.write" ]; then
+    
+    if [ -f "vkd3d-proton.cache" ]; then
+        # Get file sizes
+        SIZE_OLD=$(stat -c%s "vkd3d-proton.cache")
+        SIZE_NEW=$(stat -c%s "vkd3d-proton.cache.write")
+        
+        echo "Size OLD: $SIZE_OLD | Size NEW: $SIZE_NEW" &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+
+        if [ $SIZE_NEW -gt $SIZE_OLD ]; then
+            mv -f "vkd3d-proton.cache.write" "vkd3d-proton.cache"
+            echo "SUCCESS: New cache is bigger. Updated." &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+        else
+            rm "vkd3d-proton.cache.write"
+            echo "IGNORE: New cache is smaller. Kept the old big file." &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+        fi
+    else
+        # No old cache, create first one
+        mv -f "vkd3d-proton.cache.write" "vkd3d-proton.cache"
+        echo "START: Created first cache file." &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+    fi
+    
+    chmod 666 "vkd3d-proton.cache" 2&gt;/dev/null
+
+else
+    echo "INFO: No .write file found." &gt;&gt; "$HOME/Games/Heroic/HorizonForbiddenWestCE/fix_status.txt"
+fi
+</code></pre>
+<p><strong>B. Environment Variables:</strong></p>
+<pre><code class="lang-auto">PULSE_LATENCY_MSEC = 300
+
+VKD3D_CONFIG = no_upload_hvv,pipeline_library_app_cache
+
+__GL_SHADER_DISK_CACHE = 1
+
+__GL_SHADER_DISK_CACHE_SIZE = 10000
+
+WINE_RT_AUDIO = 1
+
+WINE_FD_LIMIT = 524288
+</code></pre>
+<p>Summary:<br>
+Wrapper prevents data loss, but the game is not updating the cache file (no .write file generated on exit). Audio seems stable with higher latency.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

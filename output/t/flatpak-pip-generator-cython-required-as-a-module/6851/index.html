@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-pip-generator: Cython required as a module - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-pip-generator: Cython required as a module</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-pip-generator: Cython required as a module</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 5, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jed Reynolds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 5, 2024 4:39 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:39:04 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Next, I’m trying to get numpy included. Runtime 21.08.<br>
+I get the impression that Cython should be in the Runtime since 20.08. What am I missing?</p>
+<p>Error:</p>
+<pre><code class="lang-auto">Building wheels for collected packages: contourpy, numpy
+  Running command Building wheel for contourpy (pyproject.toml)
+  Building wheel for contourpy (pyproject.toml) ... done
+  Created wheel for contourpy: filename=contourpy-1.1.1-cp38-cp38-linux_x86_64.whl size=19638792 sha256=9913f834f906567db320cf555312a03b84fba2bc399975a6ffb6c1897d4079d0
+  Stored in directory: /home/jreynolds/.cache/pip/wheels/2f/d0/36/6cd5e4cca51aa4808e0e02b932665f9fabfa0dc5f1d0f46466
+  Running command Building wheel for numpy (pyproject.toml)
+  Running from numpy source directory.
+  setup.py:67: DeprecationWarning:
+
+    `numpy.distutils` is deprecated since NumPy 1.23.0, as a result
+    of the deprecation of `distutils` itself. It will be removed for
+    Python &gt;= 3.12. For older Python versions it will remain present.
+    It is recommended to use `setuptools &lt; 60.0` for those Python versions.
+    For more details, see:
+      https://numpy.org/devdocs/reference/distutils_status_migration.html
+
+
+    import numpy.distutils.command.sdist
+  Traceback (most recent call last):
+    File "setup.py", line 233, in generate_cython
+      import Cython
+  ModuleNotFoundError: No module named 'Cython'
+
+  The above exception was the direct cause of the following exception:
+
+  Traceback (most recent call last):
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 353, in &lt;module&gt;
+      main()
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 335, in main
+      json_out['return_val'] = hook(**hook_input['kwargs'])
+    File "/app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 251, in build_wheel
+      return _build_backend().build_wheel(wheel_directory, config_settings,
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 221, in build_wheel
+      return self._build_with_temp_dir(['bdist_wheel'], '.whl',
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 207, in _build_with_temp_dir
+      self.run_setup()
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 258, in run_setup
+      super(_BuildMetaLegacyBackend,
+    File "/app/lib/python3.8/site-packages/setuptools/build_meta.py", line 150, in run_setup
+      exec(compile(code, __file__, 'exec'), locals())
+    File "setup.py", line 479, in &lt;module&gt;
+      setup_package()
+    File "setup.py", line 458, in setup_package
+      generate_cython()
+    File "setup.py", line 240, in generate_cython
+      raise OSError(msg) from e
+  OSError: Cython needs to be installed in Python as a module
+  error: subprocess-exited-with-error
+
+  × Building wheel for numpy (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─&gt; See above for output.
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  full command: /app/bin/python3.8 /app/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py build_wheel /tmp/tmplw5azoq8
+  cwd: /tmp/pip-install-cp9nkz8d/numpy_9317fad06ac04a9393b1f7414ad5fa37
+  Building wheel for numpy (pyproject.toml) ... error
+  ERROR: Failed building wheel for numpy
+Successfully built contourpy
+Failed to build numpy
+ERROR: Could not build wheels for numpy, which is required to install pyproject.toml-based projects
+Error: module python3-contourpy: Child process exited with code 1
+</code></pre>
+<p>Manifest:</p>
+<pre><code class="lang-auto"> $ less requirements.numpy.json 
+{
+    "name": "requirements.numpy",
+    "buildsystem": "simple",
+    "build-commands": [],
+    "modules": [
+        {
+            "name": "python3-contourpy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"contourpy\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/b1/7d/087ee4295e7580d3f7eb8a8a4e0ec8c7847e60f34135248ccf831cf5bbfc/contourpy-1.1.1.tar.gz",
+                    "sha256": "96ba37c2e24b7212a77da85004c38e7c4d155d3e72a45eeaf22c1f03f607e8ab"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a4/9b/027bec52c633f6556dba6b722d9a0befb40498b9ceddd29cbe67a45a127c/numpy-1.24.4.tar.gz",
+                    "sha256": "80f5e3a4e498641401868df4208b74581206afbee7cf7b8329daae82676d9463"
+                }
+            ]
+        },
+        {
+            "name": "python3-numpy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"numpy\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a4/9b/027bec52c633f6556dba6b722d9a0befb40498b9ceddd29cbe67a45a127c/numpy-1.24.4.tar.gz",
+                    "sha256": "80f5e3a4e498641401868df4208b74581206afbee7cf7b8329daae82676d9463"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 5, 2024 4:44 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 04:44:56 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This runtime has been EOL for almost year. Flatpak likely told you so.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to distribute a tauri app as an Flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to distribute a tauri app as an Flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to distribute a tauri app as an Flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 31, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Keshav</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 31, 2026 6:25 PM">
+            <time itemprop="datePublished" datetime="2026-01-31 18:25:25 +0000">Jan 31, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, i have a app called <a href="https://github.com/Keshav-writes-code/Cherit" rel="noopener nofollow ugc">Cherit</a>, and i want to distribute it as a flatpak. i can’t find a startight forward way of doing it. can you please help?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 31, 2026 9:47 PM">
+            <time itemprop="datePublished" datetime="2026-01-31 21:47:06 +0000">Jan 31, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>First of all, you may know this already, but for general information about how an Flatpak app is build, you can see the Flatpak documentation, like the <a href="https://docs.flatpak.org/en/latest/first-build.html" rel="noopener nofollow ugc">Building your first Flatpak</a> introduction and the section about <a href="https://docs.flatpak.org/en/latest/building.html" rel="noopener nofollow ugc">Building</a>.</p>
+<p>You should also have read the <a href="https://docs.flathub.org/docs/for-app-authors/requirements" rel="noopener nofollow ugc">Flathub requirements</a> beforehand. It makes the job of the reviewer, and your submission process, much easier if you follow the requirements from the get-go.</p>
+<p>Also, see the documentation for <a href="https://docs.flathub.org/docs/for-app-authors/submission" rel="noopener nofollow ugc">Submission</a> on how the submission process happens.</p>
+<hr>
+<p>Now, with the general stuff out of the way, for your app specifically you need to be able to make an offline build and installation inside the Flatpak sandbox, as a Flatpak build on Flathub is build with the full sandbox enforcement, so no network. And nowadays it should be from source whenever possible.</p>
+<p>The main question would be about dependencies, which you will need to add to your manifest as well. If they are “classic” dependencies, like an dynamic library that you link to, you build the library according to its building instructions in an addition module before your app into the <code>/app</code> prefix and it should be then available.</p>
+<p>For Tauri, I think you can build it from with Cargo, but you need to create manifest sources for each crate, as Flatpak Builder needs to download them before build for Cargo, since Cargo will not have a internet connection.<br>
+Luckily, you can use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" rel="noopener nofollow ugc">Flatpak Cargo Generator</a> to generate them for you.</p>
+<p>Looking at your repository, your webapp seems to use Bun (?), which is totally new for me. The tricky part will likely be to build that inside the Flatpak sandbox, should you need to use that runtime. Look in the documentation if there are some instructions on how to build the runtime from source.<br>
+As for the node dependencies for the webapp itself, you should (hopefully) be able to use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/node" rel="noopener nofollow ugc">Flatpak Node Generator</a>.</p>
+<hr>
+<p>A few general hints on the end:<br>
+You can locally start your manifest with the Flatpak Builder having internet access, to first get an direction for it. But, in the end, it will be necessary for Flatpak Builder to pull the sources before the app is build offline.</p>
+<p>Also, you can look at how existing Tauri apps have been build on Flatpak. All apps on Flathub have a link on their app page linking to their build manifest, for example here is the one for <a href="https://github.com/flathub/io.github.CyberTimon.RapidRAW" rel="noopener nofollow ugc">RapidRAW</a>.</p>
+<p>Finally, you can always ask questions in this forum or in the <a href="https://matrix.to/#/#flatpak:matrix.org" rel="noopener nofollow ugc">Flatpak</a> or <a href="https://matrix.to/#/#flathub:matrix.org" rel="noopener nofollow ugc">Flathub</a> Matrix rooms.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Keshav</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 1, 2026 3:24 PM">
+            <time itemprop="datePublished" datetime="2026-02-01 15:24:41 +0000">Feb 1, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>first of all, thanks for such a comprehensive and effort full guidance. i really appriciate that.</p>
+<p>so, i will try to implement all the things that you mentioned for me. its a little overwhelming and the ecosystem is new to me. so i am trying to do my best and don’t again make the mistake of use ai.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

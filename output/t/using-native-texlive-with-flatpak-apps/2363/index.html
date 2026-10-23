@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using Native TeXLive with Flatpak Apps - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Using Native TeXLive with Flatpak Apps</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Using Native TeXLive with Flatpak Apps</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 20, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 20, 2022 2:06 PM">
+            <time itemprop="datePublished" datetime="2022-03-20 14:06:05 +0000">Mar 20, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi guys,</p>
+<p>how can I use my local TeXLive installation with flatpak apps? Just giving access to the TeXLive folder was not enough; (as far as I understand) I have to set the PATHs for flatpak separately. How can I do that?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 22, 2022 1:53 PM">
+            <time itemprop="datePublished" datetime="2022-03-22 13:53:34 +0000">Mar 22, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>as a general matter you can’t use binaries that are on the host (ie outside the sandbox).</p>
+<p>However there is a texlive sdk which can be used to provide texlive.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 23, 2022 3:02 PM">
+            <time itemprop="datePublished" datetime="2022-03-23 15:02:55 +0000">Mar 23, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="2" data-topic="2363">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>However there is a texlive sdk which can be used to provide texlive.</p>
+</blockquote>
+</aside>
+<p>Is not an option in my case.</p>
+<aside class="quote no-group" data-username="hub" data-post="2" data-topic="2363">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>as a general matter you can’t use binaries that are on the host (ie outside the sandbox).</p>
+</blockquote>
+</aside>
+<p>This is possible in snaps. Would it not be a great option to implement a way to use “external” binaries also for flatpak?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Galileo Sartor</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 27, 2022 1:50 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 13:50:31 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi.<br>
+This issue has been raised, and it is in fact possible to do so with most flatpak apps, by poking a hole in the confinement.<br>
+It goes against the idea of confined apps, but it’s not worse than having the program installed via deb/rpm, so for me it is worth it, until a proper solution pops up.<br>
+For example, TeXstudio will use the system apps automatically if you did not install (or remove) the texlive extension. In my case a reboot was necessary, but then it worked flawlessly.<br>
+In TeXworks you have to add a permission, either from flatseal or the cli. You have to add “org.freedesktop.Flatpak” to the talk permission on the system bus. Then you have to change the change the commands in the settings to use flatpak-spawn --host.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 27, 2022 8:18 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 20:18:36 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for the respond.</p>
+<p>I add the permission <code>org.freedesktop.Flatpak</code> to system bus talk and change the command in TeXworks to <code>flatpak-spawn --host pdflatex</code>. I get the error message “pdflatex is not properly configured”.</p>
+<p>Actually I need pdflatex in Xournal++; the error message there is: “Error: Child process exited with code 1. Please check the content of /tmp/xournalapp-2/tex”. I could not find any “…/tmp/xournalapp-2/tex” on my system.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Galileo Sartor</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 27, 2022 8:35 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 20:35:56 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The bus is actually the session bus, not the system bus, I was mistaken.<br>
+It works in the other programs, but not in xournal++.<br>
+I guess they might be doing something else with the command before it is executed</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 27, 2022 9:41 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 21:41:51 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="LyzardKing" data-post="6" data-topic="2363">
+<div class="title">
+<div class="quote-controls"></div>
+LyzardKing:</div>
+<blockquote>
+<p>bus is actually the session bus, not the system bus</p>
+</blockquote>
+</aside>
+<p>Did not solve the problem in TeXworks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Galileo Sartor</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 27, 2022 9:46 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 21:46:21 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In texworks the commands need to be set as in the picture below, by adding flatpak-spawn as the command, --host as the first argument, then the real command:</p>
+<p><img src="/uploads/original/2X/4/402c0441e2770c3b1e1e33e9341e3314b55e177a.png" alt="image" data-base62-sha1="99GRwxzWf9aR8N4CPABprpnLXyW" width="464" height="279"></p>
+<p>If you want to change them all I uploaded a gist at <a href="https://gist.github.com/LyzardKing/2c6869415025fdf686ceceee269ea502" class="inline-onebox" rel="noopener nofollow ugc">TeXshop flatpak, tex host config · GitHub</a></p>
+<p>You can save that file as ~/.var/app/org.tug.texworks/data/TUG/TeXworks/configuration/tools.ini</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 27, 2022 10:08 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 22:08:03 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Nothing changed.</p>
+<p>I used the command <code>flatpak-spawn --host pdflatex temp.tex</code> in the Geany terminal; the error is: <code>Portal call failed: org.freedesktop.DBus.Error.ServiceUnknown</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Galileo Sartor</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Mar 27, 2022 10:13 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 22:13:05 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Very strange. It works for me. I assume you have the xdg-desktop-portal program installed (should be by default). Although I’m not sure it is needed.<br>
+You added the <code>org.freedesktop.Flatpak</code> to the session bus in geany as well, right?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Mar 27, 2022 10:15 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 22:15:28 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>xdg-desktop-portal is installed.</p>
+<aside class="quote no-group" data-username="LyzardKing" data-post="10" data-topic="2363">
+<div class="title">
+<div class="quote-controls"></div>
+LyzardKing:</div>
+<blockquote>
+<p>You added the <code>org.freedesktop.Flatpak</code> to the session bus in geany as well, right?</p>
+</blockquote>
+</aside>
+<p>Right.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Galileo Sartor</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Mar 27, 2022 10:18 PM">
+            <time itemprop="datePublished" datetime="2022-03-27 22:18:07 +0000">Mar 27, 2022</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Strange. It works for me <img src="/images/emoji/twitter/frowning.png?v=12" title=":frowning:" class="emoji" alt=":frowning:"><br>
+I’m sorry I couldn’t help you</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

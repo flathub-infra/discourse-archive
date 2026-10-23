@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build directory not initialized, use flatpak build-init - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Build directory not initialized, use flatpak build-init</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Build directory not initialized, use flatpak build-init</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 26, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 26, 2022 8:58 PM">
+            <time itemprop="datePublished" datetime="2022-05-26 20:58:48 +0000">May 26, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to build an update to a flatpak and I’m getting a weird error I’ve never seen before. It’s a fresh build and the error occurs in the first module of the manifest:</p>
+<pre><code class="lang-auto">⬢[fede@toolbox org.frescobaldi.Frescobaldi]$ flatpak-builder build --force-clean --install --user org.frescobaldi.Frescobaldi.yaml 
+Emptying app dir 'build'
+Downloading sources
+Starting build of org.frescobaldi.Frescobaldi
+Cache miss, checking out last cache hit
+fuse: unknown option(s): `-o splice_write,splice_move'
+========================================================================
+Building module guile in /var/home/fede/src/flathub.org/org.frescobaldi.Frescobaldi/.flatpak-builder/build/guile-3
+========================================================================
+Applying patch guile-1.8.8-deplibs.patch
+patching file guile-1.8.pc.in
+patching file guile-config/guile-config.in
+patching file libguile/Makefile.in
+Hunk #2 succeeded at 2126 (offset -5 lines).
+Hunk #3 succeeded at 2148 (offset -5 lines).
+Applying patch guile-1.8.8-cve-2016-8605.patch
+patching file libguile/filesys.c
+Hunk #1 succeeded at 791 (offset -464 lines).
+Applying patch guile-1.8.8-configure.patch
+patching file configure.in
+patching file configure
+error: Build directory /var/home/fede/src/flathub.org/org.frescobaldi.Frescobaldi/.flatpak-builder/rofiles/rofiles-GCrgKm not initialized, use flatpak build-init
+Error: module guile: Child process exited with code 1
+</code></pre>
+<p>As you can see above, I’m running flatpak-builder in a toolbox container.<br>
+I removed the build/ and .flatpak-builder/ directories before launching the command.</p>
+<p>In flatpak tracker I’ve read that weird errors might be caused by a faulty manifest file. My manifest is passing the yamllint check and I can’t see any error. What I’ve done so far is in this branch:</p><aside class="onebox githubfolder" data-onebox-src="https://github.com/flathub/org.frescobaldi.Frescobaldi/tree/v3.2">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/tree/v3.2" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h3><a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/tree/v3.2" target="_blank" rel="noopener nofollow ugc">GitHub - flathub/org.frescobaldi.Frescobaldi at v3.2</a></h3>
+
+  <p><a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/tree/v3.2" target="_blank" rel="noopener nofollow ugc">v3.2</a></p>
+
+  <p><span class="label1">Contribute to flathub/org.frescobaldi.Frescobaldi development by creating an account on GitHub.</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I have a lot of disk space…</p>
+<p>What else should I check?<br>
+Thanks in advance.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 30, 2022 11:29 AM">
+            <time itemprop="datePublished" datetime="2022-05-30 11:29:39 +0000">May 30, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Today the build started normally.<br>
+Before launching it I did a <code>sudo dnf upgrade</code> in the toolbox container, but there was no upgrade of any flatpak package. Weird…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

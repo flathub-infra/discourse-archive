@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Mesa drivers failing to launch some flatpak apps - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">New Mesa drivers failing to launch some flatpak apps</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">New Mesa drivers failing to launch some flatpak apps</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 9, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">dialectic969292</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 9, 2025 3:31 AM">
+            <time itemprop="datePublished" datetime="2025-06-09 03:31:05 +0000">Jun 9, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m a Fedora 42 KDE user who had experienced a bug three days ago after the recent update that installed the new Mesa drivers. A number of the apps that I use daily, such as Vesktop, Session, Element, FreeTube fail to launch, and if they do (after the configuration of their settings in flatseal, namely, turning on X11 socket for Vesktop) they would launch but with a completely blank window. I ran <code>flatpak run dev.vencord.Vesktop</code> to see what errors are logged and it returned the following<br>
+<code>Running on native Wayland Passing the followng arguments to Electron: --enable-speech-dispatcher --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3 [3:0608/082922.124673:ERROR:bus.co(400)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such fileor directory MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)</code>.</p>
+<p>(x11 is turned off by me from flatseal because I don’t need it for Vesktop)</p>
+<p>The Mesa error here is what I believe to be at stake.</p>
+<p>So I figured out a workaround to manually run an erring app from the terminal, by installing org.freedesktop.Platform.GL.default/x86_64/23.08 (<code>flatpak install org.freedesktop.Platform.GL.default/x86_64/23.08</code>) and then running <code>FLATPAK_GL_DRIVERS=25.0.5 flatpak run dev.vencord.Vesktop</code>, an older mesa version. It worked but at the expense of convenience. Problem is, I do not wish to permanently run apps through the terminal each time I want to use it, nor do I want to go to the extent of modifying the .desktop files and force them to run with an older version of Mesa. It is worth to mention that not <em>all</em> flatpaks apps run through this bug, as Librewolf browser is installed from flathub and I can run it all right. Let me know if this is the proper place to report this bug, because I heard I’m better off reporting it to Feedesktop SDK Project.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 9, 2025 12:12 PM">
+            <time itemprop="datePublished" datetime="2025-06-09 12:12:17 +0000">Jun 9, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You should report it directly to Mesa <a href="https://gitlab.freedesktop.org/mesa/mesa/-/issues/" class="inline-onebox">Making sure you're not a bot!</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">dan2704</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 10, 2025 7:10 PM">
+            <time itemprop="datePublished" datetime="2025-06-10 19:10:53 +0000">Jun 10, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can confirm this happens to me as well.<br>
+Same error, I’ve tried many things, except the variable call from above.</p>
+<p>From my experience it affects Electron apps.<br>
+Discord for example opens but the window is blank, where as VSCodium doesn’t start with the window blank but it does throw that error.</p>
+<p><span class="mention">@dialectic969292</span> I will join the Mesa ticket.</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://gitlab.freedesktop.org/mesa/mesa/-/issues/13337">
+  <header class="source">
+      <img src="https://gitlab.freedesktop.org/uploads/-/system/appearance/favicon/1/fdo-favicon.ico" class="site-icon" width="16" height="16">
+
+      <a href="https://gitlab.freedesktop.org/mesa/mesa/-/issues/13337" target="_blank" rel="noopener nofollow ugc">GitLab</a>
+  </header>
+
+  <article class="onebox-body">
+    <img width="64" height="64" src="https://gitlab.freedesktop.org/uploads/-/system/project/avatar/176/gears.png" class="thumbnail onebox-avatar">
+
+<h3><a href="https://gitlab.freedesktop.org/mesa/mesa/-/issues/13337" target="_blank" rel="noopener nofollow ugc">New Mesa drivers failing to launch some flatpak apps (#13337) · Issues · Mesa...</a></h3>
+
+  <p>I'm a Fedora 42 KDE user who had experienced a bug four days ago after the recent update that installed the new Mesa drivers. A number of the...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gjithsen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 13, 2025 6:16 PM">
+            <time itemprop="datePublished" datetime="2025-06-13 18:16:28 +0000">Jun 13, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>can confirm again, bottles and flatseal both open to black windows<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/9/99b72a16444a5e8fd5d3a793fbb94354e04dda1d.png" data-download-href="/uploads/original/2X/9/99b72a16444a5e8fd5d3a793fbb94354e04dda1d.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/original/2X/9/99b72a16444a5e8fd5d3a793fbb94354e04dda1d.png" alt="image" data-base62-sha1="lVPtOA6hy7Mg0KmGpgPiGS3VSgZ" width="660" height="500" data-dominant-color="232327"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1007×762 832 Bytes</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 14, 2025 4:35 AM">
+            <time itemprop="datePublished" datetime="2025-06-14 04:35:44 +0000">Jun 14, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We are trying to release freedesktop-sdk 24.08.22 that has the mesa patches to fix these issues. <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/26838" class="inline-onebox">NEWS: Update for freedesktop-sdk-24.08.22 (!26838) · Merge requests · freedesktop-sdk / freedesktop-sdk · GitLab</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 14, 2025 11:09 AM">
+            <time itemprop="datePublished" datetime="2025-06-14 11:09:49 +0000">Jun 14, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s tagged now with fixes for both regressions that were affecting Electron and GTK4 apps.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tags/freedesktop-sdk-24.08.22">
+  <header class="source">
+      <img src="/uploads/original/2X/7/7ee7d2603544b81b4acc1aa0c7b54e64ff57fc44.png" class="site-icon" data-dominant-color="EE5C28" width="32" height="32">
+
+      <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tags/freedesktop-sdk-24.08.22" target="_blank" rel="noopener">GitLab</a>
+  </header>
+
+  <article class="onebox-body">
+    <img width="64" height="64" src="/uploads/original/2X/e/e14616b84062bc569e2f0e295dff0d248b530c27.png" class="thumbnail onebox-avatar" data-dominant-color="2F2F65">
+
+<h3><a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tags/freedesktop-sdk-24.08.22" target="_blank" rel="noopener">freedesktop-sdk-24.08.22 · Tags · freedesktop-sdk / freedesktop-sdk · GitLab</a></h3>
+
+  <p>A minimal Linux runtime</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Should be out in Flathub in the next 4 hours.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Enable Video Hardware Acceleration on Flatpak Firefox - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to Enable Video Hardware Acceleration on Flatpak Firefox</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to Enable Video Hardware Acceleration on Flatpak Firefox</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 30, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kay Thomas</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 30, 2022 6:53 AM">
+            <time itemprop="datePublished" datetime="2022-09-30 06:53:52 +0000">Sep 30, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Note: So far this has been tested with an AMD GPU, but I believe Intel and Nvidia should also work. This guide also assumes you are running Xorg.</p>
+<ol>
+<li>
+<p>Follow the instructions on the Arch Wiki <a href="https://wiki.archlinux.org/index.php/Hardware_video_acceleration#Verifying_VA-API" rel="noopener nofollow ugc">here</a> on how to verify if your GPU supports hardware acceleration and which codecs it supports.</p>
+<ul>
+<li>For Fedora: <code>sudo dnf install libva-utils</code>
+</li>
+<li>For openSUSE: <code>sudo zypper install libva-utils</code>
+</li>
+<li>For openSUSE MicroOS: <code>sudo transactional-update pkg in libva-utils</code>
+</li>
+</ul>
+</li>
+<li>
+<p>Install the org.freedesktop.Platform.ffmpeg-full flatpak:</p>
+<pre><code>flatpak install org.freedesktop.Platform.ffmpeg-full 
+</code></pre>
+</li>
+</ol>
+<p>Choose branch 21.08 when prompted (v21.08 is the current ffmpeg runtime version that Firefox uses. This version will need to be updated as Firefox updates their runtime version). (Some people report they also had to install org.freedesktop.Platform.VAAPI.Intel. Maybe that’s only for Intel integrated GPUs? Leave a comment with your feedback.</p>
+<ol start="3">
+<li>
+<p>Set the following environment variable to enable logging so that you can verify hardware acceleration is working later:</p>
+<pre><code>flatpak override --env="MOZ_LOG=PlatformDecoderModule:5" org.mozilla.firefox
+</code></pre>
+</li>
+<li>
+<p>In Firefox, type about:config in the URL bar and set the following settings:</p>
+<pre><code>gfx.webrender.all=true
+media.ffmpeg.vaapi.enabled=true
+media.ffvpx.enabled=false (maybe not required anymore?)
+media.av1.enabled=false (maybe not required anymore?)
+</code></pre>
+<p>Tip: Clicking the double-arrow icon will set the value to true or false</p>
+</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/bdec68c4a933377cac59afc7c561e3290890f750.png" data-download-href="/uploads/original/2X/b/bdec68c4a933377cac59afc7c561e3290890f750.png" title="ffx" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/b/bdec68c4a933377cac59afc7c561e3290890f750_2_690x144.png" alt="ffx" data-base62-sha1="r68Kh9ILp4nWc0PRWrUeG0gc6cM" width="690" height="144" srcset="/uploads/optimized/2X/b/bdec68c4a933377cac59afc7c561e3290890f750_2_690x144.png, /uploads/optimized/2X/b/bdec68c4a933377cac59afc7c561e3290890f750_2_1035x216.png 1.5x, /uploads/original/2X/b/bdec68c4a933377cac59afc7c561e3290890f750.png 2x" data-small-upload="/uploads/optimized/2X/b/bdec68c4a933377cac59afc7c561e3290890f750_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">ffx</span><span class="informations">1246×261 25 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<ol start="5">
+<li>In Firefox, type about:support in the URL bar, go the “Graphics” table, and confirm that “Compositing” is set to “WebRender”</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36.png" data-download-href="/uploads/original/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36.png" title="ffx2" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36_2_690x361.png" alt="ffx2" data-base62-sha1="c8HU3niIRUt31KYsgNc1Lyc2dKK" width="690" height="361" srcset="/uploads/optimized/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36_2_690x361.png, /uploads/optimized/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36_2_1035x541.png 1.5x, /uploads/original/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36.png 2x" data-small-upload="/uploads/optimized/2X/5/5516160683d3caeee75f1fe07bab6363281c0e36_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">ffx2</span><span class="informations">1066×558 126 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<ol start="6">
+<li>
+<p>To allow hardware decoding on YouTube, the video codec used must be supported by the hardware. By default, YouTube streams VP8/VP9 encoded video, and since my GPU doesn’t support decoding of that codec, I use the <a href="https://addons.mozilla.org/en-US/firefox/addon/enhanced-h264ify/" rel="noopener nofollow ugc">enhanced-h264ify</a> extension to force H.264 videos on YouTube. I recommend installing this extension if you are in the same position.</p>
+</li>
+<li>
+<p>Verify that hardware acceleration is working by running the Firefox Flatpak from the terminal with verbose logging: <code>flatpak run --verbose org.mozilla.firefox</code>. Then, open a YouTube video. Right as the video starts playing, look for logs indicating that it’s working. As an example, I will show the relevant lines of output from the logs that I see, indicating that it’s working:</p>
+</li>
+</ol>
+<pre><code class="lang-auto">[RDD 437: MediaPDecoder #1]: D/PlatformDecoderModule FFMPEG: Initialising VA-API FFmpeg decoder
+[RDD 437: MediaPDecoder #1]: D/PlatformDecoderModule FFMPEG:   codec h264 : H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+libva info: VA-API version 1.12.0
+...
+RDD 437: MediaPDecoder #1]: D/PlatformDecoderModule FFMPEG:   VA-API FFmpeg init successful
+...
+[RDD 437: MediaPDecoder #1]: D/PlatformDecoderModule FFMPEG: VA-API Got one frame output with pts=1933333 dts=1933334 duration=33333 opaque=-9223372036854775808
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">averms</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 30, 2023 4:28 AM">
+            <time itemprop="datePublished" datetime="2023-06-30 04:28:14 +0000">Jun 30, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It does work on Intel! Thank you. The only about:config override I needed was <code>media.ffmpeg.vaapi.enabled=true</code></p>
+<p>This is probably the wrong place to ask but is there a way forward to make either of the two manual steps — installing org.freedesktop.Platform.ffmpeg-full and making the about:config change(s) — automatic?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">michel memeteau Ekimia</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 31, 2024 11:35 AM">
+            <time itemprop="datePublished" datetime="2024-01-31 11:35:26 +0000">Jan 31, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Works great now , is there an issue opened to make <code>media.ffmpeg.vaapi.enabled=true</code> as default ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">kxra</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 3, 2024 7:33 AM">
+            <time itemprop="datePublished" datetime="2024-05-03 07:33:06 +0000">May 3, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="freechelmi" data-post="3" data-topic="3125" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+freechelmi:</div>
+<blockquote>
+<p>Works great now , is there an issue opened to make <code>media.ffmpeg.vaapi.enabled=true</code> as default ?</p>
+</blockquote>
+</aside>
+<p>It already is, accourding to</p>
+<p><a href="https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding" class="onebox" target="_blank" rel="noopener nofollow ugc">https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding</a></p>
+<blockquote>
+<p>Hardware accelerated video decoding (for video playback or for WebRTC) is <a href="https://mastransky.wordpress.com/2020/09/29/firefox-81-on-fedora-with-va-api-webrtc-and-x11/" rel="noopener nofollow ugc">available </a> via VA-API for both X11 and Wayland. Since <strong>firefox-101.0.1-4</strong> package it’s enabled by default for Intel/AMD users.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">michel memeteau Ekimia</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 3, 2024 7:44 AM">
+            <time itemprop="datePublished" datetime="2024-05-03 07:44:28 +0000">May 3, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>But the fedora Wiki apply to native package ? or they distribute firefox only as flatpak ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

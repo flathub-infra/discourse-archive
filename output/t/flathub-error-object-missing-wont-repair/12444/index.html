@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flathub error: object missing, won&#39;t repair - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flathub error: object missing, won&#39;t repair</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flathub error: object missing, won&#39;t repair</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 23, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">thefallingeagle</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 23, 2026 1:22 AM">
+            <time itemprop="datePublished" datetime="2026-07-23 01:22:13 +0000">Jul 23, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m using Linux Mint on a fairly new PC. A GNOME update has been sitting in my update queue for about a week, but always throws a Flathub runtime error.</p>
+<pre><code class="lang-auto">        ID                     Branch    Op    Remote     Download
+ 1. [✗] org.gnome.Platform     49        u     flathub    80.5 MB / 408.9 MB
+
+Error: Error pulling from repo: While pulling runtime/org.gnome.Platform/x86_64/49 from remote flathub: Opening content object 623d6f05ffcea4417be63ba2adee0d0d5df811894e0319011046b4be77cca700: Opening content object 623d6f05ffcea4417be63ba2adee0d0d5df811894e0319011046b4be77cca700: Couldn't find file object '623d6f05ffcea4417be63ba2adee0d0d5df811894e0319011046b4be77cca700'
+</code></pre>
+<p>Using “flatpak repair” in the command terminal prints the following, but nothing changes.</p>
+<pre><code class="lang-auto">Working on the system installation at /var/lib/flatpak
+[2/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/25.0
+[3/61] Verifying flathub:runtime/org.freedesktop.LinuxAudio.Plugins.swh/x86_64/2
+[5/61] Verifying flathub:runtime/org.freedesktop.Platform.codecs_extra.i386/x86_
+[6/61] Verifying flathub:runtime/org.gnome.Platform/x86_64/49…
+Object missing: 623d6f05ffcea4417be63ba2adee0d0d5df811894e0319011046b4be77cca700.file
+Commit should be marked partial: a59eefcd2aa6abf8e14c023c2e212369197f431817308d84e25c4de5e07e26e1
+Dry run: Deleting ref flathub:runtime/org.gnome.Platform/x86_64/49 due to missing objects
+[17/61] Verifying flathub:runtime/org.freedesktop.Platform.GL32.default/x86_64/2
+[18/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.nvidia-580-159-03/
+[21/61] Verifying flathub:runtime/org.kde.Platform/x86_64/6.10…
+Commit should be marked partial: d0d8f7888350e93c0e6d009d79c5b143f6f6dde09de28ff93a7dc8a14a848c16
+Dry run: Deleting ref flathub:runtime/org.kde.Platform/x86_64/6.10 due to missing objects
+[23/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/25.
+[24/61] Verifying flathub:runtime/org.freedesktop.Platform.codecs-extra/x86_64/2
+[25/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/24.
+[27/61] Verifying flathub:runtime/org.freedesktop.Platform.GL32.nvidia-580-159-0
+[38/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/24.
+[39/61] Verifying flathub:runtime/org.freedesktop.Platform.GL.nvidia-580-142/x86
+[42/61] Verifying flathub:runtime/org.freedesktop.Platform.VAAPI.nvidia/x86_64/2
+[51/61] Verifying flathub:runtime/org.freedesktop.Platform.GL32.default/x86_64/2
+[54/61] Verifying flathub:runtime/org.freedesktop.Platform.Compat.i386/x86
+[59/61] Verifying flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22…
+Checking remotes...
+</code></pre>
+<p>I have a stable internet connection, so I’m not sure why this is happening. Anyone have any ideas?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 5, 2026 5:11 PM">
+            <time itemprop="datePublished" datetime="2026-08-05 17:11:13 +0000">Aug 5, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This seems to have been stuck in the moderation queue. Do you still encounter this issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

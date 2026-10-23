@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help, stuck on an outdated version of runtime - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help, stuck on an outdated version of runtime</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help, stuck on an outdated version of runtime</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 5, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hardpenguin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 5, 2023 6:02 PM">
+            <time itemprop="datePublished" datetime="2023-12-05 18:02:39 +0000">Dec 5, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi! There is a specific flatpak runtime that I am using: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/com.obsproject.Studio.Plugin.BackgroundRemoval</a> (it is an OBS plugin).</p>
+<p>My problem is, somewhere along the way the package maintainers changed the pattern for versioning and now I am stuck on an old, 1.0.1 version (latest version on Flathub is 1.1.6).</p>
+<p>This is the issue right here: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/issues/5" class="inline-onebox" rel="noopener nofollow ugc">The 'x-checker-data' field of the 'obs-backgroundremoval' module doesn't catch new releases · Issue #5 · flathub/com.obsproject.Studio.Plugin.BackgroundRemoval · GitHub</a></p>
+<p>While I understand the issue was fixed upstream, I am still unable to update. I tried removing currently installed version 1.0.1 and installing said runtime again but it installs yet again in the outdated version 1.0.1. And <code>flatpak remote-info --log</code> also shows that 1.0.1 is the latest one available for installation.</p>
+<p>I want to get the most recent version which is 1.1.6. And as I understand, it should be available for installation already: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml" rel="noopener nofollow ugc">https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml</a></p>
+<p>Are there any steps I can take to force flatpak to install the latest version of the runtime? Thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 7, 2023 12:59 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 12:59:36 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think the new version was simply not released, yet. I assume this is not intentional &amp; if you create an issue in the GitHub project then a maintainer will fix this issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hardpenguin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 7, 2023 1:25 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 13:25:08 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you confirm by installing it yourself and checking the version number through <code>flatpak info</code> ?</p>
+<p>Also, why would the Flathub repo said 1.1.6 version then?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 7, 2023 1:44 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 13:44:13 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s what I did with <code>flatpak remote-info</code>:</p>
+<pre><code class="lang-auto">        ID: com.obsproject.Studio.Plugin.BackgroundRemoval
+       Ref: runtime/com.obsproject.Studio.Plugin.BackgroundRemoval/x86_64/stable
+      Arch: x86_64
+    Branch: stable
+   License: GPL-2.0
+Collection: org.flathub.Stable
+  Download: 203.1?MB
+ Installed: 570.1?MB
+
+    Commit: c8a808c942f834189bec4c7dbce7d7113eed940429e30efcb4cc9baf6e5ec42d
+    Parent: ae08c1aeede75ee845ef954fc6672b1680fdd5a0a366009ad3f9e2f278ce5de1
+   Subject: v1.0.1 (78e6f48f)
+      Date: 2023-06-08 14:50:34 +0000
+</code></pre>
+<p>The GitHub repo contains the current state of the manifest. But this has to be build &amp; then uploaded to the actual Flathub repo (see <a href="https://docs.flatpak.org/en/latest/repositories.html" rel="noopener nofollow ugc">Flatpak Repositories</a>). If this fails for any reason, then an application won’t be published until the issue is fixed by a maintainer.</p>
+<p>If you take a look at the <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/commits/master" rel="noopener nofollow ugc">history</a> then you’ll see the status of the automatic builds (check marks &amp; crosses). It’s missing for the latest commit, so it most likely never happened. The previous commit does have a check mark but this was a just test build which is not published to the stable Flathub repo (see <code>flathub_default_branch</code> in <code>Build properties</code> on a build details page, e.g. the <a href="https://buildbot.flathub.org/#/builders/25/builds/5687" rel="noopener nofollow ugc">last stable build</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 7, 2023 3:19 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 15:19:55 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hardpenguin" data-post="3" data-topic="5602">
+<div class="title">
+<div class="quote-controls"></div>
+hardpenguin:</div>
+<blockquote>
+<p>Also, why would the Flathub repo said 1.1.6 version then?</p>
+</blockquote>
+</aside>
+<p>Where did it say that? Your inital post even said, that flatpak remote-info showed the old version?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hardpenguin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Dec 7, 2023 4:12 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 16:12:24 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Oh cheers this makes all the sense. Thanks for taking the time to reply and check! I commented in the existing Github issue already <img src="/images/emoji/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hardpenguin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Dec 7, 2023 4:13 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 16:13:20 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In the GitHub repo - I thought that meant the build was already published. Now I know everything, thanks for clarifying!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

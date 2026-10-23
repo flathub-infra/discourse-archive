@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Help me to create FLATPAK of my program - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page"> Help me to create FLATPAK of my program</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name"> Help me to create FLATPAK of my program</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_43"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_43" title="May 3, 2024 7:47 PM">
+            <time itemprop="datePublished" datetime="2024-05-03 19:47:57 +0000">May 3, 2024</time>
+          </a>
+          <span class="post-number">#43</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>From what I understand by reading the documentation the flatpak build-export command creates a local repository, I have to use the flatpak build-bundle command to create the flatpak package, but I tried command:</p>
+<p><code>flatpak build-bundle '/home/enrico/MEGA/Informatica/Programming/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca/lamiavideoteca.flatpak' lamiavideoteca.flatpak org.tarro.lamiavideoteca.flatpak</code></p>
+<p>but it doesn’t work, it gives me</p>
+<p><code>error: Refspec 'app/org.tarro.lamiavideoteca.flatpak/x86_64/master' not found</code></p>
+<p>There’s just no one who can tell me how to do the latter. I’m very close to the solution. In short, this is the official website to ask for help on how to create flatpaks… right?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_44"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_44" title="May 4, 2024 6:27 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 18:27:38 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#44</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_37">Replying to #37</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is a community forum, people will answer when they find the time. You have to be patient.</p>
+<hr>
+<p>But you already have the correct command syntax, now you just have to understand the error message, the documentation could be improved in this instance:</p>
+<blockquote>
+<p><code>flatpak build-bundle</code> LOCATION FILENAME NAME [BRANCH]</p>
+</blockquote>
+<p>LOCATION is the repository from <code>flatpak build-export</code> or from <code>flatpak-builder --repo=&lt;REPO&gt;</code> (your location is the correct one).</p>
+<p>FILENAME is just the output filename, whatever you define.</p>
+<p>NAME is actually the application id. You just have to enter exactly your id (case-sensitive). Your id doesn’t (&amp; shouldn’t) contain the <code>.flatpak</code> suffix, that’s why your application is not found.</p>
+<hr>
+<p>Additionally you could set:</p>
+<blockquote>
+<p>--runtime-repo=URL<br>
+The URL for a .flatpakrepo file that contains the information about the repository that supplies the runtimes required by the app.</p>
+</blockquote>
+<p>The documentation I’ve linked (Single-file bundles) contains an example with the correct url to set.</p>
+<p>You should sign your bundle with your GPG key but I don’t know the correct procedure for this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_45"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_45" title="May 4, 2024 7:42 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 19:42:08 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#45</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for answering me. I’m not in a hurry and I thought people were tired of replying to me. I changed the name of the repo to lamiavideotecarepo. I tried with the following command:</p>
+<p><code>&gt; flatpak build-bundle '/home/enrico/MEGA/Informatica/Programming/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca/lamiavideotecarepo' lamiavideoteca.flatpak org.tarro.lamiavideoteca</code></p>
+<p>but I get:</p>
+<blockquote>
+<p>error: ‘/home/enrico/MEGA/Informatica/Programming/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca/lamiavideotecarepo’ is not a valid repository</p>
+</blockquote>
+<p>Yet the command I used to create the local repo should be right: `</p>
+<p><code>&gt; flatpak build-export lamiavideotecarepo build-dir org.tarro.lamiavideoteca</code><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c.png" data-download-href="/uploads/original/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c.png" title="Schermata del 2024-05-04 21-41-45" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c_2_690x388.png" alt="Schermata del 2024-05-04 21-41-45" data-base62-sha1="s4qctGuHLIPCFEA25GdJ6mirj2I" width="690" height="388" srcset="/uploads/optimized/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c_2_690x388.png, /uploads/optimized/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c_2_1035x582.png 1.5x, /uploads/optimized/2X/c/c4bcda884ffd63033ee10db04d64053eddedac7c_2_1380x776.png 2x" data-dominant-color="272829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-04 21-41-45</span><span class="informations">1920×1080 169 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_46"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_46" title="May 4, 2024 8:14 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:14:59 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#46</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Most likely your path to the repo is not correct, that’s the error you get if the repo-folder does not exist.</p>
+<p>Check the files of the repository, they should look like in the screenshot (Figura 3b):</p>
+<blockquote>
+<p>ls ‘/home/enrico/MEGA/Informatica/Programming/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca/lamiavideotecarepo’</p>
+</blockquote>
+<p>But you can just avoid the whole absolute path &amp; just use <code>lamiavideotecarepo</code> instead (if everything is inside the current working directory).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_47"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_47" title="May 4, 2024 8:21 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:21:30 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#47</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="cxrvh" data-post="46" data-topic="6600">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>``</p>
+</blockquote>
+</aside>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/1/13d28c406196f75325f988575198c08e0b84d3bf.png" data-download-href="/uploads/original/2X/1/13d28c406196f75325f988575198c08e0b84d3bf.png" title="Schermata del 2024-05-04 22-21-13" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/1/13d28c406196f75325f988575198c08e0b84d3bf_2_690x388.png" alt="Schermata del 2024-05-04 22-21-13" data-base62-sha1="2PmasgeHXHjB1zc8oWPDKA9pP2L" width="690" height="388" srcset="/uploads/optimized/2X/1/13d28c406196f75325f988575198c08e0b84d3bf_2_690x388.png, /uploads/optimized/2X/1/13d28c406196f75325f988575198c08e0b84d3bf_2_1035x582.png 1.5x, /uploads/optimized/2X/1/13d28c406196f75325f988575198c08e0b84d3bf_2_1380x776.png 2x" data-dominant-color="242526"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-04 22-21-13</span><span class="informations">1920×1080 89.5 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_48"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_48" title="May 4, 2024 8:22 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:22:20 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#48</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4.png" data-download-href="/uploads/original/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4.png" title="Schermata del 2024-05-04 22-22-05" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4_2_690x388.png" alt="Schermata del 2024-05-04 22-22-05" data-base62-sha1="1tSocUphF3qzy5is6CIAO3LMoEk" width="690" height="388" srcset="/uploads/optimized/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4_2_690x388.png, /uploads/optimized/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4_2_1035x582.png 1.5x, /uploads/optimized/2X/0/0a62c55bf2c76dd73cd4b7aa3156b510ceccb9b4_2_1380x776.png 2x" data-dominant-color="2C2D2D"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-04 22-22-05</span><span class="informations">1920×1080 282 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_50"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_50" title="May 4, 2024 8:30 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:30:04 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#50</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_49">Replying to #49</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Check the app in the repository:</p>
+<blockquote>
+<p>cat lamiavideotecarepo/summary</p>
+</blockquote>
+<blockquote>
+<p>find lamiavideotecarepo/refs/heads/app</p>
+</blockquote>
+<p>Both should contain your app id. That’s the id you should be able to build the bundle for.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_51"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_51" title="May 4, 2024 8:33 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:33:54 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#51</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283.png" data-download-href="/uploads/original/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283.png" title="Schermata del 2024-05-04 22-33-31" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283_2_690x388.png" alt="Schermata del 2024-05-04 22-33-31" data-base62-sha1="7CYUj5yIHBk4m2ZKw35fLQO5v9x" width="690" height="388" srcset="/uploads/optimized/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283_2_690x388.png, /uploads/optimized/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283_2_1035x582.png 1.5x, /uploads/optimized/2X/3/35774d2e48989e7b58974c11a1b698a0927e2283_2_1380x776.png 2x" data-dominant-color="29282E"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-04 22-33-31</span><span class="informations">1920×1080 415 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_52"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_52" title="May 4, 2024 8:40 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:40:03 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#52</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You have changed the branch name from <code>master</code> to <code>org.tarro.lamiavideoteca</code>. Then you must add it as last parameter to build-bundle (without the brackets).</p>
+<p>But you should use a better branch name like <code>stable</code>, <code>main</code>, <code>master</code> or something like that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_53"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_53" title="May 4, 2024 8:58 PM">
+            <time itemprop="datePublished" datetime="2024-05-04 20:58:58 +0000">May 4, 2024</time>
+          </a>
+          <span class="post-number">#53</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>yeeeeeeeeeesssssssssssssssss!!!<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f.jpeg" data-download-href="/uploads/original/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f.jpeg" title="Schermata del 2024-05-04 22-53-45" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f_2_690x388.jpeg" alt="Schermata del 2024-05-04 22-53-45" data-base62-sha1="omJwxhkh5DUKSfU109GORyq2CWb" width="690" height="388" srcset="/uploads/optimized/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f_2_690x388.jpeg, /uploads/optimized/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/a/aac610f0755c3848e43d29d8ae1bae9c42aab83f_2_1380x776.jpeg 2x" data-dominant-color="272C2F"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-04 22-53-45</span><span class="informations">1920×1080 185 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+Thanks very thanks…May you be blessed…<br>
+I’ll have to try it and there will probably be some problems (things like gnome integration) but I’ll look at it calmly… is it normal that the .flatpak weighs only 25 megabytes despite the build-dir weighing about 75 megabytes?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_54"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_54" title="May 6, 2024 9:20 AM">
+            <time itemprop="datePublished" datetime="2024-05-06 09:20:39 +0000">May 6, 2024</time>
+          </a>
+          <span class="post-number">#54</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_53">Replying to #53</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>RESOLVED</p>
+<p>For anyone who sees this post in the future, I’ll recap what I did to compile the .flatpak file.<br>
+I created a manifest file in the directory where the binaries related to my program were located which I called org.tarro.lamiavideoteca.yml, inside this file I wrote:</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+               
+    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir /app/bin/Copertine
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - cp -r Copertine/* /app/bin/Copertine
+        
+             
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=host
+</code></pre>
+<p>Still inside this directory I opened in terminal and issued these three commands:</p>
+<blockquote>
+<p>flatpak-builder build-dir org.tarro.lamiavideoteca.yml</p>
+</blockquote>
+<blockquote>
+<p>flatpak build-export lamiavideotecarepo build-dir stable</p>
+</blockquote>
+<p>(this command creates a folder which is nothing other than the local repository)</p>
+<blockquote>
+<p>flatpak build-bundle lamiavideotecarepo lamiavideoteca.flatpak org.tarro.lamiavideoteca stable</p>
+</blockquote>
+<p>(this command actually creates the .flatpak file)</p>
+<p>I hope the post can help someone in the future. Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/help-me-to-create-flatpak-of-my-program/6600/2.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 3 of 3</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

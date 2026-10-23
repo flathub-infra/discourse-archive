@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Some feedback about the safety rating - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Some feedback about the safety rating</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Some feedback about the safety rating</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 2, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nate Graham</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 2, 2024 3:30 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 15:30:34 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>An app I co-maintain, <a href="https://flathub.org/apps/org.kde.elisa" rel="noopener nofollow ugc">Elisa</a>, is currently listed as “potentially unsafe” because it can access the music folder:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4.png" data-download-href="/uploads/original/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4_2_602x500.png" alt="image" data-base62-sha1="ulfgS2vu4qfpXrz8cVTKi1u3KNS" width="602" height="500" srcset="/uploads/optimized/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4_2_602x500.png, /uploads/optimized/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4_2_903x750.png 1.5x, /uploads/optimized/2X/d/d4a80d2637ab7b985c3c4c67de735d99003c7ff4_2_1204x1000.png 2x" data-dominant-color="C7C9CD"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1802×1496 280 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>I understand the logic behind this, but I feel it’s quite misleading. Accessing local music is literally the purpose of the app, and the Music folder starts out unpopulated by default; the only users who add anything to it are users who use local music players.</p>
+<p>Yes, we could prompt the user to find their music folder on first launch to make the portal system to remember it, but this would worsen the UX by adding a hurdle for non-technical users to succeed at jumping over before they can use the app. Such a thing would also feel pretty stupid IMO:</p>
+<p><strong>App</strong>: “Where’s the music folder?” [shows a dialog window with “Music” already visible in it]<br>
+<strong>User</strong>: “Uhh it’s right there. Wow this app is dumb.”</p>
+<p>IMO whitelisted access to standard XDG dirs shouldn’t be considered a security problem.</p>
+<hr>
+<p>Another issue is that the app is called out as having microphone access, which sounds scary. This is not something I specifically added, but rather it hitches a ride on the <code>pulseaudio</code> permission which is required for playing audio — another core function of a music player! So as I see it, there is no way to remove this warning without destroying the app’s core functionality. Needless to say, this feels unfair.</p>
+<p>Same with Network permissions since you can’t very well listen to online radio with network access, right?  I mean, sure, in the abstract, connecting to the internet could allow a malicious app to do nefarious things — but this is a verified FOSS app by one of the oldest mainstream FOSS organizations in the world that literally has the term “online radio” in its summary to alert users about what kind of network content it’ll be accessing. Does none of that count for anything in the safety classifier? That also feels unfair and misleading.</p>
+<hr>
+<p>Overall I’m not sure what we’re going for here. The permissions model seems designed to scare non-technical users away from every app that’s not a toy.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 2, 2024 3:44 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 15:44:14 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In general, I agree that the labels are overreaching but some of it is more nuanced.</p>
+<aside class="quote no-group" data-username="ngraham" data-post="1" data-topic="8191">
+<div class="title">
+<div class="quote-controls"></div>
+ngraham:</div>
+<blockquote>
+<p>Another issue is that the app is called out as having microphone access, which sounds scary. This is not something I specifically added, but rather it hitches a ride on the <code>pulseaudio</code> permission which is required for playing audio — another core function of a music player! So as I see it, there is no way to remove this warning without destroying the app’s core functionality. Needless to say, this feels unfair.</p>
+</blockquote>
+</aside>
+<p>There is no such thing as microphone access that’s the website mislabeling the PulseAudio socket.</p>
+<p>The permission isn’t completely safe either as it allows full audio input, output playback, ALSA devices, pulseaudio modules access but there is no such thing as “Audio portal” yet. So it’s “safeness” is up for debate.</p>
+<p>I can tell Elisa in this case is safe with the added context that it comes from a trusted vendor and is verified etc. but the website is making an objective judgement here.</p>
+<blockquote>
+<p>Same with Network permissions since you can’t very well listen to online radio with network access, right?</p>
+</blockquote>
+<p>The same goes for this too. Without the added context these permissions cannot be considered fully safe. I can say Firefox on Flathub should absolutely not be marked unsafe for using “Network” but I can’t extrapolate this “trust” to every app on Flathub.</p>
+<p>If we start marking it safe for one or two we have to do it for every app, then there is a high chance a scam/malicious app pops up that uses the seemingly benign and “essential” network permission (marked safe with “green”) for some evil activities. Then that puts the website in a weird position as it it didn’t warn the user about it before installing.</p>
+<p>This has happened in the past <a href="https://popey.com/blog/2024/03/exodus-wallet-part-three/" class="inline-onebox" rel="noopener nofollow ugc">Guess Who's Back? Exodus Scam BitCoin Wallet Snap! - Alan Pope's blog</a> and we can’t manually review every single update that maintainers push through for all 2500 apps.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 2, 2024 3:50 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 15:50:27 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The issue with the labels was discussed before in the matrix rooms. Two suggestions popped up were</p>
+<ul>
+<li>Remove the red/yellow/green safe/unsafe labels and make it more like Google Play Store which just lists the permissions and doesn’t “judge” them</li>
+<li>Allow reviewers/admins to override it for “trusted” apps manually. Apart from scaling issues, this needs a bunch of work because we need to expose these manual “overrides” so that downstreams like GNOME Software and KDE Discover etc. can choose to use them.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 2, 2024 4:01 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 16:01:57 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Remove the red/yellow/green safe/unsafe labels and make it more like Google Play Store which just lists the permissions and doesn’t “judge” them</p>
+</blockquote>
+<p>I just noticed that this is what Discover does right now too. The current UI and wording of the safety ratings on the website are mostly 1:1 and kept in sync with what GNOME software does.</p>
+<p><img src="/uploads/original/2X/6/66effc60f70dd9c0e9b94b02f1a3ddb188568875.png" alt="image" data-base62-sha1="eGCRTCpFTS3P5mn92XV2q8SgbAN" width="607" height="424"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nate Graham</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 2, 2024 4:51 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 16:51:24 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can sympathize with the position you’re in on the subjects of audio and network access, but the problem is that there’s no actionable way for the developer to turn them green. That means the decision to mark them with a lower level of safety amounts to a decision to mark entire classes of apps as inherently less safe than other apps, which simply doesn’t feel right. It cheapens the concept of safety, and people will start to ignore it.</p>
+<p>Presenting a flat list of permissions seems like a good plan IMO, yeah. And indeed, we do that in Discover to avoid having to wade into this thorny issue. We have some thoughts about doing it anyway, but rather than separating the “safety level” from the “community trustworthiness level” as Flathub currently does it, we’d combine them into one. You can see some of our thoughts at <a href="https://invent.kde.org/plasma/discover/-/issues/16" class="inline-onebox" rel="noopener nofollow ugc">Assign apps a safety rating using an at-a-glance "safety scorecard" (#16) · Issues · Plasma / Discover · GitLab</a>. The basic idea there would be that broad permissions aren’t <em>ipso facto</em> a problem unless the app has some combination of other compromising traits, such as not being sandboxed, being proprietary, or being unverified.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Dec 2, 2024 5:13 PM">
+            <time itemprop="datePublished" datetime="2024-12-02 17:13:23 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>but the problem is that there’s no actionable way for the developer to turn them green. That means the decision to mark them with a lower level of safety amounts to a decision to mark entire classes of apps as inherently less safe than other apps, which simply doesn’t feel right. It cheapens the concept of safety, and people will start to ignore it.</p>
+</blockquote>
+<p>Yea, I agree and it is not just these two but a bunch of other permissions don’t have a “portal” alternative as well.</p>
+<p>This is probably better discussed in a GitHub issue on flathub-infra/website. Last time people were divided about both options and the discussion dissipated before something came out of it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Dec 5, 2024 6:04 PM">
+            <time itemprop="datePublished" datetime="2024-12-05 18:04:51 +0000">Dec 5, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Access to your home folder is potentially unsafe, and do your seat belt up on your computer chair before you get in trouble with your mum.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

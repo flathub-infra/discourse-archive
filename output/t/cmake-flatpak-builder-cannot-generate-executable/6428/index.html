@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMake Flatpak-builder cannot generate executable - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">CMake Flatpak-builder cannot generate executable</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">CMake Flatpak-builder cannot generate executable</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 25, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 25, 2024 3:02 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 03:02:31 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve tried to use flatpak-builder with cmake as buildsystem and try to generate a flatpak but it have no output. Do anyone has idea?</p>
+<p>Console output:</p>
+<pre><code class="lang-auto">[ 67%] Building CXX object CMakeFiles/blink.dir/Model/CFileListModel.cpp.o
+[ 70%] Building CXX object CMakeFiles/blink.dir/Model/CProjectManager.cpp.o
+[ 72%] Building CXX object CMakeFiles/blink.dir/Model/CProjectUpdateThread.cpp.o
+[ 75%] Building CXX object CMakeFiles/blink.dir/Model/CProjectLoadThread.cpp.o
+[ 78%] Building CXX object CMakeFiles/blink.dir/Model/CConfigManager.cpp.o
+[ 81%] Building CXX object CMakeFiles/blink.dir/Model/CProjectItem.cpp.o
+[ 83%] Building CXX object CMakeFiles/blink.dir/Model/CFileItem.cpp.o
+[ 86%] Building CXX object CMakeFiles/blink.dir/Model/CRunCommand.cpp.o
+[ 89%] Building CXX object CMakeFiles/blink.dir/Model/CFindReplaceModel.cpp.o
+[ 91%] Building CXX object CMakeFiles/blink.dir/Storage/CXmlStorageHandler.cpp.o
+[ 94%] Building CXX object CMakeFiles/blink.dir/blink_autogen/S5YYZ2ZCNV/qrc_app.cpp.o
+[ 97%] Linking CXX executable blink
+[100%] Built target blink
+[  0%] Built target blink_autogen_timestamp_deps
+[  2%] Built target blink_autogen
+[100%] Built target blink
+Install the project...
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /app/blink/blink
+-- Set non-toolchain portion of runtime path of "/app/blink/blink" to ""
+compressing debuginfo in: /opt/blink/flatpkg/.flatpak-builder/rofiles/rofiles-s1M5ap/files/blink/blink
+processing: /opt/blink/flatpkg/.flatpak-builder/rofiles/rofiles-s1M5ap/files/blink/blink
+[32] .debug_aranges compressed -&gt; .zdebug_aranges (8784 =&gt; 2233 25.42%)
+[33] .debug_info compressed -&gt; .zdebug_info (12224483 =&gt; 5740447 46.96%)
+[34] .debug_abbrev compressed -&gt; .zdebug_abbrev (192812 =&gt; 42171 21.87%)
+[35] .debug_line compressed -&gt; .zdebug_line (704640 =&gt; 175563 24.92%)
+[36] .debug_str compressed -&gt; .zdebug_str (1341410 =&gt; 279713 20.85%)
+[37] .debug_line_str compressed -&gt; .zdebug_line_str (8137 =&gt; 2613 32.11%)
+[38] .debug_loclists compressed -&gt; .zdebug_loclists (1122121 =&gt; 318126 28.35%)
+[39] .debug_rnglists compressed -&gt; .zdebug_rnglists (212109 =&gt; 67929 32.03%)
+[42] Updating section string table
+stripping /opt/blink/flatpkg/.flatpak-builder/rofiles/rofiles-s1M5ap/files/blink/blink to /opt/blink/flatpkg/.flatpak-builder/rofiles/rofiles-s1M5ap/files/lib/debug/blink/blink.debug
+Committing stage build-blink to cache
+Cleaning up
+Committing stage cleanup to cache
+Finishing app
+No executable found
+Please review the exported files and the metadata
+Committing stage finish to cache
+Pruning cache
+</code></pre>
+<p>blink.yml</p>
+<pre><code class="lang-auto">id: org.flatpak.blink
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+modules:
+  - name: qscintilla
+    buildsystem: qmake
+    subdir: src
+    sources:
+      - type: archive
+        url: https://www.riverbankcomputing.com/static/Downloads/QScintilla/2.13.4/QScintilla_src-2.13.4.tar.gz
+        sha256: 890c261f31e116f426b0ea03a136d44fc89551ebfd126d7b0bdf8a7197879986
+      - type: patch
+        path: qscintilla-lib-paths.patch
+  - name: blink
+    buildsystem: cmake
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_INSTALL_LIBDIR:PATH=/app/lib
+    sources:
+      - type: dir
+        path: /opt/blink
+</code></pre>
+<p>CMakeList.txt</p>
+<pre><code class="lang-auto">cmake_minimum_required(VERSION 3.1.0)
+
+project(blink VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+find_package(Qt6 COMPONENTS Widgets Xml Network REQUIRED)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS Resources/Forms)
+
+include_directories(. Utils /opt/QScintilla_src-2.14.1/src)
+
+link_directories (/opt/QScintilla_src-2.14.1/src)
+
+add_executable(blink
+    Resources/Forms/mainWindow.ui
+    Resources/Forms/editor.ui
+    Resources/Forms/projectDialog.ui
+    Resources/Forms/groupDialog.ui
+    Resources/Forms/aboutDialog.ui
+    Resources/Forms/configDialog.ui
+    Resources/Forms/findReplaceDialog.ui
+    Resources/Forms/editorFindDialog.ui
+
+    Resources/app.qrc
+    Resources/Icons/appIcons.rc 
+
+    main.cpp
+    Utils/CUtils.cpp
+    Display/CMainWindow.cpp
+    Display/CEditor.cpp
+    Display/CEditorFindDlg.cpp
+    Display/CProjectDlg.cpp
+    Display/CAboutDlg.cpp
+    Display/CProjectListWidget.cpp
+    Display/CFileListWidget.cpp
+    Display/CConfigDlg.cpp
+    Display/CEventFilterObj.cpp
+    Display/CSearchTextBrowser.cpp
+    Display/CSearchTextEdit.cpp
+    Display/CFindReplaceDlg.cpp
+    Model/qTagger/CTagItem.cpp
+    Model/qTagger/CTagFileRecord.cpp
+    Model/qTagger/CTagResultItem.cpp
+    Model/qTagger/qTagger.cpp
+    Model/qTagger/CSourceFileList.cpp
+    Model/qFindReplacer/qFindReplacer.cpp
+    Model/CProjectListModel.cpp
+    Model/CFileListModel.cpp
+    Model/CProjectManager.cpp
+    Model/CProjectUpdateThread.cpp
+    Model/CProjectLoadThread.cpp
+    Model/CConfigManager.cpp
+    Model/CProjectItem.cpp
+    Model/CFileItem.cpp
+    Model/CRunCommand.cpp
+    Model/CFindReplaceModel.cpp
+    Storage/CXmlStorageHandler.cpp
+
+)
+
+target_link_libraries(blink Qt6::Widgets Qt6::Xml Qt6::Network qscintilla2_qt6)
+
+set(CMAKE_INSTALL_PREFIX /app/blink)
+
+install(TARGETS blink
+    DESTINATION ${CMAKE_INSTALL_PREFIX}
+    )
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 25, 2024 6:32 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 06:32:32 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems to be generated: <code>/app/blink/blink</code>. You should probably define a <code>command</code> property with that path</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 25, 2024 6:55 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 06:55:33 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What command do you mean?<br>
+I’ve tried to generate the flatpak with the following command but the size is only 1.2MB</p>
+<pre><code class="lang-auto">flatpak build-export export build-dir
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 25, 2024 7:26 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 07:26:05 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When running the following command:</p>
+<pre><code class="lang-auto">flatpak run org.flatpak.blink
+</code></pre>
+<p>I encountered the following error:</p>
+<pre><code class="lang-auto">error: Key file does not have key “command” in group “Application”
+</code></pre>
+<p>Does anyone has idea?</p>
+<p>Output of</p>
+<pre><code class="lang-auto">flatpak-builder --user --install --force-clean build-dir blink.yml
+```:
+
+</code></pre>
+<p>compressing debuginfo in: /opt/blink/flatpak/.flatpak-builder/rofiles/rofiles-wX5i2k/files/blink/blink<br>
+processing: /opt/blink/flatpak/.flatpak-builder/rofiles/rofiles-wX5i2k/files/blink/blink<br>
+[32] .debug_aranges compressed → .zdebug_aranges (8784 =&gt; 2233 25.42%)<br>
+[33] .debug_info compressed → .zdebug_info (12224483 =&gt; 5740447 46.96%)<br>
+[34] .debug_abbrev compressed → .zdebug_abbrev (192812 =&gt; 42171 21.87%)<br>
+[35] .debug_line compressed → .zdebug_line (704640 =&gt; 175563 24.92%)<br>
+[36] .debug_str compressed → .zdebug_str (1341410 =&gt; 279713 20.85%)<br>
+[37] .debug_line_str compressed → .zdebug_line_str (8137 =&gt; 2613 32.11%)<br>
+[38] .debug_loclists compressed → .zdebug_loclists (1122121 =&gt; 318126 28.35%)<br>
+[39] .debug_rnglists compressed → .zdebug_rnglists (212109 =&gt; 67929 32.03%)<br>
+[42] Updating section string table<br>
+stripping /opt/blink/flatpak/.flatpak-builder/rofiles/rofiles-wX5i2k/files/blink/blink to /opt/blink/flatpak/.flatpak-builder/rofiles/rofiles-wX5i2k/files/lib/debug/blink/blink.debug<br>
+Committing stage build-blink to cache<br>
+Cleaning up<br>
+Committing stage cleanup to cache<br>
+Finishing app<br>
+No executable found<br>
+Please review the exported files and the metadata<br>
+Committing stage finish to cache<br>
+Exporting org.flatpak.blink to repo<br>
+Commit: 6873492885d316d2826379087ffa190769ec4c11de5e9d2478f0a187e5e29990<br>
+Metadata Total: 35<br>
+Metadata Written: 4<br>
+Content Total: 81<br>
+Content Written: 0<br>
+Content Bytes Written: 0 (0 bytes)<br>
+Exporting org.flatpak.blink.Debug to repo<br>
+Commit: e7af362049491847aabb2c1c800703ea2bde7a201cad851e2adfe24c24e74f67<br>
+Metadata Total: 35<br>
+Metadata Written: 2<br>
+Content Total: 92<br>
+Content Written: 0<br>
+Content Bytes Written: 0 (0 bytes)<br>
+Updating runtime/org.kde.Platform.Locale/x86_64/6.6<br>
+Installing app/org.flatpak.blink/x86_64/master<br>
+Pruning cache</p>
+<pre><code class="lang-auto"></code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 25, 2024 8:11 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 08:11:36 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="janchan" data-post="3" data-topic="6428">
+<div class="title">
+<div class="quote-controls"></div>
+janchan:</div>
+<blockquote>
+<p>What command do you mean?</p>
+</blockquote>
+</aside>
+<p><code>command</code> property in <code>blink.yml</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 25, 2024 9:18 AM">
+            <time itemprop="datePublished" datetime="2024-03-25 09:18:21 +0000">Mar 25, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a lot! It can be installed and run now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

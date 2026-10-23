@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fixing My Local Nginx Cache Setup for Flatpaks - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Fixing My Local Nginx Cache Setup for Flatpaks</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Fixing My Local Nginx Cache Setup for Flatpaks</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 18, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">VoWtP</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 18, 2024 10:14 AM">
+            <time itemprop="datePublished" datetime="2024-11-18 10:14:42 +0000">Nov 18, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I followed <a href="https://dataswamp.org/~solene/2023-04-05-lan-cache-flatpak.html" rel="noopener nofollow ugc">this guide</a> to set up a local Nginx cache server for Flathub. Everything was functioning well for nearly a year, but it has recently stopped working. Below is my Nginx configuration:</p>
+<pre><code class="lang-auto">map $status $cache_header {
+    200     "public";
+    302     "public";
+    default "no-cache";
+}
+
+server {
+    listen 0.0.0.0:8080; # you may want to listen on port 80, or add TLS
+    server_name my-cache.local; # replace this with your hostname, or system IP
+
+    # flathub cache
+    set $flathub_cache https://dl.flathub.org;
+
+    location /flathub/ {
+        rewrite  ^/flathub/(.*) /$1 break;
+        resolver my-dns.local ipv6=off; # I use my local DNS, but feel free to use whatever you prefer.
+        proxy_cache flathub;
+        proxy_cache_key     "$request_filename";
+        add_header Cache-Control $cache_header always;
+        proxy_cache_valid   200 302     300d;
+        expires max;
+        proxy_pass  $flathub_cache;
+    }
+}
+
+proxy_cache_path    /var/cache/nginx/flathub/cache levels=1:2
+    keys_zone=flathub:5m
+    max_size=20g
+    inactive=60d
+    use_temp_path=off;
+</code></pre>
+<p>I initially had to add <code>resolver my-dns.local ipv6=off;</code> for it to function correctly.</p>
+<p>However, I’m now encountering the error: <code>error: Unable to load summary from remote flathub: Server returned status 421</code> when trying to install Flatpaks, and I receive <code>F: Warning: Treating remote fetch error as non-fatal ...</code> when running <code>flatpak update</code>.<br>
+To update and install Flatpaks, I need to use <code>set $flathub_cache http://dl.flathub.org;</code> instead of <code>set $flathub_cache https://dl.flathub.org;</code>, but as I understand it, this results in a redirection to <code>https</code> on Flathub’s servers, which prevents any caching from occurring.  If I bypass the local cache server, Flatpaks installs and updates as expected.</p>
+<p>Does anyone have any suggestions on how to resolve this issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">VoWtP</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 1, 2024 9:43 AM">
+            <time itemprop="datePublished" datetime="2024-12-01 09:43:23 +0000">Dec 1, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To anyone interested in using this on a local server, it is now working again as it was. There must have been a change on Flathub’s side. Thank you to whoever made that happen!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

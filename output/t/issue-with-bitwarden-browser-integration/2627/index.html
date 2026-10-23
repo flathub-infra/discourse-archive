@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Issue with Bitwarden Browser Integration - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Issue with Bitwarden Browser Integration</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Issue with Bitwarden Browser Integration</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 19, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">erf456</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 19, 2022 1:28 PM">
+            <time itemprop="datePublished" datetime="2022-06-19 13:28:36 +0000">Jun 19, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When I installed the Bitwarden flatpak, everything seemed to be working fine. However, when I wanted to enable biometric authentication in the browser extention (which requires communication between the browser extension and desktop application), an error message popped up.</p>
+<p>The error message said I needed to enable browser integration in the desktop application. I had the setting configured properly, so it had to be an issue with the flatpak.</p>
+<p>I was using the extension on the natively installed Firefox, so I tried getting the flatpak of Firefox instead – still no cigar. However, when I installed Bitwarden via the native repositories (I’m on Manjaro FYI), the integration communicated successfully.</p>
+<p>Tl;dr – the Bitwarden flatpak can’t talk to browser extensions.</p>
+<p>Some communication channel must not be working. According to <a href="/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html">this post</a>, it must be possible for a flatpak’d password manager to talk to its broswer extension in a natively installed browser (the post proposes some odd workaround for using a flatpak’d broswer, but assumes the native broswer is already working).</p>
+<p>Does this sound like an issue with Bitwarden, or something that could be fixed on the Flathub end?</p>
+<p>If this is something the Bitwarden devs would need to fix, I can go post about it on their forum. But trying here first.</p>
+<p>I’ll probably have to use the native application until this gets fixed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">rugk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 19, 2022 4:23 PM">
+            <time itemprop="datePublished" datetime="2022-06-19 16:23:57 +0000">Jun 19, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am the author of the post you mention and extension developer and from what you say it is very clear: Yes, it is the same issue actually.</p>
+<p>The extension needs to use native messaging to communicate with the desktop application and due to flatpak’s sandboxing this is blocked.<br>
+Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</p>
+<p>However a proper solution would (likely) involve both flatpak and Mozilla to provide a compatible way to communicate in such a case. See and support/upvote these issues:</p>
+<ul>
+<li>Mozilla Firefox’ side: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763" class="inline-onebox">1621763 - [flatpak] native messaging support missing</a>
+</li>
+<li>Flatpak’s side: <a href="https://github.com/flatpak/xdg-desktop-portal/issues/655" class="inline-onebox">NativeMessaging portal for sandboxed browsers · Issue #655 · flatpak/xdg-desktop-portal · GitHub</a>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">erf456</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 19, 2022 5:16 PM">
+            <time itemprop="datePublished" datetime="2022-06-19 17:16:00 +0000">Jun 19, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah, great, thanks! Upvoted; I only wish I had the skills to support these endeavors in a more meaningful way…</p>
+<p>Someday I’ll get there. But for now, godspeed to the devs!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">KobeW50</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 3, 2025 5:32 AM">
+            <time itemprop="datePublished" datetime="2025-01-03 05:32:45 +0000">Jan 3, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I know this is quite late, but Flatpak Bitwarden should be able to integrate with a browser (as long as the browser isn’t itself a Flatpak) after this PR is merged:</p>
+<aside class="onebox githubpullrequest" data-onebox-src="https://github.com/bitwarden/clients/pull/12007">
+  <header class="source">
+
+      <a href="https://github.com/bitwarden/clients/pull/12007" target="_blank" rel="noopener nofollow ugc">github.com/bitwarden/clients</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+
+
+
+    <div class="github-icon-container" title="Pull Request">
+      <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    </div>
+
+  <div class="github-info-container">
+
+
+
+      <h4>
+        <a href="https://github.com/bitwarden/clients/pull/12007" target="_blank" rel="noopener nofollow ugc">[BEEEP/PM-14950] Flatpak biometrics</a>
+      </h4>
+
+    <div class="branches">
+      <code>bitwarden:main</code> ← <code>bitwarden:km/beeep/biometrics-flatpak-test</code>
+    </div>
+
+      <div class="github-info">
+        <div class="date">
+          opened <span class="discourse-local-date" data-format="ll" data-date="2024-11-14" data-time="20:57:52" data-timezone="UTC">08:57PM - 14 Nov 24 UTC</span>
+        </div>
+
+        <div class="user">
+          <a href="https://github.com/quexten" target="_blank" rel="noopener nofollow ugc">
+            <img alt="quexten" src="/uploads/original/2X/3/347c727f14f5f796b3d138206730d4b10a2b62be.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="99787D">
+            quexten
+          </a>
+        </div>
+
+        <div class="lines" title="2 commits changed 10 files with 135 additions and 30 deletions">
+          <a href="https://github.com/bitwarden/clients/pull/12007/files" target="_blank" rel="noopener nofollow ugc">
+            <span class="added">+135</span>
+            <span class="removed">-30</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">## 🎟️ Tracking
+
+https://bitwarden.atlassian.net/browse/PM-14950
+
+## 📔 Object<span class="show-more-container"><a href="https://github.com/bitwarden/clients/pull/12007" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">ive
+
+This PR aims to do four things:
+### Biometric browser integration with flatpak
+This implements biometric integration for flatpak sandboxed bitwarden installations (flatpak browsers are still incompatible). We achieve this by instead of the desktop proxy binary, calling a script that calls the desktop proxy binary inside of the flatpak sandbox.
+### Fix polkit connection
+There are several ways to provide a subject to polkit. One of them is via a pid, which is what was used so far. However, snap/flatpak namespace the pids, so this does not work. Instead, we use the system bus name: https://docs.rs/zbus_polkit/latest/zbus_polkit/policykit1/struct.Subject.html
+
+### Biometric auto setup
+In order to make automatic setup of the polkit policies possible, we use flatpak-spawn to get out of the flatpak sandbox. This needs a new permission on the flatpak manifest.
+### Biometric failed setup fallback
+On some systems (atomic fedora spins, i.e kinonite/silverblue), the polkit policies are read-only, and would have to be changed with an overlay. The simple fix here is to use one of the existing policies - `org.freedesktop.policykit.exec`. This is cosmetically not as nice, since the fallback prompt is something like: "Authenticate to run a program as a different user", but for authentication purposes should be as strong.
+
+## 📸 Screenshots
+
+
+
+## ⏰ Reminders before review
+
+- Contributor guidelines followed
+- All formatters and local linters executed and passed
+- Written new unit and / or integration tests where applicable
+- Protected functional changes with optionality (feature flags)
+- Used internationalization (i18n) for all UI strings
+- CI builds passed
+- Communicated to DevOps any deployment requirements
+- Updated any necessary documentation (Confluence, contributing docs) or informed the documentation team
+
+## 🦮 Reviewer guidelines
+
+
+
+- 👍 (`:+1:`) or similar for great changes
+- 📝 (`:memo:`) or ℹ️ (`:information_source:`) for notes or general info
+- ❓ (`:question:`) for questions
+- 🤔 (`:thinking:`) or 💭 (`:thought_balloon:`) for more open inquiry that's not quite a confirmed issue and could potentially benefit from discussion
+- 🎨 (`:art:`) for suggestions / improvements
+- ❌ (`:x:`) or ⚠️ (`:warning:`) for more significant problems or concerns needing attention
+- 🌱 (`:seedling:`) or ♻️ (`:recycle:`) for future improvements or indications of technical debt
+- ⛏ (`:pick:`) for minor or nitpick changes</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

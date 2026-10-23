@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exceptions to finish-args-own-name-org rule? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Exceptions to finish-args-own-name-org rule?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Exceptions to finish-args-own-name-org rule?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 4, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ferenc </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 4, 2026 11:56 AM">
+            <time itemprop="datePublished" datetime="2026-05-04 11:56:56 +0000">May 4, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There is an app that has an <code>app-id</code> of <code>X.Y.ActualAppName</code> but it needs to own <code>X.Y.SingleApplication</code> specifically, to be able to establish a quasi leader-follower relationship between it’s instances via D-Bus.<br>
+Can an exception from the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc">finish-args-own-name-cpt</a> be granted for such a case or does the app have to be patched to only use <code>X.Y.ActualAppName</code> instead, potentially breaking coordination between instances installed from non-flatpak sources?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 4, 2026 4:03 PM">
+            <time itemprop="datePublished" datetime="2026-05-04 16:03:18 +0000">May 4, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Without knowing the specifics (as you didn’t gave them), the answer would be to use the proper application id in the Flatpak.</p>
+<aside class="quote no-group quote-modified" data-username="Ferenc" data-post="1" data-topic="12090">
+<div class="title">
+<div class="quote-controls"></div>
+Ferenc:</div>
+<blockquote>
+<p>[…] potentially breaking coordination between instances installed from non-flatpak sources?</p>
+</blockquote>
+</aside>
+<p>In most cases, users will only install an application from one source anyway on the same system. So, I don’t think that should be that much of an concern.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ferenc </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 4, 2026 7:21 PM">
+            <time itemprop="datePublished" datetime="2026-05-04 19:21:13 +0000">May 4, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="CodedOre" data-post="2" data-topic="12090">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>Without knowing the specifics (as you didn’t gave them)</p>
+</blockquote>
+</aside>
+<p>It is very specfic, that there is literally, the exact string suffix <code>SingleApplication</code>, verbatim hardcoded inside the application, that is specifically the problem.</p>
+<blockquote>
+<p>to use the proper application id in the Flatpak.</p>
+</blockquote>
+<p>I am using a proper application id. That is part of the problem. A proper application id IMHO can’t literally end with <code>SingleApplication</code>as this exact verbatim string doesn’t carry any meaning and nobody names applications literally that, and if they did it would be a rather useless name from user perspective. So I am excluding the possibility to rename the application id to end literally with <code>SingleApplication</code>.<br>
+Now, the way I see, the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc">ominous flathub rule</a>, would require one of these 2 options:</p>
+<ol>
+<li>Get an exception from this rule.</li>
+<li>Patch the application with one more patch, to not use literally the <code>SingleApplication</code> suffix, but to match the actual application id. And at the same time lose the coordination capabilities with let’s say AppImage instances, which still literally use the <code>SingleApplication</code> suffix</li>
+</ol>
+<p>The question is which one it has to be? Obviously I would prefer to have one less patch, because that would simplify maintenance, and keep compatibility.<br>
+But if there is no exception granted, then there is no other option left.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 4, 2026 11:32 PM">
+            <time itemprop="datePublished" datetime="2026-05-04 23:32:34 +0000">May 4, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>then the app is wrong. Let me guess. Tauri. It’s a bug.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

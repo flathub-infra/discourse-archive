@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Steam - bwrap executable not setuid root - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Steam - bwrap executable not setuid root</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Steam - bwrap executable not setuid root</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 2, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">BloodRedEagle420</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 2, 2023 4:11 PM">
+            <time itemprop="datePublished" datetime="2023-12-02 16:11:17 +0000">Dec 2, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone,</p>
+<p>Attempting to run a game on Steam, I get the following error –</p>
+<p>–share-pids not supported by host portal</p>
+<p>This feature requires Flatpak to be using a bubblewrap (bwrap) executable that is not setuid root.</p>
+<p>The non-setuid version of bubblewrap requires a kernel that allows unprivileged users to create new user namespaces.</p>
+<p>For more details please see:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flatpak/flatpak/wiki/User-namespace-requirements">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flatpak/flatpak/wiki/User-namespace-requirements" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/5/5de700f4f3e49434f029a38c081ec7e9d647299e_2_690x345.png" class="thumbnail" data-dominant-color="EBEFF2" width="690" height="345"></div>
+
+<h3><a href="https://github.com/flatpak/flatpak/wiki/User-namespace-requirements" target="_blank" rel="noopener nofollow ugc">User namespace requirements</a></h3>
+
+  <p>Linux application sandboxing and distribution framework - flatpak/flatpak</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I followed the link and the instructions, and attempted to switch to unprivileged mode, to no avail.</p>
+<p>Any ideas?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 3, 2023 3:11 PM">
+            <time itemprop="datePublished" datetime="2023-12-03 15:11:12 +0000">Dec 3, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You need to provide more information.</p>
+<p>Which distribution are you using? Which version of flatpak? What exactly did you change &amp; what output did you get?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">BloodRedEagle420</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 3, 2023 3:56 PM">
+            <time itemprop="datePublished" datetime="2023-12-03 15:56:59 +0000">Dec 3, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello, thanks for the reply.<br>
+Distro is Nutyx 23.11, Flatpak version1.15.4-1.<br>
+No modifications to the Flatpak app, not even Flatseal.<br>
+Launching Steam works fine, and it runs just fine. The error occurs whenever I attempt to launch a program, in this case, RPG Maker MZ<br>
+I am including a screenshot of my terminal output when the error occurs<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2.jpeg" data-download-href="/uploads/original/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2.jpeg" title="IMG_20231202_101310737" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2_2_666x500.jpeg" alt="IMG_20231202_101310737" data-base62-sha1="bAyKB4v4JQDFGQBn133YDkmPIci" width="666" height="500" srcset="/uploads/optimized/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2_2_666x500.jpeg, /uploads/optimized/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2_2_999x750.jpeg 1.5x, /uploads/optimized/2X/5/5139e98abece8664016ae9fe32d41865dd75a2b2_2_1332x1000.jpeg 2x" data-dominant-color="585954"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">IMG_20231202_101310737</span><span class="informations">1920×1440 275 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 4, 2023 3:15 PM">
+            <time itemprop="datePublished" datetime="2023-12-04 15:15:36 +0000">Dec 4, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="BloodRedEagle420" data-post="3" data-topic="5565">
+<div class="title">
+<div class="quote-controls"></div>
+BloodRedEagle420:</div>
+<blockquote>
+<p>Distro is Nutyx 23.11</p>
+</blockquote>
+</aside>
+<p>Maybe that’s the problem. First time I hear about that distro. Chances they broke something that works elsewhere not negligible.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 7, 2023 1:55 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 13:55:33 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You should post the output of the following:</p>
+<ol>
+<li><code>cat /etc/sysctl.d/50-bubblewrap.conf</code></li>
+<li><code>sudo sysctl kernel.unprivileged_userns_clone</code></li>
+<li><code>ls -l  /usr/bin/bwrap</code><br>
+(or where your bwrap executable is located, you can use <code>which bwrap</code> to show the path)</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

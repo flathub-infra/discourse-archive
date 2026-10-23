@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enterprise or corporate private flathub setup - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Enterprise or corporate private flathub setup</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Enterprise or corporate private flathub setup</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 3, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Damon Smith</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 3, 2020 12:41 AM">
+            <time itemprop="datePublished" datetime="2020-03-03 00:41:28 +0000">Mar 3, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi all, I’m interested in using Flathub as a way of managing internal software for linux workstations.</p>
+<p>I’m wondering about the following options:</p>
+<ol>
+<li>Run a private internal instance of Flathub</li>
+<li>Create a custom Gnome Software Centre plugin that works with a whitelist</li>
+</ol>
+<p>number 1. seems like the most secure, but is there a way to automatically synchronise from upstream for certain applications? What capabilities might I need to contribute to Flathub to make it work?</p>
+<p>number 2. this one seems more achievable but it’d be hard to prevent users from just downloading application packages and running them themselves.</p>
+<p>If anyone has thoughts or ideas in this area I’d love to hear them.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martín Abente Lahaye</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 3, 2020 2:57 PM">
+            <time itemprop="datePublished" datetime="2020-03-03 14:57:31 +0000">Mar 3, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think all you need is:</p>
+<ol>
+<li>Use <a href="https://github.com/flatpak/flat-manager" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flatpak/flat-manager</a> , and</li>
+<li>Make sure your Flatpak repository is setup in your workstations (e.g. if you build these images yourself).</li>
+<li>GNOME software should be able to see your repo and present your internal apps, already.</li>
+</ol>
+<p>Regarding your questions:</p>
+<ol>
+<li>
+<p>I am not sure there is a tool for sync’ing flatpak repos, but if you manage a limited subset of applications in your repo it shouldn’t be to hard to manage that, (e.g. Flathub manifests are public git repos already)</p>
+</li>
+<li>
+<p>I think you can disable sources in gnome-software (maybe you can explore that? and only leave Flatpak source?, I haven’t tried this though).</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Damon Smith</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 4, 2020 12:26 AM">
+            <time itemprop="datePublished" datetime="2020-03-04 00:26:25 +0000">Mar 4, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok great, thank you. I’ll fire up flat-manager and see how it works. I think configuring the machines to only use internal repos is fine, it seems straightforward.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Damon Smith</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 4, 2020 12:31 AM">
+            <time itemprop="datePublished" datetime="2020-03-04 00:31:09 +0000">Mar 4, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Also I know it’s very flexible to back everything on to the developer’s own sources for packages but it just seems like we’re relying on every individual application developer’s security process, it’d be better if packages were bundled up and served from our own internal repositories so that (for example) if a developer’s github account is compromised it can’t immediately affect our internal users. Although then we have to bump every version manually.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 4, 2020 11:09 AM">
+            <time itemprop="datePublished" datetime="2020-03-04 11:09:02 +0000">Mar 4, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can probably use ostree to pull/mirror refs you are interested in: <a href="https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories" class="inline-onebox-loading">https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories</a></p>
+<p>And then add such remote to flatpak.</p>
+<p><span class="mention">@nedrichards</span> and <span class="mention">@wjt</span>, do you remember if anything like this was ever done at Endless?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 5, 2020 11:26 AM">
+            <time itemprop="datePublished" datetime="2020-03-05 11:26:53 +0000">Mar 5, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Not as far as I remember but we do do something vaguely similar in our image builder, mirroring refs to a local cache before pre-installing them in an image. I’ll ask an expert to chime in <img src="/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Nicholson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 5, 2020 4:37 PM">
+            <time itemprop="datePublished" datetime="2020-03-05 16:37:16 +0000">Mar 5, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Unfortunately, nowadays if the remote has a collection ID set (which flathub does), <code>ostree pull --mirror</code> will do something a bit different than what you want by putting the pulled refs under <code>refs/mirrors/org.flathub.Stable</code> instead of <code>refs/heads</code>. What you need to do is set the collection ID of your mirror to match flathub’s. Like so:</p>
+<pre><code class="lang-auto">ostree --repo=repo init --mode=archive --collection-id=org.flathub.Stable
+ostree --repo=repo remote add --set gpg-verify-summary=true --gpg-import /path/to/flathub/gpg/keyring flathub https://dl.flathub.org/repo/
+ostree --repo=repo pull --mirror flathub
+</code></pre>
+<p>However, note that you won’t be able to mirror flathub’s summary file in that way and you’ll need to regenerate your own summary after pulling with <code>flatpak build-update-repo</code>. Then you have 2 options:</p>
+<ol>
+<li>
+<p>Specify your own GPG key to sign your summary with and make sure that your clients have it in their trusted keyring for your mirrored flathub remote.</p>
+</li>
+<li>
+<p>Leave the summary unsigned and ensure that clients don’t try to verify the summary. Unfortunately, flatpak only has a single --gpg-verify option that would enable or disable verification for both commits and summary. You’d want to continue to verifying the commits with flathub’s GPG key, though. In that case, you have to use ostree’s config handling manually like <code>ostree config set 'remote "flathub-mirror".gpg-verify-summary' false</code> assuming your clients use a remote name of <code>flathub-mirror</code>.</p>
+</li>
+</ol>
+<p>For the second option, simply running <code>flatpak build-update-repo repo</code> is what you want.</p>
+<p>ostree also has support for a mirrorlist which you could maybe configure your clients to add your mirror in, but I’ve never used it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Nicholson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 5, 2020 5:22 PM">
+            <time itemprop="datePublished" datetime="2020-03-05 17:22:34 +0000">Mar 5, 2020</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You don’t actually need flat-manager to just serve an ostree-repo. flat-manager has some nice stuff that flathub uses for receiving builds from workers, but you just need any old HTTP server to provide an ostree repo. I always use nginx, but anything will work. Recently flat-manager gained support for per-commit authentication (see <a href="https://github.com/flatpak/flatpak/wiki/TestingPurchases" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flatpak/flatpak/wiki/TestingPurchases</a>), but it’s still early days for that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan Nicholson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 5, 2020 5:31 PM">
+            <time itemprop="datePublished" datetime="2020-03-05 17:31:56 +0000">Mar 5, 2020</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yet another option is to setup an HTTP reverse proxy with caching to flathub. Effectively be your own CDN endpoint. This is more complex and you have to deal with caching, but it would be a drop in solution. Flathub has a couple frontends between the actual repo server and the real CDN that do this. It’s basically a combination of these 2 things in nginx (with some ansible jinja templating):</p>
+<p><a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2</a><br>
+<a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2</a></p>
+<p>With the reverse proxy you don’t have to worry at all about pulling or signing. But you do very much need to deal cached data that might not be synced correctly. The classical issue here is the summary and summary.sig files being out of sync because of caching.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jenns</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jan 4, 2022 8:33 PM">
+            <time itemprop="datePublished" datetime="2022-01-04 20:33:04 +0000">Jan 4, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Thank so much for this info, I am trying to set this up to be able to have a local repo from which install applications in a semi-offline environment,</p>
+<p>I was able to make it work using flatpack builder and recompiling apps to my repo, but I would like to know if it’s possible to just sync or download precompiled applictions from flathub and then add them to my repo.</p>
+<p>while trying to execute this suggested command I get the following error on a fresh centos8 vm</p>
+<p>ostree --repo=/opt/repo remote add --set gpg-verify-summary=true --gpg-import /opt/gpg flathub <a href="https://dl.flathub.org/repo/" rel="noopener nofollow ugc">https://dl.flathub.org/repo/</a></p>
+<p>error: Remote configuration for “flathub” already exists: (in config)</p>
+<p>Thanks Again</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jenns</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jan 6, 2022 5:35 PM">
+            <time itemprop="datePublished" datetime="2022-01-06 17:35:34 +0000">Jan 6, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I also tried to create a custom repo, using flatpak-builder then export the build to repo location, the I tried to sign the repo with a gpg key following this <a href="https://blogs.gnome.org/alexl/2017/02/10/maintaining-a-flatpak-repository/" class="inline-onebox" rel="noopener nofollow ugc">Maintaining a flatpak repository – Alexander Larsson</a></p>
+<p>then at the moment of adding the repo to the client with this command</p>
+<p>flatpak remote-add --gpg-import=example.gpg example <a href="http://example.com/repo" rel="noopener nofollow ugc">http://example.com/repo</a></p>
+<p>I get the following error:</p>
+<p>error: GPG: Unable to export keys: GPGME: No data</p>
+<p>the when I try to install an app build and exported to the repo I get</p>
+<p>flatpak install --gpg-file=example.gpg example org.videolan.VLC</p>
+<p>error: Unable to load summary from remote example: GPG signatures found, but none are in trusted keyring</p>
+<p>not sure what I am doing wrong here,</p>
+<p>Thanks Again</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

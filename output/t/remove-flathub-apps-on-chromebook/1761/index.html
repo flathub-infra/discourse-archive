@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remove Flathub apps on Chromebook - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Remove Flathub apps on Chromebook</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Remove Flathub apps on Chromebook</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 9, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 9, 2021 3:17 PM">
+            <time itemprop="datePublished" datetime="2021-10-09 15:17:30 +0000">Oct 9, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have downloaded two copies, different versions, using Flathub.  They both show up in my Linux apps on the Chromebook.  How do I delete the older version?  Obviously, I know very little about Linux.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 11, 2021 1:30 PM">
+            <time itemprop="datePublished" datetime="2021-10-11 13:30:25 +0000">Oct 11, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>An example would help, e.g. <code>flatpak list | grep APP-ID</code>.</p>
+<p>Anyway, if you have two copies of the same APP-ID and you run <code>flatpak uninstall APP-ID</code> you’ll be asked which one you want to remove.</p>
+<p>If the installed apps have different branches, you can specify which branch you want to remove, e.g. <code>flatpak uninstall APP-ID//BRANCH</code>.</p>
+<p>There’s no such an example where a first user might expect it:<br>
+<a href="https://docs.flatpak.org/en/latest/using-flatpak.html#remove-an-application" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/using-flatpak.html#remove-an-application</a></p>
+<p>but it’s explained before in the docs:<br>
+<a href="https://docs.flatpak.org/en/latest/using-flatpak.html#identifier-triples" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/using-flatpak.html#identifier-triples</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 25, 2021 11:23 AM">
+            <time itemprop="datePublished" datetime="2021-10-25 11:23:06 +0000">Oct 25, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What is an APP-ID?  Calibre is the app that I have double installed.  I ran dpkg --list and did not see it listed.</p>
+<p>Thanks,</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 25, 2021 11:43 AM">
+            <time itemprop="datePublished" datetime="2021-10-25 11:43:40 +0000">Oct 25, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="fedelibre" data-post="2" data-topic="1761">
+<div class="title">
+<div class="quote-controls"></div>
+fedelibre:</div>
+<blockquote>
+<p><a href="https://docs.flatpak.org/en/latest/using-flatpak.html#remove-an-application" class="inline-onebox" rel="noopener nofollow ugc">Using Flatpak - Flatpak documentation</a></p>
+</blockquote>
+</aside>
+<p>I took a quick look at the URL’s you recommended and was able to uninstall Calibre.  Now, when I run $ flatpak list --app Calibre is no longer listed.  However, when I go to the Chromebook app launcher one icon for Calibre is still shown and clicking on the icon will still launch Calibre.  That indicates to me that Calibre is still installed somewhere in the Linux part of my Chromebook and I have no idea where to look.</p>
+<p>Thanks,</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 26, 2021 9:02 PM">
+            <time itemprop="datePublished" datetime="2021-10-26 21:02:47 +0000">Oct 26, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Calibre app id is <code>com.calibre_ebook.calibre</code>, see <a href="https://flathub.org/apps/details/com.calibre_ebook.calibre" rel="noopener nofollow ugc">its flathub page</a>.<br>
+Anyway <code>flatpak list --app</code> or <code>flatpak list --app | grep calibre</code> shows anything?</p>
+<p>You may have installed Calibre as RPM from Fedora regular repository.<br>
+Type <code>rpm -q calibre</code> or <code>apt show calibre</code> to find it out.</p>
+<p>GNOME Software shows if a package is installed as RPM or flatpak.<br>
+I don’t know though which desktop your Chromebook is running and which software center is using.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 27, 2021 3:35 PM">
+            <time itemprop="datePublished" datetime="2021-10-27 15:35:00 +0000">Oct 27, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks.  A little investigation led me to the Calibre ID.</p>
+<p>The “flatpak list” commands both showed the correct version of Calibre installed - ver. 5.30.  The downlevel version, 5.29, doesn’t show up anywhere except the Chromebook launcher.</p>
+<p>I tried the rpm -q command and got “-bash: rpm: command not found”.</p>
+<p>Once again, thanks for your help.</p>
+<p>Abe</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 27, 2021 9:48 PM">
+            <time itemprop="datePublished" datetime="2021-10-27 21:48:30 +0000">Oct 27, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Your Chromebook is probably running Chrome OS, which could be based on Ubuntu or Gentoo distros.<br>
+If yours is based on Ubuntu, <code>apt show calibre</code> should return the 5.29 version.<br>
+If it’s based on Gentoo, try <code>emerge --search calibre</code>. More on <a href="https://wiki.gentoo.org/wiki/Portage" rel="noopener nofollow ugc">Gentoo wiki</a>.</p>
+<p>At any rate, I suggest you install a software center, such as GNOME Software. Version 41 is pretty good.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 28, 2021 11:13 AM">
+            <time itemprop="datePublished" datetime="2021-10-28 11:13:44 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Frederico,</p>
+<p>I believe I am running Debian Buster.  The apt show calibre command worked and I got the following in response (the reply has been shorted by deleting the product description):</p>
+<p>Package: calibre<br>
+Version: 3.39.1+dfsg-3<br>
+Priority: optional<br>
+Section: text<br>
+Maintainer: Norbert Preining norbert@preining.info<br>
+Installed-Size: 52.9 MB<br>
+Depends: python2.7, python-css-parser, python-dbus, python-pil, python-lxml (&gt;= 3.8), python-mechanize (&gt;= 0.2.5), python-pkg-resources, python-cssutils (&gt;= 0.9.9~), python-cssselect (&gt;= 0.7.1), python-cherrypy3 (&gt;= 3.1.1), python-dateutil, python-feedparser, python-html5-parser, python-html5lib, python-markdown, python-msgpack (&gt;= 0.5.6~), python-pyqt5 (&gt;= 5.11.3+dfsg-1+b3), python-pyqt5.qtwebkit, python-pyqt5.qtsvg, python-pyparsing, python-regex, python-routes, python-chardet, python-netifaces, python-apsw (&gt;= 3.7.17), xdg-utils, imagemagick, libjpeg-turbo-progs, optipng, poppler-utils, fonts-liberation, libjs-mathjax (&gt;= 2.1+20121028-1), libjs-coffeescript, calibre-bin (&gt;= 3.39.1+dfsg-3)<br>
+Recommends: python-dnspython (&gt;= 1.6.0)<br>
+Suggests: python-unrardll<br>
+Tag: implemented-in::python, interface::graphical, interface::x11,<br>
+role::program, scope::application, uitoolkit::qt, use::converting,<br>
+use::viewing, works-with-format::TODO, works-with-format::chm,<br>
+works-with-format::epub, works-with-format::html,<br>
+works-with-format::odf, works-with-format::pdf, works-with::text,<br>
+x11::application<br>
+Download-Size: 23.8 MB<br>
+APT-Sources: <a href="https://deb.debian.org/debian" rel="noopener nofollow ugc">https://deb.debian.org/debian</a> buster/main amd64 Packages</p>
+<p>I did not see the version, I am looking for ver 5.29, nor did I see the location so I could remove it.  I have a suspicion that I need to talk to the Chrome OS support folks and ask them how to delete version 5.29 and remove the icon.</p>
+<p>Thanks again for your time and trouble.</p>
+<p>Abe</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 28, 2021 11:15 AM">
+            <time itemprop="datePublished" datetime="2021-10-28 11:15:57 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry, I forgot about GNOME in my prior post.  What is GNOME, will it be of value on a Chromebook that only uses a couple of Linux apps, and do I get it from Flatpak?</p>
+<p>Abe</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Oct 28, 2021 12:30 PM">
+            <time itemprop="datePublished" datetime="2021-10-28 12:30:20 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="abe-csm" data-post="8" data-topic="1761">
+<div class="title">
+<div class="quote-controls"></div>
+abe-csm:</div>
+<blockquote>
+<p>I did not see the version, I am looking for ver 5.29, nor did I see the location so I could remove it. I have a suspicion that I need to talk to the Chrome OS support folks and ask them how to delete version 5.29 and remove the icon.</p>
+</blockquote>
+</aside>
+<p>It says version 3.39.1. <a href="https://packages.debian.org/search?keywords=calibre" rel="noopener nofollow ugc">This page</a> confirms it.<br>
+You can uninstall it with <code>sudo apt remove calibre</code>.</p>
+<p>Run the 5.29 calibre version, then check the processes to understand which binary is running:</p>
+<pre><code class="lang-auto">flatpak ps
+ps aux | grep -i calibre
+</code></pre>
+<p>Post the output of these two commands.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Oct 28, 2021 12:33 PM">
+            <time itemprop="datePublished" datetime="2021-10-28 12:33:13 +0000">Oct 28, 2021</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="abe-csm" data-post="9" data-topic="1761">
+<div class="title">
+<div class="quote-controls"></div>
+abe-csm:</div>
+<blockquote>
+<p>What is GNOME, will it be of value on a Chromebook that only uses a couple of Linux apps, and do I get it from Flatpak?</p>
+</blockquote>
+</aside>
+<p>GNOME is a desktop environment for Linux. You cannot install GNOME Software as flatpak.</p>
+<p>You should ask other Chrome OS user which software center application use.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Oct 29, 2021 11:33 AM">
+            <time itemprop="datePublished" datetime="2021-10-29 11:33:58 +0000">Oct 29, 2021</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for your response on GNOME.  I’ll save that for a later project.</p>
+<p>Back to Calibre.  I did as you suggested and here are the results.  I do not understand what it is telling me, though some of the response is recognizable.</p>
+<p>Here is the output:<br>
+abesternberg@penguin:~$ flatpak ps<br>
+Instance   PID  Application         Runtime<br>
+2676864052 2657 org.mozilla.firefox org.freedesktop.Platform<br>
+abesternberg@penguin:~$ ps aux | grep -i calibre<br>
+abester+  2558  2.8  4.6 1188192 132180 ?      Ssl  07:14   0:08 /opt/calibre/bin/calibre --detach<br>
+abester+  2574  0.0  0.3 149280  9644 ?        S    07:14   0:00 /opt/calibre/bin/calibre-parallel --pipe-worker from calibre.utils.ipc.pool import run_main, worker_main; run_main(19, worker_main)<br>
+abester+  2576  0.0  0.0   2384   760 ?        S    07:14   0:00 /bin/sh /usr/bin/xdg-open <a href="https://calibre-ebook.com/whats-new" class="inline-onebox" rel="noopener nofollow ugc">calibre - What's new</a><br>
+root      2657  0.0  0.0   5188   112 ?        S    07:14   0:00 bwrap --args 33 firefox <a href="https://calibre-ebook.com/whats-new" class="inline-onebox" rel="noopener nofollow ugc">calibre - What's new</a><br>
+abester+  2670  0.0  0.0   5524  1004 ?        S    07:14   0:00 bwrap --args 33 firefox “the link to Calibre/whats-new” was inserted here<br>
+abester+  2672 63.4 16.2 3348472 466332 ?      Sl   07:14   2:57 /app/lib/firefox/firefox “the link to Calibre/whats-new” was inserted here<br>
+abester+  3615  0.0  0.0   6204   892 pts/0    S+   07:19   0:00 grep -i calibre<br>
+abesternberg@penguin:~$</p>
+<p>Since new users are limited to two links, I had to modify the results.<br>
+Many thanks for your time and trouble.</p>
+<p>Abe</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Nov 8, 2021 9:44 PM">
+            <time itemprop="datePublished" datetime="2021-11-08 21:44:55 +0000">Nov 8, 2021</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="abe-csm" data-post="12" data-topic="1761">
+<div class="title">
+<div class="quote-controls"></div>
+abe-csm:</div>
+<blockquote>
+<p>$ ps aux | grep -i calibre<br>
+abester+ 2558 2.8 4.6 1188192 132180 ? Ssl 07:14 0:08 /opt/calibre/bin/calibre --detach<br>
+abester+ 2574 0.0 0.3 149280 9644 ? S 07:14 0:00 /opt/calibre/bin/calibre-parallel --pipe-worker from calibre.utils.ipc.pool import run_main, worker_main; run_main(19, worker_main)</p>
+</blockquote>
+</aside>
+<p>This tells you that you have a calibre installation in <code>/opt</code>.<br>
+It is not a directory used by distro packages. IIRC Calibre has some auto-update script which installs the software in /opt (because it doesn’t want to break distro installations).</p>
+<p>Check with <code>ls /opt/calibre/bin</code> has some uninstall command.<br>
+If it’s missing, I think that removing everything under <code>/opt/calibre</code> <em>should</em> be enough:</p>
+<pre><code>sudo rm -r /opt/calibre
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Abe Sternberg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Nov 19, 2021 5:19 PM">
+            <time itemprop="datePublished" datetime="2021-11-19 17:19:34 +0000">Nov 19, 2021</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just wanted to get back to you and let you know that your advice was perfect.  I was able to clean up my duplicate.</p>
+<p>Abe</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

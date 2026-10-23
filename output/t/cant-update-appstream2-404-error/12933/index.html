@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cant update appstream2 404 error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Cant update appstream2 404 error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Cant update appstream2 404 error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 12, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Pigeon Juice</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 12, 2026 8:53 PM">
+            <time itemprop="datePublished" datetime="2026-10-12 20:53:44 +0000">Oct 12, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello, im not really well versed in these types of things but im trying to update my flatpaks, at first i thought it was my pc that was causing the issue, but i didnt have the time to check what was going on, so i removed a bunch of nvidia runtimes and apps to then reeinstall them again so i could continue working (i needed a new version of a specific app), now that i have time i tried curling the repo object and im getting a 404 error so i believe is not an issue of mine but a flatpak issue. I’ve never posted about a linux issue before so excuse me if im not good at it.</p>
+<p>Here are my outputs:</p>
+<p><code>&gt;sudo flatpak update --appstream</code><br>
+<code>Updating appstream data for remote fedora</code><br>
+<code>Updating appstream data for remote flathub</code><br>
+<code>Error updating: While pulling appstream2/x86_64 from remote flathub: No such metadata object 849e36d9d2024eb200a6c9293ea746649eb935971b236fdc538cc275bc72eebb.commit</code></p>
+<p><code>&gt;curl -I ``https://dl.flathub.org/repo/objects/84/9e36d9d2024eb200a6c9293ea746649eb935971b236fdc538cc275bc72eebb.commit`` </code><br>
+<code>HTTP/2 404  </code><br>
+<strong><code>server</code></strong><code>: nginx </code><br>
+<strong><code>content-type</code></strong><code>: text/html </code><br>
+<strong><code>backend-name</code></strong><code>: 3DxooTFj8SlVTdJ0UTX8Jd--F_front_aws_lon2 </code><br>
+<strong><code>accept-ranges</code></strong><code>: bytes </code><br>
+<strong><code>via</code></strong><code>: 1.1 varnish, 1.1 varnish </code><br>
+<strong><code>date</code></strong><code>: Mon, 12 Oct 2026 20:30:29 GMT </code><br>
+<strong><code>x-served-by</code></strong><code>: cache-lhr-egll1980021-LHR, cache-dfw-kdfw8210095-DFW </code><br>
+<strong><code>x-cache</code></strong><code>: MISS, MISS </code><br>
+<strong><code>x-cache-hits</code></strong><code>: 0, 0 </code><br>
+<strong><code>x-timer</code></strong><code>: S1791837029.209899,VS0,VE114 </code><br>
+<strong><code>vary</code></strong><code>: Accept-Encoding </code><br>
+<strong><code>strict-transport-security</code></strong><code>: max-age=31557600 </code><br>
+<strong><code>alt-svc</code></strong><code>: h3=":443";ma=86400,h3-29=":443";ma=86400,h3-27=":443";ma=86400 </code><br>
+<strong><code>content-length</code></strong><code>: 162</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

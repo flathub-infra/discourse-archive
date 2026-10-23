@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unexpected data loss - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Unexpected data loss</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Unexpected data loss</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 30, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bitnapper</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 30, 2026 3:41 PM">
+            <time itemprop="datePublished" datetime="2026-01-30 15:41:00 +0000">Jan 30, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I had a few times where I tried to save a file from a flatpak. The different apps behave very differently regarding filesystem access. From some apps it seems pretty clear that one has no access to one’s homefolder. Others have a very strange temporary file structure. For other apps one can see the same files and folders as from other non-flatpak apps. Confusing enough from a user perspective, I do understand that some of theses obstacles for the moment. But the following two examples I experienced are very difficult to accept and the last one should not appear:</p>
+<p>I tried the ‘Simple Scan’ app from Flatpak. It seemed good at first glance. I could access my scanner, crop my pictures and store them. Then I looked in the pictures folder and nothing. Started again… I scanned the pictures, tried to save them but then I got asked if I wanted to overwrite a file with that exact name. But from the app I could not see any file with that name so I chose another name and could save it. I invoked the save menu again and then saw the images is scanned for a second time. I left the app open and checked in the filemanager but could not the any scanned images. I gave up after trying a few more times, uninstalled the app, reinstalled it via the pacman instead and everything worked as expected.</p>
+<p>Some weeks later when I was cleaning up my ~/Pictures/ folder I found plenty of images name with a leading . and a trailing string. Those were the images I scanned and could not find because they where somehow stored as hidden files while the flatpak app did give no hint that they were not stored under the name I gave them.</p>
+<hr>
+<p>Second case.</p>
+<p>I had a few times where I created a file from a flatpak app and when I wanted to open it again - either from that flatpak app or another native application - it was gone. Luckily it never was anything important. Since I was using bluefin at that time which primarily uses flatpak I decided to move to a more reliable distro which did not get in my way as often. I wanted to try flatpak a bit more since I do see advantages in doing that.</p>
+<p>I had the feeling that I didn’t have that problem anymore. But when I tried to store a work-in-progress file today the app showed me my regular home folder with all the same files I see from the cli. It let me save that file without any hint that this might not have worked. I restarted the app and the file was gone. I checked from the cli - also gone. I checked if it were a case of a mangled filename like with the scanner app but also: no. I tried to reproduce it and it lets me save files the way I expect it to work with absolutely no clue that the files will vanish the moment that app is closed.</p>
+<hr>
+<p>The normal answer in IT is … is complicated, different layers of abstraction, sanboxing bla bla. I don’t wanna be rude here, sorry for that. But the point is, the answer can’t be the typical the user should have know that there is something different while the whole way it presents itself exactly as expected without hint of any problem up to the point were you loose a few hours of work.</p>
+<p>And due to the complexity of the matter I have to figure out if it is 1) a but in flatpak itself, 2) a bug in the flatpak implementation of my distro, 3) somewhere between flatpak and my desktop env, 4) a bad flatpak app or in that case since it is a JAVA app, somewhere completely different.</p>
+<p>Sorry gain, it was frustrating.</p>
+<p>Isn’t it at least possible to either force the app to store files in a place where the user can access them again or at least give an access denied so that one knows one can’t store the files. But simulating a success with no hint that it immediately throws away your files makes me wonder, how can I decide which seemingly behaviour of flatpak apps I can trust and when I cannot. When I can successfully save a file I should be able to assume that I did exactly that. Is there any way to judge the reliability of a flatpak app?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sabri Ünal</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 30, 2026 11:11 PM">
+            <time itemprop="datePublished" datetime="2026-01-30 23:11:22 +0000">Jan 30, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bitnapper" data-post="1" data-topic="11637">
+<div class="title">
+<div class="quote-controls"></div>
+bitnapper:</div>
+<blockquote>
+<p>I tried the ‘Simple Scan’ app from Flatpak</p>
+</blockquote>
+</aside>
+<p>Please don’t forget to report to the developers. Not many people have a scanner nowadays.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://gitlab.gnome.org/GNOME/simple-scan/-/issues">
+  <header class="source">
+      <img src="/uploads/original/2X/d/d2c8f1cd62ccd4e6f24cdbe79dc79bf4630cee10.png" class="site-icon" alt="" data-dominant-color="000000" width="32" height="32">
+
+      <a href="https://gitlab.gnome.org/GNOME/simple-scan/-/issues" target="_blank" rel="noopener nofollow ugc">GitLab</a>
+  </header>
+
+  <article class="onebox-body">
+    <img width="64" height="64" src="/uploads/original/2X/9/983d2cd4519081d665b5c3b8389897256f4c5641.png" class="thumbnail onebox-avatar" alt="" data-dominant-color="98C0BE">
+
+<h3><a href="https://gitlab.gnome.org/GNOME/simple-scan/-/issues" target="_blank" rel="noopener nofollow ugc">Issues · GNOME / Document Scanner · GitLab</a></h3>
+
+  <p>Welcome to GNOME GitLab</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jan 31, 2026 10:05 AM">
+            <time itemprop="datePublished" datetime="2026-01-31 10:05:51 +0000">Jan 31, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bitnapper" data-post="1" data-topic="11637">
+<div class="title">
+<div class="quote-controls"></div>
+bitnapper:</div>
+<blockquote>
+<p>Sorry gain, it was frustrating.</p>
+</blockquote>
+</aside>
+<p>Hi there!<br>
+I can understand the frustration. When something is not working as it’s supposed to and you don’t know why it is frustrating.</p>
+<p>Anyways, I’d like to mention a few things:</p>
+<aside class="quote no-group" data-username="bitnapper" data-post="1" data-topic="11637">
+<div class="title">
+<div class="quote-controls"></div>
+bitnapper:</div>
+<blockquote>
+<p>The different apps behave very differently regarding filesystem access. From some apps it seems pretty clear that one has no access to one’s homefolder. Others have a very strange temporary file structure. For other apps one can see the same files and folders as from other non-flatpak apps. Confusing enough from a user perspective, I do understand that some of theses obstacles for the moment</p>
+</blockquote>
+</aside>
+<p>So, here is how files work inside Flatpak, to my understanding:<br>
+As you know, Flatpak sets up a sandbox for an application, with an separated filesystem. This filesystem is temporary and used to mount various paths.</p>
+<p>First of all, the runtime and application files under their respective prefixes <code>/usr</code> and <code>/app</code> as read-only folders. Then, the local data folder, located under <code>~/.var/app/$APP_ID</code>. This path is always accessible for applications and where you find the data and config folders.<br>
+This is the basic filesystem for an application in the Flatpak sandbox. If an application has an <code>filesystem</code> permission, the folder in question is then mounted additionally in its respective path.</p>
+<p>Now, this filesystem is what the application can see. If the application uses a its own file picker, it can only show you that limited filesystem. Saving a file in this filesystem to an path that was mounted from the host, such as <code>~/.var/app/$APP_ID/data</code>, will store it on your host. But if you store it in an path that was created by the sandbox, such as the plain <code>~</code> (without <code>--filesystem=home</code> permission), the file will be gone together with the temporary filesystem when the application is quit.</p>
+<p>But as you mentioned there are apps which seem to show the full filesystem as the host. Here’s the tricky part: The file picker in this case is not from the application. Instead, it uses the file chooser portal.<br>
+Here, the application tells the system it likes to have an file from the host. The system then shows the file picker and let’s the user choose. The chosen file or folder will then be provided to the application over the document portal. In the sandbox the file will be mounted somewhere like <code>/run/user/$UID/doc/…</code>. In this case, only this file (or folder) is accessible to the application.<br>
+For the user, this is supposed to be transparent. But since not every application uses the this system, this currently leads to different behaviors between apps.</p>
+<hr>
+<p>Now, with this out of the way, about the two issues you’ve mentioned:</p>
+<p>Firstly, Simple Scan should use the file chooser portal.</p>
+<p>For the second case, it would be helpful to know which app is in question here. Like mentioned before, some apps, especially Java apps I think, don’t use the file chooser portal, but their own file picker. But we would need to know which app is in question to be sure.</p>
+<hr>
+<p>But, in general:<br>
+If an app uses the file chooser portal, it should be able to load or save to the path you select in the file picker. If this causes an issue, this could be an issue with the portal. Or maybe the app not using the portal correctly.</p>
+<p>If an app does not use the portals, then it is limited to the sandbox described earlier. In this case, you should only save to inside a folder which the app was granted access to by a filesystem permission. The Flathub page has an section on permissions for each app, where the filesystem permissions should be listed. Otherwise you could use tools like Flatseal or KDE’s “application permissions” settings page.<br>
+Or saving to <code>~/.var/app/$APP_ID/data</code> should be safe too.</p>
+<p>If I recall correctly, there was the proposal to make the temporary filesystem Flatpak creates read-only, except for the host paths it mounts. So, in the future, you should get a write error instead of the app writing silently to an temporary path.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bitnapper</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 31, 2026 10:28 AM">
+            <time itemprop="datePublished" datetime="2026-01-31 10:28:41 +0000">Jan 31, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="CodedOre" data-post="5" data-topic="11637">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>entioned there are apps which seem to show the full filesystem as the host. Here’s the tricky part: The file picker in this case is not from the application. Instead, it uses the file chooser portal.</p>
+</blockquote>
+</aside>
+<p>I did, of corse. <a href="https://gitlab.gnome.org/GNOME/simple-scan/-/issues/470#note_2619255" class="inline-onebox" rel="noopener nofollow ugc">Document Scanner saves files as hidden with .xdp but never creates final file. (#470) · Issues · GNOME / Document Scanner · GitLab</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 3, 2026 8:00 AM">
+            <time itemprop="datePublished" datetime="2026-02-03 08:00:24 +0000">Feb 3, 2026</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think I also suffered from the second case you’re describing</p><aside class="quote quote-modified" data-post="1" data-topic="8450">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <div class="quote-title__text-content">
+      <a href="/t/disabling-flatpaks-ephemeral-file-system/8450/index.html">Disabling Flatpak's ephemeral file system</a> 
+    </div>
+  </div>
+  <blockquote>
+    There is a behavior in Flatpak that hurts UX. 
+Apps that don’t use file portals seem to be given a “virtual” file system to write files to. The app is getting a success code on file writes, even though the success only happened on that “virtual” file system and there is no change on the user’s machines. 
+The content of that “virtual” file system are lost on app restart. 
+Is there a way to disable this behavior so that the app gets an error code instead of a success code when trying to write file…
+  </blockquote>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

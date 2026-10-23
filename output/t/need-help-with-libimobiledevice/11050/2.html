@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Need help with libimobiledevice - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Need help with libimobiledevice</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Need help with libimobiledevice</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 24, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Nov 27, 2025 12:21 PM">
+            <time itemprop="datePublished" datetime="2025-11-27 12:21:01 +0000">Nov 27, 2025</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m not using this app as well. Maybe open some <em>Call for testing</em> issue on app github repo where are more users capable of testing this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">phcavelar</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Dec 19, 2025 8:16 AM">
+            <time itemprop="datePublished" datetime="2025-12-19 08:16:38 +0000">Dec 19, 2025</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@uncore</span> after running <code>cmake .</code> and <code>make install</code> I’m getting the error below. I’d be happy to help you test this but could you give me a hand on how to compile it? Also, before this I was getting an error saying that <code>printf</code> was not defined, which I solved by adding <code>cstdio</code> to the imports, but I do not know the imobiledevice library so I wouldn’t know where to start looking for what I could change the <code>idevice_strerror</code> to.<br>
+<code>Consolidate compiler generated dependencies of target flatpak-libimobiledevice</code><br>
+<code>[ 50%] Building CXX object CMakeFiles/flatpak-libimobiledevice.dir/main.cpp.o</code><br>
+<code>~/git/flatpak-libimobiledevice/main.cpp: In function ‘int main()’:</code><br>
+<code>~/git/flatpak-libimobiledevice/main.cpp:40:58: error: ‘idevice_strerror’ was not declared in this scope; did you mean ‘idevice_error_t’?</code><br>
+<code>40 |     printf(“Failed to subscribe to device events: %s\n”, idevice_strerror(res));</code><br>
+<code>|                                                          ^~~~~~~~~~~~~~~~</code><br>
+<code>|                                                          idevice_error_t</code><br>
+<code>make[2]: *** [CMakeFiles/flatpak-libimobiledevice.dir/build.make:76: CMakeFiles/flatpak-libimobiledevice.dir/main.cpp.o] Error 1</code><br>
+<code>make[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/flatpak-libimobiledevice.dir/all] Error 2</code><br>
+<code>make: *** [Makefile:136: all] Error 2</code></p>
+<p>(edit: fix typo)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/need-help-with-libimobiledevice/11050/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 2</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

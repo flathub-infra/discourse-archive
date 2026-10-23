@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building my first flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Building my first flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Building my first flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 11, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 11, 2023 8:42 PM">
+            <time itemprop="datePublished" datetime="2023-08-11 20:42:07 +0000">Aug 11, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As a test, I am trying to build a flatpak for a small wxWidgets test program built with C++ under Codelite -  under Mint 21.1 Cinnamon<br>
+The app is called wxmt.</p>
+<p>Being very new to this, I am totally in the dark as to what my manifest ought to contain and what, if anything in the way of existing support libraries from my build system, I can use.<br>
+Or whether I need to rebuild all support libraries from scratch.</p>
+<p>FWIW, my wxWidgets app is built with the current 3.2.2 release code, with all libraries linked statically.</p>
+<p>My dir tree<br>
+…appBase\menutest\build-debug\bin\wxmt  ---- compiled app<br>
+\flatpak\ wxmt                  &lt;--------+          copied manually for testing<br>
+| org.flatpak.wxmt.yml</p>
+<p>My basic manifest at this point looks like</p>
+<pre><code class="lang-auto">---
+app-id: org.flatpak.wxmt
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: wxmt
+modules:
+  - name: wxmt
+    buildsystem: simple
+    build-commands:
+      - install -D wxmt /app/bin/wxmt
+    sources:
+      - type: file
+        path: wxmt
+</code></pre>
+<p>Running<br>
+<em>flatpak-builder --user --install --force-clean build-dir org.flatpak.wxmt.yml</em><br>
+produces no errors and completes, but running<br>
+<em>flatpak run org.flatpak.wxmt</em><br>
+produces, not unexpectedly:</p>
+<p><em>flatpak run org.flatpak.wxmt</em><br>
+<em>wxmt: error while loading shared libraries: libwx_gtk3u_unofficial_xrc-3.2.so.0: cannot open shared object file: No such file or directory</em></p>
+<p>The library which it cannot find is present on my system because when I run the app on its own, it runs and displays the expected GUI.<br>
+My questions are:</p>
+<ul>
+<li>How can I specify the necessary dependencies in my manifest?</li>
+<li>Can I use existing libraries and use copies ?</li>
+<li>If I can’t use the existing libraries, what step do I need to execute and how can I describe these in the manifest.</li>
+</ul>
+<p>I have searched the flatpak documentation, but have not found anything to get me going in the right direction.<br>
+TIA</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 14, 2023 6:42 PM">
+            <time itemprop="datePublished" datetime="2023-08-14 18:42:15 +0000">Aug 14, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>A Flatpak application is isolated from the host system, you can’t use libraries from your system. You should build them with your manifest to bundle them with your application.</p>
+<p>Check out the documentation for more information: <a href="https://docs.flatpak.org/en/latest/dependencies.html" rel="noopener nofollow ugc">Dependencies</a> &amp; <a href="https://docs.flatpak.org/en/latest/manifests.html" rel="noopener nofollow ugc">Manifests</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 15, 2023 7:14 PM">
+            <time itemprop="datePublished" datetime="2023-08-15 19:14:35 +0000">Aug 15, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My apologies, I was not clear enough in my question.<br>
+I understand that I cannot use files &amp; libraries from my build system.<br>
+My intent was to copy those  existing  libraries so that the flatpak builder could use them, rather than to recreate them just for the builder.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 23, 2023 9:43 PM">
+            <time itemprop="datePublished" datetime="2023-08-23 21:43:09 +0000">Aug 23, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If possible, you should still build the dependencies &amp; the application in your manifest. Your build host &amp; the Flatpak runtime are not necessary compatible.</p>
+<p>You can try to find existing modules in the <a href="https://github.com/flathub/" rel="noopener nofollow ugc">Flathub</a> organization, but should try to build the latest version of the dependencies. I don’t know which package would provide the library so I couldn’t look for it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 31, 2023 4:56 PM">
+            <time itemprop="datePublished" datetime="2023-08-31 16:56:18 +0000">Aug 31, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@George</span>, I just build my <a href="/t/how-to-include-libraries-into-my-first-ever-flatpak/4950/index.html">first flatpak package</a> and I may help you out. But I need access to <code>wxmt</code> program source code. Is source code publicly published? If yes, please provide web link to it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 4, 2023 7:29 PM">
+            <time itemprop="datePublished" datetime="2023-09-04 19:29:32 +0000">Sep 4, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Though I thought I had responded to this message earlier, I don’t seem to see my posting here.<br>
+So I will carry on from where I am right now.</p>
+<p>In the meanwhile, I have used the link to your first flatpak build and built a paralell copy on my system to get the practice and to understand the process better.<br>
+As a part of that, I now have a couple of questions, before I can carry on.</p>
+<ol>
+<li>my current build system is based on Codelite and its own proprietary make system, which is not supported by Flatpak builder. While Codelite lists CMake as an available alternative, I have not been able to switch to that and I have left a question on the Codelite forum.<br>
+That issue is the main reason that making any source code available right now is useless, unless &amp; until I can come up with a usable build system</li>
+<li>another question that was on my mind all along is, why I would need to download and install anything from the 'net, when I have just built my app locally and presumably have all it needs ‘right here’?<br>
+After poking through the documentation, it would seem I ought to be able to install everything using the ‘file’ or ‘dir’ build type along with ‘simple’ build system.</li>
+</ol>
+<p>That is my current state and if anyone has some useful pointers or comments, I would very much appreciate any help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 5, 2023 7:52 AM">
+            <time itemprop="datePublished" datetime="2023-09-05 07:52:00 +0000">Sep 5, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="George" data-post="6" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>why I would need to download and install anything from the 'net, when I have just built my app locally and presumably have all it needs ‘right here’?</p>
+</blockquote>
+</aside>
+<p>Like I understand this is Flathub <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" rel="noopener nofollow ugc">requirement</a> (check the “reproducible builds” paragraph) if application is built from open source software, to be reproducible. I assume because of a trust, there is program’s open source and I build it in reproducible way, that means I haven’t injected any “my special” code into the product.</p>
+<p>But… on Flathub I see there are also flatpak with proprietary license, that for sure do not have source code available for reproducibility. In <a href="https://flathub.org/apps/search" rel="noopener nofollow ugc">Flathub</a> on left site there is “License” and you can filter by “Proprietary”.</p>
+<p>I don’t know if I am of any use now, because your case is pretty different them my. Hope this helps.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 5, 2023 4:02 PM">
+            <time itemprop="datePublished" datetime="2023-09-05 16:02:28 +0000">Sep 5, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>At one time I thought much the same, but I see no reason why someone could not download from a malicious site, or even download &amp; modify the code before installing it.</p>
+<p>As far as I can see, using an app packaged in a flatpak is no guarantee of freedom from malware.</p>
+<p>Then there is the flatpak example using a plain shell script, which I intend to follow up on.</p>
+<p>But my current efforts at making this example work have run into a dead end.<br>
+When I create all the files (hello.sh &amp; org.flatpak.Hello.yml) in a test directory and then run the given command, I get an error back which says it cannot find hello.sh</p>
+<p>But before that it gives me several flatpak-builder:5575 warnings about ‘unknown property build-commands’<br>
+and that from instructions from the current PDF document - a bit discouraging.</p>
+<p>And I cannot find anything on-line which even comes close to being helpful <img src="/images/emoji/twitter/frowning.png?v=12" title=":frowning:" class="emoji" alt=":frowning:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 5, 2023 10:36 PM">
+            <time itemprop="datePublished" datetime="2023-09-05 22:36:26 +0000">Sep 5, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As far as I know: You should build your application &amp; dependencies in the manifest to ensure compatibility. You take libwx from your distribution, build against one release GTK 3, and use it in the runtime which probably provides a different GTK 3 release. I think this can lead to crashes (<a href="https://docs.gtk.org/gtk3/changes.html" rel="noopener nofollow ugc">Changes in GTK 3</a>).</p>
+<p>It’s always easier to provide assistance if you simply post your manifest. Currently we can only guess what could be wrong.</p>
+<p>But I tried the current example and can confirm that it still works. The whitespaces seem to get lost when copied from the PDF, but indentation is part of the syntax &amp; therefore required. Just copy the examples from the browser.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 7, 2023 3:55 PM">
+            <time itemprop="datePublished" datetime="2023-09-07 15:55:20 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for helping me resolve this issue <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"><br>
+Your comment regarding the indentation was all I needed.<br>
+Being new to all this, I was unaware of this ‘restriction’ and somewhat  surprised that this was not pointed out in any error message.<br>
+For this simple trial, I assumed that the documents I was following would be sufficient. My apology.</p>
+<p>As for your other recommendations, I understand them - I think.</p>
+<p>My wxWidgets apps are always built with all libraries kinked statically and I will now try and see what I need to do to actually install one on my local PC.</p>
+<p>Undoubtedly, I will be back asking for help.<br>
+With the necessary files etc.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 7, 2023 4:19 PM">
+            <time itemprop="datePublished" datetime="2023-09-07 16:19:23 +0000">Sep 7, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To expand a bit more on my hope to be able to use the existing build.<br>
+My current build environment is based on the Codelite IDE and up to now I have been using the default build environment which uses a proprietary make  system which is not supported by Flatpak.<br>
+There seems to be support for CMake from within the IDE, but I have not been able to simply switch the make process to generate CMake files for a command line build.<br>
+Learning to actually build my apps using CMake is just another steep leaning curve and the time to climb that mountain may just scare me off.</p>
+<p>Only time will tell</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Sep 8, 2023 12:32 AM">
+            <time itemprop="datePublished" datetime="2023-09-08 00:32:42 +0000">Sep 8, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="George" data-post="10" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>I was unaware of this ‘restriction’ and somewhat surprised that this was not pointed out in any error message.</p>
+</blockquote>
+</aside>
+<p>This restriction is called YAML.</p>
+<p>If you don’t want whitespace to be semantic, use JSON.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Sep 8, 2023 12:51 AM">
+            <time itemprop="datePublished" datetime="2023-09-08 00:51:31 +0000">Sep 8, 2023</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I am finding out <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"> don’t really mind once I was made aware of it.</p>
+<p>I’m sure there will be a few more similar ‘obvious’ bumps in the road</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Sep 9, 2023 8:20 AM">
+            <time itemprop="datePublished" datetime="2023-09-09 08:20:45 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="George" data-post="11" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>My current build environment is based on the Codelite IDE and up to now I have been using the default build environment which uses a proprietary make system which is not supported by Flatpak.</p>
+</blockquote>
+</aside>
+<p>You are not limited to the build systems directly supported by flatpak. You can always use <code>buildsystem: simple</code> &amp; run what’s necessary as <code>build-commands:</code>. If this actually works with your buildsystem (it must work outside the IDE in an offline environment) I can’t say.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Sep 9, 2023 5:43 PM">
+            <time itemprop="datePublished" datetime="2023-09-09 17:43:32 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That will be my next trial - using CMake - I expect.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Sep 11, 2023 11:57 AM">
+            <time itemprop="datePublished" datetime="2023-09-11 11:57:11 +0000">Sep 11, 2023</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That buildsystem is supported directly and you don’t need simple for that <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox">Flatpak Builder Command Reference — Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Sep 11, 2023 3:11 PM">
+            <time itemprop="datePublished" datetime="2023-09-11 15:11:22 +0000">Sep 11, 2023</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I have seen the reference to CMake &amp; CMake-ninja,<br>
+But just saying that it it supported is helpful only to folks who are  familiar with both CMake &amp; Flatpak. <img src="/images/emoji/twitter/frowning.png?v=12" title=":frowning:" class="emoji" alt=":frowning:" loading="lazy" width="20" height="20"><br>
+My search to find examples has not been very successful, I’m afraid.<br>
+Still at this time, I have just barely made the test project compile &amp; run under Windows using CMake to build *.sln file for MSVC and my next step will be to port that code to Mint.</p>
+<p>It would seem that building &amp; debugging will still need also a good IDE/Debugger alongside the CMake code</p>
+<p>If you can point me to any more specific examples, I’ll be very grateful</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Sep 12, 2023 12:43 PM">
+            <time itemprop="datePublished" datetime="2023-09-12 12:43:39 +0000">Sep 12, 2023</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_17">Replying to #17</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I usually recommend searching through the flathub sources here<br>
+<a href="https://github.com/search?q=org%3Aflathub+%22buildsystem%22%3A+%22cmake&amp;type=code" class="onebox" target="_blank" rel="noopener">https://github.com/search?q=org%3Aflathub+"buildsystem"%3A+"cmake&amp;type=code</a></p>
+<p>But YMMV and it depends how your app is setup quiet a bit.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Sep 12, 2023 5:56 PM">
+            <time itemprop="datePublished" datetime="2023-09-12 17:56:12 +0000">Sep 12, 2023</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Will check it out; thank you</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Sep 13, 2023 8:13 PM">
+            <time itemprop="datePublished" datetime="2023-09-13 20:13:46 +0000">Sep 13, 2023</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My progress has been slow, but I have now gotten part of the way.<br>
+My current test project is based on the latest wxWidgets demo ‘life’.<br>
+I have uploaded the basic code to Github and the package is available at:</p><aside class="onebox githubrepo" data-onebox-src="https://github.com/tester0077/flcmlife">
+  <header class="source">
+
+      <a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+  <img width="690" height="344" src="/uploads/optimized/2X/7/797bd8fd8b7972ba9b6c8e0df8c4737f6424aece_2_690x344.png" class="thumbnail" data-dominant-color="F4F5F7">
+
+  <h3><a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc">GitHub - tester0077/flcmlife: Test code for flatpak creation of the wxWidgets...</a></h3>
+
+    <p><span class="github-repo-description">Test code for flatpak creation of the wxWidgets Life demo using Cmake-Ninja build for linux</span></p>
+</div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>It consists of the source code from the wxWidgets demos/life and includes a the CMake build script adapted from the blog <a href="https://www.justdevtutorials.com/post/wxwidgets-cmake/" rel="noopener nofollow ugc">https://www.justdevtutorials.com/post/wxwidgets-cmake/</a> for this code and for CMake-Ninja.<br>
+FWIW, the base CMake project still has a way to go and I am working on that in parallel. I evidently need more platform specific code fixes. Right now, I don’t see those issues getting in the way of my flatpak packaging.</p>
+<h2><a name="p-9851-the-script-to-create-the-flatpak-yml-file-and-start-the-build-process-flmakelifesh-1" class="anchor" href="#p-9851-the-script-to-create-the-flatpak-yml-file-and-start-the-build-process-flmakelifesh-1" aria-label="Heading link"></a>The script to create the flatpak YML file and start the build process:  flmakelife.sh</h2>
+<pre><code class="lang-auto">#!/bin/bash
+
+# Install flatpak-builder - already installed on Mint
+#sudo apt -y install flatpak-builder
+
+
+# Create Manifest file
+cat &gt; org.cmlife.cmlife.yml  &lt;&lt;EOL
+app-id: org.cmlife.cmlife
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: life
+#rename-icon: life
+#rename-desktop-file: life.desktop
+#finish-args:
+#  - --socket=fallback-x11
+#  - --socket=wayland
+#  - --share=ipc
+#  - --filesystem=xdg-documents
+#  - --env=PWS_HELPDIR=/app/share/passwordsafe/help/
+
+modules:
+	# Note: the order of modules is important as the builder works its way
+	# in a linear fashion - any dependencies need to be satisfied when 
+	# the process tries to build a module
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  - name: life
+    buildsystem: cmake-ninja
+    
+    sources:
+      - type: git
+        url: https://github.com/tester0077/flcmlife.git
+        branch: master
+        
+EOL
+</code></pre>
+<hr>
+<p>I run the script - under Mint 21.2 from a directory<br>
+~/Public/flatpak/flcmlife/flatpak/</p>
+<p>While I can run this script with more success in my local build directory, but not all the way,<br>
+for this test case with the project code available from Github, I get stuck at a much earlier spot.</p>
+<pre><code class="lang-auto">/Public/flatpak/flcmlife/flatpak$ ./flmakelife.sh 
+Downloading sources
+Fetching full git repo https://github.com/tester0077/flcmlife.git
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'
+Failed to download sources: module life: Child process exited with code 128
+</code></pre>
+<p>Obviously, I still have a lot to learn about most of this process. <img src="/images/emoji/twitter/wink.png?v=15" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20"><br>
+Any help will be much appreciated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 3</span>
+
+    
+    <a href="/t/building-my-first-flatpak/4882/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

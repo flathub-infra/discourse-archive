@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two questions about using the TeXLive Sdk Extension - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Two questions about using the TeXLive Sdk Extension</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Two questions about using the TeXLive Sdk Extension</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 10, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 10, 2020 10:18 AM">
+            <time itemprop="datePublished" datetime="2020-07-10 10:18:53 +0000">Jul 10, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>System information:<br>
+Distro: Linux Mint 20<br>
+Flatpak Version: 1.6.3</p>
+<p>The TeXLive extension to the freedesktop Sdk, runtime/org.freedesktop.Sdk.Extension.texlive, is very large: the 19.08 branch has an installed size of 3.9 GB.  I assume, based on its large size, that it contains a fully-working copy of texlive.  My questions concern how I can actually make use of this copy of texlive.</p>
+<p>There are some apps on flathub, such as TeXStudio, that already include the extension as a dependency.  But there are at least two use cases where I would want to use the extension outside of apps like TeXStudio.</p>
+<p>1)<strong>In a text editor flatpak app that doesn’t already call the extension as a dependency:</strong></p>
+<p>Suppose I am using a text editor to write a LaTeX file.  As an example, I’ll use Kate (org.kde.kate on Flathub).  Kate has a “build” plugin which can automate the process of building a project.  However, the Kate flatpak doesn’t call the TeXLive extension as a dependency, and the KDE Sdk doesn’t include a LaTeX implementation.  Thus, if I am editing a tex file in the Kate flatpak, I can’t use the build plugin.</p>
+<p>One workaround is to give Kate access to host libraries, install texlive as a Deb package, and then use flatpak-spawn --host.  The problems with this approach is that it means I am still reliant on my distro to ship an up-to-date version of texlive, and I have to break the sandbox around Kate to use it.  This seems contrary to the spirit of Flatpak.  If I were to switch to a distro that doesn’t ship a reasonably updated LaTeX implementation, then this workaround wouldn’t work.</p>
+<p>Is there another way?  <strong>Is there some option to give an already-compiled flatpak app (like Kate) access to the TexLive extension without having to rebuild the app myself?</strong></p>
+<p>2)<strong>Directly from the terminal outside of a flatpak app:</strong></p>
+<p>When I have the texlive deb package installed, I can use it directly from the terminal.  Running “pdflatex foo.tex” compiles foo.tex into foo.pdf, and running “biber foobar” produces bibliography files from foobar.bib.</p>
+<p>But suppose I were to use a distro that doesn’t ship texlive in its native package manager, or which ships a severely outdated version compared to what is hosted on Flathub.  <strong>Is there a way to use the texlive SDK extension to call pdflatex and or other commands directly from the host terminal?</strong>  Using<br>
+$ flatpak run org.freedesktop.Sdk.Extension.texlive/x86_64/19.08 pdflatex foo.tex<br>
+produces the error “bwrap: execvp /bin/sh: No such file or directory,” and similar commands I’ve tried have the same result.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 15, 2020 8:49 AM">
+            <time itemprop="datePublished" datetime="2020-07-15 08:49:02 +0000">Jul 15, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Texlive is an SDK extension, so ideally application should build its own extension which will be available in the runtime. You can technically make it available by forcing the app to use SDK as the runtime with <code>flatpak run --devel</code> which will make it accessible somewhere at /usr/lib/sdk.</p>
+<p>Similarly, to use it from CLI you need to install <code>org.freedesktop.Sdk//19.08</code> first. Then you can poke around with <code>flatpak run --command=bash org.freedesktop.Sdk//19.08</code> to find the path to binaries at <code>/usr/lib/sdk</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

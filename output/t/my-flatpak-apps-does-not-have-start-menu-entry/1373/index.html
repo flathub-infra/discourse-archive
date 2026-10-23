@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Flatpak apps does not have start menu entry - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">My Flatpak apps does not have start menu entry</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">My Flatpak apps does not have start menu entry</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 26, 2021 9:03 PM">
+            <time itemprop="datePublished" datetime="2021-04-26 21:03:21 +0000">Apr 26, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I noticed that Avogadro2 does not create menu entry when install.<br>
+</p><aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc">flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234</a></h4>
+<pre class="onebox"><code class="lang-yaml"><ol class="start lines" start="224" style="counter-reset: li-counter 223 ;">
+<li>    - type: patch</li><li>      path: fix_find_spglib.patch</li><li></li><li>- name: Avogadro2</li><li>  buildsystem: cmake</li><li>  config-opts:</li><li>    - -DENABLE_RPATH:BOOL=ON</li><li>    - -DENABLE_TESTING:BOOL=OFF</li><li>    - -DBUILD_DOCUMENTATION:BOOL=OFF</li><li>    - -DCMAKE_BUILD_TYPE:STRING=Release</li><li class="selected">  post-install:</li><li>    - install -Dm644 avogadro/icons/avogadro2_64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png</li><li>    - desktop-file-edit --set-key=Icon --set-value=$FLATPAK_ID ${FLATPAK_DEST}/share/applications/avogadro2.desktop</li><li>    - install -Dm644 $FLATPAK_ID.metainfo.xml ${FLATPAK_DEST}/share/metainfo/$FLATPAK_ID.metainfo.xml</li><li>  sources:</li><li>    - type: git</li><li>      url: https://github.com/OpenChemistry/avogadroapp</li><li>      tag: '1.93.0'</li>
+</ol></code></pre>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>I have desktop file install to /app/share/applications/ but is it not enough?</p>
+<p>Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Asif Ali Rizvan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 29, 2021 12:40 AM">
+            <time itemprop="datePublished" datetime="2021-04-29 00:40:03 +0000">Apr 29, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_1">Replying to #1</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, it’s not enough, the desktop file and icon file should be prefixed with ${FLATPAK_ID}-xxx.desktop like <code>org.openchemistry.Avogadro2.desktop</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 29, 2021 1:44 PM">
+            <time itemprop="datePublished" datetime="2021-04-29 13:44:41 +0000">Apr 29, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks, I solved it now.</p>
+<p>Somehow, the Education category in desktop file cause it not to apppear in menu entry.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octave pkg is missing libqhull_r.so.8.0 dependance - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Octave pkg is missing libqhull_r.so.8.0 dependance</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Octave pkg is missing libqhull_r.so.8.0 dependance</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 15, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+          <span class="topic-status topic-status--archived" title="Archived">Archived</span>
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmitri A. Sergatskov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 15, 2023 4:52 PM">
+            <time itemprop="datePublished" datetime="2023-02-15 16:52:41 +0000">Feb 15, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It looks to me that octave package needs libqhull_r.so.8.0,<br>
+but e.g. Centos Stream 9<br>
+has only /usr/lib64/libqhull_r.so.7.2.0 (qhull-devel-7.2.1-9.el9.x86_64).<br>
+So running <code>__run_test_suite__ </code> reults in many FAILures like:</p>
+<pre><code class="lang-auto">&gt;&gt;&gt;&gt;&gt; processing /app/share/octave/7.2.0/etc/tests/libinterp/dldfcn/convhulln.cc-tst
+***** testif HAVE_QHULL
+ cube = [0 0 0;1 0 0;1 1 0;0 1 0;0 0 1;1 0 1;1 1 1;0 1 1];
+ [h, v] = convhulln (cube, "Qt");
+ assert (size (h), [12 3]);
+ h = sortrows (sort (h, 2), [1:3]);
+ assert (h, [1 2 4; 1 2 6; 1 4 8; 1 5 6; 1 5 8; 2 3 4; 2 3 7; 2 6 7; 3 4 7; 4 7 8; 5 6 7; 5 7 8]);
+ assert (v, 1, 10*eps);
+ [h2, v2] = convhulln (cube);  # Test default option = "Qt"
+ assert (size (h2), size (h));
+ h2 = sortrows (sort (h2, 2), [1:3]);
+ assert (h2, h);
+ assert (v2, v, 10*eps);
+!!!!! test failed
+/app/lib/octave/7.2.0/oct/x86_64-pc-linux-gnu/convhulln.oct: failed to load
+Incompatible version or missing dependency?
+libqhull_r.so.8.0: cannot open shared object file: No such file or directory
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 15, 2023 11:34 PM">
+            <time itemprop="datePublished" datetime="2023-02-15 23:34:49 +0000">Feb 15, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>whatever centos has doesn’t matter because it’s not in the flatpak.</p>
+<p>ideally you would report the problem in the repository instead of here, there is more chances the maintainer sees it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmitri A. Sergatskov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 15, 2023 11:38 PM">
+            <time itemprop="datePublished" datetime="2023-02-15 23:38:25 +0000">Feb 15, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks! I did report it on github:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flathub/org.octave.Octave/issues/263">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.octave.Octave/issues/263" target="_blank" rel="noopener nofollow ugc">github.com/flathub/org.octave.Octave</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub/org.octave.Octave/issues/263" target="_blank" rel="noopener nofollow ugc"> Octave pkg is missing libqhull_r.so.8.0 dependance</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2023-02-15" data-time="17:04:20" data-timezone="UTC">05:04PM - 15 Feb 23 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/dasergatskov" target="_blank" rel="noopener nofollow ugc">
+          <img alt="dasergatskov" src="/uploads/original/2X/8/8839f9aeaa78b00a0c9d07c8141349038563aca5.png" class="onebox-avatar-inline" width="20" height="20">
+          dasergatskov
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">t looks to me that octave package needs libqhull_r.so.8.0,
+but e.g. Centos Stre<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">am 9
+has only /usr/lib64/libqhull_r.so.7.2.0 (qhull-devel-7.2.1-9.el9.x86_64).
+So running __run_test_suite__ reults in many FAILures like:
+```
+&gt;&gt;&gt;&gt;&gt; processing /app/share/octave/7.2.0/etc/tests/libinterp/dldfcn/convhulln.cc-tst
+***** testif HAVE_QHULL
+ cube = [0 0 0;1 0 0;1 1 0;0 1 0;0 0 1;1 0 1;1 1 1;0 1 1];
+ [h, v] = convhulln (cube, "Qt");
+ assert (size (h), [12 3]);
+ h = sortrows (sort (h, 2), [1:3]);
+ assert (h, [1 2 4; 1 2 6; 1 4 8; 1 5 6; 1 5 8; 2 3 4; 2 3 7; 2 6 7; 3 4 7; 4 7 8; 5 6 7; 5 7 8]);
+ assert (v, 1, 10*eps);
+ [h2, v2] = convhulln (cube);  # Test default option = "Qt"
+ assert (size (h2), size (h));
+ h2 = sortrows (sort (h2, 2), [1:3]);
+ assert (h2, h);
+ assert (v2, v, 10*eps);
+!!!!! test failed
+/app/lib/octave/7.2.0/oct/x86_64-pc-linux-gnu/convhulln.oct: failed to load
+Incompatible version or missing dependency?
+libqhull_r.so.8.0: cannot open shared object file: No such file or directory
+```
+
+P.S. The file is there, but it cannot loaded (?!):
+```
+$ file /var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so*
+/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so:       symbolic link to libqhull.so.8.0
+/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0:   symbolic link to libqhull.so.8.0.2
+/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=21fcca5e4907795aedf943042f14e0ece72ccdd7, stripped
+```
+```
+$ md5sum /var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2
+af399b3c45d339cc3d6d8a5e404dbb54  /var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2
+```
+```
+$ flatpak --env="LD_PRELOAD=/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2" run org.octave.Octave
+ERROR: ld.so: object '/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object '/var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+```
+```
+$ ldd /var/lib/flatpak/app/org.octave.Octave/x86_64/stable/c443abd2eff5686b6aa55e027706451faa37d10601eb0502a67e27255d960e1e/files/lib/libqhull.so.8.0.2
+	linux-vdso.so.1 (0x00007ffc2fbd4000)
+	libm.so.6 =&gt; /lib64/libm.so.6 (0x00007f915eb42000)
+	libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f915e800000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f915ecb0000)
+```</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bundling gst-plugin-rs libraries in flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Bundling gst-plugin-rs libraries in flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Bundling gst-plugin-rs libraries in flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 12, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Rafał Kuźnia</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 12, 2024 8:39 PM">
+            <time itemprop="datePublished" datetime="2024-08-12 20:39:38 +0000">Aug 12, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,<br>
+My application requires gst-plugin-rs gstreamer plugins bundled into the Flatpak. I’m using the <code>org.gnome.Sdk</code> runtime, which does not contain those plugins by default, so I need to build and install them myself.</p>
+<p>I can build the plugins just fine, but I am unable to install the libraries into <code>/usr/lib/x86_64-linux-gnu/gstreamer-1.0</code> directory, because that directory is read-only. Installing those plugins in <code>/app</code> directory does not make them discoverable by gstreamer.</p>
+<p>Is there some proper way to bundle the gstreamer plugins?</p>
+<p>Below is the fragment of the manifest that I am using to build the plugins. <code>generated-sources.json</code> was generated with the <code>flatpak-cargo-generator.py</code> tool.</p>
+<pre data-code-wrap="json"><code class="lang-json">{
+  "app-id": "io.github.e_rk.hscam",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "46",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "command": "hscam",
+  "finish-args": [
+    "--share=network",
+    "--filesystem=xdg-config/hscam:create",
+    "--socket=wayland",
+    "--socket=fallback-x11",
+    "--device=dri"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/rust-stable/bin",
+    "env": {
+      "CARGO_HOME": "/run/build/gst-plugin-rs/cargo"
+    }
+  },
+  "modules": [
+    {
+      "name": "gst-plugin-rs",
+      "buildsystem": "simple",
+      "build-options": {
+        "env": {
+          "CARGO_HOME": "/run/build/gst-plugin-rs/cargo"
+        }
+      },
+      "build-commands": [
+        "cargo cbuild --offline --release -p gst-plugin-gtk4 --prefix=/usr --libdir lib/x86_64-linux-gnu",
+        "cargo cinstall --offline --release -p gst-plugin-gtk4 --prefix=/usr --libdir lib/x86_64-linux-gnu"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git",
+          "commit": "19cb695ce0e83a636aa5781788bb1b4640a5d75a"
+        },
+        "generated-sources.json"
+      ]
+    }
+  ]
+}
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 13, 2024 1:54 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 01:54:50 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="e-rk" data-post="1" data-topic="7474">
+<div class="title">
+<div class="quote-controls"></div>
+e-rk:</div>
+<blockquote>
+<p>Installing those plugins in <code>/app</code> directory does not make them discoverable by gstreamer.</p>
+</blockquote>
+</aside>
+<p>You have to set the <code>GST_PLUGIN_PATH</code> or <code>GST_PLUGIN_SYSTEM_PATH</code> environment variables</p>
+<p><a href="https://github.com/search?q=org%3Aflathub+%22--env%3DGST_PLUGIN_%22&amp;type=code" class="onebox" target="_blank" rel="noopener nofollow ugc">https://github.com/search?q=org%3Aflathub+"--env%3DGST_PLUGIN_"&amp;type=code</a></p>
+<p><a href="https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html?gi-language=c" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html?gi-language=c</a></p>
+<blockquote>
+<p>My application requires gst-plugin-rs gstreamer plugins</p>
+</blockquote>
+<p>This will be included in Freedesktop SDK 24.08, coming out next month or so and GNOME 47 or 48 runtime.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Rafał Kuźnia</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 13, 2024 5:04 PM">
+            <time itemprop="datePublished" datetime="2024-08-13 17:04:09 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s exactly what I needed. Thanks.</p>
+<p>It’s also great that those plugins will be available by default in the near future.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

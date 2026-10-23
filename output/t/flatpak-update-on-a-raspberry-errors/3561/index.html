@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak update on a Raspberry errors - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak update on a Raspberry errors</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak update on a Raspberry errors</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 15, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Winger4647</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 15, 2023 2:18 PM">
+            <time itemprop="datePublished" datetime="2023-01-15 14:18:50 +0000">Jan 15, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>dennis@pop-os:~$ flatpak update<br>
+Looking for updates…</p>
+<pre><code>    ID                              Branch     Op Remote  Download
+</code></pre>
+<ol>
+<li>[✗] org.freedesktop.Platform.Locale 22.08      u  flathub 1.0 kB / 333.2 MB</li>
+<li>[✗] org.gnome.Platform.Locale       42         u  flathub 1.0 kB / 336.5 MB</li>
+<li>[✗] org.gnome.Platform              42         u  flathub 1.0 kB / 273.9 MB</li>
+<li>[✗] org.kde.Platform                5.15-21.08 u  flathub 1.0 kB / 303.9 MB</li>
+</ol>
+<p>Warning: While pulling runtime/org.freedesktop.Platform.Locale/aarch64/22.08 from remote flathub: Invalid checksum for static delta 1602d3fe9ce5dac0d019979e1bf84f2fced080d0fb5754a004e4a4523ac2fceb-6abe35d62ac48d0863ac091ef4ebdb47cd2a9c4017a5762f5c0466589d95ff14<br>
+Warning: While pulling runtime/org.gnome.Platform.Locale/aarch64/42 from remote flathub: Invalid checksum for static delta 0daf15e67e3582df941258f640414a68c4e6d77e08d00b0626b694afd10fbc76-2525f270150275d3aab7521cae655c3907fce301fa1262d24f7178d80b9a5b2b<br>
+Error: While pulling runtime/org.gnome.Platform/aarch64/42 from remote flathub: Invalid checksum for static delta ad3555441277b171d1115e3345168e04968cb2ca044a3b81c7f337063b7e67eb-0c6a6af1d376ff82207444279fb41c2455dad0ea22963c19430eaed99e9ad048<br>
+Error: While pulling runtime/org.kde.Platform/aarch64/5.15-21.08 from remote flathub: Invalid checksum for static delta 674f8712388a2cb92ffa117a34e7c31437ff1f880fd3b2fad15b75c1c5e952b6-4ca8c4ddb81b90743fb43e7eefb2c4226724c5ee8e5422e6afded754d2c82c29<br>
+Updates complete.<br>
+error: There were one or more errors<br>
+dennis@pop-os:~$</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Winger4647</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 16, 2023 2:47 PM">
+            <time itemprop="datePublished" datetime="2023-01-16 14:47:31 +0000">Jan 16, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>[</p>
+<h3><a name="p-7036-partial-data-loss-of-static-deltas-1" class="anchor" href="#p-7036-partial-data-loss-of-static-deltas-1" aria-label="Heading link"></a>Partial data loss of static deltas</h3>
+<p>Resolved after 36h 7m of downtime<br>
+](<a href="https://status.flathub.org/issues/2023-01-14-deltas/" rel="noopener nofollow ugc">https://status.flathub.org/issues/2023-01-14-deltas/</a>)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Luminous7265</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 16, 2023 9:57 PM">
+            <time itemprop="datePublished" datetime="2023-01-16 21:57:45 +0000">Jan 16, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Got that problem on OrangePi 5.<br>
+I cannot install any Flatpak packages.</p>
+<p>Flatpak is having problems, let’s wait.<br>
+" Partial data loss of static deltas"</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://status.flathub.org/">
+  <header class="source">
+
+      <a href="https://status.flathub.org/" target="_blank" rel="noopener nofollow ugc">status.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://status.flathub.org/" target="_blank" rel="noopener nofollow ugc">Flathub Status</a></h3>
+
+  <p>We continuously monitor the status of our services and if there are any interruptions, a note will be posted here. Please note that this page is updated manually.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

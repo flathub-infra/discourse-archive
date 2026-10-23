@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&quot;buildsystem&quot;: &quot;simple&quot; for a Python Flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">&quot;buildsystem&quot;: &quot;simple&quot; for a Python Flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">&quot;buildsystem&quot;: &quot;simple&quot; for a Python Flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 7, 2022</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 7, 2022 9:31 PM">
+            <time itemprop="datePublished" datetime="2022-09-07 21:31:55 +0000">Sep 7, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I like the simplicity of Flatpak manifests, it seems streets ahead of other formats which require several files of different sorts. This question is about making things even simpler. I have a Flatpak which contains several dependencies which are compiled from C, then this to install the main Python program:</p>
+<blockquote>
+<ul>
+<li>name: myapp<br>
+buildsystem: meson<br>
+sources:<br>
+type: git<br>
+tag: V1.1.1<br>
+url: <em>blah</em></li>
+</ul>
+</blockquote>
+<p>This uses Meson which has a meson.build file which finds appropriate directory names and does things like this:</p>
+<blockquote>
+<p>bindir = get_option(‘bindir’)<br>
+datadir = get_option(‘datadir’)<br>
+pkgdatadir = join_paths(get_option(‘prefix’), get_option(‘datadir’), ‘myapp’)<br>
+conf = configuration_data()<br>
+conf.set(‘pkgdatadir’, pkgdatadir)<br>
+install_data(file, install_dir: pkgdatadir)</p>
+</blockquote>
+<p>Alternatively there is “buildsystem”: “simple”, like this (this example is for a Bash file not a Python program):</p>
+<pre><code>    {
+        "name": "hello",
+        "buildsystem": "simple",
+        "build-commands": [
+            "install -D hello.sh /app/bin/hello.sh"
+        ],
+        "sources": [
+            {
+                "type": "file",
+                "path": "hello.sh"
+            }
+        ]
+    }
+</code></pre>
+<p>Can I install Python program in the module in the manifest as in the above example, by using “install” plus other Bash commands, without the extra complication of using Meson?<br>
+I’m assuming that there is nothing magic about installation, all that’s needed is to discover the correct directories, then copy the files to those destination.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 31, 2024 1:37 AM">
+            <time itemprop="datePublished" datetime="2024-12-31 01:37:54 +0000">Dec 31, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is more like the actual code. My Meson.build is similar to the first bit of code below. ChatGPT suggests using the code below that in the manifest instead. That looks simpler and avoids the use of a second technology.<br>
+Will this work, in particular does it use the official Flatpak directories properly? I’m not expecting anyone to write the code for me, just to confirm that I haven’t missed something subtle that Meson does that I haven’t understood.</p>
+<p><strong>Current manifest</strong></p>
+<pre><code class="lang-auto">blah
+blah
+  - name: myapp
+    buildsystem: meson
+    sources:
+    - type: git
+      tag: main
+      url: https://github.com/mysoftware/myapp
+</code></pre>
+<p><strong>meson.build</strong></p>
+<blockquote>
+<p>project(<br>
+‘myapp’,<br>
+version: ‘0.0.0’,<br>
+meson_version: ‘&gt;= 0.46.0’<br>
+)</p>
+<p>bindir = get_option(‘bindir’)<br>
+datadir = get_option(‘datadir’)<br>
+pkgdatadir = join_paths(get_option(‘prefix’), get_option(‘datadir’), ‘myapp’)</p>
+<p>conf = configuration_data()<br>
+conf.set(‘pkgdatadir’, pkgdatadir)</p>
+<p>configure_file(<br>
+input: ‘myapp.py’,<br>
+output: ‘myapp’,<br>
+configuration: conf,<br>
+install_dir: bindir<br>
+)</p>
+<p>data_files = [<br>
+‘com.github.mysoftware.myapp.png’,<br>
+‘dummy.png’<br>
+]</p>
+<p>foreach file : data_files<br>
+install_data(file, install_dir: pkgdatadir)<br>
+endforeach</p>
+<p>install_data(<br>
+‘com.github.mysoftware.myapp.appdata.xml’,<br>
+install_dir: join_paths(datadir, ‘metainfo’)<br>
+)</p>
+<p>install_data(<br>
+‘com.github.mysoftware.myapp.desktop’,<br>
+install_dir: join_paths(datadir, ‘applications’)<br>
+)</p>
+<p>install_data(<br>
+‘com.github.mysoftware.myapp.png’,<br>
+install_dir: join_paths(datadir, ‘icons’, ‘hicolor’, ‘128x128’, ‘apps’)<br>
+)</p>
+<p>install_data(<br>
+‘com.github.mysoftware.myapp64x64.png’, rename : ‘com.github.mysoftware.myapp.png’,<br>
+install_dir: join_paths(datadir, ‘icons’, ‘hicolor’, ‘64x64’, ‘apps’)<br>
+)</p>
+<p>install_data(<br>
+‘myapp_nl_NL.mo’, rename : ‘myapp.mo’,<br>
+install_dir: join_paths(get_option(‘prefix’), get_option(‘localedir’), ‘nl_NL’, ‘LC_MESSAGES’)<br>
+)</p>
+<p>install_data(<br>
+‘myapp_de_DE.mo’, rename : ‘myapp.mo’,<br>
+install_dir: join_paths(get_option(‘prefix’), get_option(‘localedir’), ‘de_DE’, ‘LC_MESSAGES’)<br>
+)</p>
+</blockquote>
+<p><strong>New manifest</strong></p>
+<pre><code class="lang-auto">blah
+blah
+- name: myapp
+  buildsystem: simple
+  build-commands:
+    # Ensure the target directories exist
+    - mkdir -p /app/bin
+    - mkdir -p /app/share/myapp
+    - mkdir -p /app/share/metainfo
+    - mkdir -p /app/share/applications
+    - mkdir -p /app/share/icons/hicolor/128x128/apps
+    - mkdir -p /app/share/icons/hicolor/64x64/apps
+    - mkdir -p /app/share/locale/nl_NL/LC_MESSAGES
+    - mkdir -p /app/share/locale/de_DE/LC_MESSAGES
+
+    # Install the main script
+    - install -m 755 popout3d.py /app/bin/popout3d
+
+    # Install data files
+    - install -m 644 com.github.mysoftware.myapp.png dummy.png /app/share/myapp
+
+    # Install app metadata
+    - install -m 644 com.github.mysoftware.myapp.appdata.xml /app/share/metainfo
+    - install -m 644 com.github.mysoftware.myapp.desktop /app/share/applications
+
+    # Install icons
+    - install -m 644 com.github.mysoftware.myapp.png /app/share/icons/hicolor/128x128/apps
+    - install -m 644 com.github.mysoftware.myapp64x64.png /app/share/icons/hicolor/64x64/apps/com.github.mysoftware.myapp.png
+
+    # Install translations
+    - install -m 644 myapp_nl_NL.mo /app/share/locale/nl_NL/LC_MESSAGES/myapp.mo
+    - install -m 644 myapp_de_DE.mo /app/share/locale/de_DE/LC_MESSAGES/myapp.mo
+  sources:
+    - type: git
+      tag: main
+      url: https://github.com/mysoftware/myapp
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 1, 2025 10:33 PM">
+            <time itemprop="datePublished" datetime="2025-01-01 22:33:41 +0000">Jan 1, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems to work, so I’ll switch to this, as it’s much simpler than having to install and use Meson and have a meson.build file in addition to the manifest.</p>
+<p>I think I’ve worked out what the Meson file does and why it can be replaced:</p>
+<p>It defines directories<br>
+The get_option statements are finding the OSs directories, so it is OS neutral. There’s no need for that for this app as it will only run on Linux and it’s in a Flatpak which has fixed standards anyway. It’s therefore OK that “buildsystem: simple” hard codes them.</p>
+<p>It copies (renaming if necessary) files into the appropriate directories. I thought “installation” was some special process. It isn’t. <a href="https://linuxhandbook.com/install-command/" rel="noopener nofollow ugc">Install command explanation</a> - it’s just a powerful combination of cp and mkdir commands.</p>
+<p>So I think I can recommend someone writing a simple Flatpak to use “buildsystem: simple” and not bother with Meson.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LibreOffice flatpak launch command needs improvement - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">LibreOffice flatpak launch command needs improvement</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">LibreOffice flatpak launch command needs improvement</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 12, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sibelman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 12, 2026 3:56 PM">
+            <time itemprop="datePublished" datetime="2026-05-12 15:56:57 +0000">May 12, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>After an upgrade (from Fedora Kinoite 43 to 44, LibreOffice flatpak launch failed.  Some thrashing about revealed that the command line needed adjustment.</p>
+<p><strong>Failed command line:</strong></p>
+<p>flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --calc @<span class="mention">@u</span> %U @@</p>
+<p><strong>Error message:</strong></p>
+<p>Failed to open display<br>
+/app/libreoffice/program/soffice.bin X11 error: Can’t open display:<br>
+Set DISPLAY environment variable, use -display option<br>
+or check permissions of your X-Server<br>
+(See “man X” resp. “man xhost” for details)</p>
+<p><strong>Successful command line:</strong></p>
+<p>flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --calc --display</p>
+<p><strong>Additional comment:</strong>  I see no purpose in including  --file-forwarding in a GUI launcher’s command line.</p>
+<p>Cheers!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sibelman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 12, 2026 6:15 PM">
+            <time itemprop="datePublished" datetime="2026-05-12 18:15:53 +0000">May 12, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Note:  after a while, my “fix” stopped working in a new way: the app froze at the splash screen.  Reboot seems to have cleared that, but I’m feeling gun-shy now, and resorting to using a snap install instead.  I’m sure hoping someone knowledgeable can shed some light on this, as I know nothing about creating flatpaks (or snaps).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 12, 2026 7:03 PM">
+            <time itemprop="datePublished" datetime="2026-05-12 19:03:36 +0000">May 12, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>LO flatpak bugtracker is <a href="https://github.com/flathub/org.libreoffice.LibreOffice/issues" rel="noopener nofollow ugc">here</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 13, 2026 1:02 AM">
+            <time itemprop="datePublished" datetime="2026-05-13 01:02:55 +0000">May 13, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t think your issue is related to the command line. <code>--file-forwarding</code> allows file/URI arguments to be forwarded to the app via the document portal. With the LibreOffice flatpak’s broad file access (<code>--filesystem=host</code>), it isn’t needed, but this is a builtin feature that can’t be turned off, and it doesn’t do any harm anyway.</p>
+<p>As per the Desktop Entry spec, the <code>%U</code> specifier must be removed by the launcher if the app is launched without any URIs, so the actual resulting command line would look like this:</p>
+<p><code>flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --calc @@u @@</code></p>
+<p>With <code>--file-forwarding</code>, flatpak consumes the <code>@@u</code> and <code>@@</code>, and forwards any URIs between them (none in this case). Inside the sandbox, the LibreOffice binary would only receive <code>--calc</code>.</p>
+<p>As a result, <code>flatpak run org.libreoffice.LibreOffice --calc</code> would be practically equivalent to launching LibreOffice Calc from your desktop shell.</p>
+<hr>
+<p>Are you using a Wayland or X11 session? It shouldn’t be trying to use X11 if you’re on Wayland, and by default would be unable to do so.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sibelman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 13, 2026 3:04 AM">
+            <time itemprop="datePublished" datetime="2026-05-13 03:04:33 +0000">May 13, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m running Wayland, KDE Plasma 6.6.4, Kernel 7.0.4-200.fc44x86_64.</p>
+<p>The only way I found to launch LibreOffice (from Plasma or bash in konsole) was to modify the command line that was furnished by the flatpak installation, adding --display :0 and removing %U.  Even with those “fixes” it is still hit or miss, which at first seemed sufficient.  The issue is still a complete mystery to me.<br>
+I will post something about this in the flatpak LibreOffice bugtracker area as <span class="mention">@Erick555</span> seems to suggest.  I’ve also mentioned it in a Fedora forum.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 14, 2026 12:12 PM">
+            <time itemprop="datePublished" datetime="2026-05-14 12:12:16 +0000">May 14, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sibelman" data-post="1" data-topic="12175">
+<div class="title">
+<div class="quote-controls"></div>
+sibelman:</div>
+<blockquote>
+<p><strong>Additional comment:</strong> I see no purpose in including --file-forwarding in a GUI launcher’s command line.</p>
+</blockquote>
+</aside>
+<p>so you have no idea about desktop files.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sibelman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 14, 2026 3:09 PM">
+            <time itemprop="datePublished" datetime="2026-05-14 15:09:39 +0000">May 14, 2026</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hubert Figuière,</p>
+<p>Yes, I’m quite ignorant.  I rarely save files to the desktop, but it’s a common practice, certainement.</p>
+<p>Thank you for your implied suggestion of additional testing. The launch command line arguments in the Plasma application launcher are used when the user double-clicks a desktop file, or launches the application from Dolphin.  That explains why --file-forwarding is important.</p>
+<p>All this does nothing (at least for me) toward explaining why the adding <strong>–display :0</strong> <em>usually</em> allows launching from the application launcher, but still <em>sometimes</em> hangs at the splash screen with an X11 icon on the command line.</p>
+<p>My remark about --file-forwarding came from my ignorance, which is now reduced.  But I also still “have no idea” about the main subject of my posting.  Maybe the flatpak command line arguments are not the true source of the problem, but adding --display :0 seems to make a difference.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

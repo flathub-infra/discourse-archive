@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Topic List & Category Styles
+   ========================================================================== */
+
+.topic-list { width: 100%; border-collapse: collapse; }
+
+.topic-list thead { border-bottom: 2px solid var(--border); }
+
+.topic-list-header {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.topic-list-header.replies,
+.topic-list-header.views,
+.topic-list-header.activity { text-align: center; width: 72px; }
+
+.topic-list-item { border-bottom: 1px solid var(--border-light); transition: background 0.1s; }
+.topic-list-item:hover { background: var(--bg-subtle); }
+.topic-list-item td { padding: 0.625rem 0.75rem; vertical-align: top; }
+.topic-list-item .main-link { padding-right: 1rem; }
+
+.topic-title-row { display: flex; align-items: flex-start; gap: 0.35rem; }
+
+.topic-pin, .topic-closed-icon { flex-shrink: 0; color: var(--text-faint); margin-top: 0.15rem; }
+
+.topic-link { font-size: 1rem; font-weight: 500; line-height: 1.4; color: var(--text); }
+.topic-link:hover { color: var(--accent); text-decoration: none; }
+.topic-link:visited { color: var(--text-muted); }
+
+.topic-detail-row { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.3rem; flex-wrap: wrap; }
+.topic-tags-inline { display: inline-flex; gap: 0.2rem; flex-wrap: wrap; }
+
+.topic-list-item .replies,
+.topic-list-item .views,
+.topic-list-item .activity {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.topic-list-item .replies { font-weight: 600; color: var(--text); }
+
+/* --- Categories Page --- */
+
+.category-list { display: grid; gap: 0.75rem; }
+
+.category-card { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+
+.category-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.category-name { font-size: 1rem; font-weight: 600; }
+.category-name a { color: var(--text); display: inline-flex; align-items: center; gap: 0.35rem; }
+.category-name a:hover { color: var(--accent); text-decoration: none; }
+.category-topic-count { font-size: 0.75rem; color: var(--text-faint); white-space: nowrap; }
+
+.category-description { padding: 0.625rem 1rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
+
+.subcategory-list { display: flex; flex-wrap: wrap; gap: 0.375rem; padding: 0 1rem 0.75rem; }
+
+.subcategory-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8125rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.subcategory-link:hover { background: var(--bg-subtle); text-decoration: none; }
+.subcategory-count { font-size: 0.6875rem; color: var(--text-faint); }
+
+/* --- User Profile --- */
+
+.user-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.user-avatar-large .avatar { font-size: 2.5rem; }
+.user-display-name { font-size: 1.375rem; font-weight: 700; line-height: 1.3; }
+.user-username { display: block; font-size: 0.875rem; color: var(--text-muted); }
+.user-title { display: block; font-size: 0.8125rem; color: var(--accent); margin-top: 0.125rem; }
+.user-meta { display: flex; gap: 1rem; margin-top: 0.4rem; font-size: 0.8125rem; color: var(--text-faint); }
+
+.user-topics h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.625rem; }
+.user-topic-list { list-style: none; }
+
+.user-topic-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.user-topic-list li a:first-child { font-weight: 500; }
+.user-topic-list time { font-size: 0.75rem; color: var(--text-faint); margin-left: auto; }
+
+/* --- Topic Status --- */
+
+.topic-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 3px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--bg-hover);
+  color: var(--text-muted);
+}

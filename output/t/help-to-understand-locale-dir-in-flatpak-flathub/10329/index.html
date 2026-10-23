@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help to understand locale dir in flatpak/Flathub - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help to understand locale dir in flatpak/Flathub</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help to understand locale dir in flatpak/Flathub</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 21, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 21, 2025 8:52 AM">
+            <time itemprop="datePublished" datetime="2025-08-21 08:52:39 +0000">Aug 21, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to improve the installation of .mo files (gettext) in the Frescobaldi application.</p>
+<p>Here’s what it’s currently installed:</p>
+<pre><code class="lang-auto">[📦 org.frescobaldi.Frescobaldi org.frescobaldi.Frescobaldi]$ find /app -name *.mo
+/app/dev/share/locale/ca/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/cs/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/da/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/de/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/el/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/eo/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/es/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/fi/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/fr/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/it/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/ja/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/nl/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/ru/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/sv/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/tr/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/uk/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/vi/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/zh_CN/LC_MESSAGES/lilypond.mo
+/app/dev/share/locale/zh_TW/LC_MESSAGES/lilypond.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/cs/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/cs/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/de/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/de/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/es/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/es/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/fr/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/fr/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/gl/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/gl/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/it/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/it/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ja/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ja/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ko/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ko/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/nl/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/nl/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/pl/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/pl/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/pt_BR/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/pt_BR/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ru/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/ru/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/sv/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/sv/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/tr/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/tr/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/uk/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/uk/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_CN/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_CN/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_HK/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_HK/LC_MESSAGES/userguide.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_TW/LC_MESSAGES/frescobaldi.mo
+/app/lib/python3.12/site-packages/frescobaldi/i18n/zh_TW/LC_MESSAGES/userguide.mo
+/app/share/locale/en_US/LC_MESSAGES/mit-krb5.mo
+/app/share/runtime/locale/ca/share/ca/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/cs/share/cs/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/da/share/da/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/de/share/de/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/el/share/el/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/eo/share/eo/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/es/share/es/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/fi/share/fi/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/fr/share/fr/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/ja/share/ja/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/nl/share/nl/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/ru/share/ru/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/sv/share/sv/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/tr/share/tr/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/uk/share/uk/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/vi/share/vi/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/zh/share/zh_CN/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/zh/share/zh_TW/LC_MESSAGES/lilypond.mo
+</code></pre>
+<p>I have some questions:</p>
+<ol>
+<li>
+<p>I’m building two different LilyPond versions. The development version installed in the /app/dev prefixes gets normal paths for the .mo files, that is for example: <code>/app/dev/share/locale/fr/LC_MESSAGES/lilypond.mo</code>. For the stable version installed in the /app prefix instead the .mo files paths are: <code>/app/share/runtime/locale/fr/share/fr/LC_MESSAGES/lilypond.mo</code>. Why is this happening?</p>
+</li>
+<li>
+<p>The main app Frescobaldi is a simple python project which does not use Meson or any other similar tool to handle the installation. So the .mo files are copied only in the python install dir <code>/app/lib/python3.12/site-packages/frescobaldi</code>. I know I should add a command to copy these files to /app/share/locale, in order for appstream to build the translation metadata used by software centers to inform the users if the app is available in their language or not. However it seems that I cannot touch /app/share/locale; it seems a reserved directory. See <a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/pull/76" rel="noopener nofollow ugc">my attempts in this PR</a>.<br>
+I should search other Python projects in Flathub which do not use Meson and see how they deal with this, but I haven’t found any yet. EDIT: I’ve found <a href="https://github.com/flathub/com.rtosta.zapzap/blob/master/com.rtosta.zapzap.yaml" rel="noopener nofollow ugc">this one</a>: it seems to have .mo files in /app/share/locale but I cannot understand how this is achieved.</p>
+</li>
+<li>
+<p><code>/app/share/locale/en_US/LC_MESSAGES/mit-krb5.mo</code> seems something not cleaned up by the PyQt.BaseApp? Is it really useful?</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 25, 2025 6:15 PM">
+            <time itemprop="datePublished" datetime="2025-08-25 18:15:40 +0000">Aug 25, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Why is this happening?</p>
+</blockquote>
+<p>I think that’s how the Locale extension works, it’s mounted in <code>/app/share/runtime/locale/</code> rather than <code>/app/share/locale</code>. Because you put your development version into a subfolder it can’t be automatically separated (it only works for the default folder, i.e. <code>/app/share/locale</code>), see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">flatpak-manifest</a>:</p>
+<pre><code class="lang-auto">       separate-locales (boolean)
+           Separate out locale files and translations to an extension runtime. Defaults to true.
+</code></pre>
+<blockquote>
+<p>However it seems that I cannot touch /app/share/locale; it seems a reserved directory.</p>
+</blockquote>
+<p>What exactly is the issue you’re seeing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 25, 2025 8:57 PM">
+            <time itemprop="datePublished" datetime="2025-08-25 20:57:58 +0000">Aug 25, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="2" data-topic="10329">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>I think that’s how the Locale extension works, it’s mounted in <code>/app/share/runtime/locale/</code> rather than <code>/app/share/locale</code>.</p>
+</blockquote>
+</aside>
+<p>I was about to reply: “Then why some apps do have .mo files in /app/share/locale?”</p>
+<p>Then I better checked org.gnome.Evolution and found out that:</p>
+<ol>
+<li>Even if /app/share/locale contains the language directories it doesn’t mean they have the .mo files inside.</li>
+<li>The .mo files for my system language are mounted on /app/share/runtime/locale, as you said.</li>
+</ol>
+<pre><code class="lang-auto">[📦 org.gnome.Evolution ~]$ ls /app/share/locale/
+ab   ar   be@latin  bs		 cs  el       eo     es_CR  es_HN  es_PR  eu   ga  hi  ie  kab	ku   mg   mr   nl  pl	  ru  sq	te  uk	zh_CN
+af   as   bg	    ca		 cy  en_AU    es     es_DO  es_MX  es_SV  fa   gd  hr  is  kk	ky   mjw  ms   nn  ps	  rw  sr	tg  uz	zh_HK
+am   ast  bn	    ca@valencia  da  en_CA    es_AR  es_EC  es_NI  es_UY  fi   gl  hu  it  km	lt   mk   nb   oc  pt	  si  sr@latin	th  vi	zh_TW
+an   az   bn_IN     ckb		 de  en_GB    es_CL  es_ES  es_PA  es_VE  fr   gu  hy  ja  kn	lv   ml   nds  or  pt_BR  sk  sv	tr  wa
+ang  be   br	    crh		 dz  en@shaw  es_CO  es_GT  es_PE  et	  fur  he  id  ka  ko	mai  mn   ne   pa  ro	  sl  ta	ug  xh
+[📦 org.gnome.Evolution ~]$ find /app/share/locale/ -name *.mo
+/app/share/locale/en@shaw/LC_MESSAGES/evolution-data-server.mo
+/app/share/locale/en@shaw/LC_MESSAGES/evolution.mo
+/app/share/locale/en@shaw/LC_MESSAGES/libgweather-4.0-locations.mo
+/app/share/locale/en@shaw/LC_MESSAGES/libgweather-4.0.mo
+/app/share/locale/en_AU/LC_MESSAGES/evolution-data-server.mo
+/app/share/locale/en_AU/LC_MESSAGES/evolution.mo
+/app/share/locale/en_CA/LC_MESSAGES/evolution-data-server.mo
+/app/share/locale/en_CA/LC_MESSAGES/evolution.mo
+/app/share/locale/en_CA/LC_MESSAGES/libgweather-4.0-locations.mo
+/app/share/locale/en_CA/LC_MESSAGES/libgweather-4.0.mo
+/app/share/locale/en_GB/LC_MESSAGES/evolution-data-server.mo
+/app/share/locale/en_GB/LC_MESSAGES/evolution-ews.mo
+/app/share/locale/en_GB/LC_MESSAGES/evolution.mo
+/app/share/locale/en_GB/LC_MESSAGES/gnome-online-accounts.mo
+/app/share/locale/en_GB/LC_MESSAGES/gspell-1.mo
+/app/share/locale/en_GB/LC_MESSAGES/libgweather-4.0-locations.mo
+/app/share/locale/en_GB/LC_MESSAGES/libgweather-4.0.mo
+/app/share/locale/en_GB/LC_MESSAGES/libsecret.mo
+[📦 org.gnome.Evolution ~]$ find /app/share/runtime/ -name *.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/evolution-data-server.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/evolution-ews.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/evolution.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/gnome-online-accounts.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/gspell-1.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/libgweather-4.0-locations.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/libgweather-4.0.mo
+/app/share/runtime/locale/it/share/it/LC_MESSAGES/libsecret.mo
+</code></pre>
+<p>So I should rephrase the question to:</p>
+<ul>
+<li><strong>How can I check which languages are included in the .Locale extension?</strong></li>
+<li><strong>How can I manually add .mo files (in the manifest) to the .Locale extension?</strong></li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 25, 2025 10:14 PM">
+            <time itemprop="datePublished" datetime="2025-08-25 22:14:54 +0000">Aug 25, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="fedelibre" data-post="3" data-topic="10329">
+<div class="title">
+<div class="quote-controls"></div>
+fedelibre:</div>
+<blockquote>
+<p>So I should rephrase the question to:</p>
+<ul>
+<li><strong>How can I manually add .mo files (in the manifest) to the .Locale extension?</strong></li>
+<li><strong>How can I check which languages are included in the .Locale extension?</strong></li>
+</ul>
+</blockquote>
+</aside>
+<p>Trying to answer…</p>
+<p>I can simply add a command in the manifest to copy the .mo files in /app/share/locale. I already knew this. What I was missing is how to double-check that this is working.</p>
+<p>Here’s my workaround. First, set all languages for your flatpak configuration:</p>
+<pre><code class="lang-auto">flatpak config --set languages "*"
+</code></pre>
+<p>Then build the flatpak from the manifest you are testing.<br>
+Now you can check if all .mo files from .Locale are mounted:</p>
+<pre><code class="lang-auto">[📦 org.frescobaldi.Frescobaldi ~]$ find /app/share/runtime/locale/ -name *.mo
+/app/share/runtime/locale/ca/share/ca/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/cs/share/cs/LC_MESSAGES/frescobaldi.mo
+/app/share/runtime/locale/cs/share/cs/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/cs/share/cs/LC_MESSAGES/userguide.mo
+/app/share/runtime/locale/da/share/da/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/de/share/de/LC_MESSAGES/frescobaldi.mo
+/app/share/runtime/locale/de/share/de/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/de/share/de/LC_MESSAGES/userguide.mo
+/app/share/runtime/locale/el/share/el/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/eo/share/eo/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/es/share/es/LC_MESSAGES/frescobaldi.mo
+/app/share/runtime/locale/es/share/es/LC_MESSAGES/lilypond.mo
+/app/share/runtime/locale/es/share/es/LC_MESSAGES/userguide.mo
+
+[cut]
+</code></pre>
+<p>I’ve verified that the copy command in the manifest worked fine.</p>
+<p>Change again the language settings:</p>
+<pre><code class="lang-auto">flatpak config --unset languages
+</code></pre>
+<p>If you know better methods I’m all ears.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

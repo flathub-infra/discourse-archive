@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best way to set permissions of X11 &amp; Wayland? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Best way to set permissions of X11 &amp; Wayland?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Best way to set permissions of X11 &amp; Wayland?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 28, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cIetirEa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 28, 2024 7:33 AM">
+            <time itemprop="datePublished" datetime="2024-04-28 07:33:41 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There are three permissions for each flatpak</p>
+<ul>
+<li>X11 windowing system</li>
+<li>Wayland windows system</li>
+<li>Fallback to X11 windowing system</li>
+</ul>
+<p>There are eight different combinations of them. Each flatpak sets its default differently, some of which are obviously wrong and causes flicker.</p>
+<p>What’s the best way to set them?</p>
+<p>My system info:<br>
+Operating System: Fedora Kinoite 40<br>
+KDE Plasma Version: 6.0.4<br>
+KDE Frameworks Version: 6.1.0<br>
+Qt Version: 6.7.0<br>
+Kernel Version: 6.8.7-300.fc40.x86_64 (64-bit)<br>
+Graphics Platform: Wayland<br>
+Processors: 4 × Intel® Core™ i5-7500 CPU @ 3.40GHz<br>
+Memory: 46.9 GiB of RAM<br>
+Graphics Processor: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 28, 2024 11:36 AM">
+            <time itemprop="datePublished" datetime="2024-04-28 11:36:39 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The flickering is most likely the result of a <a href="https://zamundaaa.github.io/wayland/2024/04/05/explicit-sync.html" rel="noopener nofollow ugc">nVidia driver issue</a> on XWayland (without <code>--socket=wayland</code>). This should be fixed in the current releases of GNOME Shell &amp; KDE Plasma (don’t know about other DEs/compositors) but requires an updated driver. The beta is supposed to be released on May 15th (<a href="https://github.com/NVIDIA/egl-wayland/pull/104#issuecomment-2010292221" class="inline-onebox" rel="noopener nofollow ugc">Implement Explicit Sync by amshafer · Pull Request #104 · NVIDIA/egl-wayland · GitHub</a>).</p>
+<p>It’s not directly related to flatpak &amp; is always an issue if the application does not support Wayland natively. Though the actual severity can vary from application to application.</p>
+<hr>
+<p>Both <code>x11</code> &amp; <code>fallback-x11</code> get added to the applications for compatible reasons:</p>
+<blockquote>
+<p>The fallback-x11 option makes the X11 socket available only if there is no Wayland socket. This option was introduced in 0.11.3. To support older Flatpak releases, specify both x11 and fallback-x11. The fallback-x11 option takes precedence when both are supported.</p>
+<p><a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-finish" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Command Reference - Flatpak documentation</a></p>
+</blockquote>
+<p>If the application supports Wayland then <code>--socket=wayland</code> &amp; <code>--socket=fallback-x11</code> should be enough, but an additional <code>--socket=x11</code> does not change the behaviour.</p>
+<p>I think if an applications omits <code>--socket=fallback-x11</code> then it could decide to use X11 through XWayland instead of Wayland natively since both sockets are exposed. But this would be explicitly handled by the application, e.g. to work around bugs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cIetirEa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 28, 2024 9:59 PM">
+            <time itemprop="datePublished" datetime="2024-04-28 21:59:53 +0000">Apr 28, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see, thanks for the details. So, as a rule of thumb, for older Flatpaks -</p>
+<ul>
+<li>x11: enable</li>
+<li>Wayland: disable</li>
+<li>fallback-x11: enable</li>
+</ul>
+<p>And for newer Flatpaks -</p>
+<ul>
+<li>x11: disable</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: enable (?)</li>
+</ul>
+<p>And once new driver is here, all Flatpaks -</p>
+<ul>
+<li>x11: disable</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: disable</li>
+</ul>
+<p>Or did I understand correctly…?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 29, 2024 3:47 PM">
+            <time itemprop="datePublished" datetime="2024-04-29 15:47:29 +0000">Apr 29, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cIetirEa" data-post="3" data-topic="6604">
+<div class="title">
+<div class="quote-controls"></div>
+cIetirEa:</div>
+<blockquote>
+<p>for older Flatpaks -</p>
+<ul>
+<li>x11: enable</li>
+<li>Wayland: disable</li>
+<li>fallback-x11: enable</li>
+</ul>
+</blockquote>
+</aside>
+<p>If there is no Wayland support for the application then you’d only set <code>--socket=x11</code>. <code>fallback-x11</code> should be used in combination with <code>wayland</code>…</p>
+<aside class="quote no-group" data-username="cIetirEa" data-post="3" data-topic="6604">
+<div class="title">
+<div class="quote-controls"></div>
+cIetirEa:</div>
+<blockquote>
+<p>And for newer Flatpaks -</p>
+<ul>
+<li>x11: disable</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: enable (?)</li>
+</ul>
+</blockquote>
+</aside>
+<p>…since that ensures compatibility with Wayland (preferred output) &amp; X11.</p>
+<aside class="quote no-group" data-username="cIetirEa" data-post="3" data-topic="6604">
+<div class="title">
+<div class="quote-controls"></div>
+cIetirEa:</div>
+<blockquote>
+<p>And once new driver is here, all Flatpaks -</p>
+<ul>
+<li>x11: disable</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: disable</li>
+</ul>
+</blockquote>
+</aside>
+<p>You’d only not set <code>--socket=fallback-x11</code> if the application doesn’t X11 at all.</p>
+<p>As far as I understand, the new driver explicitly fixes the flickering in XWayland applications, native Wayland should already be fine. But not all applications support Wayland.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cIetirEa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 30, 2024 7:14 AM">
+            <time itemprop="datePublished" datetime="2024-04-30 07:14:44 +0000">Apr 30, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see. Let me try again:</p>
+<p>For apps that only support X11 (very old apps) -</p>
+<ul>
+<li>x11: enable</li>
+<li>Wayland: disable</li>
+<li>fallback-x11: disable</li>
+</ul>
+<p>For apps that support both X11 and Wayland (neither too old or too new) -</p>
+<ul>
+<li>x11: disable</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: enable</li>
+</ul>
+<p>For apps that only support Wayland (very new apps) -</p>
+<ul>
+<li>x11: enable (?)</li>
+<li>Wayland: enable</li>
+<li>fallback-x11: disable</li>
+</ul>
+<p>Once the new driver arrives, keep using these same permissions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan Wielemaker</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 15, 2024 2:41 PM">
+            <time itemprop="datePublished" datetime="2024-05-15 14:41:17 +0000">May 15, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok.   One more case.  I’ve started making a flatpak for SWI-Prolog.   SWI-Prolog comes with a console with menus that is written in Qt.   In addition, it has its own graphics that uses X11 (old stuff, binds directly to Xt/Xlib).   If I run the linter from flathub, it complains I enabled both X11 and wayland.   What is correct here?</p>
+<ul>
+<li>If the user doesn’t use SWI-Prolog’s graphics, it is an Qt application and thus should use wayland and fallback-x11.</li>
+<li>If the user does use SWI-Prolog’s graphics, the application will talk to both wayland and X11 (I think), so it should be wayland and x11.  This however is not appreciated by the linter.   Is this nevertheless correct?    This surely works (Fedora 40, Gnome 46 using wayland).</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 15, 2024 2:47 PM">
+            <time itemprop="datePublished" datetime="2024-05-15 14:47:46 +0000">May 15, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="JanWielemaker" data-post="6" data-topic="6604">
+<div class="title">
+<div class="quote-controls"></div>
+JanWielemaker:</div>
+<blockquote>
+<p>it complains I enabled both X11 and wayland. What is correct here?</p>
+</blockquote>
+</aside>
+<p>if you read further, you’ll see it’s just a warning. Unlike some other lints. So like everybody else you can ignore warnings.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App-categories-missing validation error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">App-categories-missing validation error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">App-categories-missing validation error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 10, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 10, 2025 4:13 PM">
+            <time itemprop="datePublished" datetime="2025-01-10 16:13:12 +0000">Jan 10, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think that recently Flathub made the validation more restrictive and now I can’t build anymore an application. See <a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/pull/65" rel="noopener nofollow ugc">this PR</a>.</p>
+<p>Unfortunately appstreamcli doesn’t return any useful information:</p>
+<pre><code class="lang-auto">$ appstreamcli validate-tree --no-net --explain build/files
+org.frescobaldi.Frescobaldi.metainfo.xml
+  E: org.frescobaldi.Frescobaldi:~: app-categories-missing
+     This component is in no valid categories, even though it should be. Please check its metainfo
+     file and desktop-entry file.
+
+? Validation failed: errors: 1, pedantic: 1
+</code></pre>
+<p>The categories are set in the desktop file only, not in the metainfo file. As far as I understand, this should be Ok.<br>
+I think I’ve read on Flathub manual that Qt would be not allowed (?) as category (and should be moved to keywords), despite the fact that it is allowed by the Freedesktop spec.</p>
+<p>I don’t have much time to investigate further on this issue. I hope someone has already gone through this and can help me to understand what’s going on.</p>
+<p>Thanks in advance!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 11, 2025 3:47 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 15:47:11 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="fedelibre" data-post="1" data-topic="8636">
+<div class="title">
+<div class="quote-controls"></div>
+fedelibre:</div>
+<blockquote>
+<p>The categories are set in the desktop file only, not in the metainfo file</p>
+</blockquote>
+</aside>
+<p>Apparently not:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#categories-and-keywords">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#categories-and-keywords" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/2/2382eb81a57f8161664101a6b6f0ada66186bbe0_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#categories-and-keywords" target="_blank" rel="noopener nofollow ugc">MetaInfo guidelines | Flathub Documentation</a></h3>
+
+  <p>These are a set of guidelines for MetaInfo that should be followed for submission on Flathub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 11, 2025 6:34 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 18:34:12 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Drop the <code>&lt;icon type="stock"&gt;org.frescobaldi.Frescobaldi&lt;/icon&gt;</code> from the metainfo file. That’s causing it.</p>
+<p>Desktop apps do not need to specify it, it is usually for CLI apps who do not have a desktop file.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jan 11, 2025 7:54 PM">
+            <time itemprop="datePublished" datetime="2025-01-11 19:54:31 +0000">Jan 11, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You are right: if I drop that line, it passes the validation.</p>
+<p>However, the AppStream documentation seems to say something different:</p>
+<ul>
+<li><a href="https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-icon" class="inline-onebox" rel="noopener nofollow ugc">Catalog Metadata | AppStream | AppStream 1.0</a></li>
+<li><a href="https://github.com/ximion/appstream/blob/97ee9db315babea7ad8da336aa1b01075b54cd0a/docs/xml/catalog-xmldata.xml#L284" class="inline-onebox" rel="noopener nofollow ugc">appstream/docs/xml/catalog-xmldata.xml at 97ee9db315babea7ad8da336aa1b01075b54cd0a · ximion/appstream · GitHub</a></li>
+</ul>
+<blockquote>
+<p>The <code>&lt;icon/&gt;</code> tag describes the component icon. It is mostly used for GUI applications (component-type <code>desktop-application</code>). It can be of the type <code>stock</code>, <code>cached</code>, <code>local</code>, or <code>url</code>.</p>
+<p><code>stock</code> icons are loaded from stock. The icon name should never include any file-extension or path.</p>
+</blockquote>
+<p>Maybe the docs are not up-to-date?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jan 26, 2025 9:44 PM">
+            <time itemprop="datePublished" datetime="2025-01-26 21:44:54 +0000">Jan 26, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Let me add that the good old appstream-util was able to catch and describe this error correctly:</p>
+<pre><code class="lang-auto">• tag-invalid           : stock icon is not valid [org.frescobaldi.Frescobaldi]
+</code></pre>
+<p>Usually appstreamcli is better, but not this time…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 27, 2025 1:42 PM">
+            <time itemprop="datePublished" datetime="2025-01-27 13:42:11 +0000">Jan 27, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Please voice your issue in their bug tracker, they might improve it, if more people complain.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jan 31, 2025 8:25 AM">
+            <time itemprop="datePublished" datetime="2025-01-31 08:25:01 +0000">Jan 31, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Done:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/ximion/appstream/issues/696">
+  <header class="source">
+
+      <a href="https://github.com/ximion/appstream/issues/696" target="_blank" rel="noopener nofollow ugc">github.com/ximion/appstream</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/ximion/appstream/issues/696" target="_blank" rel="noopener nofollow ugc">appstreamcli not able to explain correctly a wrong icon tag</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2025-01-31" data-time="08:24:39" data-timezone="UTC">08:24AM - 31 Jan 25 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/fedelibre" target="_blank" rel="noopener nofollow ugc">
+          <img alt="fedelibre" src="/uploads/original/2X/f/f0bce4b8fe6b6b0c1cd42c09d1ab50d4ee8aac94.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="000000">
+          fedelibre
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">As discussed [here](https://discourse.flathub.org/t/app-categories-missing-valid<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ation-error/8636), `appstreamcli validate` was not able to explain a problem in a metainfo file. Even worse, it was leading me on a wrong track.
+
+The error printed by appstreamcli is:
+
+```
+$ appstreamcli validate-tree --no-net --explain build/files
+org.frescobaldi.Frescobaldi.metainfo.xml
+  E: org.frescobaldi.Frescobaldi:~: app-categories-missing
+     This component is in no valid categories, even though it should be. Please check its metainfo
+     file and desktop-entry file.
+
+? Validation failed: errors: 1, pedantic: 1
+```
+
+The categories are set in the desktop file and I know that appstreamcli should check categories in the desktop file if they are not present in the metainfo. So my guess was that for some reason the desktop file could not be found. A wrong guess.
+
+Eventually I was told that the problem is the presence of this tag in my metainfo file:
+
+    &lt;icon type="stock"&gt;org.frescobaldi.Frescobaldi&lt;/icon&gt;
+
+For the records, appstream-util was able to detect and explain the error correctly, here's the output:
+
+```
+• tag-invalid           : stock icon is not valid [org.frescobaldi.Frescobaldi]
+```
+
+Can you improve this error detection?
+Thanks</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

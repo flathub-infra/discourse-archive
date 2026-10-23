@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Authentication - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">User Authentication</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">User Authentication</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dyslechtchitect</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2026 5:07 PM">
+            <time itemprop="datePublished" datetime="2026-02-06 17:07:22 +0000">Feb 6, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I’m trying to add authentication for my Flatpak app.</p>
+<p>Some items in the app are “protected,” and I only want users to be able to interact with them after entering their system password. I don’t want to build a password system inside the app; I want to rely on Linux’s native authentication.</p>
+<p>The only way I found so far is using pkexec or the sudo/unix_chkpwd method. However, the pkexec approach requires --talk-name=org.freedesktop.Flatpak, which seems excessive and sudo/unix_chkpwd method still relies on flatpak-spawn --host and therefore still needs --talk-name=org.freedesktop.Flatpak.</p>
+<p>I’m looking for a safe, standard way for a Flatpak app to verify the user via system authentication for these protected actions, without exposing the password or bypassing the sandbox, Any advice?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 6, 2026 9:58 PM">
+            <time itemprop="datePublished" datetime="2026-02-06 21:58:22 +0000">Feb 6, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="dyslechtchitect" data-post="1" data-topic="11698">
+<div class="title">
+<div class="quote-controls"></div>
+dyslechtchitect:</div>
+<blockquote>
+<p>The only way I found so far is using pkexec or the sudo/unix_chkpwd method. However, the pkexec approach requires --talk-name=org.freedesktop.Flatpak, which seems excessive and sudo/unix_chkpwd method still relies on flatpak-spawn --host and therefore still needs --talk-name=org.freedesktop.Flatpak.</p>
+</blockquote>
+</aside>
+<p>Just to note: You’re opening a massive, and I mean massive security hole with this. Because you essentially attempt to run whatever is behind the <code>pkexec</code> or <code>sudo</code> with root permissions. You should not use these commands unless you really, really need to work on the system itself (but even then you try to minimize use of this).</p>
+<aside class="quote no-group quote-modified" data-username="dyslechtchitect" data-post="1" data-topic="11698">
+<div class="title">
+<div class="quote-controls"></div>
+dyslechtchitect:</div>
+<blockquote>
+<p>I’m looking for a safe, standard way for a Flatpak app to verify the user via system authentication for these protected actions […]</p>
+</blockquote>
+</aside>
+<p>To put it simple: There is none.</p>
+<p>Linux has its systems for elevated system access, like sudo or Polkit. But these are explicitly if you need to do something outside of the scope of normal user activities.</p>
+<p>If an app needs to “protect” parts of it as in an access control, this is responsibility of the app itself to implement.</p>
+<p>If you need to securly store some data, you can use the Secrets portal via libsecret. If you need to user authentication for certain data, let the user create a password for them and store that with the mentioned Secrets portal.</p>
+<p>And if you find it hard to justify the user having to create a new password to access the “protected” parts of your app, then your app maybe doesn’t need that protection necessarily…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sabri Ünal</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 6, 2026 11:02 PM">
+            <time itemprop="datePublished" datetime="2026-02-06 23:02:31 +0000">Feb 6, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The last release (and the last activity on the project) appears to be three years ago, and the PR list clearly indicates that it is out of maintenance.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

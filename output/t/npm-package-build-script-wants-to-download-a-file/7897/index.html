@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NPM package build script wants to download a file - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">NPM package build script wants to download a file</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">NPM package build script wants to download a file</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 16, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">elagost</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 16, 2024 5:28 PM">
+            <time itemprop="datePublished" datetime="2024-10-16 17:28:11 +0000">Oct 16, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to build signal-desktop natively, and am familiar with flatpak-node-generator. While I succeeded in getting all the npm packages cached locally with generated-sources.json, one of the packages runs a build script that looks to download something from the Internet:</p>
+<pre><code class="lang-auto">npm error code 1                                                                                      
+npm error path /run/build/signal-desktop/node_modules/@signalapp/better-sqlite3                       
+npm error command failed                                                                              
+npm error command sh -c npm run download &amp;&amp; npm run build-release                                                                                                                              
+npm error &gt; @signalapp/better-sqlite3@8.8.1 download                    
+npm error &gt; node ./deps/download.js                                                            
+npm error                                      
+npm error downloading https://build-artifacts.signal.org/desktop/sqlcipher-4.6.1--3.0.7--0.2.1-7c30de8bcb5d21127803f5ab19a097e1b508d05744aca3ac6166352506b5f451.tar.gz
+npm error node:events:497                      
+npm error       throw er; // Unhandled 'error' event                                                                                                                                           
+npm error       ^                              
+npm error                                      
+npm error Error: getaddrinfo EAI_AGAIN build-artifacts.signal.org                                                                                                                              
+npm error     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)                                                                                                              
+npm error Emitted 'error' event on ClientRequest instance at:                                                                                                                                  
+npm error     at emitErrorEvent (node:_http_client:101:11)                                                                                                                                     
+npm error     at TLSSocket.socketErrorListener (node:_http_client:504:5)                                                                                                                       
+npm error     at TLSSocket.emit (node:events:519:28)                                                                                                                                           
+npm error     at emitErrorNT (node:internal/streams/destroy:169:8)                                                                                                                             
+npm error     at emitErrorCloseNT (node:internal/streams/destroy:128:3)                                                                                                                        
+npm error     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {                                                                                                 
+npm error   errno: -3001,                      
+npm error   code: 'EAI_AGAIN',                                                                 
+npm error   syscall: 'getaddrinfo',                                                            
+npm error   hostname: 'build-artifacts.signal.org'                                             
+npm error }                                    
+npm error                                      
+npm error Node.js v20.18.0                                                                     
+npm error A complete log of this run can be found in: /run/build/signal-desktop/flatpak-node/npm-cache/_logs/2024-10-16T16_39_38_368Z-debug-0.log
+Error: module signal-desktop: Child process exited with code 1
+</code></pre>
+<p>How could I work around this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 29, 2024 5:02 PM">
+            <time itemprop="datePublished" datetime="2024-10-29 17:02:24 +0000">Oct 29, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If you’re just building locally then you can add <code>--share=network</code> to <code>build-args</code> (see the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">documentation</a>) to allow network access. This is forbidden on Flathub but can be used for your local builds.</p>
+<p>For an offline build there’s probably no other way but to download the needed files manually (i.e. put everything that’s needed as sources into the manifest).</p>
+<p>You’ll have to check whether the build system can already use local files (&amp; where to put them) or else you’d have to patch some build scripts.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">elagost</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 30, 2024 1:11 PM">
+            <time itemprop="datePublished" datetime="2024-10-30 13:11:17 +0000">Oct 30, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks - I’ll test with this addition.</p>
+<p>Since the goal is to eventually get it to flathub, so <code>--share=network</code> is a temporary fix at best. The problem I see is that whenever <code>npm install</code> is run from the flatpak manifest, node_modules is seemingly mounted as a temporary directory and deleted after the command exits. There seems to be no way to add the required files to the proper nested directory in node_modules since it’s deleted.</p>
+<p>Is there a way around that?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 30, 2024 6:26 PM">
+            <time itemprop="datePublished" datetime="2024-10-30 18:26:13 +0000">Oct 30, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As far as I know there is no special handling for node modules: Flatpak just downloads the files from the generated sources &amp; puts them into the destination folder you configure. It should be available for as long as the module is building.</p>
+<p>You can also prepare the sources manually with commands before <code>npm install</code> (e.g. <code>mkdir -p</code>, <code>mv</code> or <code>cp</code>).</p>
+<p>But you’ll have to share your manifest to identify the issue you’re having.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

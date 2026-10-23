@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Files misplaced in sandbox? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Files misplaced in sandbox?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Files misplaced in sandbox?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 9, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ronys</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 9, 2024 6:45 PM">
+            <time itemprop="datePublished" datetime="2024-02-09 18:45:07 +0000">Feb 9, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>New here, please be patient.</p>
+<p>My app was just published on flathub (<a href="https://flathub.org/apps/org.pwsafe.pwsafe" class="inline-onebox" rel="noopener nofollow ugc">Install Password Safe on Linux | Flathub</a>), and of course people have started finding issues, mainly related to files not being where they’re expected. Specifically:</p>
+<ol>
+<li>
+<p>The app expects to find a file under /usr/share/passwordsafe/xml/. Looking in the sandbox via ‘flatpak enter’, I see the file under /app/share/passwordsafe/xml. How is this mapped to /usr/share? What’s odd is that the app “sees” the help file under /app/share/passwordsafe/help. Why this but not the xml file?</p>
+</li>
+<li>
+<p>Even stranger, the localized files are in a clearly incorrect location, e,g,<br>
+/app/share/runtime/locale/fr/share/fr/LC_MESSAGES/pwsafe.mo instead of<br>
+/app/share/runtime/locale/fr/LC_MESSAGES/pwsafe.mo</p>
+</li>
+</ol>
+<p>The project is built using a pretty standard cmake file, and .deb and rpm packages place these files correctly.<br>
+Any suggestions on how to approach this would be greatly appreciated.</p>
+<p>Rony</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 9, 2024 10:57 PM">
+            <time itemprop="datePublished" datetime="2024-02-09 22:57:02 +0000">Feb 9, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In the sandbox, the app is mounted at <code>/app</code>, the runtime is mounted at <code>/usr</code>, and various extensions are mounted below those.</p>
+<p>flatpak-builder just sets the CMake install prefix to <code>/app</code>. Instead of hardcoding the location of that directory, you should use a config header to get it from the buildsystem: <a href="https://cmake.org/cmake/help/latest/command/configure_file.html" class="inline-onebox" rel="noopener nofollow ugc">configure_file — CMake 3.28.3 Documentation</a></p>
+<p>Flatpak does set <code>XDG_DATA_DIRS</code> to include <code>/app/share</code>, which may be how the other directory is working.</p>
+<aside class="quote no-group" data-username="ronys" data-post="1" data-topic="6084">
+<div class="title">
+<div class="quote-controls"></div>
+ronys:</div>
+<blockquote>
+<p>Even stranger, the localized files are in a clearly incorrect location, e,g,<br>
+/app/share/runtime/locale/fr/share/fr/LC_MESSAGES/pwsafe.mo instead of<br>
+/app/share/runtime/locale/fr/LC_MESSAGES/pwsafe.mo</p>
+</blockquote>
+</aside>
+<p>I’m not an expert on the <code>.Locale</code> extension system, but this seems to match other apps. flatpak-builder defines the Locale extension point automatically with <code>directory=share/runtime/locale</code> and <code>locale-subset=true</code>. This requires that the locale extension contain top-level directories corresponding to each language code. The seemingly redundant path allows locale subsets to also include locale definitions for <code>lib/locale</code>. This is necessary for the platform locale extension at least.</p>
+<p>The app gets access to these via symlinks in <code>/app/share/locale</code>. I notice those are mostly missing for your app; only <code>ko</code> is present. I’m not sure what layer creates them, but I’d guess that they’re created for each directory the app creates in <code>/app/share/locale</code>.</p>
+<p>After writing most of this, I found a great explanation from Alex here: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621074#c21" class="inline-onebox" rel="noopener nofollow ugc">1621074 - fix l10n in Flatpaks</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ronys</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 12, 2024 7:25 PM">
+            <time itemprop="datePublished" datetime="2024-02-12 19:25:17 +0000">Feb 12, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the prompt reply. I’m still trying to understand what you &amp; Alex wrote about locales. Regarding the help and xml directories:<br>
+For help, there’s an environment variable (PWS_HELPDIR) that’s used in the org.pwsafe.pwsafe.yml file to override the default (hardcoded) value of /usr/share/passwordsafe/help/ to /app/share/passwordsafe/help/<br>
+I can add the same logic for the xml directory (/usr/share/passwordsafe/xml/ → /app/share/passwordsafe/xml/), but surely there’s a more elegant way to do this?<br>
+For example, is there a way to instruct flatpak to install these directly under /usr?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 12, 2024 11:08 PM">
+            <time itemprop="datePublished" datetime="2024-02-12 23:08:51 +0000">Feb 12, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ronys" data-post="3" data-topic="6084">
+<div class="title">
+<div class="quote-controls"></div>
+ronys:</div>
+<blockquote>
+<p>override the default (hardcoded) value of /usr/share/passwordsafe/help/</p>
+</blockquote>
+</aside>
+<p>This is already wrong by design. It should honour “prefix”. Decades of software written for UNIX do that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 12, 2024 11:53 PM">
+            <time itemprop="datePublished" datetime="2024-02-12 23:53:11 +0000">Feb 12, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ronys" data-post="3" data-topic="6084">
+<div class="title">
+<div class="quote-controls"></div>
+ronys:</div>
+<blockquote>
+<p>For example, is there a way to instruct flatpak to install these directly under /usr?</p>
+</blockquote>
+</aside>
+<p>No, this is a fundamental part of flatpak’s design. <code>/usr</code> is the runtime, and <code>/app</code> is the app.</p>
+<p>As I mentioned before, the standard approach is to have the buildsystem generate a file containing constants for the install locations. For example you could have <code>DATADIR</code>, which would be set to <code>/app/share</code> for a flatpak build. Then in your code, simply reference <code>DATADIR "/passwordsafe/xml"</code>, and you have it as a compile-time constant.</p>
+<p>You could alternatively choose to follow the XDG basedir spec and search <code>XDG_DATA_DIRS</code> (with fallback as described in the spec). That depends on whether you want this to be extensible, or to only use the files shipped with the app.</p>
+<aside class="quote no-group" data-username="ronys" data-post="3" data-topic="6084">
+<div class="title">
+<div class="quote-controls"></div>
+ronys:</div>
+<blockquote>
+<p>I’m still trying to understand what you &amp; Alex wrote about locales.</p>
+</blockquote>
+</aside>
+<p>I’ve looked into this a bit more. It is basically as I thought: whatever you install into <code>/app/share/locale</code> is relocated into the extension directory and replaced with a symlink. I’ve determined that the <code>cleanup: /share</code> directive in your wxwidgets module is removing those symlinks. This shouldn’t be possible according to the documentation (it should only apply to that module). I think what’s happening is that wxwidgets also creates directories in <code>/app/share/locale</code>, so it also ‘owns’ those symlinks.</p>
+<p>I’m not sure that <code>cleanup: /share</code> is correct anyway though. I’d expect that wxwidgets should have message catalogs for its own strings as well.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ronys</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 17, 2024 8:52 AM">
+            <time itemprop="datePublished" datetime="2024-02-17 08:52:38 +0000">Feb 17, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Removing /share from cleanup didn’t help.<br>
+I notice that when trying to test the PR with the cleanup, I get:</p>
+<pre><code class="lang-auto">
+$ flatpak install --user https://dl.flathub.org/build-repo/83391/org.pwsafe.pwsafe.flatpakref
+
+org.pwsafe.pwsafe permissions:
+    ipc      fallback-x11      wayland      x11      devices     file access [1]
+
+    [1] xdg-documents
+
+
+        ID                                 Branch           Op           Remote                 Download
+ 1.     org.pwsafe.pwsafe.Locale           test             i            pwsafe-origin          &lt; 290.8 kB (partial)
+ 2.     org.pwsafe.pwsafe                  test             i            pwsafe-origin           &lt; 21.8 MB
+</code></pre>
+<p>What does the “partial” in the org.pwsafe.pwsafe.locale indicate? Upon downloading, it doesn’t even download the entire locale:</p>
+<pre><code class="lang-auto">       ID                                 Branch           Op           Remote                 Download
+ 1. [✓] org.pwsafe.pwsafe.Locale           test             i            pwsafe-origin           3.1 kB / 290.8 kB
+ 2. [✓] org.pwsafe.pwsafe                  test             i            pwsafe-origin          21.8 MB / 21.8 MB
+</code></pre>
+<p>Could it be that the flatpak installer is optimizing based on my current locale? If so, how can I test this for other languages?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 17, 2024 3:47 PM">
+            <time itemprop="datePublished" datetime="2024-02-17 15:47:33 +0000">Feb 17, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What do you mean by “didn’t help”? I did test this locally, and I see the same with your PR (I only checked the first build). The symlinks in <code>/app/share/locale</code> are now present as expected.</p>
+<aside class="quote no-group" data-username="ronys" data-post="6" data-topic="6084">
+<div class="title">
+<div class="quote-controls"></div>
+ronys:</div>
+<blockquote>
+<p>Could it be that the flatpak installer is optimizing based on my current locale? If so, how can I test this for other languages?</p>
+</blockquote>
+</aside>
+<p>Yes, this is how a <code>locale-subset=true</code> extension works. You can control which locales are installed using <code>flatpak config</code>:</p>
+<pre data-code-wrap="sh"><code class="lang-sh">flatpak config --set extra-languages fr
+flatpak update org.pwsafe.pwsafe # or update everything
+LANG=fr_FR.utf8 org.pwsafe.pwsafe
+flatpak config --unset extra-languages
+</code></pre>
+<p>Alternatively, you can use <code>flatpak update --subpath=fr org.pwsafe.pwsafe.Locale</code>. I can’t find an option to install all subpaths (without specifying each one), but it may exist.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ronys</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 18, 2024 7:26 PM">
+            <time itemprop="datePublished" datetime="2024-02-18 19:26:15 +0000">Feb 18, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>flatpak update --subpath xx did the trick, thanks!</p>
+<p>How can I set this up by default? What’s this <code>locale-subset=true</code> of which you speak? What happens if it’s false (and where can I set it)?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 18, 2024 10:56 PM">
+            <time itemprop="datePublished" datetime="2024-02-18 22:56:41 +0000">Feb 18, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>See <code>flatpak info -m org.pwsafe.pwsafe</code>:</p>
+<pre><code class="lang-auto">[Extension org.pwsafe.pwsafe.Locale]
+directory=share/runtime/locale
+autodelete=true
+locale-subset=true
+</code></pre>
+<p>flatpak-builder generates this extension automatically by default. You can disable that in your manifest (<code>separate-locales</code>), but you shouldn’t. Flatpak will automatically install the correct subset for the user’s locale.</p>
+<p>If you want flatpak to install all languages for you, you can set <code>languages</code> to <code>all</code> or <code>*</code> using <code>flatpak-config</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error message when opening Flatpak Evolution - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Error message when opening Flatpak Evolution</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Error message when opening Flatpak Evolution</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 2, 2022</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Edson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 2, 2022 12:53 PM">
+            <time itemprop="datePublished" datetime="2022-06-02 12:53:04 +0000">Jun 2, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everybody!</p>
+<p>Installation of the Evolution e-mail client successfully carried out in Deepin 20.6 in a vir-manager VM, where after opening the application via terminal the following error messages appear.</p>
+<p>If there is a possibility of correction, thank you in advance for your usual attention.</p>
+<pre><code class="lang-auto">Deepin@Deepin-PC:~$ flatpak install flathub org.gnome.Evolution
+Looking for matches…
+
+org.gnome.Evolution permissions:
+    ipc                    network                fallback-x11       pcsc
+    pulseaudio             wayland                x11                dri
+    file access [1]        dbus access [2]
+
+    [1] /run/.heim_org.h5l.kcm-socket, xdg-config/gnupg, xdg-config/pki, ~/.gnupg,
+        ~/.pki
+    [2] org.freedesktop.Notifications, org.freedesktop.secrets,
+        org.gnome.OnlineAccounts, org.gnome.keyring.SystemPrompter
+
+
+        ID                         Arch   Ramo   Op Remote  Baixar
+ 1. [✓] org.gnome.Platform         x86_64 42     u  flathub  30,5 MB / 276,2 MB
+ 2. [✓] org.gnome.Platform.Locale  x86_64 42     u  flathub 138,1 kB / 336,0 MB
+ 3. [✓] org.gnome.Evolution        x86_64 stable i  flathub  20,8 MB / 22,7 MB
+ 4. [✓] org.gnome.Evolution.Locale x86_64 stable i  flathub 676,7 kB / 22,9 MB
+
+Changes complete.
+Deepin@Deepin-PC:~$ flatpak run org.gnome.Evolution
+
+(evolution.bin:50): GLib-GObject-CRITICAL **: 09:30:24.155: g_value_set_boxed: assertion 'G_VALUE_HOLDS_BOXED (value)' failed
+
+(evolution.bin:50): dbind-WARNING **: 09:30:24.332: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: org.freedesktop.DBus.Error.ServiceUnknown
+
+(evolution.bin:50): e-mail-engine-WARNING **: 09:30:26.123: Failed to add service 'Sendmail' (sendmail): Sem provedor disponível para o protocolo “sendmail”
+
+(evolution-alarm-notify:57): GLib-GObject-CRITICAL **: 09:30:31.588: g_value_set_boxed: assertion 'G_VALUE_HOLDS_BOXED (value)' failed
+
+(evolution-alarm-notify:57): dbind-WARNING **: 09:30:31.615: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: org.freedesktop.DBus.Error.ServiceUnknown
+Could not determine the accessibility bus address
+
+(WebKitWebProcess:108): GLib-GObject-CRITICAL **: 09:30:47.534: g_value_set_boxed: assertion 'G_VALUE_HOLDS_BOXED (value)' failed
+
+(evolution.bin:50): GLib-GIO-WARNING **: 09:32:23.472: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+Deepin@Deepin-PC:~$
+</code></pre>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2.png" data-download-href="/uploads/original/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2.png" title="Capturar_deepin-terminal_20220601231122" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2_2_278x250.png" alt="Capturar_deepin-terminal_20220601231122" data-base62-sha1="760yFEVpAiV43yuBaaEjrO7Dk8W" width="278" height="250" srcset="/uploads/optimized/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2_2_278x250.png, /uploads/optimized/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2_2_417x375.png 1.5x, /uploads/optimized/2X/3/31bd1bc91b6864b38a940af4fe344d2761415db2_2_556x500.png 2x" data-dominant-color="243226"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Capturar_deepin-terminal_20220601231122</span><span class="informations">835×750 158 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9.png" data-download-href="/uploads/original/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9.png" title="Capturar_evolution.bin_20220602093122" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9_2_345x180.png" alt="Capturar_evolution.bin_20220602093122" data-base62-sha1="zxLhDyeu5oabcWoUjQ8mY1XsHzj" width="345" height="180" srcset="/uploads/optimized/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9_2_345x180.png, /uploads/optimized/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9_2_517x270.png 1.5x, /uploads/optimized/2X/f/f91d1f5224eefe0acd87adb24024416154b270e9_2_690x360.png 2x" data-dominant-color="F7F8F9"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Capturar_evolution.bin_20220602093122</span><span class="informations">1920×1006 119 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

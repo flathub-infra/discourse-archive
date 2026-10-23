@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unable to download packages - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Unable to download packages</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Unable to download packages</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 19, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexander</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 19, 2024 12:37 PM">
+            <time itemprop="datePublished" datetime="2024-02-19 12:37:31 +0000">Feb 19, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The repository is added without problems, but when downloading, there are problems with TLS. The certificates are updated. A search of the forums did not provide a solution. Maybe there are some other debugging tools?</p>
+<p>OS: Thinstation 6.2 (<a href="https://crux.nu/portdb/?a=search&amp;q=flatpak" rel="noopener nofollow ugc">Crux</a>)</p>
+<pre><code class="lang-auto">ts_0800274dd952:~# flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo -v
+F: Opening system flatpak installation at path /usr/var/lib/flatpak
+F: Loading https://dl.flathub.org/repo/flathub.flatpakrepo using curl
+F: Received 4040 bytes
+F: Imported 1 GPG key to remote "flathub"
+F: Clearing cached summaries for remote flathub
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loading https://dl.flathub.org/repo/summaries/100cbcaf710555f3dc6e7c526a558708624dc5210da0eca67ebe4f434304deb3.idx.sig using curl
+F: Received 592 bytes
+F: Fetching indexed summary file 5069da7572a3ca7c9797314194998a4c760420adef4abd0577d6898a9d08429a.gz for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summaries/5069da7572a3ca7c9797314194998a4c760420adef4abd0577d6898a9d08429a.gz using curl
+F: Received 1153431 bytes
+ts_0800274dd952:~# flatpak install flathub org.cvfosammmm.Lemma -v -y
+F: No installations directory in /usr/etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /usr/var/lib/flatpak
+F: Opening user flatpak installation at path /root/.local/share/flatpak
+Looking for matches…
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loaded indexed summary file 5069da7572a3ca7c9797314194998a4c760420adef4abd0577d6898a9d08429a from cache for remote ‘flathub’
+F: Transaction: install flathub:app/org.cvfosammmm.Lemma/x86_64/stable[*]
+F: Looking for remote metadata updates for flathub
+F: marking op install:app/org.cvfosammmm.Lemma/x86_64/stable resolved to 239b3108095d01222d152a8e01478fba806ce8d5c90c909b9893c93c36238c99
+F: Installing dependency org.gnome.Platform/x86_64/45 of org.cvfosammmm.Lemma/x86_64/stable
+Required runtime for org.cvfosammmm.Lemma/x86_64/stable (runtime/org.gnome.Platform/x86_64/45) found in remote flathub
+F: Transaction: install/update flathub:runtime/org.gnome.Platform/x86_64/45[$old]
+F: marking op install/update:runtime/org.gnome.Platform/x86_64/45 resolved to 57d12cbe72e28d786a210eced336f3ebcd99a229dd6dc1d55917cb9efb1ffa7d
+F: Transaction: install/update flathub:runtime/org.gnome.Platform.Locale/x86_64/45[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08[$old]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra[$old]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[$old]
+F: marking op install/update:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 resolved to bf24f23f3ba385f6e8c9215ed94d979db99814b0b614504a23a6d0751dc5f063
+F: marking op install/update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra resolved to 0f90faaea3e66a353bb667ee87b39eb49626d37d6117f37bba33b770b398b6c9
+F: marking op install/update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 resolved to 6896a1e84f623eba039b3a0eeabe21a16537f297460a3f3fcbcaab724cd97aaf
+F: marking op install/update:runtime/org.gnome.Platform.Locale/x86_64/45 resolved to e4ddfd287490bc693a3b0b3900a544e11d8c7d6b226efd8fafee05f63cb9e204
+F: Checking installation ‘system’ for EOL unused refs
+F: Checking installation ‘system’ by checking for dependent refs in ‘user’
+F: Checking installation ‘system’ for EOL unused refs
+F: Checking installation ‘system’ by checking for dependent refs in ‘user’
+
+org.cvfosammmm.Lemma permissions:
+    ipc    fallback-x11    wayland    x11    dri
+
+
+
+ 1.           org.freedesktop.Platform.GL.default    23.08    i    flathub    &lt; 162.3 MB
+ 2.           org.freedesktop.Platform.GL.default    23.08-extra    i    flathub    &lt; 162.3 MB
+ 3.           org.freedesktop.Platform.openh264    2.2.0    i    flathub    &lt; 944.3 kB
+ 4.           org.gnome.Platform.Locale    45    i    flathub    &lt; 369.5 MB
+ 5.           org.gnome.Platform    45    i    flathub    &lt; 375.1 MB
+ 6.           org.cvfosammmm.Lemma    stable    i    flathub    &lt; 23.9 MB
+
+
+Installing 1/6…
+F: flatpak_dir_pull: Using commit 6896a1e84f623eba039b3a0eeabe21a16537f297460a3f3fcbcaab724cd97aaf for pull of ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 from remote flathub
+Installing 1/6…                        0%  0 bytes/s
+Warning: While pulling runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 from remote flathub: Unacceptable TLS certificate
+Installing 2/6…
+F: flatpak_dir_pull: Using commit 0f90faaea3e66a353bb667ee87b39eb49626d37d6117f37bba33b770b398b6c9 for pull of ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra from remote flathub
+Installing 2/6…                        0%  0 bytes/s
+Warning: While pulling runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra from remote flathub: Unacceptable TLS certificate
+Installing 3/6…
+F: flatpak_dir_pull: Using commit bf24f23f3ba385f6e8c9215ed94d979db99814b0b614504a23a6d0751dc5f063 for pull of ref runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 from remote flathub
+Installing 3/6…                        0%  0 bytes/s
+Warning: While pulling runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 from remote flathub: Unacceptable TLS certificate
+Installing 4/6…
+F: flatpak_dir_pull: Using commit e4ddfd287490bc693a3b0b3900a544e11d8c7d6b226efd8fafee05f63cb9e204 for pull of ref runtime/org.gnome.Platform.Locale/x86_64/45 from remote flathub
+Installing 4/6…                        0%  0 bytes/s
+Warning: While pulling runtime/org.gnome.Platform.Locale/x86_64/45 from remote flathub: Unacceptable TLS certificate
+Installing 5/6…
+F: flatpak_dir_pull: Using commit 57d12cbe72e28d786a210eced336f3ebcd99a229dd6dc1d55917cb9efb1ffa7d for pull of ref runtime/org.gnome.Platform/x86_64/45 from remote flathub
+Installing 5/6…                        0%  0 bytes/s
+Error: While pulling runtime/org.gnome.Platform/x86_64/45 from remote flathub: Unacceptable TLS certificate
+error: Failed to install org.gnome.Platform: While pulling runtime/org.gnome.Platform/x86_64/45 from remote flathub: Unacceptable TLS certificate
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

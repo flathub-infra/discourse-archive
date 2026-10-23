@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>No hardware acceleration in Kdenlive Flatpak with h264_nvenc - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">No hardware acceleration in Kdenlive Flatpak with h264_nvenc</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">No hardware acceleration in Kdenlive Flatpak with h264_nvenc</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 24, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flatjoke</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 24, 2025 12:23 PM">
+            <time itemprop="datePublished" datetime="2025-03-24 12:23:35 +0000">Mar 24, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi there,</p>
+<p>the problem is: I can use h264_nvenc with the standalone version of kdenlive but not with the flatpak version.</p>
+<p>Here comes the error:</p>
+<pre><code class="lang-auto">[h264_nvenc @ 0x7f8120001a40] Driver does not support the required nvenc API version. Required: 13.0 Found: 12.2 [h264_nvenc @ 0x7f8120001a40] The minimum required Nvidia driver for nvenc is (unknown) or newer
+
+</code></pre>
+<p>I’m running standalone Kdenlive with version 24.12.3 and I tried the flatpak version of Kdenlive 24.12.3. They should be the same.</p>
+<p>My Hardware-Configuration:</p>
+<p>GPU Nvidia Geforce GTX 960</p>
+<p>Here is the output of nvidia-smi:</p>
+<pre><code class="lang-auto">Mon Mar 24 13:03:06 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce GTX 960         Off |   00000000:01:00.0  On |                  N/A |
+| 45%   27C    P5             19W /  208W |     241MiB /   4096MiB |     16%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1167      G   /usr/lib/Xorg                                 107MiB |
+|    0   N/A  N/A      1724      G   ...ures=SpareRendererForSitePerProcess         16MiB |
+|    0   N/A  N/A      2011      G   ...seed-version=20250321-130127.532000         75MiB |
++-----------------------------------------------------------------------------------------+
+
+</code></pre>
+<p>On the cli there is no problem with  ´ffmpeg -encoders | grep nv´ :</p>
+<pre><code class="lang-auto"> V....D av1_nvenc            NVIDIA NVENC av1 encoder (codec av1)
+ V....D h264_nvenc           NVIDIA NVENC H.264 encoder (codec h264)
+ V....D hevc_nvenc           NVIDIA NVENC hevc encoder (codec hevc)
+
+</code></pre>
+<p>What can I do?</p>
+<p>greetings,<br>
+flatjoke</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 24, 2025 5:16 PM">
+            <time itemprop="datePublished" datetime="2025-03-24 17:16:22 +0000">Mar 24, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What is the nvidia driver version that you have on Flatpak? I suspect Flatpak is using the wrong or older driver somehow from this message</p>
+<blockquote>
+<p>Driver does not support the required nvenc API version. Required: 13.0 Found: 12.2</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">flatjoke</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 25, 2025 10:48 AM">
+            <time itemprop="datePublished" datetime="2025-03-25 10:48:01 +0000">Mar 25, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, this ist the output of ´flatpak list´:</p>
+<pre><code class="lang-auto">OBS Studio                        com.obsproject.Studio                                    31.0.2                            stable              system
+Steam                             com.valvesoftware.Steam                                  1.0.0.81                          stable              system
+TAP-plugins                       org.freedesktop.LinuxAudio.Plugins.TAP                   1.0.1                             24.08               system
+SWH                               org.freedesktop.LinuxAudio.Plugins.swh                   0.4.17                            24.08               system
+Freedesktop Platform              org.freedesktop.Platform                                 freedesktop-sdk-23.08.29          23.08               system
+Freedesktop Platform              org.freedesktop.Platform                                 freedesktop-sdk-24.08.16          24.08               system
+i386                              org.freedesktop.Platform.Compat.i386                                                       23.08               system
+i386                              org.freedesktop.Platform.Compat.i386                                                       24.08               system
+Mesa                              org.freedesktop.Platform.GL.default                      24.3.4                            23.08               system
+Mesa (Extra)                      org.freedesktop.Platform.GL.default                      24.3.4                            23.08-extra         system
+Mesa                              org.freedesktop.Platform.GL.default                      24.3.4                            24.08               system
+Mesa (Extra)                      org.freedesktop.Platform.GL.default                      24.3.4                            24.08extra          system
+nvidia-570-133-07                 org.freedesktop.Platform.GL.nvidia-570-133-07                                              1.4                 system
+Mesa                              org.freedesktop.Platform.GL32.default                    24.3.4                            23.08               system
+Mesa (Extra)                      org.freedesktop.Platform.GL32.default                    24.3.4                            23.08-extra         system
+Mesa                              org.freedesktop.Platform.GL32.default                    24.3.4                            24.08               system
+Mesa (Extra)                      org.freedesktop.Platform.GL32.default                    24.3.4                            24.08extra          system
+nvidia-570-133-07                 org.freedesktop.Platform.GL32.nvidia-570-133-07                                            1.4                 system
+Intel VAAPI driver                org.freedesktop.Platform.VAAPI.Intel                                                       23.08               system
+Intel VAAPI driver                org.freedesktop.Platform.VAAPI.Intel                                                       24.08               system
+i386                              org.freedesktop.Platform.VAAPI.Intel.i386                                                  23.08               system
+i386                              org.freedesktop.Platform.VAAPI.Intel.i386                                                  24.08               system
+openh264                          org.freedesktop.Platform.openh264                        2.1.0                             2.2.0               system
+openh264                          org.freedesktop.Platform.openh264                        2.4.1                             2.4.1               system
+openh264                          org.freedesktop.Platform.openh264                        2.5.1                             2.5.1               system
+Adwaita theme                     org.kde.KStyle.Adwaita                                                                     6.6                 system
+Adwaita theme                     org.kde.KStyle.Adwaita                                                                     6.8                 system
+KDE Application Platform          org.kde.Platform                                                                           6.6                 system
+KDE Application Platform          org.kde.Platform                                                                           6.8                 system
+Kdenlive                          org.kde.kdenlive                                         24.12.3                           stable              system
+Lingot                            org.nongnu.lingot                                        1.1.1                             stable              system
+Yamagi Quake II                   org.yamagi.YamagiQ2                                      8.4.1                             stable              system
+
+</code></pre>
+<p>Where are those  version numbers? Maybe it is the cuda-version? I don’t know how to change the cuda version in the flatpak environment.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

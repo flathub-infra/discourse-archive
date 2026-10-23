@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing GDB Debugger In Flathub Shell - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Testing GDB Debugger In Flathub Shell</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Testing GDB Debugger In Flathub Shell</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 18, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 18, 2024 11:24 PM">
+            <time itemprop="datePublished" datetime="2024-11-18 23:24:14 +0000">Nov 18, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My development team is working on version 0.9.11 for Greenery, here on Flathub. It is a Node / Electron based app.</p>
+<p>I have created local builds of 0.9.11 with flatpak but the Greenery app bombs out before it can load the App Window.  I can download the v0.9.10 version from Flathub and the app runs fine.</p>
+<p>I have been successful in running GDB in the Flathub Shell for Greenery with this command:</p>
+<p>flatpak run --command=sh --devel io.greenfire.Greenery -c ‘set -m; gdb --args /app/main/greenery’</p>
+<p>From the shell I can do:</p>
+<p>Enable debuginfod for this session (Y)</p>
+<p>Then I run Greenery inside GDB:<br>
+(gdb) run<br>
+Starting program: /app/main/greenery<br>
+[Thread debugging using libthread_db enabled]<br>
+Using host libthread_db library “/usr/lib/x86_64-linux-gnu/libthread_db.so.1”.<br>
+[New Thread 0x7fffec4006c0 (LWP 15)]<br>
+[Detaching after fork from child process 16]<br>
+[12:1118/182528.981166:FATAL:setuid_sandbox_host.cc(157)] The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I’m aborting now. You need to make sure that /app/main/chrome-sandbox is owned by root and has mode 4755.</p>
+<p>Thread 1 “greenery” received signal SIGTRAP, Trace/breakpoint trap.<br>
+0x000055555a57046f in ?? ()</p>
+<p>[2]+  Stopped                 flatpak run --command=sh --devel io.greenfire.Greenery -c ‘set -m; gdb --args /app/main/greenery’<br>
+lexton@fedora:~/Development/flathub-repo/io.greenfire.Greenery$ [16:1118/182529.001925:WARNING:resource_bundle.cc(450)] locale_file_path.empty() for locale</p>
+<p>So it looks like a sandbox issue and I’ve have seen other Electron app come across this issue:</p>
+<hr>
+<h2><a name="p-15600-rather-than-run-without-sandboxing-im-aborting-now-you-need-to-make-sure-that-appmainchrome-sandbox-is-owned-by-root-and-has-mode-4755-1" class="anchor" href="#p-15600-rather-than-run-without-sandboxing-im-aborting-now-you-need-to-make-sure-that-appmainchrome-sandbox-is-owned-by-root-and-has-mode-4755-1" aria-label="Heading link"></a>Rather than run without sandboxing I’m aborting now. You need to make sure that /app/main/chrome-sandbox is owned by root and has mode 4755.</h2>
+<p>So should I look in to setting root as mode 4755 for the chrome-sandbox, this does not seem like the secure option for Flathub.</p>
+<p>I also should note  that compiling code from older version of Greenery like v0.9.9 also fail to run, so is this related to my npm dependencies and an update on the Flathub side?</p>
+<p>Is anyone else with Electron apps coming across issues similar to this?  Also please let me know how I should proceed.</p>
+<p>Here is the Greenery Flathub PR for v0.9.11:</p>
+<p><a href="https://github.com/flathub/io.greenfire.Greenery/pulls" class="onebox" target="_blank" rel="noopener nofollow ugc">https://github.com/flathub/io.greenfire.Greenery/pulls</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 30, 2024 3:08 AM">
+            <time itemprop="datePublished" datetime="2024-12-30 03:08:42 +0000">Dec 30, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Has anyone done Electron debugging with GDB inside the Flathub Shell? Should I be using a different debugger that works better with Electron?</p>
+<p>My Greenery Local Flathub builds were working fine with versions prior to v0.9.9,  so I’m trying to narrow down what could be the issue. I’ve also tried remote builds within the PR but these fail to launch.</p>
+<p>Is it worth looking in to implementing chrome-sandbox as owned by root?  This does not seem like the best path.</p>
+<p>I’m looking in to testing with more recent versions of Electron and Node and maybe update some of my dependencies. Has there been any updates to Flathub that are related to Node and Electron?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 30, 2024 3:29 AM">
+            <time itemprop="datePublished" datetime="2024-12-30 03:29:22 +0000">Dec 30, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some other things I would like to point out is that I’ve tried to disable the Sandbox for Electron through the Flathub Manifest and also through flatpak arguments but it doesn’t appear to be working, I still get the same chrome root sandbox error.</p>
+<p>I also found this:</p>
+<p>Chromium Patches: Be aware that Chromium-based Flatpaks now ship with custom patches to adapt Chromium’s sandbox to the Flatpak sandbox. These patches might affect your app’s behavior and security</p>
+<p>See Reference Link: <a href="https://discourse.gnome.org/t/chromium-and-the-flatpak-sandbox/22944" class="inline-onebox" rel="noopener nofollow ugc">Chromium and the flatpak sandbox - Platform - GNOME Discourse</a></p>
+<p>There is also Portals which references Electron specifically:</p>
+<p>Portals: Flatpak uses a concept called portals to allow applications to access host resources securely. Ensure your app is using the latest GTK+ or Qt versions that support these portals[4]<br>
+(<a href="https://www.reddit.com/r/linux/comments/9n50ba/lets_see_why_flatpak_and_sandboxing_are_awesome/" rel="noopener nofollow ugc">https://www.reddit.com/r/linux/comments/9n50ba/lets_see_why_flatpak_and_sandboxing_are_awesome/</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

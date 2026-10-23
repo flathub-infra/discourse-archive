@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak doesn&#39;t find any Player for gPodder - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak doesn&#39;t find any Player for gPodder</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak doesn&#39;t find any Player for gPodder</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 29, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">id1402</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 29, 2025 8:07 PM">
+            <time itemprop="datePublished" datetime="2025-10-29 20:07:05 +0000">Oct 29, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everybody.</p>
+<p>I have a problem with gPodder that’s probably easy to solve.<br>
+I have gPodder 3.11.5 running on flatpak-1.16.0 and openSUSE 15.6.<br>
+Unfortunately, I’m not familiar with the permissions system in Flatpak, where gPodder runs.<br>
+gPodder can’t find any media players. I’ve tried Audacious and VLC, which are located in /usr/bin.</p>
+<p>Error output: “Cannot find /usr/bin/audacious. File not found”</p>
+<p>I ran “flatpak run --command=sh org.gpodder.gpodder”.<br>
+When I then run “ls /usr/bin” in the flatpak terminal, many programs are listed, but vlc and audacious are indeed not.</p>
+<p>flatpak knows /usr/bin/xdg-open, so I can use it as player for gPodder. xdg-open opens URL with webbrowser, but I want a playlist like VLC or Audacious.</p>
+<p>What’s going wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 29, 2025 9:32 PM">
+            <time itemprop="datePublished" datetime="2025-10-29 21:32:47 +0000">Oct 29, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s because what GPodder sees as a filesystem is limited by the sandbox. It can, by default, only see the files of the runtime under <code>/usr</code>, and its own files under <code>/app</code>. Anything else is restricted, unless additional permissions are granted.</p>
+<p>So the <code>/usr/bin</code> the Flatpak sees is not the one of your system, but that of the runtime.</p>
+<p>Now, the normal expectation would be that apps would use the OpenURI portal. This is what <code>xdg-open</code> uses in a Flatpak: it asks the system to determine what handles the file from the app. The portal has an <code>ask</code> option. With this, the system would then provide a dialog to choose the app.<br>
+So, the best course of action would be that the app uses this portal.</p>
+<p>If this is not an option, you could grant the app the permission to the <code>org.freedesktop.Flatpak</code> DBus. With this enabled, you could use the command <code>flatpak-spawn --host</code> to launch a command from the sandbox into the host system. That being said, this would be a massive weakening of the sandbox, as this would allow the app to run anything on your host system.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">id1402</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 29, 2025 10:25 PM">
+            <time itemprop="datePublished" datetime="2025-10-29 22:25:49 +0000">Oct 29, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="CodedOre" data-post="2" data-topic="10843">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>OpenURI portal</p>
+</blockquote>
+</aside>
+<p>Thanky you for detailed answer!</p>
+<p>Ok, I understand. So how can I change the setting of OpenURI portal, to let xdg-open open <a href="http://server/file.mp3" rel="noopener nofollow ugc">http://server/file.mp3</a> by Audacious and not the webbrowser?</p>
+<p>xdg-mime query default x-scheme-handler/http<br>
+chromium-browser.desktop<br>
+xdg-mime query default audio/mpeg<br>
+audacious.desktop</p>
+<p>The problem is <a href="http://server/file.mp3" rel="noopener nofollow ugc">http://server/file.mp3</a> is opened by webbrowser. How to change Program for x-scheme-handler/http only for gpodder or for flatpak? I don’t want to change this setting for my whole system.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 29, 2025 10:32 PM">
+            <time itemprop="datePublished" datetime="2025-10-29 22:32:48 +0000">Oct 29, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, if GPodder is providing an http uri, I’m not sure theres a good solution with just the OpenURI portal, at least not from the side of Flatpak.</p>
+<p>The mime type system of Linux is AFAIK not configurable enough for this use-case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">id1402</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 29, 2025 11:16 PM">
+            <time itemprop="datePublished" datetime="2025-10-29 23:16:36 +0000">Oct 29, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok.</p>
+<p>Another question</p>
+<p>I run “flatpak run --command=sh org.gpodder.gpodder”</p>
+<p>When I then run “ls /usr/bin” in the flatpak terminal, many programs installed on my system are listed, but vlc and audacious are not. Which programs are visible for gPodder and which are not? Where is the config file for that? Is there a config command or GUI?</p>
+<p>Obviously, xdg-open is not the only portal to the programs installed on the system. Or do I understand something wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 30, 2025 7:00 AM">
+            <time itemprop="datePublished" datetime="2025-10-30 07:00:36 +0000">Oct 30, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="id1402" data-post="5" data-topic="10843">
+<div class="title">
+<div class="quote-controls"></div>
+id1402:</div>
+<blockquote>
+<p>When I then run “ls /usr/bin” in the flatpak terminal, many programs installed on my system are listed, but vlc and audacious are not. Which programs are visible for gPodder and which are not? Where is the config file for that? Is there a config command or GUI?</p>
+</blockquote>
+</aside>
+<p>Like I mentioned previously, inside the sandbox you will only see what the runtime provides. This is more or less completely separate from your system. So GPodder can only see the programs of the runtime, unless you use <code>flatpak-spawn</code> to escape the sandbox.<br>
+There is no configuration for this, that’s the basic design of Flatpak.</p>
+<aside class="quote no-group" data-username="id1402" data-post="5" data-topic="10843">
+<div class="title">
+<div class="quote-controls"></div>
+id1402:</div>
+<blockquote>
+<p>Obviously, xdg-open is not the only portal to the programs installed on the system. Or do I understand something wrong?</p>
+</blockquote>
+</aside>
+<p><code>xdg-open</code> itself is not a portal itself, it uses the portal. The portals itself are often provided by your system in a <code>xdg-desktop-portal-*</code> package, with a base package and an additional desktop package which provides the desktop integration.</p>
+<p>To clarify: The portals are software on the system, which the programs in the Flatpak like <code>xdg-open</code> call over a secure channel. The portal itself then acts on the system and provides apps with access to certain resources they normally can’t reach.</p>
+<p>So, to summarize:<br>
+Inside of the Flatpak, GPodder can only see its own files and programs and that of the runtime, not your system. Because of that, it can’t execute an program on your host system, as it isn’t aware of it. This is by design, as Flatpak is designed to separate apps and host from each other.</p>
+<p>By using <code>xdg-open</code> in the sandbox, the app ask the system to open a resource on the system. On the system, the portal takes the request and handles it, by in this case opening the resource according to its mime type.<br>
+<code>xdg-open</code> can open other apps, because it sends a request to the system, which has access to the host filesystem.</p>
+<p>If you need to run something on the host from the sandbox, you need to escape the sandbox, like with using <code>flatpak-spawn --host</code>, which would require the talk permission to <code>org.freedesktop.Flatpak</code>. Otherwise, anything an app in a Flatpak can do is limited to what’s been in the runtime and what it itself provides.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">id1402</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 30, 2025 9:10 AM">
+            <time itemprop="datePublished" datetime="2025-10-30 09:10:39 +0000">Oct 30, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for the detailed explanation!</p>
+<p>I thought the programs Flatpak sees in /usr/bin were my system programs. There are quite a few of them, and I didn’t even notice when Flatpak installed them all.</p>
+<p><code>flatpak-spawn --host</code>would be a massive weakening of the sandbox, as you said. So I want to avoid this.</p>
+<p>In the KDE settings, there’s a module called “Flatpak Permissions.” With it, I can grant the three programs I installed via Flatpak permissions to various system functions and file system paths. I can manually grant gPodder permission to read /usr/bin/audacious, but unfortunately, this has no effect. There’s no permission to execute /usr/bin/audacious.</p>
+<p>I’ve now cobbled together a working solution.</p>
+<p>I granted gPodder Flatpak permission to read <code>/home/id1402/.local/bin/gpod_audacious</code> and<code>/tmp/Downloads/gpodder/gpodder.m3u</code>. That works. <code>gpod_audacious</code> is a small Bash script that I wrote myself. I set this script as the audio player in gPod’s settings: <code>/home/id1402/.local/bin/gpod_audacious %f</code></p>
+<p>Gpodder passes the mp3 URL to this Bash script. The script creates an m3u playlist file with the URL and opens the m3u fie using xdg-open. The MP3 URL is then added to Audacious, as Audacious is the program for m3u files in the mime type system.</p>
+<p>Here is the schript:</p>
+<p><code>#!/bin/bash</code><br>
+<code>TARGET_M3U=“/tmp/Downloads/gpodder/gpodder.m3u”</code><br>
+<code>echo “#EXTM3U” &gt; $TARGET_M3U</code><br>
+<code>echo “$1” &gt;&gt; $TARGET_M3U</code><br>
+<code>xdg-open $TARGET_M3U</code></p>
+<p>Reliably inserts an mp3 URL into Audacious.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 30, 2025 9:30 AM">
+            <time itemprop="datePublished" datetime="2025-10-30 09:30:21 +0000">Oct 30, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="id1402" data-post="7" data-topic="10843">
+<div class="title">
+<div class="quote-controls"></div>
+id1402:</div>
+<blockquote>
+<p>I can manually grant gPodder permission to read /usr/bin/audacious, but unfortunately, this has no effect. There’s no permission to execute /usr/bin/audacious.</p>
+</blockquote>
+</aside>
+<p>Just granting the permission to the binary wouldn’t be a good solution anyway. In this case, the binary would be run inside the Flatpak sandbox, and would then miss important libraries, data files, etc.</p>
+<p>I think the script you’ve made is a good solution. It makes it a proper mime type the system can handle and you don’t break a lot of holes into the sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">id1402</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 30, 2025 12:59 PM">
+            <time itemprop="datePublished" datetime="2025-10-30 12:59:45 +0000">Oct 30, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The first Bash script above can only process 1 element (sending as an mp3 URL) at a time.</p>
+<p>Here’s an update to the Bash script for multiple URL communication between gPodder and Audacious.</p>
+<p>New: gPodder now allows you to select and play multiple shows at once. A playlist file containing all selected shows is created and then added to the Audacious playlist using <code>xdg-open</code>.</p>
+<p>––––––––––––––––––––––––––––</p>
+<p><code>#!/bin/bash</code><br>
+<code># Creates m3u playlist of multiple mp3 URLs and adds them to Audacious.</code><br>
+<code>TARGET_M3U=“/tmp/Downloads/gpodder/gpodder.m3u”</code><br>
+<code>echo “#EXTM3U” &gt; $TARGET_M3U</code><br>
+<code>for i in “$@”; do</code><br>
+<code>echo “$i” &gt;&gt; $TARGET_M3U</code><br>
+<code>done</code><br>
+<code>xdg-open $TARGET_M3U</code></p>
+<p>––––––––––––––––––––––––––––</p>
+<p>Set this script as the audio player in gPodder’s settings:</p>
+<p><code>/home/id1402/.local/bin/gpod_audacious %U</code></p>
+<p><code>%U</code> is necessary for processing multiple elements.</p>
+<p>Change user-directory of course. <code>~</code> as home-directory doesn’t work.</p>
+<p>Just a reminder: This approach is only useful in environments where gPodder is running in the flatpak sandbox and is intended to use players that are installed system-wide outside the sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

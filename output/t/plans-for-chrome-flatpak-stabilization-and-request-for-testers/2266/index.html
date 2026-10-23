@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plans for Chrome Flatpak stabilization (and request for testers!) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Plans for Chrome Flatpak stabilization (and request for testers!)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Plans for Chrome Flatpak stabilization (and request for testers!)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 28, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 28, 2022 2:41 AM">
+            <time itemprop="datePublished" datetime="2022-02-28 02:41:17 +0000">Feb 28, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello! I currently maintain the Chrome Flatpak on Flathub beta, and I wanted to share some of the plans to move to stable, as well as request some consistent testing for future releases.</p>
+<p>TLDR: I have had a <em>lot</em> of requests to move this to Flathub stable, and I’m looking to clean up everything and do this by the end of March. For some context on my concerns, the way Chrome works via <a href="https://github.com/refi64/zypak" rel="noopener nofollow ugc">Zypak</a> is fundamentally a lot more hack-ish than Chromium, and thus has a higher risk of breaking on updates. (Yes, this applies to Electron apps too, but Chrome is undoubtedly more complex, and Electron releases will come after anyway, i.e. Chrome would break first). There are users using unstable Chrome releases that have reported Zypak bugs in the past (thanks <span class="mention">@tinywrkb</span>!), but I want something a bit more reliable to be in place here.</p>
+<p>In addition, Zypak has two modes of operation, one for Flatpak 1.8+ if unprivileged user namespaces are  enabled, and one for any other cases. However, the latter is rarely used at this point, and although it’s probably fine for Electron (it only ever forks the Zygote once or twice anyway), I’m a bit more hesitant here, because again, Chrome is the most likely one to break first.</p>
+<p>To compound all this, there’s a decently high chance I’ll be switching to Chrom<em>ium</em> soon as my primary browser due to its arm64 support (feel free to guess why), so I won’t be putting Chrome through day-to-day testing like currently.</p>
+<p>With all this in mind, I have two key points to my plan:</p>
+<ul>
+<li>
+<strong>I want to keep the beta channel alive for Chrome beta/dev builds and would like some testers to volunteer to run this as a primary driver and report issues!</strong> This would allow to find any Zypak breakage before the Chrome stable release comes out, giving some decent buffer time in between. (This will likely be a separate app ID, so you could, say, install both beta/dev &amp; stable, then sign into both with the same Google account so everything syncs over to stable, so you have a fallback in case of breakage.)</li>
+<li>
+<strong>I will likely require Flatpak 1.8+ w/ unprivileged user namespaces for the stable channel (but not unstable!), unless I can get some testers to explicitly run this.</strong> This hasn’t seemed to be a super major issue for adoption so far for Chromium itself, and anyone on an older version could use the unstable channels (or I might add an override or similar w/ a more explicit warning). Again, this is simply much less tested, so you’re kind of subjecting yourself to a less stable experience anyway. The exception would be if I can have some people testing this more reliably to make sure it stays working! But again, I’m doubtful it’s going to be <em>that</em> much of a requirement, again given Chromium’s popularity here. (We require Flatpak 1.6+ anyway due to some <code>device=all</code> bugs.)</li>
+</ul>
+<p>Meanwhile, I’m going to be spending some time looking into some reported issues with desktop icons (again! so much fun!) and removing the warning page on startup, i.e. generally trying to make it as polished as possible. There are some other areas I’m looking into as well (do we need to relax filesystem permissions, or are new portal versions widespread enough? etc).</p>
+<p>(Note: I am aware I said I was originally planning on stabilizing by the end of the month on the Matrix, and I was going to post this earlier as well, but to be entirely frank, everything going on has sucked out a lot of motivation here, hence the month delay.)</p>
+<p><strong>TL;DR: I would very much like people willing to test beta/dev Chrome releases and report issues to trap Zypak bugs / required changes before they hit stable!!</strong> I’ll be prepping this part by the end of the week most likely, and then everyone can go wild.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="8 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          8
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 28, 2022 4:57 PM">
+            <time itemprop="datePublished" datetime="2022-02-28 16:57:06 +0000">Feb 28, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="refi64" data-post="1" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+refi64:</div>
+<blockquote>
+<p>(feel free to guess why)</p>
+</blockquote>
+</aside>
+<p>arm64 Thinkpad? <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="refi64" data-post="1" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+refi64:</div>
+<blockquote>
+<p>(This will likely be a separate app ID, so you could, say, install both beta/dev &amp; stable, then sign into both with the same Google account so everything syncs over to stable, so you have a fallback in case of breakage.)</p>
+</blockquote>
+</aside>
+<p>If it’s a separate app ID, you could consider putting it into non-beta Flathub? Other Major Platforms have the beta &amp; canary Chromes (and analogous Firefoxes, Edges, and other obscurely-named browsers) in their main repo.</p>
+<p>(Perhaps this is indeed what you intend.)</p>
+<aside class="quote no-group" data-username="refi64" data-post="1" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+refi64:</div>
+<blockquote>
+<p>I will likely require Flatpak 1.8+ w/ unprivileged user namespaces for the stable channel (but not unstable!), unless I can get some testers to explicitly run this.</p>
+</blockquote>
+</aside>
+<p>I think you could even consider a higher minimum version since the status quo is that Chrome is not available at all (ignoring beta). Maybe this would mean being able to rely on newer portal versions too?</p>
+<p>I looked at <a href="https://ahayzen.com/direct/flathub.html#downloadsbyflatpakmajorstacked" class="inline-onebox" rel="noopener nofollow ugc">Flathub Statistics</a> and Flatpak 1.8+ covers the vast majority of systems.</p>
+<p>(8–9k online Endless OS users are on Flatpak 1.8 or older; the remaining 20–21k are on 1.10 until we push a release with 1.12 in the next few months. But all these released versions pre-emptively hide any <code>com.google.Chrome</code> coming from Flathub from appearing in GNOME Software so they are not a reason to require anything older than 1.12.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 1, 2022 1:56 AM">
+            <time itemprop="datePublished" datetime="2022-03-01 01:56:58 +0000">Mar 1, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wjt" data-post="2" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+wjt:</div>
+<blockquote>
+<p>If it’s a separate app ID, you could consider putting it into non-beta Flathub? Other Major Platforms have the beta &amp; canary Chromes (and analogous Firefoxes, Edges, and other obscurely-named browsers) in their main repo.</p>
+</blockquote>
+</aside>
+<p>Hmm, I was initially thinking flathub-beta also just because it would be higher risk for Zypak issues themselves (i.e. the chance of someone hitting an issue on our end is higher)…that being said I’m not particularly tied to that.</p>
+<aside class="quote no-group" data-username="wjt" data-post="2" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+wjt:</div>
+<blockquote>
+<p>I think you could even consider a higher minimum version since the status quo is that Chrome is not available at all (ignoring beta). Maybe this would mean being able to rely on newer portal versions too?</p>
+</blockquote>
+</aside>
+<p>Thinking about this more, this <em>would</em> maybe make it safe to assume a portal version that we can drop <code>filesystem=home</code> on.</p>
+<p>1.8 on its own would be fine too anyway, we’d have it working anywhere the Chromium Flatpak works.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mmcnutt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 2, 2022 12:13 AM">
+            <time itemprop="datePublished" datetime="2022-03-02 00:13:23 +0000">Mar 2, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The icon issues you refer to, are you meaning getting the default Wayland icon on Plasma Wayland session?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">tinywrkb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 2, 2022 12:54 AM">
+            <time itemprop="datePublished" datetime="2022-03-02 00:54:20 +0000">Mar 2, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@refi64</span> thanks for developing Zypak, it’s pretty amazing work!</p>
+<p>I’ve been running Chrome as a Flatpak for a while now. Started by having to disable the sandbox, then moved to use the early Zypak versions, saw a mix of strange issues, until getting the current perfect state of Chrome + Zypak.<br>
+It’s pretty clear to me that a lot of time have been invested in development and debugging in order to get to the current state, which I’m not sure how many users appreciate.<br>
+So if no else says it, then let me just thank you here for your efforts.<br>
+Also, thanks for the mention.</p>
+<blockquote>
+<p>I have had a <em>lot</em> of requests to move this to Flathub stable, and I’m looking to clean up everything and do this by the end of March.</p>
+</blockquote>
+<p>I had a small hope that this will be accompanied by an official adoption by Google with all that comes with it. Binary distribution from Flathub’s repo, delta updates, inclusion of the sandboxing and other patches, aarch64 support, etc.<br>
+Have we given up on this? Can Flathub as an organization contact Google? Or maybe Fedora who’s invested in Silverblue or Red Hat has more pull?</p>
+<blockquote>
+<p>I want to keep the beta channel alive for Chrome beta/dev builds and would like some testers to volunteer to run this as a primary driver and report issues!</p>
+</blockquote>
+<p>I agree with <span class="mention">@wjt</span>. I think it would be better to a separate app IDs for the Beta and Dev channels, and publish them via the stable Flathub repo.<br>
+I suspect that web developers would appreciate having access to non-stable Chrome releases, and having them listed in the web store or the desktop app manager, and without having to add the flathub-beta repo.<br>
+This will get you guinea pigs without asking, and the fact that these are non-stable builds means that the user will be more tolerant for breakage, and willing to downgrade until a bug is fixed.</p>
+<p>I switched to Edge a while back. Without vertical tabs (with collapsible pane), and having control on dark mode, Chrome feels dated, and it’s not that great on mobile.<br>
+So I’m not testing Chrome’s unstable builds these days, and Edge Dev is a bit lagging behind Chrome’s unstable builds.<br>
+Still, if there are not enough testers, then count me in.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 4, 2022 1:48 AM">
+            <time itemprop="datePublished" datetime="2022-03-04 01:48:34 +0000">Mar 4, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>I’ve been running Chrome as a Flatpak for a while now. Started by having to disable the sandbox, then moved to use the early Zypak versions, saw a mix of strange issues, until getting the current perfect state of Chrome + Zypak.</p>
+</blockquote>
+</aside>
+<p>Ah yes, fond memories of pouring over strace logs trying to figure out why everything would crash…</p>
+<aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>So if no else says it, then let me just thank you here for your efforts.</p>
+</blockquote>
+</aside>
+<p>Thank you!</p>
+<aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>I had a small hope that this will be accompanied by an official adoption by Google with all that comes with it. Binary distribution from Flathub’s repo, delta updates, inclusion of the sandboxing and other patches, aarch64 support, etc.<br>
+Have we given up on this? Can Flathub as an organization contact Google? Or maybe Fedora who’s invested in Silverblue or Red Hat has more pull?</p>
+</blockquote>
+</aside>
+<p>I can try throwing out a probe again, but it would almost definitely need some more pull. When I had last checked, upstream was basically “we’re not interested in a new sandbox”, and the easier distribution via Flatpaks isn’t as attractive since the frankendebian build infra Chrome uses is shared by other Google projects anyway.</p>
+<aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>I agree with <span class="mention">@wjt</span>. I think it would be better to a separate app IDs for the Beta and Dev channels, and publish them via the stable Flathub repo.<br>
+I suspect that web developers would appreciate having access to non-stable Chrome releases, and having them listed in the web store or the desktop app manager, and without having to add the flathub-beta repo.<br>
+This will get you guinea pigs without asking, and the fact that these are non-stable builds means that the user will be more tolerant for breakage, and willing to downgrade until a bug is fixed.</p>
+</blockquote>
+</aside>
+<p>This definitely seems to be the generally preferred direction that I’ll probably go in.</p>
+<aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>Still, if there are not enough testers, then count me in.</p>
+</blockquote>
+</aside>
+<p>I guess I’ll see how it is in one or two weeks…though apparently even the Flatpak twitter highlighting this article only managed to result in Twitter replies saying that it should already be stable and asking for dotnet extension bugfixes (??), so I’m slightly less confident in how the tester pool might turn out <img src="/images/emoji/twitter/sweat_smile.png?v=12" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 8, 2022 6:05 PM">
+            <time itemprop="datePublished" datetime="2022-03-08 18:05:57 +0000">Mar 8, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tinywrkb" data-post="5" data-topic="2266">
+<div class="title">
+<div class="quote-controls"></div>
+tinywrkb:</div>
+<blockquote>
+<p>It’s pretty clear to me that a lot of time have been invested in development and debugging in order to get to the current state, which I’m not sure how many users appreciate.<br>
+So if no else says it, then let me just thank you here for your efforts.</p>
+</blockquote>
+</aside>
+<p>I add my thank to <span class="mention">@refi64</span></p>
+<p>I’m happy to test the dev version. Waiting for news here!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 21, 2022 11:47 PM">
+            <time itemprop="datePublished" datetime="2022-03-21 23:47:03 +0000">Mar 21, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a href="https://flathub.org/apps/details/com.google.ChromeDev" rel="noopener nofollow ugc">Chrome Dev is now up on Flathub!</a> All testers are now free to, err, test <img src="/images/emoji/twitter/smile.png?v=12" title=":smile:" class="emoji" alt=":smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 2, 2022 2:52 AM">
+            <time itemprop="datePublished" datetime="2022-04-02 02:52:43 +0000">Apr 2, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a href="https://beta.flathub.org/apps/details/com.google.Chrome" rel="noopener nofollow ugc">Chrome stable is now on Flathub!</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 7, 2022 8:37 PM">
+            <time itemprop="datePublished" datetime="2022-04-07 20:37:35 +0000">Apr 7, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The stable version has been in flathub-beta for a while.<br>
+The stable is in the beta repository, while the dev version is in the stable repository… a bit confusing <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 7, 2022 10:21 PM">
+            <time itemprop="datePublished" datetime="2022-04-07 22:21:51 +0000">Apr 7, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Now, both of them are on stable. Dev just came first because I wanted a consistent place for testing to be available first.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

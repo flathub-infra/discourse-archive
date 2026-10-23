@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is there a temporary workaround for the appstream-missing-screenshots error? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Is there a temporary workaround for the appstream-missing-screenshots error?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Is there a temporary workaround for the appstream-missing-screenshots error?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 16, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 16, 2025 4:57 PM">
+            <time itemprop="datePublished" datetime="2025-06-16 16:57:44 +0000">Jun 16, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is a similar situation to <a href="/t/arm-build-only-fails-due-to-missing-screenshots/9762/index.html#post_5" class="inline-onebox">ARM build (only) fails due to missing screenshots - #5 by bbhtt</a> but there are a couple of minor differences:</p>
+<ol>
+<li><strong>Tag or Website problem?</strong> Even though I could not obtain the xml.gz file in this build because it failed due to the tag check for screenshots, I was able to obtain the xml.gz file from navigating the environment of the same flatpak compiled by Github Actions on my own github. <a href="https://github.com/user-attachments/files/20760686/org.gramps_project.Gramps.xml.txt" rel="noopener nofollow ugc">https://github.com/user-attachments/files/20760686/org.gramps_project.Gramps.xml.txt</a> (I added the .txt at the end to force Github to upload it while discussing this problem at the gramps-project Github, so just remove the .txt at the end to open it as an xml). There is a tag to obtain media from <a href="http://gramp-project.org" rel="noopener nofollow ugc">gramp-project.org</a> but not specifically the <code>&lt;screenshots&gt;</code> tag. Is the build failure for Flathub due to screenshot tag method being done differently, or because the website hosting the media is blocked by Github Actions?</li>
+<li><strong>Is there a temporary workaround until the apps metainfo generation gets changed in a future update?</strong> I suspect that if a change is made to metainfo generation by Gramps, it will be placed in a future update. I have already asked the project head about whether they are willing to change the metainfo generation and when. Is there a workaround available to update Gramps at Flathub until the Gramps metainfo generation is altered at some future point?</li>
+</ol>
+<p>Here is the error:</p><aside class="onebox githubactions" data-onebox-src="https://github.com/flathub-infra/vorarbeiter/actions/runs/15685092514/job/44186215851">
+  <header class="source">
+
+      <a href="https://github.com/flathub-infra/vorarbeiter/actions/runs/15685092514/job/44186215851" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Commit">
+
+
+      <svg width="24" height="24" class="github-icon github-icon-failure" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z"></path></svg>
+
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub-infra/vorarbeiter/actions/runs/15685092514/job/44186215851" target="_blank" rel="noopener nofollow ugc">Redirect Fractal to runson
+</a>
+    </h4>
+
+      <div class="github-info">
+        build org.gramps_project.Gramps/test from refs/pull/36/head <span class="github-run-number">#14219</span>
+      </div>
+  </div>
+</div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>“info”: [</p>
+<pre><code>"appstream-missing-screenshots: Catalogue file has no screenshots. Please check if screenshot URLs are reachable"
+</code></pre>
+<p>],<br>
+“message”: “Please consult the documentation at <a href="https://docs.flathub.org/docs/for-app-authors/linter" class="inline-onebox" rel="noopener nofollow ugc">Flatpak builder lint | Flathub Documentation</a>”</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d.png" data-download-href="/uploads/original/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d.png" title="GrampsFlathubScreenshotError" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d_2_690x365.png" alt="GrampsFlathubScreenshotError" data-base62-sha1="eqTriexztONXXDwyJ1zt7CU06dL" width="690" height="365" srcset="/uploads/optimized/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d_2_690x365.png, /uploads/optimized/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d_2_1035x547.png 1.5x, /uploads/optimized/2X/6/6528b527c35d60a3c476ec78dd1e28aef8114c6d_2_1380x730.png 2x" data-dominant-color="0D1015"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">GrampsFlathubScreenshotError</span><span class="informations">1920×1016 129 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 16, 2025 9:42 PM">
+            <time itemprop="datePublished" datetime="2025-06-16 21:42:22 +0000">Jun 16, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Recently gramps-project put cloudflare antibot protection on the gramps-project website. Perhaps that is another possibility that caused the “appstream-missing-screenshots” error that caused the build to fail, since downloading the images could trigger an antibot question before allowing access?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scott Mackay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 16, 2025 11:57 PM">
+            <time itemprop="datePublished" datetime="2025-06-16 23:57:00 +0000">Jun 16, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It was the cloudflare antibot protection that prevented github actions from getting the screenshots. It is resolved now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

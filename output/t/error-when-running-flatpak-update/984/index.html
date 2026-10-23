@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error when running flatpak update - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Error when running flatpak update</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Error when running flatpak update</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 22, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gee</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 22, 2020 7:09 AM">
+            <time itemprop="datePublished" datetime="2020-12-22 07:09:55 +0000">Dec 22, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m on Fedora 33, and I keep having an error about object not found when running <code>flatpak update</code>.</p>
+<p>Here is the error I’m encountering:</p>
+<pre><code class="lang-auto">Warning: While trying to checkout dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa into /home/etenil/.local/share/flatpak/runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08/.dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa-N9YCW0: Opening content object fde90070d1cb81c9f1c69de520689581f3e0a04895c3c52d74fcfcc6ecadc7fe: Couldn't find file object 'fde90070d1cb81c9f1c69de520689581f3e0a04895c3c52d74fcfcc6ecadc7fe'
+</code></pre>
+<p>This is the list of packages installed:</p>
+<pre><code class="lang-auto">~&gt;&gt; flatpak list
+Name                                 Application ID                                                 Version            Branch           Installation
+Slack                                com.slack.Slack                                                4.12.0             stable           user
+Freedesktop Platform                 org.freedesktop.Platform                                       20.08.2            20.08            user
+default                              org.freedesktop.Platform.GL.default                                               20.08            user
+ffmpeg-full                          org.freedesktop.Platform.ffmpeg-full                                              20.08            user
+openh264                             org.freedesktop.Platform.openh264                              2.1.0              2.0              user
+Adwaita theme                        org.kde.KStyle.Adwaita                                                            5.15             user
+KDE Application Platform             org.kde.Platform                                                                  5.15             user
+QGnomePlatform                       org.kde.PlatformTheme.QGnomePlatform                                              5.15             user
+QtSNI                                org.kde.PlatformTheme.QtSNI                                                       5.15             user
+QGnomePlatform-decoration            org.kde.WaylandDecoration.QGnomePlatform-decoration                               5.15             user
+Telegram Desktop                     org.telegram.desktop                                           2.4.7              stable           user
+</code></pre>
+<p>Here’s a verbose output of attempting an update:</p>
+<pre><code class="lang-auto">~&gt;&gt; flatpak update -v
+F: No installations directory in /etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/etenil/.local/share/flatpak
+Looking for updates…
+F: Calling system helper: GenerateOciSummary
+F: Transaction: update fedora:runtime/org.fedoraproject.Platform/x86_64/f33[$old]
+F: Fetching summary file for remote ‘flathub’
+F: Transaction: update flathub:app/com.slack.Slack/x86_64/stable[$old]
+F: Transaction: update flathub:app/org.telegram.desktop/x86_64/stable[$old]
+F: Transaction: update flathub:runtime/io.github.quodlibet.QuodLibet.Locale/x86_64/stable[/en]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/20.08[$old]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/20.08[/en]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/20.08[$old]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[$old]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform/x86_64/20.08[$old]
+F: Transaction: update flathub:runtime/org.gnome.Platform.Locale/x86_64/3.38[/en]
+F: Transaction: update flathub:runtime/org.kde.KStyle.Adwaita/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15[/en]
+F: Transaction: update flathub:runtime/org.kde.Platform/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.PlatformTheme.QGnomePlatform.Sources/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.PlatformTheme.QGnomePlatform/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.PlatformTheme.QtSNI.Sources/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.PlatformTheme.QtSNI/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.WaylandDecoration.QGnomePlatform-decoration/x86_64/5.15[$old]
+F: Transaction: update flathub:runtime/org.kde.WaylandDecoration.QGnomePlatform_decoration.Sources/x86_64/5.15[$old]
+F: Looking for remote metadata updates for fedora
+F: marking op update:runtime/org.fedoraproject.Platform/x86_64/f33 resolved to 90a21a7022cabad0e9f2983fe1df4db107dc9261d0d716b16871892b0d2aba19
+F: Looking for remote metadata updates for flathub
+F: marking op update:runtime/org.kde.WaylandDecoration.QGnomePlatform_decoration.Sources/x86_64/5.15 resolved to 247bde3cb9d5610ae0d85a571eb48986d7d1d5e4fef9cdda084e8d7637f0f612
+F: marking op update:runtime/org.kde.WaylandDecoration.QGnomePlatform-decoration/x86_64/5.15 resolved to 875f62756a2121a39470fa7be717afd93e1a2ddf827ef9f2fee1e0fc9732e701
+F: marking op update:runtime/org.kde.PlatformTheme.QtSNI/x86_64/5.15 resolved to 1966fa2a1738e1d84f4f76112915a31275c1f1e925a82cb7a59c7fdbe01ae467
+F: marking op update:runtime/org.kde.PlatformTheme.QtSNI.Sources/x86_64/5.15 resolved to 89bdff5ad050cf1ccf22178d7fa1dfd3ec590d3c34c8cadfe5c460e86f2cd610
+F: marking op update:runtime/org.kde.PlatformTheme.QGnomePlatform/x86_64/5.15 resolved to 17bd97bbda14093eccb43e10af29d051d82be05d6e498c23352bfaab8f338675
+F: marking op update:runtime/org.kde.PlatformTheme.QGnomePlatform.Sources/x86_64/5.15 resolved to ac962a13d5e2f52f5b3284fb2b8237f6d4e9c4dca13279ab2a6433fcaa06e3bd
+F: marking op update:runtime/org.kde.Platform/x86_64/5.15 resolved to cf2a5865594034feaa9e8e9f428cc2df09999e389f9078a999dae5bb4dff9218
+F: marking op update:runtime/org.kde.Platform.Locale/x86_64/5.15 resolved to 30df97ca4e1db2bb9a4946fbf4586a516558c65e6ed02c39e86857d422846dd2
+F: marking op update:runtime/org.kde.KStyle.Adwaita/x86_64/5.15 resolved to 11b7291b21584d0fb4a34898b106730547961a715ecb4039fbf4afae7c0635c2
+F: marking op update:runtime/org.gnome.Platform.Locale/x86_64/3.38 resolved to b2997bdc3a2dc923be853bbb4a89890ccada70f13b609a0df6b67b01e9241e2e
+F: marking op update:runtime/org.freedesktop.Platform/x86_64/20.08 resolved to 1c2a31fa9eceb92a4d20027b90e63d2b82c62d1a35a1e9dc744322e94bcf8813
+F: marking op update:runtime/org.freedesktop.Platform.openh264/x86_64/2.0 resolved to 73f998362a6fc0d57e0c7e83e928d32b0ec14d10d0d94291033976bdcecc6b6b
+F: marking op update:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/20.08 resolved to 280a5447e04802951ac61cab04c0bcd23c23c4f2e706d5943f37ca1d52dfd89f
+F: marking op update:runtime/org.freedesktop.Platform.Locale/x86_64/20.08 resolved to 5a5c835bd08d48ed37807cdbf225ae37c3705c3eb10978eeb9e7bc49de87a080
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/20.08 resolved to 55685c44d7ed51521e57f29399baf95bb06f4a9951de9f88b43ef988ccaa4054
+F: marking op update:runtime/io.github.quodlibet.QuodLibet.Locale/x86_64/stable resolved to b245245211618db65b4bafc3b475427b28d82d969a689bc8653936db4eae9dca
+F: marking op update:app/org.telegram.desktop/x86_64/stable resolved to b2617625c3edb686c544897610799534d1e935973deeb5c0774efbecf44a2e8b
+F: marking op update:app/com.slack.Slack/x86_64/stable resolved to 6e3347a0d10c3f08819c7564155ea5137c6b3b021a18cd6df6d948d353f06d52
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/20.08[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08[$old]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[*]
+F: Transaction: install/update flathub:runtime/org.kde.KStyle.Adwaita/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.PlatformTheme.QGnomePlatform.Sources/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.PlatformTheme.QGnomePlatform/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.PlatformTheme.QtSNI.Sources/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.PlatformTheme.QtSNI/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.WaylandDecoration.QGnomePlatform-decoration/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.WaylandDecoration.QGnomePlatform_decoration.Sources/x86_64/5.15[*]
+F: Transaction: install/update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15[/en]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/20.08[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/20.08[/en]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08[$old]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/20.08[*]
+F: marking op install/update:runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08 resolved to dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa
+
+
+ 1.	   	org.freedesktop.Platform.VAAPI.Intel	20.08	i	flathub	&lt; 11.2 MB
+
+Proceed with these changes to the user installation? [Y/n]: 
+Installing…                                                                                                                  F: flatpak_dir_pull: Using commit dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa for pull of ref runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08 from remote flathub
+
+Installing…                        0%  0 bytes/s
+Installing… ████████████████████ 100%F: No checksum specified, getting tip of runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08 from origin flathub
+F: tip resolved to: dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa
+Warning: While trying to checkout dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa into /home/etenil/.local/share/flatpak/runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/20.08/.dc5cfaade1c137d475ba3e953cea44a84dbd8a4588e9b24eea7ef7aee6cfc6fa-407DW0: Opening content object fde90070d1cb81c9f1c69de520689581f3e0a04895c3c52d74fcfcc6ecadc7fe: Couldn't find file object 'fde90070d1cb81c9f1c69de520689581f3e0a04895c3c52d74fcfcc6ecadc7fe'
+Installation complete.                                                                                                         
+F: fedora:x86_64 appstream age 419 is less than ttl 86400
+F: fedora-testing:x86_64 appstream age 18446744073709551615 is greater than ttl 86400
+F: flathub:x86_64 appstream age 418 is less than ttl 86400
+F: gnome-nightly:x86_64 appstream age 414 is less than ttl 86400
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to have persistent Unix File Descriptors between sandbox and host? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to have persistent Unix File Descriptors between sandbox and host?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to have persistent Unix File Descriptors between sandbox and host?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 13, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vortex Acherontic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 13, 2025 6:17 PM">
+            <time itemprop="datePublished" datetime="2025-09-13 18:17:40 +0000">Sep 13, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello there, first post here.</p>
+<p>Wasn’t able to find anything which answers my question in the level of detail I’d wish.</p>
+<p>I know that Flatpak uses Portals to access files outside of the sandbox and that these files are mapped into the sandbox at <code>/run/user/$UID/doc/$HASH/$FILE</code> which isn’t available on the host.</p>
+<p>However I work on an application which also works with DBUS to send unix file descriptors to a dbus interface. To do this the following happens:</p>
+<ol>
+<li>User selects file via the file portal</li>
+<li>File is propagated to the sandbox</li>
+<li>File is opened inside the sandbox</li>
+<li>File Descriptor (int) is received</li>
+<li>dbus interface is called with the file descriptor attached to it</li>
+<li>Host service can’t open file and thinks it has been “deleted”</li>
+</ol>
+<p>Therefore I concluded the FD (file descriptor) is unknown to the host and do not seem to be identical between host and sandbox. Despite being already an abstract representation as they are only integers.</p>
+<p>Is there a way to have persistent FD’s between sandbox and host? Or is this already supported and I just receive the file descriptor the wrong way?</p>
+<p>In order to open the file I use:</p>
+<p>Python:</p>
+<p><code>fd = os.open(file_path)</code></p>
+<p>However <code>file_path</code> is the property of <code>GLocalFile.get_path()</code> and is the sandbox path located at <code>/run/user/$UID/doc/$HASH/$FILE</code>of that file.</p>
+<p>Is there a way to get the file descriptor directly from the host (without <code>–filesystem=home</code> or similar) as it will be passed back to the host anyway?</p>
+<p>To circumvent this issue I just allowed my app to access <code>xdg-downloads</code> and the same code works as expected. (As long as the file in question is located in the users Downloads directory.)</p>
+<p>My app gets the “real” path and running os.open on it returns a fd which also the host knowns and I can send over dbus to the external service which then can access that file just fine.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 13, 2025 8:17 PM">
+            <time itemprop="datePublished" datetime="2025-09-13 20:17:25 +0000">Sep 13, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The document portal recently added an API to retrieve the path on the host for an file opened over the file chooser portal.</p>
+<p>If I’m correct, this would the the API in the portal:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Documents.html#org-freedesktop-portal-documents-gethostpaths">
+  <header class="source">
+      <img src="/uploads/original/2X/f/f46488f940bd5011135cf331b2e590d157c75c13.png" class="site-icon" alt="" data-dominant-color="7D6B17" width="16" height="16">
+
+      <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Documents.html#org-freedesktop-portal-documents-gethostpaths" target="_blank" rel="noopener nofollow ugc">XDG Desktop Portal</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/1/1fedfac1ad4c1d6eaebaef5f03f79aec5123ae41_2_690x459.png" class="thumbnail" alt="" data-dominant-color="E7C62B" width="690" height="459"></div>
+
+<h3><a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Documents.html#org-freedesktop-portal-documents-gethostpaths" target="_blank" rel="noopener nofollow ugc">Documents</a></h3>
+
+  <p>Description: Document portal The document portal allows to make files from the outside world available to sandboxed applications in a controlled way. Exported files will be made accessible to the a...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Though some libraries may offer other methods to query this information. For GLib and GTK, look here for example:</p>
+<aside class="onebox discoursetopic" data-onebox-src="https://discourse.gnome.org/t/get-real-path-under-flatpak/27148/2">
+  <header class="source">
+      <img src="https://discourse-gnome-org-uploads.s3.dualstack.us-east-2.amazonaws.com/optimized/2X/2/2417565347bf29e2f444481078a5ffe24a75da88_2_32x32.svg" class="site-icon" alt="" width="16" height="16">
+
+      <a href="https://discourse.gnome.org/t/get-real-path-under-flatpak/27148/2" target="_blank" rel="noopener nofollow ugc" title="11:57PM - 18 February 2025">GNOME Discourse – 18 Feb 25</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/original/1X/d7f8fbabd4cd13f5fdbf7c73bd203723a2ef36ea.png" class="thumbnail onebox-avatar" width="500" height="500" data-dominant-color="000000">
+
+<div class="title-wrapper">
+  <h3><a href="https://discourse.gnome.org/t/get-real-path-under-flatpak/27148/2" target="_blank" rel="noopener nofollow ugc">Get "real" path under Flatpak</a></h3>
+  <div class="topic-category">
+      <span class="badge-wrapper bullet">
+        <span class="badge-category-bg" style="background-color: #F7941D;"></span>
+        <span class="badge-category clear-badge">
+          <span class="category-name">Platform</span>
+        </span>
+      </span>
+    <div class="topic-header-extra">
+      <div class="list-tags">
+        <div class="discourse-tags">
+          <svg class="fa d-icon d-icon-tag svg-icon svg-string"><use href="#tag"></use></svg>
+            <span class="discourse-tag simple">gtk</span>
+            <span class="discourse-tag simple">python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <p>You can query the file using the xattr::document-portal.host-path file attribute.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>That being said, this API is fairly new, only added at the start of this year. So if your app runs on a system with an old XDG desktop portal, the API will not be available.</p>
+<p>So the easiest way is still to give broader filesystem permissions for now. Or you could implement a check for the API version and, if on a too old version, ask the user to provide the necessary permission.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vortex Acherontic</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 13, 2025 9:18 PM">
+            <time itemprop="datePublished" datetime="2025-09-13 21:18:57 +0000">Sep 13, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Many thanks that was exactly what I was looking for and solved my issue. Well at least on systems supporting xdg-desktop-portal as of version 1.20 (1.19 only had this attribute for directory not files)</p>
+<p>Code example for future readers:</p>
+<pre data-code-wrap="python"><code class="lang-python">    file_path = file.get_path() # Sandbox path, as fallback
+    try:
+        # Get FileInfo for File
+        file_info = file.query_info("xattr::document-portal.host-path", FileQueryInfoFlags.NONE, None)
+
+        # Query file attribute for real path
+        real_path = file_info.get_attribute_string("xattr::document-portal.host-path")
+        if real_path is not None: # Attribute does not exist if None
+            file_path = real_path
+        else:
+            pass # TODO: Throw error dialog to request user to broaden sandbox permissions.
+    except GLib.Error:
+        print("Can not get real path. Stuck with sandbox")
+    fd = os.open(file_path, os.O_RDONLY)
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

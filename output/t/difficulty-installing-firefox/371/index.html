@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Difficulty Installing Firefox - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Difficulty Installing Firefox</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Difficulty Installing Firefox</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 7, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">byruda</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 7, 2020 11:11 PM">
+            <time itemprop="datePublished" datetime="2020-04-07 23:11:57 +0000">Apr 7, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am new to Flatpak. I attempted to install Flatpak and Firefox on a RPi 4B running an updated Raspian Buster - kernel 4.19 using instructions I found here:<br>
+<a href="https://www.networkshinobi.com/flatpak-and-raspberry-pi/" class="onebox" target="_blank" rel="nofollow noopener">https://www.networkshinobi.com/flatpak-and-raspberry-pi/</a></p>
+<p>Install of Flatpak went fine and I then installed Firefox with this command:<br>
+flatpak install flathub org.mozilla.firefox</p>
+<p>Flatpak found the ref  ‘app/or.mozilla.Firefox.BaseApp.arm.stable’ in remote 'flathub, installed 5 components and completed with the message: 'Installation complete.</p>
+<p>I then attempted to run Firefox with the command:<br>
+flatpak run org.mozilla.firefox</p>
+<p>The message I get is:<br>
+<em>error: app/org.mozilla.Firefox/arm.master not installed</em></p>
+<p>If I attempt to re-install, I get the message:<br>
+<em>Skipping: /org.mozilla.Firefox.BaseApp/arm/stable  is already installed</em></p>
+<p>Any ideas how to correct whatever I am doing wrong.</p>
+<p>Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 8, 2020 9:13 AM">
+            <time itemprop="datePublished" datetime="2020-04-08 09:13:41 +0000">Apr 8, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Mozilla ships binaries only for x86_64. Requested build for aarch64 on their bug tracker; when it’s available it will be also published to Flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">byruda</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 8, 2020 1:02 PM">
+            <time itemprop="datePublished" datetime="2020-04-08 13:02:36 +0000">Apr 8, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="barthalion" data-post="2" data-topic="371">
+<div class="title">
+<div class="quote-controls"></div>
+barthalion:</div>
+<blockquote>
+<p>aarch64</p>
+</blockquote>
+</aside>
+<p>Just curious. What does the ‘arm’ in ’ /org.mozilla.Firefox.BaseApp/arm/stable’ refer to?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 13, 2020 7:04 PM">
+            <time itemprop="datePublished" datetime="2020-04-13 19:04:12 +0000">Apr 13, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We have built the base app which Mozilla uses to build upon for all architectures by mistake. I will delete it to avoid confusion.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">joel l huebner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 4, 2020 1:27 AM">
+            <time itemprop="datePublished" datetime="2020-08-04 01:27:16 +0000">Aug 4, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve had the same question. I’m not running armhf-64, but armhf-32. On all the way from a PiZW to the P4b-4gb. The 64 bit OS is still a BETA.  Not ready to go there.  I have the .img. Not in the mood.  I’ve been a Beta person for a long time.  Just taking an OS Beta break.  LOL</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Reed Domnik</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 25, 2020 3:52 PM">
+            <time itemprop="datePublished" datetime="2020-08-25 15:52:01 +0000">Aug 25, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m having difficulty too. I’m not very savvy about Linux or Flatpak.</p>
+<p>Update: The answer is at bottom of this post.</p>
+<p>Running 32-bit Chromebook, Version 84.0.4147.136 (Official Build) (32-bit). From earlier in this thread, I think it says 32-bit Firefox is not available/supported through Flatpak. Maybe I should give up, but here’s what I did before coming to this forum.</p>
+<p>I followed instructions here: <a href="https://flatpak.org/setup/Chrome%20OS/" rel="nofollow noopener">https://flatpak.org/setup/Chrome%20OS/</a><br>
+On step 4 (add Flathub repository), I got an error the first time. I don’t remember what it was. Tried again and it worked. Restarted the Chromebook.</p>
+<p>(New users of forum can only post two links so I’ve removed the link constructs)<br>
+I went to “https colon slash slash flathub dot org slash apps slash details dot org dot mozilla dot firefox”<br>
+and hit the install button for Firefox, which put the “org dot mozilla dot firefox dot flatpakref” file in my downloads folder.</p>
+<p>At the bottom of the page it says to open a Linux terminal window and type this command:<br>
+flatpak install flathub org dot mozilla dot firefox<br>
+The system replies:<br>
+error: Nothing matches org dot mozilla dot firefox in remote flathub</p>
+<p>Any ideas?</p>
+<p>I’m just trying to get the bookmarks toolbar to show up in Firefox on my Chromebook. Using the Android version of Firefox on Chromebook, there’s no option to show the Bookmarks toolbar.</p>
+<p>I don’t like Chrome. I use Firefox. I suppose I could import my Firefox bookmarks into Chrome if I had to.</p>
+<p>Also, I downloaded the 32-bit version of Firefox for 32-bit Linux here:<br>
+“https colon slash slash www dot mozilla dot org slash en-US slash firefox slash all slash <span class="hashtag">#product-desktop-release</span>”<br>
+but I have no idea how to install it using the command line in the terminal window. Nor do I know whether it would work or cause damage.</p>
+<p>Update: my son gave me the answer. Use this command:<br>
+sudo apt install firefox-esr<br>
+It works!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 12, 2020 4:42 PM">
+            <time itemprop="datePublished" datetime="2020-09-12 16:42:18 +0000">Sep 12, 2020</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Only x86_64 is supported by Firefox on Flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bruno DOUTRIAUX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Dec 13, 2022 7:43 PM">
+            <time itemprop="datePublished" datetime="2022-12-13 19:43:42 +0000">Dec 13, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello, i’m using guix linux on a virtual machine and i’m trying to install firefox using flatpak, i tried this: flatpak install --user flathub org.mozilla.firefox, but i get an error it says: guix install : erreur : user : option non reconnue</p>
+<p>what would be the correct syntax to use to install firefox with guix and flatpak ? (my cpu is an amd64 Athlon)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bruno DOUTRIAUX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Dec 13, 2022 8:12 PM">
+            <time itemprop="datePublished" datetime="2022-12-13 20:12:22 +0000">Dec 13, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>i’ve managed to install firefox on guix on a virtual machine, i’ve had also to make a virtual link on /usr/bin/firefox and to add /usr/bin to the $PATH</p>
+<p>the actual location to org.mozilla.firefox was in /var/lib/flatpak/app/org.mozilla.firefox/x86_64/stable/ddxxxxxxx/bin/org.mozilla.firefox…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

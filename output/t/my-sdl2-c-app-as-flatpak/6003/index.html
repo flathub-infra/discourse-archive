@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My SDL2 C++ app as flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">My SDL2 C++ app as flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">My SDL2 C++ app as flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 1, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 1, 2024 8:01 PM">
+            <time itemprop="datePublished" datetime="2024-02-01 20:01:23 +0000">Feb 1, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello. I’m trying to make a flatpak version of my app. It depends on these libraries:</p>
+<ul>
+<li>SDL2</li>
+<li>SDL_mixer</li>
+<li>GLEW</li>
+</ul>
+<p>Should I add that libraries as modules in my flatpak manifest file? I have tried to run <code>flatpak-builder here com.myapps.ScreenDemo.yaml</code> and it finds SDL2 and sdl_mixer from my system, but it fails trying to find glew. Weird, because I have it installed and my app runs fine</p>
+<p>I also have another question: I have more than one target in my CMake project, how can I indicate what target I want to build as flatpak? Because my base project is my engine, then the apps are in subfolders. For this test, I’m trying to build only one as flatpak</p>
+<p>My manifest file:</p>
+<pre><code class="lang-auto">id: com.myapps.ScreenDemo
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: ScreenDemo-Linux64-GNU_Debug
+# rename-desktop-file: ScreenDemo.desktop
+# rename-icon: ScreenDemo
+
+modules:
+  - name: ScreenDemo
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+      # - -DCMAKE_INSTALL_PREFIX=/app/bin # required ?
+    build-commands:
+      # Lo que yo tengo que hacer en mi caso, es especificar el TARGET!
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+    builddir: true
+    # Copy data files here ???
+    # post-install:
+    sources:
+      - type: dir
+        path: /home/paul/Programming/proyectos/MyApps
+
+finish-args:
+  # share IPC namespace with the host (necessary for X11)
+  - --share=ipc
+  # show windows using X11, if Wayland is not available,
+  # overrides x11 socket permission
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # OpenGL rendering
+  - --device=dri
+  # Audio
+  - --socket=pulseaudio
+</code></pre>
+<p>The error:</p>
+<pre><code class="lang-auto">Downloading sources
+Initializing build dir
+Committing stage init to cache
+Starting build of com.myapps.ScreenDemo
+========================================================================
+Building module ScreenDemo in /home/paul/Programming/proyectos/MyApps/platform/flatpaks/ScreenDemo/.flatpak-builder/build/ScreenDemo-1
+========================================================================
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found SDL2: /usr/lib/x86_64-linux-gnu/libSDL2.so (found version "2.28.5") 
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (SDL2main)
+  does not match the name of the calling package (SDL2).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/sdl2/FindSDL2.cmake:318 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  CMakeLists.txt:84 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found SDL2main: /usr/lib/x86_64-linux-gnu/libSDL2main.a (found version "2.28.5") 
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (SDL2main)
+  does not match the name of the calling package (SDL2).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/sdl2/FindSDL2.cmake:318 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  cmake/sdl2/FindSDL2_mixer.cmake:112 (find_package)
+  CMakeLists.txt:86 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found SDL2_mixer: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so (found version "2.6.3") 
+CMake Error at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)
+Call Stack (most recent call first):
+  /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.28/Modules/FindGLEW.cmake:242 (find_package_handle_standard_args)
+  CMakeLists.txt:88 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+Error: module ScreenDemo: Child process exited with code 1
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 2, 2024 1:37 AM">
+            <time itemprop="datePublished" datetime="2024-02-02 01:37:00 +0000">Feb 2, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="paul" data-post="1" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>it finds SDL2 and sdl_mixer from my system</p>
+</blockquote>
+</aside>
+<p>That’s not how flatpak works, it likely finds these from the freedesktop.Platform you are using. Stuff thats missing like glew needs to be added as modules, in the case of glew you can use the prepared one from <a href="https://github.com/flathub/shared-modules" class="inline-onebox">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a> if you need it unmodified.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 2, 2024 1:18 PM">
+            <time itemprop="datePublished" datetime="2024-02-02 13:18:16 +0000">Feb 2, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="razzeee" data-post="2" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+razzeee:</div>
+<blockquote>
+<p>Stuff thats missing like glew needs to be added as modules</p>
+</blockquote>
+</aside>
+<p>I will try that, thanks</p>
+<aside class="quote no-group quote-modified" data-username="paul" data-post="1" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<pre><code class="lang-auto">build-commands:
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+</code></pre>
+</blockquote>
+</aside>
+<p>Am I setting the app target correctly? What is the exact command flatpak-builder runs for CMake builds by default under the hood?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 6, 2024 2:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-06 14:59:15 +0000">Feb 6, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello<br>
+I successfully added glew and glu (seems to be a requirement for glew)  from the repository, it worked fine</p>
+<pre><code class="lang-auto">-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /run/build/ScreenDemo/_flatpak_build
+</code></pre>
+<p>But the other problem remains. Flatpak builder is installing files from my other apps, and at the end, it cannot find my executable. That’s because the target is not correctly defined</p>
+<pre><code class="lang-auto">Running: pwd
+/run/build/ScreenDemo/_flatpak_build
+Running: cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+[ 96%] Built target Engine-Static-Linux64-GNU_Debug
+[100%] Built target ScreenDemo-Linux64-GNU_Debug
+[ 89%] Built target Engine-Static-Linux64-GNU_Debug
+[ 91%] Built target fontcvt-Linux64-GNU_Debug
+[ 94%] Built target Pasen-Linux64-GNU_Debug
+[ 97%] Built target ScreenDemo-Linux64-GNU_Debug
+[100%] Built target Terreno-Linux64-GNU_Debug
+Install the project...
+-- Install configuration: "Debug"
+-- Installing: /app/lib/libEngine-Static-Linux64-GNU_Debug.a
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen-Linux64-GNU_Debug
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen/pasen_log.txt
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen/pasen_config.cfg
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen/textures
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen/textures/copy-icon.png
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo-Linux64-GNU_Debug
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo/screen_demo_log.txt
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo/sounds
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo/sounds/388046__paep3nguin__beep_up.wav
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo/sounds/388047__paep3nguin__beep_down.wav
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo/screen_demo_config.cfg
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno-Linux64-GNU_Debug
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/textures
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/textures/tileset_sci-fi.png
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/textures/estatua_mi_foto.png
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/textures/karl.png
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/terreno_config.cfg
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/terreno_log.txt
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno/temp_test_sheet.pepon_sheet
+Committing stage build-ScreenDemo to cache
+Cleaning up
+Removing files/lib/pkgconfig/glu.pc
+Removing files/lib/pkgconfig/glew.pc
+Removing files/lib/pkgconfig
+Removing files/lib/libGLU.a
+Removing files/lib/libGLEW.a
+Removing files/include/GL/wglew.h
+Removing files/include/GL/glxew.h
+Removing files/include/GL/glu.h
+Removing files/include/GL/glew.h
+Removing files/include/GL
+Removing files/include
+Committing stage cleanup to cache
+Finishing app
+Error: Command 'ScreenDemo-Linux64-GNU_Debug' not found
+</code></pre>
+<p>Terreno and Pasen are my other apps I build with the same engine. I only want to compile the <em>ScreenDemo-Linux64-GNU_Debug</em> target. How can I do that?</p>
+<p>Also, my default install folder is <em>bin/install</em>, should I change that? How?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 10, 2024 5:05 AM">
+            <time itemprop="datePublished" datetime="2024-02-10 05:05:21 +0000">Feb 10, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have found <a href="https://stackoverflow.com/questions/17164731/installing-only-one-target-and-its-dependencies-out-of-a-complex-project-with" rel="noopener nofollow ugc">a post</a> that may solve the target issue. It seems CMake builds all targets when something is installed. It can be disabled using <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_SKIP_INSTALL_ALL_DEPENDENCY.html" class="inline-onebox" rel="noopener nofollow ugc">CMAKE_SKIP_INSTALL_ALL_DEPENDENCY — CMake 3.28.3 Documentation</a></p>
+<p>But now it doesn’t find glew anymore<br>
+I have updated the flathub shared modules:</p>
+<pre><code class="lang-auto">git submodule update --remote --merge
+</code></pre>
+<p>Error:</p>
+<pre><code class="lang-auto">-- Found SDL2_mixer: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so (found version "2.6.3") 
+CMake Error at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)
+Call Stack (most recent call first):
+  /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.28/Modules/FindGLEW.cmake:242 (find_package_handle_standard_args)
+  CMakeLists.txt:85 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+Error: module ScreenDemo: Child process exited with code 1
+</code></pre>
+<p>My manifest:</p>
+<pre><code class="lang-auto">id: com.my_engine.ScreenDemo
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: ScreenDemo-Linux64-GNU_Debug
+# rename-desktop-file: ScreenDemo.desktop
+# rename-icon: ScreenDemo
+
+modules:
+  - shared-modules/glu/glu-9.json
+  - name: glu
+
+  - shared-modules/glew/glew.json
+  - name: glew
+
+  - name: ScreenDemo
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+      - -DCMAKE_INSTALL_PREFIX=/app/bin # correct? or should it be /run/build?
+    build-commands:
+      - pwd # Just to check
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+    builddir: true
+    # Copy data files here ???
+    # post-install:
+    sources:
+      - type: dir
+        path: /home/paul/Programming/proyectos/X
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --socket=pulseaudio
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 10, 2024 6:52 AM">
+            <time itemprop="datePublished" datetime="2024-02-10 06:52:52 +0000">Feb 10, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">      - -DCMAKE_INSTALL_PREFIX=/app/bin # correct? or should it be /run/build?
+</code></pre>
+<p>The prefix should be <code>/app</code>, but you don’t need to set it; flatpak-builder will do that automatically.</p>
+<p>I’m not sure the proper way to specify a target, but mixing flatpak-builder’s cmake support with manual calls to <code>cmake</code> probably isn’t going to work well.</p>
+<p>If you set <code>make-args</code> to the target name, that may work. That will make flatpak-builder pass that string to <code>make</code> (or <code>ninja</code> if you use the ‘cmake-ninja’ buildsystem).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 10, 2024 8:37 PM">
+            <time itemprop="datePublished" datetime="2024-02-10 20:37:43 +0000">Feb 10, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello chrisawi. It now starts compiling again!<br>
+But the problem of the target remains<br>
+Not only <strong>every</strong> app is built, but it also tries to install to the path I have set in my CMake files (<em>bin/install</em>)</p>
+<p>Some output:<br>
+You can see, the library is installed at the correct path, but the other apps are also installed, and to the incorrect path</p>
+<pre><code class="lang-auto">Install the project...
+-- Install configuration: "Debug"
+-- Installing: /app/lib/libEngine-Static-Linux64-GNU_Debug.a
+-- Installing: /run/build/ScreenDemo/bin/install/Pasen/Pasen-Linux64-GNU_Debug
+-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo-Linux64-GNU_Debug
+-- Installing: /run/build/ScreenDemo/bin/install/Terreno/Terreno-Linux64-GNU_Debug
+</code></pre>
+<p>What I have tried in the manifest</p>
+<pre><code class="lang-auto">config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+      # Tried with and without this next one
+      - -DCMAKE_INSTALL_PREFIX=/app
+    build-commands:
+      # With and without this
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+    make-args:
+      # Tried both of these
+      --target ScreenDemo-Linux64-GNU_Debug
+      - ScreenDemo-Linux64-GNU_Debug
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 10, 2024 10:13 PM">
+            <time itemprop="datePublished" datetime="2024-02-10 22:13:51 +0000">Feb 10, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can add <code>-v</code> to flatpak-builder then it logs the build commands it’s running (<code>flatpak-builder -v …</code>) (<a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">reference</a>).</p>
+<aside class="quote no-group" data-username="paul" data-post="7" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>Not only <strong>every</strong> app is built, but it also tries to install to the path I have set in my CMake files (<em>bin/install</em>)</p>
+</blockquote>
+</aside>
+<p>I’m not sure I correctly understand what you mean, but flatpak-builder only builds the way it’s specified by the build system. You are responsible to define the correct destinations (which should be based on the install prefix).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 11, 2024 8:24 PM">
+            <time itemprop="datePublished" datetime="2024-02-11 20:24:49 +0000">Feb 11, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is how I build my engine, the folder is specified because it’s very convenient for me to testing my apps in my computer</p>
+<pre><code class="lang-auto"># Output directory for the engine library and executables
+set(X_PATH_BINARY_FILES "${X_SOURCE_DIR}/bin")
+# Installation path
+set(X_INSTALLATION_PATH "${X_PATH_BINARY_FILES}/install")
+
+# Compile as static library
+add_library(${X_LIBRARY_TARGET} STATIC)
+# Set static library output directory
+set_target_properties(${X_LIBRARY_TARGET} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${X_PATH_BINARY_FILES})
+
+# Don't make the install target depend on the 'all' target
+# https://stackoverflow.com/questions/17164731/installing-only-one-target-and-its-dependencies-out-of-a-complex-project-with
+set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)
+
+install(TARGETS ${X_LIBRARY_TARGET} OPTIONAL RUNTIME DESTINATION ${X_INSTALLATION_PATH})
+</code></pre>
+<p>Complete verbose output:</p>
+<pre><code class="lang-auto">flatpak-builder here -v --force-clean com.x_engine.ScreenDemo.yaml
+FB: Running: git config --get user.email
+FB: Running: git config --get user.name
+Emptying app dir 'here'
+FB: Running: flatpak info --arch=x86_64 --show-commit org.freedesktop.Sdk 23.08
+FB: Running: flatpak info --show-location --arch=x86_64 org.freedesktop.Sdk 23.08
+FB: Running: flatpak info --arch=x86_64 --show-commit org.freedesktop.Platform 23.08
+Downloading sources
+Starting build of com.x_engine.ScreenDemo
+Cache hit for glu, skipping build
+Skipping module glu-2 (no sources)
+Cache hit for glew, skipping build
+Skipping module glew-2 (no sources)
+Cache miss, checking out last cache hit
+FB: Mounting read-only fs: rofiles-fuse /home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/here /home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/rofiles/rofiles-Rw0MkC
+========================================================================
+Building module ScreenDemo in /home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/build/ScreenDemo-9
+========================================================================
+FB: Running: flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/ScreenDemo --nofilesystem=host:reset --filesystem=/home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/build/ScreenDemo-9 --bind-mount=/run/build/ScreenDemo=/home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/build/ScreenDemo-9 --build-dir=/run/build/ScreenDemo/_flatpak_build --bind-mount=/run/ccache=/home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/ccache --env=SOURCE_DATE_EPOCH=1707682502 '--env=CFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=4 /home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/rofiles/rofiles-Rw0MkC cmake '-DCMAKE_INSTALL_PREFIX:PATH='\''/app'\''' -G 'Unix Makefiles' .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/run/build
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found SDL2: /usr/lib/x86_64-linux-gnu/libSDL2.so (found version "2.28.5") 
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (SDL2main)
+  does not match the name of the calling package (SDL2).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/sdl2/FindSDL2.cmake:318 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  CMakeLists.txt:81 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found SDL2main: /usr/lib/x86_64-linux-gnu/libSDL2main.a (found version "2.28.5") 
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (SDL2main)
+  does not match the name of the calling package (SDL2).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/sdl2/FindSDL2.cmake:318 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  cmake/sdl2/FindSDL2_mixer.cmake:112 (find_package)
+  CMakeLists.txt:83 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found SDL2_mixer: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so (found version "2.6.3") 
+CMake Error at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)
+Call Stack (most recent call first):
+  /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.28/Modules/FindGLEW.cmake:242 (find_package_handle_standard_args)
+  CMakeLists.txt:85 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+Error: module ScreenDemo: Child process exited with code 1
+FB: Unmounting read-only fs: fusermount -uz /home/paul/Programming/proyectos/X/platform/flatpaks/ScreenDemo/.flatpak-builder/rofiles/rofiles-Rw0MkC
+</code></pre>
+<p>Latest changes to the manifest:</p>
+<pre><code class="lang-auto">modules:
+  - shared-modules/glu/glu-9.json
+  - name: glu
+
+  - shared-modules/glew/glew.json
+  - name: glew
+  - name: ScreenDemo
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+      - -DCMAKE_INSTALL_PREFIX=/run/build
+    build-commands:
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+      # cmake --install . --prefix /run/build
+    make-args:
+      - ScreenDemo-Linux64-GNU_Debug
+    builddir: true
+    sources:
+      - type: dir
+        path: /home/paul/Programming/proyectos/X
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 12, 2024 6:44 PM">
+            <time itemprop="datePublished" datetime="2024-02-12 18:44:02 +0000">Feb 12, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Everything the application provides must be put into <code>/app</code> (that’s why it gets always automatically set). Though I’m not sure why your build is now failing.</p>
+<p>I can only recommend to change your build to install into the provided install prefix. It’s not flatpak specific, probably all distributions expect this behaviour. Set the default to what you like but don’t ignore the value if provided.</p>
+<p>And you should check the output of the build:</p>
+<pre><code class="lang-auto">Skipping module glu-2 (no sources)
+Skipping module glew-2 (no sources)
+</code></pre>
+<p>You added two empty modules. The provided shared-modules already contain the whole definition (I think you can’t actually add anything to a included manifest, you’d have to edit the json files).</p>
+<p>I think this should work, but you’ll have to check the actual build commands:</p>
+<pre><code class="lang-auto">modules:
+  - shared-modules/glu/glu-9.json
+  - shared-modules/glew/glew.json
+  - name: ScreenDemo
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+    make-args:
+      - --target ScreenDemo-Linux64-GNU_Debug
+    builddir: true
+    sources:
+      - type: dir
+        path: /home/paul/Programming/proyectos/X
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 13, 2024 3:46 PM">
+            <time itemprop="datePublished" datetime="2024-02-13 15:46:08 +0000">Feb 13, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="10" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<pre><code class="lang-auto">  - shared-modules/glu/glu-9.json
+  - shared-modules/glew/glew.json
+</code></pre>
+</blockquote>
+</aside>
+<p>I don’t need to specify the name, I see. Ok, this worked great!</p>
+<aside class="quote no-group" data-username="cxrvh" data-post="10" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<pre><code class="lang-auto">    make-args:
+      - --target ScreenDemo-Linux64-GNU_Debug
+</code></pre>
+</blockquote>
+</aside>
+<p>Here I just put the app name, because this is a parameter for make, not for CMake, and it worked fine</p>
+<p>I have tried a lot of things, but it never finds my app. It seems there is no way to select a single target for the build, and no way to select the installation path. Latest manifest</p>
+<pre><code class="lang-auto">- name: ScreenDemo
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Debug
+      - -DCMAKE_INSTALL_PREFIX=/app
+    build-commands:
+      - cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+      - cmake --install . --prefix /app
+    # These commands are only for make, not for CMake
+    make-args:
+      - ScreenDemo-Linux64-GNU_Debug
+    builddir: true
+    sources:
+      - type: dir
+        path: /home/paul/Programming/proyectos/X
+</code></pre>
+<p>Should I set the buildsystem to ‘simple’ and pass every parameter to CMake in my own way?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 14, 2024 7:25 PM">
+            <time itemprop="datePublished" datetime="2024-02-14 19:25:13 +0000">Feb 14, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="paul" data-post="11" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>I have tried a lot of things, but it never finds my app. […] and no way to select the installation path.</p>
+</blockquote>
+</aside>
+<p>I’m still not sure I understand what you mean. flatpak-builder never searches for your app. Your data is either found in <code>/app</code> (especially the command must be in <code>/app/bin/ScreenDemo-Linux64-GNU_Debug</code>*) or not found in any other place. You cannot change this behaviour. Your buildsystem and/or manifest are responsible to put the files in the correct locations. There are some additional folders which you must adhere to, see <a href="https://docs.flatpak.org/en/latest/conventions.html" rel="noopener nofollow ugc">Requirements &amp; Conventions</a>.</p>
+<p>* You could create a script instead which executes another command in a different location within <code>/app</code>.</p>
+<aside class="quote no-group quote-modified" data-username="paul" data-post="11" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>Here I just put the app name, because this is a parameter for make, not for CMake, and it worked fine</p>
+<p>[…]</p>
+<p>It seems there is no way to select a single target for the build</p>
+</blockquote>
+</aside>
+<p>I don’t understand which command should receive the target? If I’m not mistaken, your current build should look something like this:</p>
+<pre><code class="lang-auto">cmake &lt;config-opts&gt;
+make &lt;make-args&gt;
+cmake --build . --target ScreenDemo-Linux64-GNU_Debug
+cmake --install . --prefix /app
+make install &lt;make-install-args&gt;
+</code></pre>
+<p>Usually an application does not define any build-commands because flatpak-builder will run <code>configure</code>, <code>make</code> &amp; <code>make install</code> (or the equivalent of the buildsystem). Via the corresponding arrays you can pass additional options (check this with <code>flatpak-builder -v</code>).</p>
+<aside class="quote no-group" data-username="paul" data-post="11" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>Should I set the buildsystem to ‘simple’ and pass every parameter to CMake in my own way?</p>
+</blockquote>
+</aside>
+<p>Of course, you can try a manual way, this removes any build commands run by flatpak. There are also more options in the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">manifest</a> you can use to customize the other buildsystems, for example to manually move files into <code>/app</code>):</p>
+<blockquote>
+<p>install-rule (string)<br>
+Name of the rule passed to make for the install phase, default is install</p>
+<p>no-make-install (boolean)<br>
+Don’t run the make install (or equivalent) stage</p>
+<p>post-install (array of strings)<br>
+An array of shell commands that are run after the install phase. Can for example clean up the install dir, or install extra files.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Feb 14, 2024 7:53 PM">
+            <time itemprop="datePublished" datetime="2024-02-14 19:53:06 +0000">Feb 14, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="12" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>I’m still not sure I understand what you mean. flatpak-builder never searches for your app</p>
+</blockquote>
+</aside>
+<p>I’m sorry if I wasn’t clear enough. I’m trying to say that CMake is taking the install path I have setup in my CMake file. It should be overridable from the command line, but it does not seem to be working. Please take a look at this section of the log:</p>
+<pre><code class="lang-auto">-- Installing: /run/build/ScreenDemo/bin/install/ScreenDemo/ScreenDemo-Linux64-GNU_Debug
+</code></pre>
+<p>That <em>bin/install/ScreenDemo/</em> portion of the path is what I set in the CMake file for my regular builds (not flatpak). But then you can see that</p>
+<pre><code class="lang-auto">-- Installing: /app/lib/libX-Static-Linux64-GNU_Debug.a
+</code></pre>
+<p>My engine (static library, dependency for all my apps) seems to be installed to the correct place (<em>/app/lib</em>). So, I guess the app should be installed in the <em>/run/build/</em> folder. Then the final error message says this:</p>
+<pre><code class="lang-auto">Committing stage cleanup to cache
+Finishing app
+Error: Command 'ScreenDemo-Linux64-GNU_Debug' not found
+</code></pre>
+<p>I guess the builder is using <em>/run/build</em> as a temporary, then it copy/moves the executable to <em>/app</em>. Is this correct?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Feb 16, 2024 5:41 AM">
+            <time itemprop="datePublished" datetime="2024-02-16 05:41:21 +0000">Feb 16, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="paul" data-post="13" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>I guess the builder is using <em>/run/build</em> as a temporary</p>
+</blockquote>
+</aside>
+<p>That’s correct. It’s where the sources are put &amp; the build is run from.</p>
+<aside class="quote no-group quote-modified" data-username="paul" data-post="13" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>So, I guess the app should be installed in the <em>/run/build/</em> folder.</p>
+<p>[…]</p>
+<p>then it copy/moves the executable to <em>/app</em></p>
+</blockquote>
+</aside>
+<p>That’s not correct, flatpak-builder doesn’t know anything about your build. It only executes the build commands (e.g. <code>cmake</code>, <code>make</code>, <code>make install</code> &amp; somewhere in between what’s defined in <code>build-commands</code> &amp; <code>post-install</code>) &amp; sets the prefix to <code>/app</code>.</p>
+<p>As I have said: It’s your responsibility to install all needed files into the <code>/app</code> prefix (especially to put the binary into <code>/app/bin</code>).</p>
+<p>Your build seems to install the files into the source dir (<code>/run/build/&lt;MODULE&gt;</code>), that’s not correct.</p>
+<pre><code class="lang-auto"># Output directory for the engine library and executables
+set(X_PATH_BINARY_FILES "${X_SOURCE_DIR}/bin")
+</code></pre>
+<p>Either update your CMake files to use the install prefix (set via <code>-DCMAKE_INSTALL_PREFIX=/app</code>) or manually move the files in the manifest (see the options from the documentation I’ve mentioned).</p>
+<aside class="quote no-group" data-username="paul" data-post="13" data-topic="6003">
+<div class="title">
+<div class="quote-controls"></div>
+paul:</div>
+<blockquote>
+<p>My engine (static library, dependency for all my apps) seems to be installed to the correct place (<em>/app/lib</em>).</p>
+</blockquote>
+</aside>
+<p>I guess CMake puts the library into the correct location. Basically all Linux applications install their files into <code>/bin</code>, <code>/lib</code>, etc. inside the prefix (<code>/usr</code> for normal packaging, <code>/app</code> for flatpak), so it should be the default behavior. But I don’t know enough about your build or CMake.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Paul</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Feb 17, 2024 6:28 PM">
+            <time itemprop="datePublished" datetime="2024-02-17 18:28:08 +0000">Feb 17, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see. Now I have a better understanding of how flatpak-builder works. Thanks<br>
+I will try to do that and report back</p>
+<p>Another question: if my app expects to read a file from the “data” folder, I should install/copy that folder into <em>/app</em>, right? So it ends up like that: <em>/app/data</em>. Is this correct?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

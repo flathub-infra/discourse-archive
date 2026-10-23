@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak system operation ConfigureRemote not allowed for user - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak system operation ConfigureRemote not allowed for user</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak system operation ConfigureRemote not allowed for user</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 11, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ricardo Wagemaker</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 11, 2024 10:38 AM">
+            <time itemprop="datePublished" datetime="2024-12-11 10:38:48 +0000">Dec 11, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>Created a flatpak and testing it before uploading it to my repo in GitHub</p>
+<h3><a name="p-15983-my-yml-file-1" class="anchor" href="#p-15983-my-yml-file-1" aria-label="Heading link"></a>My YML file.</h3>
+<p><a href="https://github.com/gcclinux/EasyEdit/blob/main/linux/org.flatpak.EasyEdit.yml" rel="noopener nofollow ugc">org.flatpak.EasyEdit.yml</a></p>
+<ul>
+<li>
+<h3><a name="p-15983-first-build-as-normal-2" class="anchor" href="#p-15983-first-build-as-normal-2" aria-label="Heading link"></a>First build as normal</h3>
+</li>
+</ul>
+<pre><code class="lang-auto">$ flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo builddir org.flatpak.EasyEdit.yml
+</code></pre>
+<ul>
+<li>
+<h3><a name="p-15983-create-single-file-bundle-from-repo-3" class="anchor" href="#p-15983-create-single-file-bundle-from-repo-3" aria-label="Heading link"></a>Create single file bundle from repo</h3>
+</li>
+</ul>
+<pre><code class="lang-auto">$ flatpak build-bundle repo EasyEdit-$(arch)-1.3.5.flatpak org.flatpak.EasyEdit
+</code></pre>
+<ul>
+<li>
+<h3><a name="p-15983-install-new-created-file-4" class="anchor" href="#p-15983-install-new-created-file-4" aria-label="Heading link"></a>Install new created file</h3>
+</li>
+</ul>
+<pre><code class="lang-auto">$ flatpak install EasyEdit-$(arch)-1.3.5.flatpak
+</code></pre>
+<ul>
+<li>
+<h3><a name="p-15983-issue-when-trying-to-install-even-knowing-it-was-all-created-as-normal-user-is-that-to-install-it-ask-to-run-a-root-sudo-5" class="anchor" href="#p-15983-issue-when-trying-to-install-even-knowing-it-was-all-created-as-normal-user-is-that-to-install-it-ask-to-run-a-root-sudo-5" aria-label="Heading link"></a>Issue when trying to install even knowing it was all created as normal user is that to install it ask to run a root / sudo.</h3>
+</li>
+</ul>
+<p>$ flatpak install EasyEdit-x86_64-1.3.5.flatpak<br>
+error: Flatpak system operation ConfigureRemote not allowed for user</p>
+<p><em>Why can’t i install this as normal user?</em>  <img src="/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=15" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 12, 2024 3:50 AM">
+            <time itemprop="datePublished" datetime="2024-12-12 03:50:40 +0000">Dec 12, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak installs to the system installation by default (i.e. <code>--system</code> is implied). On a properly-configured system, flatpak will prompt for authentication, at least for an admin account.</p>
+<p>You can use <code>--user</code> to install to the user installation.</p>
+<p>Please also note that <code>.flatpak</code> single-file bundles are not the preferred distribution method for Flatpak applications.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 12, 2024 10:52 AM">
+            <time itemprop="datePublished" datetime="2024-12-12 10:52:47 +0000">Dec 12, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As you probably know, Flatpaks are normally installed from remotes, such as Flathub.<br>
+But if you install a single-file bundle, it does not have a remote as origin. In this case, Flatpak creates a new remote. Should be named something like <code>appname-origin</code>, which is set as the apps remote.</p>
+<p>Now, since managing remotes is an privileged task, it will need the proper permissions to be done.</p>
+<p>So, to install a single-file bundle on the system, you need to provide that permission. Like mentioned already, normally you should be prompted for an administration password, or you could use <code>sudo</code>.</p>
+<p>However, if all you want is to test your app build, just install it to the user installation with <code>--user</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 12, 2024 11:19 AM">
+            <time itemprop="datePublished" datetime="2024-12-12 11:19:46 +0000">Dec 12, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>An additional option:<br>
+Since you already use <code>--repo=repo</code> when building your app, you can also add that repo as an remote, by running this command:</p>
+<pre><code class="lang-auto">flatpak --user remote-add --no-gpg-verify devbuild-repo ./repo
+</code></pre>
+<p>This would add the remote <code>devbuild-repo</code> using the repo folder created by <code>flatpak-builder</code>.</p>
+<p>Then, you can use the <code>flatpak install</code> and <code>update</code> commands as with any other remote for your development builds.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

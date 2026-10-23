@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How is appstream.xml.gz generated? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How is appstream.xml.gz generated?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How is appstream.xml.gz generated?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 15, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 15, 2022 4:18 PM">
+            <time itemprop="datePublished" datetime="2022-02-15 16:18:42 +0000">Feb 15, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello guys,</p>
+<p>I was browsing flathub’s github repos, and I was wondering how appstream.xml.gz archive was generated?<br>
+Location:<br>
+<a href="https://hub.flathub.org/repo/appstream/x86_64/appstream.xml.gz" class="onebox" target="_blank" rel="noopener nofollow ugc">https://hub.flathub.org/repo/appstream/x86_64/appstream.xml.gz</a></p>
+<p>I’m trying to understand how flathub’s backend works.</p>
+<p>So far I understood external-data-checker is being ran hourly (through github actions) to check for external package changes, if there is a change, a pull request is issued to the corresponding repository to update the app’s yml file.</p>
+<p>From there I lost the track <img src="/images/emoji/twitter/smiley.png?v=12" title=":smiley:" class="emoji" alt=":smiley:"></p>
+<p>Kind regards,</p>
+<p>me</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 17, 2022 11:04 PM">
+            <time itemprop="datePublished" datetime="2022-02-17 23:04:19 +0000">Feb 17, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <span class="mention">@StephenRippy</span>,</p>
+<p>Kinda three answers here. Under the hood, <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-update-repo" class="inline-onebox">Flatpak Command Reference — Flatpak documentation</a> is what’s used to re-scan an ostree repo for Flatpaks, pull out and concatenate all of the appdata / metainfo xml pieces into one appstream, and check it back into the ostree repo.</p>
+<p>On Flathub, that’s done by <a href="https://github.com/flatpak/flat-manager/">https://github.com/flatpak/flat-manager/</a> which is a Rust service which maintains the ostree repos for Flathub, and exposes an API which - with the right tokens - you can talk to using the client (<a href="https://github.com/flatpak/flat-manager/blob/master/flat-manager-client">https://github.com/flatpak/flat-manager/blob/master/flat-manager-client</a> - or other code) to create temporary repos for your build, push your Flatpaks to them, download and test, and merge them to the main repo. After a timeout so that metadata updates are batched up, flat-manager re-runs that update repo command to generate and publish new ostree-metadata/appstream refs and a new summary file.</p>
+<p>The thing that builds the Flatpaks in response to the GitHub triggers, and so also sends in these flat-manager requests to update the repo is the Buildbot. The exact moment it happens is here: <a href="https://github.com/flathub/buildbot/blob/8ecc35f44763b1447b516c49f49f14a37804152f/master/buildbot/flathub_master.py#L1205-L1214">https://github.com/flathub/buildbot/blob/8ecc35f44763b1447b516c49f49f14a37804152f/master/buildbot/flathub_master.py#L1205-L1214</a></p>
+<p>Hope that helps!</p>
+<p>Cheers,<br>
+Rob</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 18, 2022 10:57 AM">
+            <time itemprop="datePublished" datetime="2022-02-18 10:57:47 +0000">Feb 18, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Aha, this certainly explains a lot! Oh what a complex system is in place <img src="/images/emoji/twitter/smiley.png?v=12" title=":smiley:" class="emoji" alt=":smiley:"> !</p>
+<p>Thanks for the great answer!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

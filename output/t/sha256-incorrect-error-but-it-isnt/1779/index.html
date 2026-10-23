@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sha256 incorrect error - but it isn&#39;t - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Sha256 incorrect error - but it isn&#39;t</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Sha256 incorrect error - but it isn&#39;t</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 15, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 15, 2021 1:59 PM">
+            <time itemprop="datePublished" datetime="2021-10-15 13:59:49 +0000">Oct 15, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have a Flatpak which used to work, then the version of “Boost” referred to in the manifest was archived. So I changed the URL (the sha256 stayed the same as it was the same file) to the new location.</p>
+<pre><code>&gt;     sources:
+&gt;       - type: archive    
+&gt;         #old one https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2
+&gt;         url: https://boostorg.jfrog.io/ui/native/main/release/1.68.0/source/boost_1_68_0.tar.bz2
+&gt;         sha256: 7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7 
+</code></pre>
+<p>This module now fails with flatpak-builder, complaining that the sha256 is incorrect.</p>
+<blockquote>
+<p>Failed to download sources: module boost: Wrong sha256 checksum for boost_1_68_0.tar.bz2, expected “7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7”, was “4ffd1325229da00455ae95a68de976d053e46315628ffcd57a433238e74e7eab”</p>
+</blockquote>
+<p>I have separately downloaded the file so that I can use sha256sum to check it - and the checksum in the module is correct.</p>
+<blockquote>
+<p>$ sha256sum Downloads/boost_1_68_0.tar.bz2<br>
+7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7  Downloads/boost_1_68_0.tar.bz2</p>
+</blockquote>
+<p>I’ve probably made another newbie error…but the other 8 modules are downloaded and installed without any problems.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vincent Chernin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 15, 2021 11:15 PM">
+            <time itemprop="datePublished" datetime="2021-10-15 23:15:59 +0000">Oct 15, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is very strange, this is what I get. My sha256sum output matches flatpak-builder’s but not yours.</p>
+<pre><code class="lang-auto">$ wget https://boostorg.jfrog.io/ui/native/main/release/1.68.0/source/boost_1_68_0.tar.bz2
+
+$ sha256sum boost_1_68_0.tar.bz2 
+4ffd1325229da00455ae95a68de976d053e46315628ffcd57a433238e74e7eab  boost_1_68_0.tar.bz2
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 16, 2021 12:21 AM">
+            <time itemprop="datePublished" datetime="2021-10-16 00:21:45 +0000">Oct 16, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@vchernin</span> Don’t take this too seriously because it is late here and I’m tired, and I haven’t been able to give your post the consideration it deserves, but:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/760aee0076c8e4433dffe6fbe7f789c980307762.png" data-download-href="/uploads/original/1X/760aee0076c8e4433dffe6fbe7f789c980307762.png" title="boost1" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/760aee0076c8e4433dffe6fbe7f789c980307762_2_690x406.png" alt="boost1" data-base62-sha1="gQfL0OjtC3RANVResNWAtZQK4oi" width="690" height="406" srcset="/uploads/optimized/1X/760aee0076c8e4433dffe6fbe7f789c980307762_2_690x406.png, /uploads/original/1X/760aee0076c8e4433dffe6fbe7f789c980307762.png 1.5x, /uploads/original/1X/760aee0076c8e4433dffe6fbe7f789c980307762.png 2x" data-small-upload="/uploads/optimized/1X/760aee0076c8e4433dffe6fbe7f789c980307762_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">boost1</span><span class="informations">731×431 105 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br>
+What?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Vincent Chernin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 16, 2021 12:44 AM">
+            <time itemprop="datePublished" datetime="2021-10-16 00:44:19 +0000">Oct 16, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think I found the problem. There are 2 CDN URLs which give files of the same name but with different contents. Presumbably this is a mixup between them, you’ve checked one of these locally and put the other in your Flatpak manifest.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2.png" data-download-href="/uploads/original/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2_2_690x19.png" alt="image" data-base62-sha1="kL6rP4PrFW8sekKPcPv7JWn4ATM" width="690" height="19" srcset="/uploads/optimized/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2_2_690x19.png, /uploads/optimized/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2_2_1035x28.png 1.5x, /uploads/optimized/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2_2_1380x38.png 2x" data-small-upload="/uploads/optimized/1X/917e96c4dfb6eed26be82cfb7058e7a32be998e2_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">3792×106 24.8 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<pre><code class="lang-auto">wget https://boostorg.jfrog.io/ui/native/main/release/1.68.0/source/boost_1_68_0.tar.bz2
+4ffd1325229da00455ae95a68de976d053e46315628ffcd57a433238e74e7eab  boost_1_68_0.tar.bz2
+</code></pre>
+<pre><code class="lang-auto">wget https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.bz2
+7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7  boost_1_68_0.tar.bz2
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 16, 2021 10:32 AM">
+            <time itemprop="datePublished" datetime="2021-10-16 10:32:18 +0000">Oct 16, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was too “tired” last night to spot that you were using a slightly different URL, or that the SHA256 in my post was the one I was looking for. I had tried the latest version of Boost in the past and was getting the same error, I expect that was the same problem.<br>
+Boost has now been installed successfully. I doubt whether I would ever have worked this out, so thanks very much!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

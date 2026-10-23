@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How much filesystem permissions are too much? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How much filesystem permissions are too much?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How much filesystem permissions are too much?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 12, 2026</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alamahant</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 12, 2026 7:49 PM">
+            <time itemprop="datePublished" datetime="2026-03-12 19:49:23 +0000">Mar 12, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello Guys,</p>
+<p>During my last submission PR I was not even allowed to keep a very mild –in my humble opinion–</p>
+<code>
+<ul>
+<li>–filesystem=xdg-documents/myapp:create</li>
+</ul>
+</code>
+<p>in the yaml manifest.</p>
+<p>I felt overly shredded to pieces.</p>
+<p>This reduces the app user friendliness.</p>
+<p>So my kind question to you is</p>
+<p>How much permissions is too much?</p>
+<p>I hope you will help me understand better.</p>
+<p>Thanks a lot!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 12, 2026 9:38 PM">
+            <time itemprop="datePublished" datetime="2026-03-12 21:38:24 +0000">Mar 12, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since this was posted in the Discourse as a general question, I give an general answer first.</p>
+<hr>
+<p>In an ideal world, we would have no filesystem permission.</p>
+<p>You may ask why.</p>
+<p>As I can see it, there are generally two main types of how an application interacts with the filesystem.</p>
+<p>The first is data that the application stores itself without user input. That would be configuration, save states, cache, etc…<br>
+For these types of data, we have standard locations to store them in, as specified in the XDG base directory specification. This specification also defines environment variables to override them if the need arises. <br>
+For Flatpak, such a need existst: It wants to separate the application data from the system. This ensures applications can’t affect the system itself. Keep in mind a Flatpak application might run with newer libraries than the system. It also allows that data can be easily removed when the application is uninstalled. <br>
+For this reason, Flatpak gives each application its own folder, located under <code>~/.var/app/$APP_ID</code>, and provides overrides for the standard locations to point into that application folder. <br>
+A filesystem permission would break this separation, which is why permissions like <code>xdg-data</code> or <code>xdg-config</code> are usually not permitted.</p>
+<p>The second use is for data the user can manually organize.<br>
+Now, no user uses a filesystem in the same way. Some meticulously organize their files with deep folder structures. Some just throw every file onto the desktop and still somehow find the files they need. Some store files on external or network drives. <br>
+Users will pick whatever suits their needs best when it comes to where to store their data. Therefore, applications should be flexible enough to allow users to choose from where the files come. <br>
+But granting software unlimited access to the whole filesystem can be dangerous. It doesn’t even have to be malicious. It could just be a bug that suddenly results in an application deleting data it wasn’t supposed to. <br>
+For this reason, an application should only be granted access to the files the user actually wanted the application to use, instead of broad permissions.</p>
+<p>Unfortunately, for a long time the applications itself provided the file chooser in their own process. Inside a Flatpak, this would lead to applications only seeing their own sandbox. Partly because of this early Flatpak apps had large filesystem permissions to allow the file chooser to work. <br>
+To solve this, the FileChooser portal was introduced. With it, the application no longer provides a file chooser. It simply asks the system that it needs a file. The system then provides the file chooser dialog to the user and grants the application access to the file the user chose. <br>
+In many cases, if an application uses portals, it should not need any filesystem permissions. The user can freely choose where they store their files, and the application can request the access it needs over an secure process.</p>
+<p>There are unfortunately still exception to this. Using the portals requires active changes to the code to utilize them. Most modern toolkits like GTK or Qt do support them now, but it can require effort to change an large codebase of an old app. <br>
+And there are cases which require more files than the one the user explicitly requested. Think for example a HTML file which may have a reference to a separate stylesheet file. Designing a good portal for these which balance security and usability is still an open issue.</p>
+<p>But such exceptions to the rule should be carefully evaluated. And new applications should consider an UX design that fits with using portals.</p>
+<p>So, in short:<br>
+The ideal amount of filesystem permissions should be none. Applications should respect the standards to store internal data and respect user choice over their file organization by using the portal for user data.</p>
+<hr>
+<p>Now, a note specific to your submission:</p>
+<p>As far as I could tell from my quick test run, your application should be able to utilize the FileChooser portal. And it does on my system. So it should be able to do its tasks just fine, even without a filesystem permissions.</p>
+<p>The issues you’ve shown in the <a href="https://github.com/flathub/flathub/pull/8071#discussion_r2925984019" rel="noopener nofollow ugc">discussion in the PR</a> seemed to me more that on your system, the application failed to call the FileChooser portal, falling back to the internal one. This could be due to no portal implementation being active on the system to show the file chooser on the system.</p>
+<p>GNOME and KDE have their own portal implementations and should work in most cases. Some of the smaller desktops have not at the moment. Some have an interest in providing their own file chooser, such as <a href="https://gitlab.xfce.org/xfce/thunar/-/issues/547" rel="noopener nofollow ugc">Xfce for Thunar</a>, but haven’t completed that yet.</p>
+<p>For these, <code>xdg-desktop-portal-gtk</code> provides a simple file chooser implementation to use in the meantime. If installed and configured to be used (see the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/configuration-file.html" rel="noopener nofollow ugc">documentation</a> for this), it should provide it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alamahant</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 12, 2026 9:51 PM">
+            <time itemprop="datePublished" datetime="2026-03-12 21:51:46 +0000">Mar 12, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah ok. Got it</p>
+<p>I am now leaning on the possibility that the xfce-specific implementation of desktop portal might be different.</p>
+<p>I do however seem to have these installed:</p>
+<code>
+<p>xdg-desktop-portal-1.20.3<br>
+xdg-desktop-portal-gnome-48.0<br>
+xdg-desktop-portal-gtk-1.15.3<br>
+xdg-user-dirs-0.18<br>
+xdg-user-dirs-gtk-0.14<br>
+xdg-utils-1.2.1-r9</p>
+</code>
+<p>But still there is the case where a user needs to access ~/.var residing files– that possibly the app saved them there– using the normal file manager.be it thunar or nautilus or dolphin etc. In that case the facilitation of the app to have a dedicated folder and only one in a more prominent location would be very welcome. I mean still devs can use copy-path dialogs to be pasted in a file manager but that is a bit awkward.</p>
+<p>In any case thank you for taking the time to reply to me with such detail and clarity.</p>
+<p>I really appreciate it.</p>
+<p>Thanks again.</p>
+<p><img src="/images/emoji/twitter/slight_smile.png?v=15" title=":slight_smile:" class="emoji only-emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 12, 2026 9:55 PM">
+            <time itemprop="datePublished" datetime="2026-03-12 21:55:35 +0000">Mar 12, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="alamahant" data-post="3" data-topic="11847">
+<div class="title">
+<div class="quote-controls"></div>
+alamahant:</div>
+<blockquote>
+<p>I mean still devs can use copy-path dialogs to be pasted in a file manager but that is a bit awkward.</p>
+</blockquote>
+</aside>
+<p>If you need to guide the user to the internal application folder, you could also use the OpenURI portal (or <code>xdg-open</code>) to open said folder in the users file manager.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 18, 2026 12:11 AM">
+            <time itemprop="datePublished" datetime="2026-03-18 00:11:45 +0000">Mar 18, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That was very informative - thank you.</p>
+<p>But what about the case of an app that searches files.</p>
+<p>You point it at a directory, and it searches all subdirectories for files meeting some criteria.<br>
+Can that be accomplished with current portals and such?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 18, 2026 8:43 AM">
+            <time itemprop="datePublished" datetime="2026-03-18 08:43:13 +0000">Mar 18, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It should be possible with the FileChooser portal. You can use it to request access to a folder.</p>
+<p>As long as everything required is inside the requested folder, it should work without filesystem permissions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 18, 2026 2:45 PM">
+            <time itemprop="datePublished" datetime="2026-03-18 14:45:03 +0000">Mar 18, 2026</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I coulda sworn I’ve tried that before.</p>
+<p>Well, I’ll give it another try.  Thanks much !  I’d like to do things properly.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

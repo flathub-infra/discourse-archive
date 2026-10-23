@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remapping host directories into the sandbox - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Remapping host directories into the sandbox</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Remapping host directories into the sandbox</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 23, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tommy Brunn</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 23, 2024 9:57 AM">
+            <time itemprop="datePublished" datetime="2024-06-23 09:57:25 +0000">Jun 23, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to package up an application that expects users to provide some proprietary files in a hardcoded directory relative to the main executable. Ideally I suppose the application would use a portal to have the user select the file and then copy it into the sandbox, or maybe read the files from XDG_DATA or something, but it’s not my application, so here we are.</p>
+<p>What’s the recommended approach here? I read about <code>--persist</code> being able to map host directories into the sandbox, but it doesn’t seem like it would let me do something like mapping ~/.local/share/$APP_ID/foo to /app/bin/foo in the sandbox, and as far as I can tell the application only needs read access, so giving it write access to the home dir doesn’t sound right.</p>
+<p>Another option I’m considering, although I don’t really want to do it, is to write an entrypoint script that uses zenity to have the user select the files from the host, and then copy them into where the application expects them. That would technically work for this case, but it doesn’t really scale. For example, consider a game that lets users provide mods by putting them into some mod directory. The user would need to be able to access the directory themselves.</p>
+<p>I’m really interested in two cases:</p>
+<ol>
+<li>What’s the recommended approach for proprietary applications or applications that are just not interested in changing in order to work better when run in a sandbox? Could I somehow symlink <code>$XDG_DATA_HOME/foo</code> to <code>/app/foo</code>?</li>
+<li>In an ideal world where I can make any changes to the application, what is the best approach when the application wants to access some user-provided files? Tell the user to put them somewhere in <code>$XDG_DATA_HOME</code>?</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 23, 2024 5:45 PM">
+            <time itemprop="datePublished" datetime="2024-06-23 17:45:13 +0000">Jun 23, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Nevon" data-post="1" data-topic="6991">
+<div class="title">
+<div class="quote-controls"></div>
+Nevon:</div>
+<blockquote>
+<ol>
+<li>What’s the recommended approach for proprietary applications or applications that are just not interested in changing in order to work better when run in a sandbox? Could I somehow symlink <code>$XDG_DATA_HOME/foo</code> to <code>/app/foo</code>?</li>
+</ol>
+</blockquote>
+</aside>
+<p>I don’t know whether this is a recommended approach, but you should be able to install a symlink in <code>/app</code> pointing into <code>/var/data</code>, which is a special way to access <code>XDG_DATA_HOME</code> with a fixed path.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

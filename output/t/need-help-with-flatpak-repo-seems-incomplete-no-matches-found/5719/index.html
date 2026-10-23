@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Need Help with Flatpak, Repo seems incomplete, No matches found - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Need Help with Flatpak, Repo seems incomplete, No matches found</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Need Help with Flatpak, Repo seems incomplete, No matches found</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 15, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">X</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">xyhbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 15, 2023 1:35 PM">
+            <time itemprop="datePublished" datetime="2023-12-15 13:35:37 +0000">Dec 15, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to install some Flatpak apps but it seems that they’re missing from the Repo.<br>
+I’ve tried it with my newly setup RaspberryPi4 (latest Raspbian Lite) as well as WSL-Deb12. I had the same problem for my WSL but it somehow works now.<br>
+So I’ve looked up the installed remotes and searched for lutris, wine, proton and bottles on both of my devices and copied the results here.</p>
+<p>I’m now utterly confused on why that is and appreciate any help in advance.</p>
+<p>I use the alias fs=‘flatpak search’<br>
+My Rasbperry Pi:</p>
+<pre><code class="lang-auto">p@raspi-p:~ $ flatpak remotes
+Name    Options
+flathub system
+p@raspi-p:~ $ fs lutris
+No matches found
+p@raspi-p:~ $ fs wine
+Name                 Description                                             Application ID       Version Branch Remotes
+Twine                Twine is an open-source tool for telling interactive, … org.twinery.Twine    2.7.1   stable flathub
+Tellico              Collection Manager                                      org.kde.tellico      3.5.2   stable flathub
+Minecraft Bedrock L… Download and play Minecraft Bedrock Edition on GNU/Lin… ….mrarm.mcpelauncher v0.12.0 stable flathub
+p@raspi-p:~ $ fs proton
+Name      Description                                                 Application ID              Version Branch Remotes
+Proton V… Trusted and easy-to-use VPN app for Linux                   com.protonvpn.www           4.1.0   stable flathub
+ludusavi  Back up your PC video game save data                        …github.mtkennerly.ludusavi 0.21.0  stable flathub
+Ten Forw… Configure port forwarding on your gateway through the NAT-… fr.sgued.ten_forward        0.2.1   stable flathub
+p@raspi-p:~ $ fs bottles
+No matches found
+p@raspi-p:~ $
+</code></pre>
+<p>My PC with WSL-Deb12</p>
+<pre><code class="lang-auto">p@WSL:~$ flatpak remotes
+Name    Options
+flathub system
+p@WSL:~$ fs lutris
+Name          Description                             Application ID           Version        Branch       Remotes
+Lutris        Video game preservation platform        net.lutris.Lutris        0.5.14         stable       flathub
+p@WSL:~$ fs wine
+Name          Description                                        Application ID         Version     Branch       Remotes
+Wine          Run Windows applications on Linux, BSD, Solaris a… org.winehq.Wine        8.0.2       stable-23.08 flathub
+Wine          Run Windows applications on Linux, BSD, Solaris a… org.winehq.Wine        8.0.2       stable-22.08 flathub
+Wine          Run Windows applications on Linux, BSD, Solaris a… org.winehq.Wine        7.0         stable-21.08 flathub
+Wine          Adds support to Fightcade for running emulators i… …htcade.Fightcade.Wine             stable       flathub
+q4wine        Utility for Wine applications and prefixes manage… ….org.brezblock.q4wine 1.3.13      stable       flathub
+WineZGUI      Wine GUI using Zenity                              ….fastrizwaan.WineZGUI 0.98.4      stable       flathub
+PlayOnLinux 4 Graphical front-end for Wine                       …yonlinux.PlayOnLinux4 4.4         stable       flathub
+Wineglass     A GUI for Wine                                     …hub.aggalex.Wineglass 1.1.2       stable       flathub
+Phoenicis Pl… Install and run Windows software on Linux          …phoenicis.playonlinux 5.0-alpha-3 stable       flathub
+Protontricks  A simple wrapper that does winetricks things for … …Matoking.protontricks 1.10.5      stable       flathub
+Lutris        Video game preservation platform                   net.lutris.Lutris      0.5.14      stable       flathub
+Bottles       Run Windows Software                               com.usebottles.bottles 51.9        stable       flathub
+Mono          .NET Framework implementation for Wine based on M… org.winehq.Wine.mono               stable-23.08 flathub
+Mono          .NET Framework implementation for Wine based on M… org.winehq.Wine.mono               stable-22.08 flathub
+Mono          .NET Framework implementation for Wine based on M… org.winehq.Wine.mono               stable-21.08 flathub
+Gecko         Web engine for Wine based on Mozilla Gecko         org.winehq.Wine.gecko              stable-23.08 flathub
+Gecko         Web engine for Wine based on Mozilla Gecko         org.winehq.Wine.gecko              stable-22.08 flathub
+Gecko         Web engine for Wine based on Mozilla Gecko         org.winehq.Wine.gecko              stable-21.08 flathub
+DXVK          Vulkan-based implementation of D3D9, D3D10 and D3… …winehq.Wine.DLLs.dxvk 2.3         stable-23.08 flathub
+DXVK          Vulkan-based implementation of D3D9, D3D10 and D3… …winehq.Wine.DLLs.dxvk 2.3         stable-22.08 flathub
+DXVK          Vulkan-based implementation of D3D9, D3D10 and D3… …winehq.Wine.DLLs.dxvk 1.10.3      stable-21.08 flathub
+ProtonUp-Qt   Install Wine- and Proton-based compatibility tools net.davidotek.pupgui2  2.8.2       stable       flathub
+ProtonPlus    A simple Wine and Proton-based compatiblity tools… com.vysp3r.ProtonPlus  0.4.9       stable       flathub
+Twine         Twine is an open-source tool for telling interact… org.twinery.Twine      2.7.1       stable       flathub
+HyperPlay     Web3 game launcher from the future. Carry your wa… …z.hyperplay.HyperPlay v0.10.0     stable       flathub
+Tellico       Collection Manager                                 org.kde.tellico        3.5.2       stable       flathub
+Minecraft Be… Download and play Minecraft Bedrock Edition on GN… io.mrarm.mcpelauncher  v0.12.0     stable       flathub
+XIVLauncher   Launcher &amp; seamless Linux integration for Final F… dev.goats.xivlauncher  1.0.6       stable       flathub
+Heroic Games… An Open Source Epic Games, GOG and Amazon Prime G… …roicgameslauncher.hgl v2.11.0     stable       flathub
+XIVLauncherCN Launcher &amp; seamless Linux integration for Final F… …tercorp.xivlaunchercn 1.0.6.2     stable       flathub
+p@WSL:~$ fs proton
+Name          Description                                      Application ID                    Version  Branch Remotes
+Proton (comm… Latest Proton version built on the Flatpak Free… …e.Steam.CompatibilityTool.Proton 7.0-5    stable flathub
+Proton-GE (c… Latest Proton-GE version built on the Flatpak F… …team.CompatibilityTool.Proton-GE 8.16-1   stable flathub
+Proton VPN    Trusted and easy-to-use VPN app for Linux        com.protonvpn.www                 4.1.0    stable flathub
+Proton Mail … Seamlessly encrypts and decrypts your mail as i… ch.protonmail.protonmail-bridge   3.7.1    stable flathub
+thcrap-steam… A wrapper script for integrating the Touhou Com… …lity.thcrap_steam_proton_wrapper          stable flathub
+Protontricks  A simple wrapper that does winetricks things fo… com.github.Matoking.protontricks  1.10.5   stable flathub
+ludusavi      Back up your PC video game save data             com.github.mtkennerly.ludusavi    0.21.0   stable flathub
+Celeste       Sync your cloud files                            com.hunterwittenborn.Celeste      0.8.1    stable flathub
+ProtonUp-Qt   Install Wine- and Proton-based compatibility to… net.davidotek.pupgui2             2.8.2    stable flathub
+ProtonMail I… Import emails to your secure ProtonMail inbox o… …ail.protonmail-import-export-app 1.3.3    stable flathub
+ProtonPlus    A simple Wine and Proton-based compatiblity too… com.vysp3r.ProtonPlus             0.4.9    stable flathub
+HyperPlay     Web3 game launcher from the future. Carry your … xyz.hyperplay.HyperPlay           v0.10.0  stable flathub
+Steam         Launcher for the Steam software distribution se… com.valvesoftware.Steam           1.0.0.78 stable flathub
+Heroic Games… An Open Source Epic Games, GOG and Amazon Prime… com.heroicgameslauncher.hgl       v2.11.0  stable flathub
+ElectronMail  Unofficial desktop client for ProtonMail         com.github.vladimiry.ElectronMail 5.2.2    stable flathub
+Ten Forward   Configure port forwarding on your gateway throu… fr.sgued.ten_forward              0.2.1    stable flathub
+p@WSL:~$ fs bottles
+Name           Description                Application ID               Version       Branch       Remotes
+Bottles        Run Windows Software       com.usebottles.bottles       51.9          stable       flathub
+p@WSL:~$
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 15, 2023 5:30 PM">
+            <time itemprop="datePublished" datetime="2023-12-15 17:30:45 +0000">Dec 15, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Not every package is available for aarch64.</p>
+<p>The one you list are likely to NEVER be as they are meant to emulate legacy PC, aka Windows.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">X</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">xyhbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 15, 2023 6:01 PM">
+            <time itemprop="datePublished" datetime="2023-12-15 18:01:56 +0000">Dec 15, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, do I understand you correctly? Flathub does a hardware (or at least an architecture) check and just hides results if the packages are incompatible.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

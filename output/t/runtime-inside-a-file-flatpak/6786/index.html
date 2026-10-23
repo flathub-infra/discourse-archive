@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Runtime inside a file .flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Runtime inside a file .flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Runtime inside a file .flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 31, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 31, 2024 5:58 PM">
+            <time itemprop="datePublished" datetime="2024-05-31 17:58:25 +0000">May 31, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you tell me if it is possible to include a runtime (org.kde.Platform) in a.flatpak file so that the.flatpak file can also be installed on a PC that does not have an internet connection in case the runtime is not present on the machine. Basically, that the flatpak can be copied, for example, on a USB stick and installed on any PC even when you don’t have the possibility to connect to the flathub repositories to download the runtime? Of course, I realize that this will make the.flatpak file much larger.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 1, 2024 2:45 AM">
+            <time itemprop="datePublished" datetime="2024-06-01 02:45:00 +0000">Jun 1, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, a .flatpak bundle can only include a single ref.</p>
+<p>As an alternative, you can use <code>flatpak create-usb</code>:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flatpak.org/en/latest/usb-drives.html">
+  <header class="source">
+      <img src="/uploads/original/2X/6/6f10d6976a3c5a5709f4993b8d5b076a7d05d84a.png" class="site-icon" data-dominant-color="4A90D9" width="180" height="180">
+
+      <a href="https://docs.flatpak.org/en/latest/usb-drives.html" target="_blank" rel="noopener nofollow ugc">Flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/360;"><img src="/uploads/optimized/2X/b/b0b778dfbe5af543c7037a5bc4f2fe9ca951e9db_2_690x361.png" class="thumbnail" data-dominant-color="F6F6F7" width="690" height="361"></div>
+
+<h3><a href="https://docs.flatpak.org/en/latest/usb-drives.html" target="_blank" rel="noopener nofollow ugc">USB Drives</a></h3>
+
+  <p>One can distribute flatpaks along with their dependencies on USB drives (or network shares, etc.) which is especially helpful in situations where Internet access is limited or non-existent. For off...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 1, 2024 5:49 PM">
+            <time itemprop="datePublished" datetime="2024-06-01 17:49:31 +0000">Jun 1, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the clarification. I would also like to know if it is possible to download the flatpaks of the apps and runtimes from flathub? Because I don’t see the possibility from the site and it seems strange to me. In flatpak format obviously.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 1, 2024 7:29 PM">
+            <time itemprop="datePublished" datetime="2024-06-01 19:29:02 +0000">Jun 1, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Unlike with other package formats, <code>.flatpak</code> bundles are not used natively by flatpak. Flathub hosts an ostree repo that flatpak pulls from.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 2, 2024 9:25 AM">
+            <time itemprop="datePublished" datetime="2024-06-02 09:25:35 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the clarification. Honestly I find it a bit of a flaw. Just out of curiosity, does the same thing apply to Canonical’s SNAPs?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 2, 2024 1:23 PM">
+            <time itemprop="datePublished" datetime="2024-06-02 13:23:31 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="enrico94" data-post="5" data-topic="6786">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>Honestly I find it a bit of a flaw.</p>
+</blockquote>
+</aside>
+<p>Why?</p>
+<p>It can also be an OCI instead of ostree <a href="https://opencontainers.org/posts/blog/2018-11-07-bringing-oci-images-to-the-desktop-with-flatpak/" class="inline-onebox">Bringing OCI images to the desktop with Flatpak - Open Container Initiative</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jun 2, 2024 1:49 PM">
+            <time itemprop="datePublished" datetime="2024-06-02 13:49:31 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry for my ignorance, but I’m trying to understand. If I used OCI repo instead of OStree repo, could I create a .flatpak file that also brings the runtime. So that I can distribute the flatpak even on a PC that does not have the ability to access the network to download it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 2, 2024 2:03 PM">
+            <time itemprop="datePublished" datetime="2024-06-02 14:03:20 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, that’s on the repo side of things. That’s why I was confused, why you would even care or identify this as a flaw.</p>
+<p>You can as mentioned above, just run <code>create-usb</code> and solve your problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jun 2, 2024 6:46 PM">
+            <time itemprop="datePublished" datetime="2024-06-02 18:46:24 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able to use the flatpak create-usb command with these commands:</p>
+<p><code>flatpak info -o org.tarro.lamiavideoteca</code><br>
+terminal answer: lamiavideoteca1-origin</p>
+<pre><code class="lang-auto">flatpak remote-modify --collection-id=org.tarro.lamiavideoteca lamiavideoteca1-origin
+</code></pre>
+<pre><code class="lang-auto">flatpak create-usb ~/Scrivania/Flatpak/LaMiaVideoteca org.tarro.lamiavideoteca
+</code></pre>
+<p>An empty folder is created but it weighs about 500 Mb,</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec.png" data-download-href="/uploads/original/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec.png" title="Schermata del 2024-06-02 20-45-55" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec_2_690x388.png" alt="Schermata del 2024-06-02 20-45-55" data-base62-sha1="pz6MUDr3OdfamfFCI6M5oCaLFCI" width="690" height="388" srcset="/uploads/optimized/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec_2_690x388.png, /uploads/optimized/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec_2_1035x582.png 1.5x, /uploads/optimized/2X/b/b32e5baac72c6ae2b9d149f2af7044bd466207ec_2_1380x776.png 2x" data-dominant-color="1B1B1B"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-06-02 20-45-55</span><span class="informations">1920×1080 79.2 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>so i try to install it on a virgin PC with these commands:</p>
+<pre><code class="lang-auto">flatpak remote-add --user lamiavideoteca1-origin '/home/enrico/Scrivania/Flatpak/LaMiaVideoteca' --no-gpg-verify
+</code></pre>
+<pre><code class="lang-auto">flatpak remote-modify --collection-id=org.tarro.lamiavideoteca lamiavideoteca1-origin
+</code></pre>
+<pre><code class="lang-auto">flatpak install --sideload-repo='/home/enrico/Scrivania/Flatpak/LaMiaVideoteca'
+lamiavideoteca1-origin org.tarro.lamiavideoteca
+</code></pre>
+<p>the command works, but unfortunately I note with regret that the PC connects to the network to download the runtime.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jun 2, 2024 10:48 PM">
+            <time itemprop="datePublished" datetime="2024-06-02 22:48:52 +0000">Jun 2, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I guess you tried to package the runtime like that too?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Jun 3, 2024 9:43 PM">
+            <time itemprop="datePublished" datetime="2024-06-03 21:43:04 +0000">Jun 3, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>razzeee<br>
+Sorry I can’t understand? You mean I have to issue the command:<br>
+<code>flatpak create-usb ~/Scrivania/Flatpak/LaMiaVideoteca (runtime/org.kde.Platform/x86_64/6.6)</code> after giving the command<br>
+<code>flatpak create-usb ~/Scrivania/Flatpak/LaMiaVideoteca org.tarro.lamiavideoteca?</code><br>
+To include it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Jun 4, 2024 7:26 PM">
+            <time itemprop="datePublished" datetime="2024-06-04 19:26:11 +0000">Jun 4, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry I thought it was possible to install everything in one package (folder in this case), but I guess you can just make a <code>flatpak create-usb</code> for one app/runtime at a time. <code>flatpak create-usb ~/Scrivania/Flatpak/Runtime org.kde.Platform/x86_64/6.6</code> give me this error:</p>
+<pre><code class="lang-auto">(flatpak create-usb:12250): OSTree-CRITICAL **: 21:25:12.067: ostree_collection_ref_new: assertion 'collection_id == NULL || ostree_validate_collection_id (collection_id, NULL)' failed
+Errore di segmentazione (core dump creato)
+</code></pre>
+<p>What does it mean?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Jun 5, 2024 9:40 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 09:40:39 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It should never core dump. That’s something, you should probably report to the flatpak issue tracker.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Jun 5, 2024 11:55 AM">
+            <time itemprop="datePublished" datetime="2024-06-05 11:55:06 +0000">Jun 5, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it does as some of these errors call <code>abort()</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Jun 9, 2024 12:04 PM">
+            <time itemprop="datePublished" datetime="2024-06-09 12:04:12 +0000">Jun 9, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I changed distribution and tried again (Kubuntu 24.04). I managed to ‘extract’ the runtime using the same command that was giving me the error. Maybe it was just a ‘collection_id’ problem. The file that is generated inside the folder is not visible (.ostree) which is why I couldn’t see it (it was a trivial thing).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

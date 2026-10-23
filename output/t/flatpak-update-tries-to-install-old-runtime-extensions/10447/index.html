@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak update tries to install old runtime extensions - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak update tries to install old runtime extensions</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak update tries to install old runtime extensions</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 11, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">akoma1s</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 11, 2025 9:27 AM">
+            <time itemprop="datePublished" datetime="2025-09-11 09:27:10 +0000">Sep 11, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>How can I find out what’s pulling these in:</p>
+<pre><code class="lang-auto">$ flatpak update                     
+Looking for updates…
+
+Info: runtime org.gnome.Platform branch 46 is end-of-life, with reason:
+   The GNOME 46 runtime is no longer supported as of April 17, 2025. Please ask your application developer to migrate to a supported platform.
+Info: applications using this runtime:
+   net.lutris.Lutris, org.gnome.Cheese
+
+Info: runtime org.gnome.Platform.Compat.i386 branch 46 is end-of-life, with reason:
+   The GNOME 46 runtime is no longer supported as of April 17, 2025. Please ask your application developer to migrate to a supported platform.
+Info: applications using this extension:
+   net.lutris.Lutris
+
+
+        ID                                                    Branch                   Op             Remote              Download
+ 1.     org.freedesktop.Platform.GL.default                   23.08                    i              flathub             &lt; 169,7 MB
+ 2.     org.freedesktop.Platform.GL.default                   23.08-extra              i              flathub             &lt; 169,7 MB
+ 3.     org.freedesktop.Platform.GL.default                   24.08extra               i              flathub             &lt; 145,0 MB
+ 4.     org.freedesktop.Platform.GL32.default                 23.08                    i              flathub             &lt; 181,6 MB
+ 5.     org.freedesktop.Platform.GL32.default                 24.08extra               i              flathub             &lt; 154,3 MB
+ 6.     org.freedesktop.Platform.VAAPI.Intel                  23.08                    i              flathub              &lt; 13,6 MB
+ 7.     org.freedesktop.Platform.ffmpeg-full                  23.08                    i              flathub               &lt; 9,2 MB
+ 8.     org.freedesktop.Platform.ffmpeg_full.i386             23.08                    i              flathub               &lt; 9,4 MB
+ 9.     org.winehq.Wine.DLLs.dxvk                             stable-23.08             i              flathub               &lt; 9,1 MB
+10.     org.winehq.Wine.gecko                                 stable-23.08             i              flathub             &lt; 108,6 MB
+11.     org.winehq.Wine.mono                                  stable-23.08             i              flathub              &lt; 83,5 MB
+
+Proceed with these changes to the system installation? [Y/n]: n
+</code></pre>
+<p>Here is my installed flatpaks list:</p>
+<pre><code class="lang-auto">$ flatpak list
+Name                                      Application ID                                    Version                    Branch        Origin                 Installation
+Scrcpy                                    com.Genymobile.Scrcpy                                                        master        scrcpy-origin          system
+AnyDesk                                   com.anydesk.Anydesk                               7.0.2                      stable        flathub                system
+Flatseal                                  com.github.tchx84.Flatseal                        2.3.1                      stable        flathub                system
+Google Earth Pro                          com.google.EarthPro                               7.3.6                      stable        flathub                system
+Alpaca                                    com.jeffser.Alpaca                                8.0.0                      stable        flathub                system
+Ollama Instance                           com.jeffser.Alpaca.Plugins.Ollama                 0.11.10                    stable        flathub                system
+Pied                                      com.mikeasoft.pied                                0.3.0                      master        pied-origin            system
+Shattered Pixel Dungeon                   com.shatteredpixel.shatteredpixeldungeon          3.2.3                      stable        flathub                system
+Steam                                     com.valvesoftware.Steam                           1.0.0.83                   stable        flathub                system
+git-lfs                                   com.visualstudio.code.tool.git-lfs                3.5.1                      23.08         flathub                system
+VSCodium                                  com.vscodium.codium                               1.103.25610                stable        flathub                system
+GPU-Viewer                                io.github.arunsivaramanneo.GPUViewer              3.15                       stable        flathub                system
+Ungoogled Chromium                        io.github.ungoogled_software.ungoogled_chromium   140.0.7339.80-1            stable        flathub                system
+Strongbox                                 la.ogri.strongbox                                 7.6.0                      stable        flathub                system
+Lutris                                    net.lutris.Lutris                                 0.5.18                     stable        flathub                system
+DevilutionX                               org.diasurgical.DevilutionX                       1.5.4                      stable        flathub                system
+Freedesktop Platform                      org.freedesktop.Platform                          freedesktop-sdk-24.08.25   24.08         flathub                system
+Freedesktop Platform                      org.freedesktop.Platform                          freedesktop-sdk-25.08.0    25.08         flathub                system
+Clinfo                                    org.freedesktop.Platform.ClInfo                   3.0.23.01.25               25.08         flathub                system
+i386                                      org.freedesktop.Platform.Compat.i386                                         24.08         flathub                system
+i386                                      org.freedesktop.Platform.Compat.i386                                         25.08         flathub                system
+Mesa                                      org.freedesktop.Platform.GL.default               25.2.2                     24.08         flathub                system
+Mesa                                      org.freedesktop.Platform.GL.default               25.2.1                     25.08         flathub                system
+Mesa (Extra)                              org.freedesktop.Platform.GL.default               25.2.1                     25.08-extra   flathub                system
+nvidia-580-82-07                          org.freedesktop.Platform.GL.nvidia-580-82-07                                 1.4           flathub                system
+Mesa                                      org.freedesktop.Platform.GL32.default             25.2.2                     24.08         flathub                system
+Mesa                                      org.freedesktop.Platform.GL32.default             25.2.1                     25.08         flathub                system
+nvidia-580-82-07                          org.freedesktop.Platform.GL32.nvidia-580-82-07                               1.4           flathub                system
+Glxinfo                                   org.freedesktop.Platform.GlxInfo                  9.0.0                      25.08         flathub                system
+Intel VAAPI driver                        org.freedesktop.Platform.VAAPI.Intel                                         24.08         flathub                system
+Intel VAAPI driver                        org.freedesktop.Platform.VAAPI.Intel                                         25.08         flathub                system
+i386                                      org.freedesktop.Platform.VAAPI.Intel.i386                                    24.08         flathub                system
+i386                                      org.freedesktop.Platform.VAAPI.Intel.i386                                    25.08         flathub                system
+Nvidia VAAPI driver                       org.freedesktop.Platform.VAAPI.nvidia                                        25.08         flathub                system
+Vainfo                                    org.freedesktop.Platform.VaInfo                   2.22.0                     25.08         flathub                system
+VdpauInfo                                 org.freedesktop.Platform.VdpauInfo                1.5                        25.08         flathub                system
+VulkanInfo                                org.freedesktop.Platform.VulkanInfo               1.3.296                    25.08         flathub                system
+Codecs Extra Extension                    org.freedesktop.Platform.codecs-extra                                        25.08-extra   flathub                system
+FFmpeg extension with extra codecs        org.freedesktop.Platform.ffmpeg-full                                         24.08         flathub                system
+i386                                      org.freedesktop.Platform.ffmpeg_full.i386                                    24.08         flathub                system
+openh264                                  org.freedesktop.Platform.openh264                 2.4.1                      2.4.1         flathub                system
+openh264                                  org.freedesktop.Platform.openh264                 2.5.1                      2.5.1         flathub                system
+Freedesktop SDK                           org.freedesktop.Sdk                               freedesktop-sdk-24.08.25   24.08         flathub                system
+Freedesktop SDK                           org.freedesktop.Sdk                               freedesktop-sdk-25.08.0    25.08         flathub                system
+Node.js 24.x                              org.freedesktop.Sdk.Extension.node24              24.7.0                     25.08         flathub                system
+Ghidra                                    org.ghidra_sre.Ghidra                             11.4.2                     stable        flathub                system
+GNU Image Manipulation Program            org.gimp.GIMP                                     3.0.4                      stable        flathub                system
+HEIC                                      org.gimp.GIMP.HEIC                                                           stable        flathub                system
+Cheese                                    org.gnome.Cheese                                  44.1                       stable        flathub                system
+GNOME Application Platform version 46     org.gnome.Platform                                                           46            flathub                system
+GNOME Application Platform version 48     org.gnome.Platform                                                           48            flathub                system
+i386                                      org.gnome.Platform.Compat.i386                                               46            flathub                system
+Adwaita dark GTK theme                    org.gtk.Gtk3theme.Adwaita-dark                                               3.22          flathub                system
+Gruvbox-Dark GTK Theme                    org.gtk.Gtk3theme.Gruvbox-Dark                                               3.22          gruvbox-dark-origin    system
+Gruvbox-Light GTK Theme                   org.gtk.Gtk3theme.Gruvbox-Light                                              3.22          gruvbox-light-origin   system
+Inkscape                                  org.inkscape.Inkscape                             1.4.2                      stable        flathub                system
+Adwaita theme                             org.kde.KStyle.Adwaita                                                       5.15-24.08    flathub                system
+KDE Application Platform                  org.kde.Platform                                                             5.15-24.08    flathub                system
+Firefox Developer Edition (Unofficial)    org.mozilla.FirefoxDev                            143.0b9                    master        firefoxdev-origin      system
+Tor Browser Launcher                      org.torproject.torbrowser-launcher                0.3.7                      stable        flathub                system
+VLC                                       org.videolan.VLC                                  3.0.21                     stable        flathub                system
+Wine                                      org.winehq.Wine                                   10.0                       wow64-25.08   flathub                system
+gecko-wow64                               org.winehq.Wine.gecko-wow64                                                  wow64-25.08   flathub                system
+mono-wow64                                org.winehq.Wine.mono-wow64                                                   wow64-25.08   flathub                system
+</code></pre>
+<p>and my pins:</p>
+<pre><code class="lang-auto">$ flatpak pin   
+Pinned patterns:
+  runtime/com.jeffser.Alpaca.Plugins.Ollama/x86_64/stable
+  runtime/com.visualstudio.code.tool.git-lfs/x86_64/23.08
+  runtime/org.freedesktop.Platform.GL.nvidia-580-82-07/x86_64/1.4
+  runtime/org.freedesktop.Platform.GL32.nvidia-580-82-07/x86_64/1.4
+  runtime/org.freedesktop.Platform.VAAPI.Intel/x86_64/24.08
+  runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/24.08
+  runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/24.08
+  runtime/org.freedesktop.Platform.openh264/x86_64/2.5.1
+  runtime/org.freedesktop.Sdk.Extension.node24/x86_64/25.08
+</code></pre>
+<p>System info:</p>
+<pre><code class="lang-auto">$ flatpak --version
+Flatpak 1.14.10
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 12 (bookworm)
+Release:	12
+Codename:	bookworm
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 11, 2025 1:45 PM">
+            <time itemprop="datePublished" datetime="2025-09-11 13:45:36 +0000">Sep 11, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>your  game launcher. The one using an obsolete GNOME runtime</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">akoma1s</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 19, 2025 8:52 AM">
+            <time itemprop="datePublished" datetime="2025-09-19 08:52:49 +0000">Sep 19, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for replying, missed the notification at the time.</p>
+<p>I suspected as much re Lutris - what I actually want to know is how to find out the dependencies, roughly like <code>apt rdepends</code> does it.</p>
+<p>A crude start to finding out would be something like this I guess:<br>
+<code>ffd()(for p in $(flatpak list --columns=application);do 2&gt;/dev/null flatpak info -m $p | grep -iq "$1" &amp;&amp; echo $p;done);ffd wine</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

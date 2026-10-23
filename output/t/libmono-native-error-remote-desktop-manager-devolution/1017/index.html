@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libmono-native error, remote desktop manager, devolution - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Libmono-native error, remote desktop manager, devolution</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Libmono-native error, remote desktop manager, devolution</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 30, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Christian</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 30, 2020 2:58 PM">
+            <time itemprop="datePublished" datetime="2020-12-30 14:58:40 +0000">Dec 30, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I am new to flatpak and tried to create a flatpak manifest for the “Remote Desktop Manager” software from Devolution.</p>
+<p>It is a commercial software, and so I tried to create a copy/paste manifest from MS Visual Code manifest.<br>
+Manifest:</p>
+<blockquote>
+<pre><code>app-id: com.devolution.RDM
+default-branch: stable
+runtime: org.freedesktop.Sdk
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: remotedesktopmanager
+tags: [proprietary]
+finish-args:
+  - --require-version=0.10.3
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+  - --share=network
+  - --device=all
+  - --filesystem=host
+  - --allow=devel
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.freedesktop.Flatpak
+  - --env=LD_LIBRARY_PATH=/app/usr/lib/devolutions/RemoteDesktopManager/
+  - --filesystem=xdg-config/kdeglobals:ro
+  - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=com.canonical.AppMenu.Registrar.*
+  - --system-talk-name=org.freedesktop.login1
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.mono6
+  
+modules:
+  - name: rdm
+    buildsystem: simple
+    build-commands:
+      - ar x RemoteDesktopManager.deb
+      - tar xf data.tar.xz
+      - mv usr/ /app/
+      - rm -r control.tar.xz data.tar.xz debian-binary
+      - install -D remotedesktopmanager /app/bin/remotedesktopmanager
+    sources:
+      - type: file
+        url: https://cdn.devolutions.net/download/Linux/RDM/2020.3.1.0/RemoteDesktopManager_2020.3.1.0_amd64.deb
+        dest-filename: RemoteDesktopManager.deb
+        sha256: b2f9ea487f8822636d8a6118c4fb39816fdaebc46a4d53cf766b5baf1194c05b
+        only-arches:
+          - x86_64
+      - type: file
+        path: remotedesktopmanager
+</code></pre>
+</blockquote>
+<p>Start script:</p>
+<blockquote>
+<p>cat remotedesktopmanager<br>
+#!/bin/bash<br>
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/usr/lib/devolutions/RemoteDesktopManager/<br>
+cd /app/usr/lib/devolutions/RemoteDesktopManager/<br>
+./RemoteDesktopManager</p>
+</blockquote>
+<p>I can build the software but when I try to start it I get the error: System.DllNotFoundException: libmono-native.so</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/4e81e58516f9036e485b4d7072011d7ceddc589d.jpeg" data-download-href="/uploads/original/1X/4e81e58516f9036e485b4d7072011d7ceddc589d.jpeg" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/4e81e58516f9036e485b4d7072011d7ceddc589d_2_690x122.jpeg" alt="image" data-base62-sha1="bcvxMc3YTyHzzx79e2k0HZBNPwF" width="690" height="122" srcset="/uploads/optimized/1X/4e81e58516f9036e485b4d7072011d7ceddc589d_2_690x122.jpeg, /uploads/optimized/1X/4e81e58516f9036e485b4d7072011d7ceddc589d_2_1035x183.jpeg 1.5x, /uploads/optimized/1X/4e81e58516f9036e485b4d7072011d7ceddc589d_2_1380x244.jpeg 2x" data-dominant-color="28282B"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1495×265 102 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Now I am stucked, when I start the software without flatpak it is working. Within  flatpak I get the libmono error. What can I do find the failure? I tried it with the debug shell and so on, but cannot figure out what the difference is.</p>
+<p>Thanks, Br</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 30, 2020 8:12 PM">
+            <time itemprop="datePublished" datetime="2020-12-30 20:12:49 +0000">Dec 30, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You need to “install” things in the build steps with  <code>/usr/lib/sdk/mono6/install.sh</code></p>
+<p>Example:</p>
+<aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/flathub/org.famistudio.FamiStudio/blob/690c69562c55abecffa315bf4af8e3c2db318c8d/org.famistudio.FamiStudio.yml#L21" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.famistudio.FamiStudio/blob/690c69562c55abecffa315bf4af8e3c2db318c8d/org.famistudio.FamiStudio.yml#L21" target="_blank" rel="noopener nofollow ugc">flathub/org.famistudio.FamiStudio/blob/690c69562c55abecffa315bf4af8e3c2db318c8d/org.famistudio.FamiStudio.yml#L21</a></h4>
+<pre class="onebox"><code class="lang-yml"><ol class="start lines" start="11" style="counter-reset: li-counter 10 ;">
+<li>  - --socket=pulseaudio</li><li># Read and write projects</li><li>  - --filesystem=home</li><li># For the Mono runtime</li><li>  - --env=MONO_GAC_PREFIX=${FLATPAK_DEST}</li><li># Midi keyboard input</li><li>  - --device=all</li><li>modules:</li><li>  - shared-modules/gtk2/gtk2.json</li><li></li><li class="selected">  - name: mono6</li><li>    buildsystem: simple</li><li>    build-commands:</li><li>      - /usr/lib/sdk/mono6/install.sh</li><li></li><li>  - name: gtk-sharp2</li><li>    buildsystem: simple</li><li>    build-commands:</li><li>      - export PATH=$PATH:/usr/lib/sdk/mono6/bin &amp;&amp; export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/sdk/mono6/lib &amp;&amp; export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/sdk/mono6/lib/pkgconfig &amp;&amp; ./configure --prefix=/app &amp;&amp; make &amp;&amp; make install</li><li>    sources:</li><li>      - type: archive</li>
+</ol></code></pre>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Christian</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 30, 2020 9:09 PM">
+            <time itemprop="datePublished" datetime="2020-12-30 21:09:50 +0000">Dec 30, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>thanks for your reply. I found out that the mono library is included in the rdm-software. I made some trial and error runs and when I change the runtime from freedesktop to  gnome and add the option --socket=session-bus, the software is running. It is strange that the runtime makes a difference.</p>
+<pre><code>app-id: com.devolution.RDM
+default-branch: stable
+runtime: org.gnome.Platform
+runtime-version: '3.38'
+sdk: org.gnome.Sdk
+command: remotedesktopmanager
+tags: [proprietary]
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+  - --socket=session-bus 
+  - --share=network
+  - --filesystem=host
+  - --allow=devel
+   
+modules:
+  - name: rdm
+    buildsystem: simple
+    build-commands:
+      - ar x RemoteDesktopManager.deb
+      - tar xf data.tar.xz
+      - mv usr/ /app/
+      - rm -r control.tar.xz data.tar.xz debian-binary
+      - ls -la bin/remotedesktopmanager
+      - install -D remotedesktopmanager /app/bin/remotedesktopmanager
+    sources:
+      - type: file
+        url: https://cdn.devolutions.net/download/Linux/RDM/2020.3.1.0/RemoteDesktopManager_2020.3.1.0_amd64.deb
+        dest-filename: RemoteDesktopManager.deb
+        sha256: b2f9ea487f8822636d8a6118c4fb39816fdaebc46a4d53cf766b5baf1194c05b
+        only-arches:
+          - x86_64
+      - type: file
+        path: remotedesktopmanager</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

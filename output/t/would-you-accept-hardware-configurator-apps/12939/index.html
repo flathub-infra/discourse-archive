@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Would you accept hardware configurator apps? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Would you accept hardware configurator apps?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Would you accept hardware configurator apps?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 15, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Miguel Sanz Boragan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 15, 2026 9:37 PM">
+            <time itemprop="datePublished" datetime="2026-10-15 21:37:31 +0000">Oct 15, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>I maintain three small open source Linux configurators for hardware that only ships Windows software:</p>
+<ul>
+<li>8BitDo Ultimate 2 controller: <a href="https://github.com/MiguelSanzBr/8bitdo-ultimate2-linux" class="inline-onebox" rel="noopener nofollow ugc">GitHub - MiguelSanzBr/8bitdo-ultimate2-linux: Open-source Linux configurator for the 8BitDo Ultimate 2 Wireless controller (CLI + GUI): remapping, sticks, triggers, gyro, LED rings, profiles · GitHub</a></li>
+<li>GameSir Cyclone 2 controller: <a href="https://github.com/MiguelSanzBr/gamesir-cyclone2-linux" class="inline-onebox" rel="noopener nofollow ugc">GitHub - MiguelSanzBr/gamesir-cyclone2-linux: Open-source Linux configurator for the GameSir Cyclone 2 controller (CLI + GUI) · GitHub</a></li>
+<li>ATTACK SHARK X11 mouse: <a href="https://github.com/MiguelSanzBr/attackshark-x11-linux" class="inline-onebox" rel="noopener nofollow ugc">GitHub - MiguelSanzBr/attackshark-x11-linux: Open-source Linux configurator for the ATTACK SHARK X11 wireless mouse: DPI, polling, buttons, lighting, battery (CLI + GUI) · GitHub</a></li>
+</ul>
+<p>They’re Python + Tk, talk to the device directly over /dev/hidraw, have a CLI and a GUI, and are MIT licensed.</p>
+<p>Before I spend time on a submission I want to be upfront: most of the code (reverse engineering of the official apps, the protocol, the GUI, the tests) and the packaging was generated with Claude. My part was testing every feature on the real hardware, the design decisions and reviewing the changes. I read the Generative AI policy, so I would write the Flathub manifest and the PR myself and disclose all of this in the form.</p>
+<p>A few questions:</p>
+<ol>
+<li>With that much AI-generated code, is a submission worth it, or would it most likely be closed?</li>
+<li>The apps need --device=all (raw HID, no portal covers it) and a udev rule installed once on the host. Is that acceptable for this kind of tool?</li>
+<li>The projects are only a few days old. Should I wait for more history and real-world use before submitting?</li>
+</ol>
+<p>For now they’re available as Flatpaks from my own signed repo: <a href="https://miguelsanzbr.github.io/flatpak/" class="inline-onebox" rel="noopener nofollow ugc">Miguel Sanz Flatpak repository</a></p>
+<p>Thanks! (sorry my bad english)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 16, 2026 9:33 AM">
+            <time itemprop="datePublished" datetime="2026-10-16 09:33:06 +0000">Oct 16, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, these applications would not be accepted. Not only are they too young, but the AI usage is too high.</p>
+<p>Even ignoring the dubious copyright situation and the massive environmental impact of AI, there is an quality issue with AI code.</p>
+<p>Many who try to submit today on our platform only have vibe-coded AI code made in a few days. This poses many issues:</p>
+<ul>
+<li>AI generation isn’t perfect. It’s code will include bad practices (as we often see with AI-generated manifests)</li>
+<li>Many vibe-coder don’t have the necessary experience in understanding their own code. And probably never will, since using AI takes away the important process that allows you to build a skill in the first place.</li>
+<li>Since the barrier to creating an application is very low, there’s often no investment in the software to maintain it. So we would just end with abandonware.</li>
+</ul>
+<p>So we have to be very picky about allowing AI code if we want some amount of quality on Flathub. Your applications don’t hold the threshold now, and probably not later as well.</p>
+<p>Apart from that: <br>
+Why are you creating separate applications for different devices? For mouses and keyboards, there has been an project to provide a unified method for configuring it with libratbag, with Piper as an frontend.</p>
+<p>Vibe-coding an application isn’t the best solution. Contributing to existing projects can often be better.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stella / elly-code</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 16, 2026 4:29 PM">
+            <time itemprop="datePublished" datetime="2026-10-16 16:29:51 +0000">Oct 16, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Installing on or relying on anything from the host is also a big no-no.</p>
+<p>Even if this was purged from any AI code, we cannot accept an application that is not keeping to its sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">V</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">v1993</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 17, 2026 11:00 AM">
+            <time itemprop="datePublished" datetime="2026-10-17 11:00:01 +0000">Oct 17, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is that so? I myself have an application published on Flathub that instructs users to install additional Udev rules on first launch. Unfortunately, the only viable alternative is submitting these to systemd as hwdb entries, which takes time from submission to release to adoption and is completely out of flatpak’s control. Restricting submissions due to having to deal with existence of unfortunate system-level sandboxing that flatpak itself doesn’t help with seems pointlessly limiting to me and efffectively prevents any applications that need to talk to devices from getting distributed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ostfriese4</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 17, 2026 2:28 PM">
+            <time itemprop="datePublished" datetime="2026-10-17 14:28:31 +0000">Oct 17, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Maybe udev rules should be exportable like desktop entries?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stella / elly-code</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 17, 2026 10:22 PM">
+            <time itemprop="datePublished" datetime="2026-10-17 22:22:17 +0000">Oct 17, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Is that so? I myself have an application published on Flathub that instructs users to install additional Udev rules on first launch.</p>
+</blockquote>
+<p>you <em>can,</em> especially if it is for some optional feature. But by design, the idea is for each sandboxed app to be its own thing, and to deal through portals and static permissions</p>
+<p>the policy is no host-dependant application. We reject anything that requires the host to have a daemon or some random app or DE for a flatpak to function normally by default.</p>
+<p>Basic functionality should come out of the box. Else people just reinvent the nineties with the app who just shows a “error: libkbfh-3w-76t3.476t-3887 not found please frobinate the zobinate before trying again” at launch before immediately exiting.</p>
+<p>though we are moving to being wildly out of topic now. The question is answered lets move on</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

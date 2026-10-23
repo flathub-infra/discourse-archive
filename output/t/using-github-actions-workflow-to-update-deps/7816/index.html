@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using GitHub Actions workflow to update deps - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Using GitHub Actions workflow to update deps</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Using GitHub Actions workflow to update deps</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 9, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hadess</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 9, 2024 5:09 PM">
+            <time itemprop="datePublished" datetime="2024-10-09 17:09:23 +0000">Oct 9, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve recently had 2 different users, in 2 different repositories propose to generate updated Node and Cargo sources automatically using GitHub actions:</p><aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flathub/tech.feliciano.pocket-casts/pull/8">
+  <header class="source">
+
+      <a href="https://github.com/flathub/tech.feliciano.pocket-casts/pull/8" target="_blank" rel="noopener nofollow ugc">github.com/flathub/tech.feliciano.pocket-casts</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+
+
+
+    <div class="github-icon-container" title="Pull Request">
+      <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    </div>
+
+  <div class="github-info-container">
+
+
+
+      <h4>
+        <a href="https://github.com/flathub/tech.feliciano.pocket-casts/pull/8" target="_blank" rel="noopener nofollow ugc">Build Script Improvements and Update Automation</a>
+      </h4>
+
+    <div class="branches">
+      <code>flathub:master</code> ← <code>ProjectSynchro:update-fixes</code>
+    </div>
+
+      <div class="github-info">
+        <div class="date">
+          opened <span class="discourse-local-date" data-format="ll" data-date="2024-09-26" data-time="02:23:02" data-timezone="UTC">02:23AM - 26 Sep 24 UTC</span>
+        </div>
+
+        <div class="user">
+          <a href="https://github.com/ProjectSynchro" target="_blank" rel="noopener nofollow ugc">
+            <img alt="ProjectSynchro" src="/uploads/original/2X/1/1d4e51b94a338eb1c8052a8ec10315d1cec65244.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="1E113A">
+            ProjectSynchro
+          </a>
+        </div>
+
+        <div class="lines" title="8 commits changed 8 files with 279 additions and 10 deletions">
+          <a href="https://github.com/flathub/tech.feliciano.pocket-casts/pull/8/files" target="_blank" rel="noopener nofollow ugc">
+            <span class="added">+279</span>
+            <span class="removed">-10</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Updates the application to version 0.8.0, and the FreeDesktop runtime to 24.08.
+<span class="show-more-container"><a href="https://github.com/flathub/tech.feliciano.pocket-casts/pull/8" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">
+
+The manifest has been updated to consume upstream deb packages, enable support for Wayland and uses the external data checker for updates.
+I also added an updated metainfo which includes new version information, as well as other information related to the project.
+
+This changes this flatpak to be built from existing binaries. This is mainly due to the difficulty/feasibility behind building using electron-forge offline as well as the lack of support for v3 npm lockfiles in [flatpak-builder-tools](https://github.com/flatpak/flatpak-builder-tools). 
+
+Currently this isn't possible with my testing (at least with the current flatpak tools) but if someone figures this out going back to source building is the way to go. Due to the fact that both AMD64 and ARM64 debian packages are available upstream, nobody loses out on access to this application in the meantime however.
+
+Let me know if you'd like any changes.
+
+Obsoletes #7</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flathub/io.github.neil_morrison44.pocket-sync/pull/142">
+  <header class="source">
+
+      <a href="https://github.com/flathub/io.github.neil_morrison44.pocket-sync/pull/142" target="_blank" rel="noopener nofollow ugc">github.com/flathub/io.github.neil_morrison44.pocket-sync</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+
+
+
+    <div class="github-icon-container" title="Pull Request">
+      <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    </div>
+
+  <div class="github-info-container">
+
+
+
+      <h4>
+        <a href="https://github.com/flathub/io.github.neil_morrison44.pocket-sync/pull/142" target="_blank" rel="noopener nofollow ugc">Automate dependencies update</a>
+      </h4>
+
+    <div class="branches">
+      <code>flathub:master</code> ← <code>flathub:nm/v5_update</code>
+    </div>
+
+      <div class="github-info">
+        <div class="date">
+          opened <span class="discourse-local-date" data-format="ll" data-date="2024-10-06" data-time="20:08:06" data-timezone="UTC">08:08PM - 06 Oct 24 UTC</span>
+        </div>
+
+        <div class="user">
+          <a href="https://github.com/neil-morrison44" target="_blank" rel="noopener nofollow ugc">
+            <img alt="neil-morrison44" src="/uploads/original/2X/d/de4178cfa34d91e79b6bd9ccfac0d563508a6797.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="E3BCCB">
+            neil-morrison44
+          </a>
+        </div>
+
+        <div class="lines" title="6 commits changed 10 files with 92 additions and 31 deletions">
+          <a href="https://github.com/flathub/io.github.neil_morrison44.pocket-sync/pull/142/files" target="_blank" rel="noopener nofollow ugc">
+            <span class="added">+92</span>
+            <span class="removed">-31</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">- Haven't updated the generated sources yet
+- Not sure if `47` or `46` is the b<span class="show-more-container"><a href="https://github.com/flathub/io.github.neil_morrison44.pocket-sync/pull/142" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">est choice for the runtime
+- Might be some other flatpak things missing
+- Updates the patch
+- Fixes https://github.com/flathub/io.github.neil_morrison44.pocket-sync/issues/83</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>What are the recommendations for those?</p>
+<ul>
+<li>Is it alright to run those actions?</li>
+<li>How often can we run them?</li>
+<li>Are there templates that one can use to generate those?</li>
+<li>Would the runners be the same that are used for builds?</li>
+</ul>
+<p>If this is successful, I would probably want to also do this for Ghidra, which runs through a full build with networking enabled to be able to generate a list of sources.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jack Greiner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 9, 2024 5:49 PM">
+            <time itemprop="datePublished" datetime="2024-10-09 17:49:13 +0000">Oct 9, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve looked in the past and I haven’t really found any limits that were specified by Flathub themselves: <a href="https://docs.flathub.org/docs/for-app-authors/github-actions" class="inline-onebox" rel="noopener nofollow ugc">GitHub actions | Flathub Documentation</a></p>
+<p>As far as how many times it can be run, There are no real limits on what an open source project can consume as far as Github Actions goes.</p>
+<p>On the Flathub side, their CI is still required for merges to happen. I know of multiple projects using a similar setup when it comes to external updates.</p>
+<p>The Flatpak builds themselves are still done on Flathub’s infrastructure. These actions are mainly for automated code updates, e.g. updating a manifest of generated-sources.json in this case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hadess</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 9, 2024 10:04 PM">
+            <time itemprop="datePublished" datetime="2024-10-09 22:04:13 +0000">Oct 9, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To be clear, I’m interested in answers about GitHub Actions <strong>in the flathub org</strong>, not in general.</p>
+<p>A link to the other projects, in the flathub org, that use a similar setup would be nice, if you have those links available.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jack Greiner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 9, 2024 10:50 PM">
+            <time itemprop="datePublished" datetime="2024-10-09 22:50:35 +0000">Oct 9, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There are a fair amount of projects here: <a href="https://github.com/search?q=org%3Aflathub+.github%2Fworkflows%2F&amp;type=code&amp;p=2" class="inline-onebox" rel="noopener nofollow ugc">Code search results · GitHub</a></p>
+<p>Various projects from flathub ones to other apps have some forms of update workflows in place.</p>
+<p>As I linked earlier, there is a section in the Flathub documentation for Github Actions being used on flathub org repositories: <a href="https://docs.flathub.org/docs/for-app-authors/github-actions/#using-github-actions-on-your-flathub-repository" class="inline-onebox" rel="noopener nofollow ugc">GitHub actions | Flathub Documentation</a></p>
+<p>The only actions that are allowed are ones that are on that small list. Github published actions (actions/*) are allowed as well. I personally haven’t tried to use actions that are not on that list, so I am not sure if there is a block on them on the Github side.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 10, 2024 8:41 AM">
+            <time itemprop="datePublished" datetime="2024-10-10 08:41:23 +0000">Oct 10, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Instead of running them hourly, you should run them only whenever there is an update to the application or when flathubbot opens a PR with the update.</p>
+<p>Too many pushes and commits will overload the Flathub build infrastructure and those dependencies don’t need regenerating unless upstream lockfiles have changed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 10, 2024 8:46 AM">
+            <time itemprop="datePublished" datetime="2024-10-10 08:46:34 +0000">Oct 10, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Another option is to opt out of the global x-checker <a href="https://docs.flathub.org/docs/for-app-authors/external-data-checker#disable" class="inline-onebox" rel="noopener nofollow ugc">External Data Checker | Flathub Documentation</a> and handle updates yourself using the create-pull-request action and flatpak-x-checker docker image.</p>
+<p>That way you should be able to parse the manifest using <code>jq</code> or <code>yq</code> and check if the app version changed. If it changes, then you regenerate the cargo or node sources.</p>
+<p>As long as you don’t overload Flathub build CI (buildbot) it’s fine. Flathub Github org doesn’t have any special limits other than what Github imposes.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jack Greiner</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 11, 2024 2:41 PM">
+            <time itemprop="datePublished" datetime="2024-10-11 14:41:33 +0000">Oct 11, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I did something similar in my PR, it’ll check every hour (or could be loosened to day) and if no changes are detected it’ll skip other checks and nothing is done other than a quick curl or two. <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>If there is a change, a PR is opened and that should be the only churn that the buildbot has to deal with.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

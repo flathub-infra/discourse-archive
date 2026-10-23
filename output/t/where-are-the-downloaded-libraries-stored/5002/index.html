@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Where are the downloaded libraries stored? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Where are the downloaded libraries stored?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Where are the downloaded libraries stored?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 29, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 29, 2023 6:25 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 18:25:33 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I used the python generator to create an install file for <code>libclang</code> which I included in my yaml file.<br>
+When my application tries to use ´libclang` though, I get:</p>
+<p>“clang.cindex.LibclangError: libclang.so: cannot open shared object file: No such file or directory. To provide a path to libclang use Config.set_library_path() or Config.set_library_file().”</p>
+<p>Does anyone know where <code>libclang</code> would be installed to, so that I can use <code>Config.set_library_path()</code> with that path?</p>
+<p>This is my install file:</p>
+<pre><code class="lang-auto">name: python3-libclang
+buildsystem: simple
+build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "libclang" --no-build-isolation
+sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/c2/01/ec65dffc8c94bd8cafd359a76992f3212a239a80ead05522995c105432b8/libclang-16.0.6.tar.gz
+    sha256: 4acdde39dfe410c877b4ccc0d4b57eb952100e4ee26bbdf6cfdb88e2033a7d31
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 29, 2023 8:59 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 20:59:55 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It looks like the source distribution of this package doesn’t come with libclng, so you need to instal it separate</p>
+<p>Update: It looks like <code>org.freedesktop.Sdk.Extension.llvm16</code> contains libclang</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 30, 2023 5:45 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 05:45:55 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using the org.kde.Platform, does this also come with libclang?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 30, 2023 5:48 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 05:48:57 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>And if there is an extension to that as well, how would I add it to my mainfest file? Would I just exchange the “org.kde.Sdk” with “org.kde.Extension.llvm16”?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 30, 2023 8:17 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 08:17:34 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s a SDK extension, not a SDK. YOu need to add the following on top of your Manifest:</p>
+<pre><code class="lang-yaml">sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm16
+</code></pre>
+<p>and this to your modules section:</p>
+<pre><code class="lang-yaml">  - name: libclang
+    buildsystem: simple
+    build-commands:
+      - mkdir -p $FLATPAK_DEST/lib
+      - cp $(readlink -f /usr/lib/sdk/llvm16/lib/libclang.so) $FLATPAK_DEST/lib/libclang.so
+</code></pre>
+<p>libclang.so can be foudn after that in /app/lib</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 30, 2023 10:06 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 10:06:39 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see, thanks. Is there anything similar for org.kde.Sdk though that I could use or can I use the freedesktop extensions on my org.kde.sdk as well?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Aug 30, 2023 10:52 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 10:52:46 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As the KDE SDK is based on the Freedesktop SDK, you can use all Extensions that are made for the Freedesktop SDK</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Aug 30, 2023 11:03 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 11:03:29 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I still get this error</p>
+<pre><code class="lang-auto">FAILED: libs/mupdf/build/shared-release/libmupdfcpp.so /run/build/librum/libs/mupdf/build/shared-release/libmupdfcpp.so
+cd /run/build/librum/libs/mupdf &amp;&amp; ./scripts/mupdfwrap.py -d build/shared-release -b -j 0 m01
+(+0.0s): parse.py:14:&lt;module&gt;: Warning, could not import clang: No module named 'clang'
+(+0.1s): state.py:18:&lt;module&gt;: Warning: failed to import clang.cindex: e=ModuleNotFoundError("No module named 'clang'")
+(+0.1s): state.py:18:&lt;module&gt;: We need Clang Python to build MuPDF python.
+(+0.1s): state.py:18:&lt;module&gt;: Install with `pip install libclang` (typically inside a Python venv),
+(+0.1s): state.py:18:&lt;module&gt;: or (OpenBSD only) `pkg_add py3-llvm.
+</code></pre>
+<p>This is my manifest:</p>
+<pre><code class="lang-auto">app-id: com.librumreader.librum
+runtime: org.kde.Platform
+runtime-version: '6.5'
+sdk-extensions:
+- org.freedesktop.Sdk.Extension.llvm16
+sdk: org.kde.Sdk
+command: librum
+finish-args:
+- --share=ipc
+- --share=network
+- --socket=wayland
+- --socket=fallback-x11
+- --filesystem=home
+- --device=dri
+rename-desktop-file: librum.desktop
+rename-icon: librum
+modules:
+- name: libclangInstall
+buildsystem: simple
+build-commands:
+- mkdir -p $FLATPAK_DEST/lib
+- cp $(readlink -f /usr/lib/sdk/llvm16/lib/libclang.so) $FLATPAK_DEST/lib/libclang.so
+- name: librum
+buildsystem: cmake-ninja
+config-opts:
+- -DCMAKE_BUILD_TYPE=Release
+- -DBUILD_TESTS=Off
+- -DNO_VENV=On
+sources:
+- type: git
+url: https://github.com/Librum-Reader/Librum.git
+commit: d62ee446dc3ad0b79c2598cc2132316902b46316
+- name: install-files
+buildsystem: simple
+build-commands:
+- install -Dm644 librum.desktop -t /app/share/applications
+- install -Dm644 ../com.librumreader.librum.metainfo.xml -t /app/share/metainfo
+- install -Dm644 src/logo.svg -t /app/share/icons/hicolor/scalable/apps/librum.svg
+</code></pre>
+<p>(The indentation got messed up by copy pasting)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Aug 30, 2023 11:26 AM">
+            <time itemprop="datePublished" datetime="2023-08-30 11:26:02 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see, thank you for elaborating. I am not sure about the above error though, since it says that libclang would not be installed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Aug 30, 2023 2:31 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:31:15 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It looks like you have the Python lib not in your Manifest</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Aug 30, 2023 2:36 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:36:12 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What do you mean? The above file is my manifest</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Aug 30, 2023 2:37 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:37:20 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You said in your startpost that you want to instal pythpn3-libclang, but this is not in your Manifest</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Aug 30, 2023 2:44 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:44:05 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I thought adding <code>org.kde.Extension.llvm16</code> would remove the need for the extra python3-libclang.yaml file since it already installs it. Do I need both?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Aug 30, 2023 2:47 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:47:51 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>org.kde.Extension.llvm16</code> contains libclang itself, but not the Python bindings that you need</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Aug 30, 2023 2:50 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:50:31 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I understand, so I need to import this file in my manifest?</p>
+<pre><code class="lang-auto">name: python3-libclang
+buildsystem: simple
+build-commands:
+- pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+--prefix=${FLATPAK_DEST} "libclang" --no-build-isolation
+- mkdir -p $FLATPAK_DEST/lib
+- cp $(readlink -f /usr/lib/sdk/llvm16/lib/libclang.so) $FLATPAK_DEST/lib/libclang.so
+
+sources:
+- type: file
+url: https://files.pythonhosted.org/packages/c2/01/ec65dffc8c94bd8cafd359a76992f3212a239a80ead05522995c105432b8/libclang-16.0.6.tar.gz
+sha256: 4acdde39dfe410c877b4ccc0d4b57eb952100e4ee26bbdf6cfdb88e2033a7d31
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Aug 30, 2023 2:54 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:54:34 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It works! Thank you a lot, my project is now building.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Aug 30, 2023 5:27 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 17:27:33 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>One more thing <span class="mention">@JakobDev</span>.</p>
+<p>My application expects the /resources/fonts folder from my git repo in $HOME/.var/app/com.librumreader.librum/data/Librum-Reader/Librum. How exactly can I reach that folder, I dont just want to <code>mv ... $HOME/.var/app/com.librumreader.librum/data/Librum-Reader/Librum</code> since I suppose that this will create problems on system wide installs?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Aug 31, 2023 1:11 PM">
+            <time itemprop="datePublished" datetime="2023-08-31 13:11:59 +0000">Aug 31, 2023</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it has the wrong expectations. This is not even a flatpak thing. The user directory is not for any application resource.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Troubleshooting flatpak-builder &quot;filters-but-no-output&quot; error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Troubleshooting flatpak-builder &quot;filters-but-no-output&quot; error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Troubleshooting flatpak-builder &quot;filters-but-no-output&quot; error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 7, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nmstr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 7, 2024 6:01 PM">
+            <time itemprop="datePublished" datetime="2024-07-07 18:01:49 +0000">Jul 7, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to build an application as a flatpak. While running flatpak-builder I get this error:</p>
+<pre><code class="lang-auto">Running appstreamcli compose
+Only accepting components: io.github.nmstr.taskZen, io.github.nmstr.taskZen.desktop
+Processing directory: /mnt/nvme/bigProjects/.flatpak-builder/rofiles/rofiles-89bFVO/files
+Composing metadata...
+Run failed, some data was ignored.
+Errors were raised during this compose run:
+general
+  E: filters-but-no-output
+Refer to the generated issue report data for details on the individual problems.
+Error: ERROR: appstreamcli compose failed: Child process exited with code 1
+</code></pre>
+<p>I cannot find any generated issue report data. As soon as I comment out this line it works:<br>
+<code>install -D io.github.nmstr.taskZen.metainfo.xml /app/share/metainfo/io.github.nmstr.taskZen.metainfo.xml</code></p>
+<p>This leads me to the belive that it is a problem with my metainfo file. I uploaded it to pastebin (<a href="https://pastebin.com/VVLLwtc4" class="inline-onebox" rel="noopener nofollow ugc">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;component type="desktop-application"&gt; - Pastebin.com</a>) as it is a little too large for good readability in this post (abt 50 lines). This is the affected part of my manifest:</p>
+<pre><code class="lang-auto">  - name: misc
+    buildsystem: simple
+    sources:
+      - type: dir
+        path: .
+    build-commands:
+      - install -D io.github.nmstr.taskZen.desktop /app/share/applications/io.github.nmstr.taskZen.desktop
+      - install -D icon.png /app/share/icons/hicolor/512x512/apps/io.github.nmstr.taskZen.png
+      - install -D io.github.nmstr.taskZen.metainfo.xml /app/share/metainfo/io.github.nmstr.taskZen.metainfo.xml
+      - cp run.sh /app/bin
+      - cp gui.sh /app/bin
+</code></pre>
+<p>The entire manifest can again be found on pastebin (<a href="https://pastebin.com/f4CGZS3y" class="inline-onebox" rel="noopener nofollow ugc">app-id: io.github.nmstr.taskZenruntime: org.kde.Platformruntime-version: 6.7 - Pastebin.com</a>).</p>
+<p>My projects directory structure is laid out like this:</p>
+<ul>
+<li>flatpak</li>
+<li>
+<ul>
+<li>run.sh</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>gui.sh</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>io.github.nmstr.taskZen.desktop</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>io.github.nmstr.taskZen.metainfo.xml</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>io.github.nmstr.taskZen.yaml</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>icon.png (also once name io.github.nmstr.taskZen.png) (512x512)</li>
+</ul>
+</li>
+<li>src</li>
+<li>
+<ul>
+<li>projects source code</li>
+</ul>
+</li>
+</ul>
+<p>What I have tried so far:</p>
+<ul>
+<li>exclude the metadata file (works but AFAIK I need it to publish on flathub)</li>
+<li>exclude the .desktop file and icon</li>
+<li>isolate the <code>install -D...</code> command into its own module in the manifest</li>
+<li>create a .sh file that runs the <code>install -D...</code> command, which I then run</li>
+<li>rename the icon from <code>icon.png</code> to <code>io.github.nmstr.taskZen.png</code></li>
+<li>exactly copy someone else’s metainfo file and the command they use to install it</li>
+<li>same as above but this time changed the ids to match with my project</li>
+</ul>
+<p>At this point I am really lost at what this might be. I appreciate any help! Thanks in advance.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 8, 2024 12:00 AM">
+            <time itemprop="datePublished" datetime="2024-07-08 00:00:53 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I suspect the <code>.desktop</code> file and the used categories or it’s not able to link to the categories. But we all struggle with this part. <span class="mention">@bbhtt</span> seems to have a hand for solving these, even with not enough info.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nmstr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 8, 2024 12:25 AM">
+            <time itemprop="datePublished" datetime="2024-07-08 00:25:44 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That seems weird, as when removing the metainfo file it works, even the .desktop file works then. I tried playing around a little witht the Categories (the Categories in the .desktop file; I assume these are the ones you meant). Nothing changed anything. Also it showed up in the correct categories, when I build without the metainfo.<br>
+Anyways, you said “even without enough info”. I can provide as much info as needed. I just need to know what actually is needed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 8, 2024 3:08 AM">
+            <time itemprop="datePublished" datetime="2024-07-08 03:08:09 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you share the manifest in a way I can build and check? <code>dir</code> sources mean I don’t have the sources.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 8, 2024 4:04 AM">
+            <time itemprop="datePublished" datetime="2024-07-08 04:04:50 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Mmm nevermind, the id tag in metainfo is wrong it’s <code>taskZen</code> not <code>taskzen</code>.</p>
+<p>Also desktop file is missing an <code>Icon</code> key which will be a problem later on</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nmstr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 8, 2024 6:18 PM">
+            <time itemprop="datePublished" datetime="2024-07-08 18:18:13 +0000">Jul 8, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a lot. Capitalizing the Z in the id did the trick. Now looking at this error it feels really dumb that I spend almost a day of troubleshooting for this. Anyways. I also added the icon as well and everything works. Thx.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

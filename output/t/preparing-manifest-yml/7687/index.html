@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preparing manifest.yml - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Preparing manifest.yml</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Preparing manifest.yml</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 15, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 15, 2024 5:16 PM">
+            <time itemprop="datePublished" datetime="2024-09-15 17:16:13 +0000">Sep 15, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My project is <code> https://github.com/tomluchowski/OpenDungeonsPlus</code> and I have no other homepage , what the appid should be ? Because it drives me crazy !</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 15, 2024 8:48 PM">
+            <time itemprop="datePublished" datetime="2024-09-15 20:48:45 +0000">Sep 15, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code>"errors": [
+    "appid-url-not-reachable",
+    "appid-uses-code-hosting-domain"
+],
+</code></pre>
+<p>for such manifest :</p>
+<pre><code class="lang-auto">app-id: com.github.tomluchowski.OpenDungeonsPlus
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: opendungeons-plus
+
+# Metadata section for additional details
+metadata:
+  name: "Open Dungeons Plus"
+  summary: "A free and open-source dungeon game"
+  description: "Open Dungeons Plus is a strategy game where you manage dungeons 
+and creatures."
+  license: "GPL-3.0"
+  homepage: "https://github.com/tomluchowski/OpenDungeonsPlus"  # Use your GitHu
+b/GitLab repo as a placeholder URL
+  project_license: "GPL-3.0"
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --share=network
+  - --device=dri
+  - --env=CEGUI_MODULE_DIR=/app/lib/cegui-0.9999
+  - --filesystem=host
+  - --socket=pulseaudio    # Allow access to PulseAudio  
+
+modules:
+  # Boost module (for various utilities)
+  - name: boost
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=/app
+      - ./b2 install
+    sources:
+      - type: archive
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.gz
+        sha256: 66a469b6e608a51f8347236f4912e27dc5c60c60d7d53ae9bfe4683316c6f04c
+
+  # OIS module (for input system)
+  - name: OIS
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app
+    sources:
+      - type: archive
+        url: https://github.com/wgois/OIS/archive/refs/tags/v1.5.tar.gz
+        sha256: aa3e6b840b1149bb06835e04365957f4659c08b3e3095a48b289050f1637a174
+
+  # PugiXML module (added to fix the missing pugixml.hpp error)
+  - name: pugixml
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: archive
+        url: https://github.com/zeux/pugixml/archive/refs/tags/v1.13.tar.gz
+        sha256: 5c5ad5d7caeb791420408042a7d88c2c6180781bf218feca259fd9d840a888e1  # Replace with actual checksum
+
+  # pybind11 module (to fix missing pybind11)
+  - name: pybind11
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DPYBIND11_FINDPYTHON=ON
+      - -DPYTHON_EXECUTABLE=/usr/bin/python3      
+      - -DPYTHON_INCLUDE_DIR=/usr/include/python3.10  # Specify Python include path
+      - -DPYTHON_LIBRARIES=/usr/lib/x86_64-linux-gnu/libpython3.10.so  # Specify Python library path
+    sources:
+      - type: archive
+        url: https://github.com/pybind/pybind11/archive/refs/tags/v2.10.4.tar.gz
+        sha256: 832e2f309c57da9c1e6d4542dedd34b24e4192ecb4d62f6f4866a737454c9970        # Replace with actual checksum
+
+  # SFML module (Simple and Fast Multimedia Library)
+  - name: sfml
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app
+    sources:
+      - type: archive
+        url: https://github.com/SFML/SFML/archive/refs/tags/2.5.1.tar.gz
+        sha256: 438c91a917cc8aa19e82c6f59f8714da353c488584a007d401efac8368e1c785
+
+  # OGRE module, which will include ImGui sources
+  - name: ogre
+    buildsystem: cmake
+    config-opts:
+            - -DCMAKE_BUILD_TYPE=Release
+            - -DOGRE_CONFIG_THREAD_PROVIDER=std
+            - -DOGRE_CONFIG_THREADS=3
+            - -DOGRE_STATIC=FALSE
+            - -DOGRE_BUILD_DEPENDENCIES=FALSE
+            - -DOGRE_BUILD_RENDERSYSTEM_GL=TRUE
+            - -DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=TRUE
+            - -DOGRE_RESOURCEMANAGER_STRICT=0
+            # stuff we dont need
+            - -DOGRE_BUILD_RENDERSYSTEM_GLES2=FALSE
+            - -DOGRE_BUILD_TOOLS=FALSE
+            - -DOGRE_BUILD_SAMPLES=FALSE
+            - -DOGRE_BUILD_PLUGIN_FREEIMAGE=FALSE
+            - -DOGRE_BUILD_PLUGIN_EXRCODEC=FALSE
+            - -DOGRE_BUILD_PLUGIN_BSP=FALSE
+            - -DOGRE_BUILD_PLUGIN_PCZ=FALSE
+            - -DOGRE_BUILD_PLUGIN_DOT_SCENE=FALSE
+            - -DOGRE_BUILD_COMPONENT_JAVA=FALSE
+            - -DOGRE_BUILD_COMPONENT_VOLUME=FALSE
+            - -DOGRE_BUILD_COMPONENT_PAGING=FALSE
+            - -DOGRE_BUILD_COMPONENT_TERRAIN=FALSE
+            - -DOGRE_BUILD_COMPONENT_PROPERTY=FALSE
+            - -DOGRE_BUILD_COMPONENT_MESHLODGENERATOR=FALSE
+            - -DOGRE_BUILD_COMPONENT_HLMS=FALSE
+            - -DCMAKE_INSTALL_PREFIX=/app/
+            - -DOGRE_ENABLE_PRECOMPILED_HEADERS=OFF
+
+    sources:
+      - type: archive
+        url: https://github.com/OGRECave/ogre/archive/refs/tags/v13.6.5.tar.gz
+        sha256: 857f74d18c4bb484f0e31c288b8d27837615a59c3da2b3d8304496c83ef669cd  # Replace with actual checksum
+
+      # Download ImGui as an additional source to be used in the OGRE build
+      - type: archive
+        url: https://github.com/ocornut/imgui/archive/refs/tags/v1.87.tar.gz
+        sha256: b54ceb35bda38766e36b87c25edf7a1cd8fd2cb8c485b245aedca6fb85645a20  # Replace with actual checksum
+        dest: imgui-1.87  # This will extract ImGui to /run/build/imgui
+
+  # CEGUI module
+  - name: cegui
+    buildsystem: cmake
+    config-opts:
+            - -DCMAKE_BUILD_TYPE=Release
+            - -DCMAKE_CXX_FLAGS=-std=c++11
+            - -DCEGUI_BUILD_RENDERER_OPENGL=FALSE
+            - -DCEGUI_BUILD_RENDERER_OPENGLES=FALSE
+            - -DCEGUI_BUILD_RENDERER_OPENGL3=FALSE
+            - -DCEGUI_BUILD_IMAGECODEC_FREEIMAGE=FALSE # we use ogre
+            - -DCEGUI_OPTION_DEFAULT_IMAGECODEC=OgreRenderer-0
+            - -DCEGUI_SAMPLES_ENABLED=FALSE
+            - -DCEGUI_BUILD_PYTHON_MODULES=OFF
+            - -DCMAKE_INSTALL_PREFIX=/app  # Install to /app, not /usr
+    sources:
+      - type: git
+        url: https://github.com/cegui/cegui.git
+        tag: v0
+
+  # OpenDungeonsPlus module
+  - name: opendungeons-plus
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DOD_TREAT_WARNINGS_AS_ERRORS=OFF
+      - -DPYBIND11_FINDPYTHON=ON
+      - -DOD_PLUGINS_CFG_PATH=/app/etc/opendungeons-plus
+    sources:
+      - type: archive
+        url: https://github.com/tomluchowski/OpenDungeonsPlus/archive/refs/tags/Texture_problems.tar.gz
+        sha256: 9b01e89a5171691845bae238240f9f882752a822e50056c13d950345b56344df
+
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 15, 2024 10:15 PM">
+            <time itemprop="datePublished" datetime="2024-09-15 22:15:26 +0000">Sep 15, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Per the documentation for app-id:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/requirements/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener">Requirements | Flathub Documentation</a></h3>
+
+  <p>The goal of these requirements is to ensure that the applications hosted</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Read the bit about github.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 15, 2024 10:16 PM">
+            <time itemprop="datePublished" datetime="2024-09-15 22:16:09 +0000">Sep 15, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="paul424" data-post="2" data-topic="7687">
+<div class="title">
+<div class="quote-controls"></div>
+paul424:</div>
+<blockquote>
+<p><code>metadata:</code></p>
+</blockquote>
+</aside>
+<p>And what is that? Which part of the documentation explain this? So that we can fix said documentation.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 16, 2024 10:01 AM">
+            <time itemprop="datePublished" datetime="2024-09-16 10:01:44 +0000">Sep 16, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Many thanks, as I said in previous posts chatgpt helps me , and sometimes it is hallucinating …</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 16, 2024 10:19 AM">
+            <time itemprop="datePublished" datetime="2024-09-16 10:19:34 +0000">Sep 16, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>BTW: How do I deliver the .metainfo.xml file, where it should be located ? In the game directory ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 16, 2024 10:29 AM">
+            <time itemprop="datePublished" datetime="2024-09-16 10:29:28 +0000">Sep 16, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox allowlistedgeneric" data-onebox-src="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-location">
+  <header class="source">
+
+      <a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-location" target="_blank" rel="noopener">freedesktop.org</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-location" target="_blank" rel="noopener">Upstream Metadata | AppStream | AppStream 1.0</a></h3>
+
+  <p>AppStream allows upstream projects to define metadata about the components they provide using small XML files, metainfo files, which get installed into locations on the client system and are used by distribuors to enhance their metadata. A component...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Side note: please stop creating new threads, it’s fine you stick to single one given all are about your efforts to package an app.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 16, 2024 5:49 PM">
+            <time itemprop="datePublished" datetime="2024-09-16 17:49:50 +0000">Sep 16, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>https://github.com/tomluchowski/OpenDungeonsPlus/tree/056c7086b7aa3246b8eb099b459997915fa2a07e/screenshots</code></p>
+<p><code>The link inside </code>image<code> tag must be a direct link to a image resource on the web. If the images are hosted in a git repository, the link should be from a tag or a commit and not a branch.</code></p>
+<p>How I am supposed to get a direct resource link from this ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 17, 2024 1:26 AM">
+            <time itemprop="datePublished" datetime="2024-09-17 01:26:18 +0000">Sep 17, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>How I am supposed to get a direct resource link from this ?</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/b89fe38c1859088810f19af60611a110ada98e01.jpeg" data-download-href="/uploads/original/2X/b/b89fe38c1859088810f19af60611a110ada98e01.jpeg" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/b/b89fe38c1859088810f19af60611a110ada98e01_2_690x300.jpeg" alt="image" data-base62-sha1="qlgpIIcavDkdmqI6nsACJCHEBTH" width="690" height="300" srcset="/uploads/optimized/2X/b/b89fe38c1859088810f19af60611a110ada98e01_2_690x300.jpeg, /uploads/optimized/2X/b/b89fe38c1859088810f19af60611a110ada98e01_2_1035x450.jpeg 1.5x, /uploads/original/2X/b/b89fe38c1859088810f19af60611a110ada98e01.jpeg 2x" data-dominant-color="1B1817"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1184×515 54.1 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Then, copy the link. If you have a branch like master/main in your link, replace that with the tag or the commit.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 21, 2024 5:45 PM">
+            <time itemprop="datePublished" datetime="2024-09-21 17:45:53 +0000">Sep 21, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h3><a name="p-14821-h-1" class="anchor" href="#p-14821-h-1" aria-label="Heading link"></a></h3>
+<p><strong><a href="https://github.com/hfiguiere" rel="noopener nofollow ugc">hfiguiere</a></strong> <a href="https://github.com/flathub/flathub/pull/5611#discussion_r1769172580" rel="noopener nofollow ugc">Sep 20, 2024</a></p>
+<aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flathub/flathub/pull/5611">
+  <header class="source">
+
+      <a href="https://github.com/flathub/flathub/pull/5611" target="_blank" rel="noopener nofollow ugc">github.com/flathub/flathub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+
+
+
+    <div class="github-icon-container" title="Pull Request">
+      <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    </div>
+
+  <div class="github-info-container">
+
+
+
+      <h4>
+        <a href="https://github.com/flathub/flathub/pull/5611" target="_blank" rel="noopener nofollow ugc">add io.github.tomluchowski.OpenDungeonsPlus</a>
+      </h4>
+
+    <div class="branches">
+      <code>new-pr</code> ← <code>tomluchowski:new-pr</code>
+    </div>
+
+      <div class="github-info">
+        <div class="date">
+          opened <span class="discourse-local-date" data-format="ll" data-date="2024-09-18" data-time="19:21:42" data-timezone="UTC">07:21PM - 18 Sep 24 UTC</span>
+        </div>
+
+        <div class="user">
+          <a href="https://github.com/tomluchowski" target="_blank" rel="noopener nofollow ugc">
+            <img alt="" src="/uploads/original/2X/9/91e1ad5061bc067b0841862f431de27ed0f01b7e.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="7CA7B6">
+            tomluchowski
+          </a>
+        </div>
+
+        <div class="lines" title="16 commits changed 2 files with 152 additions and 0 deletions">
+          <a href="https://github.com/flathub/flathub/pull/5611/files" target="_blank" rel="noopener nofollow ugc">
+            <span class="added">+152</span>
+            <span class="removed">-0</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">### Please confirm your submission meets all the criteria
+
+
+
+- [x] Please de<span class="show-more-container"><a href="https://github.com/flathub/flathub/pull/5611" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">scribe the application briefly.
+  OpenDungeons is an open source, real time strategy game sharing game elements with the Dungeon Keeper series and Evil Genius. Players build an underground dungeon which is inhabited by creatures. Players fight each other for control of the underground by indirectly commanding their creatures, directly casting spells in combat, and luring enemies into sinister traps. 
+
+- [ x] The domain used for the application ID is [controlled by the application developers][appid-domain] and the [application id guidelines][appid] are followed.
+- [ x] I have read the and followed all the [Submission and licence requirements][reqs].
+- [x ] I have [built][build] and tested the submission locally.
+- [ x] I am an author/developer/upstream contributor of the project. If not, I contacted upstream developers about this submission. **Link:**
+
+
+
+
+[appid-domain]: https://docs.flathub.org/docs/for-app-authors/requirements/#control-over-domain-or-repository
+[appid]: https://docs.flathub.org/docs/for-app-authors/requirements#application-id
+[reqs]: https://docs.flathub.org/docs/for-app-authors/requirements
+[build]: https://docs.flathub.org/docs/for-app-authors/submission/#before-submission</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>command should just be a command and be in the path, like <code>/app/bin</code>. NOT an absolute path</p>
+</blockquote>
+<p>I set command: opendungeons-plus<br>
+Sure thing, but when I do this :</p>
+<p>Starting build of io.github.tomluchowski.OpenDungeonsPlus<br>
+Cache hit for boost, skipping build<br>
+Cache hit for OIS, skipping build<br>
+Cache hit for pugixml, skipping build<br>
+Cache hit for pybind11, skipping build<br>
+Cache hit for sfml, skipping build<br>
+Cache hit for ogre, skipping build<br>
+Cache hit for cegui, skipping build<br>
+Cache hit for opendungeons-plus, skipping build<br>
+Cache hit for cleanup, skipping<br>
+Cache miss, checking out last cache hit<br>
+Finishing app<br>
+Error: Command ‘opendungeons-plus’ not found</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 28, 2024 2:59 AM">
+            <time itemprop="datePublished" datetime="2024-09-28 02:59:47 +0000">Sep 28, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">#if defined(__i386__) // gcc specific
+#if !defined(__FreeBSD__) &amp;&amp; !defined(__OpenBSD__)
+    caller_address = reinterpret_cast&lt;void*&gt;(uc-&gt;uc_mcontext.eip); // EIP: x86 specific
+#else
+    caller_address = reinterpret_cast&lt;void*&gt;(uc-&gt;uc_mcontext.sc_eip); // EIP: x86 specific
+#endif
+#elif defined(__x86_64__) // gcc specific
+#if !defined(__FreeBSD__) &amp;&amp; !defined(__OpenBSD__)
+    caller_address = reinterpret_cast&lt;void*&gt;(uc-&gt;uc_mcontext.rip); // RIP: x86_64 specific
+#else
+    caller_address = reinterpret_cast&lt;void*&gt;(uc-&gt;uc_mcontext.sc_rip); // RIP: x86_64 specific
+#endif
+#else
+#error Unsupported architecture. // TODO: Add support for other arch.
+#endif
+    // void* caller_address = (void*) uc-&gt;uc_mcontext.eip; // x86 specific
+</code></pre>
+<p>Sure there is only support for i386 and x86_64 … How do I narrow the build family ? Chatgpt is hallucinating on this, and I cannot google any reliable command on this …</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Sep 28, 2024 7:57 PM">
+            <time itemprop="datePublished" datetime="2024-09-28 19:57:26 +0000">Sep 28, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What I mean with snapcraft.yaml one can easily facilitate the architecture like :</p>
+<pre><code class="lang-auto">architectures:
+  - build-on: amd64
+  - build-on: i386
+</code></pre>
+<p>Here with flatpak I don’t see any such directives…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Sep 28, 2024 11:00 PM">
+            <time itemprop="datePublished" datetime="2024-09-28 23:00:23 +0000">Sep 28, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="paul424" data-post="11" data-topic="7687">
+<div class="title">
+<div class="quote-controls"></div>
+paul424:</div>
+<blockquote>
+<p>How do I narrow the build family ?</p>
+</blockquote>
+</aside>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/maintenance/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/maintenance/" target="_blank" rel="noopener">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/2/2382eb81a57f8161664101a6b6f0ada66186bbe0_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/maintenance/" target="_blank" rel="noopener">Maintenance | Flathub Documentation</a></h3>
+
+  <p>This is a guide in how to maintain your application once it is on Flathub. It assumes your application is already on Flathub, and that you have access rights to its repository. If this is not true, please read the submission page first and check your...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Sep 29, 2024 5:59 PM">
+            <time itemprop="datePublished" datetime="2024-09-29 17:59:48 +0000">Sep 29, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Many thanks for the hint.<br>
+As I am on the finish line , I get such surprise error :</p>
+<pre><code class="lang-auto">Running appstreamcli compose
+Only accepting components: io.github.tomluchowski.OpenDungeonsPlus, io.github.tomluchowski.OpenDungeonsPlus.desktop
+Processing directory: /home/tom/Opendungeons_github/flathub/.flatpak-builder/rofiles/rofiles-S35Oog/files
+Composing metadata...
+Run failed, some data was ignored.
+Errors were raised during this compose run:
+general
+  E: filters-but-no-output
+
+io.github.tomluchowski.OpenDungeonsPlus
+  E: icon-not-found
+Refer to the generated issue report data for details on the individual problems.
+Error: ERROR: appstreamcli compose failed: Child process exited with code 1
+</code></pre>
+<p>I am stuck terribly here …  By following examples from previous others pull requests I presume the name of Icon in *.desktop file should be “opendungeons” (and that’s what I did )  because of :</p>
+<pre><code class="lang-auto">[📦 io.github.tomluchowski.OpenDungeonsPlus /]$ find ./ -name '*opendungeons*'
+./app/bin/opendungeons-plus
+./app/etc/opendungeons-plus
+./app/share/appdata/opendungeons-plus.appdata.xml
+./app/share/applications/opendungeons-plus.desktop
+./app/share/doc/opendungeons-plus
+./app/share/games/opendungeons-plus
+./app/share/icons/hicolor/128x128/apps/opendungeons.png
+./app/share/icons/hicolor/16x16/apps/opendungeons.png
+./app/share/icons/hicolor/256x256/apps/opendungeons.png
+./app/share/icons/hicolor/32x32/apps/opendungeons.png
+./app/share/icons/hicolor/48x48/apps/opendungeons.png
+./app/share/icons/hicolor/64x64/apps/opendungeons.png
+./app/share/icons/hicolor/scalable/apps/opendungeons.svg
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Sep 29, 2024 6:27 PM">
+            <time itemprop="datePublished" datetime="2024-09-29 18:27:55 +0000">Sep 29, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>uhh after looking the succesfull pull-requests I see it has to be of the form : $(app_id).$(icon_name_from_the_desktop_file).svg</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Sep 29, 2024 6:44 PM">
+            <time itemprop="datePublished" datetime="2024-09-29 18:44:43 +0000">Sep 29, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The clue of the problem lies here : the following command does not create the file with the flatpak-app-id, but instead there is opendungeons.svg as in the listing 2 post above:</p>
+<pre><code class="lang-auto">    post-install:
+      - install -Dm644 meta/gui/icon.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.opendungeons.svg
+</code></pre>
+<pre><code class="lang-auto">    post-install:
+      - echo "flatpak_id is ${FLATPAK_ID} and flarpak_dest is ${FLATPAK_DEST}"
+</code></pre>
+<p>gives:<br>
+flatpak_id is io.github.tomluchowski.OpenDungeonsPlus and flarpak_dest is /app</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

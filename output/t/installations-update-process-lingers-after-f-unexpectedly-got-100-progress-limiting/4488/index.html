@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installations/Update Process lingers after F: Unexpectedly got &gt; 100% progress, limiting - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Installations/Update Process lingers after F: Unexpectedly got &gt; 100% progress, limiting</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Installations/Update Process lingers after F: Unexpectedly got &gt; 100% progress, limiting</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 28, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">lemon</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 28, 2023 2:43 PM">
+            <time itemprop="datePublished" datetime="2023-06-28 14:43:37 +0000">Jun 28, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>Flatpak version: 1.12.7<br>
+OS: Linux Mint 21 x86_64<br>
+Kernel: 5.15.0-75-generic x86_64 bits: 64 compiler: gcc v: 11.3.0 Desktop: MATE 1.26.0 wm: marco<br>
+dm: LightDM Distro: Linux Mint 21 Vanessa base: Ubuntu 22.04 jammy</p>
+<p>Logs are posted below</p>
+<p>Problem description:</p>
+<p>After invoking a:</p>
+<blockquote>
+<p>flatpak update</p>
+</blockquote>
+<p>or:</p>
+<blockquote>
+<p>flatpak install PACKAGE_NAME_HERE</p>
+</blockquote>
+<p>The update/installation process starts normally. Then it either hangs for about 30 minutes, upwards to several hours or it makes decent progress until the following error message appears:</p>
+<blockquote>
+<p>F: Unexpectedly got &gt; 100% progress, limiting</p>
+</blockquote>
+<p>After this message the process hangs again for a very long time, often several hours. Worst of all, most updates/installations are unable to finish, with following error:</p>
+<blockquote>
+<p>F: Calling system helper: CancelPull Warning: While pulling “PACKAGE_NAME_HERE” from remote flathub: Socket I/O timed out</p>
+</blockquote>
+<p>After many retries they eventually finish, seemingly at random.</p>
+<p>During updates/installations, when consulting the system monitor there is next to no internet traffic, despite the fact that flatpak is claiming otherwise. Also the reported download speed dips down into single Bytes/s, which is probably a measurement error by flatpak, but regardless, my PC runs now upwards to 12 hours and more, just to report that all updates failed.</p>
+<p>Everything else on my system that is using internet, depending on country and servers, downloads at speeds upwards to 15 MBits/s, so i think my connection is fine. I’m in central Europe btw.</p>
+<p>Below you find the verbose logs of a failed update attempt:<br>
+NOTE: I had to cutoff the rest of the log, because of character  limits in this forum, i’ll post the rest seperatly.</p>
+<blockquote>
+<p>Blockquote username@username-PC-Name-Name:~$ flatpak update -vv<br>
+F: No installations directory in /etc/flatpak/installations.d. Skipping<br>
+F: Opening system flatpak installation at path /var/lib/flatpak<br>
+F: Opening user flatpak installation at path /home/username/.local/share/flatpak<br>
+Looking for updates…<br>
+F: Fetching summary index file for remote ‘flathub’<br>
+F: Loading <a href="https://dl.flathub.org/repo/summary.idx" rel="noopener nofollow ugc">https://dl.flathub.org/repo/summary.idx</a> using libsoup<br>
+F: Received 10001 bytes<br>
+F: Loading <a href="https://dl.flathub.org/repo/summaries/cf9d1a489622dc37675ee214ed4bf2894c2045620aa233ac1b97a5adc7bb9890.idx.sig" rel="noopener nofollow ugc">https://dl.flathub.org/repo/summaries/cf9d1a489622dc37675ee214ed4bf2894c2045620aa233ac1b97a5adc7bb9890.idx.sig</a> using libsoup<br>
+F: Received 592 bytes<br>
+F: Fetching indexed summary delta 1beed9cbca282964f718129068c094a72c762cb3be03f0395abfdddc80908a1c-654caa839e46d65ab70d91081df0244da07a5b8e60a6e3e826d3d4a2b033a95a.delta for remote ‘flathub’<br>
+F: Loading <a href="https://dl.flathub.org/repo/summaries/1beed9cbca282964f718129068c094a72c762cb3be03f0395abfdddc80908a1c-654caa839e46d65ab70d91081df0244da07a5b8e60a6e3e826d3d4a2b033a95a.delta" rel="noopener nofollow ugc">https://dl.flathub.org/repo/summaries/1beed9cbca282964f718129068c094a72c762cb3be03f0395abfdddc80908a1c-654caa839e46d65ab70d91081df0244da07a5b8e60a6e3e826d3d4a2b033a95a.delta</a> using libsoup<br>
+F: Received 1993 bytes<br>
+F: Transaction: update flathub:app/com.github.opentyrian.OpenTyrian/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/com.github.tchx84.Flatseal/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/com.sayonara_player.Sayonara/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/com.usebottles.bottles/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/io.freetubeapp.FreeTube/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/io.github.cboxdoerfer.FSearch/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/io.gitlab.librewolf-community/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/io.neovim.nvim/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/net.mullvad.MullvadBrowser/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/net.warsow.Warsow/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/org.cryptomator.Cryptomator/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/org.kde.elisa/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/org.libretro.RetroArch/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:app/org.xonotic.Xonotic/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:app/xyz.z3ntu.razergenie/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:runtime/com.usebottles.bottles.Locale/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:runtime/io.github.cboxdoerfer.FSearch.Locale/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:runtime/io.neovim.nvim.Locale/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:runtime/net.mullvad.MullvadBrowser.Locale/x86_64/stable[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/21.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL32.default/x86_64/22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL32.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL32.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/21.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/21.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform/x86_64/21.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Platform/x86_64/22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.freedesktop.Sdk.Locale/x86_64/22.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.gnome.Platform.Compat.i386/x86_64/43[<em>]<br>
+F: Transaction: update flathub:runtime/org.gnome.Platform.Locale/x86_64/43[/de, /en]<br>
+F: Transaction: update flathub:runtime/org.gnome.Platform.Locale/x86_64/44[/de, /en]<br>
+F: Transaction: update flathub:runtime/org.gnome.Platform/x86_64/43[</em>]<br>
+F: Transaction: update flathub:runtime/org.gnome.Platform/x86_64/44[<em>]<br>
+F: Transaction: update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[</em>]<br>
+F: Transaction: update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[<em>]<br>
+F: Transaction: update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[</em>]<br>
+F: Transaction: update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15-21.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15-22.08[/de, /en]<br>
+F: Transaction: update flathub:runtime/org.kde.Platform/x86_64/5.15-21.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.kde.Platform/x86_64/5.15-22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.kde.elisa.Locale/x86_64/stable[</em>]<br>
+F: Transaction: update flathub:runtime/org.winehq.Wine.DLLs.dxvk/x86_64/stable-22.08[<em>]<br>
+F: Transaction: update flathub:runtime/org.winehq.Wine.gecko/x86_64/stable-22.08[</em>]<br>
+F: Transaction: update flathub:runtime/org.winehq.Wine.mono/x86_64/stable-22.08[<em>]<br>
+F: Looking for remote metadata updates for flathub<br>
+F: marking op update:runtime/org.winehq.Wine.mono/x86_64/stable-22.08 resolved to 2973908700eabf97779270ddc161836de2eec5f90f4aa71ca19fff0132304083<br>
+F: marking op update:runtime/org.winehq.Wine.gecko/x86_64/stable-22.08 resolved to db7632b6dac3e28f2d6635da992c7087755e0e39e983fe9be11438995dde628e<br>
+F: marking op update:runtime/org.winehq.Wine.DLLs.dxvk/x86_64/stable-22.08 resolved to 2b35b6b538313178e3c9a9cde84de5f0eb82352d0bad8ec8b60a499f429a404e<br>
+F: marking op update:runtime/org.kde.elisa.Locale/x86_64/stable resolved to 2f8b46c82128adc00081a8655fc025f222b2b0fad587e79d89547f03479d2a5e<br>
+F: marking op update:runtime/org.kde.Platform/x86_64/5.15-22.08 resolved to 8d617f2296599d8c4d50a21b0cd183277f6a785f4c955098ba8002ea5ca85cce<br>
+F: marking op update:runtime/org.kde.Platform/x86_64/5.15-21.08 resolved to ec3331446a3fb6e8f293a3bc2fae03342cc6732a2d0f8422201241a29e630e18<br>
+F: marking op update:runtime/org.kde.Platform.Locale/x86_64/5.15-22.08 resolved to d937718687493324cecab035b29124b90d649f2a3b402d002c0b3958be13562a<br>
+F: marking op update:runtime/org.kde.Platform.Locale/x86_64/5.15-21.08 resolved to d53910d2eacf91ca26b450ac33208dcca24c99cb7a7e20d9aeb6a8424e17cc35<br>
+F: marking op update:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22 resolved to ad8b8c641eda4f3d7317b3f92dd2cffd5fb26e07a86a2462862730aeea40764b<br>
+F: marking op update:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22 resolved to 5a510f1e2328ae6a57aca0c2c636b794944003d5abd2ab8b2f1684538d049ab3<br>
+F: marking op update:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22 resolved to 402290f269e3cde8bed0f47571b45ebd25fdd62671a22c11fff5c1f452c32419<br>
+F: marking op update:runtime/org.gnome.Platform/x86_64/44 resolved to bcaf01ac12cddc49dd34d1c186f0d19cab9fb01ded47e063eb39327ef4602945<br>
+F: marking op update:runtime/org.gnome.Platform/x86_64/43 resolved to a7c48ccf54c858454c1ce2bc3186e14c2ac5fa2ee6419e2c65e222fa54ab39c3<br>
+F: marking op update:runtime/org.gnome.Platform.Locale/x86_64/44 resolved to 34c182252c28c9d73d174286e1674217198b07cea7966b9485fa7ed45e342b82<br>
+F: marking op update:runtime/org.gnome.Platform.Locale/x86_64/43 resolved to 68d1707a533f26f10c62a4edc55da23d0cc9dfc1c4ddf9b437b1d68745b78283<br>
+F: marking op update:runtime/org.gnome.Platform.Compat.i386/x86_64/43 resolved to 667ac8d8670c7c33095d352dce706a20049d8006dfa4b5b4f7f888931c2e0b9a<br>
+F: marking op update:runtime/org.freedesktop.Sdk.Locale/x86_64/22.08 resolved to 8875a5e24be5f69792c09553e881566dec6df3869942c41ae40933b57345de1d<br>
+F: marking op update:runtime/org.freedesktop.Platform/x86_64/22.08 resolved to 74b5ae6a53e3f39258f90c664a63ef256097bd77c4229fc11e96bc2dbd2ce0cf<br>
+F: marking op update:runtime/org.freedesktop.Platform/x86_64/21.08 resolved to fb5e773453be4c35c971eb4a855a0a2809207fc9ee0cde6d96fd1b5f103b9d5f<br>
+F: marking op update:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 resolved to bf24f23f3ba385f6e8c9215ed94d979db99814b0b614504a23a6d0751dc5f063<br>
+F: marking op update:runtime/org.freedesktop.Platform.openh264/x86_64/2.0 resolved to bdc77b1e945ddddcd027dadb9dd93c23437ffc7aca6407b43b385fa1b53a225d<br>
+F: marking op update:runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/22.08 resolved to bd6a228797106f82241599f26400f7c290a5b35ad3f5c58ed956bbd32347d45e<br>
+F: marking op update:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08 resolved to bc9424944b162fefec4a4dbf36683cc050dc05721cd906766d77a2aaef19efb5<br>
+F: marking op update:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/21.08 resolved to 90ff9c233bc2e4461270ab51e5594589272c11ae8ef4ae1e4e47f631a74eaca1<br>
+F: marking op update:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08 resolved to dee9cef57407246deed05e11f3f7f4145bd0ac0c4cf2da284edb6446cf0fc06f<br>
+F: marking op update:runtime/org.freedesktop.Platform.Locale/x86_64/22.08 resolved to 4140d85aa7410bf434376fe37cd2b256d476d46e44ac028e781bce80be68b0a4<br>
+F: marking op update:runtime/org.freedesktop.Platform.Locale/x86_64/21.08 resolved to 8ad0d103214ae6703f1964807a0c82da8b093832c25a5315e09ac27b30381e2e<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL32.nvidia-515-86-01/x86_64/1.4 resolved to e3a348400ca1c15e866c3b7a7c42116bb00b73e802551e84b3959a745204a8e5<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL32.nvidia-515-105-01/x86_64/1.4 resolved to 6ad82f7896a1282e6b22b339b42ae00314d6e158c8bda8062cc1869116dd411c<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL32.default/x86_64/22.08 resolved to 72ad8741986152e7f2d365a77d2b2fba1fb9b89a027f5fea4b90abd0808e9786<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4 resolved to 67f768c10c3cc883ce56f5827a6106cc77851e533b886475c42d7a9a5fdc99d4<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4 resolved to e473bd4c248f1909f6e524cc4bc6f915a035a51fbbcb7e4ad876d3df5bd8c2f8<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra resolved to e781cbdb0e17ea22365c55bcfdabfb6430c5f0a364c5307bdd5e1131c1a8680e<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08 resolved to 8b4ee41cce832ad87e6a806fd8359ac295ea23768cf515d88c502a0dcab54ca2<br>
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/21.08 resolved to 455319fb180e673a05b1156dabba36dd41fd13ccaa71a9fe477710eddbc8f2a0<br>
+F: marking op update:runtime/net.mullvad.MullvadBrowser.Locale/x86_64/stable resolved to 582d31b0e131e50fd9819c1ed3422b345ad76f055b50045ea24a4aabc67a0f08<br>
+F: marking op update:runtime/io.neovim.nvim.Locale/x86_64/stable resolved to bc839adb5c48bc5daad7fa1f71636c746933218aacfffdcf04350ad81ad32312<br>
+F: marking op update:runtime/io.github.cboxdoerfer.FSearch.Locale/x86_64/stable resolved to 417a7144a0b06019b249cca9db8229f901f182bff6121f800df64a4253920012<br>
+F: marking op update:runtime/com.usebottles.bottles.Locale/x86_64/stable resolved to e82e9ca10f662500f6b480f68c2cab97dcc09bd5c7fc820cb673abeca945d11d<br>
+F: marking op update:app/xyz.z3ntu.razergenie/x86_64/stable resolved to b72366b798546019843a6f3c66bd3833b096a568fc2c104b9e32070eeac10a7c<br>
+F: marking op update:app/org.xonotic.Xonotic/x86_64/stable resolved to b60f50ac62c52fa98f5aeadd50bed6f4f985f47b5f8f6d9f6ef98d71ecf5e764<br>
+F: marking op update:app/org.libretro.RetroArch/x86_64/stable resolved to 9e9453c15999316f833b5436bbc3d259cbc8b9bed0850da07bd6b3dd6a0b9e27<br>
+F: marking op update:app/org.kde.elisa/x86_64/stable resolved to 67e820338dfa03ed90594a389ec146e164df0dbe5ec1759c04f3b6bd647d7a03<br>
+F: marking op update:app/org.cryptomator.Cryptomator/x86_64/stable resolved to 10c112baf548b3ec8a4261e41012b7b6975a6643ff0a97f2bc15171f16d2b591<br>
+F: marking op update:app/net.warsow.Warsow/x86_64/stable resolved to f2eafa1dc917811dd17a8f27e5fb7989bc34a0a778399e8ba4336008fd0b6414<br>
+F: marking op update:app/net.mullvad.MullvadBrowser/x86_64/stable resolved to b16186349c3473c207fc4d73710178f8faa8e733aafb21cab5bf89fbf78fa8b3<br>
+F: marking op update:app/io.neovim.nvim/x86_64/stable resolved to 79806155f966275ba7cecdd19d15de3e555b07a588b355453fa259f7203f350f<br>
+F: marking op update:app/io.gitlab.librewolf-community/x86_64/stable resolved to dbae55a6c1ddf107e8a5469303c14a86a438053873d6b6d76d878ca8c0d8abd1<br>
+F: marking op update:app/io.github.cboxdoerfer.FSearch/x86_64/stable resolved to 3ff8b439d145541fc1aaa918b9bbab8c17f5adf767d2f3f2ca411ac855c8039d<br>
+F: marking op update:app/io.freetubeapp.FreeTube/x86_64/stable resolved to 9ddaf4f65be105afa5b996763be7335af4f8c54d05e516d885c8d16527946252<br>
+F: marking op update:app/com.usebottles.bottles/x86_64/stable resolved to dd3443b07695284ed877ca502f6cac9fe6ecbbc40ebf26b397a6fd1a7305e758<br>
+F: marking op update:app/com.sayonara_player.Sayonara/x86_64/stable resolved to 46f6f1413246889f9d71690c7f9540f73e15c46cecc7dc4b22964a6e02b5c8f3<br>
+F: marking op update:app/com.github.tchx84.Flatseal/x86_64/stable resolved to b5b8f7a9e3b5d7d34b1b56a68754f3992c82a143ce20aa996b84ab5572b7d073<br>
+F: marking op update:app/com.github.opentyrian.OpenTyrian/x86_64/stable resolved to 3f3f44df7e22174625be7febd0ab653d0db545d1f0ccb37c73202c36af6022be<br>
+Required runtime for io.neovim.nvim/x86_64/stable (runtime/org.freedesktop.Sdk/x86_64/22.08) found in remote flathub<br>
+Do you want to install it? [Y/n]: y<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Sdk/x86_64/22.08[$old]<br>
+F: marking op install/update:runtime/org.freedesktop.Sdk/x86_64/22.08 resolved to ac3b29f9b04246d2b346de5632914232ee9c511702fc3c4e0d1c125a6de1e3ca<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Sdk.Locale/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15-22.08[/de, /en]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/21.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.kde.Platform.Locale/x86_64/5.15-21.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gnome.Platform.Locale/x86_64/44[/de, /en]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gnome.Platform.Locale/x86_64/43[/de, /en]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/21.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/21.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark-Aqua/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y-Dark/x86_64/3.22[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gtk.Gtk3theme.Mint-Y/x86_64/3.22[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.0[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.kde.elisa.Locale/x86_64/stable[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/net.mullvad.MullvadBrowser.Locale/x86_64/stable[<em>]<br>
+F: Transaction: install/update flathub:runtime/io.neovim.nvim.Locale/x86_64/stable[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/io.github.cboxdoerfer.FSearch.Locale/x86_64/stable[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL32.default/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL32.nvidia-515-105-01/x86_64/1.4[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL32.nvidia-515-86-01/x86_64/1.4[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.winehq.Wine.gecko/x86_64/stable-22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.winehq.Wine.mono/x86_64/stable-22.08[<em>]<br>
+F: Transaction: install/update flathub:runtime/org.winehq.Wine.DLLs.dxvk/x86_64/stable-22.08[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.gnome.Platform.Compat.i386/x86_64/43[<em>]<br>
+F: Transaction: install/update flathub:runtime/com.usebottles.bottles.Locale/x86_64/stable[</em>]<br>
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/21.08[*]</p>
+</blockquote>
+<ol>
+<li>
+<pre><code>org.freedesktop.Platform.GL32.default	22.08	u	flathub	&lt; 153.1 MB
+</code></pre>
+</li>
+<li>
+<pre><code>org.freedesktop.Sdk	22.08	i	flathub	&lt; 513.5 MB
+</code></pre>
+</li>
+<li>
+<pre><code>org.freedesktop.Platform	22.08	u	flathub	&lt; 214.4 MB
+</code></pre>
+</li>
+<li>
+<pre><code>org.cryptomator.Cryptomator	stable	u	flathub	&lt; 49.9 MB
+</code></pre>
+</li>
+<li>
+<pre><code>org.kde.Platform	5.15-22.08	u	flathub	&lt; 323.9 MB
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p>Proceed with these changes to the system installation? [Y/n]: y<br>
+Updating 1/5…<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: flatpak_dir_pull: Using commit 72ad8741986152e7f2d365a77d2b2fba1fb9b89a027f5fea4b90abd0808e9786 for pull of ref runtime/org.freedesktop.Platform.GL32.default/x86_64/22.08 from remote flathub<br>
+Updating 1/5…                        0%  0 bytes/s<br>
+Updating 1/5… █▌                     8%<br>
+Updating 1/5… █▌                     8%  48 bytes/s  01:38:54<br>
+Updating 1/5… ██▊                   14%  2.5 kB/s  52:55<br>
+Updating 1/5… █████                 25%  6.8 kB/s  25:51<br>
+Updating 1/5… ████████▌             43%  13.8 kB/s  11:25<br>
+Updating 1/5… █████████████▊        69%  24.2 kB/s  03:52<br>
+Updating 1/5… █████████████▊        69%  5.3 kB/s  03:52<br>
+F: Unexpectedly got &gt; 100% progress, limiting<br>
+Updating 1/5… ████████████████████ 100%  134.5 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  137.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  5.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  5.6 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  8.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  9.6 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  21.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  18.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  22.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  26.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  30.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  33.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  36.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  40.5 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  44.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  52.1 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  61.5 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  70.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  78.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  86.5 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  118.9 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  209.1 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  103.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  116.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  152.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  119.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  101.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  102.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  103.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  104.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  105.1 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  103.6 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  106.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  109.1 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  110.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  110.3 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  93.5 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  86.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  86.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  82.9 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  82.9 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  84.6 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  87.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  91.2 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  97.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  106.9 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  88.0 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  84.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  79.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  55.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  47.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  45.6 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  44.7 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  43.8 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  42.9 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  42.1 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  41.4 kB/s  00:00<br>
+Updating 1/5… ████████████████████ 100%  40.0 kB/s  00:00<br>
+F: Calling system helper: CancelPull<br>
+F: Calling system helper: CancelPull<br>
+Warning: While pulling runtime/org.freedesktop.Platform.GL32.default/x86_64/22.08 from remote flathub: Socket I/O timed out</p>
+</blockquote>
+<p>This problem popped out of nowhere and it persist for 2 months now, making updates and installations an absolute chore. I found people who had this problem years ago, but for them it somehow resolved itself. Not in my case.</p>
+<p>Since then i, reinstalled flatpak several times, cleared caches, checked for malformed conig files, checked wikis and manuals, sadly to no avail.</p>
+<p>Now my question is, is it possible to somehow to switch servers, so i can at least rule out a connection problem? If not, is there another way to troubleshoot a problem like that, or is this a completly different problem altogether?</p>
+<p>Anyway, i wish you all a great day and thanks for your help <img src="/images/emoji/twitter/slightly_smiling_face.png?v=12" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">lemon</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 28, 2023 2:46 PM">
+            <time itemprop="datePublished" datetime="2023-06-28 14:46:19 +0000">Jun 28, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Second half of log:</p>
+<blockquote>
+<p>Installing 2/5…<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: flatpak_dir_pull: Using commit ac3b29f9b04246d2b346de5632914232ee9c511702fc3c4e0d1c125a6de1e3ca for pull of ref runtime/org.freedesktop.Sdk/x86_64/22.08 from remote flathub<br>
+Installing 2/5…                        0%  0 bytes/s<br>
+Installing 2/5… ▍                      2%<br>
+Installing 2/5… ▍                      2%  0 bytes/s  08:41:51<br>
+Installing 2/5… ▍                      2%  0 bytes/s  17:32:41<br>
+Installing 2/5… ▍                      2%  0 bytes/s  26:23:31<br>
+Installing 2/5… ▍                      2%  0 bytes/s  35:07:00<br>
+Installing 2/5… █▌                     8%  31 bytes/s  08:21:24<br>
+Installing 2/5… █▌                     8%  581 bytes/s  08:21:35<br>
+Installing 2/5… █▌                     8%  2.6 kB/s  08:21:35<br>
+Installing 2/5… █▊                     9%  5.1 kB/s  07:21:00<br>
+Installing 2/5… ██                    10%  7.1 kB/s  06:32:42<br>
+Installing 2/5… ██                    10%  9.0 kB/s  06:32:42<br>
+Installing 2/5… ██▏                   11%  9.8 kB/s  05:53:02<br>
+Installing 2/5… ██▏                   11%  12.6 kB/s  05:53:10<br>
+Installing 2/5… ██▏                   11%  14.6 kB/s  05:53:10<br>
+Installing 2/5… ██▏                   11%  15.2 kB/s  05:53:18<br>
+Installing 2/5… ██▌                   13%  16.7 kB/s  04:52:13<br>
+Installing 2/5… ██▌                   13%  18.2 kB/s  04:52:20<br>
+Installing 2/5… ██▊                   14%  19.6 kB/s  04:28:20<br>
+Installing 2/5… ██▊                   14%  21.0 kB/s  04:28:26<br>
+Installing 2/5… ██▊                   14%  21.0 kB/s  04:28:26<br>
+Installing 2/5… ██▊                   14%  21.0 kB/s  04:28:26<br>
+Installing 2/5… ██▊                   14%  21.0 kB/s  04:28:32<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:32<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:32<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:38<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:38<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:38<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:38<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:45<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:45<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:45<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:51<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:51<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:51<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:57<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:57<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:57<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:28:57<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:03<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:03<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:03<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:09<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:09<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:09<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:15<br>
+Installing 2/5… ██▊                   14%  21.1 kB/s  04:29:15<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:15<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:15<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:21<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:21<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:21<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:28<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:28<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:28<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:34<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:34<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:34<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:34<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:40<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:40<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:40<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:46<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:46<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:46<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:52<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:52<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:52<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:52<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:58<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:58<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:29:58<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:04<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:04<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:04<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:11<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:11<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:11<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:11<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:17<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:17<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:17<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:23<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:23<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:23<br>
+Installing 2/5… ██▊                   14%  21.2 kB/s  04:30:29<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:29<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:29<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:29<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:35<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:35<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:35<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:41<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:41<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:41<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:47<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:47<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:47<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:47<br>
+Installing 2/5… ██▊                   14%  21.3 kB/s  04:30:54<br>
+Installing 2/5… ███                   15%  21.3 kB/s  04:09:54<br>
+Installing 2/5… ███                   15%  21.3 kB/s  04:09:54<br>
+Installing 2/5… ███                   15%  21.5 kB/s  04:09:59<br>
+Installing 2/5… ███                   15%  21.7 kB/s  04:09:59<br>
+Installing 2/5… ███                   15%  22.0 kB/s  04:09:59<br>
+Installing 2/5… ███                   15%  22.2 kB/s  04:10:05<br>
+Installing 2/5… ███                   15%  22.4 kB/s  04:10:05<br>
+Installing 2/5… ███                   15%  22.7 kB/s  04:10:05<br>
+Installing 2/5… ███                   15%  23.0 kB/s  04:10:05<br>
+Installing 2/5… ███                   15%  23.3 kB/s  04:10:11<br>
+Installing 2/5… ███                   15%  23.7 kB/s  04:10:11<br>
+Installing 2/5… ███                   15%  24.0 kB/s  04:10:11<br>
+Installing 2/5… ███▏                  16%  24.4 kB/s  03:51:52<br>
+Installing 2/5… ███▏                  16%  24.6 kB/s  03:51:52<br>
+Installing 2/5… ███▏                  16%  26.0 kB/s  03:51:57<br>
+Installing 2/5… ███▏                  16%  27.6 kB/s  03:51:57<br>
+Installing 2/5… ███▍                  17%  29.4 kB/s  03:35:48<br>
+Installing 2/5… ███▍                  17%  30.7 kB/s  03:35:52<br>
+Installing 2/5… ███▌                  18%  32.5 kB/s  03:21:25<br>
+Installing 2/5… ███▌                  18%  33.7 kB/s  03:21:30<br>
+Installing 2/5… ███▊                  19%  35.0 kB/s  03:08:34<br>
+Installing 2/5… ███▊                  19%  36.7 kB/s  03:08:38<br>
+Installing 2/5… ████                  20%  38.0 kB/s  02:57:00<br>
+Installing 2/5… ████▏                 21%  39.5 kB/s  02:46:27<br>
+Installing 2/5… ████▏                 21%  39.5 kB/s  02:46:31<br>
+Installing 2/5… ████▏                 21%  40.8 kB/s  02:46:31<br>
+Installing 2/5… ████▏                 21%  42.5 kB/s  02:46:35<br>
+Installing 2/5… ████▍                 22%  43.8 kB/s  02:37:00<br>
+Installing 2/5… ████▍                 22%  45.3 kB/s  02:37:03<br>
+Installing 2/5… ████▌                 23%  46.7 kB/s  02:28:18<br>
+Installing 2/5… ████▌                 23%  48.2 kB/s  02:28:21<br>
+Installing 2/5… ████▊                 24%  49.4 kB/s  02:20:23<br>
+Installing 2/5… ████▊                 24%  51.2 kB/s  02:20:23<br>
+Installing 2/5… ████▊                 24%  51.2 kB/s  02:20:23<br>
+Installing 2/5… █████                 25%  52.6 kB/s  02:13:03<br>
+Installing 2/5… █████                 25%  54.3 kB/s  02:13:06<br>
+Installing 2/5… █████▏                26%  55.6 kB/s  02:06:16<br>
+Installing 2/5… █████▏                26%  57.0 kB/s  02:06:19<br>
+Installing 2/5… █████▍                27%  58.4 kB/s  01:59:59<br>
+Installing 2/5… █████▍                27%  60.1 kB/s  01:59:59<br>
+Installing 2/5… █████▍                27%  60.2 kB/s  02:00:02<br>
+Installing 2/5… █████▌                28%  61.7 kB/s  01:54:10<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:12<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:12<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:15<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:15<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:15<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:18<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:18<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:18<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:18<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:20<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:20<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:20<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:23<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:23<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:23<br>
+Installing 2/5… █████▌                28%  63.2 kB/s  01:54:25<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:25<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:25<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:25<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:28<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:28<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:28<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:30<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:30<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:30<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:33<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:33<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:33<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:33<br>
+Installing 2/5… █████▌                28%  63.3 kB/s  01:54:36<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:06<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:06<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:09<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:09<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:09<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:11<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:11<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:11<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:11<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:14<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:14<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:14<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:16<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:16<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:16<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:18<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:18<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:18<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:18<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:21<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:21<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:21<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:23<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:23<br>
+Installing 2/5… █████▊                29%  63.3 kB/s  01:49:23<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:26<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:26<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:26<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:26<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:28<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:28<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:28<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:31<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:31<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:31<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:33<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:33<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:33<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:36<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:36<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:36<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:36<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:38<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:38<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:38<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:40<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:40<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:40<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:43<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:43<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:43<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:43<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:45<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:45<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:45<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:48<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:48<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:48<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:50<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:50<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:50<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:50<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:53<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:53<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:53<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:55<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:55<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:55<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:58<br>
+Installing 2/5… █████▊                29%  63.4 kB/s  01:49:58<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:58<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:49:58<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:00<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:00<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:00<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:03<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:03<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:03<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:05<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:05<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:05<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:05<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:07<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:07<br>
+Installing 2/5… █████▊                29%  63.6 kB/s  01:50:07<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:10<br>
+Installing 2/5… █████▊                29%  63.6 kB/s  01:50:10<br>
+Installing 2/5… █████▊                29%  63.6 kB/s  01:50:10<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:12<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:12<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:12<br>
+Installing 2/5… █████▊                29%  63.5 kB/s  01:50:12<br>
+Installing 2/5… █████▊                29%  57.9 kB/s  02:01:01<br>
+Installing 2/5… █████▊                29%  57.6 kB/s  02:01:30<br>
+Installing 2/5… █████▊                29%  56.7 kB/s  02:03:28<br>
+Installing 2/5… █████▊                29%  56.7 kB/s  02:03:30<br>
+F: Calling system helper: CancelPull<br>
+F: Calling system helper: CancelPull<br>
+Error: While pulling runtime/org.freedesktop.Sdk/x86_64/22.08 from remote flathub: Socket I/O timed out<br>
+Updating 3/5…<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: flatpak_dir_pull: Using commit 74b5ae6a53e3f39258f90c664a63ef256097bd77c4229fc11e96bc2dbd2ce0cf for pull of ref runtime/org.freedesktop.Platform/x86_64/22.08 from remote flathub<br>
+Updating 3/5…                        0%  0 bytes/s<br>
+Updating 3/5… █▌                     8%<br>
+Updating 3/5… █▌                     8%  0 bytes/s  23:34<br>
+Updating 3/5… █▌                     8%  0 bytes/s  24:09<br>
+Updating 3/5… █▌                     8%  151 bytes/s  31:26<br>
+Updating 3/5… ██▊                   14%  2.6 kB/s  16:47<br>
+Updating 3/5… ███████               35%  10.8 kB/s  05:06<br>
+Updating 3/5… ███████               35%  3.1 kB/s  05:06<br>
+Updating 3/5… ███████               35%  3.4 kB/s  05:06<br>
+Updating 3/5… ███████               35%  5.8 kB/s  05:08<br>
+Updating 3/5… ███████               35%  9.6 kB/s  05:08<br>
+Updating 3/5… █████████▏            46%  15.2 kB/s  03:14<br>
+Updating 3/5… ███████████▌          58%  20.0 kB/s  02:00<br>
+Updating 3/5… ████████████▍         62%  21.3 kB/s  01:42<br>
+Updating 3/5… ███████████████▌      78%  27.8 kB/s  00:47<br>
+Updating 3/5… █████████████████     85%  30.5 kB/s  00:29<br>
+Updating 3/5… █████████████████     85%  19.7 kB/s  00:45<br>
+Updating 3/5… ██████████████████▏   91%  12.3 kB/s  00:43<br>
+Updating 3/5… ███████████████████▊  99%  13.5 kB/s  00:04<br>
+F: Unexpectedly got &gt; 100% progress, limiting<br>
+Updating 3/5… ████████████████████ 100%  11.5 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  14.5 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  20.3 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  30.1 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  37.3 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  39.2 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  15.9 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  14.0 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  13.3 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  11.6 kB/s  00:00<br>
+Updating 3/5… ████████████████████ 100%  7.6 kB/s  00:00<br>
+F: Calling system helper: CancelPull<br>
+F: Calling system helper: CancelPull<br>
+Error: While pulling runtime/org.freedesktop.Platform/x86_64/22.08 from remote flathub: Socket I/O timed out<br>
+Updating 4/5…<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: flatpak_dir_pull: Using commit 10c112baf548b3ec8a4261e41012b7b6975a6643ff0a97f2bc15171f16d2b591 for pull of ref app/org.cryptomator.Cryptomator/x86_64/stable from remote flathub<br>
+Updating 4/5…                        0%  0 bytes/s<br>
+Updating 4/5… █                      5%<br>
+Updating 4/5… █                      5%<br>
+Updating 4/5… █                      5%  8.8 kB/s<br>
+Updating 4/5… █                      5%  11.4 kB/s<br>
+Updating 4/5… ████████████████▊     84%  356 bytes/s  00:06<br>
+Updating 4/5… ████████████████▊     84%  2.8 kB/s  00:07<br>
+Updating 4/5… ████████████████▊     84%  9.9 kB/s  00:07<br>
+Updating 4/5… █████████████████▌    88%  9.9 kB/s  00:05<br>
+Updating 4/5… ██████████████████▍   92%  4.4 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  5.1 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  12.5 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  20.2 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  29.7 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  40.3 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  51.4 kB/s  00:08<br>
+Updating 4/5… ██████████████████▍   92%  54.7 kB/s  00:08<br>
+Updating 4/5… ███████████████████▏  96%  29.5 kB/s  00:04<br>
+Updating 4/5… ███████████████████▏  96%  5.9 kB/s  00:20<br>
+Updating 4/5… ███████████████████▏  96%  3.9 kB/s  00:31<br>
+Updating 4/5… ███████████████████▏  96%  3.4 kB/s  00:35<br>
+Updating 4/5… ███████████████████▏  96%  3.3 kB/s  00:36<br>
+Updating 4/5… ███████████████████▏  96%  3.1 kB/s  00:39<br>
+Updating 4/5… ███████████████████▏  96%  3.0 kB/s  00:40<br>
+Updating 4/5… ███████████████████▏  96%  2.8 kB/s  00:43<br>
+Updating 4/5… ███████████████████▏  96%  2.7 kB/s  00:44<br>
+Updating 4/5… ███████████████████▏  96%  2.2 kB/s  00:55<br>
+Updating 4/5… ███████████████████▏  96%  2.1 kB/s  00:57<br>
+Updating 4/5… ███████████████████▏  96%  1.7 kB/s  01:11<br>
+Updating 4/5… ███████████████████▏  96%  1.6 kB/s  01:19<br>
+Updating 4/5… ███████████████████▏  96%  1.4 kB/s  01:25<br>
+Updating 4/5… ███████████████████▏  96%  1.4 kB/s  01:27<br>
+Updating 4/5… ███████████████████▏  96%  1.4 kB/s  01:28<br>
+Updating 4/5… ███████████████████▏  96%  1.4 kB/s  01:29<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:31<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:32<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:33<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:35<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:36<br>
+Updating 4/5… ███████████████████▏  96%  1.3 kB/s  01:37<br>
+Updating 4/5… ███████████████████▏  96%  1.2 kB/s  01:48<br>
+Updating 4/5… ███████████████████▏  96%  1.1 kB/s  01:52<br>
+Updating 4/5… ███████████████████▏  96%  1.0 kB/s  01:56<br>
+Updating 4/5… ███████████████████▏  96%  1.0 kB/s  01:58<br>
+Updating 4/5… ███████████████████▏  96%  1.0 kB/s  01:59<br>
+Updating 4/5… ███████████████████▏  96%  996 bytes/s  02:02<br>
+Updating 4/5… ███████████████████▏  96%  987 bytes/s  02:03<br>
+Updating 4/5… ███████████████████▏  96%  971 bytes/s  02:06<br>
+Updating 4/5… ███████████████████▏  96%  965 bytes/s  02:07<br>
+Updating 4/5… ███████████████████▏  96%  961 bytes/s  02:08<br>
+F: Calling system helper: CancelPull<br>
+F: Calling system helper: CancelPull<br>
+Error: While pulling app/org.cryptomator.Cryptomator/x86_64/stable from remote flathub: Socket I/O timed out<br>
+Updating 5/5…<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: Calling system helper: GetRevokefsFd<br>
+F: flatpak_dir_pull: Using commit 8d617f2296599d8c4d50a21b0cd183277f6a785f4c955098ba8002ea5ca85cce for pull of ref runtime/org.kde.Platform/x86_64/5.15-22.08 from remote flathub<br>
+Updating 5/5…                        0%  0 bytes/s<br>
+Updating 5/5… █▌                     8%<br>
+Updating 5/5… █▌                     8%  20 bytes/s  12:39<br>
+Updating 5/5… █▌                     8%  11 bytes/s  23:34<br>
+Updating 5/5… █▌                     8%  0 bytes/s  24:09<br>
+Updating 5/5… █▌                     8%  11 bytes/s  01:36:01<br>
+Updating 5/5… █▌                     8%  16 bytes/s  01:36:47<br>
+Updating 5/5… █▌                     8%  25 bytes/s  01:42:32<br>
+Updating 5/5… █▌                     8%  30 bytes/s  01:43:30<br>
+Updating 5/5… █▌                     8%  8 bytes/s  02:00:22<br>
+Updating 5/5… █▌                     8%  0 bytes/s  02:01:42<br>
+Updating 5/5… ███▏                  16%  1.1 kB/s  58:11<br>
+Updating 5/5… ██████▌               33%  3.2 kB/s  22:30<br>
+Updating 5/5… ██████▌               33%  1.3 kB/s  22:30<br>
+Updating 5/5… ████████████          60%  6.7 kB/s  07:24<br>
+Updating 5/5… ████████████          60%  1.3 kB/s  07:24<br>
+Updating 5/5… ████████████          60%  830 bytes/s  11:26<br>
+Updating 5/5… ████████████          60%  628 bytes/s  15:24<br>
+Updating 5/5… ████████████          60%  521 bytes/s  18:14<br>
+Updating 5/5… ████████████          60%  437 bytes/s  22:33<br>
+Updating 5/5… ████████████          60%  374 bytes/s  25:22<br>
+Updating 5/5… ████████████          60%  337 bytes/s  29:49<br>
+F: Calling system helper: CancelPull<br>
+F: Calling system helper: CancelPull<br>
+Error: While pulling runtime/org.kde.Platform/x86_64/5.15-22.08 from remote flathub: Socket I/O timed out<br>
+Changes complete.<br>
+error: There were one or more errors<br>
+username@username-PC-Name-Name:~$</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

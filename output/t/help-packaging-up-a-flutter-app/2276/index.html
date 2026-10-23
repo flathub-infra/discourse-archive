@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help packaging up a Flutter app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help packaging up a Flutter app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help packaging up a Flutter app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 2, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mirek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 2, 2022 3:15 PM">
+            <time itemprop="datePublished" datetime="2022-03-02 15:15:00 +0000">Mar 2, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to make a Flatpak of this Flutter app: <a href="https://github.com/hamaluik/timecop" rel="noopener nofollow ugc">https://github.com/hamaluik/timecop</a> . I’m using FluffyChat as my inspiration.</p>
+<p>There’s one place where I’m getting stuck: I can’t figure out how to include SQLite 3, which the app depends on. FluffyChat seems to accomplish this by including two cmake dependencies: olm and libjsoncpp. Both seem to yield a /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 file, even though neither are directly related to SQLite.</p>
+<p>I don’t have a need for any of these libraries, but I do need SQLite 3. How do I do that?</p>
+<p>For reference, this is my current Flatpak YAML draft:</p>
+<pre><code class="lang-auto">app-id: ca.hamaluik.Timecop
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: timecop
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=dri
+  - --talk-name=org.freedesktop.Notifications
+modules:
+  - name: timecop
+    buildsystem: simple
+    build-commands:
+      - cp -R /usr/bin/ /app/timecop
+      - mkdir /app/bin/
+      - ln -s /app/timecop/timecop /app/bin/timecop
+      - ln -s /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 /app/lib/libsqlite3.so
+      - install -Dm644 usr/share/ca.hamaluik.Timecop.svg /app/share/icons/hicolor/scalable/apps/ca.hamaluik.Timecop.svg,
+      - install -Dm644 usr/share/ca.hamaluik.Timecop.desktop /app/share/applications/ca.hamaluik.Timecop.desktop,
+      - install -Dm644 usr/share/ca.hamaluik.Timecop.appdata.xml /app/share/appdata/ca.hamaluik.Timecop.appdata.xml
+    sources:
+      - type: archive
+        only-arches:
+          - x86_64
+        path: "timecop-linux-x86_64.tar.xz"
+        dest: "timecop"
+</code></pre>
+<p>And this is the error I get:</p>
+<pre><code class="lang-auto">ln -s /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 /app/lib/libsqlite3.so
+ln: failed to create symbolic link '/app/lib/libsqlite3.so': No such file or directory
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mirek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 2, 2022 3:17 PM">
+            <time itemprop="datePublished" datetime="2022-03-02 15:17:54 +0000">Mar 2, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@nedrichards</span> You were offering help with Flutter over at <a href="/t/ideas-on-growing-the-flathub-community-in-2022/2053/index.html#post_7" class="inline-onebox">Ideas on growing the Flathub Community in 2022 - #7 by ChrisOfBristol</a> . Could you give me a tip regarding this problem?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 3, 2022 4:24 PM">
+            <time itemprop="datePublished" datetime="2022-03-03 16:24:41 +0000">Mar 3, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can try to debug your module with <code>flatpak-builder --build-shell=timecop BUILDDIRECTORY MANIFEST</code>. This prepares your build environment for the given module &amp; starts a build shell. There you can manually execute your build-commands &amp; inspect your source directory as well as the <code>/app</code> destination.</p>
+<p>You should replace <code>cp -R /usr/bin/ /app/timecop</code> with <code>cp -R timecop /app/timecop</code> to copy your application into the <code>/app</code>-prefix (you’re currently copying the binaries of the SDK into your app).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nelson Ben</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 5, 2022 3:59 AM">
+            <time itemprop="datePublished" datetime="2022-03-05 03:59:58 +0000">Mar 5, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You have example sqlite3 builds <a href="https://github.com/flathub/org.qgis.qgis/blob/a96824bf6a6571e03d6497dc5ca9eb9c6dcfe55f/org.qgis.qgis.json#L161" rel="noopener nofollow ugc">here</a> , <a href="https://github.com/flathub/org.kde.kontact/blob/13dc3ee4e07c7f96dca249282d3387679ffa7b3c/org.kde.kontact.json#L177" rel="noopener nofollow ugc">here</a> and <a href="https://github.com/flathub/org.kde.akregator/blob/7a3d87987b3ff26528df78061943a0625300506a/org.kde.akregator.json#L123" rel="noopener nofollow ugc">here</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 5, 2022 12:28 PM">
+            <time itemprop="datePublished" datetime="2022-03-05 12:28:12 +0000">Mar 5, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>SQLite 3.36 is already part of the Platform (<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/21.08/elements/components/sqlite.bst" rel="noopener nofollow ugc">freedesktop-sdk</a>). It shouldn’t be necessary and probably avoided to build it unless a specific or newer version is required.</p>
+<p>That’s not why the symbolic link fails, since the library exists (this works: <code>flatpak run --command=ls org.freedesktop.Platform//21.08  /usr/lib/x86_64-linux-gnu/libsqlite3.so.0</code>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mirek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 11, 2022 1:20 PM">
+            <time itemprop="datePublished" datetime="2022-03-11 13:20:55 +0000">Mar 11, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a ton! Your tip helped me debug he problem. Beside the cp bug that you noted, I also needed to mkdir and then it worked. <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>Now I’m dealing with a filesystem permission issue. It seems that both getDatabases() in SQFlite as well as getApplicationDocumentsDirectory() in <a href="https://pub.dev/packages/path_provider" rel="noopener nofollow ugc">path_provider</a> point to somewhere outside the sandbox in the home directory. I’ll look into it when I get the time and if I can’t figure it out, I’ll create a new thread.</p>
+<p>For now, I’ll be setting the --filesystem=home permission.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 11, 2022 4:36 PM">
+            <time itemprop="datePublished" datetime="2022-03-11 16:36:56 +0000">Mar 11, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can’t say anything about SQFlite, but <code>getApplicationDocumentsDirectory()</code> resolves into the user visible documents folder (usually $HOME/Documents) and therefore requires <code>--filesystem=xdg-documents</code>.</p>
+<p>If you want to hide your files inside <code>$XDG_DATA_HOME</code>, you have to use <code>getApplicationSupportDirectory</code> (this doesn’t require any filesystem-permissions).</p>
+<p>References:<br>
+<a href="https://github.com/flutter/flutter/issues/77628#issuecomment-793198280" rel="noopener nofollow ugc">path_provider on desktop stores app files in the user’s documents directory</a><br>
+<a href="https://github.com/flutter/plugins/pull/3691#issuecomment-794069250" rel="noopener nofollow ugc">When getApplicationDocumentsPath() is used, call getApplicationSupportPath()</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mirek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 11, 2022 11:01 PM">
+            <time itemprop="datePublished" datetime="2022-03-11 23:01:54 +0000">Mar 11, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks!</p>
+<p>I ended up using XDG_DATA_HOME from xdg_directories. It probably does the same thing, but it was easier to discover for me, and it also seems more future-proof to me.</p>
+<p>I also ended up duplicating a file opened from a file picker to a temporary location, though I’m not sure that’s necessary.</p>
+<p>I discovered quite late that despite using --force-clean, my binary was not being updated during installation. --disable-cache did the trick.</p>
+<p>(My Linux set-up is painful in that my Linux computer has a tendency to randomly freeze up and become unresponsive for hours due to a hardware issue. Other than that, I have a Mac with basically no hard disk space, so VM is out of the question. Testing different builds is quite burdensome, which is why I haven’t tested not copying an imported file to a temp location.)</p>
+<p>Anyway, seems like I’m at the finish line. Now just need to make sure that my changes aren’t causing regressions on Android or iOS.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bksubhuti</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jun 27, 2023 3:18 PM">
+            <time itemprop="datePublished" datetime="2023-06-27 15:18:17 +0000">Jun 27, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>digital ocean is another method if you don’t have workflows working.<br>
+You can make a build script and setup an environment and finished within<br>
+8 minutes.</p>
+<p>You need to choose a droplet that has 4gb of ram.  $28 server works… it will cost almost nothing if you destroy the server immediately.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

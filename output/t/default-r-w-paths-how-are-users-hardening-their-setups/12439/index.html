@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Default r/w paths -- how are users hardening their setups? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Default r/w paths -- how are users hardening their setups?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Default r/w paths -- how are users hardening their setups?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 21, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">basher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 21, 2026 6:22 PM">
+            <time itemprop="datePublished" datetime="2026-07-21 18:22:25 +0000">Jul 21, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>One of the main issues I have with Flatpak are (IMHO) lenient default settings. Have used FP for a few years, and only now discovered it also allows for rw access to number of xdg directories by default.</p>
+<p>This led me to add following to <code>~/.local/share/flatpak/overrides/global</code>:</p>
+<pre data-code-wrap="console"><code class="lang-console">$ cat global
+
+[Context]
+sockets=!gpg-agent;!pcsc;!ssh-auth;!system-bus;!session-bus
+filesystems=!~/.gnupg;!~/.ssh;!xdg-documents;!xdg-config/systemd;!home;!host
+
+[Session Bus Policy]
+org.freedesktop.Flatpak=none
+org.freedesktop.secrets=none
+</code></pre>
+<p>Is this reasonable approach? Curious from others in the community which <code>global</code> hardening rules y’all have set up.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 21, 2026 7:13 PM">
+            <time itemprop="datePublished" datetime="2026-07-21 19:13:08 +0000">Jul 21, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="basher" data-post="1" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+basher:</div>
+<blockquote>
+<p>Have used FP for a few years, and only now discovered it also allows for rw access to number of xdg directories by default.</p>
+</blockquote>
+</aside>
+<p>Do you have an example for that?</p>
+<p>Can’t speak for the whole backcatalog, but for new submissions unrestricted access to folders requires a good reason. Permissions should already be quite strict in many cases.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 22, 2026 6:12 PM">
+            <time itemprop="datePublished" datetime="2026-07-22 18:12:38 +0000">Jul 22, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By default flatpak gives access to nothing except private directory under <code>~/.var/app</code>. All permissions you may see are added by app developers and you have right to override them as you wish.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jrobertb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 25, 2026 8:22 PM">
+            <time itemprop="datePublished" datetime="2026-07-25 20:22:43 +0000">Jul 25, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using Arch Linux with KDE Plasma 6.7.3.</p>
+<p>I don’t see any global file under the  …/overrides directory.</p>
+<p>I only see various app files (Brave, Librewold, Waterfox).</p>
+<p>When I cat their contents I get the following:</p>
+<p>===</p>
+<p>cat org.mozilla.firefox<br>
+[Context]<br>
+devices=dri;usb;<br>
+features=per-app-dev-shm;</p>
+<p>[Session Bus Policy]<br>
+org.kde.plasma.browser.integration=talk</p>
+<p>===</p>
+<p>I don’t know if this is reasonable but looks less dangerous than yours.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stella / elly-code</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 31, 2026 10:19 PM">
+            <time itemprop="datePublished" datetime="2026-07-31 22:19:00 +0000">Jul 31, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>are you using some exotic niche distro with some shitty defaults shipped perhaps?</p>
+<p>because none of these overrides are necessary… Ive just tried out from entering a sandbox and checking accesses, and theres really none of that</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">basher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 5, 2026 11:41 AM">
+            <time itemprop="datePublished" datetime="2026-08-05 11:41:30 +0000">Aug 5, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry guys, thought I had posted this on Fedora forums and was surprised nobody was replying <img src="/images/emoji/twitter/sweat_smile.png?v=15" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"></p>
+<hr>
+<aside class="quote no-group" data-username="CodedOre" data-post="2" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+CodedOre:</div>
+<blockquote>
+<p>Do you have an example for that?</p>
+</blockquote>
+</aside>
+<p>My wording in the OP was poor. What I meant was: originally my <code>filesystems</code> global override had only <code>!home</code>, assuming that <em>everything</em> under it would be disallowed; only to discover flatpak has special <code>xdg-*</code> rules that allow individual apps to get access to those directories even with my !home rule present.</p>
+<p>Not knowing all the permutations, it seems counterintuitive to me that <code>~/Documents</code> (i.e. xdg-documents) could be accessed with a global <code>!home</code> override – this in particular caught me off guard.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="3" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>All permissions you may see are added by app developers</p>
+</blockquote>
+</aside>
+<p>Again, my poor wording, soz. See above.</p>
+<aside class="quote no-group" data-username="jrobertb" data-post="4" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+jrobertb:</div>
+<blockquote>
+<p>I don’t see any global file under the …/overrides directory.</p>
+</blockquote>
+</aside>
+<p>It’s a file I manually created to further harden the flatpak installations.</p>
+<aside class="quote no-group" data-username="teamcons" data-post="5" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+teamcons:</div>
+<blockquote>
+<p>are you using some exotic niche distro with some shitty defaults shipped perhaps?</p>
+</blockquote>
+</aside>
+<p>The default – please correct me if I’m wrong – is the individual apps can ask access to wherever. My global override intention is to disable that behavior, so I can explicitly allow specific apps access to whatever they need. E.g. no app should ever access the entirety of <code>xdg-config</code>, imho <em>(although, given how <code>bwrap</code> works, it also cannot give access to just <code>xdg-config/app</code> if that /app node does not already exist)</em>. At least I have plenty of sensitive stuff in there.<br>
+And to re-iterate, with !home rule in place, I would expect the individual app <code>xdg-*</code> access rules <em>not</em> to override it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 5, 2026 7:47 PM">
+            <time itemprop="datePublished" datetime="2026-08-05 19:47:23 +0000">Aug 5, 2026</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>!rule</code> overrides this <code>rule</code> and nothing else</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stella / elly-code</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Aug 6, 2026 2:36 PM">
+            <time itemprop="datePublished" datetime="2026-08-06 14:36:36 +0000">Aug 6, 2026</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>The default – please correct me if I’m wrong – is the individual apps can ask access to wherever</p>
+</blockquote>
+<p>You are wrong. At the time of my comment i checked and entered a sandbox, and couldnt access anything. Default setup. No access to anything, only the apps own datadir</p>
+<p>The filechooser shows you everything, but not because the app sees it, but because the app uses portals, and will be granted access to whatever you select explicitly</p>
+<p>Aside from that i have no clue where you pulled your explanation from, but if it were true us reviewers wouldnt get death by a thousand cuts of people asking for said full access as static permissions, and there would be no point to the format itself</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">basher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Aug 8, 2026 2:36 PM">
+            <time itemprop="datePublished" datetime="2026-08-08 14:36:11 +0000">Aug 8, 2026</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>A real-life example to show what I mean.</p>
+<p>Let’s take <a href="https://github.com/flathub/org.libreoffice.LibreOffice/blob/71f6606bd6f59e9abbbe544bf017aedcb4ba7fc0/org.libreoffice.LibreOffice.json#L146" rel="noopener nofollow ugc">libreoffice</a> with its <code>--filesystem=xdg-config/gtk-3.0</code> rule. This means I can run <code>flatpak run org.libreoffice.libreoffice ~/.config/gtk-3.0/myfile.xlsx</code> and it will open it, although there is a <code>!home</code> override in place. (note providing file on CLI bypasses portals, so it’s not it)</p>
+<p>My issue with this is that user needs to know all the rules and their permutations. Intuitively I feel that !home should mean “everything in home is disallowed”, and individual apps shouldn’t be able to carve exceptions into its subdirectories.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Aug 8, 2026 9:29 PM">
+            <time itemprop="datePublished" datetime="2026-08-08 21:29:27 +0000">Aug 8, 2026</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I told you override doesn’t work like that already, what’s your point here?</p>
+<p>If it worked like you said then <code>!home</code> would result not only with no filesystem access but also with broken theming and fonts. Most users would be fine without <code>home</code> but there may be several subtle paths needed for some basic functionality and it’s above average user understanding how to restore them if <code>!home</code> overrides them all. At same time they’re marginal for security (BTW: probably LO should have read-only <code>--filesystem=xdg-config/gtk-3.0:ro</code>) access.</p>
+<p>If you want to be in charge of all permissions then use <code>--sandbox</code> option which cancels them all, not only filesystem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">basher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Aug 9, 2026 12:22 PM">
+            <time itemprop="datePublished" datetime="2026-08-09 12:22:07 +0000">Aug 9, 2026</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>I told you override doesn’t work like that already, what’s your point here?</p>
+</blockquote>
+</aside>
+<p>Your answer explained it well. My last post was more to exemplify my case for u/teamcons.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>If it worked like you said then <code>!home</code> would result not only with no filesystem access</p>
+</blockquote>
+</aside>
+<p>Out of curiosity, why would it break the entire filesystem access? Because <code>!host</code> rule would block access to everything whatsoever? Which is a valid point.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>If you want to be in charge of all permissions then use <code>--sandbox</code> option which cancels them all, not only filesystem.</p>
+</blockquote>
+</aside>
+<p>I’ll read up on it, wasn’t aware there’s an actual <code>sandbox</code> opt. But think I’ll continue on current path, but have to be more careful about denying the existing rules.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>At same time they’re marginal for security</p>
+</blockquote>
+</aside>
+<p>Yes, but that’s debatable. If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>BTW: probably LO should have read-only <code>--filesystem=xdg-config/gtk-3.0:ro</code></p>
+</blockquote>
+</aside>
+<p>Should these issues be raised with upstream problems, or is the <a href="https://github.com/flathub/org.libreoffice.LibreOffice" rel="noopener nofollow ugc">flathub/project</a> okay venue?</p>
+<aside class="quote no-group" data-username="basher" data-post="6" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+basher:</div>
+<blockquote>
+<p>although, given how <code>bwrap</code> works, it also cannot give access to just <code>xdg-config/app</code> if that /app node does not already exist</p>
+</blockquote>
+</aside>
+<p>Just realized this is not true in terms of flatpak, as <code>filesystems</code> nodes support <code>:create</code> suffix. Would it be reasonable to raise issues with specific projects that require e.g. rw to <code>xdg-config</code> as opposed to <code>xdg-config/app:create</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Aug 10, 2026 7:04 PM">
+            <time itemprop="datePublished" datetime="2026-08-10 19:04:37 +0000">Aug 10, 2026</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>yes, if something has access to entire xdg-config only to use app specific subdir then it’s clear bug and should be reported to that app repo. I’m pretty sure flathub wouldn’t allow such thing nowadays.</p>
+<aside class="quote no-group" data-username="basher" data-post="11" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+basher:</div>
+<blockquote>
+<p>If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
+</blockquote>
+</aside>
+<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Aug 10, 2026 7:11 PM">
+            <time itemprop="datePublished" datetime="2026-08-10 19:11:06 +0000">Aug 10, 2026</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>BTW: there’s special option <code>--nofilesystem=host:reset</code> which should do what you want - overriding all fs permissions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">basher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Aug 10, 2026 7:51 PM">
+            <time itemprop="datePublished" datetime="2026-08-10 19:51:42 +0000">Aug 10, 2026</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Erick555" data-post="12" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
+</blockquote>
+</aside>
+<p>Atuin and/or copyq could be installed natively (which is the case for me), and whatever fp-installed program asking access to the entirety of <code>xdg-*</code> can pull my CC numbers that got accidentally copied to the clipboard or AWS token I used in a shell command.</p>
+<aside class="quote no-group" data-username="Erick555" data-post="13" data-topic="12439">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>there’s special option <code>--nofilesystem=host:reset</code></p>
+</blockquote>
+</aside>
+<p>Nice one, I’ll start using that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

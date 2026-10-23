@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy way to get good (4k 60fps) OBS encoding performance with AMD GPUs - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Easy way to get good (4k 60fps) OBS encoding performance with AMD GPUs</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Easy way to get good (4k 60fps) OBS encoding performance with AMD GPUs</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 22, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cherryteastain</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 22, 2022 2:47 PM">
+            <time itemprop="datePublished" datetime="2022-07-22 14:47:47 +0000">Jul 22, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Out of the box, OBS’s VA-API hardware encoding performance with AMD GPUs is rather abysmal. Even on the newest generation of AMD GPUs (RDNA2 architecture, e.g. 6900XT), OBS can do 1440p 30fps max. 1440p 60fps, 4k 30fps and of course 4k 60fps recording typically looks like a slideshow.</p>
+<p>I was searching for a solution to this, and most commonly suggested workarounds involved:</p>
+<ol>
+<li>
+<p>Using AMD AMF. I did not want to go this route as I did not want to use AMD’s installer script, since it is not integrated with the distro package managers very well, does not work with Flatpak and is proprietary software.</p>
+</li>
+<li>
+<p>Using a custom fork of obs, specifically <a href="https://aur.archlinux.org/packages/obs-hevc-vaapi-git" rel="noopener nofollow ugc">obs-hevc-vaapi-git</a> which has some patches unlocking HEVC VAAPI recording in OBS. I did not really want to go down this path either, as I do not use Arch and building it myself would be quite difficult.</p>
+</li>
+</ol>
+<p>Enter the <a href="https://github.com/fzwoch/obs-gstreamer" rel="noopener nofollow ugc">obs-gstreamer</a> plugin. With this plugin, all you need to do is:</p>
+<ol>
+<li>
+<p>In OBS settings &gt; Output &gt; Streaming choose “GStreamer Encoder” as the encoder and “VAAPI” as the encoder type.</p>
+</li>
+<li>
+<p>For recording, go to the Recording tab and choose “Use stream encoder” as the encoder</p>
+</li>
+</ol>
+<p>With this, coupled alongside the <a href="https://github.com/nowrep/obs-vkcapture" rel="noopener nofollow ugc">obs-vkcapture</a> plugin, my 6900XT is capable of doing 100% smooth 4K 60fps gameplay recording.</p>
+<p>To install, you need the following flatpak packages:</p>
+<ul>
+<li><code>com.obsproject.Studio</code></li>
+<li><code>com.obsproject.Studio.Plugin.Gstreamer</code></li>
+<li><code>org.freedesktop.Platform.GStreamer.gstreamer-vaapi</code></li>
+<li>Optionally install <code>com.obsproject.Studio.Plugin.OBSVkCapture</code> for capturing game footage^1</li>
+</ul>
+<p>[1] You will additionally have to:</p>
+<ul>
+<li>
+<p>Install <code>org.freedesktop.Platform.VulkanLayer.OBSVkCapture</code> when running games e.g. Steam via flatpak</p>
+</li>
+<li>
+<p>Install the capture tools natively when e.g. running games via Lutris installed through apt/pacman etc</p>
+</li>
+</ul>
+<p>(Originally posted <a href="https://old.reddit.com/r/linux_gaming/comments/w4i3qf/easy_way_to_get_good_4k_60fps_obs_encoding/" rel="noopener nofollow ugc">here</a>)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Fast O Slinux</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 1, 2022 8:33 PM">
+            <time itemprop="datePublished" datetime="2022-08-01 20:33:37 +0000">Aug 1, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Gstreamer + gamecapture is doing much better than VAAPI + Pipewire Capture (current OBS default).<br>
+For desktop capture Pipewire is really good, but a little inferior to gamecapture for games, at least with my RX 580.<br>
+I showed the comparison on my blog (in PT-BR)</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://fastoslinux.com/2022/07/30/game-capture-plugin-obs-studio-flatpak/">
+  <header class="source">
+      <img src="/uploads/original/2X/3/3b6d99793d41d0b69ab1486c98fb5cd9510b06f9.png" class="site-icon" width="32" height="32">
+
+      <a href="https://fastoslinux.com/2022/07/30/game-capture-plugin-obs-studio-flatpak/" target="_blank" rel="noopener nofollow ugc" title="04:36PM - 30 July 2022">Fast OS – 30 Jul 22</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:440/186;"><img src="https://fastoslinux.files.wordpress.com/2022/07/image-24.png?w=1200&amp;fit=440%2C330" class="thumbnail" width="440" height="186"></div>
+
+<h3><a href="https://fastoslinux.com/2022/07/30/game-capture-plugin-obs-studio-flatpak/" target="_blank" rel="noopener nofollow ugc">Game Capture Plugin OBS Studio – Flatpak</a></h3>
+
+  <p>O plugin “Game Capture” como o nome sugere é feito para capturar jogos via OBS Studio, ele faz a captura diretamente dos jogos que usam Vulkan e OpenGL.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loading of passwords via libsecret (sometimes) not working - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Loading of passwords via libsecret (sometimes) not working</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Loading of passwords via libsecret (sometimes) not working</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 11, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin Höher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 11, 2022 11:05 PM">
+            <time itemprop="datePublished" datetime="2022-01-11 23:05:13 +0000">Jan 11, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>not sure if this is a good place to ask such a question, nevertheless, I’d like to try <img src="/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+<p>I am the developer of the app OpenTodoList, which is - among others - also packaged as a Flatpak app. This app uses QtKeychain to save and load passwords/tokens. Internally, this library uses any available backend for storing such information - within Flatpak, this means that it uses <code>libsecret</code> for getting the job done. This worked fine most of the time.</p>
+<p>Since some weeks (unfortunately, I cannot tell exactly when), I noticed that the app would not load any passwords at all. Before that, I occasionally had this, but usually restarting the app would cure this and passwords would be back again.</p>
+<p>I tried to debug this as far as I could and what I can tell so far: It seems that QtKeychain calls <code>libsecret</code> (specifically, the simple API which - according to the information I found - should use some special Flatpak magic to store passwords in an app specific keystore). However, the callbacks that are passed into the <code>libsecret</code> functions never get called.</p>
+<p>From there, I wasn’t sure on how to continue. I experimented a bit and found an amazingly simple workaround for the issue: Before reading passwords, I simply wait for 2 seconds. For me - but this is just a guess - it seems like there’s some kind of race condition: If the app starts too fast, something isn’t ready yet and the calls to <code>libsecret</code> basically never “return” (alas, call back), which then cause the code further up the stack to misbehave.</p>
+<p>Long story short:</p>
+<ul>
+<li>Does anyone else experience this kind of issues?</li>
+<li>Are there other, proper ways to tackle this issue? For me, the most important thing is that with this 2s delay, I have at least something at hand. However, I have no clue if these 2s are enough. Maybe, on another machine, the required waiting time might be higher… so, is there some kind of signalling so the app can “know” that it safely can call the <code>libsecret</code> APIs?</li>
+<li>I have the feeling this issue probably should be reported to somewhere… the question is where? First, I was inclined to raise an issue against QtKeychain, but I actually don’t think there’s anything that can be done there. So, is this something that could be fixed in <code>libsecret</code>? Or is there a better place to report this kind of issue?</li>
+</ul>
+<p>Thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 12, 2022 5:05 PM">
+            <time itemprop="datePublished" datetime="2022-01-12 17:05:29 +0000">Jan 12, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This rings a couple of very faint bells:</p>
+<aside class="onebox githubissue">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/557" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/xdg-desktop-portal</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/xdg-desktop-portal/issues/557" target="_blank" rel="noopener nofollow ugc">[Secrets] Lock if multiple searches happen at the same time</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2021-01-05" data-time="21:20:22" data-timezone="UTC">09:20PM - 05 Jan 21 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/bellegarde-c" target="_blank" rel="noopener nofollow ugc">
+          <img alt="bellegarde-c" src="/uploads/original/2X/4/444915d09e3197ea4d12757dec74276cf4ebfaee.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          bellegarde-c
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Look at this https://gitlab.gnome.org/World/lollypop/-/commit/0695ce5eefcf015741<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">a1e35aab25167c129c13ee
+
+I have found a workaround for Eolie and Lollypop but here what is happening. On startup, Lollypop ask Secrets API for two passwords (LAST.FM and LIBRE.FM). Looks like the concurrent lookups do not work for Flatpak (no issue if installed without Flatpak).
+
+```
+Secret.password_search(schema,
+                                   SecretAttributes,
+                                   Secret.SearchFlags.UNLOCK |
+                                   Secret.SearchFlags.LOAD_SECRETS,
+                                   None,
+                                   self.__on_secret_search)
+```
+__on_secret_search() is never called. If i disable LIBRE.FM code, then it works (only one call to Secret.password_search())</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p><a href="https://gitlab.gnome.org/GNOME/libsecret/-/issues/49" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gitlab.gnome.org/GNOME/libsecret/-/issues/49</a></p>
+<p>Not sure if either of these are your issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin Höher</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 12, 2022 5:32 PM">
+            <time itemprop="datePublished" datetime="2022-01-12 17:32:52 +0000">Jan 12, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a lot for these links!</p>
+<p>I checked them out both. I guess the first should not be related to the issue I’ve seen: QtKeychain uses a job queue and hence will use <code>libsecret</code> sequentially, so I would think this cannot be the root cause.</p>
+<p>For the second link: I just cross checked and from that issues it seems that problems have been introduced with v0.20.1 of <code>libsecret</code>. I checked what my app is using in the case it is built for Flatpak and - if the version history doesn’t betray me - I am on that version for nearly two years now. However, in the past loading of secrets used to work, so I am not sure if this might be related.</p>
+<p>Thinking about it, I guess the only “moving target” that is (in my case) involved is the actual Flatpak software + runtime; not sure why/what in there could introduce a race condition like this…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

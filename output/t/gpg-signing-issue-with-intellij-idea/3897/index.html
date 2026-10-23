@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPG Signing Issue with Intellij Idea - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">GPG Signing Issue with Intellij Idea</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">GPG Signing Issue with Intellij Idea</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 21, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alper Kanat</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 21, 2023 7:24 PM">
+            <time itemprop="datePublished" datetime="2023-03-21 19:24:45 +0000">Mar 21, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I’m trying to create a consistent setup for GPG signing on CLI and IDE (Intellij Idea Community Edition). So far, I’m able to sign my commits with CLI on host, toolbox containers and the terminal inside the IDE but not the IDE itself. I mean, if I use the built-in git capabilities of the IDE, it will simply fail with the following error:</p>
+<pre><code class="lang-auto">error: gpg failed to sign the data
+fatal: failed to write commit object
+</code></pre>
+<p>I have Fedora Silverblue 37 on my laptop and here are my configs:</p>
+<h4><a name="p-7640-gitconfig-1" class="anchor" href="#p-7640-gitconfig-1" aria-label="Heading link"></a>.gitconfig</h4>
+<pre><code class="lang-auto">[user]
+    signingkey = 476B3D9B8D36FDE6!
+[commit]
+    gpgsign = true
+</code></pre>
+<h4><a name="p-7640-gpgconf-2" class="anchor" href="#p-7640-gpgconf-2" aria-label="Heading link"></a>gpg.conf</h4>
+<pre><code class="lang-auto">use-agent
+keyserver hkps://keys.openpgp.org
+pinentry-mode loopback
+</code></pre>
+<h4><a name="p-7640-gpg-agentconf-3" class="anchor" href="#p-7640-gpg-agentconf-3" aria-label="Heading link"></a>gpg-agent.conf</h4>
+<pre><code class="lang-auto">default-cache-ttl 600
+max-cache-ttl 7200
+pinentry-program /usr/bin/pinentry
+</code></pre>
+<p>The flatpak Intellij Idea Community includes pinentry-gnome3 bundled and when I type <code>gpgconf</code> in its terminal, I get the following output:</p>
+<pre><code class="lang-auto">$ gpgconf
+gpg:OpenPGP:/usr/bin/gpg
+gpgsm:S/MIME:/usr/bin/gpgsm
+gpg-agent:Private Keys:/usr/bin/gpg-agent
+scdaemon:Smartcards:/usr/libexec/scdaemon
+dirmngr:Network:/usr/bin/dirmngr
+pinentry:Passphrase Entry:/usr/bin/pinentry
+</code></pre>
+<p>I’m able to use pinentry inside the terminal of the IDE:</p>
+<pre><code class="lang-auto">$ echo getpin|pinentry
+OK Pleased to meet you
+D asd
+OK
+</code></pre>
+<p>gpg-agent is running on the host and if I let it cache the password of my GPG key, I’m able to sign commits both on the host and inside the IDE without any issues. So the problem seems to be that the IDE is not able to ask for the GPG password.</p>
+<p>I tried various configurations like setting <code>pinentry-mode ask</code>, adding <code>no-tty</code> option etc but none of those actually worked. I also gave <code>gpg-agent</code> socket permission to the IDE but that didn’t work as well.</p>
+<p>What am I missing? Does anyone have an idea about this?</p>
+<p>More Information about my system:</p>
+<h4><a name="p-7640-gpg-inside-container-4" class="anchor" href="#p-7640-gpg-inside-container-4" aria-label="Heading link"></a>gpg inside container</h4>
+<pre><code class="lang-auto">$ gpg --version
+gpg (GnuPG) 2.2.39
+libgcrypt 1.10.1
+Copyright (C) 2022 g10 Code GmbH
+License GNU GPL-3.0-or-later &lt;https://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /var/home/tunix/.gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jay</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 21, 2024 10:17 AM">
+            <time itemprop="datePublished" datetime="2024-01-21 10:17:45 +0000">Jan 21, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Did you end up finding a solution for this? I am running Fedora 39 Silverblue and using flatpack of WebStorm and unfortunately am also running into this dreaded error!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

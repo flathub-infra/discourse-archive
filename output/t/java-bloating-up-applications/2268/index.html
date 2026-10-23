@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Java Bloating up applications - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Java Bloating up applications</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Java Bloating up applications</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 28, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">SViN</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 28, 2022 10:19 PM">
+            <time itemprop="datePublished" datetime="2022-02-28 22:19:41 +0000">Feb 28, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I recently installed the PolyMC package(org.polymc.PolyMC) it is a minecraft client.<br>
+Minecraft itself uses java, one of the things i noticed however that the package size is huge, not because of the size of the application in itself, but because it uses the OpenJDK17 and 8 extensions(for newer and older versions of the game). I would expect Java itself stored separately but it does not seem to be the case.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/be6b8d3380546eea3b08e9955e4666a1feae2418.png" data-download-href="/uploads/original/2X/b/be6b8d3380546eea3b08e9955e4666a1feae2418.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/original/2X/b/be6b8d3380546eea3b08e9955e4666a1feae2418.png" alt="image" data-base62-sha1="rax99cvM66Eoh72DChBWAhI4ghW" width="690" height="254" data-small-upload="/uploads/optimized/2X/b/be6b8d3380546eea3b08e9955e4666a1feae2418_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">803×296 39.4 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>This also means that every time java gets updated it shows up as an application update and not as a java update.</p>
+<p>Does that mean that for every application using the OpenJDK extension i have multiple Java same runtimes stored on my system? And that they all have to update separately?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Aman Das</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 20, 2022 3:38 PM">
+            <time itemprop="datePublished" datetime="2022-04-20 15:38:44 +0000">Apr 20, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Created relevant issue: <a href="https://github.com/flathub/org.polymc.PolyMC/issues/18" class="inline-onebox" rel="noopener nofollow ugc">Use flathub version of openjdk · Issue #18 · flathub/org.polymc.PolyMC · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 28, 2022 12:53 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 12:53:20 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes that is exactly what that means. Each flatpak package bundles it’s own dependencies and in this case they’re copied from a SDK extension into the package.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 28, 2022 2:01 PM">
+            <time itemprop="datePublished" datetime="2022-04-28 14:01:31 +0000">Apr 28, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it’s deduplicated by OSTree.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 4, 2022 1:15 PM">
+            <time itemprop="datePublished" datetime="2022-05-04 13:15:07 +0000">May 4, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Right the OSTree dedup is great! An update is still required for the package that uses it right? Or are packages automatically rebuild as soon as an SDK extension is updated? I can totally imagine an update of an extension going unnoticed for quite some time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jorge O. Castro</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 5, 2022 1:14 PM">
+            <time itemprop="datePublished" datetime="2022-05-05 13:14:44 +0000">May 5, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can’t answer your question but wanted to point out <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71">this script</a> that will give you some more info on how the dedup in ostree is working.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">4</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Youri Westerman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 5, 2022 2:09 PM">
+            <time itemprop="datePublished" datetime="2022-05-05 14:09:20 +0000">May 5, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you posted the wrong link as this points to an askubuntu question about the difference between upstream and downstream.</p>
+<p>From what I understand all unique files used by OSTree are stored only once and are probably identified by their hash. The hashes are used by Flatpak to indicate which files belong to a package and are then hard linked to compose the filesystem required to run the application (<a href="https://docs.flatpak.org/en/latest/under-the-hood.html" class="inline-onebox" rel="noopener nofollow ugc">Under the Hood - Flatpak documentation</a>). So far so good, however:</p>
+<aside class="quote no-group" data-username="SViN" data-post="1" data-topic="2268">
+<div class="title">
+<div class="quote-controls"></div>
+SViN:</div>
+<blockquote>
+<p>This also means that every time java gets updated it shows up as an application update and not as a java update.</p>
+</blockquote>
+</aside>
+<p>this is correct and I haven’t seen anything to indicate that all packages that require an SDK extension are automatically rebuild if the SDK extension is updated. So even though there is deduplication using OSTree, that is just based on the hashes of the files and if no rebuilds are triggered you might well have multiple (minor and/or micro) versions of binaries produced by the SDK extension in the filesystem if one package is updated, but another is not.</p>
+<p>I’ve been pondering on a solution for that lately and what I’ve been thinking so far is that it would probably be possible to add an extra module to the manifests that use an SDK extension and use the <a href="https://github.com/flathub/flatpak-external-data-checker" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub-infra/flatpak-external-data-checker: A tool for checking if the external data used in Flatpak manifests is still up to date</a> to make sure a PR is created when the repo is updated. Needless to say that module should not really be built.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jorge O. Castro</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 16, 2022 6:22 PM">
+            <time itemprop="datePublished" datetime="2022-05-16 18:22:09 +0000">May 16, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="4c0n" data-post="7" data-topic="2268">
+<div class="title">
+<div class="quote-controls"></div>
+4c0n:</div>
+<blockquote>
+<p>I think you posted the wrong link as this points to an askubuntu question about the difference between upstream and downstream.</p>
+</blockquote>
+</aside>
+<p>Fixed, cheers! Here’s the URL for future readers: <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71" class="inline-onebox">flatpak-ostree-dedup-stats.py · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Aleix Pol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="May 16, 2022 10:09 PM">
+            <time itemprop="datePublished" datetime="2022-05-16 22:09:12 +0000">May 16, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/images/emoji/twitter/smiley.png?v=12" title=":smiley:" class="emoji" alt=":smiley:"> seems like it would be handy to have this tool as a flatpak!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tyrone Baggins</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="May 20, 2022 1:37 PM">
+            <time itemprop="datePublished" datetime="2022-05-20 13:37:48 +0000">May 20, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@castrojo</span> Thanks, man! you saved the day. I was really looking for that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

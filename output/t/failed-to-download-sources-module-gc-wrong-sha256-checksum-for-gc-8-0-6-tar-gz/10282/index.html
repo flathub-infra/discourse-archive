@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failed to download sources: module gc: Wrong sha256 checksum for gc-8.0.6.tar.gz - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Failed to download sources: module gc: Wrong sha256 checksum for gc-8.0.6.tar.gz</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Failed to download sources: module gc: Wrong sha256 checksum for gc-8.0.6.tar.gz</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 13, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 13, 2025 1:59 PM">
+            <time itemprop="datePublished" datetime="2025-08-13 13:59:14 +0000">Aug 13, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have a weird problem when building below flatpak.<br>
+What does this mean exactly?</p>
+<pre><code class="lang-auto">Failed to download sources: module gc: Wrong sha256 checksum for gc-8.0.6.tar.gz, expected "315daf18ed0e84859eed5a9816153c78ada1b844a095385978d5d284838f1efc", was "3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11"
+</code></pre>
+<p>3b4914 is indeed the old sha256 checksum. See this old build of another similar app:</p>
+<pre><code class="lang-auto">$ locate gc-8.0.6.tar.gz
+/home/fede/src/flathub.org/org.denemo.Denemo/.flatpak-builder/downloads/3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11/gc-8.0.6.tar.gz
+</code></pre>
+<p>If you use wget to download the tarball,  the checksum is indeed 315daf18ed0e84859eed5a9816153c78ada1b844a095385978d5d284838f1efc.</p>
+<p>I tried everything to clean the cache but did not help. Eventually as a workaround I copied the tarball in the  working dir and used a path instead of the url in the manifest.</p>
+<p>Some problem with flatpak-builder download and/or cache? Probably not cache, as it seems the tarball is downloaded again, but it does not help.</p>
+<p>Here the full log:</p>
+<pre><code class="lang-auto">$ flatpak run --command=flathub-build org.flatpak.Builder --install org.frescobaldi.Frescobaldi.yaml
+Running: flatpak-builder --verbose --force-clean --sandbox --keep-build-dirs --override-source-date-epoch 1321009871 --user --install-deps-from=flathub --ccache --mirror-screenshots-url=https://dl.flathub.org/media --repo=repo builddir --install org.frescobaldi.Frescobaldi.yaml
+
+[...]
+
+Downloading sources
+Downloading https://www.hboehm.info/gc/gc_source/gc-8.0.6.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1141k  100 1141k    0     0   934k      0  0:00:01  0:00:01 --:--:--  935k
+Failed to download sources: module gc: Wrong sha256 checksum for gc-8.0.6.tar.gz, expected "315daf18ed0e84859eed5a9816153c78ada1b844a095385978d5d284838f1efc", was "3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11"
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 13, 2025 2:32 PM">
+            <time itemprop="datePublished" datetime="2025-08-13 14:32:20 +0000">Aug 13, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="fedelibre" data-post="1" data-topic="10282">
+<div class="title">
+<div class="quote-controls"></div>
+fedelibre:</div>
+<blockquote>
+<p>Eventually as a workaround I copied the tarball in the working dir and used a path instead of the url in the manifest.</p>
+</blockquote>
+</aside>
+<p>The workaround doesn’t work either:</p>
+<pre><code class="lang-auto">========================================================================
+Building module gc in /home/fede/src/flathub.org/org.frescobaldi.Frescobaldi/.flatpak-builder/build/gc-1
+========================================================================
+FB: Running: tar xf /home/fede/src/flathub.org/org.frescobaldi.Frescobaldi/gc-8.0.6.tar.gz --no-same-owner --strip-components=1 -z
+tar: This does not look like a tar archive
+tar: Skipping to next header
+tar: Exiting with failure status due to previous errors
+Error: module gc: Processo figlio uscito con codice 2
+FB: Unmounting read-only fs: fusermount -uz /home/fede/src/flathub.org/org.frescobaldi.Frescobaldi/.flatpak-builder/rofiles/rofiles-wdHw2b
+</code></pre>
+<p>I’ll try to use the latest version tarball. Why I didn’t do this before?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 13, 2025 2:37 PM">
+            <time itemprop="datePublished" datetime="2025-08-13 14:37:27 +0000">Aug 13, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No way:</p>
+<pre><code class="lang-auto">Downloading sources
+Downloading https://www.hboehm.info/gc/gc_source/gc-8.2.8.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1190k  100 1190k    0     0   901k      0  0:00:01  0:00:01 --:--:--  900k
+Failed to download sources: module gc: Wrong sha256 checksum for gc-8.2.8.tar.gz, expected "d0d0241c95996985d7ddda5622ac4b0b36e5a1cf4ecf36610dd2e2b92f774cf0", was "7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160"
+</code></pre>
+<p>But now I realize I was not reading the message correctly. Sorry for the noise.<br>
+If I use the second checksum, the build continues.</p>
+<p>So the question is: why I get a different sha256sum locally?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failed DNS lookup in javascript build script - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Failed DNS lookup in javascript build script</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Failed DNS lookup in javascript build script</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 17, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Koala Yeung</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 17, 2022 11:12 AM">
+            <time itemprop="datePublished" datetime="2022-03-17 11:12:07 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone. I’m very new to Flatpack packaging. I’m recently packaging an electron app. Following the tutorial <a href="https://docs.flatpak.org/en/latest/electron.html" rel="noopener nofollow ugc">here</a>, I got most issues sorted out except one thing: the <code>build.js</code> script of my <em>specific</em> electron app project fails in the build process.</p>
+<p>The electron app I’m packaging does not call electron-builder through CLI. It use its own build script to prepare its own source code (in TypeScript) before invoking electron-builder.</p>
+<p>The <code>build.js</code> script can be executed normally in my host environment. But when I run it through <code>flatpak-builder</code>, the script fails to resolve <code>github.com</code> when downloading electron, stating:</p>
+<pre><code class="lang-auto">dial tcp: lookup github.com on 127.0.0.53:53: read udp 127.0.0.1:60792-&gt;127.0.0.53:53: read: connection refused
+</code></pre>
+<details>
+<summary>
+A longer version of the messages</summary>
+<pre><code class="lang-auto">$ flatpak-builder build com.gitlab.zerkc.WhatsDesk.yml --install --force-clean --user
+...
+...
+npm info it worked if it ends with ok
+npm info using npm@6.14.16
+npm info using node@v14.19.0
+npm info lifecycle whatsdesk@0.3.8~pretsc: whatsdesk@0.3.8
+npm info lifecycle whatsdesk@0.3.8~tsc: whatsdesk@0.3.8
+npm info lifecycle whatsdesk@0.3.8~posttsc: whatsdesk@0.3.8
+npm timing npm Completed in 1508ms
+npm info ok 
+  • electron-builder  version=22.14.13 os=5.16.12-200.fc35.x86_64
+  • loaded configuration  file=package.json ("build" field)
+  • writing effective config  file=dist/builder-effective-config.yaml
+  • packaging       platform=linux arch=ia32 electron=15.4.1 appOutDir=dist/linux-ia32-unpacked
+  ⨯ Get "https://github.com/electron/electron/releases/download/v15.4.1/electron-v15.4.1-linux-ia32.zip": dial tcp: lookup github.com on 127.0.0.53:53: read udp 127.0.0.1:60792-&gt;127.0.0.53:53: read: connection refused
+github.com/develar/app-builder/pkg/download.(*Downloader).follow.func1
+	/Volumes/data/Documents/app-builder/pkg/download/downloader.go:206
+github.com/develar/app-builder/pkg/download.(*Downloader).follow
+	/Volumes/data/Documents/app-builder/pkg/download/downloader.go:234
+github.com/develar/app-builder/pkg/download.(*Downloader).DownloadNoRetry
+	/Volumes/data/Documents/app-builder/pkg/download/downloader.go:128
+github.com/develar/app-builder/pkg/download.(*Downloader).Download
+	/Volumes/data/Documents/app-builder/pkg/download/downloader.go:112
+github.com/develar/app-builder/pkg/electron.(*ElectronDownloader).doDownload
+	/Volumes/data/Documents/app-builder/pkg/electron/electronDownloader.go:192
+github.com/develar/app-builder/pkg/electron.(*ElectronDownloader).Download
+	/Volumes/data/Documents/app-builder/pkg/electron/electronDownloader.go:177
+github.com/develar/app-builder/pkg/electron.downloadElectron.func1.1
+	/Volumes/data/Documents/app-builder/pkg/electron/electronDownloader.go:73
+github.com/develar/app-builder/pkg/util.MapAsyncConcurrency.func2
+	/Volumes/data/Documents/app-builder/pkg/util/async.go:68
+runtime.goexit
+	/usr/local/Cellar/go/1.16.5/libexec/src/runtime/asm_amd64.s:1371  
+ExecError: /run/build/whatsdesk-app/main/node_modules/app-builder-bin/linux/x64/app-builder exited with code ERR_ELECTRON_BUILDER_CANNOT_EXECUTE
+    at ChildProcess.&lt;anonymous&gt; (/run/build/whatsdesk-app/main/node_modules/builder-util/src/util.ts:250:14)
+    at Object.onceWrapper (events.js:520:26)
+    at ChildProcess.emit (events.js:400:28)
+    at maybeClose (internal/child_process.js:1058:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5) {
+  exitCode: 1,
+  alreadyLogged: false,
+  code: 'ERR_ELECTRON_BUILDER_CANNOT_EXECUTE'
+}
+</code></pre>
+</details>
+<p>Seems the building process is sandboxed in a way that <strong>DNS is not accessible</strong>. Is there any way I can fix the build process so it works?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 17, 2022 5:29 PM">
+            <time itemprop="datePublished" datetime="2022-03-17 17:29:35 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you don’t have access to the network during the build. Any package that needs to be downloaded should be listed as a “source”</p>
+<p>for electron / node there is a flatpak-builder-tools that allow generating such a manifest.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flatpak/flatpak-builder-tools">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flatpak/flatpak-builder-tools" target="_blank" rel="noopener">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/b/b72537d0a25ce952831c12c5cc34d8c60573cc7a_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/b/b72537d0a25ce952831c12c5cc34d8c60573cc7a_2_690x345.png, /uploads/optimized/2X/b/b72537d0a25ce952831c12c5cc34d8c60573cc7a_2_1035x517.png 1.5x, /uploads/original/2X/b/b72537d0a25ce952831c12c5cc34d8c60573cc7a.png 2x" data-small-upload="/uploads/optimized/2X/b/b72537d0a25ce952831c12c5cc34d8c60573cc7a_2_10x10.png"></div>
+
+<h3><a href="https://github.com/flatpak/flatpak-builder-tools" target="_blank" rel="noopener">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a></h3>
+
+  <p>Various helper tools for flatpak-builder. Contribute to flatpak/flatpak-builder-tools development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

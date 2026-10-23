@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rust can&#39;t connect network while building - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Rust can&#39;t connect network while building</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Rust can&#39;t connect network while building</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 24, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Badshah Vai</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 24, 2025 3:15 PM">
+            <time itemprop="datePublished" datetime="2025-01-24 15:15:03 +0000">Jan 24, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Trying to build a flatpak. But build gets failed in middle. Giving network error. Any help?</p>
+<pre><code class="lang-auto">app-id: org.fcitx.Fcitx5.Addon.OpenBangla
+runtime: org.fcitx.Fcitx5
+runtime-version: 'stable'
+sdk: org.kde.Sdk//5.15-22.08
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+build-extension: true
+separate-locales: false
+build-options:
+  prefix: /app/addons/OpenBangla
+  prepend-pkg-config-path: /app/addons/OpenBangla/lib/pkgconfig:/app/addons/OpenBangla/share/pkgconfig
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HTTP_MULTIPLEXING: false 
+  sandbox:
+    --share=ipc
+    --share=network  
+cleanup:
+  - /bin
+  - /include
+  - /lib/pkgconfig
+  - /share/pkgconfig
+  - '*.la'
+
+modules:
+  - name: openbangla-keyboard
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app/addons/OpenBangla
+      - -DENABLE_FCITX=ON
+    builddir: true
+    sources:
+      - type: git
+        url: https://github.com/OpenBangla/OpenBangla-Keyboard.git
+        tag: develop
+    build-commands:
+      - cmake .. -GNinja
+      - ninja install
+    build-requires:
+      - org.freedesktop.Sdk.Extension.rust-stable//22.08
+
+</code></pre>
+<p>trying to run using</p>
+<pre><code class="lang-auto">flatpak-builder --force-clean --install-deps-from=flathub --repo=repo --install build-dir org.fcitx.Fcitx5.Addon.OpenBangla.yaml
+</code></pre>
+<p>But i am getting some kind of network error when submodule trying to fetch dependency.</p>
+<pre><code class="lang-auto">[12/28] running cargo
+FAILED: src/engine/riti/x86_64-unknown-linux-gnu/release/libriti.a /run/build/openbangla-keyboard/_flatpak_build/src/engine/riti/x86_64-unknown-linux-gnu/release/libriti.a 
+cd /run/build/openbangla-keyboard/src/engine/riti &amp;&amp; /usr/bin/cmake -E env CARGO_TARGET_DIR=/run/build/openbangla-keyboard/_flatpak_build/src/engine/riti /usr/lib/sdk/rust-stable/bin/cargo build --target x86_64-unknown-linux-gnu --release
+    Updating crates.io index
+warning: spurious network error (3 tries remaining): [6] Couldn't resolve host name (Could not resolve host: index.crates.io)
+warning: spurious network error (2 tries remaining): [6] Couldn't resolve host name (Could not resolve host: index.crates.io)
+warning: spurious network error (1 tries remaining): [6] Couldn't resolve host name (Could not resolve host: index.crates.io)
+error: failed to get `ahash` as a dependency of package `riti v0.1.0 (/run/build/openbangla-keyboard/src/engine/riti)`
+
+Caused by:
+  failed to query replaced source registry `crates-io`
+
+Caused by:
+  download of config.json failed
+
+Caused by:
+  failed to download from `https://index.crates.io/config.json`
+
+Caused by:
+  [6] Couldn't resolve host name (Could not resolve host: index.crates.io)
+[15/28] Building CXX object src/frontend/CMakeFiles/openbangla-gui.dir/Layout.cpp.o
+ninja: build stopped: subcommand failed.
+Error: module openbangla-keyboard: Child process exited with code 1
+</code></pre>
+<p>As you can see I gave network permission. What to do?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">The Appgineer</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 24, 2025 4:11 PM">
+            <time itemprop="datePublished" datetime="2025-01-24 16:11:38 +0000">Jan 24, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The build phase is meant to be offline. For Rust the approach is to convert the Cargo.lock file into a list of <code>sources</code> that you then include in your manifest.</p>
+<p>There is a tool available that takes care of the conversion:</p>
+<aside class="onebox githubfolder" data-onebox-src="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h3><a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" target="_blank" rel="noopener nofollow ugc">flatpak-builder-tools/cargo at master · flatpak/flatpak-builder-tools</a></h3>
+
+
+  <p><span class="label1">Various helper tools for flatpak-builder. Contribute to flatpak/flatpak-builder-tools development by creating an account on GitHub.</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

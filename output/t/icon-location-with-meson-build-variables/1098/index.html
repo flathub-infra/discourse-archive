@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Icon location with Meson build variables - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Icon location with Meson build variables</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Icon location with Meson build variables</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2021 3:04 PM">
+            <time itemprop="datePublished" datetime="2021-02-06 15:04:38 +0000">Feb 6, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The Flatpak documents <a href="https://docs.flatpak.org/en/latest/conventions.html#expected-standards" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/conventions.html#expected-standards</a><br>
+say icons should be in:<br>
+<strong>/app/share/</strong> icons/hicolor/128x128/apps/org.gnome.Dictionary.png<br>
+There is no such directory on my PC, even though I have several Flatpaks installed!</p>
+<p>Meson puts them elsewhere, getting the directory from a variable called datadir, which I believe it gets from a configuration file called mesonconf - this is on the server doing the building, so is presumably set by Flathub:<br>
+<strong>/var/lib/flatpak/exports/share/</strong> icons/hicolor/128x128/apps/com.github.{repo}.{app}.png</p>
+<p>The Flatpak has been published, and it all works, the icon shows on the menu, except that Plank can’t find it.</p>
+<p>Why is there a difference between what happens and what the docs say should happen?<br>
+Do I give up and put a copy somewhere else especially for Plank?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sam Thursfield</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 10, 2021 2:40 PM">
+            <time itemprop="datePublished" datetime="2021-02-10 14:40:50 +0000">Feb 10, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi<br>
+There’s no /app directory on a normal Linux system. However, all Flatpak app containers do have a /app directory. If you open a shell in any of your Flatpak apps (something like <code>flatpak run --command/bin/bash org.gnome.Nautilus</code>) you’ll see it.</p>
+<p>For Meson to install in this directory you need to configure with <code>--prefix=/app</code>. The flatpak-builder <a href="https://docs.flatpak.org/en/latest/manifests.html?highlight=meson#supported-build-systems" rel="noopener nofollow ugc">‘meson’ build type</a> should do this automatically – are you using that in the app manifest?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 12, 2021 1:19 PM">
+            <time itemprop="datePublished" datetime="2021-02-12 13:19:03 +0000">Feb 12, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s important information, it explains why I can’t see ‘/app’. I had noticed that when I built it locally there was a directory for the Flatpak, but when installed from Flathub only a couple of bits and pieces. I stopped worrying about that because there were more important problems to deal with…<br>
+The example command is unknown and I can’t see a likely command with ‘flatpak --help’. It would be very useful to be able to see exactly how things are set up.<br>
+The OS obviously needs to find the desktop file outside the container to be able to start it, and it does, it shows on the menu with its correct icon. Presumably installing Flatpak informs the OS where to find it. It’s in:<br>
+/home/chris/flatpak/export/share/applications<br>
+and<br>
+/home/chris/flatpak/files/share/applications<br>
+So it is odd that Plank does not find it, I have found a similar situation with other applications.</p>
+<blockquote>
+<p>configure with <code>--prefix=/app</code><br>
+No, but the Meson variables seem to mostly do the right thing as the application works.</p>
+</blockquote>
+<blockquote>
+<pre><code>project(
+      'myapp',
+      version: '0.0.0',
+      meson_version: '&gt;= 0.46.0'
+    )
+
+    bindir = get_option('bindir')
+    datadir = get_option('datadir')
+    pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), 'myapp')
+
+    conf = configuration_data()
+    conf.set('pkgdatadir', pkgdatadir)
+
+    configure_file(
+      input: 'myapp.in',
+      output: 'myapp',
+      configuration: conf,
+      install_dir: bindir
+    )
+
+    data_files = [
+      'myapp.glade',  
+      'myapp.png'
+    ]
+
+    foreach file : data_files
+      install_data(file, install_dir: pkgdatadir)
+    endforeach
+
+    install_data(
+      'com.github.mysoftware.myapp.desktop',
+      install_dir: join_paths(datadir, 'applications')
+    )
+    install_data(
+      'myapp.png', rename : 'com.github.mysoftware.myapp.png',
+      install_dir: join_paths(datadir, 'icons', 'hicolor', '128x128', 'apps')
+    )
+    install_data(
+      'myapp64x64.png', rename : 'com.github.mysoftware.myapp.png',
+      install_dir: join_paths(datadir, 'icons', 'hicolor', '64x64', 'apps')  
+    )
+    install_data(
+    	'com.github.mysoftware.myapp.appdata.xml',
+      install_dir: join_paths(datadir, 'metainfo')  
+    )
+</code></pre>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 18, 2021 11:10 PM">
+            <time itemprop="datePublished" datetime="2021-10-18 23:10:49 +0000">Oct 18, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It seems that all I needed to do was put the full application name in the .desktop file, but without the .png at the end. The flatpak-builder no longer complains, although I can’t see how to test it on Fedora.</p>
+<p>Icon=com.github.mysoftware.myapp</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problems with mesa drivers - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Problems with mesa drivers</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Problems with mesa drivers</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 4, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">AceMasterX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 4, 2023 8:19 AM">
+            <time itemprop="datePublished" datetime="2023-12-04 08:19:20 +0000">Dec 4, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, i use Linux Mint 21.2 and yesterday i updated the mesa drivers from the kisak PPA; today i found retroarch stopped working. Then i tested other flatpak apps and i found the same error on some of them. It seems to be related to libGL:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703.png" data-download-href="/uploads/original/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703.png" title="imagen" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703_2_493x500.png" alt="imagen" data-base62-sha1="7JdSVeNGdLD71j4CTwtgB2cJ2P" width="493" height="500" srcset="/uploads/optimized/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703_2_493x500.png, /uploads/optimized/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703_2_739x750.png 1.5x, /uploads/original/2X/0/00dfad18e86271a2c4490d5ea0119403a22cf703.png 2x" data-dominant-color="1E2023"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">imagen</span><span class="informations">739×748 159 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>The flatpak apps with the same issue are: Retroarch, mGBA, Dolphin-emu, and Blender.</p>
+<p>I also tested 2 games from steam, and a game using lutris/wine; and they worked fine.</p>
+<p>So it seems it is an issue with the mesa drivers i installed and some flatpak apps that use libGL; at least is what i found so far.</p>
+<p>I used timeshift to load a snapshot and go back in time the system, then updated everything except the mesa drivers and restarted. The apps were working again with no errors. Then i made a new snapshot, installed the new drivers, restarted the system, and the issue is back. That way now i know for sure the drivers are related to the issue. (Here is important to note that the issue will not happen until you restart the system after the update).</p>
+<p>The mesa version with no problems is 23.2.1 ; and the new version that caused the issues is 23.3.0</p>
+<p>Just in case it may be related: i’m using amdgpu and not the radeon drivers. I have an old HD 7770 (Cape Verde, GCN 1.0), and it seems vulkan for this GPU is not supported with radeon drivers, that would limit a lot the games i can run.<br>
+I may switch back to radeon to test if that is related to the issue.</p>
+<p>Best regards.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">AceMasterX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 6, 2023 4:25 AM">
+            <time itemprop="datePublished" datetime="2023-12-06 04:25:26 +0000">Dec 6, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well I lost the page where it explained how to switch from radeon to amdgpu <img src="/images/emoji/twitter/sweat_smile.png?v=12" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"> .<br>
+Anyway there was a flatpak Freedesktop.platform update today, it includes mesa drivers 23.3.0 , the same version that gave me issues with the system drivers, so I installed both to test what happens.<br>
+Now mGBA, Dolphin-emu, Blender, and PPSSPP works just fine; but libreto.Retroarch still gives the same error as before. Also, I note that PPSSPP gives some errors, but then it continues anyway.<br>
+Here is a screenshot showing the errors from PPSSPP and Retroarch:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6.png" data-download-href="/uploads/original/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6.png" title="imagen" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6_2_690x458.png" alt="imagen" data-base62-sha1="iIDBTl2Xhvif9cOdMDDtpfn7Ngq" width="690" height="458" srcset="/uploads/optimized/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6_2_690x458.png, /uploads/original/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6.png 1.5x, /uploads/original/2X/8/8332e792015f30f1037420ff0e2be90111ad94d6.png 2x" data-dominant-color="141314"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">imagen</span><span class="informations">746×496 109 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">AceMasterX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 6, 2023 4:45 AM">
+            <time itemprop="datePublished" datetime="2023-12-06 04:45:20 +0000">Dec 6, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here is a screenshot from yesterday showing the errors with DolphinEmu and mGBA:<br>
+<img src="/uploads/original/2X/f/fca5b950cf152d19956b6f0c63dbb1414facb894.png" alt="imagen" data-base62-sha1="A31nPqZQVn6o0jqHiLqkduCcOGw" width="603" height="300"><br>
+Same as retroarch they tried to open and then closed.<br>
+Now, they work just fine, but retroarch is still not working.</p>
+<p>I think it tries to use radeonsi while it should use instead the amdgpu one (amdgpusi ?)  The SI comes from SouternIslands, which refers to some GPUs, including my HD7770.</p>
+<p>Best regards</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 7, 2023 2:38 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 14:38:53 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>RetroArch uses an older runtime which is based on 22.08 of the Freedesktop runtime (org.kde.Platform 5.15-22.08). That’s why the other applications are probably fixed: Mesa was only updated for 23.08, 22.08 is still on 23.1.9.</p>
+<p>It seems RetroArch is in progress to be updated, you could report your issue there (<a href="https://github.com/flathub/org.libretro.RetroArch/issues/260" class="inline-onebox" rel="noopener nofollow ugc">Please update Runtime org.kde.Platform to 5.15-23.08 · Issue #260 · flathub/org.libretro.RetroArch · GitHub</a>). This would at least work around the issue.</p>
+<p>You can check if an issue already exists on the runtime tracker &amp;, if not, report it there: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/" class="inline-onebox" rel="noopener nofollow ugc">freedesktop-sdk / freedesktop-sdk · GitLab</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">AceMasterX</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 15, 2023 4:24 PM">
+            <time itemprop="datePublished" datetime="2023-12-15 16:24:21 +0000">Dec 15, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Today updated the org.freedesktop.Platform to 22.08.20 and now retroarch is working. Yesterday updated the system mesa drivers to 23.3.1</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/de6ab5e911116250077f9dfdac9996b408653997.png" data-download-href="/uploads/original/2X/d/de6ab5e911116250077f9dfdac9996b408653997.png" title="imagen" rel="noopener nofollow ugc"><img src="/uploads/original/2X/d/de6ab5e911116250077f9dfdac9996b408653997.png" alt="imagen" data-base62-sha1="vJACJNTtfGwIlsHCzpuEf4K0KQD" width="690" height="62" data-dominant-color="4C4C4C"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">imagen</span><span class="informations">953×86 15.6 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>I hope it stays working. <img src="/images/emoji/twitter/smiley.png?v=12" title=":smiley:" class="emoji" alt=":smiley:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

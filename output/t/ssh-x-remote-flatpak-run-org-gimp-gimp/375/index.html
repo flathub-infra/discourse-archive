@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ssh -X remote; flatpak run org.gimp.GIMP - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Ssh -X remote; flatpak run org.gimp.GIMP</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Ssh -X remote; flatpak run org.gimp.GIMP</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 10, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 10, 2020 12:45 AM">
+            <time itemprop="datePublished" datetime="2020-04-10 00:45:43 +0000">Apr 10, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ubuntu 18.04 LTR<br>
+GIMP 2.10, installed w/flatpak on both local and remote</p>
+<p>local% flatpak run org.gimp.GIMP  // works</p>
+<p>local% ssh -X remote<br>
+remote% flatpak run org.gimp.GIMP // console shows running but no display</p>
+<p>Are flatpak apps compatible with this approach (running them over the network with X-forwarding)?<br>
+If so, is there something I as a user need to configure?<br>
+If not, is it something the packager needs to do at packaging time?</p>
+<p>I was disappointed to find out that Ubuntu offers only GIMP 2.8 from its apt store, then excited to learn 2.10 could be had from flatpak, then disappointed again to find it can’t be run in my accustomed way. (The more powerful server does not have a “seat” in front of it.)</p>
+<p>Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 10, 2020 2:21 AM">
+            <time itemprop="datePublished" datetime="2020-04-10 02:21:40 +0000">Apr 10, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I did try using the --env argument:</p>
+<p>remote% flatpak --env=DISPLAY=local:0.0 run org.gimp.GIMP</p>
+<p>which didn’t work, but ssh -X documentation already warned that explicitly setting DISPLAY will break its X-forwarding and must be left to ssh.</p>
+<p>Indeed:<br>
+remote% env|grep DISPLAY<br>
+shew it set to localhost:10.0 (i.e., the 10th localhost display on remote) so ssh had anticipated the need to set it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 10, 2020 11:46 AM">
+            <time itemprop="datePublished" datetime="2020-04-10 11:46:17 +0000">Apr 10, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Directly from the FAQ:</p>
+<p>[quote]### Can Flatpak be used on servers too?</p>
+<p>Flatpak is designed to run inside a desktop session and relies on<br>
+certain session services, such as a D-Bus session bus and, optionally, a<br>
+systemd <code>--user</code> instance. **This makes Flatpak not a good match for a **<br>
+<strong>server.</strong></p>
+<p>However, the build features of Flatpak run fine outside a session, so<br>
+you can build things on a server.[/quote]</p>
+<p>Well. That’s clear enough.[1]  Love the idea. Need the server. Checking back later.</p>
+<p>Looking forward to it.</p>
+<p>Thank you.</p>
+<p>[1] Clearer than figuring out how to format it in the post…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

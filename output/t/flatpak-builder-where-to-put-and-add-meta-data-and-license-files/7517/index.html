@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-Builder: Where to put and add meta data and license files? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-Builder: Where to put and add meta data and license files?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-Builder: Where to put and add meta data and license files?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 18, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Oli Gerber</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 18, 2024 4:51 PM">
+            <time itemprop="datePublished" datetime="2024-08-18 16:51:07 +0000">Aug 18, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello Everyone <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>So i have my first app I’d like to distribute via flathub/flatpak.</p>
+<p>I’ve created a new folder “pickycolors_flatpak” for that. It  contains files like Executable (PickyColors), CHANGELOG and LICENSE an icons folder and several other files (yml, xml, *.desktop). But when i try to install them via the yml file, flatpak-builder fails like that:</p>
+<pre><code class="lang-auto">Running: install -Dm755 PickyColors /app/bin/PickyColors
+Running: install -Dm644 LICENSE /app/share/licenses/digital.sector7.pickycolors/LICENSE
+install: cannot stat 'LICENSE': No such file or directory
+Error: module PickyColors: Child process exited with code 1
+</code></pre>
+<p>I also tried creating an xml file for meta data but of course the problem is also the same with that one.</p>
+<p>Here’s my digital.sector7.PickyColors.yml content:</p>
+<pre><code class="lang-auto">id: digital.sector7.pickycolors
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: PickyColors
+modules:
+  - name: PickyColors
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 PickyColors /app/bin/PickyColors
+      - install -Dm644 LICENSE /app/share/licenses/digital.sector7.pickycolors/LICENSE
+      - install -Dm644 CHANGELOG /app/share/doc/digital.sector7.pickycolors/CHANGELOG
+      - install -Dm644 digital.sector7.pickycolors.appdata.xml /app/share/metainfo/digital.sector7.pickycolors.appdata.xml
+    sources:
+      - type: file
+        path: PickyColors
+  - name: icons
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 icons/icon-16.png /app/share/icons/hicolor/16x16/apps/pickycolors.png
+      - install -Dm644 icons/icon-32.png /app/share/icons/hicolor/32x32/apps/pickycolors.png
+      - install -Dm644 icons/icon-64.png /app/share/icons/hicolor/64x64/apps/pickycolors.png
+      - install -Dm644 icons/icon-128.png /app/share/icons/hicolor/128x128/apps/pickycolors.png
+      - install -Dm644 icons/icon-256.png /app/share/icons/hicolor/256x256/apps/pickycolors.png
+      - install -Dm644 icons/icon-512.png /app/share/icons/hicolor/512x512/apps/pickycolors.png
+      - install -Dm644 icons/icon-1024.png /app/share/icons/hicolor/1024x1024/apps/pickycolors.png
+</code></pre>
+<p>As you can see in the build-commands, there’s also the line to the xml file where i defined meta data like author, description, license (prop) and screenshots. I tried either with only the xml line (without LICENSE and CHANGELOG) or without the xml and only LICENSE and CHANGELOG). Everytime i run the flatpak builder it ends up with the message above. Strange is that the executable “PickyColors” doesn’t raise that “file not found” problem, but the others do even though they’re all located at the same place and should very much be found. Or is the message regarding the place it wants the files to be copied to?</p>
+<p>If it helps, that would be the xml files content:</p>
+<pre><code class="lang-auto">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;component type="desktop"&gt;
+  &lt;id&gt;digital.sector7.pickycolors&lt;/id&gt;
+  &lt;metadata_license&gt;CC0-1.0&lt;/metadata_license&gt;
+  &lt;project_license&gt;Proprietary&lt;/project_license&gt;
+  &lt;name&gt;PickyColors&lt;/name&gt;
+  &lt;summary&gt;A cross-platform project-based color picker app.&lt;/summary&gt;
+  &lt;description&gt;
+    &lt;p&gt;
+      PickyColors is a cross-platform project-based color picker app that helps designers pick, manage, and store colors effectively for different projects.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Features:
+      &lt;ul&gt;
+        &lt;li&gt;Create projects and project categories&lt;/li&gt;
+        &lt;li&gt;Create a color list for each category&lt;/li&gt;
+        &lt;li&gt;Use the color picker to adjust the color, or pick a color from your desktop&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      Future updates will include interface improvements, slider indicators, and a feedback system for bugs and feature requests.
+    &lt;/p&gt;
+  &lt;/description&gt;
+  &lt;developer_name&gt;Oli Gerber &amp;lt;my-email-address&amp;gt;&lt;/developer_name&gt;
+  &lt;url type="homepage"&gt;https://sector7.digital&lt;/url&gt;
+  &lt;screenshots&gt;
+    &lt;screenshot type="default"&gt;
+      &lt;image&gt;https://flatpak.sector7.digital/screens/icon-1024.png&lt;/image&gt;
+    &lt;/screenshot&gt;
+    &lt;screenshot&gt;
+      &lt;image&gt;https://flatpak.sector7.digital/screens/appscreen-01.png&lt;/image&gt;
+    &lt;/screenshot&gt;
+    &lt;screenshot&gt;
+      &lt;image&gt;https://flatpak.sector7.digital/screens/appscreen-02.png&lt;/image&gt;
+    &lt;/screenshot&gt;
+  &lt;/screenshots&gt;
+&lt;/component&gt;
+</code></pre>
+<p>Any help would be greatly appreciated, couldn’t find any information online so far and I’ve wasted soon more time on building and packaging for deb apt and now flat than building the app itself…</p>
+<p>Thanks everyone and have a great time <img src="/images/emoji/twitter/wink.png?v=12" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20"></p>
+<p>Best,<br>
+Oli</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 18, 2024 5:05 PM">
+            <time itemprop="datePublished" datetime="2024-08-18 17:05:42 +0000">Aug 18, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The flatpak gets build in a sandbox, you have to provide all files as sources to make them available inside it.</p>
+<p>In your manifest you’ve only defined PickyColors as the single file source &amp; therefore it’s the only file being found.</p>
+<p>The same issue will occur in the icons module where you’ve defined no source at all.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Oli Gerber</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 18, 2024 6:11 PM">
+            <time itemprop="datePublished" datetime="2024-08-18 18:11:32 +0000">Aug 18, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks so much. Now i removed license/changelog and only used the xml appdata file and after adding it to sources it didn’t show the error any longer. yet for the icons, this seems not to work. I’ve tried adding every single icons via “path: icons/icon-16.png” (type:file) and also just adding the directory like “path: icons (type:dir)” and combined those as well like below,  but it drops the file not found error again for the icon-16.png. Here’s the changes i tried for the icons:</p>
+<pre><code class="lang-auto">modules:
+  - name: PickyColors
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 PickyColors /app/bin/PickyColors
+      - install -Dm644 digital.sector7.pickycolors.appdata.xml /app/share/metainfo/digital.sector7.pickycolors.appdata.xml
+    sources:
+      - type: file
+        path: PickyColors
+      - type: file
+        path: digital.sector7.pickycolors.appdata.xml
+  - name: icons
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 icons/icon-16.png /app/share/icons/hicolor/16x16/apps/pickycolors.png
+      - install -Dm644 icons/icon-32.png /app/share/icons/hicolor/32x32/apps/pickycolors.png
+      - install -Dm644 icons/icon-64.png /app/share/icons/hicolor/64x64/apps/pickycolors.png
+      - install -Dm644 icons/icon-128.png /app/share/icons/hicolor/128x128/apps/pickycolors.png
+      - install -Dm644 icons/icon-256.png /app/share/icons/hicolor/256x256/apps/pickycolors.png
+      - install -Dm644 icons/icon-512.png /app/share/icons/hicolor/512x512/apps/pickycolors.png
+      - install -Dm644 icons/icon-1024.png /app/share/icons/hicolor/1024x1024/apps/pickycolors.png
+    sources:
+      - type: dir
+        path: icons
+      - type: file
+        path: icons/icon-16.png
+      - type: file
+        path: icons/icon-32.png
+      - type: file
+        path: icons/icon-64.png
+      - type: file
+        path: icons/icon-128.png
+      - type: file
+        path: icons/icon-256.png
+      - type: file
+        path: icons/icon-512.png
+      - type: file
+        path: icons/icon-1024.png
+</code></pre>
+<p>Can’t see any other type that could match except maybe “extra-data”, but seems file and dir respectively are just fine. <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>Here’s the command and it’s output currently:</p>
+<pre><code class="lang-auto">flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo --install builddir digital.sector7.PickyColors.yml
+Dependency Sdk: org.freedesktop.Sdk 23.08
+Updating org.freedesktop.Sdk/x86_64/23.08
+
+Nothing to do.
+Dependency Runtime: org.freedesktop.Platform 23.08
+Updating org.freedesktop.Platform/x86_64/23.08
+
+Nothing to do.
+Downloading sources
+Starting build of digital.sector7.pickycolors
+Cache hit for PickyColors, skipping build
+Cache miss, checking out last cache hit
+========================================================================
+Building module icons in /home/sector7/PycharmProjects/pickycolors-flatpak/.flatpak-builder/build/icons-4
+========================================================================
+Running: install -Dm644 icons/icon-16.png /app/share/icons/hicolor/16x16/apps/pickycolors.png
+install: cannot stat 'icons/icon-16.png': No such file or directory
+Error: module icons: Child process exited with code 1
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 19, 2024 1:56 AM">
+            <time itemprop="datePublished" datetime="2024-08-19 01:56:20 +0000">Aug 19, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>where do you think it find he icons if you don’t tell?</p>
+<p>btw all of that should be part of the build system instead.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

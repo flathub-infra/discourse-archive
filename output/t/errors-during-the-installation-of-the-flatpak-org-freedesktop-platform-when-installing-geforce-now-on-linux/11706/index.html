@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Errors during the installation of the flatpak org.freedesktop.Platform when installing GeForce Now on Linux - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Errors during the installation of the flatpak org.freedesktop.Platform when installing GeForce Now on Linux</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Errors during the installation of the flatpak org.freedesktop.Platform when installing GeForce Now on Linux</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 8, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mateus Odorico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 8, 2026 10:04 PM">
+            <time itemprop="datePublished" datetime="2026-02-08 22:04:12 +0000">Feb 8, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><strong>Introduction</strong><br>
+During the installation of GeForce Now, some users may encounter error messages similar to the ones below:</p>
+<blockquote>
+<p>Aviso: Flatpak system operation Deploy not allowed for user<br>
+Erro: Falha ao instalar org.freedesktop.Platform: Flatpak system operation Deploy not allowed for user<br>
+ERROR: install_flatpak_app – Failed to install Flatpak app: org.freedesktop.Platform//24.08</p>
+</blockquote>
+<p><strong>Solution</strong><br>
+Follow the steps below to resolve:</p>
+<ol>
+<li>Open the terminal and run the command below to manually install the necessary platform:</li>
+</ol>
+<pre><code class="lang-auto">flatpak install org.freedesktop.Platform//24.08
+</code></pre>
+<ol start="2">
+<li>Try installing GeForce Now again.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 8, 2026 10:23 PM">
+            <time itemprop="datePublished" datetime="2026-02-08 22:23:21 +0000">Feb 8, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I do have to ask: How did tried to install Geforce Now?</p>
+<p>Because the error you posted has to do with the user having not the permission to install Flatpaks to the system installation.</p>
+<p>But the solution you mentioned just is to install the runtime manually from the terminal.</p>
+<p>This implies to me:<br>
+Whatever you used when trying to install Geforce Now lacks the permission with your user to install to the system installation.<br>
+So, you circumvented the issue, not actually solved it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 9, 2026 3:30 PM">
+            <time itemprop="datePublished" datetime="2026-02-09 15:30:59 +0000">Feb 9, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The two GeForce NOW apps on flathub I found use 25.08 runtime version so this doesn’t make any sense.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://flathub.org/en/apps/io.github.hmlendea.geforcenow-electron">
+  <header class="source">
+      <img src="/uploads/original/2X/e/ed20a93b44424408ea854825a0215925bb9f8a45.svg" class="site-icon" alt="" data-dominant-color="" width="16" height="16">
+
+      <a href="https://flathub.org/en/apps/io.github.hmlendea.geforcenow-electron" target="_blank" rel="noopener nofollow ugc">flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/361;"><img src="/uploads/optimized/2X/e/e3a8d6ebaea75470b77f0782cf75e8366cc1b44b_2_690x362.jpeg" class="thumbnail" alt="" data-dominant-color="596E9C" width="690" height="362"></div>
+
+<h3><a href="https://flathub.org/en/apps/io.github.hmlendea.geforcenow-electron" target="_blank" rel="noopener nofollow ugc">Install GeForce NOW Electron on Linux | Flathub</a></h3>
+
+  <p>Unofficial GeForce NOW application written in Electron</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://flathub.org/en/apps/io.github.astralvixen.geforce-infinity">
+  <header class="source">
+      <img src="/uploads/original/2X/e/ed20a93b44424408ea854825a0215925bb9f8a45.svg" class="site-icon" alt="" data-dominant-color="" width="16" height="16">
+
+      <a href="https://flathub.org/en/apps/io.github.astralvixen.geforce-infinity" target="_blank" rel="noopener nofollow ugc">flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/361;"><img src="/uploads/optimized/2X/4/41a209a5254c5e0743a960308db5204d722167a6_2_690x362.jpeg" class="thumbnail" alt="" data-dominant-color="3A71AE" width="690" height="362"></div>
+
+<h3><a href="https://flathub.org/en/apps/io.github.astralvixen.geforce-infinity" target="_blank" rel="noopener nofollow ugc">Install GeForce Infinity on Linux | Flathub</a></h3>
+
+  <p>Next-gen GeForce NOW application</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mateus Odorico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 9, 2026 7:31 PM">
+            <time itemprop="datePublished" datetime="2026-02-09 19:31:25 +0000">Feb 9, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Erick555" data-post="3" data-topic="11706">
+<div class="title">
+<div class="quote-controls"></div>
+Erick555:</div>
+<blockquote>
+<p>The two GeForce NOW apps on flathub I found use 25.08 runtime version so this doesn’t make any sense.</p>
+</blockquote>
+</aside>
+<p>An official beta version of Geforce Now has been released, but it is not available on flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Erick555</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 9, 2026 9:01 PM">
+            <time itemprop="datePublished" datetime="2026-02-09 21:01:21 +0000">Feb 9, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, but we’re on flathub forum so I don’t know how helpful your solution is especially when it misses all context.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

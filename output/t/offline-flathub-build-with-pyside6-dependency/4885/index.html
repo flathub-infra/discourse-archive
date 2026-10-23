@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline Flathub build with PySide6 dependency - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Offline Flathub build with PySide6 dependency</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Offline Flathub build with PySide6 dependency</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 12, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 12, 2023 9:01 AM">
+            <time itemprop="datePublished" datetime="2023-08-12 09:01:21 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi.<br>
+I am trying to publish my first app in Flathub. Unfortunately, my manifesto contained an argument granting web access permissions to the build tool to download the PySide6 dependency. I was <a href="https://github.com/flathub/flathub/pull/4412" rel="noopener nofollow ugc">asked to make the build offline</a> and therefore not use this permission. Unfortunately, I don’t know how to get rid of this permission well and still be able to build the application using PySide6.</p>
+<p>Manifest without internet access for builder:</p>
+<pre data-code-wrap="yml"><code class="lang-plaintext">app-id: eu.cichy1173.tabela
+runtime: org.kde.Platform
+runtime-version: '6.2'
+sdk: org.kde.Sdk
+command: tabela
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --device=dri
+  - --filesystem=host
+desktop-file-name: eu.cichy1173.eu.desktop
+modules:
+  - name: tabela
+    buildsystem: simple
+    build-commands:
+      - python -m pip install --prefix=/app .
+    sources:
+      - type: git
+        url: https://codeberg.org/cichy1173/tabela-flatpak.git
+        commit: 73753ba98060e0b8f792f306e36eafbe941b6b55
+    build-extensions:
+      - org.freedesktop.Sdk.Extension.python3.9
+    extra-data:
+      - name: icons
+        dest: share/icons/hicolor
+        sources:
+          - type: file
+            path: tabela.png
+</code></pre>
+<p>Repository for my application: <a href="https://codeberg.org/cichy1173/tabela-flatpak.git" class="inline-onebox" rel="noopener nofollow ugc">cichy1173/tabela-flatpak: Repository for Flatpak version of tabela app - tabela-flatpak - Codeberg.org</a></p>
+<p>Setup.py file:</p>
+<pre><code class="lang-python">from setuptools import setup
+
+package_name = 'tabela'
+filename = 'tabela/__init__.py'
+
+setup(
+    name='tabela',
+    version='1.0',
+    description='Simple app that shows CSV content in table.',
+    author='cichy1173',
+    author_email='grzegorz@cichy1173.eu',
+    packages=['tabela'],
+    install_requires=[
+        'PySide6',  
+    ],
+    entry_points={
+        'console_scripts': [
+            'tabela=tabela.main:main', 
+        ],
+    },
+)
+</code></pre>
+<p>Thanks in Advance</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 12, 2023 2:04 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 14:04:21 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Add these modules to your Manifest:</p>
+<pre><code class="lang-yaml">  - name: qt-include
+    # https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-787
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/include/qt
+      - cp -R /usr/include/Qt* /app/include/qt
+    cleanup:
+      - /include
+
+  - name: PySide6
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.5.1.1-src/pyside-setup-everywhere-src-6.5.1.1.tar.xz
+        sha256: 9741a06f0b7d4b2168818448134bc7e96ddb5efb846a3915b4177ba4159b5b78
+      - type: shell
+        commands:
+          # use qt-include
+          - sed -i 's|\(--include-paths=\)|\1/app/include/qt:|' sources/pyside6/cmake/Macros/PySideModules.cmake
+          # fix python module search path
+          - sed -i '/--sys-path\b/ a "${pysidebindings_BINARY_DIR}/.."' sources/pyside6/cmake/Macros/PySideModules.cmake
+    cleanup:
+      - /plugins
+      - /include
+      - /bin
+``</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 12, 2023 2:13 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 14:13:15 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello! Thank You for your answer! I added this, and manifest now looks like that:</p>
+<pre data-code-wrap="yml"><code class="lang-plaintext">app-id: eu.cichy1173.tabela
+runtime: org.kde.Platform
+runtime-version: '6.2'
+sdk: org.kde.Sdk
+command: tabela
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --device=dri
+  - --filesystem=host
+
+modules:
+  #       sha256: d9680ff298ee8b01a68de20911c60da04568a0918b3062d4c571ef170b4603ff
+  - name: qt-include
+    # https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-787
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/include/qt
+      - cp -R /usr/include/Qt* /app/include/qt
+    cleanup:
+      - /include
+
+  - name: PySide6
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.5.1.1-src/pyside-setup-everywhere-src-6.5.1.1.tar.xz
+        sha256: 9741a06f0b7d4b2168818448134bc7e96ddb5efb846a3915b4177ba4159b5b78
+      - type: shell
+        commands:
+          # use qt-include
+          - sed -i 's|\(--include-paths=\)|\1/app/include/qt:|' sources/pyside6/cmake/Macros/PySideModules.cmake
+          # fix python module search path
+          - sed -i '/--sys-path\b/ a "${pysidebindings_BINARY_DIR}/.."' sources/pyside6/cmake/Macros/PySideModules.cmake
+    cleanup:
+      - /plugins
+      - /include
+      - /bin
+  - name: tabela
+    buildsystem: simple
+    build-commands:
+      - python -m pip install --prefix=/app .
+    sources:
+      - type: git
+        url: https://codeberg.org/cichy1173/tabela-flatpak.git
+        commit: 73753ba98060e0b8f792f306e36eafbe941b6b55
+</code></pre>
+<p>I have this error:</p>
+<pre><code class="lang-bash">CMake Error at sources/shiboken6/cmake/ShibokenHelpers.cmake:170 (find_package):
+  Could not find a package configuration file provided by "Clang" with any of
+  the following names:
+
+    ClangConfig.cmake
+    clang-config.cmake
+
+  Add the installation prefix of "Clang" to CMAKE_PREFIX_PATH or set
+  "Clang_DIR" to a directory containing one of the above files.  If "Clang"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  sources/shiboken6/cmake/ShibokenSetup.cmake:38 (setup_clang)
+  sources/shiboken6/CMakeLists.txt:14 (include)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/run/build/PySide6/_flatpak_build/CMakeFiles/CMakeOutput.log".
+See also "/run/build/PySide6/_flatpak_build/CMakeFiles/CMakeError.log".
+Error: module PySide6: Proces potomny został zakończony z kodem 1
+</code></pre>
+<p>I also tried to use Flatpak PIP Generator for generating all this modules using requirments.txt, but i have this error:</p>
+<pre><code class="lang-bash">Running: "flatpak --filesystem=/home/cichy1173/Projekty/tabela-flatpak/requirements.txt --devel --share=network --filesystem=/tmp --command=pip3 run org.kde.Sdk//6.2 download --exists-action=i --dest /tmp/pip-generator-pypi-dependenciesf05pzzqh -r /home/cichy1173/Projekty/tabela-flatpak/requirements.txt"
+Collecting PySide6==6.2.0
+  Downloading PySide6-6.2.0-6.2.0-cp36.cp37.cp38.cp39.cp310-abi3-manylinux1_x86_64.whl (269.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 269.4/269.4 MB 11.0 MB/s eta 0:00:00
+Collecting shiboken6==6.2.0
+  Downloading shiboken6-6.2.0-6.2.0-cp36.cp37.cp38.cp39.cp310-abi3-manylinux1_x86_64.whl (996 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 996.5/996.5 kB 14.8 MB/s eta 0:00:00
+Saved /tmp/pip-generator-pypi-dependenciesf05pzzqh/PySide6-6.2.0-6.2.0-cp36.cp37.cp38.cp39.cp310-abi3-manylinux1_x86_64.whl
+Saved /tmp/pip-generator-pypi-dependenciesf05pzzqh/shiboken6-6.2.0-6.2.0-cp36.cp37.cp38.cp39.cp310-abi3-manylinux1_x86_64.whl
+Successfully downloaded PySide6 shiboken6
+========================================================================
+Downloading arch independent packages
+========================================================================
+Traceback (most recent call last):
+  File "/home/cichy1173/Projekty/tabela-flatpak/flatpak-pip-generator", line 271, in &lt;module&gt;
+    url = get_tar_package_url_pypi(name, version)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cichy1173/Projekty/tabela-flatpak/flatpak-pip-generator", line 88, in get_tar_package_url_pypi
+    raise Exception(err)
+Exception: Failed to get shiboken6-6.2.0 source from https://pypi.org/pypi/shiboken6/6.2.0/json
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 12, 2023 2:19 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 14:19:42 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry, forgot to mention. you need also to add this:</p>
+<pre><code class="lang-yaml">sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm16
+build-options:
+    append-path: /usr/lib/sdk/llvm16/bin
+    prepend-ld-library-path: /usr/lib/sdk/llvm16/lib
+</code></pre>
+<p>This needs to be added above the modules section.</p>
+<p>Please note that the runtime version 6.2 you use is deprecated. You should use version 6.5 instead.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 12, 2023 3:05 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 15:05:06 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank You for your response. I feel I am getting there, but I still have some problems.</p>
+<p>I changed runtime for 6.5 and I changed setup.py on codeberg.</p>
+<p>Manifest:</p>
+<pre data-code-wrap="yml"><code class="lang-plaintext">app-id: eu.cichy1173.tabela
+runtime: org.kde.Platform
+runtime-version: '6.5'
+sdk: org.kde.Sdk
+command: tabela
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --device=dri
+  - --filesystem=host
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm16
+build-options:
+    append-path: /usr/lib/sdk/llvm16/bin
+    prepend-ld-library-path: /usr/lib/sdk/llvm16/lib
+
+modules:
+  - name: qt-include
+    # https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-787
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/include/qt
+      - cp -R /usr/include/Qt* /app/include/qt
+    cleanup:
+      - /include
+
+  - name: PySide6
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.5.1.1-src/pyside-setup-everywhere-src-6.5.1.1.tar.xz
+        sha256: 9741a06f0b7d4b2168818448134bc7e96ddb5efb846a3915b4177ba4159b5b78
+      - type: shell
+        commands:
+          # use qt-include
+          - sed -i 's|\(--include-paths=\)|\1/app/include/qt:|' sources/pyside6/cmake/Macros/PySideModules.cmake
+          # fix python module search path
+          - sed -i '/--sys-path\b/ a "${pysidebindings_BINARY_DIR}/.."' sources/pyside6/cmake/Macros/PySideModules.cmake
+    cleanup:
+      - /plugins
+      - /include
+      - /bin
+  - name: tabela
+    buildsystem: simple
+    build-commands:
+      - python -m pip install --prefix=/app .
+    sources:
+      - type: git
+        url: https://codeberg.org/cichy1173/tabela-flatpak.git
+        commit: bed5fcacf23d5fd958c8ce12ec584b6c96a956ff
+</code></pre>
+<p>Setup.py (I added version for pyside6)</p>
+<pre><code class="lang-python">from setuptools import setup
+
+package_name = 'tabela'
+filename = 'tabela/__init__.py'
+
+setup(
+    name='tabela',
+    version='1.0',
+    description='Simple app that shows CSV content in table.',
+    author='cichy1173',
+    author_email='grzegorz@cichy1173.eu',
+    packages=['tabela'],
+    install_requires=[
+        'PySide6==6.5.0',  
+    ],
+    entry_points={
+        'console_scripts': [
+            'tabela=tabela.main:main',  
+        ],
+    },
+)
+</code></pre>
+<p>But i have this problem:</p>
+<pre><code class="lang-bash">INFO: pip is looking at multiple versions of tabela to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement PySide6==6.5.0 (from tabela) (from versions: none)
+ERROR: No matching distribution found for PySide6==6.5.0
+Error: module tabela: Proces potomny został zakończony z kodem 1
+</code></pre>
+<p>I must add that, building with command <code>python -m pip install  .</code> works. Also I had no issues with Snap package.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 12, 2023 3:14 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 15:14:24 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Try adding <code>--no-deps --no-build-isolation</code> to your pip command</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 12, 2023 3:48 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 15:48:42 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>THANK YOU!! It is working now that how it should be!</p>
+<p>I am sorry for being that needy for help, but I see you have a lot of experience with Flatpak. Can you tell me if is everything right with my app for publishing app in Flathub? Repo of the app: <a href="https://codeberg.org/cichy1173/tabela-flatpak" class="inline-onebox" rel="noopener nofollow ugc">cichy1173/tabela-flatpak: Repository for Flatpak version of tabela app - tabela-flatpak - Codeberg.org</a></p>
+<p>Manifesto for flathub:</p>
+<pre><code class="lang-yaml">app-id: eu.cichy1173.tabela
+runtime: org.kde.Platform
+runtime-version: '6.5'
+sdk: org.kde.Sdk
+command: tabela
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --device=dri
+  - --filesystem=host
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm16
+build-options:
+    append-path: /usr/lib/sdk/llvm16/bin
+    prepend-ld-library-path: /usr/lib/sdk/llvm16/lib
+
+modules:
+  - name: qt-include
+    # https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-787
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/include/qt
+      - cp -R /usr/include/Qt* /app/include/qt
+    cleanup:
+      - /include
+
+  - name: PySide6
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.5.1.1-src/pyside-setup-everywhere-src-6.5.1.1.tar.xz
+        sha256: 9741a06f0b7d4b2168818448134bc7e96ddb5efb846a3915b4177ba4159b5b78
+      - type: shell
+        commands:
+          # use qt-include
+          - sed -i 's|\(--include-paths=\)|\1/app/include/qt:|' sources/pyside6/cmake/Macros/PySideModules.cmake
+          # fix python module search path
+          - sed -i '/--sys-path\b/ a "${pysidebindings_BINARY_DIR}/.."' sources/pyside6/cmake/Macros/PySideModules.cmake
+    cleanup:
+      - /plugins
+      - /include
+      - /bin
+  - name: tabela
+    buildsystem: simple
+    build-commands:
+      - python -m pip install --no-deps --no-build-isolation --prefix=/app .
+    sources:
+      - type: git
+        url: https://codeberg.org/cichy1173/tabela-flatpak.git
+        commit: bed5fcacf23d5fd958c8ce12ec584b6c96a956ff
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Aug 12, 2023 4:56 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 16:56:50 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I suggest you to just create the submit PR. It will be reviewed there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">cichy1173</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Aug 12, 2023 7:35 PM">
+            <time itemprop="datePublished" datetime="2023-08-12 19:35:54 +0000">Aug 12, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><s>I created that files (.desktop and xml appstream which I have in root directory on codeberg repo - sorry, I tried to link this files, but the forum marked them as spam/ad), but I think, I use this files in a wrong way.  How can I fix this? <span class="mention">@JakobDev</span></s></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

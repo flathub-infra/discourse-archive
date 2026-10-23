@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross compile to aarch64? -- used to work - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Cross compile to aarch64? -- used to work</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Cross compile to aarch64? -- used to work</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 15, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 15, 2022 3:10 PM">
+            <time itemprop="datePublished" datetime="2022-09-15 15:10:49 +0000">Sep 15, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to cross compile from x86_64 to aarch64. I can build a x86_64 package, but when I attempt an aarch64 the build crashes. I am using electron and the crash is around the time that the ‘zypak-wrapper’ script is being used.</p>
+<p>Some time ago, maybe months, I could succsesfully compile my app for aarch64.</p>
+<p>I have checked and I have the aarch64 flatpak packages installed for my app.</p>
+<p>My biggest concern is that flatpak does not support aarch64 cross compiling any more.</p>
+<p>Below is some terminal output.</p>
+<pre><code>    $ flatpak --supported-arches
+    x86_64
+    i386
+
+    $ flatpak install org.freedesktop.Sdk.Extension.node14/aarch64/21.08
+    Looking for matches…
+    Skipping: org.freedesktop.Sdk.Extension.node14/aarch64/21.08 is already installed
+
+    $ flatpak install org.electronjs.Electron2.BaseApp/aarch64/21.08
+    Looking for matches…
+    Skipping: org.electronjs.Electron2.BaseApp/aarch64/21.08 is already installed
+</code></pre>
+<p>Note: I can go through all the required flatpak packages and the flatpak program will tell me they are there.</p>
+<p>Here is some crash output.</p>
+<pre><code>    npm ERR! code ELIFECYCLE
+    npm ERR! errno 1
+    npm ERR! electron@18.1.0 postinstall: `node install.js`
+    npm ERR! Exit status 1
+    npm ERR! 
+    npm ERR! Failed at the electron@18.1.0 postinstall script.
+    npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+    npm timing npm Completed in 483509ms
+
+    npm ERR! A complete log of this run can be found in:
+    npm ERR!     /run/build/gpt-etc/flatpak-node/npm-cache/_logs/2022-09-15T15_39_46_810Z-debug.log
+    Error: module gpt-etc: Child process exited with code 1
+</code></pre>
+<p>and btw, I cannot find the /run/build/ dir for the log on my system.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 15, 2022 4:37 PM">
+            <time itemprop="datePublished" datetime="2022-09-15 16:37:12 +0000">Sep 15, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="DLiebman" data-post="1" data-topic="3040">
+<div class="title">
+<div class="quote-controls"></div>
+DLiebman:</div>
+<blockquote>
+<p>My biggest concern is that flatpak does not support aarch64 cross compiling any more.</p>
+</blockquote>
+</aside>
+<p>It never did support cross compilation. At best you can run it with qemu, where the whole build process with be emulated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 15, 2022 4:52 PM">
+            <time itemprop="datePublished" datetime="2022-09-15 16:52:52 +0000">Sep 15, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>does not flatpak builder support an --arch=aarch64 target achitecture?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 16, 2022 1:56 PM">
+            <time itemprop="datePublished" datetime="2022-09-16 13:56:44 +0000">Sep 16, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is my yaml file. Breifly I could not even build the x86_64 arch. Then I realized that I had edited the node16 to read node14. This really baffled me. Now x86_64 works again. Now when I try to build for aarch64 I get an error, again somewhere around the zypak wrapper. It has something to do with electron-builder in the packaging stage. I then added zypak sources to the yaml file. Still I get the same error. I updated electron-builder to 23.5.1, but the error remains the same.</p>
+<pre><code>    app-id: org.theguy.GptEtc
+    runtime: org.freedesktop.Platform
+    runtime-version: '21.08'
+    sdk: org.freedesktop.Sdk
+    base: org.electronjs.Electron2.BaseApp
+    base-version: '21.08'
+    sdk-extensions:
+      - org.freedesktop.Sdk.Extension.node16 
+    command: run.sh
+    separate-locales: false
+    finish-args:
+      - --share=ipc
+      - --socket=x11
+      - --socket=pulseaudio
+      - --share=network
+      - --filesystem=home
+      - --filesystem=/tmp/
+      - --filesystem=host
+      - --filesystem=/var/local:ro 
+      - --socket=system-bus
+      - --device=dri
+      - --filesystem=xdg-config/gtk-3.0:ro 
+      - --env=GOOGLE_APPLICATION_CREDENTIALS=/var/local/google-application-credentials.json
+      - --env=GPT_ETC_AUTO_FILE=gpt.txt 
+      - --env=GPT_ETC_NOT_HANDHELD=true
+    build-options:
+      append-path: /usr/lib/sdk/node16/bin:/app/main/dist
+      cflags: -O2 -g
+      cxxflags: -O2 -g
+      env:
+        NPM_CONFIG_LOGLEVEL: info
+    modules:
+
+      - name: zypak
+        sources:
+          - type: git
+            url: https://github.com/refi64/zypak
+            commit: 55a60d110301e8dd37b631503c3524ab7baaf7aa
+
+      - name: sox
+        buildsystem: autotools
+        config-opts: []
+        sources: 
+          - type: archive
+            url: https://downloads.sourceforge.net/project/sox/sox/14.4.2/sox-14.4.2.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsox%2Ffiles%2Fsox%2F14.4.2%2Fsox-14.4.2.tar.gz%2Fdownload&amp;ts=1549545438
+            sha256: b45f598643ffbd8e363ff24d61166ccec4836fea6d3888881b8df53e3bb55f6c 
+
+      - name: iputils
+        buildsystem: meson 
+        config-opts: []
+        sources: 
+          - type: git 
+            url: https://github.com/iputils/iputils.git 
+            commit: 309f28518adbe161b5dfd6717f91a3fbe3ab8eab
+     
+      - name: curl
+        buildsystem: cmake
+        config-opts: []
+        sources: 
+          - type: git 
+            url: https://github.com/curl/curl.git 
+            commit: 5e9a703cf211a892e9b74ec11129994dcc241623 
+     
+      - name: gpt-etc
+        buildsystem: simple
+        build-options:
+          env:
+            electron_config_cache: /run/build/gpt-etc/npm-cache
+            XDG_CACHE_HOME: /run/build/gpt-etc/flatpak-node/cache
+            npm_config_cache: /run/build/gpt-etc/flatpak-node/npm-cache
+            npm_config_nodedir: /usr/lib/sdk/node16  
+            npm_config_offline: 'true'
+        subdir: main
+        sources:
+          - type: dir
+            path: ..
+            dest: main
+          - generated-sources.json
+          # Wrapper to launch the app
+          - type: script
+            dest-filename: run.sh
+            commands:
+              - zypak-wrapper.sh /app/main/gpt-etc "$@"
+        build-commands:
+          # Install npm dependencies
+          #- cat /app/bin/zypak-wrapper.sh 
+          - jq '.scripts.start="electron --disable-gpu ."' &lt;&lt;&lt;$(&lt;package.json) &gt; package.json
+
+          #- pwd
+          - install -Dm755 integration/org.theguy.GptEtc.desktop /app/share/applications/org.theguy.GptEtc.desktop
+          - install -Dm755 integration/*.png /app/share/icons/hicolor/128x128/apps/org.theguy.GptEtc.png
+
+          - npm install --offline
+          # Build the app; in this example the `dist` script
+          # in package.json runs electron-builder
+          - |
+            . ../flatpak-node/electron-builder-arch-args.sh
+            npm run dist -- $ELECTRON_BUILDER_ARCH_ARGS   --linux --dir 
+          # Bundle app and dependencies
+          - 'cp -a dist/linux*unpacked /app/main'
+          - 'install -Dm755 -t /app/bin/ ../run.sh'
+</code></pre>
+<p>This is the actual error.</p>
+<p>Running: cp -a dist/linux*unpacked /app/main<br>
+cp: target ‘/app/main’ is not a directory<br>
+Error: module gpt-etc: Child process exited with code 1</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 17, 2022 6:53 PM">
+            <time itemprop="datePublished" datetime="2022-09-17 18:53:42 +0000">Sep 17, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="DLiebman" data-post="4" data-topic="3040">
+<div class="title">
+<div class="quote-controls"></div>
+DLiebman:</div>
+<blockquote>
+<p>cp: target ‘/app/main’ is not a directory</p>
+</blockquote>
+</aside>
+<p>Well, if <code>dist/linux*unpacked</code> resolve into more than one file/directory than <code>/app/main</code> must exist prior to it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 17, 2022 7:32 PM">
+            <time itemprop="datePublished" datetime="2022-09-17 19:32:46 +0000">Sep 17, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you are right. maybe special cp commands need to be written for the right content to end up in /app/main too.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

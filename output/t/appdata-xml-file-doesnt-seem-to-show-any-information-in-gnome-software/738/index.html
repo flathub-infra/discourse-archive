@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appdata XML file doesn&#39;t seem to show any information in GNOME Software - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Appdata XML file doesn&#39;t seem to show any information in GNOME Software</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Appdata XML file doesn&#39;t seem to show any information in GNOME Software</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 18, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gustavo Peredo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 18, 2020 1:12 AM">
+            <time itemprop="datePublished" datetime="2020-09-18 01:12:25 +0000">Sep 18, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone! I’m a new developer and I’m planning on releasing my first flatpak application (and publish it on flathub).</p>
+<p>I’m pretty sure this is a mistake by my part, but I’m not sure where it is. I edited my application’s appdata.xml.in file (attached below)</p>
+<pre><code class="lang-auto">    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;component type="desktop"&gt;
+    	&lt;id&gt;org.gustavoperedo.FontDownloader.desktop&lt;/id&gt;
+    	&lt;metadata_license&gt;CC0-1.0&lt;/metadata_license&gt;
+    	&lt;project_license&gt;GPL-3.0-or-later&lt;/project_license&gt;
+      &lt;name&gt;Font Downloader&lt;/name&gt;
+      &lt;summary&gt;A simple GTK font downloader.&lt;/summary&gt;
+      &lt;description&gt;
+    	  &lt;p&gt;Have you ever wanted to change the font in your terminal, but didn't want to go through the entire process of searching, downloading and installing a font? This simple to use and adaptive GTK application allows you to search and install fonts directly from Google Fonts' website!&lt;/p&gt;
+    	&lt;/description&gt;
+      &lt;screenshots&gt;
+        &lt;screenshot type="default"&gt;
+          &lt;image type="source"&gt;https://raw.githubusercontent.com/GustavoPeredo/font-downloader/master/data/screenshots/entire.png&lt;/image&gt;
+        &lt;/screenshot&gt;
+        &lt;screenshot&gt;
+          &lt;image type="source"&gt;https://raw.githubusercontent.com/GustavoPeredo/font-downloader/master/data/screenshots/dark_entire.png&lt;/image&gt;
+        &lt;/screenshot&gt;
+        &lt;screenshot&gt;
+          &lt;image type="source"&gt;https://raw.githubusercontent.com/GustavoPeredo/font-downloader/master/data/screenshots/compact.png&lt;/image&gt;
+        &lt;/screenshot&gt;
+        &lt;screenshot&gt;
+          &lt;image type="source"&gt;https://raw.githubusercontent.com/GustavoPeredo/font-downloader/master/data/screenshots/dark_compact.png&lt;/image&gt;
+        &lt;/screenshot&gt;
+      &lt;/screenshots&gt;
+      &lt;releases&gt;
+        &lt;release version="1.0.0" date="2020-09-16"/&gt;
+      &lt;/releases&gt;
+      &lt;url type="homepage"&gt;https://github.com/GustavoPeredo/font-downloader&lt;/url&gt;
+      &lt;developer_name&gt;Gustavo Peredo&lt;/developer_name&gt;
+      &lt;launchable type="desktop-id"&gt;org.gustavoperedo.FontDownloader.desktop&lt;/launchable&gt;
+      &lt;content_rating type="oars-1.1"/&gt;
+    &lt;/component&gt;
+</code></pre>
+<p>and I told meson to add it to the metainfo folder:</p>
+<pre><code>appstream_file = i18n.merge_file(
+  input: 'org.gustavoperedo.FontDownloader.appdata.xml.in',
+  output: 'org.gustavoperedo.FontDownloader.appdata.xml',
+  type: 'xml',
+  po_dir: '../po',
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+</code></pre>
+<p>But then, and I’m not sure why, none of the things written on my xml file seem to apply (see GNOME Software below)</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684.png" data-download-href="/uploads/original/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684.png" title="Screenshot from 2020-09-17 22-07-23" rel="nofollow noopener"><img src="/uploads/optimized/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684_2_690x388.png" alt="Screenshot from 2020-09-17 22-07-23" data-base62-sha1="hd82Fj47KamJtZWo9UvBuvOaedS" width="690" height="388" srcset="/uploads/optimized/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684_2_690x388.png, /uploads/optimized/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684_2_1035x582.png 1.5x, /uploads/optimized/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684_2_1380x776.png 2x" data-small-upload="/uploads/optimized/1X/78a0e8c6cf4f7cba22ee5f8f607b2230a40c6684_2_10x10.png"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot from 2020-09-17 22-07-23</span><span class="informations">1920×1080 115 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>I would like to know how I can fix it to display the correct information in GNOME Software?</p>
+<p>My full project can be seen at: <a href="https://github.com/GustavoPeredo/font-downloader" rel="nofollow noopener">https://github.com/GustavoPeredo/font-downloader</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 18, 2020 11:39 AM">
+            <time itemprop="datePublished" datetime="2020-09-18 11:39:22 +0000">Sep 18, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Software or any store that uses appstream specs, can’t read your appdata/metainfo file that’s shipped with the app. It would mean that your store will have to download the app to show any information about it.</p>
+<p>Instead, the list of the appdata files available in a repository like Flathub are collected on a collection of appdata files that’s being updated when you do a <code>flatpak update</code>. Traditional packaging systems ships that as a separate package that gets updated from time to time.</p>
+<p>What you’re looking for is something like Appdata Preview <a href="https://gitlab.gnome.org/bertob/app-ideas/-/issues/47">https://gitlab.gnome.org/bertob/app-ideas/-/issues/47</a> which doesn’t exists yet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Gustavo Peredo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 18, 2020 12:29 PM">
+            <time itemprop="datePublished" datetime="2020-09-18 12:29:45 +0000">Sep 18, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you very much!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 18, 2020 9:19 PM">
+            <time itemprop="datePublished" datetime="2020-09-18 21:19:32 +0000">Sep 18, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="GustavoPeredo" data-post="1" data-topic="738">
+<div class="title">
+<div class="quote-controls"></div>
+GustavoPeredo:</div>
+<blockquote>
+<pre><code class="lang-auto">    	&lt;id&gt;org.gustavoperedo.FontDownloader.desktop&lt;/id&gt;
+</code></pre>
+</blockquote>
+</aside>
+<p>Btw, you should avoid adding the extra .desktop to the id. That’s the desktop file name, which you already mentioned in the launchable tag.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

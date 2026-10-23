@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libayatana-appindicator looks different in flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Libayatana-appindicator looks different in flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Libayatana-appindicator looks different in flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 22, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 22, 2024 9:29 AM">
+            <time itemprop="datePublished" datetime="2024-11-22 09:29:36 +0000">Nov 22, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As title.</p>
+<p>I’m using the libayatana-appindicator bundled with the shared-modules.</p>
+<p>this is my manifest:</p><aside class="onebox githubblob" data-onebox-src="https://github.com/sblantipodi/build_tools/blob/44ca00c0f6b3c906d10dddeff0b34f658963ed46/flatpak/org.dpsoftware.FireflyLuciferin.json">
+  <header class="source">
+
+      <a href="https://github.com/sblantipodi/build_tools/blob/44ca00c0f6b3c906d10dddeff0b34f658963ed46/flatpak/org.dpsoftware.FireflyLuciferin.json" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/sblantipodi/build_tools/blob/44ca00c0f6b3c906d10dddeff0b34f658963ed46/flatpak/org.dpsoftware.FireflyLuciferin.json" target="_blank" rel="noopener nofollow ugc">sblantipodi/build_tools/blob/44ca00c0f6b3c906d10dddeff0b34f658963ed46/flatpak/org.dpsoftware.FireflyLuciferin.json</a></h4>
+
+
+      <pre><code class="lang-json">{
+  "id": "org.dpsoftware.FireflyLuciferin",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "/app/fireflyluciferin/bin/FireflyLuciferin",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=pulseaudio",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=all",
+    "--filesystem=home",
+    "--env=LD_LIBRARY_PATH=/app/lib",
+    "--env=FLATPAK_ENV=1"
+  ],
+  "add-extensions": {
+    "org.freedesktop.Sdk.Extension.llvm14": {
+      "no-autodownload": "false",
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/sblantipodi/build_tools/blob/44ca00c0f6b3c906d10dddeff0b34f658963ed46/flatpak/org.dpsoftware.FireflyLuciferin.json" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>do you have any idea why if I run it native it looks like this:<br>
+<img src="/uploads/original/2X/6/696d894225732d02cf1c7ba2c9e2423be810c87f.png" alt="image" data-base62-sha1="f2EOv7XBO5LApIUkLAAPsQQ6DIH" width="249" height="369"></p>
+<p>and if I run it via flatpak it looks like this?<br>
+<img src="/uploads/original/2X/7/756e0509562c40d3b82daf68f2860ab65ad4f1c5.png" alt="" data-base62-sha1="gKPzXVAxLlbcsME2Dj9g7SOHI1f" role="presentation" width="227" height="267"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 22, 2024 10:22 AM">
+            <time itemprop="datePublished" datetime="2024-11-22 10:22:20 +0000">Nov 22, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think that this is related to the theme.<br>
+is it possible to use the same theme used in the OS on the flatpak too?</p>
+<p>or is it possible to know if the user is using a dark theme or not?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 22, 2024 3:27 PM">
+            <time itemprop="datePublished" datetime="2024-11-22 15:27:35 +0000">Nov 22, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sblantipodi" data-post="2" data-topic="8128">
+<div class="title">
+<div class="quote-controls"></div>
+sblantipodi:</div>
+<blockquote>
+<p>or is it possible to know if the user is using a dark theme or not?</p>
+</blockquote>
+</aside>
+<p>Usually your toolkit should do that, if it’s not doing it, you can implement the portal on your end. For dark/light appearance: <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Settings.html" class="inline-onebox">Settings - XDG Desktop Portal documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 22, 2024 3:28 PM">
+            <time itemprop="datePublished" datetime="2024-11-22 15:28:55 +0000">Nov 22, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That being said, I have apps that are flatpak, that look like your first screenshot, so it might be an old package in the flatpak?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 24, 2024 10:55 AM">
+            <time itemprop="datePublished" datetime="2024-11-24 10:55:14 +0000">Nov 24, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I sincerely haven’t understood where to set the preference for flatpak.<br>
+is it something that I need to specify in my manifest.json?</p>
+<p>when running native my app already switches from light to dark theme based on the user’s preferences, on flatpak this does not work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Nov 24, 2024 11:10 AM">
+            <time itemprop="datePublished" datetime="2024-11-24 11:10:39 +0000">Nov 24, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For starters, libnotify is included in the runtime <a href="https://flathub.org/apps/org.gnome.Platform" class="inline-onebox">Install GNOME Application Platform version 47 on Linux | Flathub</a> and unless you need a very specific version, you should not bundle it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Nov 24, 2024 2:36 PM">
+            <time itemprop="datePublished" datetime="2024-11-24 14:36:26 +0000">Nov 24, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>yes, I removed the libnotify and I’m using the one bundled in the runtime now.<br>
+but I still have the different look behavour of the app from the “native” and the flatpak version.</p>
+<p>Flatpak doesn’t seem to match the user theme and preferences,<br>
+light theme vs dark theme.</p>
+<p>on my host,<br>
+gsettings get org.gnome.desktop.interface color-scheme<br>
+returns<br>
+‘prefer-dark’</p>
+<p>if I run the same command on flapak it returns<br>
+‘default’</p>
+<p>is this correct?<br>
+can I tell to flatpak to use the same setting from the host?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Nov 24, 2024 11:09 PM">
+            <time itemprop="datePublished" datetime="2024-11-24 23:09:58 +0000">Nov 24, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You need to also set <code>"--talk-name=org.kde.StatusNotifierWatcher"</code>in finish args</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Nov 25, 2024 7:08 AM">
+            <time itemprop="datePublished" datetime="2024-11-25 07:08:09 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>ok that solved the problem, thank you very much razzeee.<br>
+but it introduced a new problem.</p>
+<p>now my app, as much as libnotify can get the image no problems,<br>
+but libayatana app indicator stopped showing the tray icon image.</p>
+<p>tray icon works, but the image is not displayed even I use the full path like<br>
+/app/lib/app/classes/org/dpsoftware/gui/img/luciferin_logo.png<br>
+the path is correct because if I run<br>
+flatpak enter org.dpsoftware.FireflyLuciferin find / -name luciferin_logo.png<br>
+it returns:<br>
+/app/lib/app/classes/org/dpsoftware/gui/img/luciferin_logo.png</p>
+<p>this is how it looks now<br>
+<img src="/uploads/original/2X/d/d5b98265c7b9efb61ff13000cb937e2fd0e75874.png" alt="image" data-base62-sha1="uuH9uR3HpUWNcBx2e5AxGSDJ3Wk" width="64" height="41"></p>
+<p>should I put the icon in another path?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Nov 25, 2024 11:59 AM">
+            <time itemprop="datePublished" datetime="2024-11-25 11:59:59 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you try something similar to this line?</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/com.slack.Slack/blob/e320ad5bd9e7eba627b7222339f3e174f40f4508/com.slack.Slack.yaml#L80">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.slack.Slack/blob/e320ad5bd9e7eba627b7222339f3e174f40f4508/com.slack.Slack.yaml#L80" target="_blank" rel="noopener">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.slack.Slack/blob/e320ad5bd9e7eba627b7222339f3e174f40f4508/com.slack.Slack.yaml#L80" target="_blank" rel="noopener">flathub/com.slack.Slack/blob/e320ad5bd9e7eba627b7222339f3e174f40f4508/com.slack.Slack.yaml#L80</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-yaml">
+      <ol class="start lines" start="70" style="counter-reset: li-counter 69 ;">
+          <li>  - install -Dm755 apply_extra ${FLATPAK_DEST}/bin</li>
+          <li>  - install -Dm644 ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml</li>
+          <li>  - install -Dm644 slack.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</li>
+          <li>  - install -Dm755 slack.sh ${FLATPAK_DEST}/bin/${FLATPAK_ID}</li>
+          <li>  - install -Dm644 slack.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg</li>
+          <li></li>
+          <li>  - desktop-file-edit --remove-key="StartupNotify" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</li>
+          <li></li>
+          <li>  # Edit desktop file to remap to our ${FLATPAK_ID}.</li>
+          <li>  - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</li>
+          <li class="selected">  - desktop-file-edit --set-key="Exec" --set-value="${FLATPAK_ID} %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</li>
+          <li>  - desktop-file-edit --set-key="X-Flatpak-RenamedFrom" --set-value="slack.desktop" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</li>
+          <li>sources:</li>
+          <li>  - type: extra-data</li>
+          <li>    filename: slack.snap</li>
+          <li>    only-arches: [x86_64]</li>
+          <li>    url: https://api.snapcraft.io/api/v1/snaps/download/JUJH91Ved74jd4ZgJCpzMBtYbPOzTlsD_175.snap</li>
+          <li>    sha256: 7ccc981f156a541232365fc01ed7da078e45b27814cabe57f1d67094784ef2ec</li>
+          <li>    size: 127647744</li>
+          <li>    x-checker-data:</li>
+          <li>      type: snapcraft</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Nov 25, 2024 12:40 PM">
+            <time itemprop="datePublished" datetime="2024-11-25 12:40:10 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>thanks for the answer.<br>
+I’m trying it but it doesn’t works well…<br>
+please consider that tray icon is not “a single tray icon” but I have multiple icons for the tray based on the state of the software.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Nov 25, 2024 3:34 PM">
+            <time itemprop="datePublished" datetime="2024-11-25 15:34:53 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As far as I know, mattermost for example also does that and works fine as far as I can tell.</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/com.mattermost.Desktop/blob/bc7590ccc7aef7492fb131b32538b1887b705556/com.mattermost.Desktop.json">
+  <header class="source">
+
+      <a href="https://github.com/flathub/com.mattermost.Desktop/blob/bc7590ccc7aef7492fb131b32538b1887b705556/com.mattermost.Desktop.json" target="_blank" rel="noopener">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.mattermost.Desktop/blob/bc7590ccc7aef7492fb131b32538b1887b705556/com.mattermost.Desktop.json" target="_blank" rel="noopener">flathub/com.mattermost.Desktop/blob/bc7590ccc7aef7492fb131b32538b1887b705556/com.mattermost.Desktop.json</a></h4>
+
+
+      <pre><code class="lang-json">{
+    "app-id": "com.mattermost.Desktop",
+    "base": "org.electronjs.Electron2.BaseApp",
+    "base-version": "23.08",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "mattermost-flatpak",
+    "separate-locales": false,
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--socket=pcsc",
+        "--share=network",
+        "--device=all",
+        "--filesystem=home",
+        "--talk-name=org.freedesktop.Notifications",
+        "--talk-name=org.kde.StatusNotifierWatcher",
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/flathub/com.mattermost.Desktop/blob/bc7590ccc7aef7492fb131b32538b1887b705556/com.mattermost.Desktop.json" target="_blank" rel="noopener">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Nov 26, 2024 10:30 AM">
+            <time itemprop="datePublished" datetime="2024-11-26 10:30:44 +0000">Nov 26, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="razzeee" data-post="10" data-topic="8128">
+<div class="title">
+<div class="quote-controls"></div>
+razzeee:</div>
+<blockquote>
+<p><code>desktop-file-edit --set-key="Exec" --set-value="${FLATPAK_ID} %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</code></p>
+</blockquote>
+</aside>
+<p>thanks for the answer.</p>
+<p>as far as I can tell their not using the shared_module for libayatana app indicator, isn’t it?</p>
+<p>I don’t have problems on notifications but on the tray icon…<br>
+notifications works well and the icons on them are visible, the problems are on the tray icon icon.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Nov 26, 2024 3:53 PM">
+            <time itemprop="datePublished" datetime="2024-11-26 15:53:57 +0000">Nov 26, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>yeah, I got that - but I remember having had to fix this in those apps too. try installing and using a dbus app and see, what your app name is - it should be the reverse dns, if it’s fine, otherwise it’s still a problem.</p>
+<p><a href="https://github.com/flathub/com.mattermost.Desktop/issues/123" class="inline-onebox">Desktop entry not correct · Issue #123 · flathub/com.mattermost.Desktop · GitHub</a> has some context, but not all.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Nov 26, 2024 4:31 PM">
+            <time itemprop="datePublished" datetime="2024-11-26 16:31:35 +0000">Nov 26, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>EDIT:<br>
+if I use the app icon, and in my software I load the<br>
+org.dpsoftware.myappid.png file<br>
+it works, this means that I can’t use any other icon.</p>
+<p>I can’t change the icon based on the status of my app.<br>
+I suppose that this is a problem of Flatpak isn’t it?<br>
+The problem does not exist when running native if I specify an absolute path to the image.</p>
+<p>In flatpak absolute path does not work, even if the image is there.</p>
+<p>and another question, is it correct to use<br>
+–talk-name=org.kde.StatusNotifierWatcher<br>
+to match the style of the desktop environment just for the app indicator?</p>
+<p>if yes, I’ll add it <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Davide Perini</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Nov 26, 2024 5:12 PM">
+            <time itemprop="datePublished" datetime="2024-11-26 17:12:37 +0000">Nov 26, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>ooooook, thanks razzee for indicating me the right way…</p>
+<p>I need to copy the tray images like this:</p>
+<pre><code class="lang-auto">"install -Dm644 ./opt/fireflyluciferin/lib/app/classes/org/dpsoftware/gui/img/luciferin_logo.png /app/share/icons/hicolor/16x16/apps/${FLATPAK_ID}.luciferin_logo.png"
+</code></pre>
+<p>and then use the org.mydomain.myappid.imagename.png<br>
+in this way it works<br>
+if I add the kde status notifier watcher</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

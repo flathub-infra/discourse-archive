@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeking contractors for work on Flathub project - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Seeking contractors for work on Flathub project</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Seeking contractors for work on Flathub project</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 23, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 23, 2021 4:31 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 16:31:43 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi all,</p>
+<p>Posting here to add more detail following my <a href="https://twitter.com/ramcq/status/1462837235166990341">Tweet last night</a> about contract work on Flathub. As some people know, the GNOME Foundation has been supporting Flathub with sysadmin time, legal and hosting costs, as is a strong believer in the importance of a vendor &amp; platform neutral app store for Linux end-user apps. GNOME has a donor who is interested in supporting financial sustainability for app developers and removing barriers to an inclusive ecosystem.</p>
+<p>Flathub would like to use these funds to work with a contractor for a short-term project and make steps towards supporting application developers being able to request payments (whether donations or subscriptions). We’re seeking diverse applications from individuals (or groups of individuals - this is something of a polyglot project) and FOSS-friendly companies who can help us move ahead - the funding is available to start right away subject to an agreed contract and statement of work.</p>
+<p>Before we get to that and moving anyone’s money around, we need to solve a few basic questions around developer identity and helping people to trust the applications, and we’d also like to address a long-standing request people have had about being able to only use FOSS applications from Flathub.<br>
+We have not fully scoped the project, so whoever we select will need to work with us to come up with the specific proposed approach in more detail. Our first sketch of the necessary work items is as follows:</p>
+<ul>
+<li>Initially, we only want first party uploads (ie apps uploaded by the developers themselves) to collect payments for their applications, which means the buildbot needs a verification mechanism to apply a verified first party “blue check” kudos, or remove it as needed. This needs to be automated by one or more mechanisms, such as checking GitHub credentials or authorizing an app, and/or an out of band mechanism such as a DNS TXT record on a domain or a text file at a well-known developer-controlled location that can be cross-referenced with the app. We need to check ongoing authority each time a build is uploaded, and remove it if this stops being the case.</li>
+<li>The frontend should make it easy to see such first party apps, and we’d also publish that kudo in the appstream so it can show up in GNOME Software and KDE Discover. Presenting it in those places is out of scope here - this is a Flathub project rather than a GNOME or KDE one.</li>
+<li>We’d also like Flathub to publish multiple Flatpak repos, so that people can choose to only see/access those first party apps, and not the community contributions which have third-party FOSS apps, extra data wrappers, etc. This will need support in flat-manager to produce multiple metadata and summary files for the different repos, and potentially publish commit objects that belong to multiple collections. We might need to work with Alex to nail down the design for this, but the ideal for Flathub and our CDNs is that the object store itself is shared between the multiple repo origins, so we can configure the CDN to cache identical objects from the “separate” repos with the same cache key. Generating multiple summaries/appdata refs for the same object store is a little subtle - it needs to work with pruning and per-architecture summaries and stuff.</li>
+<li>If we have this repo splitting functionality, it also makes sense to publish another repository that includes only those apps which are under a FOSS license, as this will correct another long-standing issue which people have given us feedback about. (We have a choice between whether this repository is free apps, verified or not, or only apps that are both free and verified. Ideally we’d prefer not to have four…!)</li>
+<li>Once that’s all sorted we might be able to think about a payment system that can collects payments and sends them to the app uploader. Adding payments with something such as <a href="https://stripe.com/connect">Stripe Connect</a> where the GNOME Foundation does not need to get involved in receiving/forwarding seems like an appealing path forward but we’re happy to consider anything that gets the job done without generating too much paperwork. Ideally we’d be able to take a contribution towards Flathub running costs from these payments, at the very least we need to take the transaction costs out.</li>
+<li>We need a place for developers to be able to log in and manage their payments, set recommended prices, etc somehow…? There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</li>
+</ul>
+<p>There are some future items that I don’t think we’ll get to right now, but for completeness / extra credit:</p>
+<ul>
+<li>It would also be good to encourage and make it easy for app developers to share some of their payments with relevant platform/runtime (GNOME, KDE, Freedesktop, Elementary, etc) that has enabled their work.</li>
+<li>It would be great if the developer portal also allowed developers who had proven control/authority over a certain app to manage flat-manager credentials, so that we can start to accept binary uploads from verified developers. This is currently managed manually for things like the GNOME and Freedesktop runtimes, and apps like Firefox and OBS, but if automated and backed by a system that can verify developer identity, we can offer it more widely. (As a side note, this ability to push apps into Flathub with a kind of <code>flathub push</code> operation would make it far easier for Electron apps to be published into Flathub, because it bypasses the need to use <code>flatpak-builder</code> to build them - which is “inside out” compared to how Electron apps typically drive their package/binary/etc builds from Node/Yarn.)</li>
+<li>We can probably rely on GitHub authentication for developers at present given Flathub is based there currently, but eventually it might be interesting to add an authentication system that can include users easily (or, integrate with a collection of OAuth2 providers and lazily provision accounts in our own identity system) so they can manage their subscriptions, donations, etc, as well as allowing developers from other ecosystems such as GitLab, GNOME or KDE to authenticate without going via GitHub.</li>
+<li>It would be nice to set up ways for developers to mark apps/extensions/versions as for subscribers/donors/etc only, so we would need to authenticate users when they access the repos themselves, check their subscriptions, and use the existing “entitlement” mechanism in Flatpak to give them access to the supporter-only content.</li>
+</ul>
+<p>The involved components would be <a href="https://github.com/flatpak/flat-manager/">flat-manager</a> which is the Rust repo manager that handles pushes to the Flathub repository and updates the repo metadata, the <a href="https://github.com/flathub/buildbot">buildbot</a> itself in Python, the <a href="https://github.com/flathub/linux-store-frontend">linux-store-frontend</a> which is the Node.js frontend that drives <a href="http://flathub.org">flathub.org</a>, and <a href="https://github.com/flathub/backend/">backend</a> which is the Python provider of the API that it uses.</p>
+<p>We’d like the successful applicant to submit their work as pull requests against the above repositories, and allow for some time to solicit and respond to review feedback from the relevant module maintainers. Where test suites exist, they must continue to pass and the key parts of new functionality must be added to the suites.</p>
+<p>We’d like potential applicants to submit their applications to <a href="mailto:admins@flathub.org">admins@flathub.org</a>, including:</p>
+<ul>
+<li>some brief notes about their relevant experience with supporting evidence (this can be in the form of a resume or links to some relevant FOSS contributions or other portfolio work)</li>
+<li>a high-level overview of your intended approach for the work packages set out above and your estimation of the time required</li>
+<li>your proposed duration and rate for the project, whether based on fixed fees or time &amp; materials</li>
+</ul>
+<p>We’re hoping to select our contractor towards the middle of next month, so we request all submissions by noon UTC on 10th December 2021. We’re happy to take questions about the project from prospective applicants either on Matrix at <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc">#flathub-contract:matrix.org</a> or here on Discourse.</p>
+<p>Thanks,<br>
+Rob (on behalf of the Flathub admins)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="5 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          5
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Ryan Gonzalez</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 23, 2021 4:57 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 16:57:41 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ramcq" data-post="1" data-topic="1889">
+<div class="title">
+<div class="quote-controls"></div>
+ramcq:</div>
+<blockquote>
+<p>There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard" rel="noopener nofollow ugc">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</p>
+</blockquote>
+</aside>
+<p>Honestly after having used Elixir quite a bit, I’d say anyone with functional programming experience should be able to get up to par without too much effort.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Leeds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 23, 2021 5:04 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 17:04:45 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ramcq" data-post="1" data-topic="1889">
+<div class="title">
+<div class="quote-controls"></div>
+ramcq:</div>
+<blockquote>
+<ul>
+<li>We’d also like Flathub to publish multiple Flatpak repos, so that people can choose to only see/access those first party apps, and not the community contributions which have third-party FOSS apps, extra data wrappers, etc. This will need support in flat-manager to produce multiple metadata and summary files for the different repos, and potentially publish commit objects that belong to multiple collections. We might need to work with Alex to nail down the design for this, but the ideal for Flathub and our CDNs is that the object store itself is shared between the multiple repo origins, so we can configure the CDN to cache identical objects from the “separate” repos with the same cache key. Generating multiple summaries/appdata refs for the same object store is a little subtle - it needs to work with pruning and per-architecture summaries and stuff.</li>
+</ul>
+</blockquote>
+</aside>
+<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/">new summary format</a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 23, 2021 5:59 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 17:59:34 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="mwleeds" data-post="3" data-topic="1889">
+<div class="title">
+<div class="quote-controls"></div>
+mwleeds:</div>
+<blockquote>
+<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/">new summary format </a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
+</blockquote>
+</aside>
+<p>True, I think we considered that but at present Flatpak automatically selects those based on the architecture. If we wanted to add a 2nd dimension we’d need to define a way to map multiple variables into those paths, so it would be a 3 x 4 (or however many arches) list of summaries. Alex might remember the details but my idea was more like, could we set up a subdir of refs, eg ‘free/app/bla/bla’ and ‘verified/app/bla/bla’ that was served as the refs/ dir for the repo-free and repo-verified dir, link the objects/ dir together, add all three collection IDs to the commits, generate appdata refs inside those subdirs, generate filtered summaries, then only do prunes in the top level repo…?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Leeds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 23, 2021 6:46 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 18:46:53 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hmm Alex said <a href="https://github.com/ostreedev/ostree/pull/1805#issuecomment-672731971">here</a> that we would want to use different collection IDs for the different repository subsets as you describe, but it would be nice if we could find a way to avoid that complexity and continue using <code>org.flathub.Stable</code> as the collection ID. But you would have to find a way to serve different appstream refs for the different subsets, and I don’t think there’s currently a way to do that without using different collection IDs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Nov 24, 2021 11:16 AM">
+            <time itemprop="datePublished" datetime="2021-11-24 11:16:43 +0000">Nov 24, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If you don’t have a different collection ID, doesn’t that mean that someone can share something from the main repo with you and falsely claim it’s part of the subset? It seems ideal to me that the buildbot could sign the collection IDs into the commit that indicated which subsets the commit should belong to, and indeed when filtering refs and making subset metadata, that collection ID could be the key to decide what subsets the refs should appear in. This would actually alleviate the need to have duplicated refs dirs, you would only need to serve different summaries and appstream refs for the different subset repos.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Matthew Leeds</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Nov 24, 2021 5:42 PM">
+            <time itemprop="datePublished" datetime="2021-11-24 17:42:14 +0000">Nov 24, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah I hadn’t considered that subset membership would be something that would need to have strong security guarantees around it, but if that is the case collection-ref bindings in commit metadata would be sufficient. We would need to do a lot of testing to check that when someone already has apps installed and they change their flathub remote to point to the free subset, the free ones are still updated and any non-free ones are handled gracefully (a warning?). And the case of offline sideloading would also need testing to make sure it works well with these subsets.</p>
+<p>We might also want to define a requirement that a collection ID for a repo subset has to have the main collection ID as a prefix (e.g. <code>org.flathub.Stable.free</code>), since currently it is <a href="https://github.com/flatpak/flatpak/blob/f513bf4710300e7339d6fd2d4178d92dd0448bd8/common/flatpak-dir.c#L14562">not allowed</a> to change a collection ID on a remote that was already set, but in the case of changing to a subset it would be safe I think. But then what if the user wants to see more than one subset from a remote? That wouldn’t come up if there’s only one but it could in the general case. You can’t set more than one collection ID on a remote. You could have more than one remote but that would get messy if you decide to change what subsets you want to see.</p>
+<p>It’s kind of too bad the support we already have for filtering remotes with blocklists/allowlists isn’t up to the task of implementing subsets. It might work for the online case if the filters could be updated from the remote, but it’s hard to imagine how it’d work for offline sideloading.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jan 21, 2022 2:40 PM">
+            <time itemprop="datePublished" datetime="2022-01-21 14:40:08 +0000">Jan 21, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi all,</p>
+<p>I wanted to give a quick update. The Flathub team and the GNOME Foundation would like to give our thanks to those who expressed interest and applied. Neil McGovern, Nick Richards, Bartłomiej Piotrowski and I received and reviewed four proposals for this project.</p>
+<p>We’re pleased to announce that we have awarded the contract to two different applicants who have started work this week. Codethink are the main contractor, and they provided a complete proposal and will have a number of engineers working on the project over the coming weeks. They will be supplemented by James Westman who made a proposal focused on the verification and web parts of the project, and will work closely with the Codethink team to deliver certain work packages.</p>
+<p>We were impressed by parts of both proposals and asked whether they would be happy to work together, allowing us to involve more of the community in the project, and share the knowledge about the work being done more widely.</p>
+<p>For those eager to follow the progress of the project, we’ve set up a <a href="https://github.com/orgs/flathub/projects/2">GitHub project board</a> to track the work items (which belong to different underlying Flathub modules) and are using the same <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc">Matrix chat room</a> to discuss the project, daily standups, etc.</p>
+<p>Many Thanks,<br>
+Rob</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OliverPropst</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jan 22, 2022 9:33 AM">
+            <time itemprop="datePublished" datetime="2022-01-22 09:33:45 +0000">Jan 22, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>We’re pleased to announce that we have awarded the contract to two different applicants who have started work this week.</p>
+</blockquote>
+<p>Thanks <span class="mention">@ramcq</span> for providing  this very interesting update about the project of improving the flatpak infrastructure  (which I really think could be very beneficial for GNOME). Looking forward to see the work completed <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mirek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 18, 2022 10:25 AM">
+            <time itemprop="datePublished" datetime="2022-02-18 10:25:05 +0000">Feb 18, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <span class="mention">@ramcq</span></p>
+<p>So far, the discussion here seems to be focused on the technical side of implementing payments, but I haven’t seen any information on what types of funding will be allowed. E.g. will developers be able to set up a pay-what-you-want mechanism with a custom suggested price, as in elementary OS’s app center? Or have an optional subscription mechanism with a total monthly income goal, as is an option on Liberapay?</p>
+<p>The reason why I ask is because I’m concerned about the final funding mechanisms being suitable for closed-source software, but not open-source software. If, for example, the developer can only set one mandatory price, open-source developers would have to choose between:</p>
+<ul>
+<li>asking for funding for their project, but potentially losing their users to a gratis fork of their project</li>
+<li>putting their project out there for free, but not being able to turn it into a sustainable part-time job</li>
+</ul>
+<p>This model does work on e.g. the Google Play Store and the Apple AppStore, but only because closed-source projects can’t be legally forked and republished with a free pricetag. I hope this community agrees that funding open-source projects is a priority, moreso than funding closed-source ones.</p>
+<p>What are the funding mechanisms that you’re currently thinking about with this new payment implementation? And is there any way to influence what those will be or are they “set in stone”, at least for the first version?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 18, 2022 2:55 PM">
+            <time itemprop="datePublished" datetime="2022-02-18 14:55:24 +0000">Feb 18, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <span class="mention">@mirek</span>,</p>
+<p>We’re hoping to handle both one-off up-front payments and subscription models, as well as an option to restrict downloads based on whether a payment has been made - which will be up to the developer. A proportion will be taken for the Stripe fees and to support Flathub itself, and the developer will be able to select a contribution towards a platform (ie GNOME or KDE). I’m not sure whether there have been specific thoughts about the pay what you want model (ie the user can control the payment amount, potentially with a minimum the developer can set before the app is downloadable) but I’d be very open to that if it’s not hard to achieve! The Codethink + James Westman team are planning to make a report soon to update on their progress so we’ll be able to ask them… <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>Cheers,<br>
+Rob</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Robert McQueen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 25, 2022 3:41 PM">
+            <time itemprop="datePublished" datetime="2022-02-25 15:41:25 +0000">Feb 25, 2022</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For those following this thread, <span class="mention">@danielsilverstone-ct</span> has posted an first update on the project over at <a href="/t/situation-report-new-flathub-website-work-app-verifications-logins-etc/2259/index.html" class="inline-onebox">Situation report - New Flathub website work, app verifications, logins, etc</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">soredake</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Oct 7, 2022 7:10 AM">
+            <time itemprop="datePublished" datetime="2022-10-07 07:10:21 +0000">Oct 7, 2022</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox githubissue" data-onebox-src="https://github.com/electron-userland/electron-builder/issues/7154">
+  <header class="source">
+
+      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc">github.com/electron-userland/electron-builder</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc">Publish to flathub support</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2022-09-23" data-time="17:30:00" data-timezone="UTC">05:30PM - 23 Sep 22 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/soredake" target="_blank" rel="noopener nofollow ugc">
+          <img alt="soredake" src="/uploads/original/1X/6f8f8cfd9a1de267c766998eba03d37cc00d276a.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          soredake
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          electron-publish
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          readme
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          flatpak
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">It would be nice if there is support for publishing electron apps to flathub.
+
+<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">
+Related: https://discourse.flathub.org/t/seeking-contractors-for-work-on-flathub-project/1889
+https://github.com/electron-userland/electron-builder/issues/512
+https://twitter.com/ramcq/status/1462837235166990341
+https://github.com/electron-userland/electron-builder/blob/master/docs/configuration/flatpak.md</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tools for automatically updating Flatpak packaging - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Tools for automatically updating Flatpak packaging</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Tools for automatically updating Flatpak packaging</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 17, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sam Thursfield</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 17, 2020 8:11 PM">
+            <time itemprop="datePublished" datetime="2020-09-17 20:11:44 +0000">Sep 17, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,<br>
+Whenever a new version of Purr Data is released I have to do a few manual steps to update it on Flathub:</p>
+<ol>
+<li>replace the old tag and commit ID in the manifest .yml file with the new one</li>
+<li>add a <code>&lt;release&gt;</code> tag in the metainfo.xml file</li>
+<li>commit and push to GitHub</li>
+<li>wait for and test a build</li>
+</ol>
+<p>I’m going to automate steps 1-3 so that there’s less friction for me when I see a new upstream release. Has anyone done this already? Got any useful scripts or tooling that you could share, before I write my own?</p>
+<p>Thanks in advance <img src="/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 17, 2020 8:27 PM">
+            <time itemprop="datePublished" datetime="2020-09-17 20:27:58 +0000">Sep 17, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve got a couple.</p>
+<p><code>fp-build</code> that does a build in one simple command.<br>
+<code>fp-deprecate</code> that I use to automatically deprecrate plugins package that I rename to move to the unified extension point (still two pending in review / PR)<br>
+<code>fp-2008</code> that I used to upgrade all the plugins to 20.08</p>
+<p>I also wrote <code>flatpak-manifest-generator</code> to generate packages skeletons (mostly audio plugins). It is in Rust. Source code at <a href="https://gitlab.com/hfiguiere/flatpak-manifest-generator" rel="nofollow noopener">https://gitlab.com/hfiguiere/flatpak-manifest-generator</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 17, 2020 8:56 PM">
+            <time itemprop="datePublished" datetime="2020-09-17 20:56:15 +0000">Sep 17, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ssssam" data-post="1" data-topic="736">
+<div class="title">
+<div class="quote-controls"></div>
+ssssam:</div>
+<blockquote>
+<ul>
+<li>replace the old tag and commit ID in the manifest .yml file with the new one</li>
+<li>add a <code>&lt;release&gt;</code> tag in the metainfo.xml file</li>
+<li>commit and push to GitHub</li>
+<li>wait for and test a build</li>
+</ul>
+</blockquote>
+</aside>
+<p>It sounds like what you want is:</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flathub-infra/flatpak-external-data-checker/issues/33">
+  <header class="source">
+
+      <a href="https://github.com/flathub-infra/flatpak-external-data-checker/issues/33" target="_blank" rel="noopener nofollow ugc">github.com/flathub-infra/flatpak-external-data-checker</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flathub-infra/flatpak-external-data-checker/issues/33" target="_blank" rel="noopener nofollow ugc">Support updating to latest Git tag matching some pattern</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2019-08-26" data-time="13:02:31" data-timezone="UTC">01:02PM - 26 Aug 19 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2021-02-08" data-time="19:03:54" data-timezone="UTC">07:03PM - 08 Feb 21 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/wjt" target="_blank" rel="noopener nofollow ugc">
+          <img alt="wjt" src="/uploads/original/2X/2/2ac7c70eff6fcd84f0d22954379207cb8717a230.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="838E81">
+          wjt
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Vim's development model is that each commit to the master branch gets a tag, and<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden"> this is the only way to get fixes since the first release on the stable branch. As a result, the Flatpak builds from a Git tag.
+
+https://github.com/flathub/org.vim.Vim/blob/master/auto-update.py implements logic to update to the HEAD of master and open a PR. It could be combined with this checker.
+
+However – the current cronjob for that script only runs it weekly, to avoid update churn for users and PR spam for me. Perhaps the checker could have some heuristic to reduce the number of PRs generated.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>If you teach it to update Git sources, then steps 2, 3, 4 are already done, and fully integrated with Flathub. It opens pull requests, which then get built.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sam Thursfield</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 17, 2020 10:18 PM">
+            <time itemprop="datePublished" datetime="2020-09-17 22:18:04 +0000">Sep 17, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>I’ve got a couple.</p>
+</blockquote>
+<p>I thought so given the number of apps you seem to maintain!</p>
+<blockquote>
+<p>It opens pull requests, which then get built.</p>
+</blockquote>
+<p>That does sound like what I want! Am I right that I’d need to implement the feature before I could use it? <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>Thanks for the comments, I’ll look into these next time there is a new release.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will Thompson</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 18, 2020 6:20 AM">
+            <time itemprop="datePublished" datetime="2020-09-18 06:20:53 +0000">Sep 18, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="ssssam" data-post="4" data-topic="736">
+<div class="title">
+<div class="quote-controls"></div>
+ssssam:</div>
+<blockquote>
+<p>That does sound like what I want! Am I right that I’d need to implement the feature before I could use it? <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+</blockquote>
+</aside>
+<p>Yes, you would need to implement a new <code>Checker</code> subclass. Happy to give some pointers if you’re interested!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

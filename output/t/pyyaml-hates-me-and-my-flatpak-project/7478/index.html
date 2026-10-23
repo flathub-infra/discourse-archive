@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PYYAML hates me and my Flatpak project - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">PYYAML hates me and my Flatpak project</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">PYYAML hates me and my Flatpak project</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 12, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 12, 2024 11:57 PM">
+            <time itemprop="datePublished" datetime="2024-08-12 23:57:10 +0000">Aug 12, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, I’m attempting to make a Flatpak of the Amulet Minecraft Map Editor. I feed my <a href="https://pastebin.com/JHDx302z" rel="noopener nofollow ugc">requirements.txt</a> to <code>flatpak-pip-generator</code>, save the output (in YAML) to <a href="https://pastebin.com/xLw58tTJ" rel="noopener nofollow ugc">amulet.yml</a>, and run this:</p>
+<pre><code class="lang-auto">flatpak-builder --sandbox --user --install-deps-from=flathub --mirror-screenshots-url=https://dl.flathub.org/media/ --add-tag=0.10.35 --bundle-sources --repo=amulet_flatpak_repo amulet_build_dir amulet.yml --force-clean
+</code></pre>
+<p>And it after a while, it fails on <code>pyyaml</code>:</p>
+<pre><code class="lang-auto">========================================================================
+Building module python3-pre-commit in /home/evilsupahfly/Downloads/Amulet/.flatpak-builder/build/python3-pre-commit-1
+========================================================================
+Running: pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pre-commit&gt;=1.11.1" --report=pip_report.json --no-build-isolation
+Using pip 24.1.2 from /usr/lib/python3.11/site-packages/pip (python 3.11)
+Looking in links: file:///run/build/python3-pre-commit
+Processing ./pre_commit-3.8.0-py2.py3-none-any.whl
+Processing ./cfgv-3.4.0-py2.py3-none-any.whl (from pre-commit&gt;=1.11.1)
+Processing ./identify-2.6.0-py2.py3-none-any.whl (from pre-commit&gt;=1.11.1)
+Processing ./nodeenv-1.9.1-py2.py3-none-any.whl (from pre-commit&gt;=1.11.1)
+INFO: pip is looking at multiple versions of pre-commit to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement pyyaml&gt;=5.1 (from pre-commit) (from versions: none)
+ERROR: No matching distribution found for pyyaml&gt;=5.1
+Error: module python3-pre-commit: Child process exited with code 1
+</code></pre>
+<p>Can anybody tell me why PyYAML hates me?</p>
+<p><strong>Edit:</strong> I wasn’t spamming. I was asking for help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 13, 2024 1:58 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 01:58:58 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems like an issue with the order. It’s probably trying to install pre-commit before installing pyyaml, but the former depends on the latter.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 13, 2024 3:03 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 03:03:24 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ll switch up the order then and see what happens.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 13, 2024 4:06 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 04:06:09 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Using my new <a href="https://pastebin.com/pQbiAuU3" rel="noopener nofollow ugc">requirements.txt</a>, I have a new <a href="https://pastebin.com/tG38HFmi" rel="noopener nofollow ugc">amulet.yml</a>. and I’m still up against the wall:</p>
+<pre><code class="lang-auto">========================================================================
+Building module python3-pyyaml in /home/evilsupahfly/Downloads/Amulet/.flatpak-builder/build/python3-pyyaml-6
+========================================================================
+Running: pip3 install --verbose --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pyyaml==6.0.2" --report=pip_report.json --no-build-isolation
+FB: Running: flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/python3-pyyaml --nofilesystem=host:reset --filesystem=/home/evilsupahfly/Downloads/Amulet/.flatpak-builder/build/python3-pyyaml-6 --bind-mount=/run/build/python3-pyyaml=/home/evilsupahfly/Downloads/Amulet/.flatpak-builder/build/python3-pyyaml-6 --build-dir=/run/build/python3-pyyaml --bind-mount=/run/ccache=/home/evilsupahfly/Downloads/Amulet/.flatpak-builder/ccache --env=SOURCE_DATE_EPOCH=1723521830 '--env=CFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=8 /home/evilsupahfly/Downloads/Amulet/.flatpak-builder/rofiles/rofiles-CdIlSx /bin/sh -c 'pip3 install --verbose --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pyyaml==6.0.2" --report=pip_report.json --no-build-isolation'
+Using pip 24.1.2 from /usr/lib/python3.11/site-packages/pip (python 3.11)
+Looking in links: file:///run/build/python3-pyyaml
+ERROR: Could not find a version that satisfies the requirement pyyaml==6.0.2 (from versions: none)
+ERROR: No matching distribution found for pyyaml==6.0.2
+Error: module python3-pyyaml: Child process exited with code 1
+FB: Unmounting read-only fs: fusermount -uz /home/evilsupahfly/Downloads/Amulet/.flatpak-builder/rofiles/rofiles-CdIlSx
+</code></pre>
+<p>This time I manually edited <code>amulet.yml</code> to fill out the <code>pyyaml</code> section and ran with the <code>--verbose</code> flag to see if I could get anything more useful.</p>
+<p>Before:</p>
+<pre><code class="lang-auto">  - name: python3-pyyaml
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pyyaml~=6.0" --report=pip_report.json --no-build-isolation
+    sources: []
+</code></pre>
+<p>After:</p>
+<pre><code class="lang-auto">  - name: python3-pyyaml
+    buildsystem: simple
+    build-commands: 
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pyyaml==6.0.2" --report=pip_report.json --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/6b/4e/1523cb902fd98355e2e9ea5e5eb237cbc5f3ad5f3075fa65087aa0ecb669/PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: ec031d5d2feb36d1d1a24380e4db6d43695f3748343d99434e6f5f9156aaa2ed
+</code></pre>
+<p><strong>Edit:</strong> There’s a ton of info on <a href="https://pypi.org/pypi/PyYAML/json" rel="noopener nofollow ugc">pypi.org</a> and I don’t know if it’s being somehow missed or just ignored but even my manual override failed.</p>
+<p><strong>Edit 2:</strong> I don’t know why this was flagged as spam. I didn’t do anything spammy.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 13, 2024 4:50 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 04:50:29 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<pre><code class="lang-auto">url: https://files.pythonhosted.org/packages/6b/4e/1523cb902fd98355e2e9ea5e5eb237cbc5f3ad5f3075fa65087aa0ecb669/PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+</code></pre>
+</blockquote>
+<p>Freedesktop SDK has python 3.11, you are using a wheel for python 3.10</p>
+<p>If you want to use wheels choose the correct one <a href="https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</a></p>
+<p>Or use the sdist <a href="https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 13, 2024 4:58 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 04:58:38 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>lxml</code> isn’t <code>pyyaml</code> but I see from your example how they’ve included the Python version as part of the filename, which I didn’t realize. Or just didn’t see.</p>
+<p>We’ll try again with</p>
+<pre><code class="lang-auto">    build-commands:
+      - pip3 install --verbose --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST}
+        "pyyaml==6.0.2" --report=pip_report.json --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/75/e4/2c27590dfc9992f73aabbeb9241ae20220bd9452df27483b6e56d3975cc5/PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 3ad2a3decf9aaba3d29c8f537ac4b243e36bef957511b4766cb0057d32b0be85
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 13, 2024 5:10 AM">
+            <time itemprop="datePublished" datetime="2024-08-13 05:10:50 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah yea I was thinking about something else and misread it for pyyaml.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Aug 13, 2024 1:10 PM">
+            <time itemprop="datePublished" datetime="2024-08-13 13:10:18 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks to you pointing out the fact that I was calling version, after correcting it, we’re back in business and no more crashing!</p>
+<p>I still don’t know why it wasn’t able to do it itself, but that’s something I can look at later, now that it’s working.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Aug 13, 2024 4:37 PM">
+            <time itemprop="datePublished" datetime="2024-08-13 16:37:14 +0000">Aug 13, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Why was this thread flagged as spam?!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Aug 14, 2024 7:34 AM">
+            <time itemprop="datePublished" datetime="2024-08-14 07:34:41 +0000">Aug 14, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>This new user tried to create multiple posts with links to the same domain. All posts from this user that include links should be reviewed</p>
+</blockquote>
+<p>Standard spam protection</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Aug 14, 2024 2:52 PM">
+            <time itemprop="datePublished" datetime="2024-08-14 14:52:44 +0000">Aug 14, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I would think pastebin would be exempt from that rule, given how instrumental it is in keeping posts looking clean and tidy, but I’ll be mindful of this going forward.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

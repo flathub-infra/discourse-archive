@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder cmake cannot link external library - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder cmake cannot link external library</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder cmake cannot link external library</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 21, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 21, 2024 6:32 AM">
+            <time itemprop="datePublished" datetime="2024-03-21 06:32:37 +0000">Mar 21, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I’ve tried to use flatpak-builder with cmake as buildsystem and try to link an external library. It build successfully with cmake directly, but with flatpak-builder it shows<br>
+the following error:</p>
+<pre><code class="lang-auto">[ 97%] Linking CXX executable blink
+/usr/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lqscintilla2_qt6: No such file or directory
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/blink.dir/build.make:668: blink] Error 1
+make[1]: *** [CMakeFiles/Makefile2:86: CMakeFiles/blink.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+Error: module blink: Child process exited with code 2
+</code></pre>
+<p>My build file, blink.yml</p>
+<pre><code class="lang-auto">id: org.flatpak.blink
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+modules:
+  - name: blink
+    buildsystem: cmake
+    config-opts:
+      - LIBS+=-L/opt/QScintilla_src-2.14.1/src
+    sources:
+      - type: dir
+        path: /opt/blink
+      - type: dir
+        path: /opt/QScintilla_src-2.14.1/src/
+</code></pre>
+<p>And the CMakelist.txt</p>
+<pre><code class="lang-auto">cmake_minimum_required(VERSION 3.1.0)
+
+project(blink VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+find_package(Qt6 COMPONENTS Widgets Xml Network REQUIRED)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS Resources/Forms)
+
+include_directories(. Utils /opt/QScintilla_src-2.14.1/src)
+
+link_directories (/opt/QScintilla_src-2.14.1/src)
+
+add_executable(blink
+    Resources/Forms/mainWindow.ui
+    Resources/Forms/editor.ui
+    Resources/Forms/projectDialog.ui
+    Resources/Forms/groupDialog.ui
+    Resources/Forms/aboutDialog.ui
+    Resources/Forms/configDialog.ui
+    Resources/Forms/findReplaceDialog.ui
+    Resources/Forms/editorFindDialog.ui
+
+    Resources/app.qrc
+    Resources/Icons/appIcons.rc 
+
+    main.cpp
+    Utils/CUtils.cpp
+    Display/CMainWindow.cpp
+    Display/CEditor.cpp
+    Display/CEditorFindDlg.cpp
+    Display/CProjectDlg.cpp
+    Display/CAboutDlg.cpp
+    Display/CProjectListWidget.cpp
+    Display/CFileListWidget.cpp
+    Display/CConfigDlg.cpp
+    Display/CEventFilterObj.cpp
+    Display/CSearchTextBrowser.cpp
+    Display/CSearchTextEdit.cpp
+    Display/CFindReplaceDlg.cpp
+    Model/qTagger/CTagItem.cpp
+    Model/qTagger/CTagFileRecord.cpp
+    Model/qTagger/CTagResultItem.cpp
+    Model/qTagger/qTagger.cpp
+    Model/qTagger/CSourceFileList.cpp
+    Model/qFindReplacer/qFindReplacer.cpp
+    Model/CProjectListModel.cpp
+    Model/CFileListModel.cpp
+    Model/CProjectManager.cpp
+    Model/CProjectUpdateThread.cpp
+    Model/CProjectLoadThread.cpp
+    Model/CConfigManager.cpp
+    Model/CProjectItem.cpp
+    Model/CFileItem.cpp
+    Model/CRunCommand.cpp
+    Model/CFindReplaceModel.cpp
+    Storage/CXmlStorageHandler.cpp
+
+)
+
+target_link_libraries(blink Qt6::Widgets Qt6::Xml Qt6::Network qscintilla2_qt6)
+</code></pre>
+<p>Anyone has idea for that? Thanks a lot!</p>
+<p>Regards,<br>
+Jan</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 21, 2024 9:35 AM">
+            <time itemprop="datePublished" datetime="2024-03-21 09:35:37 +0000">Mar 21, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you should get rid of /opt and make it a relative link</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 21, 2024 10:16 AM">
+            <time itemprop="datePublished" datetime="2024-03-21 10:16:23 +0000">Mar 21, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the suggestion. I’ve changed it to relative path but it still not success.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 21, 2024 12:46 PM">
+            <time itemprop="datePublished" datetime="2024-03-21 12:46:58 +0000">Mar 21, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you should compile QScintilla separately like in one of these files:<br>
+<a href="https://github.com/search?q=org%3Aflathub+qscintilla&amp;type=code" class="onebox" target="_blank" rel="noopener nofollow ugc">https://github.com/search?q=org%3Aflathub+qscintilla&amp;type=code</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 22, 2024 3:20 AM">
+            <time itemprop="datePublished" datetime="2024-03-22 03:20:34 +0000">Mar 22, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a lot for the suggestion! The QScintilla library can now be linked. But where can I find the output file? I’m not sure if it generate one. I’ve modified as follows:</p>
+<p><strong>CMakeLists.txt</strong></p>
+<pre><code class="lang-auto">cmake_minimum_required(VERSION 3.1.0)
+
+project(blink VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+find_package(Qt6 COMPONENTS Widgets Xml Network REQUIRED)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS Resources/Forms)
+
+include_directories(. Utils /opt/QScintilla_src-2.14.1/src)
+
+link_directories (/opt/QScintilla_src-2.14.1/src)
+
+add_executable(blink
+    Resources/Forms/mainWindow.ui
+    Resources/Forms/editor.ui
+    Resources/Forms/projectDialog.ui
+    Resources/Forms/groupDialog.ui
+    Resources/Forms/aboutDialog.ui
+    Resources/Forms/configDialog.ui
+    Resources/Forms/findReplaceDialog.ui
+    Resources/Forms/editorFindDialog.ui
+
+    Resources/app.qrc
+    Resources/Icons/appIcons.rc 
+
+    main.cpp
+    Utils/CUtils.cpp
+    Display/CMainWindow.cpp
+    Display/CEditor.cpp
+    Display/CEditorFindDlg.cpp
+    Display/CProjectDlg.cpp
+    Display/CAboutDlg.cpp
+    Display/CProjectListWidget.cpp
+    Display/CFileListWidget.cpp
+    Display/CConfigDlg.cpp
+    Display/CEventFilterObj.cpp
+    Display/CSearchTextBrowser.cpp
+    Display/CSearchTextEdit.cpp
+    Display/CFindReplaceDlg.cpp
+    Model/qTagger/CTagItem.cpp
+    Model/qTagger/CTagFileRecord.cpp
+    Model/qTagger/CTagResultItem.cpp
+    Model/qTagger/qTagger.cpp
+    Model/qTagger/CSourceFileList.cpp
+    Model/qFindReplacer/qFindReplacer.cpp
+    Model/CProjectListModel.cpp
+    Model/CFileListModel.cpp
+    Model/CProjectManager.cpp
+    Model/CProjectUpdateThread.cpp
+    Model/CProjectLoadThread.cpp
+    Model/CConfigManager.cpp
+    Model/CProjectItem.cpp
+    Model/CFileItem.cpp
+    Model/CRunCommand.cpp
+    Model/CFindReplaceModel.cpp
+    Storage/CXmlStorageHandler.cpp
+
+)
+
+target_link_libraries(blink Qt6::Widgets Qt6::Xml Qt6::Network qscintilla2_qt6)
+
+set(CMAKE_INSTALL_PREFIX /opt/blinkApp)
+
+install(TARGETS blink
+    DESTINATION ${CMAKE_INSTALL_PREFIX}
+    )
+</code></pre>
+<p><strong>blink.yml</strong></p>
+<pre><code class="lang-auto">id: org.flatpak.blink
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+build-options:
+  prepend-ld-library-path: /opt/QScintilla_src-2.14.1/src
+modules:
+  - name: qscintilla
+    buildsystem: qmake
+    subdir: src
+    sources:
+      - type: archive
+        url: https://www.riverbankcomputing.com/static/Downloads/QScintilla/2.13.4/QScintilla_src-2.13.4.tar.gz
+        sha256: 890c261f31e116f426b0ea03a136d44fc89551ebfd126d7b0bdf8a7197879986
+      - type: patch
+        path: qscintilla-lib-paths.patch
+  - name: blink
+    buildsystem: cmake
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_INSTALL_LIBDIR:PATH=/app/lib
+    sources:
+      - type: dir
+        path: /opt/blink
+</code></pre>
+<p>Console:</p>
+<pre><code class="lang-auto">[ 83%] Building CXX object CMakeFiles/blink.dir/Model/CFileItem.cpp.o
+[ 86%] Building CXX object CMakeFiles/blink.dir/Model/CRunCommand.cpp.o
+[ 89%] Building CXX object CMakeFiles/blink.dir/Model/CFindReplaceModel.cpp.o
+[ 91%] Building CXX object CMakeFiles/blink.dir/Storage/CXmlStorageHandler.cpp.o
+[ 94%] Building CXX object CMakeFiles/blink.dir/blink_autogen/S5YYZ2ZCNV/qrc_app.cpp.o
+[ 97%] Linking CXX executable blink
+[100%] Built target blink
+[  0%] Built target blink_autogen_timestamp_deps
+[  2%] Built target blink_autogen
+[100%] Built target blink
+Install the project...
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /opt/blinkApp/blink
+-- Set non-toolchain portion of runtime path of "/opt/blinkApp/blink" to ""
+Committing stage build-blink to cache
+Cleaning up
+Committing stage cleanup to cache
+Finishing app
+No executable found
+Please review the exported files and the metadata
+Committing stage finish to cache
+Pruning cache
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 22, 2024 1:50 PM">
+            <time itemprop="datePublished" datetime="2024-03-22 13:50:09 +0000">Mar 22, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Get rid of <code>/opt</code>. It’s not a valid path in anyway. Amd it doesn’t belong anywhere in <code>prepend-ld-library-path</code> because that doesn’t exist inside the sandbox. Also I’m pretty this doesn’t do what you think it does.</p>
+<p>The default build set the prefix to <code>/app</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak is ALMOST perfect - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak is ALMOST perfect</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak is ALMOST perfect</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 10, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tiodonas</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 10, 2025 10:34 PM">
+            <time itemprop="datePublished" datetime="2025-12-10 22:34:25 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>First of all, MASSIVE shout out and gratitude to every developer publishing on flathub. You’ve made life on Linux a breeze to where my wife and her friend have grown to prefer it for their desktops.</p>
+<p>In the spirit of keeping things turnkey for new users, I want to bring attention to a couple issues specific to flatpaks.</p>
+<ul>
+<li>
+<p>The FPS limiter that GameMode/Gamescope provides works great for native apps, but Flatpak packages completely ignore it.</p>
+</li>
+<li>
+<p>Unnecessarily strict sandboxing makes users have to hunt for workarounds that could/should be solved by having the app ask for permission to access certain things, like an Android app</p>
+</li>
+</ul>
+<p>Why does t his matter? It matters because I can’t recommend certain apps as flatpaks to new steam deck owners and Linux users, despite the entire internet saying they’re fine and work out of the box. They don’t.</p>
+<ul>
+<li>
+<p><strong>Moonlight</strong>: Streaming feels less smooth than it should because the gamescope limiter never kicks in. Before I knew this was a flatpak limitation, I went crazy tweaking settings trying to figure out why my stream felt jittery even on a hard line. Same issue for emulators most people install through <strong>Emudeck.</strong></p>
+</li>
+<li>
+<p><strong>Heroic</strong>: Same as Moonlight. Thing is, users are expected to dive into the app settings and manually cap FPS – a step that feels unnecessary for a handheld that’s supposed to be plug‑and‑play. Games that feature HDR also need manual intervention. On top of that, you need to hunt down a <em>very specific</em> version of the Mangohud and Gamescope flatpaks just to get anything close to the expected behavior.</p>
+</li>
+<li>
+<p>Both of these are related to gaming on the Steam Deck, and I’m sure they work fine on Desktop. <strong>OnlyOffice</strong> however, refuses to open any files stored on my NAS. It’s been a while since I’ve tried so maybe this was fixed. This issue with <strong>OnlyOffice</strong> is what led to me abandoning flatpak entirely for a while and moving to AppImages.</p>
+</li>
+<li>
+<p><strong>Piper</strong> straight up doesn’t work via flatpak.</p>
+</li>
+<li>
+<p>With <strong>OpenRGB,</strong> I wasn’t in the mood to troubleshoot what was wrong with the udev stuff so I just booted into a windows drive and set my wifes RGBs there.</p>
+</li>
+</ul>
+<p>I am aware that I’m probably venting in the wrong place. Whenever I’ve submitted reports, the developers simply say “its a flatpak issue, use the appimage”. This is so frustrating to deal with as someone who wants to be productive. Neither side wants to acknowledge these issues and it feels pointless putting in the effort to report these things (which end users shouldn’t have to worry about) just to get turned away.</p>
+<p>I truly love Flatpak (and immutable distros). My friends, family, and even Valve have shown that it’s the most likely path forward for mainstream Linux adoption. I hope that this post brings a tiny bit of awareness to these issues and that the community will take these pain points seriously.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 10, 2025 11:12 PM">
+            <time itemprop="datePublished" datetime="2025-12-10 23:12:43 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m not going to comment on all of this, but just about this part:</p>
+<aside class="quote no-group" data-username="tiodonas" data-post="1" data-topic="11206">
+<div class="title">
+<div class="quote-controls"></div>
+tiodonas:</div>
+<blockquote>
+<ul>
+<li>Unnecessarily strict sandboxing makes users have to hunt for workarounds that could/should be solved by having the app ask for permission to access certain things, like an Android app</li>
+</ul>
+</blockquote>
+</aside>
+<p>That’s basically what the XDG Desktop Portals are for.</p>
+<p>Take access to a file as an example:<br>
+Ideally, an app would request from the system to access a file. The system would show the user a file chooser, so they can decide what file should be accessed. Then the system gives the app access to the file.</p>
+<p>If an app uses the FileChooser portal, this works without issue and shouldn’t even be noticeable by the user.</p>
+<p>So, the “Android-like permission system” already exists in the form of the XDG Desktop Portals.</p>
+<p>Now, you’ve mentioned OnlyOffice later on. The issue here, if I recall correctly, is that OnlyOffice doesn’t use the portal to access files. Because of this it needs a static permission, which is only set to an certain extend by default. Hence the need for “workarounds” if this isn’t enough.</p>
+<p>While sometimes there is the case where a portal is still missing (or isn’t feasible), sometimes its also that the app just doesnt use the portal when one exists. This is something an application would need to fix.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 17, 2025 12:05 AM">
+            <time itemprop="datePublished" datetime="2025-12-17 00:05:58 +0000">Dec 17, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tiodonas" data-post="1" data-topic="11206">
+<div class="title">
+<div class="quote-controls"></div>
+tiodonas:</div>
+<blockquote>
+<p>Both of these are related to gaming on the Steam Deck, and I’m sure they work fine on Desktop. <strong>OnlyOffice</strong> however, refuses to open any files stored on my NAS. It’s been a while since I’ve tried so maybe this was fixed. This issue with <strong>OnlyOffice</strong> is what led to me abandoning flatpak entirely for a while and moving to AppImages.</p>
+</blockquote>
+</aside>
+<p>This is unhelpful, figure out if it’s still the case and how you access the NAS (protocol might be important here)</p>
+<aside class="quote no-group" data-username="tiodonas" data-post="1" data-topic="11206">
+<div class="title">
+<div class="quote-controls"></div>
+tiodonas:</div>
+<blockquote>
+<p><strong>Piper</strong> straight up doesn’t work via flatpak.</p>
+</blockquote>
+</aside>
+<p>you need to read the apps description</p>
+<aside class="quote no-group" data-username="tiodonas" data-post="1" data-topic="11206">
+<div class="title">
+<div class="quote-controls"></div>
+tiodonas:</div>
+<blockquote>
+<p>I am aware that I’m probably venting in the wrong place.</p>
+</blockquote>
+</aside>
+<p>correct, as this is the flathub forum and not the flatpak issue tracker</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

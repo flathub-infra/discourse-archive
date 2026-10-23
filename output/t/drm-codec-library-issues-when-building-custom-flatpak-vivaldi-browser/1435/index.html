@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRM/Codec library issues when building custom flatpak (Vivaldi Browser) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">DRM/Codec library issues when building custom flatpak (Vivaldi Browser)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">DRM/Codec library issues when building custom flatpak (Vivaldi Browser)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 16, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Richard Giesige</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 16, 2021 4:56 PM">
+            <time itemprop="datePublished" datetime="2021-05-16 16:56:36 +0000">May 16, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I’m trying to build Vivaldi into a flatpak but I’m running into some issues with libffmpeg.so and libwdievine.so</p>
+<p>When I try to run the browser it works fine besides playing test videos that contain DRM / mp4 because they need either one of the libraries mentioned above.</p>
+<p>For widevine I get this in the output of the application:<br>
+[171:72:0516/114344.256416:ERROR:cdm_module.cc(139)] CDM at /var/home/…/.var/app/org.vivaldi.browser/config/vivaldi-beta/WidevineCdm/4.10.2209.0/_platform_specific/linux_x64/libwidevinecdm.so could not be loaded.<br>
+[171:72:0516/114344.257907:ERROR:cdm_module.cc(140)] Error: /var/home/…var/app/org.vivaldi.browser/config/vivaldi-beta/WidevineCdm/4.10.2209.0/_platform_specific/linux_x64/libwidevinecdm.so: cannot open shared object file: Operation not permitted</p>
+<p>For libffmpeg.so, as was said in the request for this to be flatpacked it requries LD_PRELOAD and the path to the library appended to it. Can this work with the current implementation of zypak?</p>
+<p>I also tried to use the add-build-extensions to include the org.freedesktop.Platform.ffmpeg-full but I don’t believe the libffmpeg.so is included in that.</p>
+<p>Any help on these two would be great. The YAML file I wrote is really ugly so I"m sort of bashful on sharing it but I can if that is needed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Asif Ali Rizvan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 19, 2021 9:33 PM">
+            <time itemprop="datePublished" datetime="2021-05-19 21:33:28 +0000">May 19, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Have you installed the libwidevinecdm.so.so files? see:</p>
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="/uploads/original/1X/a70ab5d077374748901898cfcd9c7a09b8a303a9.png" class="site-icon" width="192" height="192">
+
+      <a href="https://www.reddit.com/r/SolusProject/comments/egu2gf/netflix_with_vivaldi/" target="_blank" rel="noopener nofollow ugc">reddit</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://www.reddit.com/r/SolusProject/comments/egu2gf/netflix_with_vivaldi/" target="_blank" rel="noopener nofollow ugc">r/SolusProject - Netflix with Vivaldi</a></h3>
+
+  <p>23 votes and 1 comment so far on Reddit</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="/uploads/original/1X/a8ab4ceb6bb4712ebfd68389c7cf52375143f84e.png" class="site-icon" width="32" height="32">
+
+      <a href="https://vivaldi.com/blog/understanding-linux-video-issues/" target="_blank" rel="noopener nofollow ugc" title="12:34PM - 19 January 2018">Vivaldi Browser – 19 Jan 18</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/388;"><img src="/uploads/original/1X/0585c198cdefc6302f4b1e0806b426f628dc25f4.png" class="thumbnail" width="690" height="388" data-small-upload="/uploads/optimized/1X/0585c198cdefc6302f4b1e0806b426f628dc25f4_2_10x10.png"></div>
+
+<h3><a href="https://vivaldi.com/blog/understanding-linux-video-issues/" target="_blank" rel="noopener nofollow ugc">Understanding video issues with Linux | Vivaldi Browser</a></h3>
+
+  <p>The following is an explanation of video issues that some Linux users encounter when running Vivaldi snapshots.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Richard Giesige</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 20, 2021 1:49 AM">
+            <time itemprop="datePublished" datetime="2021-05-20 01:49:07 +0000">May 20, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks so much for the reply, I have tried including the libwidevinecdm.so before and I don’t know if it worked or not because I think my first problem is making sure the ffmpeg library is connected first through LD_PRELOAD.</p>
+<p>I have a testing repository on github under my account with just libffmpeg.so being installed and then I’m trying to go to non-DRM mp4’s and get them to play. That hasn’t worked so far.</p>
+<p><a href="https://github.com/snugglej/org.vivaldi.Vivaldi" rel="noopener nofollow ugc">snugglej/org.vivaldi.Vivaldi: This is a testing repository for a flatpak on Vivaldi</a></p>
+<p>I was told zypak probably  is where my problem lies and I need to take some time to troubleshoot that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Asif Ali Rizvan</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 21, 2021 11:53 PM">
+            <time itemprop="datePublished" datetime="2021-05-21 23:53:30 +0000">May 21, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb.png" data-download-href="/uploads/original/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb.png" title="Screenshot from 2021-05-22 04-54-56" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb_2_690x480.png" alt="Screenshot from 2021-05-22 04-54-56" data-base62-sha1="xgvlDfTV9HHQctaNaON92O2HrAf" width="690" height="480" srcset="/uploads/optimized/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb_2_690x480.png, /uploads/original/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb.png 1.5x, /uploads/original/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb.png 2x" data-small-upload="/uploads/optimized/1X/e92562b7907fe4cb4b41f0093d7ae2a756c448bb_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot from 2021-05-22 04-54-56</span><span class="informations">950×662 86.1 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>There’s <strong>update-widevine</strong> and <strong><code>update-ffmpeg</code></strong> scripts in the .deb file. We need to change paths. when run with --user it installs to</p>
+<pre><code>if [ "x${1-}" = "x--user" ]; then
+  WIDEVINE_INSTALL_DIR="$HOME/.local/lib/vivaldi/WidevineCdm"
+</code></pre>
+<p>Either you can run the script when vivaldi is run using wrapper script, or download the .so files and include them in the flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Richard Giesige</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 24, 2021 2:16 AM">
+            <time itemprop="datePublished" datetime="2021-05-24 02:16:34 +0000">May 24, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for your feedback and helpful suggestions. Really appreciate all your help on the repo.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

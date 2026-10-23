@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help needed to port Remnants of the Precursors to flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help needed to port Remnants of the Precursors to flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help needed to port Remnants of the Precursors to flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 30, 2022</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Aman Das</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 30, 2022 4:08 PM">
+            <time itemprop="datePublished" datetime="2022-01-30 16:08:20 +0000">Jan 30, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Remnants of the Precursors is a FOSS modernization of the game Master of Orion. Link: <a href="https://rayfowler.itch.io/remnants-of-the-precursors" class="inline-onebox" rel="noopener nofollow ugc">Remnants of the Precursors by Ray Fowler</a></p>
+<p>So this is the file structure when the game runs:</p>
+<p>folder/Remnants.jar<br>
+folder/Remnants.cfg<br>
+folder/savefile1.rotp<br>
+folder/backup/game3_turn32.rotp</p>
+<p>Thus you get the idea, the game saves user configuration and savefiles in its own parent folder</p>
+<p>Can someone help out, please. This is as far as I’ve gotten:</p>
+<p>folder/Remnants.jar</p>
+<p>folder/Remnants.sh</p>
+<pre><code class="lang-auto">#!/bin/sh
+java -jar /app/share/Remnants.jar
+</code></pre>
+<p>folder/org.example.ROTP.yml</p>
+<pre><code class="lang-auto">app-id: org.example.ROTP
+runtime: org.freedesktop.Platform
+runtime-version: "21.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.openjdk17
+command: Remnants.sh
+modules:
+  - name: openjdk
+    buildsystem: simple
+    build-commands: 
+    - /usr/lib/sdk/openjdk17/install.sh
+  - name: rotp-sh
+    buildsystem: simple
+    build-commands:
+      - install -D Remnants.sh /app/bin/Remnants.sh
+    sources:
+      - type: file
+        path: Remnants.sh
+  - name: rotp
+    buildsystem: simple
+    build-commands:
+    - install -D Remnants.jar /app/share/Remnants.jar
+    sources:
+    - type: file
+      path: Remnants.jar
+finish-args:
+  - --env=PATH=/app/jre/bin:/app/bin
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+</code></pre>
+<p>The issue obviously is that /app/share/ is sandboxed to be read-only right now. Is it feasible to use $XDG_DATA_HOME ?</p>
+<p>The game is highly polished in my opinion, will be a nice addition on flathub in my opinion</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Aman Das</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 8, 2022 5:48 AM">
+            <time itemprop="datePublished" datetime="2022-02-08 05:48:55 +0000">Feb 8, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Issue resolved, published on flathub too</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

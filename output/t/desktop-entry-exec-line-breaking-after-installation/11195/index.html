@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desktop entry exec line breaking after installation - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Desktop entry exec line breaking after installation</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Desktop entry exec line breaking after installation</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 9, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Legomountain14</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 9, 2025 9:07 PM">
+            <time itemprop="datePublished" datetime="2025-12-09 21:07:48 +0000">Dec 9, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For some reason, when I install my Flatpak for stoat.chat, it breaks my desktop entry.</p>
+<p>Desktop entry before installation:</p>
+<pre><code class="lang-auto">[Desktop Entry]
+Name=Stoat
+Exec=/usr/bin/flatpak run --arch=x86_64 --command=stoat-desktop chat.stoat.StoatDesktop
+Type=Application
+Icon=chat.stoat.StoatDesktop
+Categories=Internet;
+</code></pre>
+<p>Installed entry:</p>
+<pre><code class="lang-auto">[Desktop Entry]
+Name=Stoat
+Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --command=/usr/bin/flatpak chat.stoat.StoatDesktop run --arch=x86_64 --command=stoat-desktop chat.stoat.StoatDesktop
+Type=Application
+Icon=chat.stoat.StoatDesktop
+Categories=Internet;
+X-Flatpak=chat.stoat.StoatDesktop
+</code></pre>
+<p>Any idea what I’m doing wrong?</p>
+<p>All files here: <a href="https://github.com/Legomountain14/chat.stoat.StoatDesktop" class="inline-onebox" rel="noopener nofollow ugc">GitHub - Legomountain14/chat.stoat.StoatDesktop</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 9, 2025 10:50 PM">
+            <time itemprop="datePublished" datetime="2025-12-09 22:50:14 +0000">Dec 9, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When Flatpak builds an application, it creates an “export” version of your desktop. This exported version is placed in an special folder during Installation and is the one the desktop displays.</p>
+<p>During this export, Flatpak adds the necessary commands to launch the right Flatpak app to the <code>Exec</code>-line of the export desktop file.</p>
+<p>Now, this means that since Flatpak does these additions itself, you as the developer shouldn’t add them.</p>
+<p>Instead, the desktop file you add during the build should be from the view of inside the sandbox.<br>
+So, in short, remove anything Flatpak related from the <code>Exec</code> line. Just <code>stoat-desktop</code> should be there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 12, 2025 3:53 PM">
+            <time itemprop="datePublished" datetime="2025-12-12 15:53:08 +0000">Dec 12, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>why is there <code>flatpak</code>  in your desktop file Exec line ? Nowhere in the document it say to do that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

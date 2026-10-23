@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder: stuck on &quot;ld: cannot find -lsupc++: No such file or directory&quot; - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder: stuck on &quot;ld: cannot find -lsupc++: No such file or directory&quot;</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder: stuck on &quot;ld: cannot find -lsupc++: No such file or directory&quot;</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 27, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">dheijl</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 27, 2025 6:56 PM">
+            <time itemprop="datePublished" datetime="2025-04-27 18:56:46 +0000">Apr 27, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to flatpak a Rust application that uses fltk-rs.<br>
+I successfully managed to add the missing libpangoxft-1.0 by rebuilding libpango with the appropriate features.<br>
+But now I’m stuck on the missing libsupc++, the fltk build seems to need this library and I have no idea where to get it or how to add it.</p>
+<p>The project: <a href="https://github.com/dheijl/swyh-rs/" class="inline-onebox" rel="noopener nofollow ugc">GitHub - dheijl/swyh-rs: Stream What You Hear written in rust, inspired by SWYH.</a><br>
+The flatpak build script: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.sh" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/build.sh at master · dheijl/swyh-rs · GitHub</a><br>
+The flatpak manifest: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/com.github.dheijl.swyh-rs.json" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/com.github.dheijl.swyh-rs.json at master · dheijl/swyh-rs · GitHub</a><br>
+The build log: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.log" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/build.log at master · dheijl/swyh-rs · GitHub</a></p>
+<p>Any help is greatly appreciated…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">yveszoundi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 28, 2025 2:11 PM">
+            <time itemprop="datePublished" datetime="2025-04-28 14:11:42 +0000">Apr 28, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m running into the same issues with <em>fltk-rs</em> and my understanding is that <em>gcc</em> static libraries need to be built.</p>
+<ul>
+<li>I don’t know if there’s another way to get <em>gcc</em> static libraries into Flatpak other than compiling</li>
+<li>In order to build <em>gcc</em> to build you need <em>mpc</em>, <em>gmp</em> and <em>mpfr</em></li>
+<li>You’ll also need the <em>llvm</em> Sdk extension</li>
+</ul>
+<p>I believe that a static build of <em>gcc</em> libraries will give you <em>libsupc++</em>.</p>
+<p>You can find my current manifest here (not working yet, as <em>gcc</em> cannot find <em>mpc</em> libraries)</p><aside class="onebox githubblob" data-onebox-src="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml">
+  <header class="source">
+
+      <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">github.com/yveszoundi/entrusted-flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
+
+<div class="git-blob-info">
+  <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc"><code>main</code></a>
+</div>
+
+
+      <pre><code class="lang-yml">id: com.rimerosolutions.Entrusted
+
+runtime: org.gnome.Platform
+runtime-version: "48"
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm20
+
+command: entrusted
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --share=ipc
+  - --env=FLATPAK=1
+
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+  prepend-ld-library-path: "/usr/lib/sdk/llvm20/lib:/app/lib64:/app/lib"
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">dheijl</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 28, 2025 4:38 PM">
+            <time itemprop="datePublished" datetime="2025-04-28 16:38:35 +0000">Apr 28, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you very much for sharing this! If I get anywhere I will post it here.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">yveszoundi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 29, 2025 1:42 PM">
+            <time itemprop="datePublished" datetime="2025-04-29 13:42:43 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able to get further along with a simpler test application and I updated the <em>Flatpak</em> manifest.</p>
+<ul>
+<li>I disabled temporarily bootstrapping during <em>gcc</em> compilation (build times too long)</li>
+<li>I updated <em>gcc</em> configuration flags, so that it could find libraries such as <em>mpc</em></li>
+</ul>
+<p>While building fltk-rs, I now see different linkage errors against <em>libsupc++</em>, <em>CFLAGS</em> don’t work so far. It looks like something needs to be recompiled with <code>-fPIE</code>.</p>
+<pre><code class="lang-auto">  = note: some arguments are omitted. use `--verbose` to show all linker arguments
+  = note: /usr/lib/gcc/x86_64-unknown-linux-gnu/14.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: /app/lib64/libsupc++.a(class_type_info.o): relocation R_X86_64_32S against symbol `_ZTVN10__cxxabiv117__class_type_infoE' can not be used when making a PIE object; recompile with -fPIE
+          /usr/lib/gcc/x86_64-unknown-linux-gnu/14.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: failed to set dynamic section sizes: bad value
+          collect2: error: ld returned 1 exit status
+</code></pre>
+<p>You can find my new Flatpak manifest <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc">here</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">Y</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">yveszoundi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 29, 2025 4:52 PM">
+            <time itemprop="datePublished" datetime="2025-04-29 16:52:25 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able finally able to compile the project with flatpak, the build is still failing in my “test project” though because of missing assets (Desktop file and other stuff, but that’s easy to fix).</p>
+<pre><code class="lang-auto">...
+2025-04-29T14:19:26.3602619Z warning: `/run/build/entrusted/cargo/config` is deprecated in favor of `config.toml`
+2025-04-29T14:19:26.3603885Z note: if you need to support cargo 1.38 or earlier, you can symlink `config` to `config.toml`
+2025-04-29T14:19:26.4244744Z    Compiling shlex v1.3.0
+2025-04-29T14:19:26.4245214Z    Compiling cmk v0.1.2
+2025-04-29T14:19:26.4245617Z    Compiling crossbeam-utils v0.8.21
+2025-04-29T14:19:26.4246157Z    Compiling paste v1.0.15
+2025-04-29T14:19:26.5442719Z    Compiling cc v1.2.20
+2025-04-29T14:19:26.6003160Z    Compiling ttf-parser v0.25.1
+2025-04-29T14:19:27.1522489Z    Compiling crossbeam-channel v0.5.15
+2025-04-29T14:19:27.2079672Z    Compiling once_cell v1.21.3
+2025-04-29T14:19:27.3632922Z    Compiling cmake v0.1.54
+2025-04-29T14:19:27.6334517Z    Compiling bitflags v2.9.0
+2025-04-29T14:19:27.8439823Z    Compiling fltk-sys v1.5.6
+2025-04-29T14:20:18.7790832Z    Compiling fltk v1.5.6
+2025-04-29T14:20:26.9916989Z    Compiling entrusted v0.1.0 (/run/build/entrusted/app)
+2025-04-29T14:20:27.6919652Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 01s
+2025-04-29T14:20:27.6949456Z Running: install -Dm644 -t /app/share/metainfo/com.rimerosolutions.Entrusted.metainfo.xml flatpak/com.rimerosolutions.Entrusted.metainfo.xml
+2025-04-29T14:20:27.7575272Z Running: install -Dm644 -t /app/share/applications/com.rimerosolutions.Entrusted.desktop assets/com.rimerosolutions.Entrusted.desktop
+2025-04-29T14:20:27.8206515Z install: cannot stat 'assets/com.rimerosolutions.Entrusted.desktop': No such file or directory
+2025-04-29T14:20:27.8214427Z Error: module entrusted: Child process exited with code 1
+2025-04-29T14:20:27.8466718Z ##[error]Process completed with exit code 1.
+2025-04-29T14:20:27.8574655Z Post job cleanup.
+2025-04-29T14:20:27.9567106Z [command]/usr/bin/git version
+2025-04-29T14:20:27.9604638Z git version 2.49.0
+2025-04-29T14:20:27.9649173Z Temporarily overriding HOME='/home/runner/work/_temp/3ed80f47-2cad-4135-a005-d5413a0cb254' before making global git config changes
+2025-04-29T14:20:27.9650450Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-29T14:20:27.9655748Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fltk-rs-flatpak/fltk-rs-flatpak
+2025-04-29T14:20:27.9693532Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-29T14:20:27.9727958Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' &amp;&amp; git config --local --unset-all 'core.sshCommand' || :"
+2025-04-29T14:20:27.9955201Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-29T14:20:27.9977396Z http.https://github.com/.extraheader
+2025-04-29T14:20:27.9990214Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-29T14:20:28.0020808Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' &amp;&amp; git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-29T14:20:28.0357973Z Cleaning up orphan processes
+
+</code></pre>
+<p>I’ll fix that assets part just to have a fully working basic example, but now I’m confident that I can integrate with my real project that also uses couple of other C/C++ libraries.</p>
+<p>Here’s the updated manifest</p><aside class="onebox githubblob" data-onebox-src="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml">
+  <header class="source">
+
+      <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">github.com/yveszoundi/fltk-rs-flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
+
+<div class="git-blob-info">
+  <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc"><code>main</code></a>
+</div>
+
+
+      <pre><code class="lang-yml">id: com.rimerosolutions.Entrusted
+
+runtime: org.gnome.Platform
+runtime-version: "48"
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm20
+command: entrusted
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --share=ipc
+  - --env=FLATPAK=1
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+  prepend-ld-library-path: "/usr/lib/sdk/llvm20/lib"
+modules:
+  - name: gmp
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">dheijl</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 29, 2025 5:26 PM">
+            <time itemprop="datePublished" datetime="2025-04-29 17:26:55 +0000">Apr 29, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a million! I’ll try to incorporate this in my manifest.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to add a new library to Steam? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to add a new library to Steam?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to add a new library to Steam?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 19, 2022</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jorge O. Castro</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 19, 2022 4:17 PM">
+            <time itemprop="datePublished" datetime="2022-03-19 16:17:05 +0000">Mar 19, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Congratulations! You’re almost ready to start gaming. If you have multiple disks you might want <a href="https://help.steampowered.com/en/faqs/view/4BD4-4528-6B2E-8327">to add a new library</a>.</p>
+<p>After you <a href="https://flathub.org/apps/details/com.valvesoftware.Steam">have installed Steam</a> you go to add a library and you might notice that Steam doesn’t see all of the directories in your home directory, only a handful:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878.jpeg" data-download-href="/uploads/original/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878.jpeg" title="image"><img src="/uploads/optimized/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878_2_667x500.jpeg" alt="image" data-base62-sha1="xG1FQ9cc7W3vyIxae0ATixcas2Y" width="667" height="500" srcset="/uploads/optimized/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878_2_667x500.jpeg, /uploads/original/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878.jpeg 1.5x, /uploads/original/2X/e/ec07ee4e1ae453c72e221e6ac10d34c615de6878.jpeg 2x" data-dominant-color="292D33"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">959×718 90 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>By default Steam will only have access to a default set of directories. However you might have a larger library drive (such as /mnt/steam), so we need to tell  Flatpak that you want steam to have access to that drive:</p>
+<h2><a name="p-4976-step-1-1" class="anchor" href="#p-4976-step-1-1" aria-label="Heading link"></a>Step 1</h2>
+<ul>
+<li>Close Steam before we start.</li>
+<li><a href="https://flathub.org/apps/details/com.github.tchx84.Flatseal">Install Flatseal</a> and run it.</li>
+</ul>
+<h2><a name="p-4976-step-2-2" class="anchor" href="#p-4976-step-2-2" aria-label="Heading link"></a>Step 2</h2>
+<p>Browse to “Steam” in the left column, and then this lets us modify Steam’s permissions. Go to the “Filesystem” section, and click the add folder button under “Other Files”, and then add the directory to the path widget:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885.png" data-download-href="/uploads/original/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885.png" title="flatseal"><img src="/uploads/optimized/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885_2_629x499.png" alt="flatseal" data-base62-sha1="mOhYngpiNhRc3itIPXeFiAhomp" width="629" height="499" srcset="/uploads/optimized/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885_2_629x499.png, /uploads/optimized/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885_2_943x748.png 1.5x, /uploads/original/2X/0/02941d71b63ad4ff14289218fd13cd78eeb39885.png 2x" data-dominant-color="EEEEF0"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">flatseal</span><span class="informations">1179×937 179 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<h2><a name="p-4976-step-3-3" class="anchor" href="#p-4976-step-3-3" aria-label="Heading link"></a>Step 3</h2>
+<ul>
+<li>Close flatseal and then relaunch Steam.</li>
+<li>Now <a href="https://help.steampowered.com/en/faqs/view/4BD4-4528-6B2E-8327">add a new library</a>.</li>
+</ul>
+<h3><a name="p-4976-command-line-instructions-4" class="anchor" href="#p-4976-command-line-instructions-4" aria-label="Heading link"></a>Command  Line Instructions</h3>
+<p>If you prefer to use the CLI, check out <a href="https://github.com/flathub/com.valvesoftware.Steam/wiki#I_want_to_add_external_disk_for_Steam_libraries">these instructions on Steam flatpak FAQ</a>.</p>
+<h3><a name="p-4976-why-is-it-like-this-5" class="anchor" href="#p-4976-why-is-it-like-this-5" aria-label="Heading link"></a>Why is it like this?</h3>
+<p>Ideally Steam would ask you for permission to access the directories you need right from the GUI. Check out <a href="https://github.com/flatpak/xdg-desktop-portal">xdg-desktop-portal</a>, as it develops more and more applications will integrate this and workarounds like this won’t be necessary. In the meantime, enjoy your games!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Karlosbubi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 8, 2025 9:21 AM">
+            <time itemprop="datePublished" datetime="2025-06-08 09:21:58 +0000">Jun 8, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">flatpak run com.valvesoftware.Steam 
+bwrap: Can't make symlink at /home/{USER}/.steam/steam: existing destination is /home/{USER}/.var/app/com.valvesoftware.Steam/.local/share/Steam
+</code></pre>
+<p>Not working, the libraries collide</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remap XDG directories to specific HOST locations - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Remap XDG directories to specific HOST locations</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Remap XDG directories to specific HOST locations</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 15, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 15, 2024 5:42 AM">
+            <time itemprop="datePublished" datetime="2024-11-15 05:42:53 +0000">Nov 15, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I wanted to manually override <code>$XDG_CACHE_HOME</code>, and bind it right to the user’s <code>$HOME/.cache</code>, but specifying <code>- --env=XDG_CACHE_HOME=$HOME/.cache </code> didn’t help, and neither did <code>- --env=XDG_CACHE_HOME=home/.cache:rw</code>. In both instances, I get the same result inside the sandbox:</p>
+<pre><code class="lang-auto">echo $XDG_CACHE_HOME
+/home/evilsupahfly/.var/app/io.github.evilsupahfly.amulet_flatpak/cache
+</code></pre>
+<p>I’m assuming that trying to manipulate the XDG strings is pointless because they’re reset at runtime?</p>
+<p>The app needs to be able to load whatever third-party Minecraft texture pack is loaded by the user automatically downloaded from Minecraft’s official servers.</p>
+<p>I could just symlink after the flatpak is installed, and while that might work for me or other <strong>experienced</strong> users, I can’t expect a user with <strong>little to no experience</strong> to understand how do that. So, I figured remapping the directory would be the best bet, only, if it’s possible, I’m obviously not doing it right and if it’s NOT, I need to implement a work-around of some kind.</p>
+<p>What are my options? Where did I go wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 15, 2024 9:56 PM">
+            <time itemprop="datePublished" datetime="2024-11-15 21:56:32 +0000">Nov 15, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, if you only want to access the data files of an specific app, it would probably be sufficient to use the <code>filesystem</code> permission to grant access to that folder specifically?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 17, 2024 3:43 PM">
+            <time itemprop="datePublished" datetime="2024-11-17 15:43:39 +0000">Nov 17, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The XDG directories are hard-coded &amp; you’re not supposed to change its values.<br>
+Instead there are other ways to access the contents:</p>
+<ul>
+<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
+<li><code>--filesystem=xdg-cache/&lt;SUBDIR&gt;</code> will bind mount <code>&lt;SUBDIR&gt;</code> into the sandboxed cache. This will require that you know which subdirectories could exist &amp; hard-code them into your application.</li>
+<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc">File Chooser portal</a>.</li>
+</ul>
+<p>And you have to consider: If someone is using one of the launchers from Flatpak then the cache files won’t be inside the home cache but in the sandboxed cache of the corresponding app id.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 18, 2024 12:10 AM">
+            <time itemprop="datePublished" datetime="2024-11-18 00:10:04 +0000">Nov 18, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="3" data-topic="8093" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>The XDG directories are hard-coded &amp; you’re not supposed to change its values.<br>
+Instead there are other ways to access the contents:</p>
+<ul>
+<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
+<li><code>--filesystem=xdg-cache/&lt;SUBDIR&gt;</code> will bind mount <code>&lt;SUBDIR&gt;</code> into the sandboxed cache. This will require that you know which subdirectories could exist &amp; hard-code them into your application.</li>
+<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc">File Chooser portal</a>.</li>
+</ul>
+<p>And you have to consider: If someone is using one of the launchers from Flatpak then the cache files won’t be inside the home cache but in the sandboxed cache of the corresponding app id.</p>
+</blockquote>
+</aside>
+<p>The app I’m “Flatpaking” is a Minecraft Map Editor. It stores the Minecraft texture maps and corresponding block-name library (a combined collection of .PNG and .JSON files) in the cache, with support for third party texture packs which allows working on modded worlds with custom blocks.</p>
+<p>Currently the user has to drop a texture pack in the correct folder for it to be used as the Editor doesn’t have an internal “Chooser” mechanism to allow users to do it via menus. Obviously, the problem here is that users don’t have access to the Sandboxed directories, which was the root of my desire to remap internal sandbox folders to external host folders.</p>
+<p>However, the app doesn’t load any textures until after the user opens a Minecraft world, so if the folder is reassigned on (or even before) the first run, before any world is actually loaded, the changes should be mounted inside the sandbox permanently, and the users can use their custom texture packs as if the app was running directly off the host, rather than from the Flatpak sandbox, right?</p>
+<p>Edit: The app is currently available as a Python project, which can be run from source right out of a VENV, but compiled versions are at present only available for Windows users. For the average new-to-Linux user, mucking around with Python’s virtual environments and PIP dependencies is probably quite an intimidating idea.</p>
+<p>However, running something as a Flatpak - which most modern distros support right out of the box - makes for a much more user-friendly approach. Or, at least, that was my reasoning for starting this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nelson Ben</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 18, 2024 10:56 AM">
+            <time itemprop="datePublished" datetime="2024-11-18 10:56:22 +0000">Nov 18, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The following may be a cruft hack for your case, but at least may give you more ideas to try:</p>
+<p>You could replace your <code>Exec</code> key in the <code>.desktop</code> file to <code>Exec=launch.sh</code> and you create that <code>launch.sh</code> script that first copies/links the host’s cache files inside the corresponding sandbox dir, and then executes the application.</p>
+<p>Many flatpak Java apps use a similar approach to prepare some flags and arguments prior to launch the main java app. Eg. see here the <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/com.itextpdf.RUPS.desktop" rel="noopener nofollow ugc">.desktop file</a> and its <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/rups.sh" rel="noopener nofollow ugc">launch script</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Nov 24, 2024 8:14 PM">
+            <time itemprop="datePublished" datetime="2024-11-24 20:14:05 +0000">Nov 24, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I never thought of doing that. I’ll give it a try and see what happens.</p>
+<p>Thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Nov 25, 2024 6:26 AM">
+            <time itemprop="datePublished" datetime="2024-11-25 06:26:43 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ultimately, things didn’t work the way I wanted them to. It’s possible I just didn’t fully understand the problem (being still wet behind the ears with Python), but mucking around with directory locations didn’t resolve my issue. However. Adding three lines to the Python source did the trick.</p>
+<p><em>shrugs</em></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Nov 29, 2024 3:57 PM">
+            <time itemprop="datePublished" datetime="2024-11-29 15:57:24 +0000">Nov 29, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried using a launch wrapper script, as you inventively suggested, but then I realized that the cache is reset and emptied on each use, so there’s nothing to copy into the sandbox when the program starts. This is because Amulet doesn’t know what version of Minecraft you need the textures for until you actually open a world, which makes sense. For whatever reason though, when running via a PIP install inside a VENV, this is fine and everything just works. However, when running as a flatpak, things break.</p>
+<p>This is how Amulet initializes the directories it needs:</p>
+<pre><code class="lang-auto">import os
+import platformdirs
+
+experimental_bedrock_resources = False
+
+from ._version import get_versions
+
+__version__ = get_versions()["version"]
+del get_versions
+
+data_dir = platformdirs.user_data_dir("AmuletMapEditor", "AmuletTeam")
+os.environ.setdefault("DATA_DIR", data_dir)
+config_dir = platformdirs.user_config_dir("AmuletMapEditor", "AmuletTeam")
+if config_dir == data_dir:
+    config_dir = os.path.join(data_dir, "Config")
+os.environ.setdefault("CONFIG_DIR", config_dir)
+os.environ.setdefault("CACHE_DIR", platformdirs.user_cache_dir("AmuletMapEditor", "AmuletTeam"))
+os.environ.setdefault("LOG_DIR", platformdirs.user_log_dir("AmuletMapEditor", "AmuletTeam"))
+
+from amulet_map_editor.api import config as CONFIG, lang
+from amulet_map_editor.api.framework.app import open_level, close_level
+</code></pre>
+<p>When running from natively from PIP, these variables seem to be empty initially, but when running as a Flatpak, they’re not, as you can see from this side-by-side from my terminal logs:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67.jpeg" data-download-href="/uploads/original/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67.jpeg" title="diffuse-log-compare" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67_2_690x200.jpeg" alt="diffuse-log-compare" data-base62-sha1="4VptIGwCtaH4HlQFWizy7staGr" width="690" height="200" srcset="/uploads/optimized/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67_2_690x200.jpeg, /uploads/optimized/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67_2_1035x300.jpeg 1.5x, /uploads/optimized/2X/0/008e8cadf030f4d7bdb1db75ebec7014616b3c67_2_1380x400.jpeg 2x" data-dominant-color="D3CFD0"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">diffuse-log-compare</span><span class="informations">1920×559 124 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Is this difference in behaviour possibly making things not work quite right? Theoretically, any Linux system that can run Flatpak should use the same folder structure as defined by the XDG standards, right?</p>
+<p>Well, in an effort to better control the directory usage, I tried this:</p>
+<pre><code class="lang-auto">id: io.github.evilsupahfly.amulet_flatpak
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: amulet_map_editor
+
+finish-args:
+  - --device=all
+  - --device=dri
+  - --allow=devel
+  - --allow=per-app-dev-shm
+  - --share=network
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --unset-env=XDG_STATE_HOME
+  - --unset-env=XDG_CONFIG_HOME
+  - --unset-env=XDG_DATA_HOME
+  - --unset-env=XDG_CACHE_HOME
+  - --filesystem=host
+  - --filesystem=host-os
+  - --filesystem=home:create
+  - --filesystem=~/.cache/AmuletMapEditor:create
+  - --filesystem=~/.local/state/AmuletMapEditor:create
+  - --filesystem=~/.local/state/AmuletMapTeam:create
+  - --filesystem=~/.local/share/AmuletMapEditor:create
+  - --filesystem=~/.config/state/AmuletMapEditor:create
+  - --env=LIBGL_ALWAYS_SOFTWARE="0"
+  - --env=OPENGL_VERSION=3.3
+  - --env=OPENGL_LIB=/usr/lib/x86_64-linux-gnu/libGL.so
+  - --env=PS1=[ AMULET_FLATPAK &gt; \w]\n&gt;
+# Uncomment the following options to increase debug output verbosity in the terminal
+#  - --env=PYTHONDEBUG=3
+#  - --env=PYTHONVERBOSE=3
+#  - --env=PYTHONTRACEMALLOC=10
+#  - --env=G_MESSAGES_DEBUG=all
+
+modules:
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
+  - updates.yaml
+  - pip-gen.yaml
+  - name: metainfo-xml
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.metainfo.xml
+  - name: metainfo-desktop
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.evilsupahfly.amulet_flatpak.desktop -t ${FLATPAK_DEST}/share/applications/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.desktop
+  - name: metainfo-ico
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.png
+</code></pre>
+<p>But it didn’t work and I’m still missing <code>water</code> and <code>lava</code>:</p>
+<pre><code class="lang-auto">ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+</code></pre>
+<p>which being built-in, aren’t included in the official texture pack which gets downloaded, and that seems to be the issue.</p>
+<p>The files are physically (digitally?) present in the sandbox, and the .JSON is readable:</p>
+<pre><code class="lang-auto">Attempting to load model /app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/models/block/water.json
+Attempting to load model /home/evilsupahfly/.var/app/io.github.evilsupahfly.amulet_flatpak/cache/AmuletMapEditor/resource_packs/java/vanilla/assets/minecraft/models/block/rooted_dirt.json
+
+</code></pre>
+<p>My gut is telling me that there’s some key difference between the way Python’s directories are handled inside versus outside the sandbox, but I’m unable to find it. I’ve loaded the app (which is actually composed of 7 different sub-projects which combine like Power Ranges to make <em><strong>ULTIMA AMULET</strong></em>) down with so many print statements now, tracking every loop, file access and directory assignment that my Flatpak terminal log is now over 10 MB from all the extra info.</p>
+<p>To track the key differences, I also installed the modified versions of the Amulet base apps into my VENV with PIP. Those terminal logs are only 7 MB. In the error loop, at one point, I had worked out an override for <code>water</code> but it treated water like a solid block, not a transparent one, and that was no better.</p>
+<p>So, now I’m back to square one: Amulet loads, worlds can be edited, but water and lava are replaced with the black-and-purple checked pattern for missing textures.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Dec 1, 2024 4:11 AM">
+            <time itemprop="datePublished" datetime="2024-12-01 04:11:43 +0000">Dec 1, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have inadvertently solved my problem by creating a venv (quite literally) at <code>/app</code> so I could mirror the structure inside the sandbox as closely as possible, and after checking the logs, I’ve discovered a key difference. THE key difference, in fact.</p>
+<p>When running from PIP, Amulet is installed to<br>
+<code>/app/lib/python3.13/site-packages/</code></p>
+<p>When Amulet is installed inside the Flatpak, the location is changed to<br>
+<code>/app/usr/lib/python3.12/site-packages/</code></p>
+<p>I guess not all the paths are relative after all. I feel like an idiot now because it was so obvious. It was right there in every error message, every time.</p>
+<p>I was exploring ways to change the sandbox location for Python apps so I don’t have to keep modifying the Amulet source code each time they release an update, but when I change <code>--prefix=${FLATPAK_DEST}</code> to <code>-t /lib</code>, it gives me the error <code>OSError: [Errno 30] Read-only file system</code> - which I expected but wanted to test for the sake of being thorough.</p>
+<p>So, the only option remaining then is to tinker under the hood with Amulet, right?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Dec 2, 2024 1:20 AM">
+            <time itemprop="datePublished" datetime="2024-12-02 01:20:20 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="9" data-topic="8093">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p>/app/usr/lib/python3.12/site-packages/</p>
+</blockquote>
+</aside>
+<p>This path is incorrect. <code>/app/usr</code> make no sense.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Dec 2, 2024 2:33 AM">
+            <time itemprop="datePublished" datetime="2024-12-02 02:33:57 +0000">Dec 2, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t know why it is the way that it is, but it works.</p>
+<pre><code class="lang-auto">def get_java_vanilla_fix() -&gt; JavaResourcePack:
+    global _java_vanilla_fix
+    if _java_vanilla_fix is None:
+        # New: Change the path from "/app/lib/python3.12/site-packages/minecraft_model_reader" to "/app/usr/lib/python3.12/site-packages/minecraft_model_reader" - temporarily works around missing textures
+        base_path = os.path.dirname(__file__)
+        resource_pack_path = os.path.join(base_path, "java_vanilla_fix")
+        if resource_pack_path.startswith("/app/lib/python3.12/site-packages/minecraft_model_reader"):
+            resource_pack_path = resource_pack_path.replace("/app/lib/python3.12/site-packages/minecraft_model_reader", "/app/usr/lib/python3.12/site-packages/minecraft_model_reader")
+        _java_vanilla_fix = JavaResourcePack(resource_pack_path)
+    return _java_vanilla_fix
+</code></pre>
+<p>This modified call in Amulet’s download manager module redirects Minecraft’s hard-coded texture call to <code>/app/usr/lib/python3.12/site-packages/minecraft_model_reader/java_vanilla_fix/assets</code> and it works in Flatpak the way it does when running from PIP.</p>
+<p>This is my first ever flatpak. I don’t understand why, but it works. I didn’t write Amulet, I just made the Flatpak for it.</p>
+<p><code>¯\_(ツ)_/¯</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flathub servers down? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flathub servers down?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flathub servers down?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 29, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mrgou</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 29, 2025 8:40 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:40:15 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When attempting to install an app, I get the following:</p>
+<pre><code class="lang-auto">$ flatpak install flathub com.sigil_ebook.Sigil
+Looking for matches…
+error: Unable to load summary from remote flathub: While fetching https://dl.flathub.org/repo/summaries/80b9d91c658abf281a7f239d883b03b1be71b36f9d9a47a3396befb02d9d8abf.idx.sig: [28] Timeout was reached
+</code></pre>
+<p>When trying to update, I get a long string of errors starting with:</p>
+<pre><code class="lang-auto">$ flatpak update
+Looking for updates…
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.winehq.Wine.mono/x86_64/stable-25.08 is already installed: No such ref 'runtime/org.winehq.Wine.mono/x86_64/stable-25.08' in remote flathub
+</code></pre>
+<p>Is there an issue with the Flathub servers?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Icesan4096</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 29, 2025 8:08 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:08:53 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello.  I’ve been having trouble trying to check for package updates through flatpak command line.  After passing the <code>-v</code> switch into flatpak, flathub seems to be timing out trying to retrieve a signature file.</p>
+<pre><code class="lang-auto">$ flatpak update -v
+F: No installations directory in /etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/icesan/.local/share/flatpak
+Looking for updates…
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Should retry request (remaining: 5 retries), due to transient error: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Should retry request (remaining: 4 retries), due to transient error: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Should retry request (remaining: 3 retries), due to transient error: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Should retry request (remaining: 2 retries), due to transient error: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Should retry request (remaining: 1 retries), due to transient error: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summaries/[redacted].idx.sig using curl
+F: Failed to download optional summary index: While fetching https://dl.flathub.org/repo/summaries/[redacted].idx.sig: [28] Timeout was reached
+</code></pre>
+<p>Manually retrieving the signature through curl took over 2 minutes of stall time to receive 54 bytes.</p>
+<pre><code class="lang-auto">$ curl -o Desktop/yeah.sig https://dl.flathub.org/repo/summaries/[redacted].idx.sig
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    54    0    54    0     0      0      0 --:--:--  0:02:44 --:--:--    12
+</code></pre>
+<p>Is there an issue at flathub’s servers, or is it something that I have to fix manually?  If it’s the latter, then how can I fix it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Allan Chappell</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 29, 2025 8:27 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:27:57 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Same. I’ve tried it on multiple machines and multiple internet connections. Receiving the same error.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">MiEc</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 29, 2025 8:28 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:28:43 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have the same exact issue, cant find a solution.</p>
+<p>OS: Ubuntu 25.10 (with uutils)</p>
+<p>Flatpak version: 1.16.1</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mizura420 Prog</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 29, 2025 8:47 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:47:36 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>(arch linux) when im trying to dowload anything for example spotify it just keeps saying waiting and it never said somethig like installing</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604.png" data-download-href="/uploads/original/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604.png" title="Screenshot_20251129_203925" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604_2_649x500.png" alt="Screenshot_20251129_203925" data-base62-sha1="lsm70Uhf0P0wC0jZHinhV4Q9tys" width="649" height="500" srcset="/uploads/optimized/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604_2_649x500.png, /uploads/original/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604.png 1.5x, /uploads/original/2X/9/96623f275d8101b3bf7e37e0a477142084e1d604.png 2x" data-dominant-color="343B41"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot_20251129_203925</span><span class="informations">949×731 211 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<h4><a name="p-20592-same-when-i-try-to-download-from-konsole-nothing-shows-up-1" class="anchor" href="#p-20592-same-when-i-try-to-download-from-konsole-nothing-shows-up-1" aria-label="Heading link"></a>same when i try to download from konsole nothing shows up</h4>
+<p>[matej@matej Downloads]$ sudo flatpak install com.spotify.Client.flatpakref<br>
+[sudo] password for matej:</p>
+<p>(nothing happens)</p>
+<h4><a name="p-20592-and-this-also-2" class="anchor" href="#p-20592-and-this-also-2" aria-label="Heading link"></a>and this also</h4>
+<p>[matej@matej ~]$ flatpak install flathub org.vinegarhq.Sober<br>
+Looking for matches…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Merwizard</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Nov 29, 2025 8:53 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 20:53:12 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The same symptom here.   Commands like flatpuk install flatpak update will hang… PopOS Beta</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Nov 29, 2025 9:13 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 21:13:31 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems to be related to the ongoing Fastly incident: <a href="https://www.fastlystatus.com/incident/378079" class="inline-onebox">fastly status page</a></p>
+<p>I can only recommend patience.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">simonmicro</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Nov 29, 2025 9:27 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 21:27:10 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><img src="/images/emoji/twitter/information_source.png?v=14" title=":information_source:" class="emoji" alt=":information_source:" loading="lazy" width="20" height="20"> The repository of everything you download is hosted by a 3rd-party, Fastly. They recently reported issues on their end (<a href="https://www.fastlystatus.com/" rel="noopener nofollow ugc">https://www.fastlystatus.com/</a>), which had then also taken part of Flathub with it. Follow their status page to get informed when you can install and update again. Right now it does not look like an issue actually caused by Flathub.</p>
+<p><em>If you want to nerd out, grab the requested URL from e.g. “flatpak -vvv update”, throw it in cURL, wait until their reverse-proxy times out, grab the node’s name and look it up. You will find it matches the Fastly naming scheme and also fits into an older infra post by Flathub, where they mentioned being sponsored by Fastly. Don’t be mad at them, pls.</em></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">PolishGoober</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Nov 29, 2025 9:56 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 21:56:07 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed.jpeg" data-download-href="/uploads/original/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed.jpeg" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed_2_689x177.jpeg" alt="image" data-base62-sha1="cTpFBHAueauUJi2j8RImQGxz3lj" width="689" height="177" srcset="/uploads/optimized/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed_2_689x177.jpeg, /uploads/optimized/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed_2_1033x265.jpeg 1.5x, /uploads/original/2X/5/5a5daceb46873ad0d8fba11127d74036560bc2ed.jpeg 2x" data-dominant-color="1B2023"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1240×319 81.6 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Similar issue here, this is what it ends up when trying to update, and some apps just won’t install<br>
+was trying to install some dotfiles and a lot of stuff is not donwloaded lol</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Compu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Nov 29, 2025 10:33 PM">
+            <time itemprop="datePublished" datetime="2025-11-29 22:33:54 +0000">Nov 29, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>same issue here, on all of my devices (including the new steam deck that just arrived today)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sergio M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Nov 30, 2025 1:06 AM">
+            <time itemprop="datePublished" datetime="2025-11-30 01:06:37 +0000">Nov 30, 2025</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m having the same problem; I can’t do updates.</p>
+<p>I’m using Fedora 43 KDE.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701.png" data-download-href="/uploads/original/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701.png" title="imagen" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701_2_690x161.png" alt="imagen" data-base62-sha1="z47ARRiLLp2HDHCELREjsptv4Qx" width="690" height="161" srcset="/uploads/optimized/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701_2_690x161.png, /uploads/optimized/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701_2_1035x241.png 1.5x, /uploads/optimized/2X/f/f5c36308a201b0cc0c5aeec4d0d43fb95b865701_2_1380x322.png 2x" data-dominant-color="33373E"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">imagen</span><span class="informations">1894×444 80.4 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sergio M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Nov 30, 2025 2:54 PM">
+            <time itemprop="datePublished" datetime="2025-11-30 14:54:22 +0000">Nov 30, 2025</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, the problem is still there, right? It’s now 9:53 a.m. on November 30, and the error continues, but I don’t know if it’s just on my PC.</p>
+<p>Are you still having the problem too?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

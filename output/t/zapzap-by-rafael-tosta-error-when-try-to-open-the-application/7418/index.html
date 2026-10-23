@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZapZap by Rafael Tosta Error when try to open the application - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">ZapZap by Rafael Tosta Error when try to open the application</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">ZapZap by Rafael Tosta Error when try to open the application</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 5, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">NavadarsanWEB</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 5, 2024 9:31 AM">
+            <time itemprop="datePublished" datetime="2024-08-05 09:31:34 +0000">Aug 5, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Project information: ZapZap by Rafael Tosta</p>
+<p>facing error when try to open the zapzap application. error log is given below</p>
+<p>Log:<br>
+root@server:/home/navadarsan# flatpak run com.rtosta.zapzap<br>
+Traceback (most recent call last):<br>
+File “/app/lib/python3.11/site-packages/dbus/bus.py”, line 177, in activate_name_owner<br>
+return self.get_name_owner(bus_name)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/bus.py”, line 361, in get_name_owner<br>
+return self.call_blocking(BUS_DAEMON_NAME, BUS_DAEMON_PATH,<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/connection.py”, line 652, in call_blocking<br>
+reply_message = self.send_message_with_reply_and_block(<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+dbus.exceptions.DBusException: org.freedesktop.DBus.Error.NameHasNoOwner: Could not get owner of name ‘org.freedesktop.Notifications’: no such name</p>
+<p>During handling of the above exception, another exception occurred:</p>
+<p>Traceback (most recent call last):<br>
+File “/app/bin/zapzap”, line 8, in <br>
+sys.exit(main())<br>
+^^^^^^<br>
+File “/app/lib/python3.11/site-packages/zapzap/<strong>main</strong>.py”, line 84, in main<br>
+window = MainWindow(app)<br>
+^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/zapzap/controllers/main_window.py”, line 34, in <strong>init</strong><br>
+self.zapHome = Home()<br>
+^^^^^^<br>
+File “/app/lib/python3.11/site-packages/zapzap/controllers/home.py”, line 41, in <strong>init</strong><br>
+self.loadUsers()<br>
+File “/app/lib/python3.11/site-packages/zapzap/controllers/home.py”, line 87, in loadUsers<br>
+button = UserContainer(self, user)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/zapzap/controllers/user_container.py”, line 61, in <strong>init</strong><br>
+self.browser = Browser(user.id, self)<br>
+^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/zapzap/engine/browser.py”, line 23, in <strong>init</strong><br>
+dbus.init(<strong>appname</strong>)<br>
+File “/app/lib/python3.11/site-packages/zapzap/services/dbus_notify.py”, line 53, in init<br>
+proxy = bus.get_object(name, path)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/bus.py”, line 241, in get_object<br>
+return self.ProxyObjectClass(self, bus_name, object_path,<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/proxies.py”, line 250, in <strong>init</strong><br>
+self._named_service = conn.activate_name_owner(bus_name)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/bus.py”, line 182, in activate_name_owner<br>
+self.start_service_by_name(bus_name)<br>
+File “/app/lib/python3.11/site-packages/dbus/bus.py”, line 277, in start_service_by_name<br>
+return (True, self.call_blocking(BUS_DAEMON_NAME, BUS_DAEMON_PATH,<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/dbus/connection.py”, line 652, in call_blocking<br>
+reply_message = self.send_message_with_reply_and_block(<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+dbus.exceptions.DBusException: org.freedesktop.DBus.Error.NoReply: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.<br>
+Fontconfig error: Cannot load config file “/run/host/font-dirs.xml”: No such file: /run/host/font-dirs.xml</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

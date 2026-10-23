@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting error &quot;bwrap: Can&#39;t mkdir /tmp/.X11-unix: Permission denied&quot; when trying to open specific app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Getting error &quot;bwrap: Can&#39;t mkdir /tmp/.X11-unix: Permission denied&quot; when trying to open specific app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Getting error &quot;bwrap: Can&#39;t mkdir /tmp/.X11-unix: Permission denied&quot; when trying to open specific app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 18, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dante Sparda</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 18, 2023 5:33 AM">
+            <time itemprop="datePublished" datetime="2023-10-18 05:33:26 +0000">Oct 18, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello! I am here to ask for some assistance in fixing an error I believe I had caused with an app not launching.<br>
+Currently, when I try and launch <a href="https://flathub.org/apps/io.github.randovania.Randovania" rel="noopener nofollow ugc">Randovania</a> via my terminal, I get this error:</p>
+<pre><code class="lang-auto">$ flatpak run io.github.randovania.Randovania 
+bwrap: Can't mkdir /tmp/.X11-unix: Permission denied
+</code></pre>
+<p>I do not know how to fix it, as I have attempted to uninstall and reinstall randovania.<br>
+This is the only application I have on flatpak that is experiencing this problem.</p>
+<p>A history of how I got to here is as such (This may be a bit of reading)<br>
+I am using both my Browser and Discord on Flatpak, and had wanted to play Randovania. But I realized that Randovania (from github not flatpak. I’ll make it known when the flatpak version comes in play) wasn’t opening my browser to log into.<br>
+So I asked around and was recommended to enter the current randovania folder and remove a file called <code>libstdc++.so.6</code>. So I did, and this almost worked, as when I went to search for a Multiworld in randovania and was prompted to log in, pressing “log in” would attempt to load my browser. But, sadly, randovania returned this error: <code>/usr/bin/flatpak: symbol lookup error: /usr/lib/libmalcontent-0.so.0: undefined symbol: g_task_set_static_name</code> (it is trying to launch my flatpak browser, but seems to fail)</p>
+<p>I had installed the flatpak version of randovania prior to asking around, and had experimented with it prior to knowing that mutliworlds were unsupported, but through this version I was at least able to log into it, I was told this was due to “the flatpak environment ship[ping] the required (outdated) deps”, whereas the current github version does not.</p>
+<p>After my attempts with the github version, I had made an attempt that I believe broke the flatpak version of randovania.<br>
+I had tried to move my github-extracted Randovania folder to the one flatpak made to replace it, using a command that looks a lot like this: <code>mv /home/user/randovania-6.4.1/ /var/lib/flatpak/app/io.github.randovania.Randovania/x86_64/stable/[some giant string]/files/share/</code><br>
+Prior to this I had also relocated <code>/var/lib/flatpak/..../files/share/randovania</code> somewhere else as well, just so I could return it if this didn’t work.<br>
+After running the command, I then renamed <code>randovania-6.4.1</code> to just <code>randovania</code> and chowned it as root (as the flatpak folder was also root-owned). Made sure the perms were the same. Though thinking about it, maybe it wasn’t wise to make it recursive.</p>
+<p>The attempt did not work, it didn’t launch (I forget the error it gave, if any).</p>
+<p>But now when I moved the (perm unmodified) original folder back, it would not launch still. Giving me the error at the start of the post.<br>
+I checked in flatseal, but it tells me that the perms set are their defaults. I cannot remember if there were any directories given to it under Filesystem/Other Files, but as of current they are empty.</p>
+<p>So, with this, I ask:</p>
+<ul>
+<li>What can I do to fix Randovania on Flatpak? I uninstalled it, deleted its data where I could find it, and reinstalled it, but to no progress.</li>
+<li>Are there any additional steps for the github version of randovania that would allow it to launch my flatpak-browser and log me in this way?<br>
+I currently have to use a (thankfully preserved) copy of my login instance from flatpak and copy it over to the github login to log into it. If I could figure this out, I would be able to log in using only one variant of Randovania.</li>
+</ul>
+<p>Thank you for any help you can provide.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dante Sparda</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 18, 2023 6:32 AM">
+            <time itemprop="datePublished" datetime="2023-10-18 06:32:17 +0000">Oct 18, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I just realized there’s a flathub issue tracker after sending this, I apologize for the wall. I will forward this to there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

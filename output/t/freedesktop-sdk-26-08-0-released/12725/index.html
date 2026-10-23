@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freedesktop SDK 26.08.0 released! - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/announcements/6/index.html">Announcements</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Freedesktop SDK 26.08.0 released!</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Freedesktop SDK 26.08.0 released!</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 1, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Javier Jardón</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 1, 2026 6:36 PM">
+            <time itemprop="datePublished" datetime="2026-09-01 18:36:07 +0000">Sep 1, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>The new Freedesktop SDK annual release is finally here!</p>
+<p>Check the NEWS file for all the updates:<br>
+<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/26.08/NEWS.yml" class="onebox" target="_blank" rel="noopener">https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/26.08/NEWS.yml</a></p>
+<p>Main changes are:</p>
+<ul>
+<li>Complete revamp of the documentation portal!! As always documentation is never completely done but we have spent some time trying to put different bits of docs together. Please check <a href="https://freedesktop-sdk.gitlab.io/documentation/" class="inline-onebox">Home - Freedesktop SDK</a> and report any issues / improvement / clarifications you think are needed</li>
+<li>[BREAKING CHANGE] elements removed: glew, glog, pyelftool (replaced with python3-pyelftools), python3-pytz, python3-six, qpdf</li>
+<li>unzip (which was carrying a lot of patches and looks very much unmaintained upstream) has been replaced by unzip from libarchive, a symlink is in place to work as a drop-in for most use cases.</li>
+<li>Updates on all elements to the most recent versions</li>
+<li>A lot of other fixes and improvements</li>
+<li>These should not affect flatpak users, but put it in here for completeness
+<ul>
+<li>[BREAKING CHANGE] These elements are now private: git-minimal, vala-bootstrap, avahi-base, systemd-hwdb, lvm2-base, efitools-bin, python3-minimal, python3-build-bootstrap, python3-installer-bootstrap, rr, sbsigntools, cryptsetup-base, fwupd-efi, libsmbios, freetype-stage1, lvm2-stage1, bpf, gnu-efi, cmake-stage1, dbus-base, systemd-stage1, u-boot-qemu, cups-base, geoclue-base, shim, flex-base, glib-stage1, gobject-introspection-base, bluez-base, valgrind, polkit-base, systemd-base, apparmor-base, gamemode-base, u-boot-unmatched, pipewire-base, xdg-desktop-portal-base, avahi-base, ovmf, gcc-base, flat-manager-client-base, flat-manager-client-base</li>
+<li>[BREAKING CHANGE] <code>runtime-minimal.bst</code> is now <code>runtime-gnu.bst</code> as a result <code>runtime-minimal</code> does not include bash or coreutils anymore, this allows replacing userland tools in bootstrap with alternative implementations. See <span class="hashtag-raw">#1950</span> for details<br>
+Note: for components generating a <code>kind: stack</code>, and if the stack is missing a shell and utilities, you need to add <code>runtime-gnu.bst</code> there now too so the integration-commands can run.<br>
+For more details, please see <a href="https://freedesktop-sdk.gitlab.io/documentation/concepts/userland.html" class="inline-onebox">Choose Your Own Userland - Freedesktop SDK</a></li>
+<li>[BREAKING CHANGE] Removal of snap support: as it was not highly used, we are happy to reintroduce it again if there is some demand for it</li>
+</ul>
+</li>
+</ul>
+<p>If you maintain an application using the Freedesktop SDK runtime, please consider upgrading the version, especially if you are still using 24.08 or earlier as It’s going to be EOL <em>very</em> soon (in the next weeks).</p>
+<p>In most cases, this mostly requires changing “runtime-version” in the Flatpak builder manifest of the application.</p>
+<p>This is the result of a year of work from all our contributors, thanks a lot to all of them!</p>
+<p>freedesktop_sdk_updater<br>
+bbhtt<br>
+Tom Pollard<br>
+Freedesktop SDK “Marge” Bot<br>
+Dionisie Moscalu<br>
+Javier Jardón<br>
+Aedan McHale<br>
+Abderrahim Kitouni<br>
+Neill Whillans<br>
+Marcel Ziswiler<br>
+Valentin David<br>
+Ben Brown<br>
+Erick555<br>
+Aleix Pol i Gonzalez<br>
+Harry Sarson<br>
+Sam Thursfield<br>
+Nazar Kazakov<br>
+Edward Miller<br>
+Jordan Petridis<br>
+Seppo Yli-Olli<br>
+Dom Rodriguez<br>
+Adrien Plazas<br>
+Francisco Redondo Marchena<br>
+Theodore Tucker<br>
+Adrian Vovk<br>
+Scott Clarke<br>
+Jürg Billeter<br>
+Hec<br>
+Ignacy Kuchciński<br>
+Dominic ason<br>
+Felicitas Pojtinger<br>
+Paulo Constantino<br>
+Joshua Zivkovic<br>
+Tanvir Roshid<br>
+Daniel Foster<br>
+Nathan Warren<br>
+Jeremy Bícha<br>
+Lawrence Hunter<br>
+Robin Lee<br>
+pyfisch<br>
+Ada Magicat<br>
+Nathan Williams<br>
+Roman Huts<br>
+William Salmon<br>
+Achill Gilgenast<br>
+Ahmed Adan<br>
+ArisoN<br>
+LevitatingBusinessMan (Rein Fernhout)<br>
+Michael Catanzaro<br>
+RushingAlien<br>
+Simon Hausmann<br>
+Tau Gärtli<br>
+user1-github<br>
+Amar Lakshya<br>
+Hadi Chokr<br>
+Bob Clough</p>
+<p>Thanks as well to our infrastructure sponsors; without their help this<br>
+project will not be possible:</p>
+<ul>
+<li>Codethink (x86_64, ARM and RISC-V build machines)</li>
+<li><a href="https://osuosl.org/">https://osuosl.org/</a> (x86_64, ARM, and PPC build machines)</li>
+<li>RISC-V foundation (RISC-V build machines)</li>
+</ul>
+<p>Also special thanks to <a href="https://www.codethink.co.uk/">Codethink</a> for, as usual, some engineering support during the cycle</p>
+<p>If you need assistance or have any issues, please get in touch!</p>
+<ul>
+<li>File issues at Issues: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues" class="inline-onebox">Work items · freedesktop-sdk / freedesktop-sdk · GitLab</a></li>
+<li>Join the our matrix channel: <a href="https://matrix.to/#freedesktop-sdk:matrix.org" class="inline-onebox">You're invited to talk on Matrix</a></li>
+<li>Join the mailing list:<br>
+<a href="https://lists.freedesktop.org/mailman/listinfo/freedesktop-sdk" class="inline-onebox">Freedesktop-sdk Info Page</a></li>
+<li>You can also ask on Flathub’s forum: <a href="/">https://discourse.flathub.org/</a></li>
+</ul>
+<p>Cheers,<br>
+Freedesktop SDK team</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak update tries to install org.freedesktop.Platform.GL.default//20.08 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak update tries to install org.freedesktop.Platform.GL.default//20.08</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak update tries to install org.freedesktop.Platform.GL.default//20.08</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 5, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 5, 2022 12:59 AM">
+            <time itemprop="datePublished" datetime="2022-10-05 00:59:27 +0000">Oct 5, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Distro: Linux Mint 21 Cinnamon<br>
+Flatpak version: 1.12.7<br>
+Issue: When I run flatpak update, it wants to install <code>org.freedesktop.Platform.GL.default//20.08</code>, and it provides a warning that the runtime is EoL.  If I allow flatpak update to install this runtime, and then I run <code>flatpak list --app --app-runtime org.freedesktop.Platform.GL.default//20.08</code>, the results are blank.  Manually uninstalling org.freedesktop.Platform.GL.default//20.08 does not return an error (as it is seemingly not used by any apps), but running flatpak update again causes flatpak to try reinstalling it.</p>
+<p>Here is what I have installed:</p>
+<pre><code class="lang-auto">app.rednotebook.RedNotebook                                 stable                    org.gnome.Platform/x86_64/42
+chat.delta.desktop                                          stable                    org.freedesktop.Platform/x86_64/21.08
+com.abisource.AbiWord                                       stable                    org.gnome.Platform/x86_64/42
+com.github.Eloston.UngoogledChromium                        stable                    org.freedesktop.Platform/x86_64/21.08
+com.github.Eloston.UngoogledChromium.Codecs                 stable
+com.github.bleakgrey.tootle                                 stable                    org.gnome.Platform/x86_64/42
+com.github.johnfactotum.Foliate                             stable                    org.gnome.Platform/x86_64/42
+com.github.kmwallio.thiefmd                                 stable                    org.gnome.Platform/x86_64/41
+com.github.maoschanz.drawing                                stable                    org.gnome.Platform/x86_64/42
+com.github.paolostivanin.OTPClient                          stable                    org.gnome.Platform/x86_64/42
+com.github.tchx84.Flatseal                                  stable                    org.gnome.Platform/x86_64/42
+com.github.xournalpp.xournalpp                              stable                    org.gnome.Platform/x86_64/43
+com.gitlab.newsflash                                        stable                    org.gnome.Platform/x86_64/43
+com.leinardi.gst                                            stable                    org.gnome.Platform/x86_64/43
+com.obsproject.Studio                                       stable                    org.kde.Platform/x86_64/6.3
+com.transmissionbt.Transmission                             stable                    org.gnome.Platform/x86_64/42
+im.srain.Srain                                              stable                    org.gnome.Platform/x86_64/42
+md.obsidian.Obsidian                                        stable                    org.freedesktop.Platform/x86_64/22.08
+org.cvfosammmm.Porto                                        stable                    org.gnome.Platform/x86_64/3.38
+org.cvfosammmm.Setzer                                       stable                    org.gnome.Platform/x86_64/3.38
+org.flatpak.Builder                                         stable                    org.freedesktop.Sdk/x86_64/22.08
+org.freedesktop.Platform                                    21.08
+org.freedesktop.Platform                                    22.08
+org.freedesktop.Platform.GL.default                         21.08
+org.freedesktop.Platform.GL.default                         22.08
+org.freedesktop.Platform.ffmpeg-full                        21.08
+org.freedesktop.Platform.openh264                           2.0
+org.freedesktop.Platform.openh264                           2.2.0
+org.freedesktop.Sdk                                         22.08
+org.gabmus.gfeeds                                           stable                    org.gnome.Platform/x86_64/42
+org.gimp.GIMP                                               stable                    org.gnome.Platform/x86_64/42
+org.gnome.Boxes                                             stable                    org.gnome.Platform/x86_64/43
+org.gnome.Boxes.Extension.OsinfoDb                          stable
+org.gnome.Builder                                           stable                    org.gnome.Sdk/x86_64/43
+org.gnome.Calculator                                        stable                    org.gnome.Platform/x86_64/43
+org.gnome.Connections                                       stable                    org.gnome.Platform/x86_64/42
+org.gnome.Epiphany                                          stable                    org.gnome.Platform/x86_64/43
+org.gnome.Evolution                                         stable                    org.gnome.Platform/x86_64/43
+org.gnome.Geary                                             stable                    org.gnome.Platform/x86_64/41
+org.gnome.Platform                                          3.38
+org.gnome.Platform                                          41
+org.gnome.Platform                                          42
+org.gnome.Platform                                          43
+org.gnome.Sdk                                               43
+org.gnome.baobab                                            stable                    org.gnome.Platform/x86_64/42
+org.gnome.gitg                                              stable                    org.gnome.Platform/x86_64/41
+org.gnome.gitlab.somas.Apostrophe                           stable                    org.gnome.Platform/x86_64/41
+org.gnome.meld                                              stable                    org.gnome.Platform/x86_64/42
+org.gtk.Gtk3theme.Mint-Y                                    3.22
+org.gtk.Gtk3theme.Mint-Y-Dark                               3.22
+org.kde.Platform                                            5.15-21.08
+org.kde.Platform                                            6.3
+org.kde.elisa                                               stable                    org.kde.Platform/x86_64/5.15-21.08
+org.kde.kontact                                             stable                    org.kde.Platform/x86_64/5.15-21.08
+org.kde.kwrite                                              stable                    org.kde.Platform/x86_64/5.15-21.08
+org.kde.neochat                                             stable                    org.kde.Platform/x86_64/5.15-21.08
+org.kde.okular                                              stable                    org.kde.Platform/x86_64/5.15-21.08
+org.libretro.RetroArch                                      stable                    org.kde.Platform/x86_64/5.15-21.08
+org.netsurf_browser.NetSurf                                 stable                    org.freedesktop.Platform/x86_64/21.08
+org.telegram.desktop.webview.Locale                         stable
+org.tug.texworks                                            stable                    org.kde.Platform/x86_64/5.15-21.08
+vn.hoabinh.quan.CoBang                                      stable                    org.gnome.Platform/x86_64/3.38
+</code></pre>
+<p>Why does flatpak want to install an end-of-life runtime that isn’t used by any app?</p>
+<p>Related Github issue:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak/issues/5117">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak/issues/5117" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak/issues/5117" target="_blank" rel="noopener nofollow ugc">org.freedesktop.Platform.GL.default is end of life</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2022-09-25" data-time="23:33:06" data-timezone="UTC">11:33PM - 25 Sep 22 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/mixalis1987" target="_blank" rel="noopener nofollow ugc">
+          <img alt="mixalis1987" src="/uploads/original/2X/7/729ccfad15255f3770f8eb9777242daecfe02d2b.png" class="onebox-avatar-inline" width="20" height="20">
+          mixalis1987
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">I keep getting this message now about this flatpak.
+
+&gt; runtime org.freedesktop<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">.Platform.GL.default branch 20.08 is end-of-life, with reason:
+&gt;    org.freedesktop.Platform 20.08 is no longer receiving fixes and security updates. Please update to a supported runtime version.
+
+And asks me if I want to remove it. Yes or no.
+
+If i remove it, it just installes again when I update. What exactly is going on? If it's end of life where is the new version??</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 5, 2022 5:36 PM">
+            <time itemprop="datePublished" datetime="2022-10-05 17:36:01 +0000">Oct 5, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it is. Check the runtime for the apps (flatpak list has a --columns option were you can also ask for the runtime)</p>
+<p>20.08 is used by GNOME 3.38 and KDE 5.15 amongst other things (both EOL)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 5, 2022 5:36 PM">
+            <time itemprop="datePublished" datetime="2022-10-05 17:36:56 +0000">Oct 5, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Setzer is likely the one (off the top of my head)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLVM SDK extension arm target support - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">LLVM SDK extension arm target support</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">LLVM SDK extension arm target support</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 8, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 8, 2024 5:49 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 17:49:41 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I have mostly finished my first adwaita application and I am trying to figure out how to build it with flatpak.</p>
+<p>The app is written in Zig, and I need to use a patched fork of the Zig compiler due to <a href="https://github.com/ziglang/zig/issues/11308" rel="noopener nofollow ugc">this issue</a>. The flatpak build fails because the <code>org.freedesktop.Sdk.Extension.llvm18</code> extension apparently does not have the arm target:</p>
+<pre><code class="lang-auto">CMake Error at cmake/Findllvm.cmake:30 (message):
+  LLVM (according to /usr/lib/sdk/llvm18/bin/llvm-config) is missing target
+  ARM.  Zig requires LLVM to be built with all default targets enabled.
+Call Stack (most recent call first):
+  CMakeLists.txt:140 (find_package)
+</code></pre>
+<p>How can I get full llvm for my build? I obviously can’t build it as that takes a very long time. I also can’t yet build the patched compiler ahead of time as I only “fixed” mac arm linux by breaking arm linux, so it’s going to change still.</p>
+<p>So far this is my configuration file:</p>
+<details>
+<pre data-code-wrap="yml"><code class="lang-yml">id: com.github.TeamPuzel.Crates
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: crates
+
+finish-args:
+  - --socket=wayland
+  - --share=ipc
+  - --socket=fallback-x11
+  - --share=network
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm18
+
+modules:
+  - name: crates
+    buildsystem: simple
+    build-commands:
+      # Custom Zig
+      - cd src/zig; mkdir build; cd build; cmake .. -DCMAKE_PREFIX_PATH="/usr/lib/sdk/llvm18;/usr/lib/sdk/llvm18/lib"; make install
+      # TODO: Copy the lib folder to the install directory
+      # Application
+      # TODO: Use the correct path to the built zig
+      - cd src/crates zig build -Dversion="1.0.0" -Dstable -Doptimize=ReleaseSmall
+    sources:
+      - type: git
+        url: https://github.com/TeamPuzel/zig.git
+        branch: master
+        dest: src/zig
+      - type: git
+        url: https://github.com/TeamPuzel/Crates.git
+        # tag: 1.0.0 stable
+        branch: main
+        dest: src/crates
+</code></pre>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 8, 2024 8:44 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 20:44:23 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>the readme for the llvm sdk indicate what you to do. And you didn’t</p>
+<p>Hint: it has to do with setting path so it can actually find it.</p>
+<p>Also we don’t support <code>arm</code>. Only <code>aarch64</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 8, 2024 11:00 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 23:00:37 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="2" data-topic="6873">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>the readme for the llvm sdk indicate what you to do. And you didn’t</p>
+<p>Hint: it has to do with setting path so it can actually find it.</p>
+</blockquote>
+</aside>
+<p>Why would I need to add the path if I’m passing it to cmake anyway. The build process is fine with not having these in the path, and the error message states that it did find llvm, just that it has some of the default targets disabled. Adding the paths doesn’t change the output.</p>
+<aside class="quote no-group" data-username="hub" data-post="2" data-topic="6873">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>Also we don’t support <code>arm</code>. Only <code>aarch64</code>.</p>
+</blockquote>
+</aside>
+<p>I did not say anything about targeting arm, only the llvm missing the target. That’s just a requirement of building the compiler, all targets have to be present. I suppose I just have to build llvm as well, which is a significant waste of time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 8, 2024 11:16 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 23:16:52 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Then disable the target. Build anything but the two supported is useless. And that’s why we don’t build them.</p>
+<p>Also <code>CMAKE_PREFIX_PATH</code> isn’t how you set the path. It’s just a fluke it seems to work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 8, 2024 11:37 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 23:37:21 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="hub" data-post="4" data-topic="6873">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<p>Also <code>CMAKE_PREFIX_PATH</code> isn’t how you set the path. It’s just a fluke it seems to work.</p>
+</blockquote>
+</aside>
+<p>No, I am following the Zig documentation <a href="https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions" class="inline-onebox" rel="noopener nofollow ugc">Building Zig From Source · ziglang/zig Wiki · GitHub</a>, this is in fact how you set these paths when building the Zig compiler.</p>
+<p>If your intention is to be pedantic and correct me on non issues instead of addressing the problems I described, I would have you know that you can just ignore this post. You don’t have to help if you don’t want to <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 8, 2024 11:53 PM">
+            <time itemprop="datePublished" datetime="2024-06-08 23:53:18 +0000">Jun 8, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Considering I have no intention of having dependencies other than libadwaita I can easily cross compile. It would be much easier to just make binary releases on GitHub and download the binaries instead of building them for the flatpak. What is the benefit to building the program in the flatpak?</p>
+<p>It is adding so much complexity; to do this properly I would have to maintain not just a reproducible way to build my program but also the zig compiler. It’s a lot of infrastructure for no benefit.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jun 10, 2024 2:02 PM">
+            <time itemprop="datePublished" datetime="2024-06-10 14:02:46 +0000">Jun 10, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>And you just can’t use the ziglang extension?</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="/uploads/optimized/2X/6/68815e9bc78a4488aad950397c3bd1d3304b6ec9_2_690x345.png" class="thumbnail" data-dominant-color="F6F6F6" width="690" height="345"></div>
+
+<h3><a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener">GitHub - flathub/org.freedesktop.Sdk.Extension.ziglang</a></h3>
+
+  <p>Contribute to flathub/org.freedesktop.Sdk.Extension.ziglang development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 18, 2024 9:51 AM">
+            <time itemprop="datePublished" datetime="2024-06-18 09:51:25 +0000">Jun 18, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, that extension is not useful, it’s a release behind.</p>
+<p>Zig is still a new, unstable language and changes really fast, an older version is unlikely to compile code written in newer Zig. There’s often breaking changes even in between releases.</p>
+<p>Zig also currently hardcodes too small of a minimum page size for aarch64-linux which prevents running precompiled Zig on Apple hardware. I’m not familiar with flatpak so I don’t know if it prevents this issue, but even if it does I still need the latest compiler.</p>
+<hr>
+<p>This is fine though, I can just cross compile the binaries and the flatpak can install them from a github release: <a href="https://github.com/TeamPuzel/Crates/blob/7ce851f432707fd96f1ccb24834e00af1cafddd7/build.zig#L366" class="inline-onebox" rel="noopener nofollow ugc">Crates/build.zig at 7ce851f432707fd96f1ccb24834e00af1cafddd7 · TeamPuzel/Crates · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jun 18, 2024 10:14 AM">
+            <time itemprop="datePublished" datetime="2024-06-18 10:14:27 +0000">Jun 18, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can help testing that new version here <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang/pull/25" class="inline-onebox">Update 2 modules by flathubbot · Pull Request #25 · flathub/org.freedesktop.Sdk.Extension.ziglang · GitHub</a></p>
+<p>If the build is already gone comment with <code>bot, build</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jun 18, 2024 11:46 AM">
+            <time itemprop="datePublished" datetime="2024-06-18 11:46:02 +0000">Jun 18, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can try building with it, I think my build of zig should be close enough to 0.13.0</p>
+<p>How can I use this test version in my .yml file?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TeamPuzel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jun 18, 2024 1:28 PM">
+            <time itemprop="datePublished" datetime="2024-06-18 13:28:32 +0000">Jun 18, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Still, whether I use precompiled binaries or the 0.13.0 toolchain, I will also have the added complexity of OpenGL not working and the app running very slowly. It seems that I would have to set up even more steps to actually get the asahi mesa extension when building for that platform, and distribute the app separately for it.</p>
+<p>It’s really easy to accidentally install the wrong version from the store, it seems to sometimes default to the standard version even if an asahi build exists. If I didn’t try building my own application I don’t know if I would have figured out why half my apps were slow and unresponsive.</p>
+<hr>
+<p>I like the idea of sandboxed apps that I can conveniently download from a store and see what permissions they have. Why does that app have to be less portable? Is there a more correct way to bundle a gnome application?</p>
+<p>Having my build system be more complicated than the program itself feels misguided. The selling point of Zig is how easy it is to make static, portable programs; applying this much CI to a Zig program is like putting pineapple on pizza.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

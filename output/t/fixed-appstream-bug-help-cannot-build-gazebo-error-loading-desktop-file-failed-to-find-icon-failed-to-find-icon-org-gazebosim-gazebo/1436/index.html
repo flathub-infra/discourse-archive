@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Fixed: Appstream bug][Help] Cannot build Gazebo. Error loading desktop file: Failed to find icon: Failed to find icon org.gazebosim.Gazebo - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">[Fixed: Appstream bug][Help] Cannot build Gazebo. Error loading desktop file: Failed to find icon: Failed to find icon org.gazebosim.Gazebo</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">[Fixed: Appstream bug][Help] Cannot build Gazebo. Error loading desktop file: Failed to find icon: Failed to find icon org.gazebosim.Gazebo</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 16, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 16, 2021 9:46 PM">
+            <time itemprop="datePublished" datetime="2021-05-16 21:46:49 +0000">May 16, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I am trying to build Gazebo.</p>
+<p>But I get this error.</p>
+<p><code>Processing application org.gazebosim.GazeboError loading desktop file: Failed to find icon: Failed to find icon org.gazebosim.GazeboError: ERROR: appstream-compose failed: Child process exited with code 1</code></p>
+<p>I don’t understand why it cannot find icon. It is in app/share/icons/hicolor/</p>
+<blockquote>
+<pre><code>  - install -Dm644 gazebo128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/gazebo.png
+  - install -Dm644 gazebo256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/gazebo.png
+</code></pre>
+</blockquote>
+<p>I submit a PR here: <a href="https://github.com/flathub/flathub/pull/2296" rel="noopener nofollow ugc">https://github.com/flathub/flathub/pull/2296</a></p>
+<p>Full error log: <a href="https://flathub.org/builds/#/builders/10/builds/5690" class="inline-onebox" rel="noopener nofollow ugc">Flathub builds</a></p>
+<p>Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 17, 2021 12:04 AM">
+            <time itemprop="datePublished" datetime="2021-05-17 00:04:59 +0000">May 17, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since you have the icons and the desktop file in the repository and install them, I’d forego the <code>rename-icon</code>, install them using the FLATPAK_ID as name and make sure the proper name is in the desktop file.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 17, 2021 1:23 PM">
+            <time itemprop="datePublished" datetime="2021-05-17 13:23:47 +0000">May 17, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I install the icon to be name as flatpak_id and change icon name in desktop file as flatpak_id as well.<br>
+But still get stuck.</p>
+<blockquote>
+<p>Processing application org.gazebosim.Gazebo</p>
+<p>Error loading desktop file: Failed to find icon: Failed to find icon org.gazebosim.Gazebo</p>
+<p>Error: ERROR: appstream-compose failed: Child process exited with code 1</p>
+</blockquote>
+<p>Any idea?</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://buildbot.flathub.org/">
+  <header class="source">
+      
+
+      <a href="https://buildbot.flathub.org/" target="_blank" rel="noopener nofollow ugc">buildbot.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://buildbot.flathub.org/" target="_blank" rel="noopener nofollow ugc">Flathub builds</a></h3>
+
+  <p>Flathub buildbot instance</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 19, 2021 5:52 AM">
+            <time itemprop="datePublished" datetime="2021-05-19 05:52:08 +0000">May 19, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I try remove all the comments, still same issue.</p>
+<p>Don’t know what is going on anymore.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 20, 2021 4:19 PM">
+            <time itemprop="datePublished" datetime="2021-05-20 16:19:30 +0000">May 20, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am getting the same error locally and can’t figure it out.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 20, 2021 8:47 PM">
+            <time itemprop="datePublished" datetime="2021-05-20 20:47:03 +0000">May 20, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the help.<br>
+I have a feeling that it could be a bug. But it is hard to pinpoint what, which is frustrating.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 21, 2021 5:53 AM">
+            <time itemprop="datePublished" datetime="2021-05-21 05:53:23 +0000">May 21, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Turns out, there is an issue with appstream when directory is weird.</p><aside class="onebox githubissue">
+  <header class="source">
+
+      <a href="https://github.com/hughsie/appstream-glib/issues/271" target="_blank" rel="noopener nofollow ugc">github.com/hughsie/appstream-glib</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/hughsie/appstream-glib/issues/271" target="_blank" rel="noopener nofollow ugc">appstream-compose fails to find icon when $prefix/usr exists </a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2018-11-08" data-time="23:50:35" data-timezone="UTC">11:50PM - 08 Nov 18 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2019-02-06" data-time="12:57:57" data-timezone="UTC">12:57PM - 06 Feb 19 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/BAKFR" target="_blank" rel="noopener nofollow ugc">
+          <img alt="BAKFR" src="/uploads/original/1X/db2f7dbc86420239aed7625fab8fbed1202f0d60.png" class="onebox-avatar-inline" width="20" height="20">
+          BAKFR
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">I have an appstream file, a desktop file and an icon used as exports in a flapka<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">k application. The appstream file references the desktop file. The desktop file uses the icon.
+
+When `$prefix/usr` exists, `appstream-compose` requires the icon files to be in `$prefix/usr/share/icons` instead of `$prefix/share/icons`.
+
+Flatpak is the use case I've encountered, but it's reproducible without it.
+
+----
+
+
+```sh
+~/appstream-bug$ tree
+.
+├── share
+│   ├── applications
+│   │   └── org.example.TestIcon.desktop
+│   ├── icons
+│   │   └── hicolor
+│   │       └── 256x256
+│   │           └── apps
+│   │               └── org.example.TestIcon.png
+│   └── metainfo
+│       └── org.example.TestIcon.appdata.xml
+└── usr
+
+~/appstream-bug$ appstream-compose --verbose --prefix=$(pwd) org.example.TestIcon
+WARNING: Metadata origin not set, using 'example'
+Processing application org.example.TestIcon
+(appstream-compose:29789): As-DEBUG: Looking for /home/bak/appstream-bug/share/metainfo/org.example.TestIcon.appdata.xml
+Error loading desktop file: Failed to find icon: Failed to find icon org.example.TestIcon
+```
+
+  
+
+*org.example.TestIcon.desktop*:
+```ini
+[Desktop Entry]
+Name=Test icon bug
+Exec=/bin/sh
+Icon=org.example.TestIcon
+Type=Application
+```
+
+
+*org.example.TestIcon.appdata.xml*:
+```xml
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;component type="desktop-application"&gt;
+  &lt;id&gt;org.example.TestIcon&lt;/id&gt;
+  &lt;metadata_license&gt;CC-BY-SA-3.0&lt;/metadata_license&gt;
+  &lt;description&gt;
+  &lt;/description&gt;
+  &lt;launchable type="desktop-id"&gt;org.example.TestIcon.desktop&lt;/launchable&gt;
+&lt;/component&gt;
+```</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App Claims Files Are Missing (They&#39;re Not) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">App Claims Files Are Missing (They&#39;re Not)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">App Claims Files Are Missing (They&#39;re Not)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 31, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 31, 2024 5:39 AM">
+            <time itemprop="datePublished" datetime="2024-08-31 05:39:17 +0000">Aug 31, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was able to get my initial flatpak project running (the Flatpak Amulet Minecraft Map Editor), but I noticed that it was missing textures, so I’ve attempted to add the missing things by copying them from the original Python install of Amulet, however, despite the files being there according to the debug shell:</p>
+<pre><code class="lang-auto">[/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block] ls -Fla
+total 36
+drwxr-xr-x 3 evilsupahfly evilsupahfly 4096 Dec 31  1969 ./
+drwxr-xr-x 3 evilsupahfly evilsupahfly 4096 Dec 31  1969 ../
+drwxr-xr-x 2 evilsupahfly evilsupahfly 4096 Dec 31  1969 banner/
+-rw-r--r-- 2 evilsupahfly evilsupahfly  651 Dec 31  1969 barrier.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1265 Dec 31  1969 end_portal.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly  213 Dec 31  1969 grass.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1286 Dec 31  1969 lava.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1405 Dec 31  1969 structure_void.png
+-rw-r--r-- 3 evilsupahfly evilsupahfly  927 Dec 31  1969 water.png
+</code></pre>
+<p>The terminal output indicates the textures are missing:</p>
+<pre><code class="lang-auto">[~/Downloads/flatpack-stuff/Amulet-Flatpak/Amulet-Flatpak] flatpak run io.github.evilsupahfly.amulet-flatpak
+INFO - PyMCTranslate Version 298
+Gtk-Message: 01:15:31.713: Failed to load module "xapp-gtk3-module"
+INFO - Could not find loader for /home/evilsupahfly/.minecraft Could not find a matching format for /home/evilsupahfly/.minecraft
+INFO - Could not find loader for /home/evilsupahfly/.minecraft Could not find a matching format for /home/evilsupahfly/.minecraft
+INFO - Could not find loader for /home/evilsupahfly/.minecraft Could not find a matching format for /home/evilsupahfly/.minecraft
+INFO - Could not find loader for /home/evilsupahfly/.minecraft Could not find a matching format for /home/evilsupahfly/.minecraft
+INFO - Loading level /home/evilsupahfly/.minecraft/saves/Otherwhere
+INFO - Loading level /home/evilsupahfly/.minecraft/saves/Otherwhere
+INFO - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+INFO - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+INFO - Downloading java launcher manifest file.
+INFO - Downloading java launcher manifest file.
+INFO - Finished downloading java launcher manifest file.
+INFO - Finished downloading java launcher manifest file.
+INFO - OpenGL Version 3.3.0 NVIDIA 560.35.03
+INFO - OpenGL Version 3.3.0 NVIDIA 560.35.03
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+INFO - Finished setting up texture atlas in OpenGL
+INFO - Finished setting up texture atlas in OpenGL
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/lava'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/lava.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/barrier'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/barrier.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/barrier'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/barrier.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+</code></pre>
+<p>How do I fix this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">JakobDev</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 31, 2024 8:03 AM">
+            <time itemprop="datePublished" datetime="2024-08-31 08:03:27 +0000">Aug 31, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You should share your Manifest, so People can help you</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 31, 2024 8:11 AM">
+            <time itemprop="datePublished" datetime="2024-08-31 08:11:13 +0000">Aug 31, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What do you mean by “debug shell”? Usually the files inside the sandbox are not owned by your user.</p>
+<p>What is inside the sandbox if you run it directly via flatpak:</p>
+<pre><code class="lang-auto">flatpak run --command=ls io.github.evilsupahfly.amulet-flatpak -al /app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 31, 2024 12:26 PM">
+            <time itemprop="datePublished" datetime="2024-08-31 12:26:49 +0000">Aug 31, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By “debug shell” I mean I did this:</p>
+<pre><code class="lang-auto">flatpak run --devel --command=sh --system-talk-name=org.freedesktop.login1 io.github.evilsupahfly.amulet-flatpak
+</code></pre>
+<p>And systematically checked each directory down the path listed to be sure it was present.</p>
+<p>I’ll post the manifest when I get home.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 31, 2024 2:53 PM">
+            <time itemprop="datePublished" datetime="2024-08-31 14:53:00 +0000">Aug 31, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="cxrvh" data-post="3" data-topic="7586">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>Usually the files inside the sandbox are not owned by your user.</p>
+</blockquote>
+</aside>
+<p>This could be because in an effort to fix the missing textures, I gzipped them from the original Python package and added the .tar.gz to my project as an extra local file, which gets unzipped to the specified location.</p>
+<aside class="quote no-group" data-username="JakobDev" data-post="2" data-topic="7586" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+JakobDev:</div>
+<blockquote>
+<p>You should share your Manifest, so People can help you</p>
+</blockquote>
+</aside>
+<p>I should know better by now too. The question is incomplete (usually) without the manifest. <img src="/images/emoji/twitter/sweat_smile.png?v=12" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"> <img src="/images/emoji/twitter/man_facepalming.png?v=12" title=":man_facepalming:" class="emoji" alt=":man_facepalming:" loading="lazy" width="20" height="20"></p>
+<p>This is my primary manifest:</p>
+<pre><code class="lang-auto">id: io.github.evilsupahfly.amulet-flatpak
+name: Amulet Map Editor
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: amulet_map_editor
+
+finish-args:
+  - --device=all
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=home:create
+  - --talk-name=org.freedesktop.Notifications
+  - --env=LIBGL_ALWAYS_SOFTWARE="0"
+  - --env=OPENGL_VERSION=3.3
+  - --env=OPENGL_LIB=/usr/lib/x86_64-linux-gnu/libGL.so
+  - --env=XAPP_GTK3=true
+
+modules:
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
+  - pip_gen.yaml
+  - resource_pack/resource_pack.yaml
+</code></pre>
+<p>This is <code>pip-gen.yaml</code> which was generated automagically by <code>flatpak-pip-generator</code> based on the Amulet project’s <code>requirements.txt</code>:</p>
+<pre><code class="lang-auto">﻿name: pip_gen_test
+build-commands: []
+buildsystem: simple
+modules:
+  - name: python3-meson-python
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "meson-python" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/91/c0/104cb6244c83fe6bc3886f144cc433db0c0c78efac5dc00e409a5a08c87d/meson_python-0.16.0-py3-none-any.whl
+        sha256: 842dc9f5dc29e55fc769ff1b6fe328412fe6c870220fc321060a1d2d395e69e8
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl
+        sha256: 5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/aa/5f/bb5970d3d04173b46c9037109f7f05fc8904ff5be073ee49bb6ff00301bc/pyproject_metadata-0.8.0-py3-none-any.whl
+        sha256: ad858d448e1d3a1fb408ac5bac9ea7743e7a8bbb472f2693aaa334d2db42f526
+  - name: python3-versioneer
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "versioneer" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/b0/79/f0f1ca286b78f6f33c521a36b5cbd5bd697c0d66217d8856f443aeb9dd77/versioneer-0.29-py3-none-any.whl
+        sha256: 0f1a137bb5d6811e96a79bb0486798aeae9b9c6efc24b389659cebb0ee396cb9
+  - name: python3-numpy
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "numpy" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz
+        sha256: 2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010
+  - name: python3-lz4
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "lz4" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/cf/d4/12915eb3083dfd1746d50b71b73334030b129cd25abbed9133dd2d413c21/lz4-4.3.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 0e9c410b11a31dbdc94c05ac3c480cb4b222460faf9231f12538d0074e56c563
+  - name: python3-amulet-core
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "amulet-core" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/96/62/5a6fa5775726afa37153ce895ed8ddb886cee48ab3cf6c4d1a3cde5fa41f/PyMCTranslate-1.2.28-py3-none-any.whl
+        sha256: 8166347a39bbcd784a298b6797216cb7b18c6bbe32d43f6740197138e9ec1c01
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/00/b9/48aa1754bc30143d7623253ff507986123829e9ae78a266ec34e08c0c544/amulet-nbt-2.1.3.tar.gz
+        sha256: a9de4fe068329c7a921f09dd4cec37c25c01ac2abeb4e10000e82e526e36d0fc
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/16/df/6ad86c1a64350274a05cf56ecb205e1acea74ea376d7a02c4b34b0251388/amulet_core-1.9.25-py3-none-any.whl
+        sha256: a626a09e93112032d8de046cef59b3a87bf02e840930fa7218f5b2caacf29254
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/8a/69/03882a4a7ed933d1f0c622d93a5b2eef2fa51c4bf8ca1ec84d43b88eb113/amulet_leveldb-1.0.2.tar.gz
+        sha256: b3aa511ef71bf6bc6b21e96395bded0f392b1dc093ef58d5535067d80ab41541
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/cf/d4/12915eb3083dfd1746d50b71b73334030b129cd25abbed9133dd2d413c21/lz4-4.3.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 0e9c410b11a31dbdc94c05ac3c480cb4b222460faf9231f12538d0074e56c563
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/ca/31/3c57313757b3a47dcf32d2a9bad55d913b797efc8814db31bed8a7142396/mutf8-1.0.6.tar.gz
+        sha256: 1bbbefb67c2e5a57104750bb04b0912200b57b2fa9841be245279e83859cb346
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz
+        sha256: 2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/56/29/3ec311dc18804409ecf0d2b09caa976f3ae6215559306b5b530004e11156/platformdirs-3.11.0-py3-none-any.whl
+        sha256: e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/9b/fb/a70a4214956182e0d7a9099ab17d50bfcba1056188e9b14f35b9e2b62a0d/portalocker-2.10.1-py3-none-any.whl
+        sha256: 53a5984ebc86a025552264b459b46a2086e269b21823cb572f8f28ee759e45bf
+  - name: python3-amulet-map-editor
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "amulet-map-editor" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/96/62/5a6fa5775726afa37153ce895ed8ddb886cee48ab3cf6c4d1a3cde5fa41f/PyMCTranslate-1.2.28-py3-none-any.whl
+        sha256: 8166347a39bbcd784a298b6797216cb7b18c6bbe32d43f6740197138e9ec1c01
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/99/48/00e31747821d3fc56faddd00a4725454d1e694a8b67d715cf20f531506a5/PyOpenGL-3.1.7-py3-none-any.whl
+        sha256: a6ab19cf290df6101aaf7470843a9c46207789855746399d0af92521a0a92b7a
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/93/09/d08b3d07dbd88258276496a47273778f330f5ccf8390cb21b16b29d660de/PyOpenGL-accelerate-3.1.7.tar.gz
+        sha256: 2b123621273a939f7fd2ec227541e399f9b5d4e815d69ae0bdb1b6c70a293680
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/00/b9/48aa1754bc30143d7623253ff507986123829e9ae78a266ec34e08c0c544/amulet-nbt-2.1.3.tar.gz
+        sha256: a9de4fe068329c7a921f09dd4cec37c25c01ac2abeb4e10000e82e526e36d0fc
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/16/df/6ad86c1a64350274a05cf56ecb205e1acea74ea376d7a02c4b34b0251388/amulet_core-1.9.25-py3-none-any.whl
+        sha256: a626a09e93112032d8de046cef59b3a87bf02e840930fa7218f5b2caacf29254
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/8a/69/03882a4a7ed933d1f0c622d93a5b2eef2fa51c4bf8ca1ec84d43b88eb113/amulet_leveldb-1.0.2.tar.gz
+        sha256: b3aa511ef71bf6bc6b21e96395bded0f392b1dc093ef58d5535067d80ab41541
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/92/ad/7f808413857992512188eaed55108be7201cf18defcd36e8ed9fe9d9c3fc/amulet_map_editor-0.10.35.tar.gz
+        sha256: d9a24afa04fc4be3ca029d5ef1bb394b32497533d4e176e3d742f43edab6319a
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/cf/d4/12915eb3083dfd1746d50b71b73334030b129cd25abbed9133dd2d413c21/lz4-4.3.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 0e9c410b11a31dbdc94c05ac3c480cb4b222460faf9231f12538d0074e56c563
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/70/bd/172abef53c86d3e84d7436a484dd57c0f4d62c125ff2dd139394d2f70970/minecraft_resource_pack-1.4.4-py3-none-any.whl
+        sha256: 84047a45a8a94b14b63589f3cb7a897f3bccb2632ab40d8b665d89808ebbddd4
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/ca/31/3c57313757b3a47dcf32d2a9bad55d913b797efc8814db31bed8a7142396/mutf8-1.0.6.tar.gz
+        sha256: 1bbbefb67c2e5a57104750bb04b0912200b57b2fa9841be245279e83859cb346
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz
+        sha256: 2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl
+        sha256: 5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/cd/74/ad3d526f3bf7b6d3f408b73fde271ec69dfac8b81341a318ce825f2b3812/pillow-10.4.0.tar.gz
+        sha256: 166c1cd4d24309b30d61f79f4a9114b7b2313d7450912277855ff5dfd7cd4a06
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/56/29/3ec311dc18804409ecf0d2b09caa976f3ae6215559306b5b530004e11156/platformdirs-3.11.0-py3-none-any.whl
+        sha256: e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/9b/fb/a70a4214956182e0d7a9099ab17d50bfcba1056188e9b14f35b9e2b62a0d/portalocker-2.10.1-py3-none-any.whl
+        sha256: 53a5984ebc86a025552264b459b46a2086e269b21823cb572f8f28ee759e45bf
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/aa/64/d749e767a8ce7bdc3d533334e03bb1106fc4e4803d16f931fada9007ee13/wxPython-4.2.1.tar.gz
+        sha256: e48de211a6606bf072ec3fa778771d6b746c00b7f4b970eb58728ddf56d13d5c
+  - name: python3-amulet-leveldb
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "amulet-leveldb" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/8a/69/03882a4a7ed933d1f0c622d93a5b2eef2fa51c4bf8ca1ec84d43b88eb113/amulet_leveldb-1.0.2.tar.gz
+        sha256: b3aa511ef71bf6bc6b21e96395bded0f392b1dc093ef58d5535067d80ab41541
+  - name: python3-amulet-nbt
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "amulet-nbt" --report=pip_report.json
+        --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/00/b9/48aa1754bc30143d7623253ff507986123829e9ae78a266ec34e08c0c544/amulet-nbt-2.1.3.tar.gz
+        sha256: a9de4fe068329c7a921f09dd4cec37c25c01ac2abeb4e10000e82e526e36d0fc
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/ca/31/3c57313757b3a47dcf32d2a9bad55d913b797efc8814db31bed8a7142396/mutf8-1.0.6.tar.gz
+        sha256: 1bbbefb67c2e5a57104750bb04b0912200b57b2fa9841be245279e83859cb346
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz
+        sha256: 2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010
+  - name: python3-minecraft-resource-pack
+    buildsystem: simple
+    build-commands:
+      - &gt;-
+        pip3 install --verbose --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "minecraft-resource-pack"
+        --report=pip_report.json --no-build-isolation
+    sources:
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/00/b9/48aa1754bc30143d7623253ff507986123829e9ae78a266ec34e08c0c544/amulet-nbt-2.1.3.tar.gz
+        sha256: a9de4fe068329c7a921f09dd4cec37c25c01ac2abeb4e10000e82e526e36d0fc
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/70/bd/172abef53c86d3e84d7436a484dd57c0f4d62c125ff2dd139394d2f70970/minecraft_resource_pack-1.4.4-py3-none-any.whl
+        sha256: 84047a45a8a94b14b63589f3cb7a897f3bccb2632ab40d8b665d89808ebbddd4
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/ca/31/3c57313757b3a47dcf32d2a9bad55d913b797efc8814db31bed8a7142396/mutf8-1.0.6.tar.gz
+        sha256: 1bbbefb67c2e5a57104750bb04b0912200b57b2fa9841be245279e83859cb346
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz
+        sha256: 2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/cd/74/ad3d526f3bf7b6d3f408b73fde271ec69dfac8b81341a318ce825f2b3812/pillow-10.4.0.tar.gz
+        sha256: 166c1cd4d24309b30d61f79f4a9114b7b2313d7450912277855ff5dfd7cd4a06
+      - type: file
+        url: &gt;-
+          https://files.pythonhosted.org/packages/56/29/3ec311dc18804409ecf0d2b09caa976f3ae6215559306b5b530004e11156/platformdirs-3.11.0-py3-none-any.whl
+        sha256: e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e
+</code></pre>
+<p>This is the newest addition - my attempt to fix the missing textures, which hasn’t actually fixed anything, <code>resource_pack.yaml</code>:</p>
+<pre><code class="lang-auto">﻿name: resource_pack
+build-commands:
+  - &gt;-
+    set -e
+    install -Dm 0755 minecraft_model_reader.tar.gz -t ${FLATPAK_DEST}/lib/python3.11/site-packages/
+buildsystem: simple
+sources:
+  - type: file
+    path: ../resource_pack/minecraft_model_reader.tar.gz
+  - type: script
+    dest: '${FLATPAK_DEST}/lib/python3.11/site-packages/'
+    commands:
+      - tar -xzf ${FLATPAK_DEST}/lib/python3.11/site-packages/minecraft_model_reader.tar.gz -v -C ${FLATPAK_DEST}/lib/python3.11/site-packages/
+      - rm -f ${FLATPAK_DEST}/lib/python3.11/site-packages/minecraft_model_reader.tar.gz
+</code></pre>
+<p>My original project didn’t include <code>resource_pack.yaml</code> because that’s supposed to be included with Amulet’s Python source, and which works fine when Amulet is installed directly through PIP. However, when built by the flatpak builder, Amulet can’t find - or doesn’t recognize - the textures, so I tried to add them manually after the fact.</p>
+<aside class="quote no-group" data-username="cxrvh" data-post="3" data-topic="7586">
+<div class="title">
+<div class="quote-controls"></div>
+cxrvh:</div>
+<blockquote>
+<p>What is inside the sandbox if you run it directly via flatpak:</p>
+<pre><code class="lang-auto">flatpak run --command=ls io.github.evilsupahfly.amulet-flatpak -al /app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/
+</code></pre>
+</blockquote>
+</aside>
+<p>This:</p>
+<pre><code class="lang-auto">evilsupahfly on Black-Beast at Sat 31 Aug 2024 10:48:08 EDT
+[~/Downloads/flatpack-stuff/Amulet-Flatpak/Amulet-Flatpak] flatpak run --command=ls io.github.evilsupahfly.amulet-flatpak -al /app/lib/python3.11/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/
+total 36
+drwxr-xr-x 3 evilsupahfly evilsupahfly 4096 Dec 31  1969 .
+drwxr-xr-x 3 evilsupahfly evilsupahfly 4096 Dec 31  1969 ..
+drwxr-xr-x 2 evilsupahfly evilsupahfly 4096 Dec 31  1969 banner
+-rw-r--r-- 2 evilsupahfly evilsupahfly  651 Dec 31  1969 barrier.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1265 Dec 31  1969 end_portal.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly  213 Dec 31  1969 grass.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1286 Dec 31  1969 lava.png
+-rw-r--r-- 2 evilsupahfly evilsupahfly 1405 Dec 31  1969 structure_void.png
+-rw-r--r-- 3 evilsupahfly evilsupahfly  927 Dec 31  1969 water.png
+</code></pre>
+<p>I had planned to rebuild the project from scratch again, but this time without the resource pack extra I made, and compare the results, which I’ll reply with as soon as I have.</p>
+<p>In the meantime, I’m just wondering why it works when installed (in a Python VENV) with PIP and doesn’t work when made into a Flatpak which - based on the manifest output from <code>flatpak-pip-generator</code> - appears to me like it does all the same things with PIP, but inside the flatpak sandbox.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 1, 2024 1:07 AM">
+            <time itemprop="datePublished" datetime="2024-09-01 01:07:11 +0000">Sep 1, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Update:</p>
+<p>I rebuilt the package without my resource_pack call, reinstalled the Amulet flatpak, and the missing textures are still an issue, so I re-ran <code>ls</code> inside the sandbox, but this time I called flatpak with <code>-vv</code> to see if I could get an idea of what’s going on and why.</p>
+<p>Output exceeded character limit for posts, so I’ve posted it <a href="https://gist.github.com/EvilSupahFly/157fa4c259564e8a776a566850ccef65" rel="noopener nofollow ugc">as a snippet on GIST</a>.</p>
+<p>I see quite a few <code>[x] is not a symlink</code> messages, but I don’t know if that’s normal. Amulet has no trouble getting RW access to the Minecraft saves in my <code>$HOME</code> so it must not be that big a deal.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 1, 2024 6:34 AM">
+            <time itemprop="datePublished" datetime="2024-09-01 06:34:59 +0000">Sep 1, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My work-fried, under-slept self just realized that the missing textures are in <code>minecraft-resource-pack</code> which is already supposed to be included in the project, having been pulled in from <code>requirements.txt</code>:</p>
+<pre><code class="lang-auto">versioneer
+meson-python
+glad
+pyopengl
+PyOpenGL-accelerate
+numpy
+lz4
+amulet-core
+amulet-map-editor
+amulet-leveldb
+amulet-nbt
+minecraft-resource-pack
+</code></pre>
+<p>So now I’m REALLY confused about why the textures aren’t loading!</p>
+<p>**Edit: This is verifiable by checking <code>pip_gen.yaml</code> in my earlier post.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 1, 2024 4:34 PM">
+            <time itemprop="datePublished" datetime="2024-09-01 16:34:58 +0000">Sep 1, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Previously, I was building and installing from a local source. So I used the workflow for <code>bilelmoussaoui/flatpak-github-actions</code> to build the Amulet flatpak in <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc">my GIT repository</a> instead, and the flatpak built by the workflow is also having these missing texture issues. Can somebody <em><strong>please</strong></em> explain to me what I’m doing wrong?<br>
+<img src="/images/emoji/twitter/face_with_spiral_eyes.png?v=12" title=":face_with_spiral_eyes:" class="emoji only-emoji" alt=":face_with_spiral_eyes:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 3, 2024 4:18 PM">
+            <time itemprop="datePublished" datetime="2024-09-03 16:18:28 +0000">Sep 3, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t know Python enough so I can’t really help. There are a lot of Python applications on Flathub so I don’t think that there’s a general issue, your application somehow doesn’t like the environment Flatpak is providing. Did you check if any other files are missing which could result in the errors?</p>
+<p>To debug this further, you can try building with online support (this is not allowed on Flathub &amp; therefore everything is usually downloaded for an offline build).</p>
+<p>I think this should be a template you can use, but there could be mistakes I made (I did not test the snippet).</p>
+<pre><code class="lang-auto">modules:
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
+  - name: application
+    build-commands:
+      - pip3 install --prefix=${FLATPAK_DEST} &lt;OPTIONS&gt; &lt;PACKAGE_NAME&gt;
+      - …
+    buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
+</code></pre>
+<p>And maybe you should remove access to the home dir (–filesystem=home) when testing, just to be sure that nothing from your development system is interfering.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 3, 2024 4:58 PM">
+            <time itemprop="datePublished" datetime="2024-09-03 16:58:55 +0000">Sep 3, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, the package is being installed, and both the .png images and the .JSON are present in their expected locations. Unfortunately, I can’t disable HOME access while testing because I need to be able to load a Minecraft world to be sure Amulet is working.</p>
+<p>Currently, I’m looking at trying to debug the model/texture module to see what’s happening under the hood, but every time I change something, it crashes.</p>
+<p>The template, however, I’ll take for a test drive after work tonight.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 18, 2024 9:28 PM">
+            <time itemprop="datePublished" datetime="2024-09-18 21:28:02 +0000">Sep 18, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry I took so long. I had a metric f*ck-tonne of tech support issues to resolve for friends and family all at once, around my normal job hours so this got pushed to the back burner for a while.</p>
+<p>Anyways, after I rebuilt the flatpak from scratch - now with added debugging features - and tried again, I ran it with Flatpak’s internal version of PDB. The results are posted in <a href="https://gist.github.com/EvilSupahFly/441969db911c99368ea9077c9e71fb81" rel="noopener nofollow ugc">this GIST</a> but be warned - it’s sixty five thousand seven hundred and something lines long.</p>
+<p>As far as I can tell, the .png files are actually being loaded properly. Running through PDB doesn’t really indicate why they’re not loading in the Flatpak environment. The error reported is not that the files weren’t found, only that they couldn’t be used. Also unclear is if the problem lies with the .JSON files or the .PNG files. Either way it’s a mystery since Amulet is able to download the official texture pack from the Minecraft servers and everything else shows up - bedrock, stone, sand, etc - meaning that .PNG and .JSON management within Amulet works just fine.</p>
+<p>So… Is this a Flatpak issue or a Python issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Oct 15, 2024 9:16 AM">
+            <time itemprop="datePublished" datetime="2024-10-15 09:16:47 +0000">Oct 15, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, this is still happening. The original dev doesn’t know why either because the app works just fine when installed through PIP in VENVs for Python 3.9 all the way up to 3.12.</p>
+<p>I’ve allowed the app persistent access:</p>
+<pre><code class="lang-auto">  - --filesystem=home:persistent
+  - --filesystem=~/.cache:persistent
+</code></pre>
+<p>And having sorted out my metadata issues, I’m back to this little issue.</p>
+<pre><code class="lang-auto">texture_path = /app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+Traceback (most recent call last):
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 246, in _get_model
+    return self._load_blockstate_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 337, in _load_blockstate_model
+    model = copy.deepcopy(self._load_block_model(model_path))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 437, in _load_block_model
+    if self._texture_is_transparent[texture_path][1]:
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: '/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+ERROR - Failed to load block model {'model': 'minecraft:block/water'}
+'/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+Traceback (most recent call last):
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 246, in _get_model
+    return self._load_blockstate_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 337, in _load_blockstate_model
+    model = copy.deepcopy(self._load_block_model(model_path))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py", line 437, in _load_block_model
+    if self._texture_is_transparent[texture_path][1]:
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: '/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+Texture path retrieved: /app/lib/python3.12/site-packages/minecraft_model_reader/api/image/missing_no.png
+BlockMesh created with texture path: /app/lib/python3.12/site-packages/minecraft_model_reader/api/image/missing_no.png
+</code></pre>
+<p>So once again, I ran a shell inside the flatpak:</p>
+<pre><code class="lang-auto">flatpak-builder --run amulet-flatpak_build_dir io.github.evilsupahfly.amulet_flatpak..yaml sh
+</code></pre>
+<p>And I went down into the directories for the assets:</p>
+<pre><code class="lang-auto">/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/
+</code></pre>
+<p>And I listed the contents of the directory and sure enough, they’re all present. I’m hoping somebody “fluent” in both Flatpak and Python can tell me what’s going on here. For the Python people, all paths within Amulet are relative to it’s install location, with the exception of files and folders it needs from the user’s $HOME (like <code>.minecraft</code>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Oct 15, 2024 7:09 PM">
+            <time itemprop="datePublished" datetime="2024-10-15 19:09:52 +0000">Oct 15, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I suppose the biggest question I have would be how the Python environment inside the Flatpak is different from the one in my VENV, aside from being Read Only, despite being the same version (3.12.6).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Oct 21, 2024 7:53 PM">
+            <time itemprop="datePublished" datetime="2024-10-21 19:53:16 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">KeyError: '/app/lib/python3.12/site-packages/minecraft_model_reader/api/resource_pack/java/java_vanilla_fix/assets/minecraft/textures/block/water.png'
+</code></pre>
+<p>I can’t say that I exactly get what’s happening when the files are loaded, but doesn’t this error say, rather than the file is not found, that the value in the Map is missing or under a different key? Have you checked what’s put into the Map?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Oct 21, 2024 11:35 PM">
+            <time itemprop="datePublished" datetime="2024-10-21 23:35:55 +0000">Oct 21, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As far as I know, the map is generated on the fly by reading .PNG files from one folder, and .JSON files from a different one, then matching them by name, using a <code>deepcopy</code> to construct the new compound list from the two individual components, meaning as long as both <code>water.json</code> and <code>water.png</code> exist, it should be fine.</p>
+<p>All this works flawlessly when installed in a normal Python virtual environment with PIP, yet when running as a Flatpak, “water” and “lava” always fail.</p>
+<p>Also, as far as I know, all paths are relative to Amulet’s install location, so it shouldn’t matter that it’s “Flatpak Python” or “Normal Python”.</p>
+<p>The complete <a href="https://github.com/gentlegiantJGC/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py" rel="noopener nofollow ugc">model reader API is here</a>, if you’re fluent in Python and are curious.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Nov 25, 2024 1:26 PM">
+            <time itemprop="datePublished" datetime="2024-11-25 13:26:56 +0000">Nov 25, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>After much tediousness, I still couldn’t narrow down why the textures weren’t loading properly so I just brute forced it by adding this:</p>
+<pre><code class="lang-auto">if texture_path not in self._texture_is_transparent:
+    log.warning(f"Texture path not found: {texture_path}. Defaulting to non-transparent.")
+    self._texture_is_transparent[texture_path] = (0, False)  # Default to non-transparent if not found
+</code></pre>
+<p>– (<a href="https://github.com/EvilSupahFly/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py#L444" rel="noopener nofollow ugc">Modified Minecraft Model Reader</a>)</p>
+<p>Problem solved, textures loading. The .JSON files were all where they were supposed to be, and the .PNG files were all right where they belonged too, and that’s the only reason this seems to work. As for why this ran fine as a “proper desktop app” but not as a Flatpak is still a mystery to me. For now, though, this work-around does the trick.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enforcing pull request workflow and green CI status of PRs - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/announcements/6/index.html">Announcements</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Enforcing pull request workflow and green CI status of PRs</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Enforcing pull request workflow and green CI status of PRs</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 27, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Alexandre Bique</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Oct 11, 2022 5:12 PM">
+            <time itemprop="datePublished" datetime="2022-10-11 17:12:17 +0000">Oct 11, 2022</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This change reduces a lot the amount of automation one can achieve in its deployment, and requires more manual interventions and human time.<br>
+This leads to increased costs for maintaining a flatpak package.</p>
+<p>As well for rejecting the flathub.json setting, instead of having that configurable by the package maintainer, you will instead have to process issues on github. This again will increase your costs in human time for maintaining flathub, and introduce boring tasks which will reduce your motivation.</p>
+<p>I don’t understand what problem your are trying to fix with this change.</p>
+<p>No one cares if the package’s history is full of trials and error. This is not a bad thing to have history and I don’t think that so many people read the build script.</p>
+<p>Even if a user makes a pull request it does still run the tests on the buildbot, and actually it’ll run them twice: once for the PR and once after the merge, which will lead to increased costs for your infrastructure.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin F. Schumann</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Oct 13, 2022 6:07 AM">
+            <time itemprop="datePublished" datetime="2022-10-13 06:07:07 +0000">Oct 13, 2022</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think a workflow with forced PRs can work nicely without a lot of human interaction. You can use a develop branch for your development between releases and create a PR from develop to master whenever you want a test build. What you can do to automate updates is create a Github action that checks upstream for new versions, updates your manifest and commits the change to develop. The only missing piece is the ability to automatically create PRs from such a Github action.</p>
+<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request" rel="noopener nofollow ugc">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_23"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_23" title="Oct 13, 2022 7:24 AM">
+            <time itemprop="datePublished" datetime="2022-10-13 07:24:06 +0000">Oct 13, 2022</time>
+          </a>
+          <span class="post-number">#23</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="mfschumann" data-post="22" data-topic="3109">
+<div class="title">
+<div class="quote-controls"></div>
+mfschumann:</div>
+<blockquote>
+<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
+</blockquote>
+</aside>
+<p>Thanks, added it to the list of allowed actions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/enforcing-pull-request-workflow-and-green-ci-status-of-prs/3109/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 2</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

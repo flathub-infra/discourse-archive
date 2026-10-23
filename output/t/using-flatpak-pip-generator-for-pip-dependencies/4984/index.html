@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using flatpak-pip-generator for pip dependencies - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Using flatpak-pip-generator for pip dependencies</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Using flatpak-pip-generator for pip dependencies</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 26, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">DavidLazarescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 26, 2023 9:43 PM">
+            <time itemprop="datePublished" datetime="2023-08-26 21:43:03 +0000">Aug 26, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using a third party library that my application is building from source. This library uses <code>pip install --upgrade libcland swing</code> to get <code>libclang</code> and <code>swing</code>. While its easy to use the <code>flatpak-pip-generator</code> result for <code>libclang</code>, doing the same for <code>swig</code> gives me multiple <code>ModuleNotFoundError</code>s which I tried resolving by using <code>flatpak-pip-generator</code> on those not found modules.<br>
+Now after 2 modules (seemingly dependencies of <code>swig</code>), namely <code>scikit-build</code> and <code>setuptools_scm</code>, I get this output:</p>
+<pre><code class="lang-auto">-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build
+[1/25] Creating directories for 'BISON-bin'
+[2/25] Creating directories for 'PCRE2'
+[3/25] No download step for 'BISON-bin'
+[4/25] No update step for 'BISON-bin'
+[5/25] No patch step for 'BISON-bin'
+[6/25] No configure step for 'BISON-bin'
+[7/25] No build step for 'BISON-bin'
+[8/25] No install step for 'BISON-bin'
+[9/25] Completed 'BISON-bin'
+[10/25] Performing download step (download, verify and extract) for 'PCRE2'
+FAILED: PCRE2-prefix/src/PCRE2-stamp/PCRE2-download /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/PCRE2-stamp/PCRE2-download
+cd /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build &amp;&amp; /usr/bin/cmake -P /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/PCRE2-stamp/download-PCRE2.cmake &amp;&amp; /usr/bin/cmake -P /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/PCRE2-stamp/verify-PCRE2.cmake &amp;&amp; /usr/bin/cmake -P /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/PCRE2-stamp/extract-PCRE2.cmake &amp;&amp; /usr/bin/cmake -E touch /tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/PCRE2-stamp/PCRE2-download
+-- Downloading...
+dst='/tmp/pip-install-ul0u5_8j/swig_22c38520f49f456eb23dd9a01eafe6d8/_skbuild/linux-x86_64-3.10/cmake-build/PCRE2-prefix/src/pcre2-10.40.zip'
+timeout='none'
+inactivity timeout='none'
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+-- Retrying...
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+-- Retry after 5 seconds (attempt #2) ...
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+-- Retry after 5 seconds (attempt #3) ...
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+-- Retry after 15 seconds (attempt #4) ...
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+-- Retry after 60 seconds (attempt #5) ...
+-- Using src='https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip'
+CMake Error at PCRE2-prefix/src/PCRE2-stamp/download-PCRE2.cmake:170 (message):
+Each download failed!
+
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+--- LOG BEGIN ---
+getaddrinfo(3) failed for github.com:443
+
+Could not resolve host: github.com
+
+Closing connection 0
+
+
+
+--- LOG END ---
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+--- LOG BEGIN ---
+getaddrinfo(3) failed for github.com:443
+
+Could not resolve host: github.com
+
+Closing connection 0
+
+
+
+--- LOG END ---
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+--- LOG BEGIN ---
+getaddrinfo(3) failed for github.com:443
+
+Could not resolve host: github.com
+
+Closing connection 0
+
+
+
+--- LOG END ---
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+--- LOG BEGIN ---
+getaddrinfo(3) failed for github.com:443
+
+Could not resolve host: github.com
+
+Closing connection 0
+
+
+
+--- LOG END ---
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+--- LOG BEGIN ---
+getaddrinfo(3) failed for github.com:443
+
+Could not resolve host: github.com
+
+Closing connection 0
+
+
+
+--- LOG END ---
+error: downloading 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.zip' failed
+status_code: 6
+status_string: "Couldn't resolve host name"
+log:
+</code></pre>
+<p>Which (to me) looks like one of the dependencies of <code>swig</code> tries to download something, which fails since its (from what I know) not possible to download stuff from the internet from within the manifest.</p>
+<p>My manifest file currently looks like this:</p>
+<pre><code class="lang-auto">app-id: com.librumreader.librum
+runtime: org.kde.Platform
+runtime-version: '6.5'
+sdk: org.kde.Sdk
+command: librum
+finish-args:
+- --share=ipc
+- --share=network
+- --socket=x11
+- --socket=wayland
+- --filesystem=host
+- --device=dri
+modules:
+- python3-setuptools_scm.yaml
+- python3-scikit-build.yaml
+- python3-swig.yaml
+- python3-libclang.yaml
+- name: librum-bin
+buildsystem: cmake-ninja
+config-opts:
+- -DCMAKE_INSTALL_PREFIX=/usr
+- -DCMAKE_BUILD_TYPE=Release
+- -DBUILD_TESTS=Off
+sources:
+- type: git
+branch: main
+url: https://github.com/Librum-Reader/Librum.git
+- name: file-install
+buildsystem: simple
+build-commands:
+- install -Dm644 librum.desktop -t /app/share/applications
+# - install -Dm644 data/com.librumreader.librum.metainfo.xml -t /app/share/metainfo
+- install -Dm644 src/logo.svg -t /app/share/icons/hicolor/scalable/apps
+- mv /app/share/icons/hicolor/scalable/apps/logo.svg /app/share/icons/hicolor/scalable/apps/librum.svg
+</code></pre>
+<p>(The formatting got a little messed up while copy-pasting it).</p>
+<p>What exactly did I do wrong, and how can I achieve what I want?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

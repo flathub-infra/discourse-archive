@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anyone know how to build python-iminuit? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Anyone know how to build python-iminuit?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Anyone know how to build python-iminuit?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 24, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 24, 2021 10:13 AM">
+            <time itemprop="datePublished" datetime="2021-04-24 10:13:38 +0000">Apr 24, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I am creating Flatpak package for Veusz.</p>
+<p><a href="https://veusz.github.io/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://veusz.github.io/</a></p>
+<p>I need to build python-iminuit as optional dependency.<br>
+</p><aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/scikit-hep/iminuit" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/1X/d783a0b875923c666674fa23e590ac693cd4017a_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/1X/d783a0b875923c666674fa23e590ac693cd4017a_2_690x345.png, /uploads/optimized/1X/d783a0b875923c666674fa23e590ac693cd4017a_2_1035x517.png 1.5x, /uploads/original/1X/d783a0b875923c666674fa23e590ac693cd4017a.png 2x" data-small-upload="/uploads/optimized/1X/d783a0b875923c666674fa23e590ac693cd4017a_2_10x10.png"></div>
+
+<h3><a href="https://github.com/scikit-hep/iminuit" target="_blank" rel="noopener nofollow ugc">scikit-hep/iminuit</a></h3>
+
+
+  <p><span class="label1">Jupyter-friendly Python interface for C++ MINUIT2. Contribute to scikit-hep/iminuit development by creating an account on GitHub.</span></p>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>I have this.</p>
+<pre><code class="lang-auto">  - name: python-iminuit
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py build
+      - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
+    sources:
+      - type: git
+        url: https://github.com/scikit-hep/iminuit
+        tag: v2.4.0
+</code></pre>
+<p>But I got this error.</p>
+<pre><code class="lang-auto">Running: python3 setup.py build
+running build
+running build_py
+creating build
+creating build/lib.linux-x86_64-3.8
+creating build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/__init__.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/_deprecated.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/_repr_html.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/_repr_text.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/cost.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/minimize.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/minuit.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/pdg_format.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/testing.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/util.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+copying src/iminuit/version.py -&gt; build/lib.linux-x86_64-3.8/iminuit
+running build_ext
+cmake args: -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/run/build/python-iminuit/build/lib.linux-x86_64-3.8/iminuit/ -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_BUILD_TYPE=Release
+build args: --config Release -j8
+-- The CXX compiler identification is GNU 10.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- pybind11 v2.6.1 
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.8") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+-- Performing Test HAS_FLTO
+-- Performing Test HAS_FLTO - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /run/build/python-iminuit/build/temp.linux-x86_64-3.8
+[  1%] Building CXX object CMakeFiles/_core.dir/src/application.cpp.o
+[  2%] Building CXX object CMakeFiles/_core.dir/src/contours.cpp.o
+[  3%] Building CXX object CMakeFiles/_core.dir/src/equal.cpp.o
+[  4%] Building CXX object CMakeFiles/_core.dir/src/functionminimum.cpp.o
+[  5%] Building CXX object CMakeFiles/_core.dir/src/fcn.cpp.o
+[  6%] Building CXX object CMakeFiles/_core.dir/src/functionminimum_pickle.cpp.o
+[  8%] Building CXX object CMakeFiles/_core.dir/src/functionminimum_extra.cpp.o
+[  9%] Building CXX object CMakeFiles/_core.dir/src/hesse.cpp.o
+In file included from /run/build/python-iminuit/extern/pybind11/include/pybind11/pytypes.h:12,
+                 from /run/build/python-iminuit/src/fcn.hpp:2,
+                 from /run/build/python-iminuit/src/fcn.cpp:1:
+/run/build/python-iminuit/extern/pybind11/include/pybind11/detail/common.h:122:10: fatal error: Python.h: No such file or directory
+  122 | #include &lt;Python.h&gt;
+      |          ^~~~~~~~~~
+compilation terminated.
+</code></pre>
+<p>Thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

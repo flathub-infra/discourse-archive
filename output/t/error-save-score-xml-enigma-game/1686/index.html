@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error save score.xml Enigma-Game - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Error save score.xml Enigma-Game</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Error save score.xml Enigma-Game</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 4, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Goetz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 4, 2021 9:13 PM">
+            <time itemprop="datePublished" datetime="2021-09-04 21:13:00 +0000">Sep 4, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>I’m currently doing some work to “flatpak” the <a href="https://github.com/Enigma-Game/Enigma" rel="noopener nofollow ugc">enigma game</a>. This is a private project to learn to work with flatpak-builder. The enigma project page explains, that they are happy with distributing their project, if I’m successful I’ll get in touch with the developer and ask for permission to publish on flathub.</p>
+<p>I try to integrate the version 1.30 of enigma to flatpak. I’m on a good way and can build and run it without any problems.</p>
+<p>But if I “win” a level or try to exit it over the menu, enigma crashes with a SIGABRT. The following output is generated with gdb:</p>
+<pre><code class="lang-auto">/usr/include/c++/10.2.0/bits/stl_vector.h:1063: std::vector&lt;_Tp, _Alloc&gt;::const_reference std::vector&lt;_Tp, _Alloc&gt;::operator[](std::vector&lt;_Tp, _Alloc&gt;::size_type) const [with _Tp = unsigned char; _Alloc = std::allocator&lt;unsigned char&gt;; std::vector&lt;_Tp, _Alloc&gt;::const_reference = const unsigned char&amp;; std::vector&lt;_Tp, _Alloc&gt;::size_type = long unsigned int]: Assertion '__builtin_expect(__n &lt; this-&gt;size(), true)' failed.
+
+Thread 1 "enigma" received signal SIGABRT, Aborted.
+0x00007ffff74917f5 in raise () from /usr/lib/x86_64-linux-gnu/libc.so.6
+(gdb) backtrace
+#0  0x00007ffff74917f5 in raise () from /usr/lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007ffff747a855 in abort () from /usr/lib/x86_64-linux-gnu/libc.so.6
+#2  0x00005555557d5835 in std::__replacement_assert (__condition=0x5555557efdd8 "__builtin_expect(__n &lt; this-&gt;size(), true)", 
+    __function=0x5555557fa320 "std::vector&lt;_Tp, _Alloc&gt;::const_reference std::vector&lt;_Tp, _Alloc&gt;::operator[](std::vector&lt;_Tp, _Alloc&gt;::size_type) const [with _Tp = unsigned char; _Alloc = std::allocator&lt;unsigned char&gt;; std::vector"..., __line=1063, 
+    __file=0x5555557eff68 "/usr/include/c++/10.2.0/bits/stl_vector.h")
+    at /usr/include/c++/10.2.0/x86_64-unknown-linux-gnu/bits/c++config.h:457
+#3  std::vector&lt;unsigned char, std::allocator&lt;unsigned char&gt; &gt;::operator[] (this=&lt;optimized out&gt;, __n=0)
+    at /usr/include/c++/10.2.0/bits/stl_vector.h:1063
+#4  std::vector&lt;unsigned char, std::allocator&lt;unsigned char&gt; &gt;::operator[] (__n=0, this=&lt;optimized out&gt;)
+    at /usr/include/c++/10.2.0/bits/stl_vector.h:1061
+#5  zipios::writeByteSeq (vec=std::vector of length 0, capacity 0, vec=std::vector of length 0, capacity 0, os=...)
+    at ./../zipios++/zipheadio.h:153
+#6  zipios::operator&lt;&lt; (os=..., zlh=...) at zipheadio.cpp:114
+#7  0x00005555557d8938 in zipios::ZipOutputStreambuf::putNextEntry (this=this@entry=0x7fffffffc340, entry=...)
+    at zipoutputstreambuf.cpp:77
+#8  0x0000555555626fe9 in enigma::writeToZip (zipStream=..., filename="score.xml", size=size@entry=1512, contents=...)
+    at file_zip.cc:67
+#9  0x000055555573d4be in enigma::lev::ScoreManager::save (this=0x55555838e8d0) at lev/ScoreManager.cc:460
+#10 0x0000555555606dd1 in enigma::client::Client::level_finished (
+    this=0x55555592eb60 &lt;enigma::client::(anonymous namespace)::client_instance&gt;) at client.cc:810
+#11 0x00005555556072b3 in enigma::client::Msg_Command (cmd=...) at client.cc:937
+#12 0x0000555555679bb7 in enigma::server::Tick (dtime=dtime@entry=0.01) at server.cc:368
+#13 0x0000555555629d81 in enigma::game::StartGame () at game.cc:83
+#14 0x00005555556ca85d in enigma::gui::LevelMenu::on_action (this=0x7fffffffd2d0, w=&lt;optimized out&gt;) at gui/LevelMenu.cc:281
+#15 0x00005555556dc98a in enigma::gui::LevelWidget::trigger_action (this=this@entry=0x555555f45990) at gui/LevelWidget.cc:104
+#16 0x00005555556de8c8 in enigma::gui::LevelWidget::handle_mousedown (this=0x555555f45990, e=&lt;optimized out&gt;)
+    at gui/LevelWidget.cc:462
+#17 0x00005555556decc6 in enigma::gui::LevelWidget::on_event (this=0x555555f45990, e=...) at gui/LevelWidget.cc:424
+#18 0x00005555556e6950 in enigma::gui::Menu::handle_event (this=this@entry=0x7fffffffd2d0, e=...) at gui/Menu.cc:169
+#19 0x00005555556e6c83 in enigma::gui::Menu::manage (this=this@entry=0x7fffffffd2d0) at gui/Menu.cc:96
+--Type &lt;RET&gt; for more, q to quit, c to continue without paging--
+#20 0x00005555556d8b5d in enigma::gui::LevelPackMenu::manageLevelMenu (this=this@entry=0x7fffffffd6f0) at gui/LevelPackMenu.cc:437
+#21 0x00005555556e5587 in enigma::gui::MainMenu::on_action (this=0x7fffffffda70, w=&lt;optimized out&gt;) at gui/MainMenu.cc:559
+#22 0x00005555556f305a in enigma::gui::Widget::invoke_listener (this=this@entry=0x5555580fdd30) at gui/widgets.cc:63
+#23 0x00005555556f5396 in enigma::gui::PushButton::on_event (this=0x5555580fdd30, e=...) at gui/widgets.cc:756
+#24 0x00005555556e6950 in enigma::gui::Menu::handle_event (this=this@entry=0x7fffffffda70, e=...) at gui/Menu.cc:169
+#25 0x00005555556e6c83 in enigma::gui::Menu::manage (this=this@entry=0x7fffffffda70) at gui/Menu.cc:96
+#26 0x00005555556e5369 in enigma::gui::ShowMainMenu () at gui/MainMenu.cc:623
+#27 0x00005555555eddae in main (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;) at main.cc:994
+</code></pre>
+<p>First version of flatpak manifest can be found <a href="https://github.com/MrTarantoga/flathub/tree/org.nongnu.enigma" rel="noopener nofollow ugc">GitHub - MrTarantoga/flathub at org.nongnu.enigma</a>.</p>
+<p>So what is the problem? Enigma tries to write the “score.xml” if you win a level or exit the game. But as you see in the gdb output a SIGABRT and the score.xml not written. I’ve built the same enigma version on a fresh debian virtual machine and the same error does not occur, I could play the game without any errors.</p>
+<p>I’m pretty sure I’ve done some sandbox configuration errors, but I’ve no idea what could possible go wrong. Does anyone see a soultion or can help me?</p>
+<p>Thank you<br>
+– Tarantoga</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 6, 2021 2:14 AM">
+            <time itemprop="datePublished" datetime="2021-09-06 02:14:29 +0000">Sep 6, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There is likely a bug in upstream where it trigger an assert in newer version of the C++ library. Which version of gcc do you have on the debian system? It’s probably older than what the freedesktop sdk has.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 6, 2021 2:16 AM">
+            <time itemprop="datePublished" datetime="2021-09-06 02:16:25 +0000">Sep 6, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="MrTarantoga" data-post="1" data-topic="1686">
+<div class="title">
+<div class="quote-controls"></div>
+MrTarantoga:</div>
+<blockquote>
+<pre><code class="lang-auto">#4  std::vector&lt;unsigned char, std::allocator&lt;unsigned char&gt; &gt;::operator[] (__n=0, this=&lt;optimized out&gt;)
+    at /usr/include/c++/10.2.0/bits/stl_vector.h:1061
+#5  zipios::writeByteSeq (vec=std::vector of length 0, capacity 0, vec=std::vector of length 0, capacity 0, os=...)
+</code></pre>
+</blockquote>
+</aside>
+<p>Looking closer at the stack trace, it tries tries to access an element on an empty vector (size 0, capacity 0).</p>
+<p>Newer C++ libraries will assert. This is wrong in any case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Goetz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 6, 2021 7:34 PM">
+            <time itemprop="datePublished" datetime="2021-09-06 19:34:33 +0000">Sep 6, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, it compiles on the new Debian Bullsey with gcc 10.2, and it runs without any problems.<br>
+I also tried it with the SDK version 19.08, 21.08 and 18.08 and the same error occurred.</p>
+<p>Well, in my opinion try to write an empty container should not throw any kind of error, in case is  just does write nothing. But this is a huge runtime difference between flatpak and the standard debian distribution. On a short overview of the code section, I do not see any kind of problem which could rise to assert. But at the weekend I will investigate it more carefully.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 7, 2021 6:05 PM">
+            <time itemprop="datePublished" datetime="2021-09-07 18:05:59 +0000">Sep 7, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Believe what you want, but <strong>accessing any element in an empty vector in C++ is a bug</strong>. <code>operator[]</code> doesn’t check bounds - it’s in the documentation.</p>
+<p>Not sure why it doesn’t crash outside of flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 7, 2021 6:12 PM">
+            <time itemprop="datePublished" datetime="2021-09-07 18:12:11 +0000">Sep 7, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Reading the code further, it triggers the assert in flatpak (good) but otherwise since it never accesses the refrenced memory, then it behave like it didn’t happen.</p>
+<p><strong>Definitely a bug</strong>.</p>
+<p>Now if the code used <code>vec.data()</code> instead of <code>&amp;vec[0]</code>, it would work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Goetz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 8, 2021 11:20 AM">
+            <time itemprop="datePublished" datetime="2021-09-08 11:20:21 +0000">Sep 8, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah of course, but that is not what I’m talking about. It is pretty clear that this is code smell from hell and nobody should do that in this anymore. So more precisely, from my side:</p>
+<pre><code class="lang-auto">#5  zipios::writeByteSeq (vec=std::vector of length 0, capacity 0, vec=std::vector of length 0, capacity 0, os=...)
+    at ./../zipios++/zipheadio.h:153
+#6  zipios::operator&lt;&lt; (os=..., zlh=...) at zipheadio.cpp:114
+#7  0x00005555557d8938 in zipios::ZipOutputStreambuf::putNextEntry (this=this@entry=0x7fffffffc340, entry=...)
+    at zipoutputstreambuf.cpp:77
+#8  0x0000555555626fe9 in enigma::writeToZip (zipStream=..., filename="score.xml", size=size@entry=1512, contents=...)
+    at file_zip.cc:67
+</code></pre>
+<p>Looking in the code, they try to save the score.xml. But by injecting a whole object not doing some crazy pointer stuff. The critical code section is:</p>
+<pre><code class="lang-auto">inline void writeByteSeq ( ostream &amp;os, const vector &lt; unsigned char &gt; &amp;vec ) {
+  os.rdbuf()-&gt;sputn( reinterpret_cast&lt; const char * &gt;( &amp;( vec[ 0 ] ) ), vec.size() ) ;
+}
+</code></pre>
+<p>The <code>reinterpret_cast</code> does only make the array entry point available for the <code>sputn</code> function. This memory must exists, because it holds the pointer to the heap with the array.</p>
+<p>The only aspect, that might be asserted the compiler first try to dereference the invalid pointer and next to read the address of the  memory that is dereferenced. Yeah, but this sounds crazy.</p>
+<p>In the next step, <code>sputn</code> should check the size before it tries to read. I do not know if the implementation will do so, but I hope.</p>
+<p>Do I miss something?</p>
+<p>Cheers<br>
+–Tarantoga</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Goetz</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 8, 2021 11:22 AM">
+            <time itemprop="datePublished" datetime="2021-09-08 11:22:27 +0000">Sep 8, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I will try to fix it. Thank you for your advice.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 8, 2021 12:36 PM">
+            <time itemprop="datePublished" datetime="2021-09-08 12:36:31 +0000">Sep 8, 2021</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>as I said the assert is in <code>operator[]</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

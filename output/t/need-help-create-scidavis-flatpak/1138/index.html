@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Need help create SciDAVis flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Need help create SciDAVis flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Need help create SciDAVis flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 25, 2021</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 25, 2021 10:49 AM">
+            <time itemprop="datePublished" datetime="2021-02-25 10:49:06 +0000">Feb 25, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I am trying to build Flatpak for SciDAVis, a scientific and data plotting software.</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/highperformancecoder/scidavis">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/highperformancecoder/scidavis" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="/uploads/optimized/2X/2/267cf1d677642b55450d75523bc405e527812586_2_690x345.png" class="thumbnail" data-dominant-color="F2EDEE" width="690" height="345"></div>
+
+<h3><a href="https://github.com/highperformancecoder/scidavis" target="_blank" rel="noopener nofollow ugc">GitHub - highperformancecoder/scidavis</a></h3>
+
+  <p>Contribute to highperformancecoder/scidavis development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I failed to compile it.</p>
+<blockquote>
+<p>In file included from src/ImageMarker.cpp:30:<br>
+src/ImageMarker.h:32:10: fatal error: qwt_plot.h: No such file or directory<br>
+32 | <span class="hashtag-raw">#include</span> &lt;qwt_plot.h&gt;<br>
+|          ^~~~~~~~~~~~<br>
+compilation terminated.<br>
+make[1]: *** [Makefile:4234: …/tmp/libscidavis/ImageMarker.o] Error 1<br>
+make[1]: *** Waiting for unfinished jobs…<br>
+In file included from src/ArrowMarker.h:32,<br>
+from src/ArrowMarker.cpp:29:<br>
+src/PlotEnrichement.h:32:10: fatal error: qwt_plot.h: No such file or directory<br>
+32 | <span class="hashtag-raw">#include</span> &lt;qwt_plot.h&gt;<br>
+|          ^~~~~~~~~~~~<br>
+compilation terminated.<br>
+make[1]: *** [Makefile:4230: …/tmp/libscidavis/ArrowMarker.o] Error 1<br>
+src/Cone3D.cpp:30:10: fatal error: qwt3d_color.h: No such file or directory<br>
+30 | <span class="hashtag-raw">#include</span> &lt;qwt3d_color.h&gt;<br>
+|          ^~~~~~~~~~~~~~~<br>
+compilation terminated.<br>
+make[1]: *** [Makefile:4339: …/tmp/libscidavis/Cone3D.o] Error 1<br>
+src/TitlePicker.cpp:31:10: fatal error: qwt_plot.h: No such file or directory<br>
+31 | <span class="hashtag-raw">#include</span> &lt;qwt_plot.h&gt;<br>
+|          ^~~~~~~~~~~~<br>
+compilation terminated.<br>
+make[1]: *** [Makefile:3875: …/tmp/libscidavis/TitlePicker.o] Error 1<br>
+src/Bar.cpp:31:10: fatal error: qwt3d_color.h: No such file or directory<br>
+31 | <span class="hashtag-raw">#include</span> &lt;qwt3d_color.h&gt;<br>
+|          ^~~~~~~~~~~~~~~<br>
+compilation terminated.</p>
+</blockquote>
+<p>This is because it cannot find qwt. However, SciDAVis already include this in their github 3rd party submodule.</p>
+<p>How do I tell flatpak-builder to download git submodules for the source file? Because scidavis have 3rd party dependency link to it, and it need that to build.</p>
+<p>This is my current io.github.highperformancecoder.SciDAVis.yaml file.</p>
+<blockquote>
+<pre><code>app-id: io.github.highperformancecoder.SciDAVis
+runtime: org.kde.Platform
+sdk: org.kde.Sdk
+runtime-version: '5.15'
+command: scidavis
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --device=dri
+  - --env=SESSION_MANAGER= # required to avoid Qt warning
+  - --filesystem=home
+
+modules:
+  - name: gsl
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
+        sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
+
+  - shared-modules/glu/glu-9.json
+  
+  - name: scidavis
+    buildsystem: "qmake"
+    disable-submodules: OFF
+    build-options:
+      env:
+        - QMAKEPATH=/app/lib
+    sources:
+      - type: git
+        url: https://github.com/highperformancecoder/scidavis.git
+        tag: "2.3.0"
+        commit: aa0e5c0146846b82872d493053c6efb7d5709317
+        sha256: 'cc54a8dafeb3dab432ff7a548171f6504038b9de2a07d396bdb604d9a2796f64'
+</code></pre>
+</blockquote>
+<p>Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 25, 2021 4:24 PM">
+            <time itemprop="datePublished" datetime="2021-02-25 16:24:30 +0000">Feb 25, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I also asked SciDAVis here: <a href="https://sourceforge.net/p/scidavis/discussion/708155/thread/7e5e20d0c3/" rel="noopener nofollow ugc">https://sourceforge.net/p/scidavis/discussion/708155/thread/7e5e20d0c3/</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 27, 2021 3:59 PM">
+            <time itemprop="datePublished" datetime="2021-02-27 15:59:44 +0000">Feb 27, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This I see:</p>
+<p><code>disable-submodules</code> you only want to use that to disable them. Also it’s a boolean so <code>OFF</code> isn’t a proper value. Also it’s in the wrong place it should be in the ‘source’ section.</p>
+<p>flatpak-build show these two warning errors:</p>
+<pre><code class="lang-auto">(flatpak-builder:1667511): flatpak-builder-WARNING **: 10:44:59.265: Unknown property disable-submodules for type BuilderModule
+
+(flatpak-builder:1667511): flatpak-builder-WARNING **: 10:44:59.265: Unknown property sha256 for type BuilderSourceGit
+</code></pre>
+<p>My experience with qmake in general is that I have to patch the .pro to work.</p>
+<p>I think at that point I’d build Qwt part of the flatpak instead, like it recommended in the INSTALL.md file</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 27, 2021 4:04 PM">
+            <time itemprop="datePublished" datetime="2021-02-27 16:04:21 +0000">Feb 27, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just to add it seems that the qmake file won’t try to build it, so that’s the right approach. Probably still need to patch it all, it seems to assume things are in <code>/usr/lib</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 27, 2021 5:06 PM">
+            <time itemprop="datePublished" datetime="2021-02-27 17:06:28 +0000">Feb 27, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for reply.</p>
+<p>SciDAVis is adding cmake support in master branch. I will use that instead, because it fix qwt build issue.<br>
+I will have to ask the dev to bundle the 3rdparty dependencies to github release. Hopefully, the next scidavis release will solved that.</p>
+<p>There are other issue I encounter still. Like missing Python support even if I add Python dependencies. Can I make cmake output more verbose? I want to see if the flag I use is working.</p>
+<p><a href="https://sourceforge.net/p/scidavis/discussion/708155/thread/a41121371c/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://sourceforge.net/p/scidavis/discussion/708155/thread/a41121371c/</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 28, 2021 10:34 AM">
+            <time itemprop="datePublished" datetime="2021-02-28 10:34:43 +0000">Feb 28, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The dev suggest that missing python support might cause by missing python development libraries. Is it bundled by default or do I have to add extra modules?</p>
+<p>Dev also suggest add python interpreter with the PYTHON environment variable: “env<br>
+PYTHON=python3 cmake .” Is using build-options and env: the correct way to use it?</p>
+<pre><code>  - name: scidavis
+    buildsystem: cmake
+    build-options:
+      cflags: -DSCRIPTING_PYTHON:BOOL=ON -DORIGIN_IMPORT:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+      env:
+        PYTHON: python3
+    sources:
+      - type: dir
+        path: scidavis
+</code></pre>
+<p>Or maybe add this?<br>
+finish-args:<br>
+- --env=PYTHONPATH=/app/packages/python</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 28, 2021 11:23 AM">
+            <time itemprop="datePublished" datetime="2021-02-28 11:23:03 +0000">Feb 28, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Both option does not work. No clue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 28, 2021 7:58 PM">
+            <time itemprop="datePublished" datetime="2021-02-28 19:58:37 +0000">Feb 28, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, do you know how do I pass export PYTHON=python3 just before scidavis start building?<br>
+I think I use this wrong.</p>
+<pre><code>  - name: scidavis        
+    buildsystem: cmake
+    build-options:
+      env:
+         - export PYTHON=python3
+         - CONFIG+=liborigin
+      cflags: -DSCRIPTING_PYTHON:BOOL=ON -DORIGIN_IMPORT:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DVERBOSE=1 
+    sources:
+      - type: git
+        url: https://github.com/highperformancecoder/scidavis</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

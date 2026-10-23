@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak build error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak build error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak build error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 9, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Dec 11, 2020 6:47 PM">
+            <time itemprop="datePublished" datetime="2020-12-11 18:47:31 +0000">Dec 11, 2020</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_20">Replying to #20</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I wasn’t really sure what you meant, so I deleted the .flatpak-builder directory and included the contents of the glew and glu files in the main manifest which I hoped would update anything to do with them next time I ran the build. Result - same old error!</p>
+<blockquote>
+<p>NDEBUG -fPIC   -fopenmp -pthread -std=gnu++11 -MD -MT src/hugin_base/CMakeFiles/huginbase.dir/panodata/SrcPanoImage.cpp.o -MF src/hugin_base/CMakeFiles/huginbase.dir/panodata/SrcPanoImage.cpp.o.d -o src/hugin_base/CMakeFiles/huginbase.dir/panodata/SrcPanoImage.cpp.o -c …/src/hugin_base/panodata/SrcPanoImage.cpp<br>
+…/src/hugin_base/panodata/SrcPanoImage.cpp: In member function ‘bool HuginBase::SrcPanoImage::readEXIF()’:<br>
+…/src/hugin_base/panodata/SrcPanoImage.cpp:358:30: error: expected unqualified-id before ‘&amp;’ token<br>
+catch (const Exiv2::Error&amp; e)<br>
+^<br>
+…/src/hugin_base/panodata/SrcPanoImage.cpp:358:30: error: expected ‘)’ before ‘&amp;’ token<br>
+catch (const Exiv2::Error&amp; e)<br>
+~                  ^<br>
+)<br>
+…/src/hugin_base/panodata/SrcPanoImage.cpp:358:30: error: expected ‘{’ before ‘&amp;’ token<br>
+…/src/hugin_base/panodata/SrcPanoImage.cpp:358:32: error: ‘e’ was not declared in this scope<br>
+catch (const Exiv2::Error&amp; e)<br>
+^<br>
+ninja: build stopped: subcommand failed.<br>
+Error: module align_image_stack: Child process exited with code 1</p>
+</blockquote>
+<p>Might that be because I didn’t include the patch for exiv2?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Dec 11, 2020 7:38 PM">
+            <time itemprop="datePublished" datetime="2020-12-11 19:38:08 +0000">Dec 11, 2020</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Are you sure that old version of hugin build with that version of exiv2? That’s what the problem look like. Either because the API changed (I don’t think) or because said source file is missing an include that it should have had.</p>
+<p>(I build 2019.2 and have no problem, so this probably mean the problem is fixed there)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_25"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_25" title="Jan 24, 2021 7:25 PM">
+            <time itemprop="datePublished" datetime="2021-01-24 19:25:33 +0000">Jan 24, 2021</time>
+          </a>
+          <span class="post-number">#25</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Tried again with everything original, except for the URL of exiv2 - I have replaced it with one which exists, and glew and glu are now inline to be sure that they are rebuilt.</p>
+<p>It’s builds and runs! That includes align-image-stack!</p>
+<p>One problem remains - it built and ran on 3.30. I have since tried with 3.38 and it fails with the usual error. That’s inconvenient because 3.30 is unsupported since January this year. Maybe can put off worrying about this until later.<br>
+Thanks for your help Hub!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_26"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_26" title="Jan 27, 2021 10:47 AM">
+            <time itemprop="datePublished" datetime="2021-01-27 10:47:03 +0000">Jan 27, 2021</time>
+          </a>
+          <span class="post-number">#26</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve found that it will build with a version of the Freedesktop Platform, but that doesn’t contain Gnome and it would be impractical for me to add it. It won’t build with a recent Gnome Platform.</p>
+<p>I might post some queries:</p>
+<ul>
+<li>On here asking for help to sort out the manifest.</li>
+<li>On Gnome asking what has been dropped/changed.</li>
+<li>On Hugin asking someone to look at the error messages.</li>
+</ul>
+<p>However I think it is a nightmare which is beyond my ability to tackle, so I intend to resubmit the package without the important function provided by align-image-stack. It will definitely be second-rate, but that’s better than nothing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_27"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Popout Apps</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_27" title="Jan 28, 2021 7:10 PM">
+            <time itemprop="datePublished" datetime="2021-01-28 19:10:01 +0000">Jan 28, 2021</time>
+          </a>
+          <span class="post-number">#27</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_26">Replying to #26</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The errors appear to be from wxwidgets when building align-image-stack. Gnome Discourse suggests that changes between 3.32 and 3.34 may mean that wxwidgets isn’t built in a way that is suitable for align-image-stack. That’s beyond my ability to sort out. So it’ll be the cut-down version.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_28"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_28" title="Feb 5, 2021 11:36 AM">
+            <time itemprop="datePublished" datetime="2021-02-05 11:36:21 +0000">Feb 5, 2021</time>
+          </a>
+          <span class="post-number">#28</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>App going live soon, thanks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_29"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_29" title="Oct 18, 2021 10:01 AM">
+            <time itemprop="datePublished" datetime="2021-10-18 10:01:53 +0000">Oct 18, 2021</time>
+          </a>
+          <span class="post-number">#29</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_26">Replying to #26</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve rebuilt this with org.gnome. Platform V40 and the latest versions of all the modules. It now works including align-image-stack. I have the impression there was a bug in one of the modules and that in addition to adding Gnome stuff to the platform they must have taken something out from the freedesktop version. Very confusing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/flatpak-build-error/948/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 2</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

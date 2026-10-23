@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gamepads not working in various applications - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Gamepads not working in various applications</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Gamepads not working in various applications</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 16, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 16, 2020 4:19 AM">
+            <time itemprop="datePublished" datetime="2020-06-16 04:19:35 +0000">Jun 16, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi there. I’m opening this topic in an effort to try and chase down something that has plagued my Flatpak experience for quite a long time.</p>
+<p>There are many varied applications where gamepads do not work. This crops up most obviously in Steam, where about half of the native games I’ve tested don’t notice the gamepad at all. There are two things that make this even more confounding.</p>
+<p>The first: you can force these applications to use the Windows version via Proton, and gamepad input will suddenly start working. I would really not rather get into the habit of installing the Windows versions of native games, especially ones that have supported us for a long time.</p>
+<p>The second: they don’t even work in Steam Input. I have given /dev/uinput sufficient permissions to let Steam create virtual gamepads, and it works just fine in other games. But the games where gamepad input doesn’t work, Steam Input doesn’t work either. It’s my understanding that Steam Input just makes virtual 360 gamepads, but whatever method these games are trying to use to get input, it’s just not working.</p>
+<p>I thought this issue was specific to Steam because gamepads work in other Flatpaks; RetroArch, Dolphin, PCSX2. But then I tried to use a gamepad in Firefox, at <a href="http://gamepadviewer.com" rel="nofollow noopener">gamepadviewer.com</a>. It didn’t work. But it did work in the binary tarball version.</p>
+<p>I have had <a href="https://github.com/flathub/com.valvesoftware.Steam/issues/498" rel="nofollow noopener">an issue report</a> open on the Steam bug tracker for a while, but it has been ignored. Because I have just now noticed this issue in Firefox, I made <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1645955" rel="nofollow noopener">an issue report</a> on their bugzilla since they’re supporting the Flatpak themselves. Maybe they’ll have some insight, maybe that’ll get ignored too.</p>
+<p>EDIT: I can do <code>flatpak run --command=sh org.mozilla.firefox</code> and <code>cat</code> both the <code>event*</code> and <code>js*</code> devices representing the gamepad. So it doesn’t feel like a permissions issue. But doing <code>ls -l /dev/input</code> shows they’re owned by <code>nfsnobody:nfsnobody</code> instead of <code>root:input</code> like on the base system. Could that make some sort of difference?</p>
+<p>So I thought I’d go ahead and make this topic here and see if there are people with more intimate knowledge who might know some things we can try to do to figure this issue out.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">eszlari</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 18, 2020 8:26 AM">
+            <time itemprop="datePublished" datetime="2020-06-18 08:26:02 +0000">Jun 18, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a href="https://github.com/flatpak/flatpak/issues/7" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flatpak/flatpak/issues/7</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 18, 2020 2:59 PM">
+            <time itemprop="datePublished" datetime="2020-06-18 14:59:18 +0000">Jun 18, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I saw that, but it didn’t seem like it had anything to do with why it’s different between different games and applications. And we already have joystick access in the sandbox. event* and js* joysticks both show up, and they can both be read. I just don’t know why it’s <em>not</em> reading them. Are you suggesting I comment on that issue for help?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Oleksandr Mytkevych</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 17, 2021 12:25 PM">
+            <time itemprop="datePublished" datetime="2021-09-17 12:25:10 +0000">Sep 17, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have the same issue. Steam simply doesn’t recognize gamepad, but in standard Linux version of Steam it works fine!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Trent M</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 20, 2021 1:33 PM">
+            <time itemprop="datePublished" datetime="2021-09-20 13:33:45 +0000">Sep 20, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Are you talking Steam itself, or are you talking specific games within Steam? If it’s the second, you can poke a hole to <code>/run/udev</code> on the host to help a large number of older games. More information on that <a href="https://github.com/flatpak/xdg-desktop-portal/issues/536#issuecomment-767711661" rel="noopener nofollow ugc">here,</a> but do that at your own risk and with the understanding that it will almost certainly break someday.</p>
+<p>Valve is pushing developers toward Proton even for new games, so I imagine that will have to be most reliable solution for native games that rely on deprecated or discouraged behavior from an old version of the software stack.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

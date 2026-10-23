@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meta Issues (Again) - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Meta Issues (Again)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Meta Issues (Again)</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 14, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 14, 2024 2:41 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 14:41:36 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Having resolved the initial issue of “stupid typo” in <a href="/t/troubleshooting-metadata-xml-error/7831/index.html">my last post</a>, I have now encountered a new error:</p>
+<pre><code class="lang-auto">Composing metadata...
+Run failed, some data was ignored.
+Errors were raised during this compose run:
+general
+  E: filters-but-no-output
+
+io.github.evilsupahfly.amulet_flatpak
+  E: file-read-error
+Refer to the generated issue report data for details on the individual problems.
+Error: ERROR: appstreamcli compose failed: Child process exited with code 1
+
+[2024-10-14 09:58:15] ERROR: flatpak-builder failed. 
+</code></pre>
+<p>I fixed the mismatched ID and tried to build the flatpak again, but it started complaining about not having a .desktop or icon, so I added them and updated my XML and YML sources accordingly (pasted below).</p>
+<p>I’ve read through the <a href="https://docs.flatpak.org/en/latest/desktop-integration.html" rel="noopener nofollow ugc">Desktop Integration</a> docs, the <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/" rel="noopener nofollow ugc">Metainfo Guidelines</a> pages, and to be sure I was following the expected conventions, I read through <a href="https://docs.flatpak.org/en/latest/conventions.html" rel="noopener nofollow ugc">Requirements &amp; Conventions</a>, but I’m still somehow missing something.</p>
+<p>I initially didn’t change the YML, but that caused an error, so I added the .desktop and icon lines to the existing <code>metadata-xml</code> section. When that failed, I gave them their own sections, and that too failed.</p>
+<p>New XML:</p>
+<pre><code class="lang-auto">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;component type="desktop-application"&gt;
+  &lt;id&gt;io.github.evilsupahfly.amulet_flatpak&lt;/id&gt;
+  
+  &lt;name&gt;Amulet Map Editor - Flatpak Edition&lt;/name&gt;
+  &lt;summary&gt;Amulet is a Minecraft world editor that allows users to modify and create worlds with ease&lt;/summary&gt;
+  
+  &lt;metadata_license&gt;FTL&lt;/metadata_license&gt;
+  &lt;project_license&gt;AGPL-3.0-or-later&lt;/project_license&gt;
+  
+  &lt;description&gt;
+    &lt;p&gt;
+      Amulet is a simple, yet powerful, world editor for modifying Minecraft saved worlds.
+    &lt;/p&gt;
+  &lt;/description&gt;
+  &lt;developer id="io.github.evilsupahfly.amulet_flatpak"&gt;
+    &lt;name&gt;Amulet Developer: Team Amulet&lt;/name&gt;
+    &lt;name&gt;Flatpak Developer: EvilSupahFly&lt;/name&gt;
+  &lt;/developer&gt;
+  &lt;url type="homepage"&gt;https://github.com/amulet-Team/Amulet-Map-Editor/&lt;/url&gt;
+  &lt;url type="vcs-browser"&gt;https://github.com/EvilSupahFly/Amulet-Flatpak/&lt;/url&gt;
+  &lt;releases&gt;
+    &lt;release version="0.10.36" date="2024-01-18"&gt;
+      &lt;url type="details"&gt;https://github.com/EvilSupahFly/Amulet-Flatpak/releases/tag/0.10.36&lt;/url&gt;
+    &lt;/release&gt;
+  &lt;/releases&gt;
+  &lt;launchable type="desktop-id"&gt;io.github.evilsupahfly.amulet_flatpak.desktop&lt;/launchable&gt;
+  &lt;icon type="stock"&gt;io.github.evilsupahfly.amulet_flatpak.png&lt;/icon&gt;
+  &lt;content_rating type="oars-1.0"&gt;
+    &lt;content_attribute id="social-chat"&gt;moderate&lt;/content_attribute&gt;
+  &lt;/content_rating&gt;
+
+  &lt;categories&gt;
+    &lt;category&gt;Game&lt;/category&gt;
+    &lt;category&gt;KidsGame&lt;/category&gt;
+  &lt;/categories&gt;
+  
+&lt;/component&gt;
+</code></pre>
+<p>New YML:</p>
+<pre><code class="lang-auto">id: io.github.evilsupahfly.amulet_flatpak
+name: Amulet Map Editor
+version: 0.10.36
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: amulet_map_editor
+
+finish-args:
+  - --device=all
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=home:persistent
+  - --filesystem=~/.cache:persistent
+  - --filesystem=host:create
+  - --env=LIBGL_ALWAYS_SOFTWARE="0"
+  - --env=OPENGL_VERSION=3.3
+  - --env=OPENGL_LIB=/usr/lib/x86_64-linux-gnu/libGL.so
+  - --env=PYTHONDEBUG=3
+  - --env=PYTHONVERBOSE=3
+  - --env=PYTHONTRACEMALLOC=10
+modules:
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
+  - pip-gen.yaml
+  - name: metainfo-xml
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.metainfo.xml
+  - name: metainfo-ico
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/io.github.evilsupahfly.amulet_flatpak.png
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.png
+  - name: metainfo-desktop
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.evilsupahfly.amulet_flatpak.desktop -t ${FLATPAK_DEST}/share/applications/io.github.evilsupahfly.amulet_flatpak.desktop
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.desktop
+
+versioning:
+  auto-increment: true
+</code></pre>
+<p>The files exist in the root folder of the project, along side the XML file. I also created the directory structures under <code>share</code> thinking that would resolve this, but that didn’t help either.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/7/708723dc58c65775171c8791f0dfc81a280c930a.png" data-download-href="/uploads/original/2X/7/708723dc58c65775171c8791f0dfc81a280c930a.png" title="Screenshot from 2024-10-14 10-25-22" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/7/708723dc58c65775171c8791f0dfc81a280c930a_2_690x262.png" alt="Screenshot from 2024-10-14 10-25-22" data-base62-sha1="g3t0NT81snf6BodYo5R1WYJ7cUO" width="690" height="262" srcset="/uploads/optimized/2X/7/708723dc58c65775171c8791f0dfc81a280c930a_2_690x262.png, /uploads/optimized/2X/7/708723dc58c65775171c8791f0dfc81a280c930a_2_1035x393.png 1.5x, /uploads/optimized/2X/7/708723dc58c65775171c8791f0dfc81a280c930a_2_1380x524.png 2x" data-dominant-color="5B6068"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot from 2024-10-14 10-25-22</span><span class="informations">1455×553 74.1 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p>Please tell me I didn’t miss something stupidly obvious again like <a href="/t/troubleshooting-metadata-xml-error/7831/index.html">last time</a>… Is there a means by which I can obtain a more detailed log upon failure?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="4 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          4 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 14, 2024 2:53 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 14:53:32 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="1" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p><code>version: 0.10.36</code></p>
+</blockquote>
+</aside>
+<p>Not sure which bit of the documentation said <code>version</code> is a valid field here. but it is wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 14, 2024 2:54 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 14:54:22 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="1" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<pre><code class="lang-auto">versioning:
+  auto-increment: true
+</code></pre>
+</blockquote>
+</aside>
+<p>Same for this. And flatpak-builder probably tells you</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 14, 2024 2:55 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 14:55:08 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="1" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p>Please tell me I didn’t miss something stupidly obvious</p>
+</blockquote>
+</aside>
+<p>Without seeing the desktop file it’s hard to guess. Check the icon name in there. It’s probably incorrect.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 14, 2024 3:00 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:00:02 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="1" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p><code>      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/io.github.evilsupahfly.amulet_flatpak.png</code></p>
+</blockquote>
+</aside>
+<p><code>-t</code> does not require the filename at the end, only the target directory, It should be</p>
+<pre><code class="lang-auto">- install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 14, 2024 3:11 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:11:48 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The version entries were mentioned in the “building your first flatpak” doc I read last year when I first started taking an interest in Flatpak after all the controversy surrounding Snap. I can’t find the original document I read at that time, but that’s where I got the foundation for my initial manifest.</p>
+<p>As for the desktop file… The filename is <code>io.github.evilsupahfly.amulet_flatpak.desktop</code> and the contents were auto-generated by the <a href="https://github.com/ximion/appstream/" rel="noopener nofollow ugc">AppStream Project</a>.</p>
+<pre><code class="lang-auto">[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Amulet Minecraft Map Editor (Flatpak Edition)
+Comment=A powerful map editor for Minecraft worlds
+Categories=Game;KidsGame;
+
+Icon=io.github.evilsupahfly.amulet_flatpak.png
+Exec=flatpak run io.github.evilsupahfly.amulet_flatpak
+Terminal=true
+Name[en_CA]=io.github.evilsupahfly.amulet_flatpak.desktop
+</code></pre>
+<aside class="quote no-group" data-username="bbhtt" data-post="5" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p><code>-t</code> does not require the filename at the end, only the target directory, It should be</p>
+</blockquote>
+</aside>
+<p>I went back a looked at the guide pages and apparently I misread the docs.</p>
+<p>So I’m <code>#</code> out the version stuff, and taking out the filenames in the metainfo entries:</p>
+<pre><code class="lang-auto">  - name: metainfo-xml
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.metainfo.xml
+  - name: metainfo-ico
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.evilsupahfly.amulet_flatpak.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.png
+  - name: metainfo-desktop
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.evilsupahfly.amulet_flatpak.desktop -t ${FLATPAK_DEST}/share/applications/
+    sources:
+      - type: file
+        path: io.github.evilsupahfly.amulet_flatpak.desktop
+</code></pre>
+<p>… I’m still wondering if there’s a way to get a better error report though. Granted, taking on something like <a href="https://github.com/Amulet-Team/Amulet-Map-Editor" rel="noopener nofollow ugc">Amulet</a> for my first Flatpak project was probably not the best idea…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="4 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          4 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 14, 2024 3:24 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:24:10 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="6" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p><code>Icon=io.github.evilsupahfly.amulet_flatpak.png</code></p>
+</blockquote>
+</aside>
+<p>It’s the icon name that should be here, not the icon file name. So no extension. Because you can also have a SVG</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 14, 2024 3:25 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:25:09 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="6" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p>The version entries were mentioned in the “building your first flatpak” doc I read last year</p>
+</blockquote>
+</aside>
+<p>I doubt this is in our documentation. flatpak-builder even tells you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 14, 2024 3:31 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:31:55 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="hub" data-post="8" data-topic="7847" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<aside class="quote no-group" data-username="EvilSupahFly" data-post="6" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p>The version entries were mentioned in the “building your first flatpak” doc I read last year</p>
+</blockquote>
+</aside>
+<p>I doubt this is in our documentation. flatpak-builder even tells you.</p>
+</blockquote>
+</aside>
+<p>Ever since Day One, it’s complained about that, but it never failed with a fatal exit, so I assumed it was just some verbose debug output.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Oct 14, 2024 3:36 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:36:31 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="hub" data-post="7" data-topic="7847" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+hub:</div>
+<blockquote>
+<aside class="quote no-group" data-username="EvilSupahFly" data-post="6" data-topic="7847">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p><code>Icon=io.github.evilsupahfly.amulet_flatpak.png</code></p>
+</blockquote>
+</aside>
+<p>It’s the icon name that should be here, not the icon file name. So no extension. Because you can also have a SVG</p>
+</blockquote>
+</aside>
+<pre><code class="lang-auto">[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Amulet Minecraft Map Editor (Flatpak Edition)
+Comment=A powerful map editor for Minecraft worlds
+Categories=Game;KidsGame;
+
+Icon=io.github.evilsupahfly.amulet_flatpak
+Exec=flatpak run io.github.evilsupahfly.amulet_flatpak
+Terminal=true
+Name[en_CA]=io.github.evilsupahfly.amulet_flatpak.desktop
+</code></pre>
+<p>I’ve removed the <code>.png</code> in the <code>.desktop</code> file, but I should leave it in the XML, right?</p>
+<pre><code class="lang-auto">  &lt;/releases&gt;
+  &lt;launchable type="desktop-id"&gt;io.github.evilsupahfly.amulet_flatpak.desktop&lt;/launchable&gt;
+  &lt;icon type="stock"&gt;io.github.evilsupahfly.amulet_flatpak.png&lt;/icon&gt;
+  &lt;content_rating type="oars-1.0"&gt;
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Oct 14, 2024 3:43 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 15:43:53 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you should remove the icon entry in the appstream file. Otherwise, yes it’s also wrong to put the extension there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Oct 14, 2024 4:49 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 16:49:49 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a ton, guys!</p>
+<pre><code class="lang-auto">io.github.evilsupahfly.amulet_flatpak permissions:
+    ipc	network	fallback-x11	wayland	x11	devices	file access [1]	tags [2]
+
+    [1] home, host:create, ~/.cache
+    [2] 
+
+
+ 1.	   	io.github.evilsupahfly.amulet_flatpak	master	i	amulet_flatpak-origin	0 bytes
+
+
+Installing…
+F: No checksum specified, getting tip of app/io.github.evilsupahfly.amulet_flatpak/x86_64/master from origin amulet_flatpak-origin
+F: tip resolved to: 4db410ea2a30edaf4af2cd74dd1627d5b91729d4c64c33d2fcd214c008247e1d
+F: Getting parental controls details for app/io.github.evilsupahfly.amulet_flatpak/x86_64/master from amulet_flatpak-origin
+F: Skipping parental controls check for app/io.github.evilsupahfly.amulet_flatpak/x86_64/master since parental controls are disabled globally
+F: running triggers from /usr/share/flatpak/triggers
+F: running trigger desktop-database.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/desktop-database.trigger /home/evilsupahfly/.local/share/flatpak'
+F: running trigger gtk-icon-cache.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/gtk-icon-cache.trigger /home/evilsupahfly/.local/share/flatpak'
+F: running trigger mime-database.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/mime-database.trigger /home/evilsupahfly/.local/share/flatpak'
+F: Pruning repo
+F: Pruned 204395/0 objects, size 0 bytes
+Installation complete.
+
+[2024-10-14 12:45:05] SUCCESS: flatpak install succeeded! 
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

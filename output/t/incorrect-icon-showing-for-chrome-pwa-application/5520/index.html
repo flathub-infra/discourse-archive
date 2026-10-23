@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incorrect icon showing for chrome pwa application - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Incorrect icon showing for chrome pwa application</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Incorrect icon showing for chrome pwa application</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 30, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leslielg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 30, 2023 8:00 AM">
+            <time itemprop="datePublished" datetime="2023-11-30 08:00:36 +0000">Nov 30, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>chrome is installed from flatpak, and then install 3 pwa applications from chrome, none of them showing correct application icon<br>
+<img src="/uploads/original/2X/e/e3338c636188eb461d153570fe40d2af6188a98c.png" alt="image" data-base62-sha1="wpUPjILeeh6h1XUfPa43D2yB5Hm" width="461" height="223"><br>
+.desktop file in .local/share/application looks as</p>
+<blockquote>
+<p>Blockquote<br>
+1 com.google.Chrome.flextop.chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.desktop                                                                                                                                          X<br>
+1 [Desktop Entry]<br>
+2 Comment=<br>
+3 Exec=flatpak run --command=/app/bin/chrome com.google.Chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo<br>
+4 Icon=chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default<br>
+5 Name=Microsoft Teams<br>
+6 NoDisplay=false<br>
+7 Path=<br>
+8 StartupNotify=true<br>
+9 StartupWMClass=crx_cifhbcnohmdccbgoicgdjpfamggdegmo<br>
+10 Terminal=false<br>
+11 TerminalOptions=<br>
+12 TryExec=/var/lib/flatpak/exports/bin/com.google.Chrome<br>
+13 Type=Application<br>
+14 Version=1.0<br>
+15 X-Flatpak-Part-Of=com.google.Chrome<br>
+16 X-KDE-SubstituteUID=false<br>
+17 X-KDE-Username=</p>
+</blockquote>
+<p>icon file locates at:<br>
+~/.local/share $ find icons/ -iname “<em>cifhbcnohmdccbgoicgdjpfamggdegmo</em>”<br>
+icons/hicolor/512x512/apps/chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.png<br>
+icons/hicolor/48x48/apps/chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.png<br>
+icons/hicolor/256x256/apps/chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.png<br>
+icons/hicolor/32x32/apps/chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.png<br>
+icons/hicolor/128x128/apps/chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.png</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 3, 2023 3:24 PM">
+            <time itemprop="datePublished" datetime="2023-12-03 15:24:10 +0000">Dec 3, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What distribution are you using &amp; which desktop environment? Are the icons the correct ones or do they show the Chrome logo?</p>
+<p>In general, It should work. I’ve been using the Teams &amp; Outlook PWAs with Brave under Fedora &amp; GNOME Shell, with the correct logos.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leslielg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 7, 2023 6:32 AM">
+            <time itemprop="datePublished" datetime="2023-12-07 06:32:10 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>kubuntu 23.10, kde plasma x11<br>
+all of these PWA showing chrome icon</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 7, 2023 1:02 PM">
+            <time itemprop="datePublished" datetime="2023-12-07 13:02:13 +0000">Dec 7, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I meant whether the icons under <code>.local/share/icons/…</code> show the Chrome logo or the correct app icons.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leslielg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 13, 2023 2:33 AM">
+            <time itemprop="datePublished" datetime="2023-12-13 02:33:08 +0000">Dec 13, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>they are showing correct icons, I found that if I set system icon theme to Breeze, which shipped with kubuntu, PWA apps are showing correct icons. If set icon theme to a download icon theme, these PAW apps show chrome icon only</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Dec 13, 2023 5:40 PM">
+            <time itemprop="datePublished" datetime="2023-12-13 17:40:36 +0000">Dec 13, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s most likely a bug in KDE Plasma: <a href="https://bugs.kde.org/show_bug.cgi?id=358277" class="inline-onebox" rel="noopener nofollow ugc">358277 – when run in XWayland, Chrome PWA apps use the icon from chrome browser in Icon-Only Task Manager, but remain correctly separate</a><br>
+This sounds like your behaviour:</p>
+<blockquote>
+<p><a href="https://bugs.kde.org/show_bug.cgi?id=358277#c22" rel="noopener nofollow ugc">Comment 22</a><br>
+Latest Kde Neon and Chrome here, X11, same problem and an interesting information:<br>
+It all works properly when I use the icon sets that came with my default system (Breeze, breeze dark, oxygen) but it doesn’t when I use other icon themes that I installed later through plasma settings. Anyway I think I had the same problem with lubuntu 20.04<br>
+Please also notice that if you manually change the icon it will work as expected, doesn’t matter the icon set<br>
+also, chrome apps manually created by --app=<a href="http://www.duckduckgo.com" rel="noopener nofollow ugc">www.duckduckgo.com</a> work properly, doesn’t matter the icon set</p>
+</blockquote>
+<p>Did you only test the Flatpak or also a version from the distribution package manager? As far as I can tell, the Chrome Flatpak correctly creates the PWA shortcut with the correct icons.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Leslielg</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Dec 14, 2023 2:40 AM">
+            <time itemprop="datePublished" datetime="2023-12-14 02:40:08 +0000">Dec 14, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I only tried flatpak, flatpak now is my top priority source to install app.<br>
+Thanks for information, I think I met the same plasma bug as you mentioned. I will wait for it updates.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Evan Edwards</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jan 28, 2024 9:32 PM">
+            <time itemprop="datePublished" datetime="2024-01-28 21:32:29 +0000">Jan 28, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This bug is waiting on upstream Wayland updates, so it isn’t a Plasma bug per se – there’s currently no way to do it in Wayland.  But the good news is that an extension has already been proposed and went through a surprisingly long debate about how to accomplish it.  It’ll likely be a bit before it is available, but there is strong momentum.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jan 29, 2024 3:21 PM">
+            <time itemprop="datePublished" datetime="2024-01-29 15:21:34 +0000">Jan 29, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m wondering how the microsoft teams PWA is showing the correct icon from being installed from edge then. I’m also running wayland.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Parker</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jul 14, 2025 9:29 AM">
+            <time itemprop="datePublished" datetime="2025-07-14 09:29:27 +0000">Jul 14, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was having this issue on GNOME for months after switching my apps to Wayland to support fractional scaling. In addition to showing the wrong icon, attempting to switch to an open PWA window using a hotkey/wm switcher would re-launch a new instance of the app instead of focusing the open window.</p>
+<p>The fix was to <strong>set the StartupWMClass in the <code>.desktop</code> file to match the true wmclass</strong>. E.g. set StartupWMClass to <code>chrome-abcd...-Default</code> instead of <code>crx_abcd...</code>.</p>
+<p>In my case, I used Looking Glass to find the true wmclass of the launched window, then I edited the StartupWMClass in the file to match it. This fixed both the icon and the ability to focus open windows.</p>
+<p>Hopefully this is helpful even if it’s rather late!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

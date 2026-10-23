@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cleaning up /var/lib/flatpak/repo/tmp after failed install - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Cleaning up /var/lib/flatpak/repo/tmp after failed install</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Cleaning up /var/lib/flatpak/repo/tmp after failed install</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 19, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">Z</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">zahlman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 19, 2024 4:04 PM">
+            <time itemprop="datePublished" datetime="2024-04-19 16:04:14 +0000">Apr 19, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am running the included Flatpak (<code>1.12.2</code>) on Linux Mint 20.3.</p>
+<p>I made a mistake: I selected to install a large flatpak (for <code>ungoogled-chromium</code>) indirectly via <code>mintinstall</code>, when I realized I wouldn’t have enough space to install it (only for the download). Of course, <code>mintinstall</code> does not offer any kind of abort or cleanup functionality. So I simply declined to authorize the installation each time I was prompted for a sudo password, figuring I would be able to drop to the command line later and get rid of the downloaded packages.</p>
+<p>However, it seems I cannot easily do this. As it happens, my internet connection failed partway through the download. But even disregarding that, it seems that the command-line UI doesn’t offer any way to interact with packages that were downloaded but not installed.</p>
+<p>As a result, I currently have around 900 MB of data sitting in <code>/var/lib/flatpak/repo/tmp</code>:</p>
+<pre><code class="lang-auto">$ du -hs /var/lib/flatpak/repo/tmp
+893M	/var/lib/flatpak/repo/tmp
+</code></pre>
+<p>I have one simple question, which nobody on the Internet so far seems able or willing to answer: <strong>can these files safely be deleted? If not, how should I recover the disk space?</strong></p>
+<p>I have already tried all manner of web searches, and also specifically checked on Stack Overflow, Ask Ubuntu etc. No matter what search terms I try (and I have a years-long history of showing other people what search terms they should have tried for other issues…), hardly any results concern this specific folder, and the results that do mention it in passing are completely irrelevant to my situation.</p>
+<p>I have already tried the Linux Mint forums. Nobody there could suggest anything better than restoring a Timeshift backup, which is unacceptable as I have already installed many other things in other ways.</p>
+<p>I have already tried the Flatpak bug tracker. I was flatly told that my version of Flatpak is out of date (never mind that my OS doesn’t offer any newer version via <code>apt</code>) and that <code>mintinstall</code> isn’t part of Flatpak (never mind that it <em>invoked</em> Flatpak and <em>caused</em> the current situation). When I tried to clarify these points, I was completely ignored for weeks.</p>
+<p>I have already tried uninstalling every other Flatpak app (I didn’t really need any of them), reinstalling Flatpak, and using <code>sudo flatpak repair</code>. None of this has any effect on the size of <code>/var/lib/flatpak/repo/tmp</code>.</p>
+<p>Please just give a clear explanation of how this folder works. Just because I’m not developing with Flatpak, doesn’t mean I can’t have more than the most basic documentation needs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 19, 2024 8:03 PM">
+            <time itemprop="datePublished" datetime="2024-04-19 20:03:39 +0000">Apr 19, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s almost certainly safe to delete anything old in <code>/var/lib/flatpak/repo/tmp</code>. Are the files inside a <code>cache</code> directory? If so, I’d be even more certain.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">Z</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">zahlman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 20, 2024 1:08 AM">
+            <time itemprop="datePublished" datetime="2024-04-20 01:08:55 +0000">Apr 20, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It specifically looks like so:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">$ du -hd1 /var/lib/flatpak/repo/tmp
+474M    /var/lib/flatpak/repo/tmp/flatpak-cache-K6IFL2
+365M    /var/lib/flatpak/repo/tmp/flatpak-cache-41WQL2
+8.0K    /var/lib/flatpak/repo/tmp/cache
+55M     /var/lib/flatpak/repo/tmp/flatpak-cache-HR9DL2
+893M    /var/lib/flatpak/repo/tmp
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 20, 2024 6:01 PM">
+            <time itemprop="datePublished" datetime="2024-04-20 18:01:20 +0000">Apr 20, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It should be safe to remove those <code>flatpak-cache-*</code> directories.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">Z</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">zahlman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 21, 2024 6:17 PM">
+            <time itemprop="datePublished" datetime="2024-04-21 18:17:35 +0000">Apr 21, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I made a manual restore point and went ahead and deleted the directories manually (required sudo). No system instability; it might be a while before I actually need Flatpak for anything again.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to &quot;cmake ..&quot; during build? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to &quot;cmake ..&quot; during build?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to &quot;cmake ..&quot; during build?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 1, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jason Brenneman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 1, 2023 2:50 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 14:50:05 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello all. I’ve recently begun creating a Flatpak for an older piece of software that requires several outdated dependencies. The particular version of OpenImageIO required cannot be built in the root directory of the source, throwing the following error:</p>
+<pre><code class="lang-auto">if ("${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+    message (FATAL_ERROR "Not allowed to run in-source build!")
+endif ()
+</code></pre>
+<p>If this were being compiled in a terminal, the straightforward fix would be to execute the following commands in the source directory:</p>
+<pre><code class="lang-auto">mkdir build &amp;&amp; cd build &amp;&amp; cmake ..
+</code></pre>
+<p>However, I am unsure of how to do this in my Flatpak manifest. I have tried both the build-dir and subdir options mentioned in the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" rel="noopener nofollow ugc">Flatpak command reference</a> but have not had luck with either. My current command for this module is shown below.</p>
+<pre><code class="lang-auto">  - name: OpenImageIO
+    buildsystem: cmake
+    build-options:
+      cxxflags: -std=c++11 -Wno-error=stringop-truncation -Wno-error=class-memaccess -Wno-error=sizeof-pointer-memaccess -Wno-error=unused-function -Wno-error=deprecated-declarations -Wno-error=maybe-uninitialized -Wno-error=stringop-overflow= -Wno-error=misleading-indentation -Wno-error=format-truncation= -Wno-error=aligned-new= -Wno-error=mismatched-new-delete
+    config-opts:
+      - -D BUILD_TESTING=OFF
+      - -D INSTALL_DOCS=OFF
+      - -D INSTALL_FONTS=OFF
+      - -D OIIO_BUILD_TESTS=OFF
+      - -D OIIO_BUILD_TOOLS=OFF
+      - -D STOP_ON_WARNING=OFF
+      - -D USE_FFMPEG=OFF
+      - -D USE_FIELD3D=OFF
+      - -D USE_FREETYPE=OFF
+      - -D USE_LIBRAW=OFF
+      - -D USE_NUKE=OFF
+      - -D USE_OCIO=OFF
+      - -D USE_QT=OFF
+    sources:
+      - type: git
+        url: https://github.com/OpenImageIO/oiio.git
+        tag: Release-1.3.14
+</code></pre>
+<p>Any help is appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 1, 2023 3:07 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 15:07:33 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Nevermind i cant read</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 1, 2023 6:24 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 18:24:13 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Nevermind again.</p>
+<p>I actually tried building the thing, and adding <code>builddir: true</code> does indeed seem to pass the check.</p>
+<p>Are you sure you didnt make a typo?</p>
+<p>Just for reference the module would look like this:</p>
+<pre><code class="lang-auto">  - name: OpenImageIO
+    buildsystem: cmake
+    builddir: true
+    build-options:
+      cxxflags: -std=c++11 -Wno-error=stringop-truncation -Wno-error=class-memaccess -Wno-error=sizeof-pointer-memaccess -Wno-error=unused-function -Wno-error=deprecated-declarations -Wno-error=maybe-uninitialized -Wno-error=stringop-overflow= -Wno-error=misleading-indentation -Wno-error=format-truncation= -Wno-error=aligned-new= -Wno-error=mismatched-new-delete
+    config-opts:
+      - -D BUILD_TESTING=OFF
+      - -D INSTALL_DOCS=OFF
+      - -D INSTALL_FONTS=OFF
+      - -D OIIO_BUILD_TESTS=OFF
+      - -D OIIO_BUILD_TOOLS=OFF
+      - -D STOP_ON_WARNING=OFF
+      - -D USE_FFMPEG=OFF
+      - -D USE_FIELD3D=OFF
+      - -D USE_FREETYPE=OFF
+      - -D USE_LIBRAW=OFF
+      - -D USE_NUKE=OFF
+      - -D USE_OCIO=OFF
+      - -D USE_QT=OFF
+    sources:
+      - type: git
+        url: https://github.com/OpenImageIO/oiio.git
+        tag: Release-1.3.14
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jason Brenneman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 1, 2023 6:29 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 18:29:23 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks, I went back and deleted my .build-dir and .flatpak-builder directories (out of desperation <img src="/images/emoji/twitter/laughing.png?v=12" title=":laughing:" class="emoji" alt=":laughing:" loading="lazy" width="20" height="20">) and that fixed it; indeed the <code>builddir: true</code> option does work correctly here.</p>
+<p>This solution was a bit surprising though, since I’ve been invoking the builder with <code>flatpak-builder --install --install-deps-from=flathub   --user --force-clean  </code>. So perhaps something was configured wrong on my end.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

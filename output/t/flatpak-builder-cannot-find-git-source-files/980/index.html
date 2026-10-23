@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder cannot find git source files - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder cannot find git source files</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder cannot find git source files</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 21, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Adnan449</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 21, 2020 11:38 AM">
+            <time itemprop="datePublished" datetime="2020-12-21 11:38:45 +0000">Dec 21, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, my manifest file is as follows:</p>
+<pre><code class="lang-auto">id: com.gitlab.adnan338.Nixwriter
+runtime: org.gnome.Platform
+runtime-version: "3.38"
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: nixwriter
+finish-args:
+  - --socket=fallback-x11
+  - --share=ipc
+  - --filesystem=host
+  - --device=all
+  - --system-talk-name=org.freedesktop.UDisks2
+  - --talk-name=org.freedesktop.Notifications
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  # This enables building downloaded crates offline
+  env:
+    CARGO_HOME: /run/build/nixwriter/cargo
+
+modules:
+  - name: nixwriter
+    sources:
+      - type: git
+        url: https://gitlab.com/9898287/nixwriter
+        tag: "3.0.0"
+        commit: "88b28ceb8e0849a98df46d942e20311d862e1512"
+      - deptree.json
+      - type: file
+        path: resources/com.gitlab.adnan338.Nixwriter.desktop
+      - type: file
+        path: resources/com.gitlab.adnan338.Nixwriter.svg
+      - type: file
+        path: resources/com.gitlab.adnan338.Nixwriter.64x64.svg
+      - type: file
+        path: resources/com.gitlab.adnan338.Nixwriter.128x128.svg
+      - type: file
+        path: resources/com.gitlab.adnan338.Nixwriter.metainfo.xml
+    buildsystem: simple
+    build-commands:
+      - cargo --offline build --manifest-path=/run/build/nixwriter/Cargo.toml --release --verbose
+      - install -Dm755 target/release/nixwriter --target-directory=/app/bin
+      - install -Dm644 com.gitlab.adnan338.Nixwriter.desktop --target-directory=/app/share/applications
+      - install -Dm644 com.gitlab.adnan338.Nixwriter.svg --target-directory=/app/share/icons/hicolor/scalable/apps
+      - install -Dm644 com.gitlab.adnan338.Nixwriter.64x64.svg --target-directory=/app/share/icons/hicolor/64x64/apps/
+      - install -Dm644 com.gitlab.adnan338.Nixwriter.128x128.svg --target-directory=/app/share/icons/hicolor/128x128/apps/
+      - install -Dm644 com.gitlab.adnan338.Nixwriter.metainfo.xml --target-directory=/app/share/metainfo
+</code></pre>
+<p>In the git source I mentioned, there is a Cargo.toml, <code>deptree.json</code> and a <code>resources</code> folder. I want flatpak-builder to build my project with the content of these folders and files.</p>
+<p>However I realized flatpak builder <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748876502" rel="noopener nofollow ugc">can’t recognize my deptree.json file</a> and <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748606483" rel="noopener nofollow ugc">can’t access anything fetched from the upstream git repo.</a></p>
+<p>Where is the git-fetched repos downloaded. I tried <code>/run/build/$module</code> but it didn’t work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Adnan449</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 22, 2020 10:20 AM">
+            <time itemprop="datePublished" datetime="2020-12-22 10:20:18 +0000">Dec 22, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I fixed it by hard-cloning my original repo.</p>
+<hr>
+<p>Edit: Turns out, I needed to manually add the generated dependency file in the flathub repo.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

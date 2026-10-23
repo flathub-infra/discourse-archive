@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KDE apps can&#39;t use dark theme on Cinnamon - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">KDE apps can&#39;t use dark theme on Cinnamon</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">KDE apps can&#39;t use dark theme on Cinnamon</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 7, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 7, 2022 9:01 PM">
+            <time itemprop="datePublished" datetime="2022-04-07 21:01:28 +0000">Apr 7, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Distro: Linux Mint 20.3 Cinnamon 64-bit<br>
+Flatpak version: 1.12.2.<br>
+Issue: I want Flatpak apps to use the same dark theme as my host system.  I have Cinnamon set to use the “Mint-Y-Dark” theme.  I installed the flatpak theme <code>org.gtk.Gtk3theme.Mint-Y-Dark</code> from Flathub, and all GTK apps automatically use it, but apps using the KDE runtime don’t.</p>
+<p>Following the <a href="https://docs.flatpak.org/en/latest/desktop-integration.html" rel="noopener nofollow ugc">advice of the Flatpak docs</a>, I installed  <code>org.kde.PlatformTheme.QGnomePlatform//5.15-21.08</code> and <code>org.kde.KStyle.Adwaita//5.15-21.08</code> from Flathub.</p>
+<p>Far from fixing the problem, installing these runtimes results in all KDE apps being unable to launch!</p>
+<pre><code class="lang-auto">flatpak run com.obsproject.Studio 
+Gtk-Message: 15:53:26.231: Failed to load module "xapp-gtk3-module"
+
+(obs:2): GLib-GIO-ERROR **: 15:53:26.254: Settings schema 'org.cinnamon.desktop.interface' is not installed```
+
+All other apps using the KDE runtime produce the same error.  For example,
+</code></pre>
+<p>flatpak run org.kde.kolourpaint<br>
+Gtk-Message: 15:59:05.626: Failed to load module “xapp-gtk3-module”</p>
+<p>(kolourpaint:2): GLib-GIO-ERROR **: 15:59:05.649: Settings schema ‘org.cinnamon.desktop.interface’ is not installed```</p>
+<p>Uninstalling QGnomePlatform but leaving org.kde.KStyle.Adwaita allows KDE apps to launch, but they still don’t use my system’s dark theme.  Installing QGnomePlatform but not KStyle.Adwaita gives the same issue as installing both.<br>
+<code>org.cinnamon.desktop.interface</code> does not seem to be a flatpak app or runtime, so I don’t know how to fix it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 13, 2022 4:37 PM">
+            <time itemprop="datePublished" datetime="2022-04-13 16:37:33 +0000">Apr 13, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Can you try changing the theme of your host system to Adwaita-dark and then open the app again?</p>
+<p><code>org.kde.PlatformTheme.QGnomePlatform</code> is enough in my case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 13, 2022 10:57 PM">
+            <time itemprop="datePublished" datetime="2022-04-13 22:57:08 +0000">Apr 13, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In the Cinnamon theme settings, I changed the “controls” theme to Adwaita-dark, and the “icons” theme to Adwaita (Adwaita-dark is not presented as on option).  There doesn’t appear to be any Adwaita option for the “windows borders” or “desktop” theme.</p>
+<p>I also installed the Adwaita-dark theme from Flathub.</p>
+<p>It didn’t make a difference, I get the same error.</p>
+<p>I also tried installing Mint Mate in a virtual machine to see if this issue reproduced, and it didn’t: KDE flatpak apps could launch even with org.kde.PlatformTheme.QGnomePlatform installed (although they didn’t use the Mint Dark theme).  So whatever is causing the apps to not launch is present in Mint Cinnamon but not Mint Mate.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 16, 2022 3:12 PM">
+            <time itemprop="datePublished" datetime="2022-04-16 15:12:22 +0000">Apr 16, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Are you using Wayland? If yes, can you try <a href="http://x.org" rel="noopener nofollow ugc">x.org</a>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 16, 2022 5:49 PM">
+            <time itemprop="datePublished" datetime="2022-04-16 17:49:09 +0000">Apr 16, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m using <a href="http://X.Org" rel="noopener nofollow ugc">X.Org</a> (Cinnamon doesn’t support Wayland yet.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 18, 2022 4:53 AM">
+            <time itemprop="datePublished" datetime="2022-04-18 04:53:59 +0000">Apr 18, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Setting</p>
+<pre><code class="lang-auto">export QT_QPA_PLATFORMTHEME='gnome'
+</code></pre>
+<p>as an environment variable could be the solution.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 6, 2022 2:58 AM">
+            <time itemprop="datePublished" datetime="2022-05-06 02:58:30 +0000">May 6, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="avDeb" data-post="6" data-topic="2412">
+<div class="title">
+<div class="quote-controls"></div>
+avDeb:</div>
+<blockquote>
+<pre><code class="lang-auto">export QT_QPA_PLATFORMTHEME='gnome'
+</code></pre>
+</blockquote>
+</aside>
+<p>How do I do that?  I can’t figure it out from the flatpak docs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 6, 2022 5:05 AM">
+            <time itemprop="datePublished" datetime="2022-05-06 05:05:11 +0000">May 6, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just add it to the environment variables in Flatseal.<br>
+You can also try something with <code>QT_STYLE_OVERRIDE=...</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="May 6, 2022 5:21 PM">
+            <time itemprop="datePublished" datetime="2022-05-06 17:21:23 +0000">May 6, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="avDeb" data-post="6" data-topic="2412">
+<div class="title">
+<div class="quote-controls"></div>
+avDeb:</div>
+<blockquote>
+<pre><code class="lang-auto">export QT_QPA_PLATFORMTHEME='gnome'
+</code></pre>
+</blockquote>
+</aside>
+<p>I tried:</p>
+<blockquote>
+<p>QT_STYLE_OVERRIDE=‘gnome’</p>
+</blockquote>
+<p>and</p>
+<blockquote>
+<p>QT_QPA_PLATFORMTHEME=‘gnome’</p>
+</blockquote>
+<p>for OBS Studio and it didn’t make a difference.  Flatseal says</p>
+<blockquote>
+<p>export QT_QPA_PLATFORMTHEME=‘gnome’</p>
+</blockquote>
+<p>isn’t a valid enviroment variable, so I also tried</p>
+<blockquote>
+<p>export_QT_QPA_PLATFORMTHEME=‘gnome’</p>
+</blockquote>
+<p>and that also didn’t work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">avDeb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="May 6, 2022 5:45 PM">
+            <time itemprop="datePublished" datetime="2022-05-06 17:45:21 +0000">May 6, 2022</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>OBS Studio is using its own theme: File &gt; Settings &gt; General &gt; Theme.<br>
+Try the environment variables with other KDE apps please.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="May 6, 2022 8:07 PM">
+            <time itemprop="datePublished" datetime="2022-05-06 20:07:21 +0000">May 6, 2022</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried it with KolourPaint.  No difference.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">1</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">183231bcb</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Oct 17, 2022 12:51 AM">
+            <time itemprop="datePublished" datetime="2022-10-17 00:51:22 +0000">Oct 17, 2022</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>On the Mint forum, Linuxed <a href="https://forums.linuxmint.com/viewtopic.php?p=2172752&amp;sid=d8230c85d94e2becbbd122fd03b22ab1#p2172752" rel="noopener nofollow ugc">suggests using</a></p>
+<pre><code class="lang-auto">flatpak install flathub org.kde.KStyle.Adwaita
+sudo flatpak override --env=QT_STYLE_OVERRIDE=Adwaita-Dark
+</code></pre>
+<p>and that works for me!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How do you &quot;-cp&quot; folders in a manifest file? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How do you &quot;-cp&quot; folders in a manifest file?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How do you &quot;-cp&quot; folders in a manifest file?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 21, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">gardenspider</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 21, 2023 3:19 PM">
+            <time itemprop="datePublished" datetime="2023-07-21 15:19:46 +0000">Jul 21, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Maybe I’m asking the wrong question here, but the ares (emulator) flatpak: <a href="https://github.com/flathub/dev.ares.ares" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/dev.ares.ares</a> currently does not copy over two folders from ares, a “Shaders” and a “Database” folder.</p>
+<p>These are fairly important folders so I was trying to look into how to fix it but I wasn’t able to come up with anything conclusive.</p>
+<p>The aur package for ares is able to solve this issue by using both a patch file and using two “-cp” lines:</p>
+<ul>
+<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40" rel="noopener nofollow ugc">https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40</a></li>
+<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/ares-paths.patch?h=ares-emu" class="inline-onebox" rel="noopener nofollow ugc">ares-paths.patch - aur.git - AUR Package Repositories</a></li>
+</ul>
+<p>Is something like what the aur package does possible for the manifest or any ideas on how to properly copy the “Shaders” and “Database” folders with the Flatpak?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 21, 2023 5:38 PM">
+            <time itemprop="datePublished" datetime="2023-07-21 17:38:14 +0000">Jul 21, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Because it’s <code>buildsystem: simple</code> you can just add additional commands to <code>build-commands</code> of the module.</p>
+<p>But the folders should already get copied by the build:</p>
+<blockquote>
+<p>On Linux, running <code>make install</code> after compilation will copy these directories and binary into suitable locations (see desktop-ui/GNUmakefile for details). Alternatively, these directories can be copied from <code>ares/Shaders/*</code> and <code>mia/Database/*</code>.</p>
+</blockquote>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130">
+  <header class="source">
+
+      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-">
+      <ol class="start lines" start="120" style="counter-reset: li-counter 119 ;">
+          <li>else ifeq ($(platform),macos)</li>
+          <li>	mkdir -p ~/Library/Application\ Support/$(name)/</li>
+          <li>	cp -R $(output.path)/$(name).app /Applications/$(name).app</li>
+          <li>else ifneq ($(filter $(platform),linux bsd),)</li>
+          <li>	mkdir -p $(prefix)/bin/</li>
+          <li>	mkdir -p $(prefix)/share/applications/</li>
+          <li>	mkdir -p $(prefix)/share/icons/hicolor/256x256/apps/</li>
+          <li>	mkdir -p $(prefix)/share/$(name)/Shaders/</li>
+          <li>	mkdir -p $(prefix)/share/$(name)/Database/</li>
+          <li>	cp $(output.path)/$(name) $(prefix)/bin/$(name)</li>
+          <li class="selected">	cp -R $(ares.path)/Shaders/* $(prefix)/share/$(name)/Shaders/</li>
+          <li>	cp -R $(mia.path)/Database/* $(prefix)/share/$(name)/Database/</li>
+          <li>	cp resource/$(name).desktop $(prefix)/share/applications/$(name).desktop</li>
+          <li>	cp resource/$(name).png $(prefix)/share/icons/hicolor/256x256/apps/$(name).png</li>
+          <li>endif</li>
+          <li></li>
+          <li>uninstall:</li>
+          <li>ifeq ($(platform),windows)</li>
+          <li>else ifeq ($(shell id -un),root)</li>
+          <li>	$(error "make uninstall should not be run as root")</li>
+          <li>else ifeq ($(platform),macos)</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">gardenspider</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 21, 2023 6:05 PM">
+            <time itemprop="datePublished" datetime="2023-07-21 18:05:24 +0000">Jul 21, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for the reply.</p>
+<p>Yes, it’s odd, it does seem to copy the Shaders folder after install but it doesn’t seem to copy it to the correct place.</p>
+<p>The below is from flatpak-builder.</p>
+<p>mkdir -p /app/bin/<br>
+mkdir -p /app/share/applications/<br>
+mkdir -p /app/share/icons/hicolor/256x256/apps/<br>
+mkdir -p /app/share/ares/Shaders/<br>
+cp out/ares /app/bin/ares<br>
+cp -R …/ares/Shaders/* /app/share/ares/Shaders/<br>
+cp resource/ares.desktop /app/share/applications/ares.desktop<br>
+cp resource/ares.png /app/share/icons/hicolor/256x256/apps/ares.png</p>
+<p>You can see a bit more info here on this GitHub issue: <a href="https://github.com/flathub/dev.ares.ares/issues/18" class="inline-onebox" rel="noopener nofollow ugc">Ares missing shaders · Issue #18 · flathub/dev.ares.ares · GitHub</a></p>
+<p>I’ll poke around with the build-commands though.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 21, 2023 6:49 PM">
+            <time itemprop="datePublished" datetime="2023-07-21 18:49:21 +0000">Jul 21, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The folder is actually in the correct place, any files of a Flatpak application must be inside the <code>/app</code>-prefix.</p>
+<p>You’ll have to use the <code>ares-paths.patch</code> from AUR to search in the data folder &amp; update the application to look into <code>/app/share/</code> instead <code>/usr/share</code>:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122">
+  <header class="source">
+
+      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-cpp">
+      <ol class="start lines" start="112" style="counter-reset: li-counter 111 ;">
+          <li>
+          </li>
+<li>NALL_HEADER_INLINE auto sharedData() -&gt; string {</li>
+          <li>  #if defined(PLATFORM_WINDOWS)</li>
+          <li>  wchar_t path[PATH_MAX] = L"";</li>
+          <li>  SHGetFolderPathW(nullptr, CSIDL_COMMON_APPDATA | CSIDL_FLAG_CREATE, nullptr, 0, path);</li>
+          <li>  string result = (const char*)utf8_t(path);</li>
+          <li>  result.transform("\\", "/");</li>
+          <li>  #elif defined(PLATFORM_MACOS)</li>
+          <li>  string result = "/Library/Application Support/";</li>
+          <li>  #else</li>
+          <li class="selected">  string result = "/usr/share/";</li>
+          <li>  #endif</li>
+          <li>  if(!result) result = ".";</li>
+          <li>  if(!result.endsWith("/")) result.append("/");</li>
+          <li>  return result;</li>
+          <li>}</li>
+          <li>
+          </li>
+<li>NALL_HEADER_INLINE auto temporary() -&gt; string {</li>
+          <li>  #if defined(PLATFORM_WINDOWS)</li>
+          <li>  wchar_t path[PATH_MAX] = L"";</li>
+          <li>  GetTempPathW(PATH_MAX, path);</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">gardenspider</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 21, 2023 11:42 PM">
+            <time itemprop="datePublished" datetime="2023-07-21 23:42:56 +0000">Jul 21, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah thank you, that makes sense!</p>
+<p>I’ll have to see if I can figure out how to port over the ares-paths.patch file and see if I can make it work with the Flatpak, might be a bit above my skill level with this one <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"> .</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 22, 2023 11:42 AM">
+            <time itemprop="datePublished" datetime="2023-07-22 11:42:33 +0000">Jul 22, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Try changing /usr/ in line 122 to /app/ and rebuild the flatpak</p>
+<p>You’ll also need to register the patch in your yaml/json</p>
+<pre><code>  - type: patch
+    path: name-of-patch.patch
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">gardenspider</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jul 22, 2023 11:32 PM">
+            <time itemprop="datePublished" datetime="2023-07-22 23:32:10 +0000">Jul 22, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is there any documentation or general step by step on how to create these patch files?</p>
+<p>I’ve tried searching, but the flatpak builder documentation only mentions the purpose of patches and doesn’t go into much detail.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jul 23, 2023 7:27 AM">
+            <time itemprop="datePublished" datetime="2023-07-23 07:27:39 +0000">Jul 23, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Patches can either be created with “diff” or “git diff”, if you don’t want to do that by hand.</p>
+<p>So I would suggest to read the man page on that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">gardenspider</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jul 25, 2023 12:01 AM">
+            <time itemprop="datePublished" datetime="2023-07-25 00:01:48 +0000">Jul 25, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you everyone for being so helpful! I think I got it working now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[HELP] error while loading shared libraries: libkeybinder-3.0.so.0: cannot open shared object file: No such file or directory - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">[HELP] error while loading shared libraries: libkeybinder-3.0.so.0: cannot open shared object file: No such file or directory</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">[HELP] error while loading shared libraries: libkeybinder-3.0.so.0: cannot open shared object file: No such file or directory</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 16, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kingkor Roy Tirtho</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 16, 2022 1:17 PM">
+            <time itemprop="datePublished" datetime="2022-01-16 13:17:14 +0000">Jan 16, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to package a Flutter application for flatpak &amp; created a configuration file too. Everything gets built fine &amp; no errors are shown while building/installing locally<br>
+But when I try to run the app with flatpak this error is shown</p>
+<pre><code class="lang-auto">/app/spotube/spotube: error while loading shared libraries: libkeybinder-3.0.so.0: cannot open shared object file: No such file or directory
+</code></pre>
+<p>Here’s my flatpak manifest file:</p>
+<pre><code class="lang-auto">app-id: oss.krtirtho.Spotube
+runtime: org.gnome.Platform
+runtime-version: '40'
+sdk: org.gnome.Sdk
+command: spotube
+finish-args:
+  - --socket=x11
+  - --socket=fallback-x11 
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=dri
+  - --filesystem=~/.local/share
+modules:
+  - name: spotube
+    buildsystem: simple
+    build-commands:
+      - install -dm755 /app/share/applications /app/share/icons/spotube /app/bin /app/spotube
+      - cp -R spotube/ /app
+      - cp spotube/spotube.desktop /app/share/applications
+      - cp spotube/spotube-logo.png /app/share/icons/spotube
+      - ln -s /app/spotube/spotube /app/bin/spotube
+    sources:
+      - type: archive
+        only_arches:
+          - x86_64
+        url: https://github.com/KRTirtho/spotube/releases/download/v1.0.1/Spotube-linux-x86_64.tar.xz
+        dest: spotube
+        sha256: 117f379c4e32a03cf1a596345e14ba82d9c143cc0ff5ac49a6e10fdc7a3d5178
+</code></pre>
+<p>This was the output while building the package with the command <code>flatpak-builder build/flatpak oss.krtirtho.Spotube.yml</code></p>
+<pre><code class="lang-auto">Downloading sources
+Starting build of oss.krtirtho.Spotube
+Cache miss, checking out last cache hit
+========================================================================
+Building module spotube in /home/krtirtho/dev/spotube/.flatpak-builder/build/spotube-1
+========================================================================
+Running: install -dm755 /app/share/applications /app/share/icons/spotube /app/bin /app/spotube
+Running: cp -R spotube/ /app
+Running: cp spotube/spotube.desktop /app/share/applications
+Running: cp spotube/spotube-logo.png /app/share/icons/spotube
+Running: ln -s /app/spotube/spotube /app/bin/spotube
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/spotube
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/spotube
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/spotube to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/spotube.debug
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libhotkey_manager_plugin.so
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libhotkey_manager_plugin.so
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libhotkey_manager_plugin.so to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/lib/libhotkey_manager_plugin.so.debug
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liburl_launcher_linux_plugin.so
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liburl_launcher_linux_plugin.so
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liburl_launcher_linux_plugin.so to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/lib/liburl_launcher_linux_plugin.so.debug
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libwinmedia.so
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libwinmedia.so
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libwinmedia.so to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/lib/libwinmedia.so.debug
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liblibwinmedia_plugin.so
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liblibwinmedia_plugin.so
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/liblibwinmedia_plugin.so to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/lib/liblibwinmedia_plugin.so.debug
+compressing debuginfo in: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libbitsdojo_window_linux_plugin.so
+processing: /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libbitsdojo_window_linux_plugin.so
+Nothing to do.
+stripping /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/spotube/lib/libbitsdojo_window_linux_plugin.so to /home/krtirtho/dev/spotube/.flatpak-builder/rofiles/rofiles-Cu6rD8/files/lib/debug/spotube/lib/libbitsdojo_window_linux_plugin.so.debug
+Committing stage build-spotube to cache
+Cleaning up
+Committing stage cleanup to cache
+Finishing app
+Not exporting share/applications/spotube.desktop, non-allowed export filename
+Not exporting share/icons/spotube/spotube-logo.png, non-allowed export filename
+Please review the exported files and the metadata
+Committing stage finish to cache
+Pruning cache
+</code></pre>
+<p>This is the log while installing the package locally with the command <code>flatpak-builder --user --install --force-clean build/flatpak oss.krtirtho.Spotube.yml</code></p>
+<pre><code class="lang-auto">Emptying app dir 'build/flatpak'
+Downloading sources
+Starting build of oss.krtirtho.Spotube
+Cache hit for spotube, skipping build
+Cache hit for cleanup, skipping
+Cache hit for finish, skipping
+Everything cached, checking out from cache
+Exporting oss.krtirtho.Spotube to repo
+Commit: 288604714b36bce991ad7f4e7576e99d1aee3adb3484a1c17fa70fdd8e9821cb
+Metadata Total: 41
+Metadata Written: 3
+Content Total: 26
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Exporting oss.krtirtho.Spotube.Debug to repo
+Commit: 32c8f080cfdf44910c3d27bee1db491125eaef91a9d8a1c5713961655f1fc00e
+Metadata Total: 11
+Metadata Written: 1
+Content Total: 7
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Installing app/oss.krtirtho.Spotube/x86_64/master
+Pruning cache
+</code></pre>
+<p>The structure of the archive <code>Spotube-linux-x86_64.tar.xz</code> file</p>
+<pre><code class="lang-auto">spotube.tar.xz
+├── data
+│   ├── flutter_assets
+│   │   ├── AssetManifest.json
+│   │   ├── assets
+│   │   │   ├── spotube_banner.png
+│   │   │   ├── spotube-logo.png
+│   │   │   ├── spotube-logo.svg
+│   │   │   └── spotube-screenshot.png
+│   │   ├── FontManifest.json
+│   │   ├── fonts
+│   │   │   └── MaterialIcons-Regular.otf
+│   │   ├── NOTICES.Z
+│   │   ├── packages
+│   │   │   └── cupertino_icons
+│   │   │       └── assets
+│   │   │           └── CupertinoIcons.ttf
+│   │   └── version.json
+│   └── icudtl.dat
+├── lib
+│   ├── libapp.so
+│   ├── libbitsdojo_window_linux_plugin.so
+│   ├── libflutter_linux_gtk.so
+│   ├── libhotkey_manager_plugin.so
+│   ├── liblibwinmedia_plugin.so
+│   ├── liburl_launcher_linux_plugin.so
+│   └── libwinmedia.so
+├── spotube
+├── spotube-logo.png
+└── spotube.desktop
+</code></pre>
+<p>Github Link: <a href="https://github.com/KRTirtho/spotube" rel="noopener nofollow ugc">https://github.com/KRTirtho/spotube</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andythe_great</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 18, 2022 2:42 AM">
+            <time itemprop="datePublished" datetime="2022-01-18 02:42:17 +0000">Jan 18, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You might need to build and package libkeybinder as well.</p><aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/kupferlauncher/keybinder" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/optimized/2X/f/f1b6a848d27c167e61522e0eb343fe20af9e3d95_2_690x345.png" class="thumbnail" width="690" height="345" srcset="/uploads/optimized/2X/f/f1b6a848d27c167e61522e0eb343fe20af9e3d95_2_690x345.png, /uploads/optimized/2X/f/f1b6a848d27c167e61522e0eb343fe20af9e3d95_2_1035x517.png 1.5x, /uploads/original/2X/f/f1b6a848d27c167e61522e0eb343fe20af9e3d95.png 2x" data-small-upload="/uploads/optimized/2X/f/f1b6a848d27c167e61522e0eb343fe20af9e3d95_2_10x10.png"></div>
+
+<h3><a href="https://github.com/kupferlauncher/keybinder" target="_blank" rel="noopener nofollow ugc">GitHub - kupferlauncher/keybinder: ``keybinder`` is a library for registering...</a></h3>
+
+
+  <p><span class="label1">``keybinder`` is a library for registering global key bindings, for gtk-based applications in X11. With gir bindings.</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kingkor Roy Tirtho</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 18, 2022 5:00 PM">
+            <time itemprop="datePublished" datetime="2022-01-18 17:00:54 +0000">Jan 18, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks <span class="mention">@Andy</span> for your suggestion</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

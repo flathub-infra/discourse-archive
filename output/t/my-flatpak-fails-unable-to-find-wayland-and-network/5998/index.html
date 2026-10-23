@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Flatpak fails, unable to find wayland and network - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">My Flatpak fails, unable to find wayland and network</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">My Flatpak fails, unable to find wayland and network</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 31, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 31, 2024 12:39 PM">
+            <time itemprop="datePublished" datetime="2024-01-31 12:39:27 +0000">Jan 31, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to repackage an proprietary app that’s only available as an AppImage as a Flatpak.</p>
+<p><strong>Edit:</strong> I added this to the manifest (stolen from Nextcloud Client):</p>
+<pre><code class="lang-auto">base: io.qt.qtwebengine.BaseApp
+base-version: 5.15-23.08
+</code></pre>
+<p>and now the error output is:</p>
+<pre><code class="lang-auto">usage: event_rpcgen.py [options] rpc-file [[h-file] c-file]
+event_rpcgen.py: error: the following arguments are required: rpc_file
+</code></pre>
+<p>This is the <strong>previous</strong> output before I added qtwebengine:</p>
+<p>However, when I try to run it, I get this error:</p>
+<pre><code class="lang-auto">user@tumbleweed:~/flatpak-builder&gt; flatpak run com.infomaniak.kdrive
+kDrive server starting
+qt.qpa.plugin: Could not find the Qt platform plugin "wayland" in ""
+_IceTransSocketUNIXConnect: Cannot connect to non-local host localhost.localdomain
+_IceTransSocketUNIXConnect: Cannot connect to non-local host localhost.localdomain
+Qt: Session management error: Could not open network socket
+kDrive server initialization error: Unable to open parameters database.
+</code></pre>
+<p>This is my manifest (note - edited since first posted here):</p>
+<pre><code class="lang-auto">app-id: com.infomaniak.kdrive
+
+runtime: org.kde.Platform
+runtime-version: 5.15-23.08
+sdk: org.kde.Sdk
+
+finish-args:
+  - --device=dri
+  - --socket=wayland
+  - --socket=x11
+  - --share=network
+  - --share=ipc
+  - --filesystem=home
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=org.kde.kwalletd5
+
+modules:
+  - name: kdrive
+    buildsystem: simple
+    build-commands:
+      # Extract the Appimage
+     - chmod a+x kDrive.AppImage
+     - ./kDrive.AppImage --appimage-extract &gt;/dev/null
+     - chmod -R --reference=kDrive.AppImage squashfs-root
+     - rm ./kDrive.AppImage
+     # Patch .destop file with the new icon and binary location
+     - sed -i -e 's/Icon.*/Icon=com.infomaniak.kdrive/' squashfs-root/kDrive_client.desktop
+     - sed -i -e 's/Exec.*/Exec=start-kdrive-flatpak.sh %F/' squashfs-root/kDrive_client.desktop
+     # Move things into place
+     - mkdir /app/kdrive
+     - cp -r squashfs-root/* /app/kdrive
+     - install -Dm644 squashfs-root/kDrive_client.desktop /app/share/applications/com.infomaniak.kdrive.desktop
+     - |
+       for s in 16 32 48 64 128 256 512; do
+         install -Dm644 squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/kdrive-win.png /app/share/icons/hicolor/${s}x${s}/apps/com.infomaniak.kdrive.png
+       done
+     - install -Dm644 com.infomaniak.kdrive.appdata.xml /app/share/appdata/com.infomaniak.kdrive.appdata.xml
+     - install -Dm544 start-kdrive-flatpak.sh /app/bin/start-kdrive-flatpak.sh
+    sources:
+      - type: file
+        url: https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.5.7.20240124-amd64.AppImage
+        sha256: ab99aa9252d9e7c613d2a4247d368a6369926062b54ad7ddbb1ab36f1d591d4b
+        only-arches:
+         - x86_64
+        dest-filename: kDrive.AppImage
+      - type: file
+        url: https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.5.7.20240124-arm64.AppImage
+        sha256: 894f7544bfe302d747dd77d0769f69889e0bee6f1e6dbdce1c3410bd864519f3
+        only-arches:
+         - aarch64
+        dest-filename: kDrive.AppImage
+      - type: file
+        path: com.infomaniak.kdrive.appdata.xml
+      - type: script
+        dest-filename: start-kdrive-flatpak.sh
+        commands:
+          - /app/kdrive/AppRun "$@"
+# potentially add some kind of update checking here
+
+</code></pre>
+<p>For added context, this is the end of the output of the <code>flatpak-builder --user --install --force-clean</code> command:</p>
+<pre><code class="lang-auto">Committing stage build-kdrive to cache
+Cleaning up
+Renaming com.infomaniak.kdrive.appdata.xml to share/metainfo/com.infomaniak.kdrive.metainfo.xml
+Running appstreamcli compose
+Only accepting components: com.infomaniak.kdrive, com.infomaniak.kdrive.desktop
+Processing directory: /home/user/flatpak-builder/.flatpak-builder/rofiles/rofiles-5Hdjo4/files
+Composing metadata...
+
+** (appstreamcli-compose:4440): CRITICAL **: 16:35:24.411: as_icon_set_scale: assertion 'scale &gt;= 1' failed
+Success!
+Committing stage cleanup to cache
+Finishing app
+Exporting share/applications/com.infomaniak.kdrive.desktop
+Exporting share/icons/hicolor/16x16/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/32x32/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/48x48/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/64x64/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/128x128/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/256x256/apps/com.infomaniak.kdrive.png
+Exporting share/icons/hicolor/512x512/apps/com.infomaniak.kdrive.png
+Exporting share/metainfo/com.infomaniak.kdrive.metainfo.xml
+Using start-kdrive-flatpak.sh as command
+Please review the exported files and the metadata
+Committing stage finish to cache
+Exporting com.infomaniak.kdrive to repo
+Commit: 751b3255d9acc3b20eda53524439200d9c7f5673f18f76dfa661d36bf78b5030
+Metadata Total: 403
+Metadata Written: 1
+Content Total: 762
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Exporting com.infomaniak.kdrive.Debug to repo
+Commit: cf268a3d3678f6adc6dd2fe157b59950bb81b16e00c7c8f9feed7399a17fee8c
+Metadata Total: 71
+Metadata Written: 1
+Content Total: 121
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Installing app/com.infomaniak.kdrive/x86_64/master
+Pruning cache
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 31, 2024 5:54 PM">
+            <time itemprop="datePublished" datetime="2024-01-31 17:54:15 +0000">Jan 31, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You should use <code>--socket=fallback-x11</code> instead of <code>x11</code> when using Wayland</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 31, 2024 6:22 PM">
+            <time itemprop="datePublished" datetime="2024-01-31 18:22:07 +0000">Jan 31, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you. I now replaced <code>--socket=x11</code> with <code>--socket=fallback-x11</code> (or am I meant to have both?) and I also removed qtwebengine as the base-app to get rid of that rcp_file error.</p>
+<p>It still doesn’t run though:</p>
+<pre><code class="lang-auto">kDrive server starting
+qt.qpa.plugin: Could not find the Qt platform plugin "wayland" in ""
+qt.qpa.xcb: could not connect to display 
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vkkhrdisplay, vnc, xcb.
+
+Server stoped with signal 6
+</code></pre>
+<p>Reinstalling, as suggested, didn’t fix it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 2, 2024 9:51 AM">
+            <time itemprop="datePublished" datetime="2024-02-02 09:51:15 +0000">Feb 2, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve made some progress:</p>
+<pre><code class="lang-auto">user@tumbleweed:~/flatpak-builder&gt; flatpak run com.infomaniak.kdrive
+kDrive server starting
+kDrive server initialization error: Unable to open parameters database.
+</code></pre>
+<p>after making these changes in the manifest:</p>
+<pre><code class="lang-auto">  - --socket=x11
+  - --socket=fallback-x11
+  - --env=XDG_SESSION_TYPE=x11 # otherwise get errors relating to qt.qpa.plugin and qt.qpa.xcb
+  - --env=QT_QPA_PLATFORM=xcb # otherwise get errors relating to qt.qpa.plugin and qt.qpa.xcb
+  - --unset-env=WAYLAND_DISPLAY # otherwise get errors relating to qt.qpa.plugin and qt.qpa.xcb
+  - --unset-env=SESSION_MANAGER # otherwise get "Qt Session management error: Could not open network socket"
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 2, 2024 1:37 PM">
+            <time itemprop="datePublished" datetime="2024-02-02 13:37:55 +0000">Feb 2, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Another comment. I have the “normal” AppImage version of kDrive running. I had a look in the logs and it referenced a few file paths:</p>
+<pre><code class="lang-auto">New DB exists : /home/user/.config/kDrive/.parms.db =&gt; 1
+Old config exists : /home/user/.config/kDrive/kDrive.cfg =&gt; 0
+Adding extra plugin search path:/usr/lib/x86_64-linux-gnu/kDrive/plugins
+Server started, listening at /run/user/1000/kDrive/socket
+</code></pre>
+<p>(btw the third one doesn’t actually exist)</p>
+<p>Do I need to add anything to the manifest finish-args? I thought <code>filesystem=home</code> should be enough…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 8, 2024 1:27 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 13:27:08 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I made progress with my Flatpak by copying the sync-exclude.lst to the root of the appimage folder. I now manage to start kDrive but I get this error:</p>
+<pre><code class="lang-auto">user@fedora:~/flatpak$ flatpak run com.infomaniak.kdrive
+kDrive server starting
+
+(process:3): GLib-GObject-CRITICAL **: 13:23:13.440: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+/app/kdrive/usr/lib/libgnutls.so.30: version `GNUTLS_3_7_4' not found (required by /usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so)
+Failed to load module: /usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so
+
+(process:3): GLib-GObject-CRITICAL **: 13:23:13.440: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+</code></pre>
+<p>and the kDrive window just shows a message “This site can’t be reached” “ERR_CERT_AUTHORITY_INVALID” (I think it’s uses QtWebEngine or another webview implementation to get to the login page).</p>
+<p>Any ideas how to fix it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 8, 2024 2:34 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 14:34:32 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you should remove that lib from squashfs-root so that it’s picked up from runtime instead.<br>
+You can list the runtime libs this way:</p>
+<pre><code class="lang-auto">ls /var/lib/flatpak/runtime/org.kde.Platform/x86_64/5.15-23.08/active/files/lib/x86_64-linux-gnu/
+</code></pre>
+<p>Best case you should remove all AppImage libs that are present in the runtime.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 8, 2024 2:42 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 14:42:05 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see it’s based on Qt6 - it might be better to use a newer <code>BaseApp</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 8, 2024 2:43 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 14:43:51 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tried that by adding <code>- rm squashfs-root/usr/lib/libgnutls.so.30</code> to the manifest built-commands, but it’s still the same error as before.</p>
+<p>The KDE runtime seems to include a libgnutls.so.30 (the same file I’m deleting from the Appimage) as well as a libgio-2.0.so.0 but I don’t think there’s a libgiognutls.so that’s references in the error code.</p>
+<p>The error still looks like this:</p>
+<pre><code class="lang-auto">user@fedora:~/flatpak$ flatpak run com.infomaniak.kdrive
+kDrive server starting
+
+(process:3): GLib-GObject-CRITICAL **: 14:39:37.051: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+/app/kdrive/usr/bin/../lib/libgnutls.so.30: version `GNUTLS_3_7_4' not found (required by /usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so)
+Failed to load module: /usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so
+
+(process:3): GLib-GObject-CRITICAL **: 14:39:37.052: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+
+</code></pre>
+<p>This is my current manifest:</p>
+<pre><code class="lang-auto">app-id: com.infomaniak.kdrive
+
+runtime: org.kde.Platform
+runtime-version: 5.15-23.08
+sdk: org.kde.Sdk
+
+command: start-kdrive-flatpak.sh
+
+finish-args:
+  - --device=dri
+  - --socket=x11 # if using wayland, even with fallback-x11, you get "could not connect to display" errors
+  - --env=XDG_SESSION_TYPE=x11 # otherwise get "could not connect to display" errors
+  - --env=QT_QPA_PLATFORM=xcb # otherwise get "could not connect to display" errors
+  - --unset-env=WAYLAND_DISPLAY # otherwise get "could not connect to display" errors
+  - --unset-env=SESSION_MANAGER # otherwise get "Qt Session management error Could not open network socket"
+  - --share=network
+  - --share=ipc
+  - --filesystem=home
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=org.kde.kwalletd5
+
+modules:
+  - name: kdrive
+    buildsystem: simple
+    build-commands:
+      # Extract the Appimage
+     - chmod a+x kDrive.AppImage
+     - ./kDrive.AppImage --appimage-extract &gt;/dev/null
+     - chmod -R --reference=kDrive.AppImage squashfs-root
+     - rm ./kDrive.AppImage
+     # Patch .desktop file with the new icon and binary location
+     - sed -i -e 's/Icon.*/Icon=com.infomaniak.kdrive/' squashfs-root/kDrive_client.desktop
+     - sed -i -e 's/Exec.*/Exec=start-kdrive-flatpak.sh %F/' squashfs-root/kDrive_client.desktop
+     # Move things into place
+     - cp squashfs-root/usr/bin/sync-exclude.lst squashfs-root/sync-exclude.lst # otherwise kDrive won't start
+     - rm squashfs-root/usr/lib/libgnutls.so.30
+     - mkdir /app/kdrive
+     - cp -r squashfs-root/* /app/kdrive
+     - install -Dm644 squashfs-root/kDrive_client.desktop /app/share/applications/com.infomaniak.kdrive.desktop
+     - |
+       for s in 16 32 48 64 128 256 512; do
+         install -Dm644 squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/kdrive-win.png /app/share/icons/hicolor/${s}x${s}/apps/com.infomaniak.kdrive.png
+       done
+     - install -Dm644 com.infomaniak.kdrive.appdata.xml /app/share/appdata/com.infomaniak.kdrive.appdata.xml
+     - install -Dm544 start-kdrive-flatpak.sh /app/bin/start-kdrive-flatpak.sh
+    sources:
+      - type: file
+        url: https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.5.7.20240124-amd64.AppImage
+        sha256: ab99aa9252d9e7c613d2a4247d368a6369926062b54ad7ddbb1ab36f1d591d4b
+        only-arches:
+         - x86_64
+        dest-filename: kDrive.AppImage
+      - type: file
+        url: https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.5.7.20240124-arm64.AppImage
+        sha256: 894f7544bfe302d747dd77d0769f69889e0bee6f1e6dbdce1c3410bd864519f3
+        only-arches:
+         - aarch64
+        dest-filename: kDrive.AppImage
+      - type: file
+        path: com.infomaniak.kdrive.appdata.xml
+      - type: script
+        dest-filename: start-kdrive-flatpak.sh
+        commands:
+          - /app/kdrive/AppRun "$@"
+# potentially add some kind of update checking here
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 8, 2024 2:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 14:59:41 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I upgraded the BaseApp and Runtime to 6.6 but it’s still the same problem</p>
+<p>edit: actually the error code has changed a bit:</p>
+<pre><code class="lang-auto">flatpak run com.infomaniak.kdrive
+kDrive server starting
+
+(process:3): GLib-GObject-CRITICAL **: 15:04:01.501: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+/usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so: undefined symbol: g_tls_channel_binding_error_quark
+Failed to load module: /usr/lib/x86_64-linux-gnu/gio/modules/libgiognutls.so
+
+(process:3): GLib-GObject-CRITICAL **: 15:04:01.501: type_add_flags_W: assertion '(flags &amp; ~TYPE_FLAG_MASK) == 0' failed
+
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 8, 2024 3:34 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 15:34:49 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Dust2692" data-post="10" data-topic="5998">
+<div class="title">
+<div class="quote-controls"></div>
+Dust2692:</div>
+<blockquote>
+<p><code>g_tls_channel_binding_error_quark</code></p>
+</blockquote>
+</aside>
+<p>It’s from libgio-2.0.so.0. I think the runtime lib tries to read AppImage’s lib which is wrong</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 8, 2024 3:46 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 15:46:28 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Interesting. The error goes away when I delete the libgio-2.0.so.0 from the AppImage, so that it uses the runtime one (presumably).</p>
+<p>However it still can’t actually connect to the Internet:</p>
+<p><img src="/uploads/original/2X/a/aefae880a7567d32cc40771f169a65df0f96cedd.png" alt="Screenshot_20240208_154453" data-base62-sha1="oXWEbMhdFS19oLEBkezieBn3SAl" width="472" height="475"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Feb 8, 2024 5:19 PM">
+            <time itemprop="datePublished" datetime="2024-02-08 17:19:48 +0000">Feb 8, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here is the output of strace: <a href="https://pastebin.com/aZpxu107" class="inline-onebox" rel="noopener nofollow ugc">user@fedora:~/flatpak$ strace flatpak run com.infomaniak.kdrive &gt; kdrive-strace. - Pastebin.com</a></p>
+<p>I killed the app through the task manager at the end.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Feb 13, 2024 6:55 PM">
+            <time itemprop="datePublished" datetime="2024-02-13 18:55:31 +0000">Feb 13, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems to work for me? (your manifest built, 6.6 base)<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907.png" data-download-href="/uploads/original/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907_2_390x500.png" alt="image" data-base62-sha1="y0a8aMzI0bjjhtepWxKbxduDhcj" width="390" height="500" srcset="/uploads/optimized/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907_2_390x500.png, /uploads/optimized/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907_2_585x750.png 1.5x, /uploads/original/2X/e/ee4ea4d971c4d72a9983ebdac431ec906900d907.png 2x" data-dominant-color="EAF5FC"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">625×800 22.9 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Feb 13, 2024 7:32 PM">
+            <time itemprop="datePublished" datetime="2024-02-13 19:32:10 +0000">Feb 13, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s so strange! I tried it on OpenSUSE and a Fedora VM. What’s your setup?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Feb 14, 2024 5:29 AM">
+            <time itemprop="datePublished" datetime="2024-02-14 05:29:39 +0000">Feb 14, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ubuntu 22.04 with the latest updates</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Feb 16, 2024 11:03 AM">
+            <time itemprop="datePublished" datetime="2024-02-16 11:03:04 +0000">Feb 16, 2024</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Very interesting. It does work in a Ubuntu 22.04 VM, for some reason.</p>
+<p>However, when I actually try to log in, I get an error called “Token request failed: Failed to write authentification token into keychain” in the kDrive app. What could be the reason for this? Is <code>  - --talk-name=org.freedesktop.secrets</code> not enough?</p>
+<p>edit:<br>
+I tried adding some stuff copied from the <a href="https://github.com/flathub/com.nextcloud.desktopclient.nextcloud/blob/master/com.nextcloud.desktopclient.nextcloud.yml" rel="noopener nofollow ugc">Nextcloud</a> YAML (because both Nextcloud and kDrive are forks of Owncloud):</p>
+<pre><code class="lang-auto">modules:
+  - shared-modules/libsecret/libsecret.json
+
+  - name: qtkeychain
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_INSTALL_LIBDIR=lib
+      - -DBUILD_TRANSLATIONS=NO
+    cleanup:      
+      - /include
+      - /mkspecs
+      - /lib/cmake
+    sources:
+      - type: archive
+        url: https://github.com/frankosterfeld/qtkeychain/archive/0.14.2.tar.gz
+        sha256: cf2e972b783ba66334a79a30f6b3a1ea794a1dc574d6c3bebae5ffd2f0399571
+        x-checker-data:
+          type: anitya
+          url-template: https://github.com/frankosterfeld/qtkeychain/archive/$version.tar.gz
+          stable-only: true
+          project-id: 4138
+</code></pre>
+<p>But that doesn’t make any difference.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Feb 16, 2024 4:50 PM">
+            <time itemprop="datePublished" datetime="2024-02-16 16:50:17 +0000">Feb 16, 2024</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Dust2692" data-post="17" data-topic="5998">
+<div class="title">
+<div class="quote-controls"></div>
+Dust2692:</div>
+<blockquote>
+<p>Token request failed: Failed to write authentification token into keychain</p>
+</blockquote>
+</aside>
+<p>Ok, I figured it out. I needed at add <code>--filesystem=xdg-run/keyring</code></p>
+<p>Now it runs and syncs <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"> Very good!</p>
+<p>Although in my Ubuntu VM I can’t click on the tray icon, no idea if this is a Flatpak issue or GNOME issue.</p>
+<p>edit: and I tried it in openSUSE Kalpa (KDE desktop) but the app doesn’t appear at all. No window, no tray icon. The console just says <code>kDrive servers starting</code> and then nothing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Feb 16, 2024 6:13 PM">
+            <time itemprop="datePublished" datetime="2024-02-16 18:13:19 +0000">Feb 16, 2024</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Did you read through <a href="https://docs.flatpak.org/en/latest/desktop-integration.html#status-icons" class="inline-onebox">Desktop Integration - Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dust2692</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Feb 23, 2024 9:28 AM">
+            <time itemprop="datePublished" datetime="2024-02-23 09:28:14 +0000">Feb 23, 2024</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So I tried adding all sorts of things but still it doesn’t work:</p>
+<pre><code class="lang-auto">  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=com.canonical.indicator.application
+  - --talk-name=org.kde.kwalletd5
+  - --filesystem=xdg-run/keyring
+  - --own-name=org.kde.*
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

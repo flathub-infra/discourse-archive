@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak wants to remove everything? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak wants to remove everything?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak wants to remove everything?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 14, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Scotty Trees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 14, 2023 7:18 PM">
+            <time itemprop="datePublished" datetime="2023-01-14 19:18:47 +0000">Jan 14, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Greetings Flatpak community,</p>
+<p>Just ran some dnf updates today in Black Box (on Fedora 37 Gnome), got the latest mesa, nvidia drivers, etc. so I did a reboot, then ran <code>flatpak update</code> as usual to grab any additional latest nvidia flatpak updates so that flatpaks launch correctly, and everything updated no problem. Now I like to remove any old and no longer used flatpak packages, so I ran <code>flatpak uninstall --unused</code> to remove the older version of nvidia for flatpak and ran into this message:</p>
+<pre><code class="lang-auto">1. [scott@fedora ~]$ flatpak uninstall --unused
+
+2. Info: applications using the extension org.freedesktop.Platform.GL.nvidia-525-60-11 branch 1.4:
+
+3. com.bitwarden.desktop, com.discordapp.Discord, com.mojang.Minecraft, io.mpv.Mpv, app.drey.Blurble, com.belmoussaoui.Obfuscate, com.github.hugolabe.Wike, com.github.taiko2k.tauonmb, com.leinardi.gwe, io.github.lainsce.Khronos, org.gabmus.whatip, org.gnome.Podcasts, org.gnome.Shotwell, org.gnome.World.PikaBackup, org.gnome.gitlab.somas.Apostrophe, org.gustavoperedo.FontDownloader, org.inkscape.Inkscape, app.drey.Dialect, app.drey.EarTag, app.drey.Warp, com.belmoussaoui.Authenticator, com.belmoussaoui.Decoder, com.bitstower.Markets, com.github.ADBeveridge.Raider, com.github.GradienceTeam.Gradience, com.github.geigi.cozy, com.github.johnfactotum.Foliate, com.github.johnfactotum.QuickLookup, com.github.liferooter.textpieces, com.github.tchx84.Flatseal, com.gitlab.newsflash, com.mattjakeman.ExtensionManager, com.rafaelmardojai.Blanket, com.raggesilver.BlackBox, com.rawtherapee.RawTherapee, de.haeckerfelix.Fragments, de.haeckerfelix.Shortwave, de.zwarf.picplanner, dev.geopjr.Collision, fr.romainvigier.MetadataCleaner, im.bernard.Nostalgia, info.febvre.Komikku, io.bassi.Amberol, io.github.celluloid_player.Celluloid, io.github.realmazharhussain.GdmSettings, io.github.seadve.Kooha, io.gitlab.adhami3310.Converter, io.gitlab.theevilskeleton.Upscaler, io.posidon.Paper, net.sapples.LiveCaptions, org.darktable.Darktable, org.freedesktop.Piper, org.gabmus.gfeeds, org.gnome.Chess, org.gnome.DejaDup, org.gnome.Epiphany, org.gnome.Extensions, org.gnome.Maps, org.gnome.Todo, org.gnome.World.Secrets, org.gnome.gitlab.YaLTeR.Identity, org.gnome.gitlab.YaLTeR.VideoTrimmer, org.nickvision.money, org.nickvision.tagger, org.nickvision.tubeconverter, re.sonny.Tangram, uk.co.ibboard.cawbird, org.kde.kid3, org.fedoraproject.MediaWriter
+
+4. Really remove? [y/n]:
+</code></pre>
+<p>If anyone could please just let me know if it’s safe (doesn’t look like it) to hit yes to remove only the old nvidia flatpak driver, OR if this is indeed saying it’s going to remove all my flatpak applications, which is definitely something I do not want to do. Not sure if this is possibly some bug with flatpak updates maybe, but better thought I’d ask to be sure. Thanks for any help and my apologies if this is a stupid question, just wanted to be better safe than sorry!</p>
+<p>Here’s a <a href="https://pastebin.com/EzkMtKbB" rel="noopener nofollow ugc">Pastebin </a> link for better readability.</p>
+<p>Edit: I’ll add my flatpak runtime list, which currently includes two nvidia drivers, hence why I was hoping I could simply remove the old one like I have in the past. My current RPMfusion nvidia driver version is 525.78.01 btw:</p>
+<pre><code class="lang-auto">[scott@fedora ~]$ flatpak list --runtime
+Name                                               Application ID                                                   Version             Branch                  Installation
+Freedesktop Platform                               org.freedesktop.Platform                                         22.08.5             22.08                   system
+Mesa                                               org.freedesktop.Platform.GL.default                              21.3.9              21.08                   system
+Mesa                                               org.freedesktop.Platform.GL.default                              22.3.2              22.08                   system
+Mesa (Extra)                                       org.freedesktop.Platform.GL.default                              22.3.2              22.08-extra             system
+nvidia-525-60-11                                   org.freedesktop.Platform.GL.nvidia-525-60-11                                         1.4                     system
+nvidia-525-78-01                                   org.freedesktop.Platform.GL.nvidia-525-78-01                                         1.4                     system
+Intel                                              org.freedesktop.Platform.VAAPI.Intel                                                 21.08                   system
+Intel                                              org.freedesktop.Platform.VAAPI.Intel                                                 22.08                   system
+ffmpeg-full                                        org.freedesktop.Platform.ffmpeg-full                                                 21.08                   system
+ffmpeg-full                                        org.freedesktop.Platform.ffmpeg-full                                                 22.08                   system
+openh264                                           org.freedesktop.Platform.openh264                                2.1.0               2.0                     system
+openh264                                           org.freedesktop.Platform.openh264                                2.1.0               2.2.0                   system
+GNOME Application Platform version 42              org.gnome.Platform                                                                   42                      system
+GNOME Application Platform version 43              org.gnome.Platform                                                                   43                      system
+Adwaita dark GTK theme                             org.gtk.Gtk3theme.Adwaita-dark                                                       3.22                    system
+KDE Application Platform                           org.kde.Platform                                                                     5.15-21.08              system
+KDE Application Platform                           org.kde.Platform                                                                     6.4                     system
+QGnomePlatform                                     org.kde.PlatformTheme.QGnomePlatform                                                 5.15-21.08              system
+QGnomePlatform                                     org.kde.PlatformTheme.QGnomePlatform                                                 6.4                     system
+QtSNI                                              org.kde.PlatformTheme.QtSNI                                                          5.15-21.08              system
+QGnomePlatform-decoration                          org.kde.WaylandDecoration.QGnomePlatform-decoration                                  5.15-21.08              system
+QGnomePlatform-decoration         
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Taiko2k</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 15, 2023 8:13 AM">
+            <time itemprop="datePublished" datetime="2023-01-15 08:13:51 +0000">Jan 15, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey Scotty!</p>
+<p>Yeah that should be fine, it wont remove all those apps. Even if it did, you could just do <code>flatpak install</code> again, since uninstalling an app doesn’t delete the user data (though modified permissions might reset).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

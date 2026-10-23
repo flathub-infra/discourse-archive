@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder can&#39;t find my include dir of .cpp,.h - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder can&#39;t find my include dir of .cpp,.h</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder can&#39;t find my include dir of .cpp,.h</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 3, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 3, 2024 7:02 PM">
+            <time itemprop="datePublished" datetime="2024-02-03 19:02:22 +0000">Feb 3, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>there’s prob an easy answer to this but i’m tired of bangin my head on the same wall.</p>
+<p>here’s my dirs:<br>
+~/src/pcheetah         has a dir for each qt c++ executable<br>
+~/src/pcheetah/initme/main.cpp     …etc<br>
+~/src/pcheetah/pcheetah/main.cpp   my top level executable that runs the others<br>
+~/src/stv/os.h<br>
+~/src/stv/os.cpp  …common classes, etc etc</p>
+<p>now i’m pretty new to linux.  I just made a softlink in each dir (~/src/pcheetah/initme/stv → which points to ~/src/stv)</p>
+<p>so my manifest file, build dir and repo dir are in ~/src/pcheetah   - named _app, _repo, _mani (a json file)</p>
+<p>_mani has:</p>
+<pre><code class="lang-auto">{
+ "__cli": 'flatpak-builder --repo=_repo --subject="pcheetah `date`" --ccache --force-clean _app _mani',
+ 
+ "app-id":  "app.shazel.pcheetah",
+ "sdk":     "org.kde.Sdk",
+ "runtime": "org.kde.Platform",
+ "runtime-version":          "6.6",
+ "command": "pcheetah",
+ "modules": [
+  {
+   "name": "initme",
+   "buildsystem": "cmake-ninja",
+   "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
+   "sources": [{ "type": "dir", "path": "initme" }, { "type": "dir", "path": "initme/stv" }]
+  },
+  {
+   "name": "pcheetah",
+   "buildsystem": "cmake-ninja",
+   "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
+   "sources": [{ "type": "dir", "path": "pcheetah" }]
+  }
+ ],
+ "finish-args": [
+  "--share=ipc",
+  "--socket=x11",
+  "--socket=wayland",
+  "--filesystem=host",
+  "--device=dri"
+ ]
+}
+</code></pre>
+<p>And i kick flatpak-builder with:<br>
+flatpak-builder --repo=_repo --subject=“pcheetah <code>date</code>” --ccache --force-clean _app _mani -v</p>
+<p>Here’s my CMakeLists.txt for initme</p>
+<pre><code class="lang-auto">cmake_minimum_required(VERSION 3.5)
+project(initme VERSION 0.1 LANGUAGES CXX)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(QT NAMES Qt6          REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+set(PROJECT_SOURCES
+        initme.cpp
+        initme.h
+        initme.ui
+        stv/os.cpp
+        stv/ui.cpp
+)
+qt_add_executable(initme rc/rc.qrc
+    MANUAL_FINALIZATION
+    ${PROJECT_SOURCES}
+)
+target_include_directories(initme PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}:stv")
+target_link_libraries(initme PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+install(TARGETS initme
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+qt_finalize_executable(initme)
+</code></pre>
+<p>And this initme (and pcheetah and all of em) compile just fine in qtcreator.</p>
+<p>But ole flatpak-builder gives me:</p>
+<p>(a buncha stuff that looks totally great but then)</p>
+<pre><code class="lang-auto">-- Configuring done (1.5s)
+CMake Error at /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:603 (add_executable):
+  Cannot find source file:
+
+    stv/os.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
+  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
+  .f95 .f03 .hip .ispc
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:564 (_qt_internal_create_executable)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:777 (qt6_add_executable)
+  CMakeLists.txt:23 (qt_add_executable)
+
+
+-- Generating done (0.0s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+Error: module initme: Child process exited with code 1
+FB: Unmounting read-only fs: fusermount -uz /home/sh/src/pcheetah/.flatpak-builder/rofiles/rofiles-diXdns
+</code></pre>
+<p>So the dang thing ain’t finding my stv dir<br>
+I’ve tried using relative path …/…/stv/whatev.cpp</p>
+<p>So cmake within qtcreator is ok with everything but not cmake within flatpak-builder…</p>
+<p>Well, techically, qtcreator compiles just fine, but the executable won’t find the flatpak runtime shared libs.</p>
+<p>If somebody can fill me in about the PROPER way to get flatpak-builder / cmake able to find my stv dir…  Pleeeease</p>
+<p>…Steve</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 3, 2024 8:41 PM">
+            <time itemprop="datePublished" datetime="2024-02-03 20:41:16 +0000">Feb 3, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>First of all: Please format your text. It’s not easy to follow an unknown setup &amp; your formatting makes it unfortunately even harder. Put your files &amp; console output into blockquotes or preformatted text &amp; your setup becomes much easier to understand (bonus points if you format the json).</p>
+<aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6029">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>now i’m pretty new to linux. I just made a softlink in each dir (~/src/pcheetah/initme/stv → which points to ~/src/stv)</p>
+</blockquote>
+</aside>
+<p>I think that’s your problem. Flatpak runs everything in a sandbox, including the build process of flatpak-builder. Directory &amp; file sources will be copied into the build folder (see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">flatpak-manifest</a>)</p>
+<blockquote>
+<pre><code>   Directory sources
+
+       type
+           "dir"
+
+       path (string)
+           The path of a local directory whose content will be copied into
+           the source dir. Note that directory sources don't currently
+           support caching, so they will be rebuilt each time.
+</code></pre>
+</blockquote>
+<p>As a result, I suspect your link targets simply don’t exist while building.</p>
+<p><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">flatpak-builder</a> provides some options to debug &amp; investigate the build environment (<code>--stop-at</code> &amp; <code>--build-shell</code>). You can use this to take a look at what’s happening:</p>
+<p>Initialize the build directory:<br>
+<code>flatpak-builder --stop-at=initme --force-clean _app _mani -v</code></p>
+<p>Start a shell in the build environment:<br>
+<code>flatpak-builder --build-shell=initme _app _mani -v</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 3, 2024 8:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-03 20:59:13 +0000">Feb 3, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>sorry about my formatting - i spruced it up a little.</p>
+<p>My manifest for module initme has 2 dirs in sources.<br>
+The main one - initme and the stv one - stv both of type dir.</p>
+<p>I would thiiink that the stv dir would make it in so stv/os.cpp and stv/ui.cpp could be found.  I’ll try the tracing things you mentioned.</p>
+<p>Thanks for your help !</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 4, 2024 12:37 AM">
+            <time itemprop="datePublished" datetime="2024-02-04 00:37:56 +0000">Feb 4, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>well i ran the 2 commands and looked in the resulting build dir (_app)</p>
+<p>First command just clears it out i guess.</p>
+<p>Second command didn’t start any subshell or whatever.<br>
+I looked in _app and didn’t see much of anything interesting.<br>
+just got this:</p>
+<pre><code class="lang-auto">sh@pengo:~/src/pcheetah$ flatpak-builder --build-shell=initme _app _mani -v
+FB: Running: git config --get user.email
+FB: Running: git config --get user.name
+FB: Running: flatpak info --arch=x86_64 --show-commit org.kde.Sdk 6.6
+FB: Running: flatpak info --show-location --arch=x86_64 org.kde.Sdk 6.6
+FB: Running: flatpak info --arch=x86_64 --show-commit org.kde.Platform 6.6
+Downloading sources
+FB: Mounting read-only fs: rofiles-fuse /home/sh/src/pcheetah/_app /home/sh/src/pcheetah/.flatpak-builder/rofiles/rofiles-diXdns
+========================================================================
+Building module initme in /home/sh/src/pcheetah/.flatpak-builder/build/initme-2
+========================================================================
+FB: Running: flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/initme --nofilesystem=host:reset --filesystem=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/home/sh/src/pcheetah/.flatpak-builder/build/initme-2=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/run/build/initme=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --build-dir=/run/build/initme --bind-mount=/run/ccache=/home/sh/src/pcheetah/.flatpak-builder/ccache --env=SOURCE_DATE_EPOCH=1706985370 '--env=CFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=20 /home/sh/src/pcheetah/.flatpak-builder/rofiles/rofiles-diXdns cmake '-DCMAKE_INSTALL_PREFIX:PATH='\''/app'\''' -G Ninja . -DCMAKE_BUILD_TYPE=RelWithDebInfo
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE  
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Found WrapOpenGL: TRUE  
+-- Found XKB: /usr/lib/x86_64-linux-gnu/libxkbcommon.so (found suitable version "1.5.0", minimum required is "0.5.0") 
+-- Found WrapVulkanHeaders: /usr/include  
+-- Configuring done (1.1s)
+CMake Error at /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:603 (add_executable):
+  Cannot find source file:
+
+    stv/os.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
+  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
+  .f95 .f03 .hip .ispc
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:564 (_qt_internal_create_executable)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreMacros.cmake:777 (qt6_add_executable)
+  CMakeLists.txt:23 (qt_add_executable)
+
+
+-- Generating done (0.0s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+Failed to setup module: module initme: Child process exited with code 1
+FB: Unmounting read-only fs: fusermount -uz /home/sh/src/pcheetah/.flatpak-builder/rofiles/rofiles-diXdns
+</code></pre>
+<p>Ok I’ve come across this:<br>
+<a href="https://qt-flatpak-demo" rel="noopener nofollow ugc">https://github.com/flatpak/qt-flatpak-demo/blob/master/CMakeLists.txt</a></p>
+<p>This CMakeLists.txt looks radically different than what qtcreator makes.</p>
+<p>I’m not having a great time followin’ these docs.  When it comes to putting a qt executable into flatpak, there sure isn’t much detail.</p>
+<p>I’d really like to find a qt6 demo app if anyone knows of one.</p>
+<p>Sorry to be all helpless n stuff.</p>
+<p>I mean it sure can’t be uncommon to have a src/distribute/app/main.cpp that uses a src/somelib/whatever.cpp</p>
+<p>I guess I should just do a git source type.  But I kinda prefer to build before I commit it to git.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 4, 2024 10:33 AM">
+            <time itemprop="datePublished" datetime="2024-02-04 10:33:42 +0000">Feb 4, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It seems that <code>--build-shell</code> stops after the configuration step (<a href="https://github.com/flatpak/flatpak-builder/issues/479" rel="noopener nofollow ugc">Issue</a>). I didn’t catch this because I tried it with a simple example without a configuration step.</p>
+<p>But flatpak-builder just uses <code>flatpak build</code>, you can run your own commands according the verbose log. This should work as well if (the build folder must have been previously initialized by flatpak-builder, maybe you have to adjust the <code>initme-2</code> build folder):</p>
+<pre><code class="lang-auto">flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/initme --nofilesystem=host:reset --filesystem=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/home/sh/src/pcheetah/.flatpak-builder/build/initme-2=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/run/build/initme=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --build-dir=/run/build/initme --bind-mount=/run/ccache=/home/sh/src/pcheetah/.flatpak-builder/ccache _app bash
+</code></pre>
+<p>There seems to be an additional bind-mount in the sandbox from <code>/media/sh/…</code> to <code>/home/sh/…</code>. I don’t think this would change anything, but just to take notice. The actual build happens with the files from <code>/media/sh/…</code>.</p>
+<pre><code class="lang-auto">--filesystem=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2
+--bind-mount=/home/sh/src/pcheetah/.flatpak-builder/build/initme-2=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2
+--bind-mount=/run/build/initme=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2
+</code></pre>
+<p>You can also just browse the build files in the local folder without the sandbox:</p>
+<pre><code class="lang-auto">/home/sh/src/pcheetah/.flatpak-builder/build/initme-2
+</code></pre>
+<p>If there are any soft-links outside this folder then the files will be missing inside the sandbox (even when they can be locally resolved).</p>
+<aside class="quote no-group" data-username="Stephen-Hazel" data-post="4" data-topic="6029">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>I’d really like to find a qt6 demo app if anyone knows of one.</p>
+</blockquote>
+</aside>
+<p>Maybe you’ll find one in the GitHub repos, most will use the KDE runtime:<br>
+<a href="https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code" rel="noopener nofollow ugc">https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 4, 2024 6:35 PM">
+            <time itemprop="datePublished" datetime="2024-02-04 18:35:43 +0000">Feb 4, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>THANK YOU !!  you have given me victoryyyyy !!</p>
+<p>I was confused thinking things were going on in my _app dir when they were ACTUALLY going on in my .flatpak-builder/build dir - SHOISH !!</p>
+<p>And my new manifest (which I need to fill out for all my other modules) is now:<br>
+_mani</p>
+<pre><code class="lang-auto">{
+ "_cli": '
+flatpak-builder -v --ccache --force-clean --repo=_repo _app _mani
+         ',
+ "app-id":  "app.shazel.pcheetah",
+ "command":            "pcheetah",
+ "sdk":     "org.kde.Sdk",
+ "runtime": "org.kde.Platform",
+ "runtime-version":          "6.6",
+ "modules": [
+  {
+   "name": "initme",
+   "buildsystem": "cmake-ninja",
+   "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
+   "sources": [
+    {"type": "dir", "path": "initme"},
+    {"type": "dir", "path": "../stv", "dest": "stv"}
+   ]
+  },
+  {
+   "name": "pcheetah",
+   "buildsystem": "cmake-ninja",
+   "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
+   "sources": [
+    {"type": "dir", "path": "pcheetah"},
+    {"type": "dir", "path": "../stv", "dest": "stv"}
+   ]
+  }
+ ],
+ "finish-args": [
+  "--share=ipc",
+  "--socket=x11",
+  "--socket=wayland",
+  "--filesystem=host",
+  "--device=dri"
+ ]
+}
+</code></pre>
+<p>So now my stv common .h and .cpp dir is put into the build dir in dir “stv” which my code can reference.  It was jamming em all into the same dir but that “dest” argument (which seems to be nowhere in the flatpak docs, right?) fixes everything for me.  cmake built initme !!  (then died with pcheetah but i can get that fixed)</p>
+<p>This unfortunately changes my source code’s include lines, but oh well, at least I’m back on track and can try to fix that later.</p>
+<p>It strikes me that the flatpak docs just are not there yet.<br>
+But I guess linux devs enjoy junk like that or somethin?<br>
+I’m new to linux (used to be a windows dev but windowsupdate drove me away).<br>
+So my assessment of linux devs could be wrong <img src="/images/emoji/twitter/confused.png?v=12" title=":confused:" class="emoji" alt=":confused:" loading="lazy" width="20" height="20"></p>
+<p>Ok - thanks much !</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appstream problem while building - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Appstream problem while building</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Appstream problem while building</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 19, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sera.L</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 19, 2026 6:44 PM">
+            <time itemprop="datePublished" datetime="2026-03-19 18:44:48 +0000">Mar 19, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h1><a name="p-21849-h-1" class="anchor" href="#p-21849-h-1" aria-label="Heading link"></a></h1>
+<p>hello everyone</p>
+<p>i have an app when i build it locally it runs but when i build it using flathub building bot in github it fails and i find in the logs:</p>
+<p><code>appstream-missing-appinfo-file</code></p>
+<p>i have a manifest, metainfo, desktop, and an icon file</p>
+<p>here is the repo <a href="https://github.com/Sera-L/org.supertuxproject.SuperTux" class="inline-onebox" rel="noopener nofollow ugc">GitHub - Sera-L/org.supertuxproject.SuperTux · GitHub</a></p>
+<p>and here is the pr <a href="https://github.com/flathub-infra/vorarbeiter/actions/runs/23302626019" class="inline-onebox" rel="noopener nofollow ugc">build org.supertuxproject.SuperTux/test from refs/pull/32/head · flathub-infra/vorarbeiter@d3a1b90 · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ctlcltd</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 19, 2026 8:03 PM">
+            <time itemprop="datePublished" datetime="2026-03-19 20:03:57 +0000">Mar 19, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You’re getting lot of <code>G_IO_ERROR_NOT_FOUND</code> errors in the <strong>Validate build</strong> task, seems it cannot find the paths.<br>
+I don’t know the project, I see in the manifest: <em>rename-desktop-file</em>, <em>rename-appdata-file</em>, <em>buildsystem: cmake-ninja</em>, <em>build-commands</em> with <code>install</code> with paths, <em>config-opts</em> with install paths.<br>
+Maybe you can check the paths…<br>
+Someone expert on the build platform can answer you soon.<br>
+bye</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Sera.L</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 19, 2026 8:06 PM">
+            <time itemprop="datePublished" datetime="2026-03-19 20:06:09 +0000">Mar 19, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>i see just a one error and it is <code>appstream-missing-appinfo-file</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ctlcltd</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 20, 2026 1:09 PM">
+            <time itemprop="datePublished" datetime="2026-03-20 13:09:59 +0000">Mar 20, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Above the error:</p>
+<details>
+`2026-03-19 15:38:02,161 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/app-info with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpokpfirmo/app-info`
+`2026-03-19 15:38:02,162 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/applications with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpokpfirmo/applications`
+`2026-03-19 15:38:02,162 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/icons with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpokpfirmo/icons`
+`2026-03-19 15:38:02,163 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/app-info with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpert89q4p/app-info`
+`2026-03-19 15:38:02,164 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/applications with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpert89q4p/applications`
+`2026-03-19 15:38:02,164 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/icons with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpert89q4p/icons`
+`2026-03-19 15:38:02,166 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath /metadata for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmprk1dk9xh`
+`2026-03-19 15:38:02,167 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath /metadata for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmp3_6fxfvm`
+`2026-03-19 15:38:02,168 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath /metadata for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpe59x900f`
+`2026-03-19 15:38:02,168 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath /files/flathub.json with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpe59x900f`
+`2026-03-19 15:38:02,169 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/appdata with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpgg0tdpi8/appdata`
+`2026-03-19 15:38:02,169 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/metainfo with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmpgg0tdpi8/metainfo`
+`2026-03-19 15:38:02,217 DEBUG:flatpak_builder_lint.checks.reposize:get_dir_size: Directory size for repo: 675736424 bytes`
+`2026-03-19 15:38:02,218 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/appdata with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmp95yrgb2r/appdata`
+`2026-03-19 15:38:02,218 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/metainfo with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmp95yrgb2r/metainfo`
+`2026-03-19 15:38:02,219 DEBUG:flatpak_builder_lint.ostree:extract_subpath: Checking out subpath files/share/app-info with G_IO_ERROR_NOT_FOUND allowed for ref app/org.supertuxproject.SuperTux/x86_64/test at dest /work/tmp/tmp95yrgb2r/app-info`
+`2026-03-19 15:38:02,238 DEBUG:flatpak_builder_lint.domainutils:get_remote_exceptions_github: Request headers for ``https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/HEAD/flatpak_builder_lint/staticfiles/exceptions.json:`` {‘User-Agent’: ‘python-requests/2.32.5’, ‘Accept-Encoding’: ‘gzip, deflate’, ‘Accept’: ‘`*`/`*`’, ‘Connection’: ‘keep-alive’}`
+`2026-03-19 15:38:02,238 DEBUG:flatpak_builder_lint.domainutils:get_remote_exceptions_github: Response headers for ``https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/HEAD/flatpak_builder_lint/staticfiles/exceptions.json:`` {‘Connection’: ‘keep-alive’, ‘Content-Length’: ‘41010’, ‘Cache-Control’: ‘max-age=300’, ‘Content-Security-Policy’: “default-src ‘none’; style-src ‘unsafe-inline’; sandbox”, ‘Content-Type’: ‘text/plain; charset=utf-8’, ‘ETag’: ‘W/“d5786228ffc32afd765904e513b45760db81c6f527add0396f056ad15addc173”’, ‘Strict-Transport-Security’: ‘max-age=31536000’, ‘X-Content-Type-Options’: ‘nosniff’, ‘X-Frame-Options’: ‘deny’, ‘X-XSS-Protection’: ‘1; mode=block’, ‘X-GitHub-Request-Id’: ‘D1D0:1259D7:E352DD:1009AEC:69BB91DB’, ‘Content-Encoding’: ‘gzip’, ‘Accept-Ranges’: ‘bytes’, ‘Date’: ‘Thu, 19 Mar 2026 15:38:02 GMT’, ‘Via’: ‘1.1 varnish’, ‘X-Served-By’: ‘cache-iad-kjyo7100071-IAD’, ‘X-Cache’: ‘HIT’, ‘X-Cache-Hits’: ‘0’, ‘X-Timer’: ‘S1773934682.234124,VS0,VE2’, ‘Vary’: ‘Authorization,Accept-Encoding’, ‘Access-Control-Allow-Origin’: ‘*’, ‘Cross-Origin-Resource-Policy’: ‘cross-origin’, ‘X-Fastly-Request-ID’: ‘6e20a4dbe5d8d968cb06c7c443c8d8a9f8c73e16’, ‘Expires’: ‘Thu, 19 Mar 2026 15:43:02 GMT’, ‘Source-Age’: ‘267’}`
+`2026-03-19 15:38:02,240 DEBUG:flatpak_builder_lint.domainutils:get_remote_exceptions_github: Loaded remote exceptions for org.supertuxproject.SuperTux (repo key: stable) from ``https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/HEAD/flatpak_builder_lint/staticfiles/exceptions.json:`` set()`
+`2026-03-19 15:38:02,241 DEBUG:flatpak_builder_lint.cli:run_checks: Using remote exceptions: set()`
+`2026-03-19 15:38:02,243 DEBUG:flatpak_builder_lint.cli:get_local_exceptions: Loaded local exceptions for org.supertuxproject.SuperTux (repo key: stable): set()`
+`2026-03-19 15:38:02,243 DEBUG:flatpak_builder_lint.cli:run_checks: Falling back to local exceptions: set()`
+`Error: ‘appstream-missing-appinfo-file’ error found in linter repo check. Details: Appstream catalogue file is missing. Perhaps no Metainfo file was installed with correct name`
+</details>
+<p>I don’t know, it seems a trouble with paths.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 20, 2026 2:17 PM">
+            <time itemprop="datePublished" datetime="2026-03-20 14:17:55 +0000">Mar 20, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>I don’t know, it seems a trouble with paths.</p>
+</blockquote>
+<p>I edited your post to hide the code lines. Make sure to use code blocks inside a para to paste a large block of code, not inline.</p>
+<blockquote>
+<p>i have an app when i build it locally it runs but when i build it using flathub building bot in github it fails and i find in the logs:</p>
+</blockquote>
+<p>It means you aren’t installing the metainfo file in the correct place or it is being installed with the wrong filename. The filename needs to be <code>$FLATPAK_ID.metainfo.xml</code> and the install location should be <code>$FLATPAK_DEST/share/metainfo</code> which resolves to <code>/app/share/metainfo</code> for an app.</p>
+<p>In this case your install command is wrong, it has <code>${FLATPAK_DEST}/app</code> which is <code>/app/app</code> and makes no sense.</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">- install -Dm644 org.supertuxproject.SuperTux.metainfo.xml ${FLATPAK_DEST}/app/share/metainfo/org.supertuxproject.SuperTux.metainfo.xml
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

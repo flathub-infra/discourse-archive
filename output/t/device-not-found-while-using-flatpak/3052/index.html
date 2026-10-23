@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Device not found while using flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Device not found while using flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Device not found while using flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 20, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nitin Joshi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 20, 2022 7:06 AM">
+            <time itemprop="datePublished" datetime="2022-09-20 07:06:11 +0000">Sep 20, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello All,<br>
+I am new to flatpak  and have started working to create flatpak package for WWAN enablement i.e flatpak package for <a href="https://snapcraft.io/lenovo-wwan-dpr" class="inline-onebox" rel="noopener nofollow ugc">Install lenovo-wwan-dpr on Linux | Snap Store</a></p>
+<p>I am getting below error:</p>
+<ol>
+<li>
+<p>sh: line 1: mmcli: command not found<br>
+I am using “mmcli” to get modem type in Application code</p>
+</li>
+<li>
+<p>ls: cannot access ‘/dev/wwan*’: No such file or directory<br>
+Above error is shown but i am able to see /dev/wwan0mbim0 files</p>
+</li>
+</ol>
+<p>yml file loiks like below:</p>
+<pre><code class="lang-auto">app-id: org.flatpak.Hello
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: DPR_test
+finishing-args:
+  - --share=network
+  - --filesystem=/dev
+  - --device=all
+modules:
+  - name: hello
+    buildsystem: simple
+    build-commands:
+      - install -D DPR_test/app/bin/DPR_test
+    sources:
+      - type: file
+        path: DPR_test
+</code></pre>
+<p>We are just packaging a binary using flatpak.<br>
+Any comment regarding this will be helpful:</p>
+<p>Thank you !!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 21, 2022 6:00 PM">
+            <time itemprop="datePublished" datetime="2022-09-21 18:00:46 +0000">Sep 21, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you should not have <code>--filesystem=/dev</code></p>
+<p>as for <code>mmcli</code> it’s not in the runtime as it doesn’t have ModemManager. You’d need to build in the flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nitin Joshi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 22, 2022 1:19 AM">
+            <time itemprop="datePublished" datetime="2022-09-22 01:19:43 +0000">Sep 22, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@hub</span> Thank you for your comments.</p>
+<blockquote>
+<p>you should not have <code>--filesystem=/dev</code></p>
+</blockquote>
+<p>It seems application cannot access <strong>/dev/wwan0mbim0</strong> file . Is there something needs to be done in yml file for this ?</p>
+<blockquote>
+<p>You’d need to build in the flatpak.</p>
+</blockquote>
+<p>In this case, i suppose i need to package ModemManager as <strong>modules</strong> . Is there any other application which uses <strong>modemmanager</strong> build in flatpak , so that i can re-use it as it will be very helpful.</p>
+<p>Thank you</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 22, 2022 1:37 AM">
+            <time itemprop="datePublished" datetime="2022-09-22 01:37:06 +0000">Sep 22, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="nitjosh" data-post="3" data-topic="3052">
+<div class="title">
+<div class="quote-controls"></div>
+nitjosh:</div>
+<blockquote>
+<p>In this case, i suppose i need to package ModemManager as <strong>modules</strong> . Is there any other application which uses <strong>modemmanager</strong> build in flatpak , so that i can re-use it as it will be very helpful.</p>
+</blockquote>
+</aside>
+<p><a href="https://github.com/search?q=org%3Aflathub+ModemManager&amp;type=code" class="onebox" target="_blank" rel="noopener">https://github.com/search?q=org%3Aflathub+ModemManager&amp;type=code</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nitin Joshi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 22, 2022 2:03 AM">
+            <time itemprop="datePublished" datetime="2022-09-22 02:03:12 +0000">Sep 22, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I had tried searching in github but cannot see any search result using above link as well, not sure any permission needed to see this. Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 26, 2022 8:20 AM">
+            <time itemprop="datePublished" datetime="2022-09-26 08:20:35 +0000">Sep 26, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The above link doesn’t work for me, I guess it’s meant to be <a href="https://github.com/search?q=org%3Aflathub+modemmanager&amp;type=code" class="inline-onebox" rel="noopener nofollow ugc">Sign in to GitHub · GitHub</a></p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/org.freedesktop.fwupd/blob/3dbf9fed7a4e829d45900542079536cc852f463e/org.freedesktop.fwupd.json#L173">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.freedesktop.fwupd/blob/3dbf9fed7a4e829d45900542079536cc852f463e/org.freedesktop.fwupd.json#L173" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.freedesktop.fwupd/blob/3dbf9fed7a4e829d45900542079536cc852f463e/org.freedesktop.fwupd.json#L173" target="_blank" rel="noopener nofollow ugc">flathub/org.freedesktop.fwupd/blob/3dbf9fed7a4e829d45900542079536cc852f463e/org.freedesktop.fwupd.json#L173</a></h4>
+
+
+
+    <pre class="onebox">      <code class="lang-json">
+        <ol class="start lines" start="163" style="counter-reset: li-counter 162 ;">
+            <li>  ],</li>
+            <li>  "sources": [</li>
+            <li>    {</li>
+            <li>      "type": "archive",</li>
+            <li>      "url": "https://www.freedesktop.org/software/libmbim/libmbim-1.26.4.tar.xz",</li>
+            <li>      "sha256": "f688cec4c4586a17575f5e327448ce62f2000ef6a07c9e4589873d4a68568ad9"</li>
+            <li>    }</li>
+            <li>  ]</li>
+            <li>},</li>
+            <li>{</li>
+            <li class="selected">  "name": "ModemManager",</li>
+            <li>  "config-opts": [</li>
+            <li>    "--without-udev",</li>
+            <li>    "--with-systemdsystemunitdir=/app/lib/systemd",</li>
+            <li>    "--with-udev-base-dir=/app/lib"</li>
+            <li>  ],</li>
+            <li>  "cleanup": [</li>
+            <li>    "/bin/mmcli",</li>
+            <li>    "/etc/dbus-1/system.d",</li>
+            <li>    "/lib/ModemManager",</li>
+            <li>    "/lib/rules.d",</li>
+        </ol>
+      </code>
+    </pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/org.gnome.Calls/blob/cd08953ea0524f647cc73d100d76ee2f0a5c3041/org.gnome.Calls.yaml#L43">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.gnome.Calls/blob/cd08953ea0524f647cc73d100d76ee2f0a5c3041/org.gnome.Calls.yaml#L43" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.gnome.Calls/blob/cd08953ea0524f647cc73d100d76ee2f0a5c3041/org.gnome.Calls.yaml#L43" target="_blank" rel="noopener nofollow ugc">flathub/org.gnome.Calls/blob/cd08953ea0524f647cc73d100d76ee2f0a5c3041/org.gnome.Calls.yaml#L43</a></h4>
+
+
+
+    <pre class="onebox">      <code class="lang-yaml">
+        <ol class="start lines" start="33" style="counter-reset: li-counter 32 ;">
+            <li>modules:</li>
+            <li>  - name: modem-manager</li>
+            <li>    config-opts:</li>
+            <li>      - --without-udev</li>
+            <li>      - --without-mbim</li>
+            <li>      - --without-qmi</li>
+            <li>      - --with-systemdsystemunitdir=/app/lib/systemd/system</li>
+            <li>      - --with-udev-base-dir=/app/lib/udev</li>
+            <li>    sources:</li>
+            <li>      - type: git</li>
+            <li class="selected">        url: https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git</li>
+            <li>        tag: 1.18.12</li>
+            <li>        commit: c234bd55c9d9618c1478b5e80aaf4b8f965be181</li>
+            <li>        x-checker-data:</li>
+            <li>          type: git</li>
+            <li>          # NOTE tag 0.3 is not semantic versioning</li>
+            <li>          #version-scheme: semantic</li>
+            <li>          tag-pattern: ^([\d.]+)$</li>
+            <li>  - name: libpeas</li>
+            <li>    buildsystem: meson</li>
+            <li>    config-opts:</li>
+        </ol>
+      </code>
+    </pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nitin Joshi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 26, 2022 9:09 AM">
+            <time itemprop="datePublished" datetime="2022-09-26 09:09:38 +0000">Sep 26, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@razzeee</span> Thank you very much ! I will try and check it !!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">hadess</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 27, 2022 2:34 PM">
+            <time itemprop="datePublished" datetime="2022-09-27 14:34:27 +0000">Sep 27, 2022</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For what it’s worth, the application you’re looking to package looks like a daemon that runs in the background. It’s unlikely to be accepted in Flathub if it doesn’t have any UI to speak of, contrary to snap and the snap store.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Nitin Joshi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 3, 2022 5:18 AM">
+            <time itemprop="datePublished" datetime="2022-10-03 05:18:49 +0000">Oct 3, 2022</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@hadess</span> Thank you for sharing this information. Yes, this application doesn`t have any UI.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

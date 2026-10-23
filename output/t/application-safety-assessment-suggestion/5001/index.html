@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application Safety Assessment Suggestion - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Application Safety Assessment Suggestion</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Application Safety Assessment Suggestion</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 29, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mihnea Rădulescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 29, 2023 2:58 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 14:58:47 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,</p>
+<p>Firstly, I would like to thank the maintainers of Flathub for guiding me through the application submission process, it was greatly appreciated!</p>
+<p>I have noticed today in the Flathub application screen the newly added assessment UI element. As I understand it, it describes textually and graphically the permissions requested in the repository file.</p>
+<p>While I value the transparency provided, I am also taken aback at the harshness of the wording and of the visual highlighting, especially related to file system access, e.g. “Unsafe” and “Can read all your data” texts, coupled with the red exclamation mark graphic.</p>
+<p>The inferred meaning, based on the current widespread conventions, is that such an app has a high likelihood of being malicious, and a potential user would best steer clear of it. All of the presented elements (the texts “Unsafe” and “Can read all your data”, and the red exclamation mark graphic) are subconsciously remarkably powerful, thus priming the potential user to discard the application.</p>
+<p>As is stands, the implementation of this feature hurts both the application developers, who may find it unpleasant for their app to be marked as dangerous, and the users, who will be more inclined to disregard a significant section of the Flathub applications offering because of it.</p>
+<p>My suggestion would be to reword the “Unsafe” header to “Potential safety concerns”, “Can read all your data” to the less dramatic and more granular “Has [access type] access to file system entries: [granular enumeration of the requested file system entries]”, and to change the red exclamation mark to a milder orange question mark.</p>
+<p>As an extension point to my suggestion, application safety due to requested permissions could be assessed by looking into the permissions in conjunction, rather than in isolation, e.g. an application requesting file system read permissions that does not also request network permissions is virtually harmless, and thus should be granted a different assessment than an application that asks for both permissions.</p>
+<p>Thank you very much for reading my suggestion, and please let me know what you think of it!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 29, 2023 9:57 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 21:57:01 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey, I’m sorry for that. I’ve missed a change in the upstream that I referenced to implement this.</p>
+<p>I’ve since patched this this evening and <code>unsafe</code> still exists, but should be impossible to get for now. Your app now likely has the <code>potentially unsafe</code> text with an orange question mark. Which should approximately match how gnome software 45 will show it.</p>
+<aside class="quote no-group" data-username="mihnea-radulescu" data-post="1" data-topic="5001">
+<div class="title">
+<div class="quote-controls"></div>
+mihnea-radulescu:</div>
+<blockquote>
+<p>As an extension point to my suggestion, application safety due to requested permissions could be assessed by looking into the permissions in conjunction, rather than in isolation, e.g. an application requesting file system read permissions that does not also request network permissions is virtually harmless, and thus should be granted a different assessment than an application that asks for both permissions.</p>
+</blockquote>
+</aside>
+<p>Your not wrong, but the endgame here is, that apps ideally should not have any permissions, but use portals for everything. So it might make more sense to push into that direction if possible.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mihnea Rădulescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 29, 2023 10:16 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 22:16:22 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks razzeee, much appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jarek Foksa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 30, 2023 2:16 PM">
+            <time itemprop="datePublished" datetime="2023-08-30 14:16:07 +0000">Aug 30, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was also wondering how to get rid of that warning.</p>
+<p>The only reason why my app needs access to home directories is so that it could be invoked from the file manager by double-clicking a file. It looks like the only way to get rid of the “potentially unsafe” warning is to remove access to all directories and later <a href="https://firebasestorage.googleapis.com/v0/b/boxy-svg.appspot.com/o/posts%2Fcomment-2631%2FBx_h07CM6F.gif?alt=media" rel="noopener nofollow ugc">ask the user to enable filesystem access with Flatseal</a>. Or perhaps there is a better way?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 31, 2023 12:36 PM">
+            <time itemprop="datePublished" datetime="2023-08-31 12:36:00 +0000">Aug 31, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The better way is to use the file chooser portal <a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.FileChooser" class="inline-onebox">Portal Documentation</a>. If your application is using GTK 3, then you can use the GtkFileChooserNative. Starting from GTK 4.10, using the GtkFileDialog would use the portal by default for you. I believe Qt also has support of the file chooser portal</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jarek Foksa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 1, 2023 9:56 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 21:56:41 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>The better way is to use the file chooser portal <a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.FileChooser" rel="noopener nofollow ugc">Portal Documentation</a>. If your application is using GTK 3, then you can use the GtkFileChooserNative. Starting from GTK 4.10, using the GtkFileDialog would use the portal by default for you. I believe Qt also has support of the file chooser portal</p>
+</blockquote>
+<p>If user has already expressed the intent to open a specific file by double-clicking it in the file manager, it doesn’t make sense to ask the user to select the same file again with GtkFileChooserNative.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 2, 2023 11:52 AM">
+            <time itemprop="datePublished" datetime="2023-09-02 11:52:54 +0000">Sep 2, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>A specific file opened by ‘double-clicking’ it in a file manager can already get forwarded into the sandbox.</p>
+<p>The only issues where you would need to give extra file access would be the app needing other files than the one selected or to know the path to file on the host (to show for example).</p>
+<p>Just opening/writing to a single file works.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jarek Foksa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 3, 2023 8:44 AM">
+            <time itemprop="datePublished" datetime="2023-09-03 08:44:21 +0000">Sep 3, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>A specific file opened by ‘double-clicking’ it in a file manager can already get forwarded into the sandbox.</p>
+</blockquote>
+<p>Is this forwarding handled by FileTransfer portal, FileChooser portal or maybe by something else?</p>
+<p><a href="https://github.com/electron/electron/issues/30650" rel="noopener nofollow ugc">Electron does not currently support the FileTransfer portal</a>, but according to the documentation that portal is responsible only for drag &amp; drop and copy/paste. I wonder if it is also needed to allow opening files via a file manager.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 3, 2023 2:58 PM">
+            <time itemprop="datePublished" datetime="2023-09-03 14:58:13 +0000">Sep 3, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak file-forwarding just makes use of the documents portal to function.</p>
+<p>It essentially just takes a given file path/uri, forwards said file into the sandbox using the documents portal, and then when the program is actually executed inside the sandbox, it just uses the file’s new path/uri instead.</p>
+<p>As an example NightPDF actually avoids using any filesystem permissions at all:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://flathub.org/apps/io.github.lunarequest.NightPDF">
+  <header class="source">
+      <img src="https://flathub.org/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://flathub.org/apps/io.github.lunarequest.NightPDF" target="_blank" rel="noopener nofollow ugc">Flathub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/388;"><img src="/uploads/optimized/2X/d/d9092566881220e6e1432d2a63f28e798bc3b27f_2_690x388.jpeg" class="thumbnail" width="690" height="388" srcset="/uploads/optimized/2X/d/d9092566881220e6e1432d2a63f28e798bc3b27f_2_690x388.jpeg, /uploads/optimized/2X/d/d9092566881220e6e1432d2a63f28e798bc3b27f_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/d/d9092566881220e6e1432d2a63f28e798bc3b27f_2_1380x776.jpeg 2x" data-dominant-color="373B3E"></div>
+
+<h3><a href="https://flathub.org/apps/io.github.lunarequest.NightPDF" target="_blank" rel="noopener nofollow ugc">NightPDF | Flathub</a></h3>
+
+  <p>Dark Mode PDF reader</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jarek Foksa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 3, 2023 7:12 PM">
+            <time itemprop="datePublished" datetime="2023-09-03 19:12:26 +0000">Sep 3, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I installed NightPDF app from FlatHub on Fedora 38 (Workstation Edition with GNOME) and file forwarding does not seem to work. The app just opens a blank document unless I add extra permissions with Flatseal.</p>
+<p>Interestingly, the developer <a href="https://github.com/Lunarequest/NightPDF/issues/21" rel="noopener nofollow ugc">can’t reproduce this issue</a>. I wonder for what percentage of Flatpak users  file-forwarding is actually working.</p>
+<p><img src="/uploads/original/2X/c/c81d5281bc94d17963ddf8a1d9a7a29898965b2b.gif" alt="2023-09-03 21.09.39" data-base62-sha1="syijDOV3VNDCkeTjgbgeTs4ix2X" width="690" height="439" class="animated"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 4, 2023 10:09 AM">
+            <time itemprop="datePublished" datetime="2023-09-04 10:09:39 +0000">Sep 4, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, so after some testing i think ive found the issue.</p>
+<p>It seems that NightPDF doesnt know how to handle file uris correctly, but due to the .desktop file advertising support for uris using <code>%U</code>, flatpak then makes the assumtion that it can pass a file-uri and makes one.</p>
+<p>The reason why it works when the flatpak has access to the file through static permissions, is because flatpak then just passes the argument it was given directly, without making a file-uri.</p>
+<p>Funnily enough i found an appimage with an older version of the app 1.0.5 (the current one is 2.0.3) which doesn’t have this issue, so thats fun.</p>
+<p>I also tested your app and i can when inside the sandbox manually locate and execute your app with a forwarded file, so long as i dont try to do it using a file uri.</p>
+<p>And in fact if i flatpak your app locally, but with:</p>
+<pre><code class="lang-auto">Exec=boxy-svg %f
+</code></pre>
+<p>Instead of</p>
+<pre><code class="lang-auto">Exec=boxy-svg %u
+</code></pre>
+<p>In the .desktop file.</p>
+<p>Opening from the filemanager works fine without file permissions, so i think its a similar case of your app not correctly supporting file-uris, but still advertising that it does by using the %u “field code”.</p>
+<p>This has some more on that:</p>
+<p><a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s07.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s07.html</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jarek Foksa</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Sep 4, 2023 12:33 PM">
+            <time itemprop="datePublished" datetime="2023-09-04 12:33:54 +0000">Sep 4, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span> Thanks! Replacing %u with %f in the .desktop file fixed the problem and now my app is fully functional without any filesystem permissions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

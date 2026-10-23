@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bwrap: Can&#39;t mkdir parents for /app/lib/x86_64-linux-gnu/GL: Read-only file system error: ldconfig failed, exit status 256 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Bwrap: Can&#39;t mkdir parents for /app/lib/x86_64-linux-gnu/GL: Read-only file system error: ldconfig failed, exit status 256</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Bwrap: Can&#39;t mkdir parents for /app/lib/x86_64-linux-gnu/GL: Read-only file system error: ldconfig failed, exit status 256</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 24, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 24, 2024 3:41 PM">
+            <time itemprop="datePublished" datetime="2024-08-24 15:41:03 +0000">Aug 24, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve never made a flatpak app before, so after many trials and tribulations, I finally managed to make a proper Flatpak version of the <a href="https://github.com/Amulet-Team/Amulet-Map-Editor" data-bbcode="true" rel="noopener nofollow ugc">Amulet Team’s Minecraft Editor</a>. I worked out all the kinks (or, since I’m here, obviously not, right?) in my manifest, and when it compiled, it didn’t complain about anything.</p>
+<p>Then I installed it. This was also reported as a success:</p>
+<pre><code class="lang-auto">(python-3119) evilsupahfly on Black-Beast at Tue 20 Aug 2024 22:20:38 EDT
+[~/Downloads/flatpack-stuff/Amulet-Flatpak/Amulet-Flatpak] flatpak install -v -u amulet.flatpak
+F: Opening user flatpak installation at path /home/evilsupahfly/.local/share/flatpak
+F: Failed to download optional summary index: Can't fetch summary from disabled remote ‘amulet_map_editor-origin’
+F: Transaction: install bundle amulet_map_editor-origin:app/com.github.amulet_map_editor/x86_64/master@febfabf3600adb3b962e652abcd2ac8c3d567e9d5c386e94324721d9352dc38b[$old]
+F: marking op install bundle:app/com.github.amulet_map_editor/x86_64/master resolved to febfabf3600adb3b962e652abcd2ac8c3d567e9d5c386e94324721d9352dc38b
+F: Updating dependency org.freedesktop.Platform/x86_64/23.08 of com.github.amulet_map_editor/x86_64/master
+F: Transaction: update flathub:runtime/org.freedesktop.Platform/x86_64/23.08[$old]
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loading https://dl.flathub.org/repo/summaries/6de49a3f9fdf4e9908da248cfe236ea8ca8c96379b4360150224c880f510ddba.idx.sig using curl
+F: Received 592 bytes
+F: Fetching indexed summary file fe76ab5dfd79ff1fb721f88d1d64cc995b003d1b8aa13a6903ad309668bb95aa.gz for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summaries/fe76ab5dfd79ff1fb721f88d1d64cc995b003d1b8aa13a6903ad309668bb95aa.gz using curl
+F: Received 1253927 bytes
+F: marking op update:runtime/org.freedesktop.Platform/x86_64/23.08 resolved to 64a85d9703e16a360fb65aeb40382183be68836567e2a3a9455f70b2a26a568f
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.GL.nvidia-560-28-03/x86_64/1.4[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/23.08[*]
+F: Transaction: install/update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[*]
+F: marking op install/update:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 resolved to bf24f23f3ba385f6e8c9215ed94d979db99814b0b614504a23a6d0751dc5f063
+F: marking op install/update:runtime/org.freedesktop.Platform.Locale/x86_64/23.08 resolved to bc53b787ddc48e63d12494ee103c52412a6bade79e00be4068f3325f0396f853
+F: marking op install/update:runtime/org.freedesktop.Platform.GL.nvidia-560-28-03/x86_64/1.4 resolved to 6463ec6402b22fac815017d9838ba73223967261d402f3c8ad604846ede0f932
+F: marking op install/update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra resolved to 1f6789acbc5410c18c9237f57ccbb34edda9b207429e6d74775e0aeb9fd66189
+F: marking op install/update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 resolved to 9981cd935556ef0ec146129d66b232fa1dc3b2f04eb83fe8e881cb64056d8c5f
+
+com.github.amulet_map_editor permissions:
+    ipc	network	fallback-x11	wayland	x11	dri	file access [1]	dbus access [2]	tags [3]
+
+    [1] /app/lib:create, home:create, host-os
+    [2] org.freedesktop.Notifications
+    [3] 0.10.35
+
+
+ 1.	   	com.github.amulet_map_editor	master	i	amulet_map_editor-origin	0 bytes
+
+Proceed with these changes to the user installation? [Y/n]: y
+Installing…
+F: No checksum specified, getting tip of app/com.github.amulet_map_editor/x86_64/master from origin amulet_map_editor-origin
+F: tip resolved to: febfabf3600adb3b962e652abcd2ac8c3d567e9d5c386e94324721d9352dc38b
+F: Getting parental controls details for app/com.github.amulet_map_editor/x86_64/master from amulet_map_editor-origin
+F: Skipping parental controls check for app/com.github.amulet_map_editor/x86_64/master since parental controls are disabled globally
+F: running triggers from /usr/share/flatpak/triggers
+F: running trigger desktop-database.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/desktop-database.trigger /home/evilsupahfly/.local/share/flatpak'
+F: running trigger gtk-icon-cache.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/gtk-icon-cache.trigger /home/evilsupahfly/.local/share/flatpak'
+F: running trigger mime-database.trigger
+F: Running 'bwrap --unshare-ipc --unshare-net --unshare-pid --ro-bind / / --proc /proc --dev /dev --bind /home/evilsupahfly/.local/share/flatpak /home/evilsupahfly/.local/share/flatpak -- /usr/share/flatpak/triggers/mime-database.trigger /home/evilsupahfly/.local/share/flatpak'
+F: Pruning repo
+F: Pruned 141789/5 objects, size 54.3 kB
+Installation complete.[/code]
+
+Then I tried to run it, and that's when I was greeted with this error:
+
+[code]F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/evilsupahfly/.local/share/flatpak
+F: Opening system (extra) flatpak installation at path /media/evilsupahfly/INTEL-SSD
+F: Opening user flatpak installation at path /home/evilsupahfly/.local/share/flatpak
+F: Skipping parental controls check for app/com.github.amulet_map_editor/x86_64/master since parental controls are disabled globally
+F: Opening user flatpak installation at path /home/evilsupahfly/.local/share/flatpak
+F: Regenerating ld.so.cache /home/evilsupahfly/.var/app/com.github.amulet_map_editor/.ld.so/04e4cee2920767ce209e16d6b29120052a14d77febd1e5ec942077c056c82fba
+F: /home/evilsupahfly/.local/share/flatpak/runtime/org.freedesktop.Platform/x86_64/23.08/64a85d9703e16a360fb65aeb40382183be68836567e2a3a9455f70b2a26a568f/files/lib32 does not exist
+F: Running: 'bwrap --args 31 ldconfig -X -C /run/ld-so-cache-dir/04e4cee2920767ce209e16d6b29120052a14d77febd1e5ec942077c056c82fba.ruM2JY'
+bwrap: Can't mkdir parents for /app/lib/x86_64-linux-gnu/GL: Read-only file system
+error: ldconfig failed, exit status 256</code></pre>
+<p>As it stands, I have removed, tweaked, reinstalled, and pounded my fist on the desk in anger and frustration repeatedly over the last week because I just don’t understand what’s going wrong.</p>
+<p>If it helps, and you’re fluent in Flatpak’s abstract promulgation of .YAML manifesto conspectus, my project recipe is <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/main/amulet.yml" rel="noopener nofollow ugc">available on my GIT</a>. New users are only permitted two links, and my manifest is full of Python package download links, so I can’t post it directly here.</p>
+<p>And this is the script I wrote to make my life a little easier, which just runs two steps for me because I’m lazy, but it’s also for consistency so it runs the same two steps the same way, every time. Plus, I like the little splash of colour it adds.</p>
+<pre><code class="lang-auto">#!/bin/bash
+
+#
+# This was more of a checklist for myself, but it's handy for limited automation too
+#
+
+# Check if the script is running in a Python 3 virtual environment
+#if [[ -z "$VIRTUAL_ENV" ]]; then
+#    echo "Error: This script must be run inside a Python 3 virtual environment."
+#    exit 1
+#fi
+
+BOLD="\033[1m"
+RESET="\e[0m" #Normal
+BGND="\e[40m"
+YELLOW="${BOLD}${BGND}\e[1;33m"
+RED="${BOLD}${BGND}\e[1;91m"
+GREEN="${BOLD}${BGND}\e[1;92m"
+WHITE="${BOLD}${BGND}\e[1;97m"
+
+# Attempt to build Frankenstein's Monster - change "tag" when updating to newer Amulet versions
+flatpak-builder -v --install-deps-from=flathub --mirror-screenshots-url=https://dl.flathub.org/media/ --add-tag=0.10.35 --bundle-sources --repo=amulet_flatpak_repo amulet_build_dir amulet.yml --force-clean
+
+# Bundle the contents of the local repository into "amulet.flatpak"
+flatpak build-bundle amulet_flatpak_repo amulet.flatpak com.github.amulet_map_editor
+
+# Install bundle
+echo
+echo -e "${YELLOW}    To install the Amulet Flatpak, type:"
+echo -e "${WHITE}        flatpak install -u amulet.flatpak"
+
+# Run bundle
+echo
+echo -e "${YELLOW}    To run your install, type:"
+echo -e "${WHITE}        flatpak run com.github.amulet_map_editor"
+
+#Uninstall bundle if it doesn't work or you just don't need it
+echo
+echo -e "${YELLOW}    To uninstall this, type:"
+echo -e "${RED}        flatpak uninstall com.github.amulet_map_editor${RESET}"
+echo</code></pre>
+<p>Honestly, as my first foray into the world of Flatpaking, it’s been a real … “learning experience…”</p>
+<p>System specs available upon request.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 24, 2024 7:17 PM">
+            <time itemprop="datePublished" datetime="2024-08-24 19:17:16 +0000">Aug 24, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+<p><code>sdk-version</code> is not a valid key <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L6" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a></p>
+<p>Drop these entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L293-L310" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a>. That entire block is invalid keys.</p>
+<p>Where did you find these? The docs there should be fixed.</p>
+<p>You can refer to the official documentation <a href="https://docs.flatpak.org/en/latest/manifests.html" class="inline-onebox" rel="noopener nofollow ugc">Manifests - Flatpak documentation</a> for a guide and <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Builder Command Reference - Flatpak documentation</a> for valid manifest properties.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 24, 2024 9:37 PM">
+            <time itemprop="datePublished" datetime="2024-08-24 21:37:27 +0000">Aug 24, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bbhtt" data-post="2" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+</blockquote>
+</aside>
+<p>What documentation told you to put that in the manifest? I’m asking so we can get that documentation fix as it is wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 25, 2024 1:33 AM">
+            <time itemprop="datePublished" datetime="2024-08-25 01:33:07 +0000">Aug 25, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for responding so quickly! <img src="/images/emoji/twitter/slightly_smiling_face.png?v=15" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:" loading="lazy" width="20" height="20"></p>
+<p>In answer to your questions:</p>
+<aside class="quote no-group quote-modified" data-username="bbhtt" data-post="2" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml - L7-L14 </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+</blockquote>
+</aside>
+<p>The guide at <a href="https://docs.flatpak.org/en/latest/extension.html" class="inline-onebox" rel="noopener nofollow ugc">Extensions - Flatpak documentation</a> is actually where I got the information because previously, I was using <code>add-extensions:</code> and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc">as referenced here.</a></p>
+<aside class="quote no-group quote-modified" data-username="bbhtt" data-post="2" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p><code>sdk-version</code> is not a valid key  - Amulet-Flatpak/amulet.yml - Line 6</p>
+</blockquote>
+</aside>
+<p>Almost every example on almost every page includes <code>sdk: [something.something.Sdk]</code> so I figured it was integral.</p>
+<aside class="quote no-group quote-modified" data-username="bbhtt" data-post="2" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>Drop these entire block Amulet-Flatpak/amulet.yml -L293-L310.<br>
+That entire block is invalid keys.</p>
+</blockquote>
+</aside>
+<p>I’ll be honest - I don’t even know where I got that from. <code>¯\_(ツ)_/¯</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 25, 2024 1:48 AM">
+            <time itemprop="datePublished" datetime="2024-08-25 01:48:03 +0000">Aug 25, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="EvilSupahFly" data-post="4" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+EvilSupahFly:</div>
+<blockquote>
+<p>and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc">as referenced here.</a></p>
+</blockquote>
+</aside>
+<p>That’s an issue with the app or wxpython. The page doesn’t say to add those extensions. I’ll add a warning.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 25, 2024 2:23 AM">
+            <time itemprop="datePublished" datetime="2024-08-25 02:23:18 +0000">Aug 25, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bbhtt" data-post="5" data-topic="7542">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>That’s an issue with the app or wxpython. The page doesn’t say to add those extensions. I’ll add a warning.</p>
+</blockquote>
+</aside>
+<p>See, I went to wxPython first <em><strong>weeks ago</strong></em>, and they sent me here because according to them, flatpak wasn’t initializing the OpenGL canvas and wxPython couldn’t render with a null canvas, which sent me down this rabbit hole.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">EvilSupahFly</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 25, 2024 3:50 AM">
+            <time itemprop="datePublished" datetime="2024-08-25 03:50:50 +0000">Aug 25, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve implemented all your feedback, and I’m happy to report that with your help, I’ve finally built Frankenstein’s Monster and the Amulet flatpak now runs as expected!</p>
+<p>Thanks! <img src="/images/emoji/twitter/grin.png?v=12" title=":grin:" class="emoji" alt=":grin:" loading="lazy" width="20" height="20"> <img src="/images/emoji/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Issue with inability to launch script via Konsole installed as a flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Issue with inability to launch script via Konsole installed as a flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Issue with inability to launch script via Konsole installed as a flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 30, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Emily Grace Seville</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 30, 2025 9:56 PM">
+            <time itemprop="datePublished" datetime="2025-05-30 21:56:52 +0000">May 30, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi! I’ve written a script to manage my flatpak packages in Nushell:</p>
+<pre><code class="lang-auto">#!/usr/bin/env nu
+
+export-env {
+    $env.GUM_CHOOSE_SELECTED_FOREGROUND = '#64d633'
+}
+
+while true {
+    try {
+    let response = (gum choose --no-show-help
+        --header='What would you like to do?'
+        uninstall exit)
+
+    match $response {
+        uninstall =&gt; {
+            try {
+                let applications_to_uninstall = (flatpak list --app --columns=application |
+                    gum choose --no-limit |
+                    str join |
+                    split row "\n")
+                flatpak uninstall ...$applications_to_uninstall -y
+            }
+        },
+        exit =&gt; {
+            exit
+        }
+    }
+    } catch {
+        exit
+    }
+}
+</code></pre>
+<p>While no matter how I tried to launch it:</p>
+<pre><code class="lang-auto">flatpak run org.kde.konsole -e /home/emilygraceseville7cf/Documents/programming/mine/nu/application-manager.nu
+</code></pre>
+<p>it failed to be executed properly - the window with it got closed almost instantly after it’s lauch. It worth mentioning that when my script is attempted to be lauched via <code>konsole</code> installed via <code>apt</code> everything works as expected.</p>
+<p>Current Konsole flatpak permissions are:</p>
+<pre><code class="lang-auto">[Context]
+shared=network;ipc;
+sockets=x11;wayland;session-bus;system-bus;fallback-x11;
+devices=dri;all;
+features=devel;bluetooth;canbus;per-app-dev-shm;
+filesystems=home;host-etc;host-os;xdg-config/kdeglobals:ro;host;
+
+[Session Bus Policy]
+com.canonical.AppMenu.Registrar=talk
+org.kde.kconfig.notify=talk
+org.kde.KGlobalSettings=talk
+org.freedesktop.Flatpak=talk
+org.kde.kdeconnect=talk
+</code></pre>
+<p>Konsole version: 25.04.1</p>
+<p>The original post is <a href="https://discuss.kde.org/t/konsole-unexpectedly-terminates-my-nushell-script/34913" rel="noopener nofollow ugc">here</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 1, 2025 1:14 AM">
+            <time itemprop="datePublished" datetime="2025-06-01 01:14:20 +0000">Jun 1, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is likely because there is no <code>nu</code> interpreter inside the sandbox. Does it work with a normal bash/sh script?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Emily Grace Seville</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 7, 2025 6:49 PM">
+            <time itemprop="datePublished" datetime="2025-06-07 18:49:09 +0000">Jun 7, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>AFAIR it didn’t work with bash/sh translated script. I’m confused as <code>nu</code> is inside <code>/home/emilygraceseville7cf/.cargo/bin/</code> which is inside my <code>$HOME</code> directory. While <code>filesystems</code> contains <code>home</code> value, it still doesn’t work.</p>
+<p>Should I put path <code>/home/emilygraceseville7cf/.cargo/bin/</code> directly to <code>filesystems</code> or not?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 8, 2025 3:56 AM">
+            <time itemprop="datePublished" datetime="2025-06-08 03:56:51 +0000">Jun 8, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Using host binaries like that inside the sandbox won’t work. Your best bet is to create a flatpak-spawn wrapper that launches nu on host.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

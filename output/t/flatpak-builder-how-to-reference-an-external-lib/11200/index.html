@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder - how to reference an external lib - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder - how to reference an external lib</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder - how to reference an external lib</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 10, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Salt Scratch</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 10, 2025 9:28 AM">
+            <time itemprop="datePublished" datetime="2025-12-10 09:28:47 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi all,</p>
+<p>I am trying to package Omnissa (formerly VMWare) Horizon Client but having issues with referencing external libraries.</p>
+<p>Here is my yaml</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">---
+app-id: com.omnissa.HorizonClient
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: horizon-client
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=all
+  - --env=GTK_THEME=Adwaita
+  - --persist=.omnissa
+
+modules:
+  - name: omnissa-horizon-client
+    buildsystem: simple
+    sources:
+      - type: file
+        url: https://download3.omnissa.com/software/CART26FQ2_LIN_2506_TARBALL/Omnissa-Horizon-Client-Linux-2506-8.16.0-16536624989.tar.gz
+        sha256: 5515e79188e2605ced5a95c3a3829865b567be5d7a8de00a57455f7b5b2ae392
+        dest-filename: Omnissa-Horizon-Client-Linux.tar.gz
+    build-commands:
+      - mkdir Extracted
+      - tar -xf Omnissa-Horizon-Client-Linux.tar.gz -C Extracted --strip-components 1
+      - tar -xf Extracted/x64/Omnissa-Horizon-Client-2506-8.16.0-16536624989.x64.tar.gz -C /app/ --strip-components 1
+      - tar -xf Extracted/x64/Omnissa-Horizon-PCoIP-2506-8.16.0-16536624989.x64.tar.gz -C /app/ --strip-components 1
+      - mkdir -p "/app/share/icons/hicolor/64x64/apps/"
+      - mv "/app/usr/share/icons/horizon-client.png" "/app/share/icons/hicolor/64x64/apps/com.omnissa.HorizonClient.png"
+      - mkdir -p "/app/share/applications/"
+      - mv "/app/usr/share/applications/horizon-client.desktop" "/app/share/applications/com.omnissa.HorizonClient.desktop"
+      - sed -i 's+/usr/share/icons/horizon-client.png+com.omnissa.HorizonClient+' "/app/share/applications/com.omnissa.HorizonClient.desktop"
+      - mkdir /app/bin/
+      - mv /app/usr/bin/* /app/bin
+      - mkdir /app/lib/
+      - mv /app/usr/lib/* /app/lib
+      - for f in `find /app/bin/ -not -type d`; do sed -i 's+/usr+/app+' "$f"; done
+      - for f in `find /app/lib/omnissa/ -not -type d`; do sed -i 's+/usr+/app+' "$f"; done
+      - ln -s /lib/x86_64-linux-gnu/libxml2.so.2 /app/lib/libxml2.so.2
+</code></pre>
+<p>The last line is setting up a symbolic link to a system library (libxml2.so.2) and I can see the link looks fine in build-dir/lib but, when I try to run the installed app, I get the error</p>
+<pre data-code-wrap="bash"><code class="lang-bash">/app/lib/omnissa/horizon/bin/horizon-client: error while loading shared libraries: libxml2.so.2: cannot open shared object file: No such file or directory
+</code></pre>
+<p>Any ideas?</p>
+<p>If linking to external libs is a nono can I instead link to the equivalent lib in the runtime? How would I do that?</p>
+<p>TIA</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 10, 2025 10:32 AM">
+            <time itemprop="datePublished" datetime="2025-12-10 10:32:43 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since Flatpak applications are run inside an sandbox, they can’t access access files on the system by design.<br>
+The symbolic just don’t resolve inside the sandbox.</p>
+<p>If you need a library, build and add it to the Flatpak as a module. Then you’d likely also wouldnt need the symbolic link.</p>
+<p>As another point:<br>
+There are distribution out there who dont even use <code>/lib</code> anymore. Nowadays, it should be inside this prefix <code>/usr</code>.</p>
+<p>So even if Flatpak would allow access to the system, this wouldn’t work on all systems. Not to mention that not every system might have your library installed, etc…<br>
+In short, just build a module for libraries you need.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Salt Scratch</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 10, 2025 10:44 AM">
+            <time itemprop="datePublished" datetime="2025-12-10 10:44:46 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What about libs in the runtime?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 10, 2025 10:50 AM">
+            <time itemprop="datePublished" datetime="2025-12-10 10:50:11 +0000">Dec 10, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Libraries in the runtime are in the <code>LD_LIBRARY_PATH</code>, so they should be automatically be found by a program. So no links should be needed there.</p>
+<p>If you, for some reason, want to link to a file in the runtime, don’t. You have a bug in either your program or in Flatpak if it can’t find the runtime libraries.</p>
+<p>But if you really, really need the link (the answer is still likely you don’t), then the runtime is mounted into the <code>/usr</code> prefix.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 12, 2025 3:58 PM">
+            <time itemprop="datePublished" datetime="2025-12-12 15:58:53 +0000">Dec 12, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it doesn’t work because this proprietary software is miscompiled assuming that libxml2.so.2 is a standard library.</p>
+<p>The runtime has libxml2.so.16 (different ABI)</p>
+<p>So you only choice it to build an older version in the flatpak. Or recompile the software.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

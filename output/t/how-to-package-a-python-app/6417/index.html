@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to package a Python app? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to package a Python app?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to package a Python app?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 23, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Twistr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 23, 2024 2:25 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:25:33 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I could really use some help getting my Python/QT5 based app packaged as a flatpak. I have managed to get it to work if I first package it with Pyinstaller then Flatpak that, now I’m trying to package it as the actual Github release for eventual upload onto Flathub.</p>
+<p><a href="https://github.com/Riftr/intelpy/blob/master/buildscripts/flatpak-scripts/io.github.riftr.intelpy.yml" rel="noopener nofollow ugc">This is what I have so far.</a></p>
+<p>I’m trying to build this with the following command:</p>
+<p><code>flatpak-builder --force-clean --user build-dir io.github.riftr.intelpy.yml</code></p>
+<p>I’m getting an error saying that it can’t find pip, but pip is most definitely installed on my system and nothing I’ve tried resolves it. I’ve been at this for a few hours and tearing my hair out so any help is appreciated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 23, 2024 2:34 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:34:11 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Why do you have <code>com.riverbankcomputing.PyQt.BaseApp</code> commented out? Also, PIP installed on your system doesn’t matter - build is inside the container</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Twistr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 23, 2024 2:35 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:35:45 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s commented out because with it I get the error “Failed to init: Unable to find app com.riverbankcomputing.PyQt.BaseApp version master”</p>
+<p>How do I get pip inside the container?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 23, 2024 2:37 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:37:21 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Define <code>base-version</code> as well. AFAIK pip is provided by that baseapp</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 23, 2024 2:39 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:39:21 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub/com.riverbankcomputing.PyQt.BaseApp?tab=readme-ov-file#branch-comparison">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub/com.riverbankcomputing.PyQt.BaseApp?tab=readme-ov-file#branch-comparison" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="/uploads/optimized/2X/8/84f3307b5741d77b0e1fcc0d8979792d4d22116f_2_690x345.png" class="thumbnail" data-dominant-color="F6F6F7" width="690" height="345"></div>
+
+<h3><a href="https://github.com/flathub/com.riverbankcomputing.PyQt.BaseApp?tab=readme-ov-file#branch-comparison" target="_blank" rel="noopener nofollow ugc">GitHub - flathub/com.riverbankcomputing.PyQt.BaseApp</a></h3>
+
+  <p>Contribute to flathub/com.riverbankcomputing.PyQt.BaseApp development by creating an account on GitHub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Twistr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 23, 2024 2:47 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:47:58 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Okay I feel like we’re hopefully on the right track but no luck yet.</p>
+<p>I’ve got in the yml file:</p>
+<pre><code class="lang-auto">base: com.riverbankcomputing.PyQt.BaseApp
+base-version: "5.15-23.08"
+</code></pre>
+<p>I’ve also installed it using:</p>
+<p><code>flatpak install flathub com.riverbankcomputing.PyQt.BaseApp//5.15-23.08</code></p>
+<p>But sadly still getting the error that pip is not found. Even changing “pip3” to “pip” in the file doesn’t matter.</p>
+<p>Output:</p>
+<pre><code class="lang-auto">$ flatpak-builder --force-clean --user build-dir io.github.riftr.intelpy.yml
+Emptying app dir 'build-dir'
+Downloading sources
+Fetching git repo https://github.com/Riftr/intelpy.git, ref refs/tags/1.2b3
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Starting build of io.github.riftr.intelpy
+Cache miss, checking out last cache hit
+========================================================================
+Building module setuptools in /home/rob/Code/intelpy/buildscripts/flatpak-scripts/.flatpak-builder/build/setuptools-13
+========================================================================
+Running: pip install setuptools-69.2.0-py3-none-any.whl
+/bin/sh: line 1: pip: command not found
+Error: module setuptools: Child process exited with code 127
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 23, 2024 2:57 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 14:57:01 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This might be incorrect: <code>--env=PYTHONPATH=/app/site-packages</code>. Also, did you generate your dependency list using flatpak pip generator or manually?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Twistr</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 23, 2024 3:14 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 15:14:23 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got a little further by changing the sdk: line to  <code>sdk: org.kde.Sdk</code> and installing the matching SDK from flathub. It’s seeing pip now (yay!) but now it’s unhappy about the PyQt5 version (I’m using the latest on PyPI 5.15.10)</p>
+<p>I have manually created the dependency list based on what my app normally uses.</p>
+<pre><code class="lang-auto">Running: pip3 install PyQt5-5.15.10-cp37-abi3-manylinux_2_17_x86_64.whl
+Defaulting to user installation because normal site-packages is not writeable
+Processing ./PyQt5-5.15.10-cp37-abi3-manylinux_2_17_x86_64.whl
+Requirement already satisfied: PyQt5-sip&lt;13,&gt;=12.13 in /app/lib/python3.11/site-packages (from PyQt5==5.15.10) (12.13.0)
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fd6c2e8c710&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyqt5-qt5/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fd6c35298d0&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyqt5-qt5/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fd6c2e97b50&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyqt5-qt5/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fd6c2e96950&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyqt5-qt5/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x7fd6c2ea5350&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/pyqt5-qt5/
+INFO: pip is looking at multiple versions of pyqt5 to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement PyQt5-Qt5&gt;=5.15.2 (from pyqt5) (from versions: none)
+ERROR: No matching distribution found for PyQt5-Qt5&gt;=5.15.2
+Error: module pyqt5: Child process exited with code 1
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 23, 2024 3:22 PM">
+            <time itemprop="datePublished" datetime="2024-03-23 15:22:00 +0000">Mar 23, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>PyQt5 is in the base runtime. No need to install it yourself</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

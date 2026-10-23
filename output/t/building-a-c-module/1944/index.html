@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building a C++ module - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Building a C++ module</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Building a C++ module</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 8, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 8, 2021 6:43 PM">
+            <time itemprop="datePublished" datetime="2021-12-08 18:43:24 +0000">Dec 8, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m updating a Flatpak so it’ll run on Gnome platform 41. C++ has been updated, to the point that several modules from other sources which it depends on, which were written for much older versions fail. I have managed to fix most of them, however I couldn’t get Vigra to compile and it hasn’t had any work done on it for years.</p>
+<pre><code>  - name: vigra
+    buildsystem: cmake
+    config-opts:
+       - -DWITH_OPENEXR=ON
+    sources:
+      - type: archive
+        path: /home/chris/vigra-1.11.1.tar.gz
+    cleanup:
+      - /bin
+      - /doc
+      - /lib/vigra/
+      - /share
+</code></pre>
+<p>Fedora has patched it and I created the patched version by doing this (from Ask Fedora):</p>
+<pre><code>sudo dnf -y install fedpkg
+fedpkg clone --anonymous vigra
+cd vigra
+fedpkg prep
+</code></pre>
+<p>That creates a vigra-1.11.1 sub-directory which has all of the Fedora patches applied. Unfortunately that fails too. I am not a C++ programmer so I’m stuck now.</p>
+<pre><code>========================================================================
+Building module vigra in /home/chris/.flatpak-builder/build/vigra-13
+========================================================================
+CMake Warning (dev) in CMakeLists.txt:
+  No project() command is present.  The top-level CMakeLists.txt file must
+  contain a literal, direct call to the project() command.  Add a line of
+  code such as
+
+    project(ProjectName)
+
+  near the top of the file, but after cmake_minimum_required().
+
+  CMake is pretending there is a "project(Project)" command on the first
+  line.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Warning (dev) in CMakeLists.txt:
+  No cmake_minimum_required command is present.  A line of code such as
+
+    cmake_minimum_required(VERSION 3.21)
+
+  should be added at the top of the file.  The version specified may be lower
+  if you wish to support older CMake versions for this project.  For more
+  information run "cmake --help-policy CMP0000".
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+CMake Warning (dev) at examples/tutorial/CMakeLists.txt:23 (ADD_EXECUTABLE):
+  Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+  "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  File:
+
+    /run/build/vigra/examples/tutorial/graph_agglomerative_clustering.cxx
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at examples/tutorial/CMakeLists.txt:23 (ADD_EXECUTABLE):
+  Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+  "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  File:
+
+    /run/build/vigra/examples/tutorial/smooth_blockwise.cxx
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    WITH_OPENEXR
+
+
+-- Build files have been written to: /run/build/vigra
+[1/22] Building CXX object impex/CMakeFiles/vigraimpex.dir/bmp.o
+FAILED: impex/CMakeFiles/vigraimpex.dir/bmp.o 
+/usr/bin/c++   -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -MD -MT impex/CMakeFiles/vigraimpex.dir/bmp.o -MF impex/CMakeFiles/vigraimpex.dir/bmp.o.d -o impex/CMakeFiles/vigraimpex.dir/bmp.o -c /run/build/vigra/impex/bmp.cxx
+/run/build/vigra/impex/bmp.cxx:38:10: fatal error: vigra/config.hxx: No such file or directory
+   38 | #include "vigra/config.hxx"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+Error: module vigra: Child process exited with code 1</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 8, 2021 9:25 PM">
+            <time itemprop="datePublished" datetime="2021-12-08 21:25:41 +0000">Dec 8, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>vigra builds fine with Hugin (21.08 is the base for GNOME 41)</p>
+<aside class="onebox githubblob">
+  <header class="source">
+
+      <a href="https://github.com/flathub/net.sourceforge.Hugin/blob/master/net.sourceforge.Hugin.json#L166" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/net.sourceforge.Hugin/blob/master/net.sourceforge.Hugin.json#L166" target="_blank" rel="noopener nofollow ugc">flathub/net.sourceforge.Hugin/blob/master/net.sourceforge.Hugin.json#L166</a></h4>
+
+
+
+  <pre class="onebox">    <code class="lang-json">
+      <ol class="start lines" start="156" style="counter-reset: li-counter 155 ;">
+          <li>    ],</li>
+          <li>    "cleanup": [</li>
+          <li>        "/bin",</li>
+          <li>        "/include",</li>
+          <li>        "/lib/*.la",</li>
+          <li>        "/lib/pkgconfig",</li>
+          <li>        "/share/aclocal"</li>
+          <li>    ]</li>
+          <li>},</li>
+          <li>{</li>
+          <li class="selected">    "name": "vigra",</li>
+          <li>    "buildsystem": "cmake-ninja",</li>
+          <li>    "cleanup": [</li>
+          <li>        "/doc",</li>
+          <li>        "/include",</li>
+          <li>        "/lib/vigra/*.cmake",</li>
+          <li>        "/share/man"</li>
+          <li>    ],</li>
+          <li>    "config-opts": [</li>
+          <li>        "-DWITH_OPENEXR=1"</li>
+          <li>    ],</li>
+      </ol>
+    </code>
+  </pre>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 9, 2021 7:49 PM">
+            <time itemprop="datePublished" datetime="2021-12-09 19:49:55 +0000">Dec 9, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve found that my manifest with align-image-stack can’t be built on most gnome platforms which is why I have my own. I’m giving yours a try. I’ve looked at the manifest to see where to put the new files, I assumed it was looking for them locally like glu and glew.</p>
+<pre><code>net.sourceforge.Hugin.json  is in /home/chris/flatpak
+exiftool-sources.json 			  /home/chris/flatpak
+openexr-no-docs.patch 		      /home/chris/flatpak/patches
+</code></pre>
+<p>It finds exiftools-sources, but not openexr-no-docs<br>
+{<br>
+“type”: “patch”,<br>
+“path”: “patches/openexr-no-docs.patch”<br>
+},<br>
+maybe it’s looking for it in a location related to the URL in the lines above it.</p>
+<p>I’d rather adapt yours as mine requires constant maintenance as some of the external modules are no longer maintained. The version of mine I am working on no longer needs ilmbase as it uses openexrv3.1.3 which uses imath instead which is perhaps an advantage.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Dec 10, 2021 6:44 PM">
+            <time itemprop="datePublished" datetime="2021-12-10 18:44:36 +0000">Dec 10, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If I use your vigra module adapted to the yml format in my manifest:</p>
+<pre><code>  - name: vigra
+    buildsystem: cmake-ninja
+    config-opts:
+       - -DWITH_OPENEXR=ON 
+    sources:
+      - type: archive
+        url: https://github.com/ukoethe/vigra/releases/download/Version-1-11-1/vigra-1.11.1-src.tar.gz
+        sha256: a5564e1083f6af6a885431c1ee718bad77d11f117198b277557f8558fa461aaf        
+    post-install:
+      - install: Dm644 -t ${FLATPAK_DEST}/share/licenses/vigra LICENSE.txt"
+    cleanup:
+      - /bin
+      - /doc
+      - /include
+      - /lib/vigra/
+      - /share
+      - /lib/vigra/*.cmake
+      - /share/man
+</code></pre>
+<p>align-image-stack (I don’t need all of hugin) fails:</p>
+<pre><code>= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Building module align_image_stack in /home/chris/.flatpak-builder/build/align_image_stack-11
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Current HG revision is f77f3586f101
+-- Assuming this is a tarball (release) build for 2021.0.0
+-- Looking for log1p
+-- Looking for log1p - found
+-- Found wxWidgets: -L/app/lib;-pthread;;;-lwx_baseu-3.1;-lwx_gtk3u_core-3.1;-lwx_gtk3u_aui-3.1;-lwx_gtk3u_xrc-3.1;-lwx_gtk3u_html-3.1;-lwx_baseu_xml-3.1;-lwx_gtk3u_gl-3.1;-lwx_baseu_net-3.1;-lwx_gtk3u_qa-3.1 (found version "3.1.5") 
+-- Found TIFF: /usr/include
+-- Found JPEG: /usr/include
+-- Found ZLIB: /usr/include
+-- Found PNG: /usr/include
+-- WARNING: you are using the obsolete 'PKGCONFIG' macro, use FindPkgConfig
+-- Could not find OPTIONAL package OPENEXR
+-- Found OPENEXR: /app/lib/libOpenEXR.so;/app/lib/libImath.so;/app/lib/libIex.so;/app/lib/libIlmThread.so;/usr/lib/x86_64-linux-gnu/libz.so
+-- Found VIGRA: /app/lib/libvigraimpex.so
+-- VIGRA version: 1.11.1
+CMake Error at CMakeModules/FindVIGRA.cmake:78 (MESSAGE):
+  Libvigraimpex found.  But vigraimpex seems to compiled without OpenEXR
+  support.  OpenEXR support is required for Hugin.
+Call Stack (most recent call first):
+  CMakeLists.txt:223 (FIND_PACKAGE)
+
+-- Configuring incomplete, errors occurred!
+See also "/run/build/align_image_stack/_flatpak_build/CMakeFiles/CMakeOutput.log".
+Error: module align_image_stack: Child process exited with code 1</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

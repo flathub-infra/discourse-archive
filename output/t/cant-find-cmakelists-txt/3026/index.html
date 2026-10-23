@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can&#39;t find CMakeLists.txt - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Can&#39;t find CMakeLists.txt</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Can&#39;t find CMakeLists.txt</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 13, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 13, 2022 8:05 PM">
+            <time itemprop="datePublished" datetime="2022-09-13 20:05:52 +0000">Sep 13, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve built a Flatpak several times successfully on my PC and it is published on Flathub.<br>
+It’s just started giving me this error in one of the modules.<br>
+<code>Error: module: XXXX: Can't find CMakeLists.txt</code><br>
+I haven’t changed anything in the manifest! What is going on?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Roland Hughes</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 15, 2022 3:09 PM">
+            <time itemprop="datePublished" datetime="2022-09-15 15:09:55 +0000">Sep 15, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Please allow me to be Captain Obvious for a moment.</p>
+<ol>
+<li>
+<p>Are you certain CMakeLists.txt <strong>in the directory your manifest wishes to find it</strong>?</p>
+</li>
+<li>
+<p>Does the CamelCasing actually match?</p>
+</li>
+<li>
+<p>When you checked <span class="hashtag">#1</span> you checked where you think the manifest is looking (we all do that), but is the manifest actually looking there? You don’t happen to have a hard coded or ASS-U-MEd directory structure that is no longer valid? You didn’t spend months working in /home/Fred/MyProject where everything worked then check out into /home/Fred/Possible-New-Feature, get new feature working, but your manifest is still looking at /home/Fred/MyProject, right?</p>
+</li>
+<li>
+<p>My personal favorite! Do an ls -al on the CMakeLists.txt file you swear is in the correct spot. Has the ownership or protection changed? I love it when that happens! You did a sudo or su or some other thing that “made you root” or someone else, edited the file, now root or someone else owns it. That’s always a great one.</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 15, 2022 7:50 PM">
+            <time itemprop="datePublished" datetime="2022-09-15 19:50:26 +0000">Sep 15, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Unfortunately I’m Captain Mystery, in that the details in your post are a complete mystery to me. I think Flatpaks are by far the best packaging format, but unfortunately they don’t allow dependencies, so mine has to compile all its dependencies which are written in C - and I don’t know C! I am just using a manifest which was written for me - with my Python program at the end, which I do understand. I haven’t changed anything in the Manifest, just the Python, so I’m amazed that it has suddenly stopped working.<br>
+I realise that I am giving you a sack and asking you to guess what’s in it…<br>
+This is the relevant bit, it is preceded by several modules which are needed by align-image_stack, and compile successfully.</p>
+<pre><code class="lang-auto">  - name: align_image_stack
+    buildsystem: cmake-ninja
+    builddir: true
+    sources:
+      - type: file
+        url: https://downloads.sourceforge.net/project/hugin/hugin/hugin-2018.0/hugin-2018.0.0.tar.bz2
+        sha256: d3af0d066ac50e3bb243a175a64ecda136d87178419457e8822e11bcf0e565cb
+    cleanup:
+       blah, blah...
+
+
+</code></pre>
+<ol start="3">
+<li>I’ll check all the directories for different versions of the manifest in case I have got mixed up and not noticed. (Wouldn’t be the first time.)</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 18, 2022 7:48 PM">
+            <time itemprop="datePublished" datetime="2022-09-18 19:48:28 +0000">Sep 18, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m now Captain Meticulous after taking note of your point 3. I checked and compared my several versions of the manifest. I don’t know how, but I was using the wrong version of the manifest, and that was downloading the wrong version of a tarball. I’ve now done some overdue housekeeping.<br>
+It’s always best to check the simplest things first. Thanks Captain Commonsense <img src="/images/emoji/twitter/grinning.png?v=12" title=":grinning:" class="emoji" alt=":grinning:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

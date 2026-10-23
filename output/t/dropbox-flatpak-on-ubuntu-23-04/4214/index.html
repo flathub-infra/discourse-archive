@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dropbox Flatpak on Ubuntu 23.04 - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Dropbox Flatpak on Ubuntu 23.04</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Dropbox Flatpak on Ubuntu 23.04</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 6, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Graham Lees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 6, 2023 1:22 PM">
+            <time itemprop="datePublished" datetime="2023-05-06 13:22:48 +0000">May 6, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Installed Flatpak Dropbox client on a new instance of Ubuntu 23.04 and have followed the advice provided in <a href="/t/dropbox-autostart/714/index.html" class="inline-onebox">Dropbox autostart</a> which now includes the icon in the System Tray.<br>
+However, there is an issue which I’d like to get to the bottom of.<br>
+Ubuntu has two Desktop Environments - Wayland and Xorg (X11) by default.<br>
+When logged in using Wayland, the systray icon appears and after the first use shortly after logging in, the Dropbox menu requires a double click to appear and is placed randomly on the screen. After some time, the menu will appear correctly below the systray icon persistently.<br>
+When logged in using Xorg however, whilst the systray icon appears as expected, clicking it does nothing although after an undefined period, the menu appears as it should.<br>
+Is there a setting I am missing somewhere? Dropbox is clearly running but why does it take so much time to catch up to a point where it is useable? Is there a Flatpak setting somewhere which speeds up this process?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Graham Lees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 25, 2023 8:57 AM">
+            <time itemprop="datePublished" datetime="2023-11-25 08:57:38 +0000">Nov 25, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I too experienced this issue with Dropbox Flatpak on Ubuntu 23.04 but learnt to live with it.<br>
+However, since I upgraded 23.04 to 23.10 a different issue now exists.<br>
+Initially, the systray icon appears and, as with 23.04 a small menu appears from which one can select “Open Dropbox Folder” and that works fine for the first time. After closing the folder, clicking the systray icon does nothing (whether single click or double) and if left for some time during which the screen blanks (5 mins in my case), on refresh, clicking the icon causes the menu to briefly appear (a matter of seconds) then the syst tray icon disappears completely.<br>
+Selecting “Background Apps” from the power button drop down menu, it indicates that Dropbox is running without a window.<br>
+The version of Dropbox Flatpak is 187.4.5691<br>
+Any guidance on how to resolve this issue will be appreciated. I’d like to keep the Flatpak version in preference to the deb version but, since I use Dropbox extensively and this new version of Ubuntu is likely to morph in to the next LTS (24.04 when released), it would be great to see the issue fixed.<br>
+Is there perhaps a compatibility issue? I haven’t (yet) tried a vanilla install of 23.10 as the 23.04 install was upgraded but that will be next on my list.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 25, 2023 5:10 PM">
+            <time itemprop="datePublished" datetime="2023-11-25 17:10:58 +0000">Nov 25, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You probably want to report here <a href="https://github.com/flathub/com.dropbox.Client/issues/265" class="inline-onebox">tray icon not working on Ubuntu 22.04 · Issue #265 · flathub/com.dropbox.Client · GitHub</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Graham Lees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 25, 2023 6:18 PM">
+            <time itemprop="datePublished" datetime="2023-11-25 18:18:31 +0000">Nov 25, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks. It’s a different issue though and with 23.04 and 23.10 using Flatpak. I think the issue reported in Issue <span class="hashtag-raw">#265</span> is in regard to the deb version. I have that issue on a 22.04 instance using the deb Dropbox package. Strangely, for me, I have a different but connected problem with 22.04 in that I get 2 Dropbox icons accessing only one DB account - sometimes one is the three dots but the other is always the correct icon.<br>
+Got used to that now and will be moving to a fresh install of 24.04 LTS when it drops next April.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Graham Lees</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 3, 2024 3:20 PM">
+            <time itemprop="datePublished" datetime="2024-10-03 15:20:33 +0000">Oct 3, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Updating my old post.<br>
+I installed Debian 12 as my daily driver with Dropbox Flatpak v209.4.3647 and the issue about the systray icon persistence is resolved.<br>
+I haven’t bothered with Ubuntu 24.04 given the number of issues continuing with that distro but, for now, Debian is king.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

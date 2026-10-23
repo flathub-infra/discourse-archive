@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak run - error: No remote refs found similar to ‘flathub’ - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak run - error: No remote refs found similar to ‘flathub’</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak run - error: No remote refs found similar to ‘flathub’</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 28, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 28, 2024 11:25 PM">
+            <time itemprop="datePublished" datetime="2024-02-28 23:25:46 +0000">Feb 28, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to submit a binary app release for an app called Greenery.  I’m at the stage where I’m testing locally with flatpak run according to this documentation:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/submission/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/submission/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/submission/" target="_blank" rel="noopener nofollow ugc">Submission | Flathub Documentation</a></h3>
+
+  <p>App submissions are extremely welcome and the process is straightforward. Once you complete the steps below you can submit the app for inclusion.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I installed flatpak-builder and then issued the following command according to docs:</p>
+<p>flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --install-deps-from=flathub --ccache --mirror-scr<br>
+eenshots-url=<a href="https://dl.flathub.org/media/" rel="noopener nofollow ugc">https://dl.flathub.org/media/</a> --repo=repo builddir ~/Development/greenery/greenery-flathub/finance.greenery.greenery/finance.greenery.Greenery.json</p>
+<p>This resulted in the following output:</p>
+<p>Dependency Sdk: org.gnome.Sdk 0.9.7<br>
+Installing org.gnome.Sdk/x86_64/0.9.7 from flathub<br>
+error: No remote refs found similar to ‘flathub’<br>
+Error installing deps: running <code>flatpak --user install -y --noninteractive flathub org.gnome.Sdk/x86_64/0.9.7</code>: Child process exited with code 1</p>
+<hr>
+<p>I have uploaded my Flathub Manifest directory here so that it can be reviewed:</p>
+<aside class="onebox githubfolder" data-onebox-src="https://github.com/GreenfireInc/greenfireinc.github.io/tree/main/finance.greenery.greenery">
+  <header class="source">
+
+      <a href="https://github.com/GreenfireInc/greenfireinc.github.io/tree/main/finance.greenery.greenery" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h3><a href="https://github.com/GreenfireInc/greenfireinc.github.io/tree/main/finance.greenery.greenery" target="_blank" rel="noopener nofollow ugc"></a></h3>
+
+  <p><a href="https://github.com/GreenfireInc/greenfireinc.github.io/tree/main/finance.greenery.greenery" target="_blank" rel="noopener nofollow ugc">//github.com/GreenfireInc/greenfireinc.github.io/tree/main/finance.greenery.greenery</a></p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I have also run the lint command checker on finance.greenery.Greenery.json and no issues came up.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 29, 2024 4:09 AM">
+            <time itemprop="datePublished" datetime="2024-02-29 04:09:24 +0000">Feb 29, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tmrdev" data-post="1" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>error: No remote refs found similar to ‘flathub’</p>
+</blockquote>
+</aside>
+<p>This is happening because you don’t have the flathub remote added to the user installation. The error is misleading because flatpak can’t be certain you’re not trying to install a ref (app or runtime) named like <code>flathub</code>.</p>
+<p>You can either add the remote, or manually install the runtime in the system installation.</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="1" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>Dependency Sdk: org.gnome.Sdk 0.9.7</p>
+</blockquote>
+</aside>
+<p>Also, this version is incorrect.</p>
+<pre><code>"base-version": "0.9.7",
+"runtime": "org.gnome",
+"runtime-version": "0.9.7",
+"sdk": "org.gnome.Sdk",
+</code></pre>
+<p>There’s probably no benefit to using the GNOME runtime (which should be <code>"runtime": "org.gnome.Platform"</code> and <code>"runtime-version": "45"</code> anyway) for an Electron app. I would suggest:</p>
+<pre><code>"base-version": "23.08",
+"runtime": "org.freedesktop.Platform",
+"runtime-version": "23.08",
+"sdk": "org.freedesktop.Sdk",
+</code></pre>
+<p><code>base-version</code> is the version of the Electron baseapp, which should match the version of the freedesktop runtime. (If you were using the GNOME or KDE runtime, it would match the freedesktop runtime version it’s derived from.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 29, 2024 1:11 PM">
+            <time itemprop="datePublished" datetime="2024-02-29 13:11:06 +0000">Feb 29, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tmrdev" data-post="1" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>Dependency Sdk: org.gnome.Sdk 0.9.7</p>
+</blockquote>
+</aside>
+<p>Which documentation told you to set these value this way?</p>
+<p>Just so I can track it down and fixit.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 4, 2024 4:22 AM">
+            <time itemprop="datePublished" datetime="2024-03-04 04:22:37 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I was using the Exodus Wallet manifest as an example for the overall structure for the manifest files and then I used this section of the docs (I misread the docs):</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/runtimes/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/runtimes/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/runtimes/" target="_blank" rel="noopener nofollow ugc">Runtimes | Flathub Documentation</a></h3>
+
+  <p>Flathub was originally launched with a runtime/SDK originally created by the Flatpak developers, which aimed to provide the common dependencies used by most Linux desktop apps. It's now maintained independently by the freedesktop-sdk project. It is...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>For all of the parameters that need to be set - say runtime or base-version, etc… Is there a section in the Docs that lists each parameter (on a per file basis in the manifest) and every available option that can be set.  I have not found this in the Docs yet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 4, 2024 4:34 AM">
+            <time itemprop="datePublished" datetime="2024-03-04 04:34:51 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m on Debian 11 so are you saying that I need to use apt and install version 23.08 for org.freedesktop.Platform?</p>
+<p>How does the remote option work? It needs to be configured and then org.freedesktop.Platform is installed remotely?</p>
+<p>I set the base-version to 0.9.7 which is the current version numbering for our app Greenery, how can that match up with the freedesktop runtime?  Is freedesktop providing support for Electron?  I may be setting base-version incorrectly as it should be set to the version of Electron that we are using?</p>
+<p>Also where do I set the current version of the Greenery app that I’m trying to submit ? (Note it will be a Binary Release Only):  Currently Greenery is at version 0.9.7</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 4, 2024 5:22 AM">
+            <time itemprop="datePublished" datetime="2024-03-04 05:22:09 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tmrdev" data-post="4" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>For all of the parameters that need to be set - say runtime or base-version, etc… Is there a section in the Docs that lists each parameter (on a per file basis in the manifest) and every available option that can be set. I have not found this in the Docs yet.</p>
+</blockquote>
+</aside>
+<p>There is <code>man flatpak-manifest</code>: <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Builder Command Reference - Flatpak documentation</a></p>
+<aside class="quote no-group" data-username="tmrdev" data-post="5" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>I’m on Debian 11 so are you saying that I need to use apt and install version 23.08 for org.freedesktop.Platform?</p>
+</blockquote>
+</aside>
+<p>No, it needs to be installed by flatpak</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="5" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>How does the remote option work? It needs to be configured and then org.freedesktop.Platform is installed remotely?</p>
+</blockquote>
+</aside>
+<p>A remote is what other package managers would call a repository. The term is inherited from ostree.</p>
+<p>Assuming you have the flathub remote added to the system installation, you can do <code>flatpak install flathub org.freedesktop.Sdk//23.08</code>, and then flatpak-builder won’t attempt to install it in the user installation.</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="5" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>I set the base-version to 0.9.7 which is the current version numbering for our app Greenery, how can that match up with the freedesktop runtime? Is freedesktop providing support for Electron? I may be setting base-version incorrectly as it should be set to the version of Electron that we are using?</p>
+</blockquote>
+</aside>
+<p>The correct value for <code>base-version</code> is specific to the base app you’re using. In the case of <code>org.electronjs.Electron2.BaseApp</code>, it corresponds to the runtime version it itself was based on.</p>
+<p>See <a href="https://docs.flatpak.org/en/latest/electron.html" class="inline-onebox" rel="noopener nofollow ugc">Electron - Flatpak documentation</a></p>
+<aside class="quote no-group" data-username="tmrdev" data-post="5" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>Also where do I set the current version of the Greenery app that I’m trying to submit ? (Note it will be a Binary Release Only): Currently Greenery is at version 0.9.7</p>
+</blockquote>
+</aside>
+<p>You don’t need to put that anywhere in the manifest except in the sources section if you’re using a versioned archive or git tag. Flatpak doesn’t know or care about versions; <code>runtime-version</code> and <code>base-version</code> are actually branch names.</p>
+<p>You can specify your app’s version in the MetaInfo (aka appdata) file, which is primarily used by the Flathub website and software store frontends.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 4, 2024 8:10 AM">
+            <time itemprop="datePublished" datetime="2024-03-04 08:10:52 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’d like to add that I ran the lint checker on all the files I could.  The main Greenery.json file showed no errors however three other files had the following errors:</p>
+<p>flathub.json</p>
+<p>{<br>
+“errors”: [<br>
+“toplevel-no-modules”,<br>
+“appid-not-defined”,<br>
+“jsonschema-validation-error”,<br>
+“appid-filename-mismatch”,<br>
+“finish-args-not-defined”,<br>
+“toplevel-no-command”<br>
+],<br>
+“jsonschema”: [<br>
+“‘runtime’ is a required property”<br>
+],<br>
+“message”: “Please consult the documentation at <a href="https://docs.flathub.org/docs/for-app-authors/linter" class="inline-onebox" rel="noopener nofollow ugc">Flatpak builder lint | Flathub Documentation</a>”<br>
+}</p>
+<hr>
+<p>finance.greenery.Greenery.desktop</p>
+<p>Traceback (most recent call last):<br>
+File “/app/bin/flatpak-builder-lint”, line 8, in <br>
+sys.exit(main())<br>
+^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 169, in main<br>
+if results := run_checks(args.type, path, args.exceptions, args.appid):<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 53, in run_checks<br>
+check_method_arg: Union[str, dict] = manifest.show_manifest(path)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/manifest.py”, line 21, in show_manifest<br>
+raise Exception(ret.stderr.decode(“utf-8”))<br>
+Exception: Can’t parse ‘/home/lexton/Development/greenery/greenery-flathub/finance.greenery.greenery/finance.greenery.Greenery.desktop’: :1:8: Parse error: unexpected identifier `Desktop’, expected value</p>
+<hr>
+<p>finance.greenery.Greenery.appdata.xml</p>
+<p>Traceback (most recent call last):<br>
+File “/app/bin/flatpak-builder-lint”, line 8, in <br>
+sys.exit(main())<br>
+^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 169, in main<br>
+if results := run_checks(args.type, path, args.exceptions, args.appid):<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 53, in run_checks<br>
+check_method_arg: Union[str, dict] = manifest.show_manifest(path)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/manifest.py”, line 21, in show_manifest<br>
+raise Exception(ret.stderr.decode(“utf-8”))<br>
+Exception: Can’t parse ‘/home/lexton/Development/greenery/greenery-flathub/finance.greenery.greenery/finance.greenery.Greenery.appdata.xml’: :1:1: Parse error: unexpected character `&lt;', expected value</p>
+<hr>
+<p>Are some of these errors utf-8 encoding issues? I should check for invisible chars just in case and as for the xml file it may not be formatted properly.</p>
+<p>As for flathub.json it looks there are required parameters that I need to add, I created this file based off of other Manifests that I saw. Is there a default template that I can use where I can fill in the options?</p>
+<p>I tried the flatpak freedesktop  install command and it stated that it was already installed.  I need to run through these documentation links first - thanks for the info</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 4, 2024 7:15 PM">
+            <time itemprop="datePublished" datetime="2024-03-04 19:15:57 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You’re supposed to specify the artifact type when invoking flatpak-builder-lint. It apparently assumes <code>manifest</code> when you don’t. Regardless, it’s not meant to be used on <code>flathub.json</code> or a <code>.desktop</code> file.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 4, 2024 9:25 PM">
+            <time itemprop="datePublished" datetime="2024-03-04 21:25:34 +0000">Mar 4, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have moved the finance.greenery.greenery directory to ~/Development</p>
+<p>Is the directory case sensitive when it comes to the app id? My app id should be finance.greenery.Greenery so should I have the directory name match this? Also should I be moving the directory into a flatpak path locally (where flathub apps are installed) on my drive?</p>
+<p>I ran this command:</p>
+<p>flatpak run --command=flatpak-builder-lint org.flatpak.Builder builddir ~/Development/finance.greenery.greenery/</p>
+<p>with this error message:</p>
+<p>raceback (most recent call last):<br>
+File “/app/bin/flatpak-builder-lint”, line 8, in <br>
+sys.exit(main())<br>
+^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 169, in main<br>
+if results := run_checks(args.type, path, args.exceptions, args.appid):<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/cli.py”, line 70, in run_checks<br>
+check_method(check_method_arg)<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/checks/appid.py”, line 41, in check_build<br>
+metadata = builddir.parse_metadata(path)<br>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
+File “/app/lib/python3.11/site-packages/flatpak_builder_lint/builddir.py”, line 16, in parse_metadata<br>
+raise OSError(errno.ENOENT, f"No metadata file in build directory: {builddir}")<br>
+FileNotFoundError: [Errno 2] No metadata file in build directory: /home/lexton/Development/finance.greenery.greenery/</p>
+<hr>
+<p>I have updated my finance.greenery.greenery directory on to github pages.  Can you please review and see if you see any issues.</p>
+<p>It is at the top post that I did here in this thread.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Mar 5, 2024 12:14 AM">
+            <time itemprop="datePublished" datetime="2024-03-05 00:14:56 +0000">Mar 5, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The Electron - Flatpack documentation that you replied with goes into detail on building an Electron app on Flathub.  However as I’ve mentioned I need to submit a Binary Release for Greenery which I have already compiled and uploaded to our Releases area on github. So for the flatpak run command below do I need a --install-deps-from argument? My guess is that the flatpak run command should download the binary I set in Greenery.json and install it to this path: /app/share/applications/finance.greenery.Greenery.desktop</p>
+<p>flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --install-deps-from=flathub --ccache --mirror-screenshots-url=<a href="https://dl.flathub.org/media/" rel="noopener nofollow ugc">https://dl.flathub.org/media/</a> --repo=repo builddir ~/Development/finance.greenery.Greenery.json</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Mar 5, 2024 2:12 AM">
+            <time itemprop="datePublished" datetime="2024-03-05 02:12:14 +0000">Mar 5, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You’re using <code>extra-data</code> to download and unpack the archive at install time. That’s only necessary when you don’t have permission to redistribute it. As mentioned on the Submission page, that means you can’t use <code>org.flatpak.Builder</code> from Flathub; you need to use the native version of <code>flatpak-builder</code> from your distribution’s package manger instead.</p>
+<p>But instead of using extra-data, you can use the <code>archive</code> source type and install into <code>/app/</code> in <code>build-commands</code>. Your app’s data will end up in the ostree repo and be distributed directly from Flathub’s CDN. This provides efficient delta updates, rather than users needing to download the whole thing again on each update. You can also remove the line disabling <code>separate-locales</code> to get a Locale extension, further saving bandwidth and disk space.</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="10" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>The Electron - Flatpack documentation that you replied with goes into detail on building an Electron app on Flathub. However as I’ve mentioned I need to submit a Binary Release for Greenery which I have already compiled and uploaded to our Releases area on github.</p>
+</blockquote>
+</aside>
+<p>That’s true, but much of it is still relevant.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Mar 6, 2024 2:11 AM">
+            <time itemprop="datePublished" datetime="2024-03-06 02:11:32 +0000">Mar 6, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got this command to work below and I see that it installs locally.</p>
+<p>flatpak-builder --force-clean --sandbox --user --install builddir ./finance.greenery.Greenery.json</p>
+<p>In my Greenery.json file it looks like the binary is installed here: “install -D greenery /app/bin/greenery”</p>
+<p>I am unable to execute flatpak run finance.greenery.Greenery:</p>
+<p>$: flatpak run finance.greenery.Greenery</p>
+<p>[2 zypak-helper] WARNING: supplied target /app/extra/Greenery does not look like a valid Chromium binary!<br>
+[2 zypak-helper] Zypak needs to be called directly on the executable <em>binary</em>, not any wrappers.<br>
+[2 zypak-helper] exec failed for /app/extra/Greenery: No such file or directory (errno 2)</p>
+<p>I installed what I believe to be v23 of Electron and also v18 of Node for the Flathub runtime.  Is there a way to use what is configured locally in the shell through an env or other method so that Node 16 and Electron 20 are set? Or do I have to configure the Flathub runtime to use these specific versions?  I tried installing the Node 16 runtime and it came back stating that I had the choice between Node 18 and Node 20.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Tim</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Mar 6, 2024 2:19 AM">
+            <time itemprop="datePublished" datetime="2024-03-06 02:19:27 +0000">Mar 6, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for your assistance. As I move forward with the process I need to disclose that I am one of the developers on the Greenery Wallet project.</p>
+<p>The link to our homepage is in the appdata.xml file.  With the research that I have done I see that apps like Firefox are doing binary releases with special keys.  Do I need to setup a special key while submitting Greenery as a Binary Release?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Mar 6, 2024 2:57 AM">
+            <time itemprop="datePublished" datetime="2024-03-06 02:57:32 +0000">Mar 6, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="tmrdev" data-post="12" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>In my Greenery.json file it looks like the binary is installed here: “install -D greenery /app/bin/greenery”</p>
+</blockquote>
+</aside>
+<p>That’s just the wrapper script defined in the manifest that invokes zypak (which is the bit in the Electron baseapp that allows Chromium’s sandbox to work inside flatpak). When the script runs, it fails with:</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="12" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>[2 zypak-helper] exec failed for /app/extra/Greenery: No such file or directory (errno 2)</p>
+</blockquote>
+</aside>
+<p>Because you’re using extra-data, the <code>apply_extra</code> script is invoked by flatpak on the end user system during installation. Your apply_extra script contains:</p>
+<pre><code>mv Greenery-linux-x64/* .
+</code></pre>
+<p>I’d guess that flatpak runs the script with the working directory as <code>/app/extra</code>, but I’m not sure, so I would specify the destination explicitly. Also, is the binary inside the archive actually named <code>Greenery</code> as the wrapper script expects?</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="12" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>I installed what I believe to be v23 of Electron and also v18 of Node for the Flathub runtime. Is there a way to use what is configured locally in the shell through an env or other method so that Node 16 and Electron 20 are set? Or do I have to configure the Flathub runtime to use these specific versions? I tried installing the Node 16 runtime and it came back stating that I had the choice between Node 18 and Node 20.</p>
+</blockquote>
+</aside>
+<p>I’m not sure what you’re referring to here. If you’re building the Electron app outside of flatpak, then you control which version of Electron you’re using; The flatpak SDK has nothing to do with it. Newer is generally better for improved portal support though.</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="13" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>As I move forward with the process I need to disclose that I am one of the developers on the Greenery Wallet project.</p>
+</blockquote>
+</aside>
+<p>I liked it better when I didn’t know this was crypto.</p>
+<p>But if you’re upstream for this (as I said before) you don’t really need to use <code>extra-data</code> as long as you’re okay with the app being downloaded directly from Flathub. Other proprietary app wrapper flatpaks only do so because they lack that permission from the vendor.</p>
+<aside class="quote no-group" data-username="tmrdev" data-post="13" data-topic="6204">
+<div class="title">
+<div class="quote-controls"></div>
+tmrdev:</div>
+<blockquote>
+<p>The link to our homepage is in the appdata.xml file. With the research that I have done I see that apps like Firefox are doing binary releases with special keys. Do I need to setup a special key while submitting Greenery as a Binary Release?</p>
+</blockquote>
+</aside>
+<p>Mozilla has special permission to publish the Firefox flatpak directly from their build server. That’s not generally available.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

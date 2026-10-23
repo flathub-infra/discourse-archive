@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto-update/Alter running application files with silverblue - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Auto-update/Alter running application files with silverblue</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Auto-update/Alter running application files with silverblue</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 20, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">Z</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">zastrixarundell</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 20, 2022 4:35 AM">
+            <time itemprop="datePublished" datetime="2022-11-20 04:35:13 +0000">Nov 20, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello there!</p>
+<p>I’m having a particular issue. I’m creating my first flatpack and it is for a java-based application. How it works is that it has a stable version on the internet and when you start it, it creates a folder <code>null</code> in the current directory which it then just overwrites some libs, updating it next time it is ran.</p>
+<p>For now I put the application and it’s lib folder under <code>/app/share/&lt;appname&gt;</code>. Now, I am getting an error that my system is Read-Only, I don’t know whether this is because I’m running silverblue or by design.</p>
+<p>Is there a way for me to actually allow for the app to auto-update itself? Otherwise it’s going to say it has to update every single time or I have to manually check constantly for an update.</p>
+<p>Here are my files. I’m open for any constructive criticism!</p>
+<pre><code class="lang-auto">app-id: com.mmoui.Minion
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+command: minion.sh
+sdk: org.freedesktop.Sdk
+modules:
+  - name: java8-runtime
+    buildsystem: simple
+    build-commands:
+      - mkdir -p  /app/java/
+      - cp -r jre /app/java/
+    sources:
+      - type: archive
+        url: https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-fx-jdk8.0.352-linux_x64.tar.gz
+        sha256: 5e18c7fb108a14e5cba70354908d3ded7e7e741554fb7ddc5f8d9d297f8c9307
+  - name: minion-client
+    buildsystem: simple
+    build-commands:
+      - unzip Minion3.0.5-java.zip
+      - mkdir -p                         /app/share/minion/lib
+      - install -Dm755 -v lib/* -t       /app/share/minion/lib
+      - install -Dm755 -v Minion-jfx.jar /app/share/minion
+    sources:
+      - type: file
+        url: https://cdn.mmoui.com/minion/v3/Minion3.0.5-java.zip
+        sha256: 0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b
+  - name: minion
+    buildsystem: simple
+    build-commands:
+      - install -D minion.sh /app/bin/minion.sh
+    sources:
+      - type: file
+        path: minion.sh
+cleanup:
+  - /app/share/minion
+finish-args:
+  - --env=PATH=/app/java/jre/bin:/usr/bin:/app/bin
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=network
+  - --device=dri
+  - --filesystem=host
+  - --filesystem=~/.var/app/com.valvesoftware.Steam
+</code></pre>
+<pre><code class="lang-auto">#!/bin/bash
+
+# Couldn't enable autoupdate, this way it at least doesn't make a file in working dir
+cd /app/share/minion/
+
+java -jar /app/share/minion/Minion-jfx.jar```</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 20, 2022 6:10 PM">
+            <time itemprop="datePublished" datetime="2022-11-20 18:10:41 +0000">Nov 20, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>/app is read-only. There is no working around.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

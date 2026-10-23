@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desktop files and the Exec line - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Desktop files and the Exec line</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Desktop files and the Exec line</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 12, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 12, 2022 4:03 PM">
+            <time itemprop="datePublished" datetime="2022-03-12 16:03:51 +0000">Mar 12, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Originally, I am following some documentation that I found here:</p>
+<p><a href="https://docs.flatpak.org/en/latest/freedesktop-quick-reference.html#desktop-files" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/freedesktop-quick-reference.html#desktop-files</a></p>
+<p>I am finishing off a flatpak app and I’m working on the ‘.desktop’ file. I have managed to write lines in my flatpak yaml file that install the desktop and the img files on my system. Right now the desktop file looks like this:</p>
+<pre><code>    [Desktop Entry]
+    Name=Gpt Etc.
+    Comment=A client for Gpt servers.
+    #Exec=/bin/bash -c "flatpak run org.theguy.GptEtc"
+    Exec=org.theguy.GptEtc
+    Type=Application
+    Icon=org.theguy.GptEtc
+    Terminal=false
+</code></pre>
+<p>The app works and I can type ‘flatpak run org.theguy.GptEtc’ and it launches. If I use the run-launcher on my system, I can see the entry for ‘GptEtc’ and I can select it. No app opens up at that time.</p>
+<p>I can, from the command line, type ‘gtk-launch org.theguy.GptEtc.desktop’ and I get the message below:</p>
+<pre><code>    bwrap: execvp org.theguy.GptEtc: No such file or directory
+</code></pre>
+<p>If I switch the commenting on the Exec line, so that the ‘bash’ command is run, I get a message that flatpak cannot be found.</p>
+<pre><code>    /bin/bash: line 1: flatpak: command not found 
+</code></pre>
+<p>I can run ‘which flatpak’ and I see it on /usr/bin/flatpak.</p>
+<p>How do I write the Exec line so that my flatpak app is run? Thanks for your time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 13, 2022 9:48 AM">
+            <time itemprop="datePublished" datetime="2022-03-13 09:48:29 +0000">Mar 13, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You put the binary you want to execute into Exec (I guess in your case <code>Exec=run.sh</code>). Flatpak will update the desktop file when the application is installed to run through flatpak.</p>
+<p>I don’t know why the documentation uses the app-id. Either there is some app-id magic which doesn’t work, the <code>Exec</code>-line is simply wrong or just confusing (maybe there is an org.gnome.Dictionary binary?).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 15, 2022 12:37 PM">
+            <time itemprop="datePublished" datetime="2022-03-15 12:37:38 +0000">Mar 15, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you. sorry I’m getting back late. I’m guessing this still works for both system and user installs?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Danilo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 17, 2022 9:55 AM">
+            <time itemprop="datePublished" datetime="2022-03-17 09:55:51 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m facing exactly the same issue. I initially used the app-id, as documented in the docs, but that doesn’t work.</p>
+<p>After looking at the files generated when installing the app, I realized that from a desktop file with an exec line like this:</p>
+<pre><code>Exec=my-app
+</code></pre>
+<p>…Flatpak will generate a Desktop entry at <code>/var/lib/flatpak/exports/share/applications/org.example.myapp.desktop</code>. This file does not contain <code>Exec=my-app</code>, but this instead:</p>
+<pre><code>Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --command=my-app org.example.myapp
+</code></pre>
+<p>This means that the <code>Exec</code> line of the desktop file provided to <code>flatpak-builder</code> will be run <em>inside</em> the app container, i.e. it must match the <code>command:</code> line in your Flatpak source YAML file.</p>
+<p>I wish there was an option to completely ignore the original <code>Exec</code> line in the provided desktop file, and to generate an <code>Exec</code> line without the <code>--command</code> part.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Danilo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 17, 2022 10:07 AM">
+            <time itemprop="datePublished" datetime="2022-03-17 10:07:17 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hah, I dug through the Flatpak source, and found the logic where the desktop file is generated/transformed:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/flatpak/flatpak/blob/c3ca2c701004606b0ab947e1585bba404e7fc929/common/flatpak-dir.c#L7296">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak/blob/c3ca2c701004606b0ab947e1585bba404e7fc929/common/flatpak-dir.c#L7296" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flatpak/flatpak/blob/c3ca2c701004606b0ab947e1585bba404e7fc929/common/flatpak-dir.c#L7296" target="_blank" rel="noopener nofollow ugc">flatpak/flatpak/blob/c3ca2c701004606b0ab947e1585bba404e7fc929/common/flatpak-dir.c#L7296</a></h4>
+
+
+
+    <pre class="onebox">      <code class="lang-c">
+        <ol class="start lines" start="7286" style="counter-reset: li-counter 7285 ;">
+            <li>g_string_append_printf (new_exec,</li>
+            <li>                        "%s run --branch=%s --arch=%s",</li>
+            <li>                        flatpak,</li>
+            <li>                        escaped_branch,</li>
+            <li>                        escaped_arch);</li>
+            <li>
+            </li>
+<li>if (flatpak_run_args != NULL)</li>
+            <li>  g_string_append_printf (new_exec, "%s", flatpak_run_args);</li>
+            <li>
+            </li>
+<li>old_exec = g_key_file_get_string (keyfile, groups[i], "Exec", NULL);</li>
+            <li class="selected">if (old_exec &amp;&amp; g_shell_parse_argv (old_exec, &amp;old_argc, &amp;old_argv, NULL) &amp;&amp; old_argc &gt;= 1)</li>
+            <li>  {</li>
+            <li>    int j;</li>
+            <li>    g_autofree char *command = maybe_quote (old_argv[0]);</li>
+            <li>
+            </li>
+<li>    g_string_append_printf (new_exec, " --command=%s", command);</li>
+            <li>
+            </li>
+<li>    for (j = 1; j &lt; old_argc; j++)</li>
+            <li>      {</li>
+            <li>        if (strcasecmp (old_argv[j], "%f") == 0 ||</li>
+            <li>            strcasecmp (old_argv[j], "%u") == 0)</li>
+        </ol>
+      </code>
+    </pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>The <code>old_exec</code> part is guarded by an <code>if</code>. We cannot omit the <code>Exec</code> from the original desktop file entry (otherwise <code>flatpak-builder</code> complains), but if it’s empty (i.e. <code>Exec=</code>) then the generated desktop file does not contain a <code>--command</code> argument and simply delegates to the default command of the Flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Danilo</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 17, 2022 10:24 AM">
+            <time itemprop="datePublished" datetime="2022-03-17 10:24:52 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since this is an open source project, I thought fixing docs is better than just complaining about them:</p>
+<aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flatpak/flatpak-docs/pull/324">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak-docs/pull/324" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak-docs</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Pull Request">
+    <svg width="60" height="60" class="github-icon" viewbox="0 0 12 16" aria-hidden="true"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak-docs/pull/324" target="_blank" rel="noopener nofollow ugc">Fix and improve docs about Exec line in desktop files</a>
+    </h4>
+
+    <div class="branches">
+      <code>flatpak:master</code> ← <code>dbrgn:desktop-file-exec-docs</code>
+    </div>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2022-03-17" data-time="10:21:43" data-timezone="UTC">10:21AM - 17 Mar 22 UTC</span>
+      </div>
+
+      <div class="user">
+        <a href="https://github.com/dbrgn" target="_blank" rel="noopener nofollow ugc">
+          <img alt="dbrgn" src="/uploads/original/2X/a/ada0d85e1e3b8bbc9e233a14ce7bebf2e9e5c4fc.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          dbrgn
+        </a>
+      </div>
+
+      <div class="lines" title="1 commits changed 1 files with 36 additions and 8 deletions">
+        <a href="https://github.com/flatpak/flatpak-docs/pull/324/files" target="_blank" rel="noopener nofollow ugc">
+          <span class="added">+36</span>
+          <span class="removed">-8</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">The old example was wrong. See discussion here:
+https://discourse.flathub.org/t<span class="show-more-container"><a href="https://github.com/flatpak/flatpak-docs/pull/324" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">/desktop-files-and-the-exec-line/2322
+
+I hope the new version is not _too_ verbose, but it would definitely have saved me a few hours of debugging my Flatpak app config.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p><span class="mention">@radiodee1</span> would the proposed text have helped you? I would certainly have helped me understanding how things work (at least from my understanding of it).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 17, 2022 12:52 PM">
+            <time itemprop="datePublished" datetime="2022-03-17 12:52:16 +0000">Mar 17, 2022</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Your addition is good and it would have helped me at the time. Thanks for the extra work figuring the Exec line out. It may help in the future.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

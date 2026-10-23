@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unable to Install Spotify Client Flatpak for 32-bit PC&#39;s - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Unable to Install Spotify Client Flatpak for 32-bit PC&#39;s</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Unable to Install Spotify Client Flatpak for 32-bit PC&#39;s</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 18, 2020</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">RobK</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 18, 2020 7:08 PM">
+            <time itemprop="datePublished" datetime="2020-10-18 19:08:36 +0000">Oct 18, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I installed flatpak via apt-get on my 32-bit Laptop running antiX Linux, Version 19.2 Marielle Franco, and I added the flathub.flatpakrepo rep per the istructions for Debian systems.</p>
+<p>After rebooting my laptop, I tried to install the 32-bit Flakpak for the Spotify client without success.</p>
+<p>I get the following error.  Looks like there is a problem with the Spotify 32-bit Flatpak file.  Any ideas on how to get it fixed?</p>
+<p>$ flatpak install flathub com.spotify.Client<br>
+Looking for matches…<br>
+Required runtime for com.spotify.Client/i386/stable (runtime/org.freedesktop.Platform/i386/18.08) found in remote flathub<br>
+Do you want to install it? [Y/n]: Y</p>
+<p>com.spotify.Client permissions:<br>
+ipc                    network                pulseaudio               x11            dri<br>
+file access [1]        dbus access [2]        bus ownership [3]        tags [4]</p>
+<pre><code>[1] xdg-music:ro, xdg-pictures:ro
+[2] org.freedesktop.Notifications, org.gnome.SessionManager, org.gnome.SettingsDaemon
+[3] org.mpris.MediaPlayer2.spotify
+[4] proprietary
+
+    ID                                            Arch         Branch         Remote         Download
+</code></pre>
+<ol>
+<li>[✓] org.freedesktop.Platform                      i386         18.08          flathub        292.7 MB / 306.7 MB</li>
+<li>[✓] org.freedesktop.Platform.Locale               i386         18.08          flathub        161.0 MB / 316.0 MB</li>
+<li>[✓] org.freedesktop.Platform.VAAPI.Intel          i386         18.08          flathub          1.9 MB / 1.9 MB</li>
+<li>[✓] org.freedesktop.Platform.html5-codecs         i386         18.08          flathub          3.3 MB / 3.4 MB</li>
+<li>[✗] com.spotify.Client                            i386         stable         flathub         32.7 MB / 109.0 MB</li>
+</ol>
+<p>Error: While downloading <a href="https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb:" rel="nofollow noopener">https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb:</a> Connection terminated unexpectedly<br>
+error: Failed to install com.spotify.Client: While downloading <a href="https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb:" rel="nofollow noopener">https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb:</a> Connection terminated unexpectedly<br>
+user@antix1-laptop:~</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 18, 2020 11:40 PM">
+            <time itemprop="datePublished" datetime="2020-10-18 23:40:12 +0000">Oct 18, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This won’t work as the freedesktop runtime isn’t available for 32bits architectures anymore. The one you’re trying to install is pretty old and the link is probably broken.</p>
+<p>That build should be removed though.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">RobK</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 19, 2020 11:59 AM">
+            <time itemprop="datePublished" datetime="2020-10-19 11:59:30 +0000">Oct 19, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the comment.  But I am a little confused.  As you can see from my previous post, the 32-bit version of freedesktop appeared to download and install okay.  It was just the 32-bit version of the spotify client that would not download properly.  Looks like it might be corrupt.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bilal Elmoussaoui</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 19, 2020 12:29 PM">
+            <time itemprop="datePublished" datetime="2020-10-19 12:29:30 +0000">Oct 19, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Spotify doesn’t allow us to re-distribute the binary. So the install step downloads spotify from upstream &amp; install it. As that build is very old, the url is broken and hence it’s not working for you anymore.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">RobK</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 19, 2020 2:12 PM">
+            <time itemprop="datePublished" datetime="2020-10-19 14:12:29 +0000">Oct 19, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the info.  Yes, I see that flatpak is trying to download the deb file for the 32-bit Spotify client from the Spotify repos.  I tried to download it directly using curl but it failed.  It sure looks like the .deb file is corrupt or perhaps the permissions are set incorrectly.</p>
+<p>I have reported the problem to the Spotify Community Forums.<br>
+See<br>
+</p><aside class="onebox whitelistedgeneric">
+  <header class="source">
+      <img src="/uploads/original/1X/a26f458a63b0f507a6d2128d4779b500d2376293.png" class="site-icon" width="128" height="128">
+      <a href="https://community.spotify.com/t5/Desktop-Linux/Unable-to-Install-Spotify-Flatpak-package-on-Linux/td-p/5055661" target="_blank" rel="nofollow noopener" title="05:57PM - 18 October 2020">community.spotify.com – 18 Oct 20</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/362;"><img src="/uploads/original/1X/6cbcd0541086377a8e76509a362e721b3b5cdf11.png" class="thumbnail" width="690" height="362" data-small-upload="/uploads/optimized/1X/6cbcd0541086377a8e76509a362e721b3b5cdf11_2_10x10.png"></div>
+
+<h3><a href="https://community.spotify.com/t5/Desktop-Linux/Unable-to-Install-Spotify-Flatpak-package-on-Linux/td-p/5055661" target="_blank" rel="nofollow noopener">Unable to Install Spotify Flatpak package on Linux</a></h3>
+
+<p>Plan Free Country &nbsp; Device Laptop 32-bit CPU Operating System AntiX 19.2 Marielle Franco &nbsp; My Question or Issue I installed flatpak via apt-get and I added the repo flatpak remote-add –if-not-exists flathub...</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>I am hoping Spotify will fix the corrupt .deb file or at least inform me that it no longer develops and supports the 32-bit Spotify client.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">RobK</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 19, 2020 5:36 PM">
+            <time itemprop="datePublished" datetime="2020-10-19 17:36:39 +0000">Oct 19, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see the problem and have a solution.</p>
+<p>The flatpak for the 32-bit version of the Spotify Client on the Flathub repos uses the WRONG URL for the .deb binary for the 32-bit Spotify client.</p>
+<p>The URL should be <a href="http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb" rel="nofollow noopener">http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.72.117.g6bd7cc73-35_i386.deb</a></p>
+<p><strong>NOT</strong> <a href="https://repository-origin.spotify.com/" rel="nofollow noopener">https://repository-origin.spotify.com/</a>  etc etc.</p>
+<p>I was able to easily download the .deb binary (that is needed by the flatpak) for 32-bit version of the Spotify Client from the correct URL.</p>
+<p>So I hope someone updates the flatpak for the 32-bit version of the Spotify Client on Flathub with the right URL.</p>
+<p>Until someone does update the flatpak with the right URL, is there a way I can install the flatpak using the manually downloaded .deb file from the Spotify servers?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kukuh Syafaat</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 20, 2020 3:02 AM">
+            <time itemprop="datePublished" datetime="2020-10-20 03:02:08 +0000">Oct 20, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/flathub/com.spotify.Client/blob/master/com.spotify.Client.json#L187" target="_blank" rel="nofollow noopener">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/com.spotify.Client/blob/master/com.spotify.Client.json#L187" target="_blank" rel="nofollow noopener">flathub/com.spotify.Client/blob/master/com.spotify.Client.json#L187</a></h4>
+<pre class="onebox"><code class="lang-json"><ol class="start lines" start="177" style="counter-reset: li-counter 176 ;">
+<li>                    "path": "get-scale-factor.py"</li>
+<li>                },</li>
+<li>                {</li>
+<li>                    "type": "file",</li>
+<li>                    "path": "set-dark-theme-variant.py"</li>
+<li>                },</li>
+<li>                {</li>
+<li>                    "type": "extra-data",</li>
+<li>                    "filename": "spotify.deb",</li>
+<li>                    "only-arches": [</li>
+<li class="selected">                        "x86_64"</li>
+<li>                    ],</li>
+<li>                    "url": "http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.1.42.622.gbd112320-37_amd64.deb",</li>
+<li>                    "sha256": "101a3699197659b8bc60a4fd8b579e63cc494e7abd089c45306559329af4a868",</li>
+<li>                    "size": 126293582</li>
+<li>                }</li>
+<li>            ]</li>
+<li>        }</li>
+<li>    ]</li>
+<li>}</li>
+</ol></code></pre>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>It’s only 64-bit support right now</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 20, 2020 3:19 PM">
+            <time itemprop="datePublished" datetime="2020-10-20 15:19:43 +0000">Oct 20, 2020</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To repeat after Bilel: 32-bit Intel processors are no longer supported. Nothing to update here, it will be removed if anything.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

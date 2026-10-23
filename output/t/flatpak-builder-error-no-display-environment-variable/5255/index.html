@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flatpak-builder error: no $DISPLAY environment variable - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flatpak-builder error: no $DISPLAY environment variable</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flatpak-builder error: no $DISPLAY environment variable</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 3, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">garlic64</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 3, 2023 2:00 PM">
+            <time itemprop="datePublished" datetime="2023-10-03 14:00:00 +0000">Oct 3, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m close to creating my first flatpak, which is for a Tkinter application written in Python.<br>
+It finishes creating the flatpak successfully, but when I attempt to test the flatpak, I get this error:</p>
+<blockquote>
+<p>_tkinter.TclError: no display name and no $DISPLAY environment variable</p>
+</blockquote>
+<p>Any ideas?</p>
+<p>The way I’m attempting to test it is by using this command:</p>
+<blockquote>
+<p>flatpak run org.flatpak.Builder --run build-dir org.lvnauth.LVNAuth.json python3 /app/bin/startup.py</p>
+</blockquote>
+<p>My manifest is:</p>
+<pre><code class="lang-auto">{
+    "app-id": "org.lvnauth.LVNAuth",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "22.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "/app/bin/startup.sh",
+    "finish-args": [
+	    "--socket=x11",
+	    "--socket=pulseaudio",
+	    "--filesystem=home"
+        ],
+    "modules": [
+        {
+            "name": "lvnauth",
+            "build-commands": [
+		"install -D startup.sh /app/bin/startup.sh",
+		"install -D about_window.py /app/bin/about_window.py",
+		"install -D app_icon.png /app/bin/app_icon.png",
+		"install -D delete_confirmation.py /app/bin/delete_confirmation.py",
+		"install -D editor_window.py /app/bin/editor_window.py",
+		"install -D entrylimit.py /app/bin/entrylimit.py",
+		"install -D fixed_font_converter_window.py /app/bin/fixed_font_converter_window.py",
+		"install -D font_sprite_properties_window.py /app/bin/font_sprite_properties_window.py",
+		"install -D input_ask_new_folder_where.py /app/bin/input_ask_new_folder_where.py",
+		"install -D input_string_window.py /app/bin/input_string_window.py",
+		"install -D input_trim_values_window.py /app/bin/input_trim_values_window.py",
+		"install -D linklabel_widget.py /app/bin/linklabel_widget.py",
+		"install -D lvnauth_logo.png /app/bin/lvnauth_logo.png",
+		"install -D new_project_window.py /app/bin/new_project_window.py",
+		"install -D play_error_window.py /app/bin/play_error_window.py",
+		"install -D project_snapshot.py /app/bin/project_snapshot.py",
+		"install -D rect_object.py /app/bin/rect_object.py",
+		"install -D rect_options_window.py /app/bin/rect_options_window.py",
+		"install -D startup.py /app/bin/startup.py",
+		"install -D story_compiler.py /app/bin/story_compiler.py",
+		"install -D story_details_window.py /app/bin/story_details_window.py",
+		"install -D wizard_window.py /app/bin/wizard_window.py",
+		"install -D active_story.py /app/bin/player/active_story.py",
+		"install -D app_icon_small.png /app/bin/player/app_icon_small.png",
+		"install -D audio_player.py /app/bin/player/audio_player.py",
+		"install -D dialog_rectangle.py /app/bin/player/dialog_rectangle.py",
+		"install -D draft_rectangle.py /app/bin/player/draft_rectangle.py",
+		"install -D extract_functions.py /app/bin/player/extract_functions.py",
+		"install -D file_reader.py /app/bin/player/file_reader.py",
+		"install -D font_handler.py /app/bin/player/font_handler.py",
+		"install -D launch_window.py /app/bin/player/launch_window.py",
+		"install -D main.py /app/bin/player/main.py",
+		"install -D rest_handler.py /app/bin/player/rest_handler.py",
+		"install -D shared_components.py /app/bin/player/shared_components.py",
+		"install -D story_reader.py /app/bin/player/story_reader.py",
+		"install -D about_libraries_window.ui /app/bin/ui/about_libraries_window.ui",
+		"install -D about_window.ui /app/bin/ui/about_window.ui",
+		"install -D ask_create_folder_where.ui /app/bin/ui/ask_create_folder_where.ui",
+		"install -D delete_confirmation_window.ui /app/bin/ui/delete_confirmation_window.ui",
+		"install -D editor_main.ui /app/bin/ui/editor_main.ui",
+		"install -D fixed_font_size_converter_window.ui /app/bin/ui/fixed_font_size_converter_window.ui",
+		"install -D font_sprite_window.ui /app/bin/ui/font_sprite_window.ui",
+		"install -D input_string_window.ui /app/bin/ui/input_string_window.ui",
+		"install -D input_trim_values_window.ui /app/bin/ui/input_trim_values_window.ui",
+		"install -D input_window.ui /app/bin/ui/input_window.ui",
+		"install -D launch_window.ui /app/bin/ui/launch_window.ui",
+		"install -D lvnauth_license_window.ui /app/bin/ui/lvnauth_license_window.ui",
+		"install -D play_error_window.ui /app/bin/ui/play_error_window.ui",
+		"install -D project_folder_window.ui /app/bin/ui/project_folder_window.ui",
+		"install -D rect_options_window.ui /app/bin/ui/rect_options_window.ui",
+		"install -D startup_window.ui /app/bin/ui/startup_window.ui",
+		"install -D story_details_window.ui /app/bin/ui/story_details_window.ui",
+		"install -D text_create_dialog.ui /app/bin/ui/text_create_dialog.ui",
+		"install -D wizard.ui /app/bin/ui/wizard.ui"
+	    ],
+	    "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "startup.sh"
+                },
+                {
+                    "type": "file",
+                    "path": "src/about_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/app_icon.png"
+                },
+                {
+                    "type": "file",
+                    "path": "src/delete_confirmation.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/editor_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/entrylimit.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/fixed_font_converter_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/font_sprite_properties_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/input_ask_new_folder_where.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/input_string_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/input_trim_values_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/linklabel_widget.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/lvnauth_logo.png"
+                },
+                {
+                    "type": "file",
+                    "path": "src/new_project_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/play_error_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/project_snapshot.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/rect_object.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/rect_options_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/startup.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/story_compiler.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/story_details_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/wizard_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/active_story.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/app_icon_small.png"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/audio_player.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/dialog_rectangle.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/draft_rectangle.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/extract_functions.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/file_reader.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/font_handler.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/launch_window.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/main.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/rest_handler.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/shared_components.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/player/story_reader.py"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/about_libraries_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/about_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/ask_create_folder_where.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/delete_confirmation_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/editor_main.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/fixed_font_size_converter_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/font_sprite_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/input_string_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/input_trim_values_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/input_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/launch_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/lvnauth_license_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/play_error_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/project_folder_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/rect_options_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/startup_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/story_details_window.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/text_create_dialog.ui"
+                },
+                {
+                    "type": "file",
+                    "path": "src/ui/wizard.ui"
+                }
+            ]
+        },
+        {
+            "name": "cpython",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz",
+                    "sha256": "29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af"
+                }
+            ]
+        },
+        {
+            "name": "flit-core",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"flit-core==3.9.0\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz",
+                    "sha256": "72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba"
+                }
+            ]
+        },
+        {
+            "name": "wheel",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"wheel==0.41.2\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a4/99/78c4f3bd50619d772168bec6a0f34379b02c19c9cced0ed833ecd021fd0d/wheel-0.41.2.tar.gz",
+                    "sha256": "0c5ac5ff2afb79ac23ab82bab027a0be7b5dbcf2e54dc50efe4bf507de1f7985"
+                }
+            ]
+        },
+        {
+            "name": "python3-Pillow",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"Pillow==10.0.0\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/0f/8b/2ebaf9adcf4260c00f842154865f8730cf745906aa5dd499141fb6063e26/Pillow-10.0.0.tar.gz",
+                    "sha256": "9c82b5b3e043c7af0d95792d0d20ccf68f61a1fec6b3530e718b688422727396"
+                }
+            ]
+        },
+        {
+            "name": "python3-pygame-ce",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pygame-ce==2.3.1\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/29/1f/8acc9e552047358688875e7a1ef8f5b5419a7bc5c1eeee3a5beab5a995ff/pygame-ce-2.3.1.tar.gz",
+                    "sha256": "d7eab24aa97ab806e1a3b3d268d0edb8ca3b7ee47f8baa6dbf29d46c39cf3d79"
+                }
+            ]
+        },
+        {
+            "name": "python3-pygubu",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pygubu==0.31\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/46/fd/b7cc00c8ea6d4d2867f6bb94bd2a1e6212f0ad529120666ac6e7b56ffc82/pygubu-0.31-py3-none-any.whl",
+                    "sha256": "b8a177deee56a9686e2a9d2939f4af5e82b27c504bf51c79610d33a8c5b6a04d"
+                }
+            ]
+        },
+	{
+	  "name": "tkinter",
+	  "buildsystem": "simple",
+	  "build-commands": [
+	      "pip3 install --prefix=${FLATPAK_DEST} ."
+	  ],
+	  "sources": [
+	    {
+	      "type": "git",
+	      "url": "https://github.com/iwalton3/tkinter-standalone",
+	      "commit": "d9cb97c5bd4f814c73678366e0e48220776b6ad3"
+	    }
+	  ],
+	  "modules": [
+	    {
+	      "name": "tcl8.6",
+	      "sources": [
+		{
+		  "type": "archive",
+		  "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.12-src.tar.gz",
+		  "sha256": "26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6"
+		}
+	      ],
+	      "subdir": "unix",
+	      "post-install": [
+		"chmod +w ${FLATPAK_DEST}/lib/libtcl8.6.so"
+	      ]
+	    },
+	    {
+	      "name": "tk8.6",
+	      "sources": [
+		{
+		  "type": "archive",
+		  "url": "https://prdownloads.sourceforge.net/tcl/tk8.6.12-src.tar.gz",
+		  "sha256": "12395c1f3fcb6bed2938689f797ea3cdf41ed5cb6c4766eec8ac949560310630"
+		}
+	      ],
+	      "subdir": "unix",
+	      "post-install": [
+		"chmod +w ${FLATPAK_DEST}/lib/libtk8.6.so"
+	      ]
+	    }
+	  ]
+	}
+    ]
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 5, 2023 10:36 AM">
+            <time itemprop="datePublished" datetime="2023-10-05 10:36:05 +0000">Oct 5, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Does this still happen with <code>wayland</code> and <code>ipc</code> finish args? See <a href="https://docs.flatpak.org/en/latest/manifests.html#finishing" class="inline-onebox">Manifests — Flatpak documentation</a> for more info</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">garlic64</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 5, 2023 12:56 PM">
+            <time itemprop="datePublished" datetime="2023-10-05 12:56:28 +0000">Oct 5, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I tried different finish args, including wayland and ipc, with the same result.<br>
+For example:</p>
+<pre><code class="lang-auto">    "finish-args": [
+	    "--socket=x11",
+	    "--socket=fallback-x11",
+            "--socket=wayland",
+            "--share=network",
+	    "--share=ipc",
+	    "--socket=pulseaudio",
+	    "--filesystem=home",
+            "--device=dri"
+        ],
+</code></pre>
+<p>I even tried a different runtime (org.gnome.Platform) with the same result.<br>
+It seems like Tk (tkinter) is not finding a display server, even though socket=x11 has been specified.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 6, 2023 9:05 AM">
+            <time itemprop="datePublished" datetime="2023-10-06 09:05:40 +0000">Oct 6, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I would have a look at other packages using <code>tkinter</code> then <a href="https://github.com/search?q=org%3Aflathub">https://github.com/search?q=org%3Aflathub</a> tkinter&amp;type=code</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 7, 2023 3:46 AM">
+            <time itemprop="datePublished" datetime="2023-10-07 03:46:01 +0000">Oct 7, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>tkinter doesn’t support Wayland AFAIK. So it needs <code>--socket=x11</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

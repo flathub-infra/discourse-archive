@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trying to use an extension - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Trying to use an extension</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Trying to use an extension</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Dec 14, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mantielero</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Dec 14, 2024 4:20 PM">
+            <time itemprop="datePublished" datetime="2024-12-14 16:20:00 +0000">Dec 14, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am a newcomer using flatpak (I had some experience in the past). I created an extension <code>org.freedesktop.Sdk.Extension.nim</code>:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">id: org.freedesktop.Sdk.Extension.nim
+branch: '23.08'
+runtime: org.freedesktop.Sdk
+build-extension: true
+sdk: org.freedesktop.Sdk
+runtime-version: '23.08'
+
+build-options:
+  prefix: /usr/lib/sdk/nim
+
+finish-args:
+  - --share=network # We need this to install libraries with `nimble`
+
+modules: 
+        
+  - name: nim
+    buildsystem: simple
+    sources:
+      - type: file #archive
+        only-arches:
+          - x86_64
+        
+        dest: download
+        url: https://nim-lang.org/download/nim-2.2.0-linux_x64.tar.xz
+        sha256: 942e047879fd81193b2ff3c105436a0c5016800c4e97864f90039ae204f89ded
+
+    build-options:
+      prefix: /app/extensimcon_directory/nim
+      prepend-path: /app/extension_directory/nim/bin
+
+    build-commands:
+      - tar -xf download/nim-2.2.0-linux_x64.tar.xz
+      - install -v -Dm755 nim-2.2.0/bin/* -t ${FLATPAK_DEST}/bin/
+</code></pre>
+<p>I built it like:</p>
+<pre data-code-wrap="sh"><code class="lang-sh">flatpak-builder --force-clean --user --install ./tmpdir org.freedesktop.Sdk.Extension.nim.yml
+</code></pre>
+<p>At this point, if I debug the extension:</p>
+<pre data-code-wrap="sh"><code class="lang-sh">$ flatpak-builder --run ./tmpdir org.freedesktop.Sdk.Extension.nim.yml sh
+sh-5.2$ /usr/lib/sdk/nim/bin/nim --version
+Nim Compiler Version 2.2.0 [Linux: amd64]
+Compiled at 2024-10-02
+Copyright (c) 2006-2024 by Andreas Rumpf
+
+git hash: 78983f1876726a49c69d65629ab433ea1310ece1
+active boot switches: -d:release
+</code></pre>
+<p>Then, I would to use it in an app <code>org.gnome.myapp.yml</code>:</p>
+<pre data-code-wrap="yml"><code class="lang-yml">id: org.gnome.myapp
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+command: myapp
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.nim:
+      version: '23.08'
+
+append-path: /usr/lib/sdk/nim/bin
+
+modules:
+  - name: myapp
+    buildsystem: simple
+    build-commands:
+      - nimble install owlkettle
+      - nimble build
+      - install -Dm755 myapp /app/bin/myapp
+</code></pre>
+<p>I build it and it fails in one of the steps (it doesn’t find <code>nimble</code>):</p>
+<pre data-code-wrap="sh"><code class="lang-sh">$ flatpak-builder --user --force-clean --install ./tmpdir org.gnome.myapp.yml
+</code></pre>
+<p>If I debug it, <code>/usr/lib/sdk</code> appears empty. I would expect that to contain <code>nim</code> folder.</p>
+<pre data-code-wrap="sh"><code class="lang-sh">$ flatpak-builder --run ./tmpdir org.gnome.myapp.yml sh
+sh-5.2$ ls /usr/lib/sdk
+sh-5.2$ 
+</code></pre>
+<p>What am I doing wrong?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Dec 15, 2024 9:31 AM">
+            <time itemprop="datePublished" datetime="2024-12-15 09:31:50 +0000">Dec 15, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>finish-args has no use in an extension.</p>
+<aside class="quote no-group" data-username="mantielero" data-post="1" data-topic="8355">
+<div class="title">
+<div class="quote-controls"></div>
+mantielero:</div>
+<blockquote>
+<pre><code class="lang-auto">sdk-extensions:
+  - org.freedesktop.Sdk.Extension.nim:
+      version: '23.08'
+</code></pre>
+</blockquote>
+</aside>
+<p>doesn’t take versions, not sure where you are finding these syntaxes. Follow the docs <a href="https://docs.flatpak.org/en/latest/extension.html#loading-existing-extensions" class="inline-onebox" rel="noopener nofollow ugc">Extensions - Flatpak documentation</a>.</p>
+<blockquote>
+<p>runtime-version: ‘47’</p>
+</blockquote>
+<p>is based on freedesktop SDK 24.08, so you have to build a 24.08 branch of the extension:</p>
+<pre><code class="lang-auto">id: org.freedesktop.Sdk.Extension.nim
+branch: '24.08'
+runtime: org.freedesktop.Sdk
+build-extension: true
+sdk: org.freedesktop.Sdk
+runtime-version: '24.08'
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mantielero</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Dec 16, 2024 9:06 PM">
+            <time itemprop="datePublished" datetime="2024-12-16 21:06:12 +0000">Dec 16, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks a lot. I was a bit lost. I don’t remember from where I took that (maybe chatgpt).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

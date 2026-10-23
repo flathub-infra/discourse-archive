@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Steam/flatpak on Funtoo: libGL error - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Steam/flatpak on Funtoo: libGL error</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Steam/flatpak on Funtoo: libGL error</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 20, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Silviu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 20, 2020 10:20 AM">
+            <time itemprop="datePublished" datetime="2020-09-20 10:20:09 +0000">Sep 20, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have used flatpak to run Steam on Funtoo (Gentoo derivative, 64-bit only) for some time now. Recently, it stopped working. The Steam window appears, checks for updates and installs them if found, then crashes.</p>
+<p>When run from a terminal as opposed from the GUI icon, it reveals this error:<br>
+libGL error: No matching fbConfigs or visuals found<br>
+libGL error: failed to load driver: swrast</p>
+<p>I have a nvidia card, and use the nvidia binary drivers, currently version 450.57. I also have mesa installed, and checked if there’s any library conflict but it doesn’t appear so:<br>
+sudo ldconfig -p | grep -i gl.so<br>
+libwayland-egl.so.1 (libc6,x86-64) =&gt; /usr/lib/libwayland-egl.so.1<br>
+libwayland-egl.so (libc6,x86-64) =&gt; /usr/lib/libwayland-egl.so<br>
+libobs-opengl.so.0 (libc6,x86-64) =&gt; /usr/lib/libobs-opengl.so.0<br>
+libobs-opengl.so (libc6,x86-64) =&gt; /usr/lib/libobs-opengl.so<br>
+libmypaint-gegl.so.0 (libc6,x86-64) =&gt; /usr/lib/libmypaint-gegl.so.0<br>
+libmypaint-gegl.so (libc6,x86-64) =&gt; /usr/lib/libmypaint-gegl.so<br>
+libftgl.so.2 (libc6,x86-64) =&gt; /usr/lib/libftgl.so.2<br>
+libftgl.so (libc6,x86-64) =&gt; /usr/lib/libftgl.so<br>
+libfltk_gl.so.1.3 (libc6,x86-64) =&gt; /usr/lib64/fltk/libfltk_gl.so.1.3<br>
+libfltk_gl.so (libc6,x86-64) =&gt; /usr/lib64/fltk/libfltk_gl.so<br>
+libTKOpenGl.so.11 (libc6,x86-64) =&gt; /usr/lib/libTKOpenGl.so.11<br>
+libTKOpenGl.so (libc6,x86-64) =&gt; /usr/lib/libTKOpenGl.so<br>
+libQt5OpenGL.so.5 (libc6,x86-64) =&gt; /usr/lib/libQt5OpenGL.so.5<br>
+libQt5OpenGL.so (libc6,x86-64) =&gt; /usr/lib/libQt5OpenGL.so<br>
+libOpenGL.so.0 (libc6,x86-64) =&gt; /usr/lib/libOpenGL.so.0<br>
+libOpenGL.so (libc6,x86-64) =&gt; /usr/lib/libOpenGL.so<br>
+libGL.so.1 (libc6,x86-64) =&gt; /usr/lib/libGL.so.1<br>
+libGL.so (libc6,x86-64) =&gt; /usr/lib/libGL.so<br>
+libEGL.so.1 (libc6,x86-64) =&gt; /usr/lib/libEGL.so.1<br>
+libEGL.so (libc6,x86-64) =&gt; /usr/lib/libEGL.so</p>
+<p>I also tried removing the flatpak Steam installation and reinstalling from scratch, but the same error happens. I would really appreciate any help with this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

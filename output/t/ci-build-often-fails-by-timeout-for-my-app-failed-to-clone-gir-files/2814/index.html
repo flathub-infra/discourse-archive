@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CI build often fails by timeout for my app: failed to clone gir-files - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">CI build often fails by timeout for my app: failed to clone gir-files</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">CI build often fails by timeout for my app: failed to clone gir-files</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 18, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andrii Zymohliad</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 18, 2022 12:30 PM">
+            <time itemprop="datePublished" datetime="2022-08-18 12:30:01 +0000">Aug 18, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I hope this forum is the right place for this kind of post. Please, let me know if it’s not.</p>
+<p><a href="https://github.com/flathub/io.gitlab.azymohliad.WatchMate" rel="noopener nofollow ugc">My app</a> was recently accepted to Flathub, but the CI build <a href="https://buildbot.flathub.org/#/builders/32/builds/105183" rel="noopener nofollow ugc">failed</a> from initial PR, then <a href="https://buildbot.flathub.org/#/builders/32/builds/105280" rel="noopener nofollow ugc">succeeded</a> form the second attempt, and then failed again after acceptance from <strong>exactly the same commit</strong>. I retried 2 more times after that, and it was stuck with the same issue (so I still can’t get it published on <a href="http://flathub.org" rel="noopener nofollow ugc">flathub.org</a>).</p>
+<p>The issue seems to be with downloading dependencies for gtk-rs:</p>
+<pre><code class="lang-auto">Cloning into '/srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/build/watchmate-1/flatpak-cargo/git/gtk4-rs-6b7f5d5/gir-files'...
+fatal: did not receive expected object 3c426d639f8b5dbe3066b8a94becb1bfe5f4874e
+fatal: fetch-pack: invalid index-pack output
+fatal: clone of 'file:///srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/git/https_github.com_gtk-rs_gir-files.git' into submodule path '/srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/build/watchmate-1/flatpak-cargo/git/gtk4-rs-6b7f5d5/gir-files' failed
+Failed to clone 'gir-files'. Retry scheduled
+Cloning into '/srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/build/watchmate-1/flatpak-cargo/git/gtk4-rs-6b7f5d5/gir-files'...
+fatal: did not receive expected object 3c426d639f8b5dbe3066b8a94becb1bfe5f4874e
+fatal: fetch-pack: invalid index-pack output
+fatal: clone of 'file:///srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/git/https_github.com_gtk-rs_gir-files.git' into submodule path '/srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/build/watchmate-1/flatpak-cargo/git/gtk4-rs-6b7f5d5/gir-files' failed
+Failed to clone 'gir-files' a second time, aborting
+</code></pre>
+<p>But I can never reproduce this issue locally, and the CI succeeded occasionally (sometimes for just one arch, so overall the build fails). Does anybody have a clue what could be the reason here or what can I do to improve the situation?</p>
+<p>Here’s the <a href="https://github.com/flathub/flathub/pull/3416" rel="noopener nofollow ugc">publish PR</a> for full context.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 18, 2022 5:53 PM">
+            <time itemprop="datePublished" datetime="2022-08-18 17:53:32 +0000">Aug 18, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>if commit for the submodule is old, you might try “disable-shallow-clone”</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andrii Zymohliad</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 18, 2022 10:13 PM">
+            <time itemprop="datePublished" datetime="2022-08-18 22:13:49 +0000">Aug 18, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Oh, thanks a lot! I was completely out of ideas. I enabled <code>disable-shallow-clone</code> for gtk-rs in generated cargo-sources.json, and now the downloading step passes successfully!</p>
+<p>Overall the build still failed, now at uploading build outputs (for aarch64). I scheduled a retry for now, will worry about it and dig deeper later if it fails again.</p>
+<p>Just curious, how does this <code>disable-shallow-clone</code> work? Does it clone the repo with submodules as if it was a single repo, instead of cloning a top-level repo first and then cloning submodules? I wonder why it helped.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 18, 2022 10:51 PM">
+            <time itemprop="datePublished" datetime="2022-08-18 22:51:33 +0000">Aug 18, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By default the builders use shallow clone to not pull a large amount of data on big repo. But sometime submodules refer to an object that shallow clone didn’t fetch.</p>
+<p>Shallow clone a “standard” feature for <code>git clone</code> <a href="https://www.git-scm.com/docs/git-clone" class="inline-onebox">Git - git-clone Documentation</a></p>
+<p>And on your local machine flatpak-builder doesn’t do it.</p>
+<p>As for the upload failure, usually retriggering is enough.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Andrii Zymohliad</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 19, 2022 5:13 AM">
+            <time itemprop="datePublished" datetime="2022-08-19 05:13:10 +0000">Aug 19, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for the detailed explanation. Yeah, retry helped with uploading error. Yay!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

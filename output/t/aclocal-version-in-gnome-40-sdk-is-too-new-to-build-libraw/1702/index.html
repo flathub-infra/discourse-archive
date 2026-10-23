@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aclocal version in GNOME 40 Sdk is too new to build libraw? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Aclocal version in GNOME 40 Sdk is too new to build libraw?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Aclocal version in GNOME 40 Sdk is too new to build libraw?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 10, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 10, 2021 8:25 AM">
+            <time itemprop="datePublished" datetime="2021-09-10 08:25:42 +0000">Sep 10, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m trying to build libraw 0.20.2 using org.gnome.Sdk//40, but I get the following error:</p>
+<pre><code class="lang-auto">config.status: executing libtool commands
+CDPATH="${ZSH_VERSION+.}:" &amp;&amp; cd . &amp;&amp; /bin/sh /run/build/libraw/missing aclocal-1.15 -I m4
+/run/build/libraw/missing: line 81: aclocal-1.15: command not found
+WARNING: 'aclocal-1.15' is missing on your system.
+         You should only need it if you modified 'acinclude.m4' or
+         'configure.ac' or m4 files included by 'configure.ac'.
+         The 'aclocal' program is part of the GNU Automake package:
+         &lt;http://www.gnu.org/software/automake&gt;
+         It also requires GNU Autoconf, GNU m4 and Perl in order to run:
+         &lt;http://www.gnu.org/software/autoconf&gt;
+         &lt;http://www.gnu.org/software/m4/&gt;
+         &lt;http://www.perl.org/&gt;
+make: *** [Makefile:653: aclocal.m4] Error 127
+Error: module libraw: Child process exited with code 2
+</code></pre>
+<p>The Sdk has aclocal-1.16.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 10, 2021 1:08 PM">
+            <time itemprop="datePublished" datetime="2021-09-10 13:08:13 +0000">Sep 10, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you should regenerate the configure files.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Federico Bruni</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 10, 2021 2:29 PM">
+            <time itemprop="datePublished" datetime="2021-09-10 14:29:10 +0000">Sep 10, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, I saw other apps using autoreconf to build libraw and I copied their snippet, but it didn’t work for me. Here’s an example from <a href="https://github.com/flathub/org.photoqt.PhotoQt/blob/667b4dbeb29f58e0878a4c846829565130cbef6b/org.photoqt.PhotoQt.json#L60" rel="noopener nofollow ugc">PhotoQt</a>.<br>
+I guess that the autoreconf shell command is supposed to be run before the build, but on my system it’s not.</p>
+<p>I have to use the simple buildsystem and list all the commands in the right order. This works:</p>
+<pre><code class="lang-auto">- name: libraw
+    buildsystem: simple
+    config-opts:
+      - --disable-examples
+      - --disable-jasper
+      - --disable-static
+      - --enable-jpeg
+      - --enable-lcms
+      - --enable-openmp
+    build-commands:
+      - autoreconf --install --force
+      - ./configure --prefix=/app
+      - make
+      - make install
+    sources:
+      - type: archive
+        url: https://www.libraw.org/data/LibRaw-0.20.2.tar.gz
+        sha256: dc1b486c2003435733043e4e05273477326e51c3ea554c6864a4eafaff1004a6
+    cleanup:
+      - /share/doc
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 10, 2021 2:35 PM">
+            <time itemprop="datePublished" datetime="2021-09-10 14:35:13 +0000">Sep 10, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This package build it this way</p>
+<aside class="onebox githubblob">
+  <header class="source">
+
+      <a href="https://github.com/flathub/org.photoqt.PhotoQt/blob/667b4dbeb29f58e0878a4c846829565130cbef6b/org.photoqt.PhotoQt.json#L60" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/org.photoqt.PhotoQt/blob/667b4dbeb29f58e0878a4c846829565130cbef6b/org.photoqt.PhotoQt.json#L60" target="_blank" rel="noopener nofollow ugc">flathub/org.photoqt.PhotoQt/blob/667b4dbeb29f58e0878a4c846829565130cbef6b/org.photoqt.PhotoQt.json#L60</a></h4>
+
+
+
+  <pre class="onebox">    <code class="lang-json">
+      <ol class="start lines" start="50" style="counter-reset: li-counter 49 ;">
+          <li>            "sha256": "42bf2587792092bbe8d4ef93d777cce258ca6c5040b739439570fdf03d9706b2",</li>
+          <li>            "dest-filename": "fix-exiv.diff"</li>
+          <li>        },</li>
+          <li>        {</li>
+          <li>            "type": "shell",</li>
+          <li>            "commands": [ "patch -p1 &lt; fix-exiv.diff" ]</li>
+          <li>        }</li>
+          <li>    ]</li>
+          <li>},</li>
+          <li>{</li>
+          <li class="selected">    "name": "libraw",</li>
+          <li>    "builddir": true,</li>
+          <li>    "config-opts": [ "--disable-examples"],</li>
+          <li>    "sources": [</li>
+          <li>        {</li>
+          <li>            "type": "git",</li>
+          <li>            "url": "https://github.com/LibRaw/LibRaw",</li>
+          <li>            "tag": "0.20.2",</li>
+          <li>            "commit": "0209b6a2caec189e6d1a9b21c10e9e49f46e5a92"</li>
+          <li>        },</li>
+          <li>        {</li>
+      </ol>
+    </code>
+  </pre>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 10, 2021 2:36 PM">
+            <time itemprop="datePublished" datetime="2021-09-10 14:36:35 +0000">Sep 10, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>PhotoQt builds from git.</p>
+<p>Also there is a difference between <code>shell</code> to run commands and <code>script</code> for <code>autogen.sh</code>. Not sure why (haven’t looked further)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

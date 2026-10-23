@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Too strict opengl glsl language compiler in flathub bundle - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Too strict opengl glsl language compiler in flathub bundle</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Too strict opengl glsl language compiler in flathub bundle</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 13, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 13, 2024 3:42 PM">
+            <time itemprop="datePublished" datetime="2024-10-13 15:42:34 +0000">Oct 13, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ogre Version: : 13 6 5<br>
+Operating System: :Linux Tumbleweed:<br>
+Render System: :OpenGL3+</p>
+<p>I created a flatpak/flathub package which one can install with</p>
+<pre><code class="lang-auto">flatpak install --user https://dl.flathub.org/build-repo/136650/io.github.tomluchowski.OpenDungeonsPlus.flatpakref</code></pre>
+<p>After regular OpenSuse Tumbleweed distro update, with newer kernel modules for video drivers I run my game with :<br>
+flatpak run io.github.tomluchowski.OpenDungeonsPlus</p>
+<p>and I get errors like that :<br>
+Program ‘myKoboldVertexShader’ is not supported: ‘Creature.vert’ 0:9(1): error: <span class="hashtag-raw">#extension</span> directive is not allowed in the middle of a shader<br>
+Error: ScriptCompiler - invalid parameters in Kobold.material(10): Named constants have not been initialised, perhaps a compile error<br>
+Error: ScriptCompiler - invalid parameters in Kobold.material(11): Named constants have not been initialised, perhaps a compile error<br>
+Error: ScriptCompiler - invalid parameters in Kobold.material(12): Named constants have not been initialised, perhaps a compile error<br>
+Error: ScriptCompiler - invalid parameters in Kobold.material(13): Named constants have not been initialised, perhaps a compile error</p>
+<p>The same is on the other machine, with nouveau drivers. Does  This GLSL script compiler come system wide or is it bundled with flatpak package ?<br>
+My graphic card is GeForce GTX 1070, and the driver version : 550.120<br>
+Uhh I know that package managers like flatpak and snapcraft are very sensible towards drivers and opengl libraries…Is there anything we could do to repair this error ? Why some time the script compilation passes fine and sometimes it fails ? Which software is involved in this process ? What I could do to make my game immune to such errors ? Notice :</p>
+<pre><code class="lang-auto">
+```
+#version 330 core
+#extension GL_ARB_explicit_uniform_location : enable
+#extension GL_ARB_shading_language_include : enable
+
+uniform    mat4 projectionMatrix;
+uniform    mat4 viewMatrix;
+uniform    mat4 worldMatrix;
+uniform    mat4 lightMatrix;
+layout (location = 0) in vec4 position;
+layout (location = 2)  in vec3 normal;
+layout (location = 14) in vec3 tangent;
+ 
+layout (location = 8) in vec2 uv0;
+layout (location = 8) in vec2 uv1;
+out vec2 out_UV0;
+out vec2 out_UV1;
+out vec3 FragPos;
+out vec4 VertexPos; 
+
+out mat3 TBN;
+ 
+ 
+void main() {
+    // compute world space position, tangent, bitangent
+    vec3 P = (worldMatrix * position).xyz;
+    vec3 T = normalize(vec3(worldMatrix * vec4(tangent, 0.0)));
+    vec3 B = normalize(vec3(worldMatrix * vec4(cross(tangent, normal), 0.0))); 
+    vec3 N = cross(B, T);
+    TBN = mat3(T, B, N);
+ 
+    gl_Position = projectionMatrix * viewMatrix * vec4(P, 1.0);
+    FragPos = P;
+ 
+    out_UV0 = uv0;
+    out_UV1 = uv1;
+    VertexPos = lightMatrix * position;
+}
+```</code></pre>
+<p>version needs to be before extension right ? So how this error could be avoided at all ?<br>
+Maybe it is worth mentioning that on the main machine with GeForce GTX 1070 and Nvidia drivers from the standard repo the game BUILDED with GNU make run with ‘./opendungeons-plus’ bells and whistles and rise no errors.</p>
+<p>Now the chatgpt claims :<br>
+"<br>
+<strong>Use system libraries:</strong> If possible, configure the Flatpak to use system OpenGL drivers instead of the bundled ones. This can be done by modifying the Flatpak manifest or passing environment variables during runtime."<br>
+Question is how do I do that ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 14, 2024 2:17 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 14:17:41 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you did try a <code>flatpak repair</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 14, 2024 5:51 PM">
+            <time itemprop="datePublished" datetime="2024-10-14 17:51:05 +0000">Oct 14, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have just tried ‘flatpak repair’. It was upgrading a few package SDK, but the game throws the same errors and looks as it looked before – that is without proper pixel and vertex shaders…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">paul424</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 16, 2024 6:17 PM">
+            <time itemprop="datePublished" datetime="2024-10-16 18:17:22 +0000">Oct 16, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s a roller-coaster : after upgrading the flatpak bundles – so called runtimes — with 'flatpak upgrade" everything works as desired. Many thanks for attention !</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

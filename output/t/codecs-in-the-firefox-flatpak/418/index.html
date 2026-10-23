@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codecs in the Firefox flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Codecs in the Firefox flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Codecs in the Firefox flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2020</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 26, 2020 8:30 PM">
+            <time itemprop="datePublished" datetime="2020-04-26 20:30:27 +0000">Apr 26, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>On a fresh installation of Fedora, video streaming for many web sites does not work (things like Netflix, Amazon, etc.). To get them to work I install the ffmpeg-libs package from the RPM Fusion rpmfusion-free repositories. I noticed that the Firefox flatpak could play streaming videos out of the box. I always find issues around licensing confusing so I thought I would take this opportunity to ask about how Flathub views licensing concerns in this area (I’m not advocating for any change, just trying to understand):</p>
+<ol>
+<li>From what I can tell, the Firefox flatpak mostly just drops the standard Firefox release tarball into the org.freedesktop.Platform runtime from Flathub (looking at <a href="https://hg.mozilla.org/mozilla-central/file/7b21b61341c21a503f459ca322a8888e3e31a9b4/taskcluster/docker/firefox-flatpak/runme.sh" rel="nofollow noopener">this file</a>). Does video playback work because org.freedesktop.Platform contains the equivalent of ffmpeg-libs from rpmfusion-free? (Note that in the commit history for the runme.sh script linked above ffmpeg-full was experimented with but I don’t think it was included in a version I tried).</li>
+<li>Does Flathub take a similar stance to codec licensing as RPM Fusion and Ubuntu – i.e. open source codecs are freely distributable regardless of patent issues in various countries (in contrast to the stance of Fedora and Red Hat which don’t include codecs covered by patents)?</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 27, 2020 7:39 AM">
+            <time itemprop="datePublished" datetime="2020-04-27 07:39:01 +0000">Apr 27, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <ol>
+<li>The runtime ships with openh264 which is not ideal as many (if not all) h264 videos stutter on the current version; the runtime team works on it. The <code>ffmpeg-full</code> extension would be an equivalent of ffmpeg-libs from rpmfusion, but applications need to opt-in to actually use it. The change has been reverted as it’s not clear whether Mozilla can use it, it’s still being discussed.</li>
+<li>Pretty much, yes. I believe flatpak can be configured to be more strict about licensing and user/distribution can mask problematic IDs with <code>flatpak mask</code> command.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">eszlari</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 1, 2020 11:53 PM">
+            <time itemprop="datePublished" datetime="2020-05-01 23:53:41 +0000">May 1, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Couldn’t they at least move it into an extension? (with <code>autodownload: false</code>)</p>
+<p>This out of the box experience could really be bad for the reputation of Flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Will</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 5, 2020 3:19 PM">
+            <time itemprop="datePublished" datetime="2020-05-05 15:19:23 +0000">May 5, 2020</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@barthalion</span> Thanks for the information! One thing that was confusing me originally was that I couldn’t figure out where the org.freedesktop.Platform runtime was created because it was not in the Flathub GitHub organization. Then I discovered that the freedesktop-sdk is actually separate project hosted on GitLab. I found <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/elements/include/ffmpeg.yml" rel="nofollow noopener">this yaml file</a> which describes how the patent-free version of ffmpeg is built for the org.freedesktop.Platform runtime.</p>
+<p>One thing that I still don’t understand is what Fedora and Red Hat’s stance is towards ffmpeg. The best I could find was Fedora’s page on software patents (can’t link to it because of the limit on the number of links but it is at fedoraproject dot org/wiki/Software_Patents) and various Red Hat bug tracker comments and support posts where they just say that Red Hat does not support ffmpeg. That is strange to me since org.freedesktop.Platform and the link I gave above show that it is possible to distribute ffmpeg in a way that does not use patent encumbered codecs. My best guess is that Red Hat does not support ffmpeg because the upstream project itself makes no effort to split out the patent encumbered codecs, so Red Hat providing a stripped down version would lead to many support requests related to missing codecs – better for users who need ffmpeg to get the full version from a third party instead.</p>
+<p>One other thing this made me wonder about was how the org.fedoraproject.Platform runtime was built. I found <a href="https://src.fedoraproject.org/modules/flatpak-runtime/tree/f32" rel="nofollow noopener">this project</a> that includes the scripts used to build it. It seems to pull data from org.freedesktop.Platform and from Fedora repos and combine them in a complicated way. I couldn’t find how it excluded ffmpeg from the result (I think it might be that it looks at every file in org.freedesktop.Platform and finds what rpm provides that files and ignores files like those of ffmpeg for which there is no corresponding rpm), but I confirmed that there were no ffmpeg files in org.fedoraproject.Platform/x86_64/f32.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">roc1</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 14, 2020 8:41 PM">
+            <time itemprop="datePublished" datetime="2020-05-14 20:41:53 +0000">May 14, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wshaos" data-topic="418" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+wshaos:</div>
+<blockquote>
+<p>My best guess is that Red Hat does not support ffmpeg because the upstream project itself makes no effort to split out the patent encumbered codecs, so Red Hat providing a stripped down version would lead to many support requests related to missing codecs – better for users who need ffmpeg to get the full version from a third party instead.</p>
+</blockquote>
+</aside>
+<p>That’s pretty much how I understood their stance towards ffmpeg.</p>
+<p>My solution was replacing the Fedora’s Firefox flatpak with Flathub one. Therefore I have no need installing 3rd party repositories in my Silverblue…</p>
+<p>That codec absence is one of the biggest flaws of Fedora. I hope they find a way to get around it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 4, 2020 10:25 AM">
+            <time itemprop="datePublished" datetime="2020-06-04 10:25:04 +0000">Jun 4, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For posterity, Firefox 77 on Flathub uses ffmpeg-full extension if it’s installed. Some applications install it automatically so there’s a chance it’s already present; otherwise it can be done manually with <code>flatpak install flathub org.freedesktop.Platform.ffmpeg-full</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">roc1</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jun 4, 2020 9:11 PM">
+            <time itemprop="datePublished" datetime="2020-06-04 21:11:39 +0000">Jun 4, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is there a chance to contact Mozilla and ask them to include <code>org.freedesktop.Platform.ffmpeg-full</code> as a dependency?</p>
+<p>This would be the easiest solution for the new users who are to lazy to search for a problem <img src="/images/emoji/twitter/smiley.png?v=9" title=":smiley:" class="emoji" alt=":smiley:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jun 5, 2020 5:13 AM">
+            <time itemprop="datePublished" datetime="2020-06-05 05:13:17 +0000">Jun 5, 2020</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s Mozilla’s choice, and that’s the one they went with.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mr. Beedell, Roke Julian Lockhart</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 16, 2023 4:06 PM">
+            <time itemprop="datePublished" datetime="2023-03-16 16:06:06 +0000">Mar 16, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah, ask at <a href="http://bugzilla.mozilla.org" rel="noopener nofollow ugc">bugzilla.mozilla.org</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

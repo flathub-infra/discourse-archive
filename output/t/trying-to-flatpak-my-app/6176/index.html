@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trying to flatpak my app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Trying to flatpak my app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Trying to flatpak my app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 24, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 24, 2024 8:59 PM">
+            <time itemprop="datePublished" datetime="2024-02-24 20:59:44 +0000">Feb 24, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m currently on kubuntu 23.10.</p>
+<p>I’ve been distributing my app as a .deb which will prob only let it install on kubuntu i guess. So I’m trying to go flatpak.</p>
+<p>I have many questions - answering just one wil make me love you forever (probably not a thing you want, but anyway)</p>
+<ol>
+<li>
+<p>Should i target org.kde//5.15-23.08 or org.kde//6.6 ??? Most apps on <a href="https://flathub.org/" rel="noopener nofollow ugc">flathub.org</a> seem to tartget 5.15. My app compiles fine under either qt 5 or 6 so it doesn’t matter to me. kubuntu itself won’t do qt6 till 24.10 it’s looking like. Is 6.6 not yet stable? Most apps seem to target 5.15 and pick all 3 socket= for wayland, fallback to x, and x??? When I submit my app they say pick either x or wayland with x fallback. That still doesn’t tell me what to target. Which should I target? Why is targetting 6.6 so rare?</p>
+</li>
+<li>
+<p>My flatpak’d app has scaling issues. When I look at my .conf file where i save the window position and size, the x,y positions look totally fine. But the width and height are much smaller than I’d think they should be. The icons and graphics look jaggy as if they’ve been scaled up from lo res. when my app is full screen, it’s width and height should be pretty close to 1920x1080 (regular hd monitor). But I have size=@Size(1536 835). That’s not ok. How can I fix this?</p>
+</li>
+<li>
+<p>Can flatpak include an x86 and arm64 runtime? I currently have a .deb for raspi and my kubuntu. I think I read references to this being possible. But I’m not having any luck finding out how. Have I just not read all the docs? I thought I did… I could be wrong tho.</p>
+</li>
+<li>
+<p>If you’re a flatpak developer, where do you ask your questions? here? stackoverflow seems SUPER sparse. on reddit?  github has a bunch of bugfix threads that are helpful but completely disorganized.</p>
+</li>
+</ol>
+<p>ok. thanks for any help you can throw my way. I’m thinkin’ I should write up how to develop a flatpak app in qt cuz the docs just seem super sparse and I’m not sure how anyone can find their way.  I certainly need help <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Williams</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 24, 2024 9:41 PM">
+            <time itemprop="datePublished" datetime="2024-02-24 21:41:16 +0000">Feb 24, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6176">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>Should i target org.kde//5.15-23.08 or org.kde//6.6 ??? Most apps on <a href="https://flathub.org/" rel="noopener nofollow ugc">flathub.org</a> seem to tartget 5.15. My app compiles fine under either qt 5 or 6 so it doesn’t matter to me. kubuntu itself won’t do qt6 till 24.10 it’s looking like. Is 6.6 not yet stable? Most apps seem to target 5.15 and pick all 3 socket= for wayland, fallback to x, and x??? When I submit my app they say pick either x or wayland with x fallback. That still doesn’t tell me what to target. Which should I target? Why is targetting 6.6 so rare?</p>
+</blockquote>
+</aside>
+<p>If your app works on Qt6 then you should use a Qt6 runtime. I imagine a lot of the apps still using Qt5 are tied to KDE, but now KDE Plasma 6 is near at hand.</p>
+<p>Similarly, if you app works using the Wayland backend, then it should have <code>--socket=wayland</code> and <code>--socket=fallback-x11</code>. The latter allows X11 usage only in an X session. The apps that also include <code>--socket=x11</code> do so for compatibility with ancient flatpak versions. <code>fallback-x11</code> takes precedence, so this has no effect on modern flatpak installations.</p>
+<aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6176">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>My flatpak’d app has scaling issues. When I look at my .conf file where i save the window position and size, the x,y positions look totally fine. But the width and height are much smaller than I’d think they should be. The icons and graphics look jaggy as if they’ve been scaled up from lo res. when my app is full screen, it’s width and height should be pretty close to 1920x1080 (regular hd monitor). But I have size=@Size(1536 835). That’s not ok. How can I fix this?</p>
+</blockquote>
+</aside>
+<p>That sounds like what happens in GNOME when using an X11 app on Wayland with fractional scaling mode enabled. I understand that behavior to be configurable in KDE.</p>
+<p>If that’s what’s happening, the solution would be to ensure that the app is using Wayland.</p>
+<aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6176">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>Can flatpak include an x86 and arm64 runtime? I currently have a .deb for raspi and my kubuntu. I think I read references to this being possible. But I’m not having any luck finding out how. Have I just not read all the docs? I thought I did… I could be wrong tho.</p>
+</blockquote>
+</aside>
+<p>If your manifest builds the app from source, then you’ll automatically get x86_64 and aarch64 builds unless you opt out. For binary assets, you can provide separate ones for each arch using <code>only-arches</code>, but building from source is preferred.</p>
+<aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6176">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>If you’re a flatpak developer, where do you ask your questions? here? stackoverflow seems SUPER sparse. on reddit? github has a bunch of bugfix threads that are helpful but completely disorganized.</p>
+</blockquote>
+</aside>
+<p>In addition to this forum, there are <a href="https://matrix.to/#/#flatpak:matrix.org" rel="noopener nofollow ugc">Flatpak</a> and <a href="https://matrix.to/#/#flathub:matrix.org" rel="noopener nofollow ugc">Flathub</a> rooms on Matrix.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 24, 2024 9:48 PM">
+            <time itemprop="datePublished" datetime="2024-02-24 21:48:40 +0000">Feb 24, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Wow - fast and you got every one of em.</p>
+<p>Ok I’ll go back to targetting 6.6 and wayland with x fallback and see if i still have the scaling issues.</p>
+<p>thanks so much!!!  If ya live anywhere near Brier, WA (near Lynnwood - North Seattle) I’ll buy ya a beer (if that’s what you’re into etc etc:)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Chris Of Bristol</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 5, 2024 8:38 PM">
+            <time itemprop="datePublished" datetime="2024-03-05 20:38:11 +0000">Mar 5, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Stephen-Hazel" data-post="1" data-topic="6176">
+<div class="title">
+<div class="quote-controls"></div>
+Stephen-Hazel:</div>
+<blockquote>
+<p>If you’re a flatpak developer, where do you ask your questions? here?</p>
+</blockquote>
+</aside>
+<p>I’ve found the people on here helpful and when building the app initially and trying to make it publishable - the error feedback from the experts Hubert Figuière, Bartłomiej Piotrowski and Nick Richards was extraordinarily helpful. There aim is very clearly to help you create another Flatpak!<br>
+(This is in stark contrast with other (unmentionable) packaging systems where the experts seem more interested in scoring points and emphasising their superiority.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Stephen Hazel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 6, 2024 2:24 AM">
+            <time itemprop="datePublished" datetime="2024-03-06 02:24:12 +0000">Mar 6, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>agreed.  here is prob the best.  i’m not sure why stackoverflow has so little, but it seems to, well, have so little.  ah well.  here is good.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help with pip dependencies when Flatpaking Python app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Help with pip dependencies when Flatpaking Python app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Help with pip dependencies when Flatpaking Python app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 22, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Curiositry</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 22, 2025 12:18 AM">
+            <time itemprop="datePublished" datetime="2025-02-22 00:18:49 +0000">Feb 22, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello!</p>
+<p>I am attempting to create my first Flatpak, which is an existing Python app that runs fine on my machine:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://gitlab.com/GitFr33/what-am-i-doing">
+  <header class="source">
+      <img src="/uploads/original/2X/7/7ee7d2603544b81b4acc1aa0c7b54e64ff57fc44.png" class="site-icon" data-dominant-color="EE5C28" width="32" height="32">
+
+      <a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc">GitLab</a>
+  </header>
+
+  <article class="onebox-body">
+    <img width="64" height="64" src="/uploads/optimized/2X/3/3197daf5565c6657f1af4758d2a9b3178181cfa5_2_64x64.jpeg" class="thumbnail onebox-avatar" data-dominant-color="F4C4BB">
+
+<h3><a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc">GitFr33 / What Am I Doing · GitLab</a></h3>
+
+  <p>GitLab.com</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>(To install and run the app, I start a virtual env, pip install the requirements, and run main.py.)</p>
+<p>The steps I have taken so far for flatpaking are:</p>
+<pre><code class="lang-auto"># this works
+flatpak install flathub org.gnome.Sdk/x86_64/47
+# this seems to work
+python3 flatpak-pip-generator --build-isolation --requirements-file=requirements.txt --runtime=org.gnome.Sdk/x86_64/47
+</code></pre>
+<p>Create <code>org.curiositry.selfctrlpanel.json</code> with the contents:</p>
+<pre><code class="lang-auto">{
+  "app-id": "org.curiositry.selfctrlpanel",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "python3 main.py",
+  "modules": [
+    "python3-requirements.json",
+    {
+      "name": "what-am-i-doing",
+      "buildsystem": "simple",
+      "build-commands": [
+        "pip3 install --prefix=/app --no-deps ." 
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "branch": "main",
+          "url": "https://gitlab.com/GitFr33/what-am-i-doing.git"
+        }
+      ]
+    }
+  ],
+  "finish-args": [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=dri"
+  ]
+}
+</code></pre>
+<p>And then run the builder:</p>
+<pre><code class="lang-auto">flatpak-builder --force-clean --install-deps-from=flathub flatpak-build org.curiositry.selfctrlpanel.json
+</code></pre>
+<p>However, this always throws pip dependency errors, so I suspect I’m doing something horribly wrong. Currently, I’m getting:</p>
+<pre><code class="lang-auto">ERROR: No matching distribution found for Cython&gt;=3.0.10
+</code></pre>
+<p>Previously, it complained about meson-python, and then various dependencies of dbus-python. I’m pretty sure that adding more things to the requirements.txt is not the answer…</p>
+<p>Could anyone who is familiar with flatpacking python apps give me a pointer about where I have made a wrong turn?</p>
+<p>Thanks so much!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 22, 2025 8:05 AM">
+            <time itemprop="datePublished" datetime="2025-02-22 08:05:23 +0000">Feb 22, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, Flatpak requires all dependencies to be declared in the manifest. If something is missing on build or after installation, it is most likely because you didn’t add an dependency to the manifest.</p>
+<p>A few things I can point out:</p>
+<p>First, the <code>requirements.txt</code> seems not to be the simplest way of creating all pip dependencies for Flatpak. In this case, the <code>requirements.txt</code> does have to include all dependencies, including dependencies of dependencies.<br>
+In the <a href="https://docs.flatpak.org/en/latest/python.html" rel="noopener nofollow ugc">Flatpak Docs</a> the normal command omits the argument for the requirements file, but instead specifies the module name of the app, so the dependencies are gathered for this module. May be worth trying.</p>
+<p>See also the <a href="https://github.com/flatpak/flatpak-builder-tools/blob/master/pip/readme.md" rel="noopener nofollow ugc">flatpak-pip-generator ReadMe</a> for further details.</p>
+<p>Secondly, a note on app name and app id:<br>
+The name “What am I doing?” is an… let’s say unique name. May be worth a change.<br>
+Also, in the app id (<code>org.curiositry.selfctrlpanel</code>), the app is called “selfctrlpanel”. That part should match the app name.<br>
+Also, the domain in the app id <code>org.curiositry</code> appears to not be owned by you. If you intend to publish your app, the app id needs to be owned by you as per Flathub Policy. Refer to their <a href="https://docs.flathub.org/docs/for-app-authors/requirements#application-id" rel="noopener nofollow ugc">documentation</a> for further details.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Curiositry</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 23, 2025 3:20 AM">
+            <time itemprop="datePublished" datetime="2025-02-23 03:20:04 +0000">Feb 23, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@CodedOre</span> Thank you so much for the help!</p>
+<p>I assumed that when the dependencies were collected from the python-pip-generator output, their dependencies were fetched as well. This makes a lot of sense out of what was happening!</p>
+<p>Two questions:</p>
+<ol>
+<li>I<strong>s there a simple way to collect all the dependencies recursively</strong> into the requirements file, or at some other step of this process? My Googling of the question hasn’t turned up any simple solutions.</li>
+<li><strong>Is there a way to flatpak “pile of files” style apps</strong>, or do they pretty much need to be turned into a module first?</li>
+</ol>
+<p>I’m not trying to push it to Flathub myself. It’s a project I use and have contributed to, but I’m just trying to submit a patch preparing it for flatpaking, not be the Flatpak maintainer. But you’re right that it should be com.curiositry rather than org, and I should update it to reflect the app’s current name.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 24, 2025 8:41 AM">
+            <time itemprop="datePublished" datetime="2025-02-24 08:41:43 +0000">Feb 24, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="curiositry" data-post="3" data-topic="8944">
+<div class="title">
+<div class="quote-controls"></div>
+curiositry:</div>
+<blockquote>
+<p>I<strong>s there a simple way to collect all the dependencies recursively</strong> into the requirements file, or at some other step of this process? My Googling of the question hasn’t turned up any simple solutions.</p>
+</blockquote>
+</aside>
+<p>Like I mentioned before, try to run <code>flatpak-pip-generator</code> without the reference to the requirements file. In this case, it should find the dependencies and their dependencies for the application module.</p>
+<aside class="quote no-group" data-username="curiositry" data-post="3" data-topic="8944">
+<div class="title">
+<div class="quote-controls"></div>
+curiositry:</div>
+<blockquote>
+<p><strong>Is there a way to flatpak “pile of files” style apps</strong>, or do they pretty much need to be turned into a module first?</p>
+</blockquote>
+</aside>
+<p>You can use the <code>simple</code> buildsystem and define the <code>build-commands</code> yourself. In the case of pre-build apps, you need to copy all files into the appropriate folders inside the <code>/app</code> prefix.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Curiositry</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 25, 2025 12:24 AM">
+            <time itemprop="datePublished" datetime="2025-02-25 00:24:49 +0000">Feb 25, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks so much <span class="mention">@CodedOre</span>. I think I am making progress, but I’m still a bit lost.</p>
+<p>I have (as far as I can tell) successfully turned the project into a local module, and built it into a wheel using Setuptools as the backend (and tested installing it with Pip).</p>
+<p>However, when you say “run flatpak-pip-generator without the reference to the requirements file”, I’m unclear what <em>to</em> point it at, since the module isn’t on PyPI yet. What is the correct way to run <code>flatpak-pip-generator</code> against a local module (built or unbuilt)?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Curiositry</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 25, 2025 2:46 AM">
+            <time itemprop="datePublished" datetime="2025-02-25 02:46:57 +0000">Feb 25, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@CodedOre</span> I also now have the Flatpak building, and am able to run it and it runs main.py, using simple build system like you suggested, with a modules manifest inspired by <a href="https://develop.kde.org/docs/getting-started/python/python-flatpak/" rel="noopener nofollow ugc">this KDE project</a>:</p>
+<pre><code class="lang-auto">modules:
+  # - python3-pyproject.toml.json
+  - name: what-am-i-doing
+    buildsystem: simple
+    build-commands:
+      - install -D runner.sh /app/bin/runner.sh
+      # - ls -la
+      - pip3 install --no-build-isolation --prefix=/app . 
+      # - ls -la
+    sources:
+      - type: script
+        commands:
+          - exec python3 /app/lib/python3.12/site-packages/what-am-i-doing/main.py
+        dest-filename: runner.sh
+      - type: archive
+        path: dist/what_am_i_doing-0.0.1.tar.gz
+</code></pre>
+<p>Now all I’m missing is … all the dependencies <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>I’m guessing that transferring the dependencies from requirements.txt to pyproject.toml won’t help with fetching them recursively? I did notice that I could point flatpak-pip-generator at my pyproject.toml and it would collect things from there.</p>
+<p>I submitted a patch, and the developer made a test PyPi package, which I was able to install; however, I haven’t figured out how to point <code>flatpak-pip-generator</code> at a test PyPi package (it doesn’t take the <code>--index-url</code> flag that allows me to <code>pip install --index-url https://test.pypi.org/simple/ packagename</code>).</p>
+<p>Any advice would be much appreciated!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Curiositry</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 25, 2025 5:14 AM">
+            <time itemprop="datePublished" datetime="2025-02-25 05:14:03 +0000">Feb 25, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The project itself is now on PyPI:</p>
+<p><a href="https://pypi.org/project/what-am-i-doing/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://pypi.org/project/what-am-i-doing/</a></p>
+<p>However, when I run:</p>
+<pre><code class="lang-auto">python3 flatpak-pip-generator --runtime=org.gnome.Sdk/x86_64/47 what-am-i-doing
+</code></pre>
+<p>It produces this:</p>
+<pre><code class="lang-auto">{
+    "name": "python3-what-am-i-doing",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"what-am-i-doing\" --no-build-isolation"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/68/9b/e77c19b23da869416f49f46904c4eefe9ccf0b12b46da4b2d90f638e2c55/what_am_i_doing-0.0.2-py3-none-any.whl",
+            "sha256": "7e4968f20901a958b3f66627e98cb976e5d5ad396d0628ef9773475f63016202"
+        }
+    ]
+}
+</code></pre>
+<p>And when I include that in the manifest, and build and run the flatpak, I get:</p>
+<pre><code class="lang-auto">ModuleNotFoundError: No module named 'requests'
+</code></pre>
+<p>So I’m obviously not doing it right…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

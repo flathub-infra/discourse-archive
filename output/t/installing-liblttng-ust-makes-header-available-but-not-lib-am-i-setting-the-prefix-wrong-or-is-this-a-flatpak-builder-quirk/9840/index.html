@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installing liblttng-ust makes header available but not lib, am I setting the prefix wrong? Or is this a flatpak-builder quirk? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Installing liblttng-ust makes header available but not lib, am I setting the prefix wrong? Or is this a flatpak-builder quirk?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Installing liblttng-ust makes header available but not lib, am I setting the prefix wrong? Or is this a flatpak-builder quirk?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 17, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ell1e</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 17, 2025 9:01 PM">
+            <time itemprop="datePublished" datetime="2025-06-17 21:01:59 +0000">Jun 17, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got a library that wants liblttng-ust that I’m trying to build as part of a flatpak package:</p>
+<pre><code class="lang-auto">In file included from /home/workspace/lomiri-ui-toolkit/src/LomiriMetrics/lttng/tracepoints.c:21:
+/home/workspace/lomiri-ui-toolkit/src/LomiriMetrics/lttng/tracepoints_p.h:27:10: fatal error: lttng/tracepoint.h: No such file or directory
+   27 | #include &lt;lttng/tracepoint.h&gt;
+      |          ^~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [Makefile:665: .obj/tracepoints.o] Error 1
+make[2]: Leaving directory '/home/workspace/lomiri-ui-toolkit/build/src/LomiriMetrics/lttng'
+make[1]: *** [Makefile:131: sub-metrics-lttng-plugin-make_first] Error 
+</code></pre>
+<p>So I tried to instal liblttng-ust like the following to address this (yes I know I’m not using the sources mechanism as I’m likely intended to do, for now my focus is on seeing if I can get it to work at all and I’m quite new to flatpak):</p>
+<pre><code class="lang-auto">cd lttng-ust-build
+wget --output-document=urcu.tar.bz2 https://lttng.org/files/urcu/userspace-rcu-latest-0.15.tar.bz2 || { echo "Failed to download urcu."; exit 1; }
+tar -xf urcu.tar.bz2
+wget --output-document=ust.tar.bz2 https://lttng.org/files/lttng-ust/lttng-ust-2.13.9.tar.bz2 || { echo "Failed to download lttng-ust."; exit 1; }
+tar -xf ust.tar.bz2
+cd userspace-rcu-*
+./configure --prefix=/app/ || { echo "Failed to install urcu."; exit 1; }
+make || { echo "Failed to install urcu."; exit 1; }
+make install || { echo "Failed to install urcu."; exit 1; }
+cd ..
+cd lttng-ust-*
+./configure --prefix=/app/ --disable-numa || { echo "Failed to install lttng-ust."; exit 1; }
+make || { echo "Failed to install lttng-ust."; exit 1; }
+make install || { echo "Failed to install lttng-ust."; exit 1; }
+ldconfig || { echo "Failed to install lttng-ust."; exit 1; 
+</code></pre>
+<p>Now this has a very curious result. Because the header is found, but the library can’t be found by the linker:</p>
+<pre><code class="lang-auto">g++ -Wl,-O1 -Wl,--enable-new-dtags -shared -o libumlttng.so .obj/tracepoints.o .obj/lttng.o  -llttng-ust -lpthread    
+/usr/lib/gcc/aarch64-unknown-linux-gnu/14.2.0/../../../../aarch64-unknown-linux-gnu/bin/ld: cannot find -llttng-ust: No such file or directory
+collect2: error: ld returned 1 exit status
+make[2]: *** [Makefile:80: libumlttng.so] Error 1
+</code></pre>
+<p>This seems rather strange to me, isn’t <code>/app</code> the correct prefix? It seems to be for any other libraries I want to be found and reused. Just to test it out, I tried copying liblttng-ust from <code>/app/lib</code> to <code>/app/usr/lib</code> to see if it makes any difference:</p>
+<pre><code class="lang-auto">mkdir -p /app/usr/lib/
+cp /app/lib/liblttng*.so /app/usr/lib/
+</code></pre>
+<p>But that doesn’t result in the linker finding it either.</p>
+<p>I’m probably doing something obvious wrong that causes liblttng-ust not to be found in this flatpak build environment, even though all the other libraries are found.</p>
+<p>Does somebody have a clue what my mistake would be? I would be very thankful for any ideas and pointers.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 18, 2025 2:41 AM">
+            <time itemprop="datePublished" datetime="2025-06-18 02:41:37 +0000">Jun 18, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Compiling outside the environment without the Flatpak manifest will not work. Share your Flatpak manfiest.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">ell1e</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 23, 2025 6:26 PM">
+            <time itemprop="datePublished" datetime="2025-10-23 18:26:25 +0000">Oct 23, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have since gotten the project I wanted to build to work without liblttng-ust, therefore this is no longer a problem for me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

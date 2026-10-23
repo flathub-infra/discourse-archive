@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upcoming Freedesktop 23.08 runtime release will drop openh264 extension - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/announcements/6/index.html">Announcements</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Upcoming Freedesktop 23.08 runtime release will drop openh264 extension</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Upcoming Freedesktop 23.08 runtime release will drop openh264 extension</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 2, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 2, 2025 2:05 PM">
+            <time itemprop="datePublished" datetime="2025-03-02 14:05:19 +0000">Mar 2, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone,</p>
+<p>The Freedesktop runtime currently includes the<br>
+<code>org.freedesktop.Platform.openh264</code> extension, which provides Cisco’s<br>
+<a href="https://github.com/cisco/openh264/releases">libopenh264 binary releases</a>.</p>
+<p>Due to licensing restrictions, these binaries are distributed unmodified<br>
+via Flatpak’s <a href="https://docs.flatpak.org/en/latest/module-sources.html#extra-data">extra-data mechanism</a>; meaning they are downloaded directly from Cisco to end user’s machines at install time.</p>
+<p>The extension is defined in the runtime manifest and is automatically<br>
+installed alongside the Freedesktop, GNOME, or KDE runtimes enabling<br>
+H.264 encoding and decoding for applications.</p>
+<p>Recently, a <a href="https://github.com/cisco/openh264/security/advisories/GHSA-m99q-5j7x-7m9x">high-severity security vulnerability</a> was discovered in<br>
+libopenh264, affecting versions 2.5.0 and earlier.</p>
+<p>Unfortunately, the Freedesktop 23.08 runtime is locked to libopenh264<br>
+version 2.2.0, and upgrading to a fixed version is not possible due to<br>
+multiple ABI breaks and SONAME bumps upstream. Normally, we would<br>
+backport security fixes to maintain compatibility, but due to licensing<br>
+and redistribution restrictions this approach is not an option.</p>
+<p>Given the circumstances, we decided to drop the extension from the<br>
+runtime manifest in an upcoming 23.08 release scheduled for April 2025.<br>
+There will be an additional notice in the release notes announcing this.</p>
+<p>This means a portion of apps will loose H.264 playback support once the<br>
+runtime update reaches users. There will be no crashes as a stub library<br>
+is included in the runtime itself.</p>
+<p>Since this breaks the stability and ABI guarantees offered by the stable<br>
+branches of the Freedesktop runtime, we are announcing a month in<br>
+advance to give app developers and app maintainers time to adjust to<br>
+this change.</p>
+<p>If your application is using the Freedesktop 23.08 runtime or a<br>
+runtime based on 23.08 i.e. GNOME 46, KDE 5.15-23.08 and 6.7, please<br>
+consider adding the <code>ffmpeg-full</code>, extension to your app’s manifest if<br>
+it is not already present.</p>
+<p>This extension can provide support for H.264 playback through<br>
+ffmpeg’s internal decoder.</p>
+<p><code>no-autodownload: false</code> will make the extension auto-installed when<br>
+installing the app but you can also omit that, in which case, users can<br>
+manually install the extension.</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    version: '23.08'
+    directory: lib/ffmpeg
+    add-ld-path: .
+    no-autodownload: false
+cleanup-commands:
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
+</code></pre>
+<p>If you are unable to use the <code>ffmpeg-full</code> extension, you can also add<br>
+the openh264 extension to your app’s manifest. Please note that it will<br>
+contain known security issues and will no longer be supported by us.</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">add-extensions:
+  org.freedesktop.Platform.openh264:
+    version: 2.2.0
+    directory: lib/openh264
+    add-ld-path: extra
+    no-autodownload: false
+cleanup-commands:
+  - mkdir -p ${FLATPAK_DEST}/lib/openh264/extra
+</code></pre>
+<p>You can also do <code>version: 2.5.1</code> instead of 2.2.0 but you will have to recompile your app against the new openh264 ABI manually.</p>
+<p>Thanks!</p>
+<p>Freedesktop SDK developers</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 7, 2025 5:20 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 17:20:20 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What is the solution for 24.08? Isn’t the provided version 2.4.1 vulnerable, too?</p>
+<p>Once removed from the Platform, is the plugin updated to the patched version (so that applications cannot contain known security issues)?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 7, 2025 5:37 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 17:37:20 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>An update will be released for 24.08 soon, we are working with upstream on that.</p>
+<blockquote>
+<p>Once removed from the Platform, is the plugin updated to the patched version (so that applications cannot contain known security issues)?</p>
+</blockquote>
+<p>No there won’t be any updates for 23.08. If we remove it from Platform, no app would be able to use it unless they manually add it to their manifest. So applications won’t have “known security issues”</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 7, 2025 6:38 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 18:38:29 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="bbhtt" data-post="3" data-topic="9022">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>[…] unless they manually add it to their manifest. So applications won’t have “known security issues”</p>
+</blockquote>
+</aside>
+<p>If they manually add the current extension they will install a known security issue. And with the given snippet this happens automatically.</p>
+<p>So the question remains: If applications “break” anyway, why not update the extension to a patched version?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 7, 2025 6:53 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 18:53:15 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If someone goes out of their way to add unsupported or EOL extensions then it’s on them.</p>
+<p>It explicitly mentions:</p>
+<blockquote>
+<p>Please note that it will contain known security issues and will no longer be supported by us.</p>
+</blockquote>
+<p>We can’t update because it involves bumping the SONAME, which means the stub library in the runtime needs to be bumped as well, which would be an ABI break and every app on 23.08 would start crashing until rebuilt.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 7, 2025 6:59 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 18:59:15 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Once the fixed version is released which most likely will be 2.5.1, you can also put that into the app even if you are on 23.08:</p>
+<pre><code class="lang-auto">add-extensions:
+  org.freedesktop.Platform.openh264:
+    version: 2.5.1
+    directory: lib/openh264
+    add-ld-path: extra
+    no-autodownload: false
+cleanup-commands:
+  - mkdir -p ${FLATPAK_DEST}/lib/openh264/extra
+</code></pre>
+<p>But to compile software against that, you will need to pass some extra flags to the linker.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 7, 2025 7:16 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 19:16:18 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="bbhtt" data-post="6" data-topic="9022">
+<div class="title">
+<div class="quote-controls"></div>
+bbhtt:</div>
+<blockquote>
+<p>Once the fixed version is released which most likely will be 2.5.1, you can also put that into the app even if you are on 23.08:</p>
+</blockquote>
+</aside>
+<p>That’s actually what I wanted to know.</p>
+<p>In my opinion the 2.2.0 snippet should be removed &amp; only the patched extension suggested. The applications must be rebuild anyway to include the extension point.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 7, 2025 7:18 PM">
+            <time itemprop="datePublished" datetime="2025-03-07 19:18:06 +0000">Mar 7, 2025</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok sure I can add it. It wasn’t added because the version isn’t final</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 14, 2025 7:32 PM">
+            <time itemprop="datePublished" datetime="2025-03-14 19:32:56 +0000">Mar 14, 2025</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>24.08.15 was released today with the update to 2.5.1 that fixes the issue <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/releases/freedesktop-sdk-24.08.15" class="inline-onebox">freedesktop-sdk-24.08.15 · freedesktop-sdk / freedesktop-sdk · GitLab</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 7, 2025 2:11 PM">
+            <time itemprop="datePublished" datetime="2025-04-07 14:11:18 +0000">Apr 7, 2025</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>we decided to drop the extension from the runtime manifest in an upcoming 23.08 release scheduled for April 2025.</p>
+</blockquote>
+<p>23.08.30, released today, dropped the <code>org.freedesktop.Platform.openh264</code> extension point.</p>
+<p>If you have any issues, please report them at <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues" class="inline-onebox">Issues · freedesktop-sdk / freedesktop-sdk · GitLab</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

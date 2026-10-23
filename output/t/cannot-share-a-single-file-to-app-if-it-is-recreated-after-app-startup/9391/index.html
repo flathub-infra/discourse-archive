@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cannot share a single file to app if it is recreated after app startup - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Cannot share a single file to app if it is recreated after app startup</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Cannot share a single file to app if it is recreated after app startup</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 14, 2025</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mpeter</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 14, 2025 9:24 AM">
+            <time itemprop="datePublished" datetime="2025-04-14 09:24:59 +0000">Apr 14, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Over at the KeepassXC password manager we had an <a href="https://github.com/keepassxreboot/keepassxc/issues/7352" rel="noopener nofollow ugc">issue</a> for a longer time, where the Firefox addon used to access our passwords was only operational if the Firefox/Librewolf flatpak app was started <em>after</em> KeepassXC.</p>
+<p>Recently we figured out the reason it worked this way. We wanted to make filesystem access so tight that we only passed in the Unix socket file with the filesystem override configuration:</p>
+<pre><code class="lang-auto">flatpak override --filesystem=xdg-run/app/org.keepassxc.KeePassXC/org.keepassxc.KeePassXC.BrowserServer org.mozilla.firefox
+</code></pre>
+<p>But it <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2781802185" rel="noopener nofollow ugc">turns out</a> that this socket file gets recreated when Keepass starts up, even if it exists already. After that happens, software in the flatpak environment cant connect to the socket anymore.<br>
+It is like if flatpak would have done a bind-mount of this file for the app, and the app would still see the original copy of the socket file, while actually that has been replaced on the host system.</p>
+<p>My question is, what can we do to give access to this file for the flatpak app, but only this one, while making it so that it is reflected in the app’s view when it is recreated?</p>
+<p>Currently we solve it by passing in the file by its parent directory that is not normally recreated, like this:</p>
+<pre><code class="lang-auto">flatpak override --filesystem=xdg-run/app/org.keepassxc.KeePassXC/:create org.mozilla.firefox
+</code></pre>
+<p>But we treat this as a workaround for giving the app unnecessarily broad access.</p>
+<hr>
+<p>If this is not the right place for asking this, please let me know.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mpeter</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 14, 2025 9:27 AM">
+            <time itemprop="datePublished" datetime="2025-04-14 09:27:06 +0000">Apr 14, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There was a post on this forum that is somewhat similar to this issue, but it did not receive a response.</p>
+<aside class="quote" data-post="1" data-topic="3410">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <a href="/t/file-permissions-allowing-one-file-to-be-created-in-home-directory/3410/index.html">File Permissions allowing one file to be created in home directory</a> 
+  </div>
+  <blockquote>
+    Hi, 
+I tried the following perms: 
+
+–filesystem=~/.app.cfg 
+–filesystem=xdg-documents 
+
+and they work…as long as ~/.app.cfg already exists.  If it does not, the file ~/.app.cfg does not get created and the write fails.  Note that the application chooses that name prefixed with a dot. 
+Any ideas on how to allow it to be created?  The ‘:create’ suffix does not work…it creates a DIRECTORY named .app.cfg. 
+Thanks, Patrick
+  </blockquote>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">rugk</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 14, 2025 4:01 PM">
+            <time itemprop="datePublished" datetime="2025-04-14 16:01:52 +0000">Apr 14, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ah note flatpak is not Flathub, so I’m indeed not sure this is the correct community forum.</p>
+<p>Anyway, I’ve found an issue on flatpak which may be related here:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak/issues/5370">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener">github.com/flatpak/flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener">[Bug]: if filesystem option point to a single file the application can't get the up-to-date content</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2023-03-28" data-time="18:26:59" data-timezone="UTC">06:26PM - 28 Mar 23 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/wengxt" target="_blank" rel="noopener">
+          <img alt="" src="/uploads/original/2X/f/f6f78784a11974d5bf2392f941e3569f3c309a22.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="D0D0D0">
+          wengxt
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          bug
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          wontfix
+        </span>
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          sandbox
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">### Checklist
+
+- [X] I agree to follow the [Code of Conduct](https://github.co<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">m/flatpak/flatpak/blob/main/CODE_OF_CONDUCT.md) that this project adheres to.
+- [X] I have searched the [issue tracker](https://www.github.com/flatpak/flatpak/issues) for a bug that matches the one I want to file, without success.
+- [X] If this is an issue with a particular app, I have tried filing it in the appropriate issue tracker for the app (e.g. under https://github.com/flathub/) and determined that it is an issue with Flatpak itself.
+- [X] This issue is not a report of a security vulnerability (see [here](https://github.com/flatpak/flatpak/blob/main/SECURITY.md) if you need to report a security issue).
+
+### Flatpak version
+
+1.15.4
+
+### What Linux distribution are you using?
+
+Arch Linux
+
+### Linux distribution version
+
+Linux arch-inspiron 6.2.6-arch1-1 #1 SMP PREEMPT_DYNAMIC Mon, 13 Mar 2023 17:02:08 +0000 x86_64 GNU/Linux
+
+### What architecture are you using?
+
+x86_64
+
+### How to reproduce
+
+1. install a random app
+2. make sure there's no ~/.config/test
+3. flatpak run --command=sh --filesystem=xdg-config/test:ro [app]
+4. Create ~/.config/test file on the host
+5. cat ~/.config/test in the container, "no file exists".
+6. quit container
+7. create ~/.config/test with content `echo abcd &gt; ~/.config/test`
+8. flatpak run --command=sh --filesystem=xdg-config/test:ro [app]
+9. cat ~/.config/test in the container, shows "abcd"
+10. delete and recreate ~/.config/test on the host: `rm ~/.config/test; echo efgh &gt; ~/.config/test`
+11. cat ~/.config/test, still shows "abcd"
+
+### Expected Behavior
+
+The xdg-config/file should always in-sync with the host filesystem.
+
+### Actual Behavior
+
+xdg-config/file seems to be snapshot when the app starts.
+
+### Additional Information
+
+There are lots of KDE apps passes xdg-config/kdeglobals:ro to obtain the colorscheme. But changing colorscheme doesn't work since kdeglobals in the container is not updated.</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>This explains the cause and could be it, is not it?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">mpeter</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 14, 2025 4:36 PM">
+            <time itemprop="datePublished" datetime="2025-04-14 16:36:25 +0000">Apr 14, 2025</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>oh well, I could have paid a little more attention…</p>
+<p>but that github issues seems to be it!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

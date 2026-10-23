@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Help me to create FLATPAK of my program - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page"> Help me to create FLATPAK of my program</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name"> Help me to create FLATPAK of my program</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 26, 2024 9:44 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 21:44:20 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone. I created a program to catalog the Films that one owns, called LaMiaVideoteca. I’ve ported it to both Windows and Linux. On the latter I can already package it in deb and AppImage. I would now like to package it in FLATPAK (via SNAP I failed). So, I created a folder called lamiavideoteca, inside which I put the executable, the images (which the program needs), the libraries that the application needs, the share folder containing the icon and the file for the shortcut (. Desktop). I generated a org.tarro.lamiavideoteca.yml file in which I put the following code:</p>
+<p><code>id: org.flatpak.LaMiaVideoteca</code></p>
+<p><code>runtime: org.freedesktop.Platform</code></p>
+<p><code>runtime-version: '23.08'</code></p>
+<p><code>sdk: org.freedesktop.Sdk</code></p>
+<p><code>command: LaMiaVideoteca</code></p>
+<p><code>modules:</code></p>
+<p><code>- name: LaMiaVideoteca</code></p>
+<p><code>buildsystem: simple</code></p>
+<p><code>build-commands:</code></p>
+<p><code>- install -D LaMiaVideoteca /app/bin/LaMiaVideoteca</code></p>
+<p><code>- cp -r Copertine /app/bin/Copertine</code></p>
+<p><code>- cp -r lib /app/bin/lib</code></p>
+<p><code>sources:</code></p>
+<p><code>- type: file</code></p>
+<p><code>path: LaMiaVideoteca</code></p>
+<p>The compilation I do from the folder where the org.tarro.lamiavideoteca.yml is located with the flatpak-builder build-dir org.tarro.lamiavideoteca.yml command fails telling me that the Covers and lib directories do not exist, BUT they EXIST. Someone would know how to help me. Thanks for the help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 26, 2024 9:48 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 21:48:42 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You’re only handing the file <code>LaMiaVideoteca</code> to the flatpak in your <code>sources</code>, you likely meant to use the <code>dir</code> type instead?</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html">
+  <header class="source">
+      <img src="/uploads/original/2X/f/fa20c7c0583cdacfc0844bf851d5e8d12a9f38cb.png" class="site-icon" data-dominant-color="4A90D9" width="180" height="180">
+
+      <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" target="_blank" rel="noopener">Flatpak</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/360;"><img src="/uploads/optimized/2X/c/cd71ec46893477172333284f8b5b2f093fb707ae_2_690x361.png" class="thumbnail" data-dominant-color="F5F5F6" width="690" height="361"></div>
+
+<h3><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" target="_blank" rel="noopener">Flatpak Builder Command Reference</a></h3>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Miguel</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 26, 2024 10:18 PM">
+            <time itemprop="datePublished" datetime="2024-04-26 22:18:36 +0000">Apr 26, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox discoursetopic" data-onebox-src="https://discussion.fedoraproject.org/t/help-me-to-create-flatpak-of-my-program/114533/3">
+  <header class="source">
+      <img src="/uploads/original/2X/e/e5a6a39edbe8e9c669420b83887282915a4eebf5.png" class="site-icon" data-dominant-color="92C5E8" width="32" height="32">
+
+      <a href="https://discussion.fedoraproject.org/t/help-me-to-create-flatpak-of-my-program/114533/3" target="_blank" rel="noopener nofollow ugc" title="06:10PM - 26 April 2024">Fedora Discussion – 26 Apr 24</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/optimized/2X/e/e535eac63936105354ba82677074f7bf0ba950e3_2_500x500.png" class="thumbnail onebox-avatar" data-dominant-color="7DB0D8" width="500" height="500">
+
+<div class="title-wrapper">
+  <h3><a href="https://discussion.fedoraproject.org/t/help-me-to-create-flatpak-of-my-program/114533/3" target="_blank" rel="noopener nofollow ugc">Help me to create FLATPAK of my program</a></h3>
+  <div class="topic-category">
+      <span class="badge-wrapper bullet">
+        <span class="badge-category-bg" style="background-color: #38BC3B;"></span>
+        <span class="badge-category clear-badge">
+          <span class="category-name">Ask Fedora</span>
+        </span>
+      </span>
+    <div class="topic-header-extra">
+      <div class="list-tags">
+        <div class="discourse-tags">
+          <svg class="fa d-icon d-icon-tag svg-icon svg-string"><use href="#tag"></use></svg>
+            <span class="discourse-tag simple">flatpak</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <p>On fedora the /app directory does not exist by default.  You must structure it properly for use on fedora.  Also, since the /app/bin directory appear intended to contain binaries you must adapt that to the fedora file system structure.  Fedora...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>There’s some help for you friend might get you started in the right direction!</p>
+<pre><code class="lang-auto">id: org.flatpak.LaMiaVideoteca
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: LaMiaVideoteca
+
+modules:
+  - name: LaMiaVideoteca
+    buildsystem: simple
+    build-commands:
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca
+      - install -D -m 644 Copertine/* /app/share/Copertine
+      - install -D -m 644 lib/* /app/lib
+    sources:
+      - type: file
+        path: LaMiaVideoteca
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 27, 2024 10:53 AM">
+            <time itemprop="datePublished" datetime="2024-04-27 10:53:31 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks I tried:</p>
+<pre><code class="lang-auto">id: org.flatpak.LaMiaVideoteca
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: LaMiaVideoteca
+
+modules:
+  - name: LaMiaVideoteca
+    buildsystem: simple
+    build-commands:
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca
+      - install -D -m Copertine/* /app/bin/Copertine
+      - install -D -m 644 lib/* /app/lib
+
+    sources:
+      - type: file
+        path: LaMiaVideoteca
+      - type: dir
+        path: Copertine
+</code></pre>
+<p>I am told that the Copertine folder does not exist. I tried to create it by adding:</p>
+<p>files:</p>
+<ul>
+<li>name: Copertine<br>
+dest: /app/bin/Copertine</li>
+</ul>
+<p>But nothing changed, so I removed the previous code.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3.jpeg" data-download-href="/uploads/original/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3.jpeg" title="Schermata del 2024-04-27 16-07-39" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3_2_690x388.jpeg" alt="Schermata del 2024-04-27 16-07-39" data-base62-sha1="tLy429TitQXZw8BNFxnU5VJp6XF" width="690" height="388" srcset="/uploads/optimized/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3_2_690x388.jpeg, /uploads/optimized/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/d/d09f0b62f82b9c09b63937bda94eec71d46150b3_2_1380x776.jpeg 2x" data-dominant-color="272D30"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 16-07-39</span><span class="informations">1920×1080 324 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 27, 2024 2:43 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 14:43:52 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It doesn’t work either in these two ways. It keeps telling me the folder doesn’t exist. But it exists. In fact the LaMiaVideoteca file is copied, as you can see in the bin folder.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e.jpeg" data-download-href="/uploads/original/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e.jpeg" title="Schermata del 2024-04-27 16-36-06" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e_2_690x388.jpeg" alt="Schermata del 2024-04-27 16-36-06" data-base62-sha1="qdIPMezeABmdRoywXS3Paf8eSi" width="690" height="388" srcset="/uploads/optimized/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e_2_690x388.jpeg, /uploads/optimized/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/0/02f6ccff1e3346a6ed9561adf9343bb6f241a20e_2_1380x776.jpeg 2x" data-dominant-color="272E30"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 16-36-06</span><span class="informations">1920×1080 327 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 27, 2024 2:45 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 14:45:39 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65.jpeg" data-download-href="/uploads/original/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65.jpeg" title="Schermata del 2024-04-27 16-37-47" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65_2_690x388.jpeg" alt="Schermata del 2024-04-27 16-37-47" data-base62-sha1="lcy9dDdvXIDgIVC8PgiAGmIEMi9" width="690" height="388" srcset="/uploads/optimized/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65_2_690x388.jpeg, /uploads/optimized/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/9/9498da03a3868f8c3b80bb1459af9195a42f3a65_2_1380x776.jpeg 2x" data-dominant-color="272D30"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 16-37-47</span><span class="informations">1920×1080 327 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 27, 2024 2:46 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 14:46:04 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe.jpeg" data-download-href="/uploads/original/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe.jpeg" title="Schermata del 2024-04-27 16-41-33" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe_2_690x388.jpeg" alt="Schermata del 2024-04-27 16-41-33" data-base62-sha1="uH3MktyJSZpgkseemyNrnC7AW18" width="690" height="388" srcset="/uploads/optimized/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe_2_690x388.jpeg, /uploads/optimized/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/d/d71f546123e7d550948d4b65c22a8dea2de8bafe_2_1380x776.jpeg 2x" data-dominant-color="222729"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 16-41-33</span><span class="informations">1920×1080 262 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 27, 2024 4:12 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 16:12:12 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Out of curiosity, I tried to remove the libraries and the Copertine folder to see where the .flatpak file was created. But I noticed that it doesn’t get generated anyway. Can you tell me where I’m going wrong? Thanks to anyone who tries to answer me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 27, 2024 4:22 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 16:22:20 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code class="lang-auto">install: missing destination file operand after '/app/bin/Copertine'
+</code></pre>
+<p>I think it does find the folder in this case but the install command syntax is just wrong</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 27, 2024 4:43 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 16:43:19 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks. I managed to copy the Copertine folder, although unfortunately it is copied without the files it contains. As for lib I will look after I have managed to copy the Copertine folder with all the files it contains.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4.png" data-download-href="/uploads/original/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4.png" title="Schermata del 2024-04-27 18-42-58" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4_2_690x388.png" alt="Schermata del 2024-04-27 18-42-58" data-base62-sha1="wY7DGA2bnrAkCWNid6AhCY2y3ha" width="690" height="388" srcset="/uploads/optimized/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4_2_690x388.png, /uploads/optimized/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4_2_1035x582.png 1.5x, /uploads/optimized/2X/e/e7116e2df66d7233a58ea09b7ed109af8a234bc4_2_1380x776.png 2x" data-dominant-color="222829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 18-42-58</span><span class="informations">1920×1080 371 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 27, 2024 4:54 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 16:54:20 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You should have <code>dir</code> source in <code>sources</code> list</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 27, 2024 4:57 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 16:57:01 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It doesn’t change the result.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb.png" data-download-href="/uploads/original/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb.png" title="Schermata del 2024-04-27 18-55-55" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb_2_690x388.png" alt="Schermata del 2024-04-27 18-55-55" data-base62-sha1="y7kniWbUoWfr0YtdoZljPH2YlhV" width="690" height="388" srcset="/uploads/optimized/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb_2_690x388.png, /uploads/optimized/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb_2_1035x582.png 1.5x, /uploads/optimized/2X/e/ef1dfe4c38e879fe9c0c5eea387dcefe2ae31ecb_2_1380x776.png 2x" data-dominant-color="232829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 18-55-55</span><span class="informations">1920×1080 390 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Apr 27, 2024 5:09 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:09:20 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Isn’t it <code>Copertine/lib</code>? If not just add <code>lib</code> as another <code>dir</code> source</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Apr 27, 2024 5:16 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:16:49 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Copertine is a folder that contains images necessary for the program, while lib is the folder containing the libraries necessary for the program.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3.png" data-download-href="/uploads/original/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3.png" title="Schermata del 2024-04-27 19-14-10" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3_2_690x388.png" alt="Schermata del 2024-04-27 19-14-10" data-base62-sha1="raFZ8uWabwCzavRbMxV2vI7Ohyz" width="690" height="388" srcset="/uploads/optimized/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3_2_690x388.png, /uploads/optimized/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3_2_1035x582.png 1.5x, /uploads/optimized/2X/b/be6fad4a99528dd595e1590b31e209e2d021b4c3_2_1380x776.png 2x" data-dominant-color="232829"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-04-27 19-14-10</span><span class="informations">1920×1080 393 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div><br>
+The problem is that the created folders remain empty, despite being full of images (Copertine) and files the folder libraries (lib).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Apr 27, 2024 5:20 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:20:06 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you just use the wrong <code>install</code> command flags</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Apr 27, 2024 5:23 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:23:55 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It doesn’t work with cp -r. Furthermore, the .flatpak file is not generated. What is the right command?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Faveoled</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Apr 27, 2024 5:30 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:30:09 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is <code>cp</code> sample from one of my manifests: <code>"cp -r usr/* /app/"</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Apr 27, 2024 5:37 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:37:13 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks. But not works:</p>
+<pre><code class="lang-auto">build-commands:
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca
+      - cp -r Copertine/* /app/bin/Copertine/
+
+    sources:
+      - type: file
+        path: LaMiaVideoteca
+      - type: dir
+        path: Copertine
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Apr 27, 2024 5:41 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 17:41:46 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve noticed that copying every single file at a time works. But I think it’s absurd that for a program that has 30 libraries I have to copy them one by one from code and I can’t copy the entire folder.</p>
+<pre><code class="lang-auto">id: org.flatpak.LaMiaVideoteca
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: LaMiaVideoteca
+
+modules:
+  - name: LaMiaVideoteca
+    buildsystem: simple
+    build-commands:
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD
+
+
+    sources:
+      - type: file
+        path: LaMiaVideoteca
+      - type: file
+        path: BluRay4KUHD
+</code></pre>
+<p>Substituting for the various files (file1,file2,etc) the follow code:</p>
+<ul>
+<li>install -T file1 /app/bin/file1</li>
+<li>install -T file2 /app/bin/file2</li>
+</ul>
+<p>and in sources:<br>
+- type: file<br>
+path: file1<br>
+- type: file<br>
+path: file2</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Apr 27, 2024 6:00 PM">
+            <time itemprop="datePublished" datetime="2024-04-27 18:00:58 +0000">Apr 27, 2024</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You have to define a destination because the sources will be flattened (see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">Flatpak manifest</a>).</p>
+<blockquote>
+<h3>Sources</h3>
+<p>These contain a pointer to the source that will be extracted into the source directory before the build starts. They can be of several types, distinguished by the type property.</p>
+<p>[…]</p>
+<h4>All sources</h4>
+<p>[…]</p>
+<p><code>dest</code> (string)<br>
+Directory inside the source dir where this source will be extracted.</p>
+<p>[…]</p>
+<h4>Directory sources</h4>
+<p><code>type</code><br>
+“dir”</p>
+<p><code>path</code> (string)<br>
+The path of a local directory whose content will be copied into the source dir. Note that directory sources don’t currently support caching, so they will be rebuilt each time.</p>
+</blockquote>
+<p>You can inspect the build dir either in the <code>.flatpak-builder/build</code> subfolder (maybe you have to run flatpak-builder with <code>--keep-build-dirs</code>) or enter the build environment with <code>--build-shell=LaMiaVideoteca</code>.</p>
+<hr>
+<p>If you want to create a <code>.flatpak</code> bundle you have create it from a (local) repository (see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Builder Command Reference - Flatpak documentation</a> &amp; <a href="https://docs.flatpak.org/en/latest/single-file-bundles.html" class="inline-onebox" rel="noopener nofollow ugc">Single-file bundles - Flatpak documentation</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 3</span>
+
+    
+    <a href="/t/help-me-to-create-flatpak-of-my-program/6600/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

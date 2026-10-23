@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qt5WebEngineWidgets in Qt app - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Qt5WebEngineWidgets in Qt app</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Qt5WebEngineWidgets in Qt app</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 26, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Pamputt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 26, 2022 7:09 AM">
+            <time itemprop="datePublished" datetime="2022-08-26 07:09:37 +0000">Aug 26, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello, I try to create a Flatpak package for my application</p>
+<p>Here is what I did so far</p>
+<pre><code class="lang-auto">flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user org.kde.Sdk
+(I use 5.15-21.08)
+mkdir app repo
+</code></pre>
+<p>Then, I create a manifest in org.flatpak.myqtapp.json with this content</p>
+<pre><code class="lang-auto">{
+    "app-id": "org.flatpak.myQtApp",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-21.08",
+    "sdk": "org.kde.Sdk",
+    "command": "myqtapp",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--filesystem=host",
+        "--device=dri"
+    ],
+    "modules": [
+        {
+            "name": "myApp",
+            "buildsystem": "cmake-ninja",
+            "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<p>then I try to create the Flatpak using</p>
+<pre><code class="lang-auto">flatpak-builder --user --ccache --repo=repo --force-clean app org.flatpak.myqtapp.json
+</code></pre>
+<p>But I get a basic error:</p>
+<pre><code class="lang-auto">Emptying app dir 'app'
+Downloading sources
+Starting build of org.flatpak.myqtapp
+Cache miss, checking out last cache hit
+========================================================================
+Building module myapp in $HOME/myqtapp/flatpak/.flatpak-builder/build/myqtapp-1
+========================================================================
+-- The CXX compiler identification is GNU 11.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /run/ccache/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Error at /usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake:28 (find_package):
+  Could not find a package configuration file provided by
+  "Qt5WebEngineWidgets" with any of the following names:
+
+    Qt5WebEngineWidgetsConfig.cmake
+    qt5webenginewidgets-config.cmake
+
+  Add the installation prefix of "Qt5WebEngineWidgets" to CMAKE_PREFIX_PATH
+  or set "Qt5WebEngineWidgets_DIR" to a directory containing one of the above
+  files.  If "Qt5WebEngineWidgets" provides a separate development package or
+  SDK, be sure it has been installed.
+Call Stack (most recent call first):
+  src/CMakeLists.txt:14 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/run/build/myapp/CMakeFiles/CMakeOutput.log".
+Error: module myqtapp: Le processus fils s’est terminé avec le code 1
+</code></pre>
+<p>Note that cmake has no problem to find Qt5WebEngineWidgets when I cmake/compile myqtapp in the classical way (withtout Flatpak).</p>
+<p>I use Ubuntu 22.04 and official Qt5 Ubuntu packages.</p>
+<p>Do you know how to solve that?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 27, 2022 2:11 AM">
+            <time itemprop="datePublished" datetime="2022-08-27 02:11:48 +0000">Aug 27, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="pamputt" data-post="1" data-topic="2847">
+<div class="title">
+<div class="quote-controls"></div>
+pamputt:</div>
+<blockquote>
+<p>I use Ubuntu 22.04 and official Qt5 Ubuntu packages.</p>
+</blockquote>
+</aside>
+<p>No, you don’t use the “official Qt5 Ubuntu packages.”<br>
+You are building with the Flatpak KDE SDK.</p>
+<p>For QtWebEngine, use the QtWebEngine base app. <a href="https://github.com/flathub/io.qt.qtwebengine.BaseApp" class="inline-onebox">GitHub - flathub/io.qt.qtwebengine.BaseApp</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Pamputt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 29, 2022 6:48 AM">
+            <time itemprop="datePublished" datetime="2022-08-29 06:48:48 +0000">Aug 29, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Indeed, with <a href="https://github.com/flathub/io.qt.qtwebengine.BaseApp" rel="noopener nofollow ugc">io.qt.qtwebengine.BaseApp </a>, it works. It’s weird that it is not included in Flatpak KDE SDK.<br>
+Anyway, thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

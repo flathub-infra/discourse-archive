@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electron app Failed to get ipaddress when exported as Flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Electron app Failed to get ipaddress when exported as Flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Electron app Failed to get ipaddress when exported as Flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 18, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 18, 2021 2:32 AM">
+            <time itemprop="datePublished" datetime="2021-07-18 02:32:58 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am trying to make a Flatpak for my little application “<a href="https://go.openspeedtest.com/Server" rel="noopener nofollow ugc">OpenSpeedTest-Server</a>”</p>
+<p>This is a simple network performance estimation tool. It is working fine on Windows, Mac and Linux (DEB).</p>
+<p><strong>1) When i Export the same in Flatpak, Application unable to get the client device ip address.</strong></p>
+<p><strong>2) Also i am not able to put a custom icon for my Flatpak.</strong></p>
+<p>I used electronforge.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb.jpeg" data-download-href="/uploads/original/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb.jpeg" title="flatpak" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb_2_690x431.jpeg" alt="flatpak" data-base62-sha1="migAtBbNhiCUDkKPJ8sp8IYJVDt" width="690" height="431" srcset="/uploads/optimized/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb_2_690x431.jpeg, /uploads/optimized/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb_2_1035x646.jpeg 1.5x, /uploads/optimized/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb_2_1380x862.jpeg 2x" data-small-upload="/uploads/optimized/1X/9c407586ad491f700dfe7fcf7e04d7c3096f42cb_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">flatpak</span><span class="informations">3840×2400 743 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>Here is my package.json</p>
+<pre><code>{
+  "name": "OpenSpeedTest-Server",
+  "productName": "OpenSpeedTest-Server",
+  "version": "2.1.0",
+  "description": "Network Speed Test Server - by OpenSpeedTest",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "OpenSpeedTest",
+    "email": "support@openspeedtest.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "src/icon.png"
+      },
+      "makers": [
+       {
+      "name": "@electron-forge/maker-flatpak",
+      "config": {
+        "name": "OpenSpeedTest_Server",
+        "options": {
+          "categories": [
+            "Utility"
+          ],
+          "icon": "src/icon.png"
+        }
+      }
+    },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
+    "internal-ip": "^6.2.0",
+    "tcp-port-used": "^1.0.2"
+  },
+  "devDependencies": {
+    "@davidwinter/electron-forge-maker-snap": "^2.0.4",
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "electron": "13.1.2"
+  }
+}
+</code></pre>
+<p>How can i solve this issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 18, 2021 3:51 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 15:51:15 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>there is no network access during the build phase of flatpak.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 18, 2021 4:06 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 16:06:33 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Then how can i test this app? and why custom icon is not showing?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 18, 2021 4:39 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 16:39:45 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can test manually that it works, ie install it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 18, 2021 4:41 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 16:41:19 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I Install using the following command</p>
+<p>sudo flatpak install /myFlatpak</p>
+<p>It is getting installed. But when i open the app it is showing like the image i posted. No ip address.<br>
+also app have no custom icon.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 18, 2021 4:54 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 16:54:40 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>did you give the <code>--share=network</code> permission?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jul 18, 2021 4:56 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 16:56:31 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When install right?<br>
+sudo flatpak install ‘/home/vishnu/Desktop/app/out/make/flatpak/x86_64/io.atom.electron.OpenSpeedTest-Server_stable_x86_64.flatpak’ --share=network<br>
+[sudo] password for vishnu:<br>
+error: Unknown option --share=network</p>
+<p>Shows unknown option</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jul 18, 2021 5:01 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 17:01:39 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/e3a13410852df2c5422085b13f328503a931a80a.png" data-download-href="/uploads/original/1X/e3a13410852df2c5422085b13f328503a931a80a.png" title="permission" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/e3a13410852df2c5422085b13f328503a931a80a_2_690x431.png" alt="permission" data-base62-sha1="wtHLgNtQKGFABEUNkczPc4KOnKW" width="690" height="431" srcset="/uploads/optimized/1X/e3a13410852df2c5422085b13f328503a931a80a_2_690x431.png, /uploads/optimized/1X/e3a13410852df2c5422085b13f328503a931a80a_2_1035x646.png 1.5x, /uploads/optimized/1X/e3a13410852df2c5422085b13f328503a931a80a_2_1380x862.png 2x" data-small-upload="/uploads/optimized/1X/e3a13410852df2c5422085b13f328503a931a80a_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">permission</span><span class="informations">3840×2400 712 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jul 18, 2021 5:09 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 17:09:06 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>EIther it’s set in the manifest, or you set it when running. The latter being for testing / overriding.</p>
+<p><code>man flatpak-run</code> for details</p>
+<p><a href="https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Jul 18, 2021 6:14 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 18:14:01 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="/uploads/original/1X/002338cf4914396ba2cd720ae9a9fc368af87cd6.png" class="site-icon" width="32" height="32">
+
+      <a href="https://www.npmjs.com/package/internal-ip" target="_blank" rel="noopener nofollow ugc">npm</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/362;"><img src="/uploads/optimized/1X/ef0ba7cbf2b6749fe0220f6ed973027c4c61b251_2_690x362.png" class="thumbnail" width="690" height="362" srcset="/uploads/optimized/1X/ef0ba7cbf2b6749fe0220f6ed973027c4c61b251_2_690x362.png, /uploads/optimized/1X/ef0ba7cbf2b6749fe0220f6ed973027c4c61b251_2_1035x543.png 1.5x, /uploads/original/1X/ef0ba7cbf2b6749fe0220f6ed973027c4c61b251.png 2x" data-small-upload="/uploads/optimized/1X/ef0ba7cbf2b6749fe0220f6ed973027c4c61b251_2_10x10.png"></div>
+
+<h3><a href="https://www.npmjs.com/package/internal-ip" target="_blank" rel="noopener nofollow ugc">internal-ip</a></h3>
+
+  <p>Get your internal IP address</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>The module returns the address of the internet-facing interface, as determined from the default gateway. When the address cannot be determined for any reason, undefined will be returned.<br>
+The module relies on operating systems tools. On Linux and Android, the ip command must be available, which depending on distribution might not be installed by default. It is usually provided by the iproute2 package. .v4.sync() and .v6.sync() are not supported in browsers and just return undefined.</p>
+<p>ip command might be the issue?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Jul 18, 2021 10:51 PM">
+            <time itemprop="datePublished" datetime="2021-07-18 22:51:38 +0000">Jul 18, 2021</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>some of these utilities might not be in the sandbox and might need to be added to the manifest.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Jul 19, 2021 5:03 AM">
+            <time itemprop="datePublished" datetime="2021-07-19 05:03:18 +0000">Jul 19, 2021</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes that was the issue with snap, i added</p>
+<p>“stagePackages”: [<br>
+“default”,<br>
+“iproute2”<br>
+]<br>
+and issue with snap resolved.<br>
+how can i add iproute2 to my flatpak?<br>
+“sandbox and might need to be added to the manifest.”<br>
+Yes, but how?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Jul 19, 2021 9:46 AM">
+            <time itemprop="datePublished" datetime="2021-07-19 09:46:51 +0000">Jul 19, 2021</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <pre><code> "modules": [
+              {
+                "name": "zypak",
+                "sources": [
+                  {
+                    "type": "git",
+                    "url": "https://github.com/refi64/zypak",
+                    "tag": "v2021.02"
+                  }
+                ]
+              },
+              {
+                "name": "iproute2",
+                "sources": [
+                  {
+                    "type": "git",
+                    "url": "https://github.com/shemminger/iproute2.git",
+                    "tag": "v5.9.0"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+</code></pre>
+<p><em>Making for target: flatpak - On platform: linux - For arch: x64  <span class="mention">@malept</span>/flatpak-bundler 1&gt; make[1]: Nothing to be done for ‘all’.</em></p>
+<ul>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +2ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; *</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler man*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +0ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; make[2]: Nothing to be done for ‘all’.*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +6ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; make[2]: Nothing to be done for ‘all’.*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +2ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; make[2]: Nothing to be done for ‘all’.*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +2ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; install -m 0755 -d /sbin*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +3ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; install -m 0755 -d /etc/iproute2*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +1ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; install -m 0755 -d /var/lib/arpd*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +2ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 1&gt; install -m 0755 -d /usr/include/iproute2*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +1ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 2&gt; install: cannot change permissions of ‘/usr/include/iproute2’: No such file or directory*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +2ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 2&gt; make: *** [Makefile:90: install] Error 1*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +0ms*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler 2&gt; Error: module iproute2: Child process exited with code 2*</li>
+<li>
+<span class="mention">@malept</span>/flatpak-bundler  +0ms*<br>
+<em><img src="/images/emoji/twitter/heavy_multiplication_x.png?v=9" title=":heavy_multiplication_x:" class="emoji" alt=":heavy_multiplication_x:"> Making for target: flatpak - On platform: linux - For arch: x64</em>
+</li>
+</ul>
+<p><em>An unhandled error has occurred inside Forge:</em><br>
+<em>An error occured while making for target: flatpak</em><br>
+<em>flatpak-builder failed with status code 1</em><br>
+<em>Error: flatpak-builder failed with status code 1</em></p>
+<ul>
+<li>at ChildProcess. (/home/vishnu/Desktop/app/node_modules/<span class="mention">@malept</span>/flatpak-bundler/index.js:71:16)*</li>
+<li>at ChildProcess.emit (events.js:375:28)*</li>
+<li>at ChildProcess.emit (domain.js:470:12)*</li>
+<li>at maybeClose (internal/child_process.js:1055:16)*</li>
+<li>at Socket. (internal/child_process.js:441:11)*</li>
+<li>at Socket.emit (events.js:375:28)*</li>
+<li>at Socket.emit (domain.js:470:12)*</li>
+<li>at Pipe. (net.js:675:12)*<br>
+<em>npm ERR! code ELIFECYCLE</em><br>
+<em>npm ERR! errno 1</em><br>
+<em>npm ERR! OpenSpeedTest-Server@2.1.0 make: <code>electron-forge make</code></em><br>
+<em>npm ERR! Exit status 1</em><br>
+*npm ERR! *<br>
+<em>npm ERR! Failed at the OpenSpeedTest-Server@2.1.0 make script.</em><br>
+<em>npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</em>
+</li>
+</ul>
+<p><em>npm ERR! A complete log of this run can be found in:</em><br>
+<em>npm ERR!     /home/vishnu/.npm/_logs/2021-07-19T09_43_05_943Z-debug.log</em></p>
+<p>shows error install: cannot change permissions of ‘/usr/include/iproute2’: No such file or directory</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">OpenSpeedTest</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Jul 19, 2021 12:02 PM">
+            <time itemprop="datePublished" datetime="2021-07-19 12:02:02 +0000">Jul 19, 2021</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Finally i got it working. got help from <a href="https://www.reddit.com/r/flatpak/comments/onb6ri/electron_app_failed_to_get_ipaddress_when/" rel="noopener nofollow ugc">reddit</a></p>
+<pre><code>"makers": [
+        {
+          "name": "@electron-forge/maker-flatpak",
+          "config": {
+            "name": "OpenSpeedTest_Server",
+            "options": {
+              "categories": [
+                "Utility"
+              ],
+              "icon": {
+                "512x512": "src/android-chrome-512x512.png"
+              }
+            },
+            "modules": [
+              {
+                "name": "zypak",
+                "sources": [
+                  {
+                    "type": "git",
+                    "url": "https://github.com/refi64/zypak",
+                    "tag": "v2021.02"
+                  }
+                ]
+              },
+              {
+                "name": "iproute2",
+                "make-install-args": [
+                  "PREFIX=/app",
+                  "CONFDIR=/app/share/iproute2",
+                  "SBINDIR=/app/bin"
+                ],
+                "sources": [
+                  {
+                    "type": "archive",
+                    "url": "https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.7.0.tar.xz",
+                    "sha256": "725dc7ba94aae54c6f8d4223ca055d9fb4fe89d6994b1c03bfb4411c4dd10f21"
+                  }
+                ],
+                "cleanup": [
+                  "/include",
+                  "/share/bash-completion",
+                  "/share/man"
+                ]
+              }
+            ]
+          }
+        },</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

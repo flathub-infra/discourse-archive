@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Java App in Flatpak Can&#39;t Execute Command From .var/app/APP_ID/ Filesystem - &quot;No such file or directory&quot; - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Java App in Flatpak Can&#39;t Execute Command From .var/app/APP_ID/ Filesystem - &quot;No such file or directory&quot;</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Java App in Flatpak Can&#39;t Execute Command From .var/app/APP_ID/ Filesystem - &quot;No such file or directory&quot;</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 30, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 30, 2022 4:32 PM">
+            <time itemprop="datePublished" datetime="2022-06-30 16:32:10 +0000">Jun 30, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello everyone,</p>
+<p>I’m trying to package an Open Runescape Classic launcher called OpenRSC. Unfortunately, I’m getting the following exception that doesn’t happen outside of Flatpak:</p>
+<pre><code class="lang-auto">java.io.IOException: Cannot run program "java" (in directory "/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/WinRune-master"): error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at java.base/java.lang.Runtime.exec(Runtime.java:594)
+	at launcher.Utils.CmdRunner.run(CmdRunner.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.&lt;init&gt;(ProcessImpl.java:314)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:244)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 4 more
+</code></pre>
+<p>Looking at the source code, OpenRSC Launcher does the following steps:</p>
+<ul>
+<li>Downloads the game client</li>
+<li>Uses some CmdRunner (which takes a command and path to run the command on) to <a href="https://gitlab.com/open-runescape-classic/core/-/blob/develop/PC_Launcher/src/main/java/launcher/Utils/ClientLauncher.java#L285" rel="noopener nofollow ugc">run</a> <code>java -jar /home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/WinRune-master</code> inside the <code>/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/</code> directory</li>
+</ul>
+<p>Based on the stacktrace, it seems CmdRunner can’t enter the <code>/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/</code> directory (although the directory exists on my system; I can <code>cd</code> into it).</p>
+<p>Does anyone have any ideas on what I can do to make this work? I’m new to using Flatpak as a dev so I could be overlooking something simple.</p>
+<p>Some things I’ve tried -</p>
+<ul>
+<li>Granting full filesystem access</li>
+<li>Using subdirectories inside <code>.var/app/APP_ID/</code>, such as <code>data</code> or <code>cache</code>
+</li>
+<li>Not using <code>.var/app/APP_ID</code> to store the client’s downloads, and using filesystem access to specific folders instead</li>
+</ul>
+<p>As an aside, it seems to be able to download files into the directory and detect them no problem. It just can’t run <code>java</code> from inside the directory</p>
+<p>I have a copy of the Flatpak on my Github <a href="https://github.com/dginovker/flathub/tree/OpenRSC" rel="noopener nofollow ugc">here</a> if anyone wants to see specifics</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 30, 2022 4:58 PM">
+            <time itemprop="datePublished" datetime="2022-06-30 16:58:37 +0000">Jun 30, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Reading the stack more closely, it says <code>Cannot run program java</code>… Perhaps it’s referring to not being able to find “java”, rather than not being able to find the directory.</p>
+<p>As part of my finish-args, I have</p>
+<pre><code class="lang-auto">    "finish-args": [
+        "--share=network",
+        "--socket=x11",
+        "--device=dri",
+        "--socket=pulseaudio",
+        "--env=JAVA_HOME=/app/jre"
+    ],
+</code></pre>
+<p>But perhaps that doesn’t necessarily mean it knows where <code>java</code> is. Not sure if this is a lead yet, but posting per-emptively as I debug</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 30, 2022 5:33 PM">
+            <time itemprop="datePublished" datetime="2022-06-30 17:33:12 +0000">Jun 30, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Got it working! The answer was that it couldn’t find <code>java</code>, not that it couldn’t find the directory.</p>
+<p>Java installs by default to <code>/app/jre/bin</code>, so you have to set <code>env</code> in the finish args to include it:</p>
+<pre><code class="lang-auto">        "--env=PATH=/usr/bin:/app/bin:/app/jre/bin"
+</code></pre>
+<ul>
+<li>
+<code>/usr/bin</code> is included since that’s where all the default exec things are, not sure if it’s needed but might as well</li>
+<li>
+<code>/app/bin</code> is where my build is going, so that needs to be in the path</li>
+<li>
+<code>/app/jre/bin</code> is where the <code>java</code> bin lives, so you need that to run Java</li>
+</ul>
+<p>You also no longer declare the JAVA_HOME env since you can just invoke <code>java</code> now.</p>
+<p>Hopefully this helps someone else too =)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Messias Junior</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 27, 2023 12:28 PM">
+            <time itemprop="datePublished" datetime="2023-04-27 12:28:33 +0000">Apr 27, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Im getting the same error</p>
+<p>I did exactly like yours but im still getting the same error</p>
+<p>Here is my manifest</p>
+<pre data-code-wrap="yml"><code class="lang-plaintext">---
+app-id: io.github.appoutlet.GameOutlet
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.openjdk17
+
+command: gameoutlet
+
+finish-args:
+  - --share=network
+  - --socket=x11
+  - --device=dri
+  - --env=PATH=/usr/bin:/app/bin:/app/jre/bin
+
+modules:
+
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk17/install.sh
+
+  - name: GameOutlet
+    buildsystem: simple
+    build-commands:
+      - ./gradlew packageReleaseUberJarForCurrentOS
+      - cp build/compose/jars/GameOutlet-*.jar /app/bin
+    sources:
+      - type: git
+        url: https://github.com/AppOutlet/GameOutlet.git
+        branch: main
+</code></pre>
+<p>Here is my output</p>
+<pre data-code-wrap="sh"><code class="lang-plaintext">messias@messias:~/Workspace/flathub$ flatpak-builder build-dir io.github.appoutlet.GameOutlet.yml --force-clean
+Downloading sources
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch &lt;name&gt;
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m &lt;name&gt;
+Initialized empty Git repository in /home/messias/Workspace/flathub/.flatpak-builder/git/https_github.com_AppOutlet_GameOutlet.git-X1ZU31/
+Fetching git repo https://github.com/AppOutlet/GameOutlet.git, ref refs/heads/main
+remote: Enumerating objects: 261, done.
+remote: Counting objects: 100% (261/261), done.
+remote: Compressing objects: 100% (227/227), done.
+remote: Total 261 (delta 53), reused 130 (delta 19), pack-reused 0
+Receiving objects: 100% (261/261), 440.99 KiB | 2.41 MiB/s, done.
+Resolving deltas: 100% (53/53), done.
+From https://github.com/AppOutlet/GameOutlet
+ * [new branch]      main       -&gt; main
+ * [new tag]         v1.0.1     -&gt; v1.0.1
+Initializing build dir
+Committing stage init to cache
+Starting build of io.github.appoutlet.GameOutlet
+========================================================================
+Building module openjdk in /home/messias/Workspace/flathub/.flatpak-builder/build/openjdk-1
+========================================================================
+Running: /usr/lib/sdk/openjdk17/install.sh
+Committing stage build-openjdk to cache
+========================================================================
+Building module GameOutlet in /home/messias/Workspace/flathub/.flatpak-builder/build/GameOutlet-1
+========================================================================
+Switched to branch 'main'
+Running: ./gradlew packageReleaseUberJarForCurrentOS
+
+ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation.
+
+Error: module GameOutlet: Child process exited with code 1
+</code></pre>
+<p>Im on a Ubuntu 22.04</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pros of Using Flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/tutorials/10/index.html">Tutorials and Tips</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Pros of Using Flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Pros of Using Flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 12, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 12, 2023 4:47 AM">
+            <time itemprop="datePublished" datetime="2023-02-12 04:47:01 +0000">Feb 12, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Flatpak does <em>a lot</em> of things. Oftentimes people ask me “Why Flatpak?” and I only end up remembering a few off-hand, so I figured it’s time to sit down, reflect, and go over “Why Flatpak” in a nice forum thread once and for all.</p>
+<ul>
+<li>Package once, identical version is installed on 20+ distros</li>
+<li>Build server runs offline for predictable builds*</li>
+<li>Encourages upstream to follow xdg standards (i.e. so your config files/cache files are in predictable places)</li>
+<li>
+<a href="https://github.com/flathub/flatpak-external-data-checker" rel="noopener nofollow ugc">x-data-checker</a> allows maintainers to update apps quickly</li>
+<li>(On Flathub) Packages can be <a href="https://beta.flathub.org/apps/collection/verified" rel="noopener nofollow ugc">verified</a> to come from upstream</li>
+<li>Apps are sandboxed by default, and permissions are easily modifiable with <a href="https://flathub.org/apps/details/com.github.tchx84.Flatseal" rel="noopener nofollow ugc">Flatseal</a>
+</li>
+<li>Flatpaks run seamlessly on immutable distros like SteamOS</li>
+<li>Installed apps can be individually rolled-back</li>
+<li>Updates don’t require root</li>
+</ul>
+<p>* Note this isn’t the same thing as <a href="https://docs.kernel.org/kbuild/reproducible-builds.html" rel="noopener nofollow ugc">reproducible builds</a>, but still covers many of the same benefits</p>
+<p>And for completeness, some disadvantages of Flatpak:</p>
+<ul>
+<li>
+<em>Worst-case</em> scenario you’ll have two identical copies of the same library on disk (although mitigable with FS compression like BTRFS)</li>
+<li>App library dependencies happen independently of the package manager, requiring more bandwidth</li>
+<li>Apps requiring root priviages (like <a href="/t/vpn-mullvad-vpn/2594/index.html">VPNs</a>) can’t be packaged</li>
+<li>CLI apps <a href="https://github.com/flathub/flathub/pull/3899#discussion_r1100368539" rel="noopener nofollow ugc">don’t appear</a> on Flathub and are otherwise awkward to use</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">T</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">TheEvilSkeleton</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 14, 2023 2:21 AM">
+            <time itemprop="datePublished" datetime="2023-02-14 02:21:44 +0000">Feb 14, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you for the brief list!</p>
+<p>To further some advantages, here are some I can think of:</p>
+<ul>
+<li>Safer app installation and updating process, as dependency hell is much more unlikely to happen (or probably even impossible)</li>
+<li>
+<a href="https://gitlab.freedesktop.org/pwithnall/malcontent" rel="noopener nofollow ugc">malcontent</a> (parental control) support</li>
+<li>Rootless and user installs</li>
+<li>Configure the sandbox a bit more conveniently, as opposed to Firejail, or even bubblewrap directly</li>
+<li>No need to create a new desktop entry if you need to persistently set environment variables, socket, etc. strictly for a specific app (except Electron)</li>
+</ul>
+<p>And to complete with a disadvantage:</p>
+<ul>
+<li>Strong dependency to <a href="https://flatpak.github.io/xdg-desktop-portal/" rel="noopener nofollow ugc">XDG portals</a>. If a portal doesn’t exist for a specific use case, then you’re out of luck, as you have to rely on static permissions, or can’t do anything about it.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 17, 2023 11:51 AM">
+            <time itemprop="datePublished" datetime="2023-02-17 11:51:02 +0000">Feb 17, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here’s a concrete disadvantage, which is a spin on the dependency to XDG portals:</p>
+<ul>
+<li>Accessing a serial port works, but only if it’s connected on app launch. And if that device reboots in between (when you flash something for e.g.) it will not show up without restarting the app.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Popout Apps</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 18, 2023 8:22 PM">
+            <time itemprop="datePublished" datetime="2023-02-18 20:22:47 +0000">Feb 18, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>More pros:</p>
+<p>A rational straightforward manifest to define the application, rather than a cobbled-together collection of random files and circularly-linked documentation.</p>
+<p>The aim of the well-mannered people running it is to do everything in their power to help you get your Flatpak published. Unlike other packaging systems where the aim is to keep the plebs out of their “old boys club”.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 18, 2023 8:38 PM">
+            <time itemprop="datePublished" datetime="2023-02-18 20:38:16 +0000">Feb 18, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Honestly I find the documentation for the manifest one of the worst parts about Flatpak.</p>
+<p>The documentation linked on <code>github.com/flathub/flathub</code> should be the differences between what Flathub wants and what Flatpaks need (in those terms, not “app submission” and “app requirements”), and then the manifest documentation itself should be a skeleton example with links to learn more about each part. Right now that requirements page is non-chronological with no example, and lists optional &amp; uncommon features with the same emphasis as required ones. To top it off, it’s hosted on Github pages so contributors can’t submit any patches to improve it. <code>docs.flatpak.org</code> isn’t a solution either, since it is an absurd amount of information to go through for someone trying to package their first binary app, and doesn’t actually address many of Flathub’s own needs.</p>
+<p>The result of this is over 50% of the app submissions include egregious mistakes, and while I commend the patience of hflguiere to go through them, handling this at the documentation level would save both the submitters and maintainers extra stress.</p>
+<p>If it weren’t for that buildbot, I think hflguiere would be bald.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Wladimir Kirianov</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 19, 2023 7:58 AM">
+            <time itemprop="datePublished" datetime="2023-02-19 07:58:59 +0000">Feb 19, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The new 5.27 kde update now has a feature called flatpak permission settings, where you can manage the permissions of settings</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 25, 2023 1:50 PM">
+            <time itemprop="datePublished" datetime="2023-02-25 13:50:02 +0000">Feb 25, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Creating our own docs that coexist with the flatpak docs is on my (personal) roadmap.</p>
+<p><a href="https://github.com/razzeee/flatpak-docs-docusaurus" class="inline-onebox">GitHub - razzeee/flatpak-docs-docusaurus</a> is currently only a slimmed down version of the flatpak docs and an added blog. But I hope to start working on docs that are more flathub focused. I’ve also talked with barth about this, but the website relaunch has a higher prio right now.</p>
+<p>I do have some thoughts about a new possible outline for docs, but haven’t written them down.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Emmanuele Bassi</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 7, 2023 11:34 AM">
+            <time itemprop="datePublished" datetime="2023-03-07 11:34:57 +0000">Mar 7, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="dginovker" data-post="1" data-topic="3721">
+<div class="title">
+<div class="quote-controls"></div>
+dginovker:</div>
+<blockquote>
+<p><em>Worst-case</em> scenario you’ll have two identical copies of the same library on disk (although mitigable with FS compression like ZFS or BTRFS)</p>
+</blockquote>
+</aside>
+<p>This will only happen if you installed an application in two separate repositories—e.g. your user’s and the system’s repository—which is something that doesn’t really happen.</p>
+<p>Identical files in the same Flatpak installation repository are de-duplicated on disk.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dan G</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 7, 2023 2:16 PM">
+            <time itemprop="datePublished" datetime="2023-03-07 14:16:18 +0000">Mar 7, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m referring to once with the package manager and once via Flatpak</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

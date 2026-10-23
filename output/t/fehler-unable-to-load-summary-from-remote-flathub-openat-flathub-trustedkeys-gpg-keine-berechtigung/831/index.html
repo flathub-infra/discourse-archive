@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 18, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vonesch</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 18, 2020 6:45 PM">
+            <time itemprop="datePublished" datetime="2020-10-18 18:45:21 +0000">Oct 18, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everybody</p>
+<p>Installing Firefox via flathub results in the error mentioned. Why?</p>
+<p>Using Debian 10.6 on ThinkPad-Notebook T430, I installed flatpak and gnome-software-plugin-flatpak via Synaptic-Pakagemanager **, followed by the terminal-command:<br>
+:~$ sudo flatpak remote-add --if-not-exists flathub <a href="https://flathub.org/repo/flathub.flatpakrepo" rel="nofollow noopener">https://flathub.org/repo/flathub.flatpakrepo</a></p>
+<p>(** a week ago, I did it via Terminal using «sudo».)</p>
+<p>(as mentioned on: <code>https://flatpak.org/setup/Debian</code>)</p>
+<p>Installing Firefox via <code>(https://flathub.org/)</code> by pressing the button «Install», the Vivaldi-Browser opens a new small Download-window:<br>
+By chossing open → it opens a new Browser-Window. Clicking again on «Install», it shows the following message:<br>
+Installation von Firefox nicht möglich: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung</p>
+<p>The other way around: downloading the pakage: org.mozilla.firefox.flatpakref.</p>
+<p>And now install it via terminal:<br>
+xxxx@yyyy:~$ flatpak install --from Downloads/org.mozilla.firefox.flatpakref<br>
+Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung<br>
+xxxx@yyyy:~$</p>
+<p>To install the pakage directly in the terminal results in the same message:<br>
+xxxx@yyyy:~$ flatpak install flathub org.mozilla.firefox<br>
+Looking for matches…<br>
+Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung<br>
+xxxx@yyyy:~$</p>
+<p>A week ago, I tried it with «sudo»:<br>
+xxxx@yyyy:~/Downloads$ sudo flatpak install flathub org.mozilla.firefox</p>
+<p>This installation succeded (Installation complete), although not all bytes were downloaded for all packages.</p>
+<p>To run Firefox, I had to use «sudo» again:<br>
+xxx@yyy:~$ sudo flatpak run org.mozilla.firefox<br>
+[sudo] Passwort für xxxx:<br>
+Gtk-Message: 13:46:22.394: Failed to load module “canberra-gtk-module”<br>
+Gtk-Message: 13:46:22.395: Failed to load module “canberra-gtk-module”<br>
+Gtk-Message: 13:46:23.609: Failed to load module “canberra-gtk-module”<br>
+….</p>
+<p>Firefox got open. But running as root ??</p>
+<p>After a restart of the notebook, Debian was broken. I had to reinstall the last Debian-backup.</p>
+<p>A short glimps in the documentations of flatpak shows that using «sudo» is not necessary or even wrong.</p>
+<p>So the question is, how can I install Firefox correctly via flathub ??</p>
+<p>And what does it mean: openat(flathub.trustedkeys.gpg): Keine Berechtigung = not allowed ??? Why?</p>
+<p>When Debian starts, I use «Gnome under Xorg», not Wayland. Are there any problems with that ?</p>
+<p>Thanks for any reply.</p>
+<p>With kind regards</p>
+<p>G. Vonesch</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Bartłomiej Piotrowski</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 19, 2020 5:56 AM">
+            <time itemprop="datePublished" datetime="2020-10-19 05:56:27 +0000">Oct 19, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>flatpak</code> by default works on system installation, and it depends on your distribution if it’s going to ask you for roor/sudo password to manage it. To work unprivileged, it takes <code>--user</code>; for example: <code>flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo</code> and so on.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vonesch</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 22, 2020 3:39 PM">
+            <time itemprop="datePublished" datetime="2020-10-22 15:39:07 +0000">Oct 22, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear Barthalion</p>
+<p>Thanks for your quick response.</p>
+<p>Somehow I do not get it.<br>
+On my notebok with Debian 10.6, installation and running Firefox (flathub) works only with «sudo». Even «flatpak search » and «flatpak list» only runs with «sudo». On the other hand, «flatpak - -help» runs with and without «sudo».</p>
+<pre><code>Examples:
+linde@burg:~$ flatpak search skype
+F: Failed to parse /var/lib/flatpak/appstream/flathub/x86_64/active/appstream.xml.gz file: Fehler beim 	Öffnen der Datei »/var/lib/flatpak/appstream/flathub/x86_64/active/appstream.xml.gz«: Keine 	Berechtigung
+No matches found
+
+linde@burg:~$ flatpak list
+linde@burg:~$ 	(It does not show up anything.) 
+</code></pre>
+<p>As I understood correctly, the error-message «Fehler: Unable to load summary from remote flathub: openat(flathub.trustedkeys.gpg): Keine Berechtigung» is on my side, meaning on my Debian-system ??<br>
+I found it in /var/lib/flatpak/repo/flathub.trustedkeys.gpg .</p>
+<p>The access-rights to this file are:<br>
+linde@burg:~$ ls -la /var/lib/flatpak/repo/flathub.trustedkeys.gpg<br>
+-rw-r----- 1 root root 2888 Okt 18 14:07 /var/lib/flatpak/repo/flathub.trustedkeys.gpg<br>
+linde@burg:~$</p>
+<p>Does it mean, that – when installing firefox (or a flathub-pakage) from your website  <code>https://flathub.org</code> – I should be able to enter the root-Password in a not yet existing window to have access to the gpg-file ??</p>
+<p>Following your suggestions using «–user» , I tried the following commands:</p>
+<pre><code>• linde@burg:~$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  (without «--user», because I am already logged in as user.)
+  
+• linde@burg:~$ sudo flatpak remote-add --if-not-exists --user flathub `https://flathub.org/repo/flathub.flatpakrepo`  
+</code></pre>
+<p>(although already logged in as user, I added in the commandline «–user».)</p>
+<pre><code>• root@burg:~# flatpak remote-add --if-not-exists --user flathub `https://flathub.org/repo/flathub.flatpakrepo`
+</code></pre>
+<p>(here as root)</p>
+<p>After each command, I opened Vivaldi-Browser → tried to install «Firefox» from your website: <code>https://flathub.org </code> → it resulted always in the error mentioned.</p>
+<p>On the terminal, I tried the commands as user «linde»:</p>
+<p>linde@burg:~$ flatpak install --user org.mozilla.firefox<br>
+Looking for matches…<br>
+Fehler: No remote refs found similar to ‘org.mozilla.firefox’<br>
+linde@burg:~$</p>
+<p>linde@burg:~$ flatpak install --user flathub org.mozilla.firefox<br>
+Looking for matches…<br>
+Fehler: No remote refs found similar to ‘flathub’<br>
+linde@burg:~$</p>
+<p>The same commands with «sudo» were resulting in:</p>
+<p>linde@burg:~$ sudo flatpak install --user org.mozilla.firefox<br>
+Looking for matches…<br>
+Found similar ref(s) for ‘org.mozilla.firefox’ in remote ‘flathub’ (user).<br>
+Use this remote? [Y/n]: n</p>
+<p>linde@burg:~$ sudo flatpak install --user flathub org.mozilla.firefox<br>
+Looking for matches…<br>
+Required runtime for org.mozilla.firefox/x86_64/stable (runtime/org.freedesktop.Platform/x86_64/19.08) found in remote flathub<br>
+Do you want to install it? [Y/n]: n</p>
+<p>Not knowing what the difference is, I took the last command with «… --user flathub ….» to install firefox.</p>
+<p>Running firefox as normal user shows:</p>
+<p>linde@burg:~$ flatpak run org.mozilla.firefox<br>
+Fehler: app/org.mozilla.firefox/x86_64/master ist nicht installiert</p>
+<p>Running it with sudo:</p>
+<p>linde@burg:~$ sudo flatpak run org.mozilla.firefox<br>
+[sudo] Passwort für linde:<br>
+Gtk-Message: 20:51:50.046: Failed to load module “canberra-gtk-module”<br>
+Gtk-Message: 20:51:50.047: Failed to load module “canberra-gtk-module”<br>
+….<br>
+It takes about 33 seconds until firefox-window appears.</p>
+<p>To compare it with the default installed firefox (68.12.0 esr) on my Debian 10.6:<br>
+linde@burg:~$ firefox<br>
+→ it takes about 2 seconds to open firefox. (without «sudo» !!).</p>
+<p>Reading the following documentations I found on the search-machine (Internet):</p>
+<ul>
+<li><code>https://ostechnix.com/how-to-install-and-use-flatpak-in-linux/</code></li>
+<li><code>https://fossbytes.com/what-is-flatpak-how-to-install-flatpak-apps-ubuntu-linux/</code></li>
+<li>
+<code>https://omgubuntu.co.uk/2019/02/how-to-install-flatpak-on-ubuntu-flathub </code>→ Installation via your homepage.</li>
+<li>and even on your homepage: <code>https://flathub.org/apps/details/org.mozilla.firefox</code>
+</li>
+</ul>
+<p>it is never mentioned to install flatpak applications or to run, search, list them as root (sudo).</p>
+<p>But WHY does it works on my Debian-System only as root (sudo)  ???<br>
+Is it Debian-specific or just on my local Notebook ???</p>
+<p>Furthermore, reading the article:</p>
+<ul>
+<li>
+<code>https://vitux.com/how-to-install-software-through-flatpak-on-debian-10/</code><br>
+section: «Install software through Flatpak using the Software Manager UI»<br>
+The example with «gedit» (or firefox or octave) searching in «Debian Software»<br>
+(installed 2 pakages: software-properties-common - version 0.96.20.2-2; and<br>
+software-properties-gtk – version 0.96.20.2-2 ) , I only get as result the software offered from debian, no results from flathub, although I have installed «gnome-software-plugin-flatpak» from Synaptic-pakagemanager. Why ??</li>
+</ul>
+<p>Is there anything broken on my debian 10.6 system ??</p>
+<p>Again: The main questions is: Why does I have to start firefox with «sudo» ?  Is this the common way on debian for flathut-pakages or just on my notebook ??</p>
+<p>What is the difference between running firefox as «normal user» and as root (sudo)? (as root: more rights, but what kind of rights and for what running a browser as root?)<br>
+And what about the security points running a browser as root?</p>
+<p>Thanks a lot for answering, actually I do not yet get it .</p>
+<p>With kind regards</p>
+<p>G. Vonesch</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">egorkin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Nov 23, 2021 4:54 PM">
+            <time itemprop="datePublished" datetime="2021-11-23 16:54:03 +0000">Nov 23, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="gvon" data-post="3" data-topic="831">
+<div class="title">
+<div class="quote-controls"></div>
+gvon:</div>
+<blockquote>
+<p>G. Vonesch</p>
+</blockquote>
+</aside>
+<p>Dear G. Vonesch, did you solve this problem? I have the same problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">vonesch</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Dec 27, 2021 6:02 PM">
+            <time itemprop="datePublished" datetime="2021-12-27 18:02:04 +0000">Dec 27, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi egorkin<br>
+Sorry for the delay.<br>
+The answer is: No.<br>
+I stopped using (or trying to use) Firefox on flatpak/flathub. I still use Firefox (esr) (actually 78.15.0 esr) on Debian 10.11 besides other browsers I use. Next step will be Firefox esr on Debian 11.x. Meaning that my focus isn’t any more on this problem at the moment.<br>
+Unfortunately I can’t help you more, but it seems that on other machines / systems  (like yours) the problem still exists and should be solved.<br>
+I wish you happy New Year and all the best.<br>
+Kind regards<br>
+G. Vonesch</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">David </span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 25, 2022 8:16 PM">
+            <time itemprop="datePublished" datetime="2022-07-25 20:16:28 +0000">Jul 25, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have found a possible solution<br>
+try with</p>
+<p>sudo apt-get remove --autoremove flatpak<br>
+sudo apt-get purge flatpak</p>
+<p>restart system</p>
+<p>flatpak remote-add --if-not-exists --user flathub <a href="https://flathub.org/repo/flathub.flatpakrepo" rel="noopener nofollow ugc">https://flathub.org/repo/flathub.flatpakrepo</a></p>
+<p>This worked for me, in debian 10<br>
+I hope it works for you too!<br>
+(Sorry for my English, I’m still learning).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shortcut on flatpak and a strange fact - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Shortcut on flatpak and a strange fact</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Shortcut on flatpak and a strange fact</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 7, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 7, 2024 6:27 PM">
+            <time itemprop="datePublished" datetime="2024-05-07 18:27:16 +0000">May 7, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>HI. Thanks again for the help in the previous post. I have another question I would like to ask. I created a .flatpak file of my program. After installation, the icon for my program (LaMiaVideoteca) appears in the programs menu. If I launch it, it starts without being able to read the archive located in the same directory. Knowing that it works in a sandbox, doing various tests I realized that it is as if it were launched from the home/enrico folder. The strange thing is that I understood (not always) that by starting from the terminal with the command</p>
+<blockquote>
+<p>flatpak run org.tarro.lamiavideoteca</p>
+</blockquote>
+<p>the program started by reading the archive. However, this thing no longer happens now and I don’t understand why because I swear I haven’t changed anything. Having said that I tried to see if I could solve the problem by compiling the flatpak with the following command</p>
+<blockquote>
+<p>flatpak-builder --installation=~/.local/share/flatpak/app build-dir org.tarro.lamiavideoteca.yml</p>
+</blockquote>
+<p>I did this to see if by installing the program in another directory I had permissions (assuming the problem was due) to reading and writing in the archive;<br>
+I even tried changing the permissions with Flatseal), but it is not nothing changed. I also tried starting the application with this command</p>
+<blockquote>
+<p>flatpak run --filesystem=/var/lib/flatpak/app/org.tarro.lamiavideoteca/current/active/files/bin org.tarro.lamiavideoteca</p>
+</blockquote>
+<p>to see if instead of starting in /home/enrico it would start in the directory where the archive is located is that the application on a PC where I use Fedora 40 starts with the Gnome interface (app closing window) on the laptop where there is always Fedora 40 starts without a window as you can see in photo explanations.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8.jpeg" data-download-href="/uploads/original/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8.jpeg" title="Schermata del 2024-05-07 20-26-07" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8_2_690x388.jpeg" alt="Schermata del 2024-05-07 20-26-07" data-base62-sha1="gt6SniMJ7pvLXWcb1tnkpQuUb7a" width="690" height="388" srcset="/uploads/optimized/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8_2_690x388.jpeg, /uploads/optimized/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8_2_1035x582.jpeg 1.5x, /uploads/optimized/2X/7/736d342821ee7ec3d910538a7d019add24e2fdc8_2_1380x776.jpeg 2x" data-dominant-color="B8C4C3"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-07 20-26-07</span><span class="informations">1920×1080 111 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 8, 2024 7:21 PM">
+            <time itemprop="datePublished" datetime="2024-05-08 19:21:39 +0000">May 8, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By doing further tests I realized that the application opens with a complete archive if I launch it from the terminal using the <code>flatpak run org.tarro.lamiavideoteca</code> command and works well. However, if I try to launch it via the menu it doesn’t start. I configured the .desktop file that configures the menu shortcut like this:</p>
+<pre><code class="lang-auto">[Desktop Entry]
+Name=LaMiaVideoteca
+
+Icon=org.tarro.lamiavideoteca.png
+
+Type=Application
+Categories=Office;
+
+Exec=flatpak run org.tarro.lamiavideoteca
+StartupNotify=false
+Terminal=false
+</code></pre>
+<p>I tried changing the command<br>
+<code>Exec=org.tarro.lamiavideoteca</code> and to <code>Exec=LaMiaVideoteca</code>. But nothing starts. Among other things, through menulibre I realize that despite whatever I write in Exec there is actually the command <code>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=org.tarro.lamiavideoteca org. tarro.lamiavideoteca</code>. Which from the terminal gives me error: Invalid id run: Names must contain at least 2 periods. Trying to change the item Exec in menulibre still doesn’t start. It starts without seeing the archive only if I start it from Gnome-Software-Center.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/092241b1358c03dd43030d790f46689c9dfdc611.png" data-download-href="/uploads/original/2X/0/092241b1358c03dd43030d790f46689c9dfdc611.png" title="Schermata del 2024-05-08 21-20-55" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/092241b1358c03dd43030d790f46689c9dfdc611_2_690x388.png" alt="Schermata del 2024-05-08 21-20-55" data-base62-sha1="1iNGSPqu0t9618wL4oD762xrSOB" width="690" height="388" srcset="/uploads/optimized/2X/0/092241b1358c03dd43030d790f46689c9dfdc611_2_690x388.png, /uploads/optimized/2X/0/092241b1358c03dd43030d790f46689c9dfdc611_2_1035x582.png 1.5x, /uploads/optimized/2X/0/092241b1358c03dd43030d790f46689c9dfdc611_2_1380x776.png 2x" data-dominant-color="C7C6C6"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-08 21-20-55</span><span class="informations">1920×1080 95.1 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 8, 2024 7:22 PM">
+            <time itemprop="datePublished" datetime="2024-05-08 19:22:33 +0000">May 8, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/8/871e52adca30381473210d7cbb9955ff71005502.png" data-download-href="/uploads/original/2X/8/871e52adca30381473210d7cbb9955ff71005502.png" title="Schermata del 2024-05-08 21-20-12" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/8/871e52adca30381473210d7cbb9955ff71005502_2_690x388.png" alt="Schermata del 2024-05-08 21-20-12" data-base62-sha1="jhjqmk1qXoB7xhTyTiSvmpTevDQ" width="690" height="388" srcset="/uploads/optimized/2X/8/871e52adca30381473210d7cbb9955ff71005502_2_690x388.png, /uploads/optimized/2X/8/871e52adca30381473210d7cbb9955ff71005502_2_1035x582.png 1.5x, /uploads/optimized/2X/8/871e52adca30381473210d7cbb9955ff71005502_2_1380x776.png 2x" data-dominant-color="5C5D5E"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-08 21-20-12</span><span class="informations">1920×1080 124 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 8, 2024 7:23 PM">
+            <time itemprop="datePublished" datetime="2024-05-08 19:23:10 +0000">May 8, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6.png" data-download-href="/uploads/original/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6.png" title="Schermata del 2024-05-08 21-19-54" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6_2_690x388.png" alt="Schermata del 2024-05-08 21-19-54" data-base62-sha1="sKJ5Pzud9vLFLDoPSWmfXCQeHbg" width="690" height="388" srcset="/uploads/optimized/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6_2_690x388.png, /uploads/optimized/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6_2_1035x582.png 1.5x, /uploads/optimized/2X/c/c985147851188cedfd147d957e202e6b1a9c91b6_2_1380x776.png 2x" data-dominant-color="2C2C2D"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Schermata del 2024-05-08 21-19-54</span><span class="informations">1920×1080 120 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 8, 2024 7:31 PM">
+            <time itemprop="datePublished" datetime="2024-05-08 19:31:17 +0000">May 8, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The fact that by launching the <code>flatpak run org.tarro.lamiavideoteca</code> command the software reads the archive and the fact that it is able to write and delete data (I verified this) makes me understand that even if the software works in a sandbox I can read/ write inside the archive which is located in the same directory as the executable (I know that you shouldn’t keep the archive in the same directory as the executable, but for the moment I prefer to keep it that way). I remember that the directory in which the flatpak installs the application is /var/lib/flatpak/app/</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 9, 2024 9:02 AM">
+            <time itemprop="datePublished" datetime="2024-05-09 09:02:24 +0000">May 9, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="enrico94" data-post="5" data-topic="6664">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>The fact that by launching the <code>flatpak run org.tarro.lamiavideoteca</code> command the software reads the archive and the fact that it is able to write and delete data (I verified this) makes me understand that even if the software works in a sandbox I can read/ write inside the archive which is located in the same directory as the executable</p>
+</blockquote>
+</aside>
+<p>It can’t. The whole <code>/app</code> folder is read-only. If this is possible then it would be a bug you can’t rely on.</p>
+<p>Given your screenshots: If you run the application from within your build folder, I suspect your application uses the database from the build folder since flatpak will keep your current working directory.</p>
+<p>Run from any other location or without any filesystem permissions (<code>flatpak run --sandbox</code> or with <code>--nofilesystem=host</code>) and it doesn’t work anymore. This is happening when running from the desktop file.</p>
+<hr>
+<p>Your application must use or create a file in a user writeable folder, preferably in XDG_DATA_HOME (<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html" class="inline-onebox" rel="noopener nofollow ugc">XDG Base Directory Specification</a>, <a href="https://wiki.archlinux.org/title/XDG_Base_Directory" class="inline-onebox" rel="noopener nofollow ugc">XDG Base Directory - ArchWiki</a>, Qt probably provides a method for this). Inside this you create your own subfolder to put your user files in.</p>
+<hr>
+<p>If your application doesn’t require any other files you can then drop all filesystem permissions since the base directories are always available &amp; writeable.</p>
+<p>Even if you need access to some files you should check to implement the file portal: <a href="https://flatpak.github.io/xdg-desktop-portal/docs/" class="inline-onebox" rel="noopener nofollow ugc">XDG Desktop Portal documentation</a> .<br>
+This allows you to drop all filesystem permissions but still get access to files (as granted by the user).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 9, 2024 6:55 PM">
+            <time itemprop="datePublished" datetime="2024-05-09 18:55:39 +0000">May 9, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Now I’m looking for a command when compiling the flatpak to make the program install in ~/.local/share when it’s installed.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 9, 2024 7:39 PM">
+            <time itemprop="datePublished" datetime="2024-05-09 19:39:27 +0000">May 9, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I tryed put on .yml file this: `</p>
+<pre><code class="lang-auto">  "build-options": {
+    "install-dir": "XDG_DATA_HOME"
+</code></pre>
+<p>but not works</p>
+<p>`</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="May 10, 2024 2:39 AM">
+            <time itemprop="datePublished" datetime="2024-05-10 02:39:25 +0000">May 10, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>it’s not like <code>install-dir</code> is mentionned anywhere in the documentation as something usefull.</p>
+<p>One doesn’t just invent something expecting it to work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="May 10, 2024 2:40 AM">
+            <time itemprop="datePublished" datetime="2024-05-10 02:40:38 +0000">May 10, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="enrico94" data-post="7" data-topic="6664" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+enrico94:</div>
+<blockquote>
+<p>Now I’m looking for a command when compiling the flatpak to make the program install in ~/.local/share when it’s installed.</p>
+</blockquote>
+</aside>
+<p>This doesn’t exist. If your software package require something there it should either be putting it there by itself, or be fixed to not require it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="May 10, 2024 6:09 PM">
+            <time itemprop="datePublished" datetime="2024-05-10 18:09:44 +0000">May 10, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>From what I know it is possible to install the apps in ~/.local/share/flatpak as this folder is used to install single-user flatpaks. I’m convinced that I just need to modify the code of the .yml file…</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+               
+    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir /app/bin/Copertine
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -T BluRay4KUHD /app/bin/BluRay4KUHD 
+      - install -T BluRayDisc /app/bin/BluRayDisc 
+      - install -T 'BluRayHD&amp;UHD' /app/bin/'BluRayHD&amp;UHD' 
+      - install -T 'DVD&amp;BluRayDisc' /app/bin/'DVD&amp;BluRayDisc' 
+      - install -T DVDVideo /app/bin/DVDVideo 
+      - install -T LaMiaVideoteca.ico /app/bin/LaMiaVideoteca.ico 
+      - install -T rimuoviimmagine.png /app/bin/rimuoviimmagine.png 
+      - install -T VHS /app/bin/VHS 
+      - install -T lamiavideoteca.db /app/bin/lamiavideoteca.db 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - cp -r Copertine/* /app/bin/Copertine
+        
+             
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=home
+
+</code></pre>
+<p>If you know what. I thank everyone in advance.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="May 11, 2024 7:28 AM">
+            <time itemprop="datePublished" datetime="2024-05-11 07:28:32 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Not exactly. The user can decide to install it with <code>--user</code> into <code>XDG_DATA_DIR/flatpak</code>, that’s true. But this only changes the installation location of the files on the system.</p>
+<p>The application is still run inside its sandbox with all files located in the read-only folder <code>/app</code>. That’s not something you can change. The flatpak will always only consist of files you put into <code>/app</code> &amp; you can’t modify these files.</p>
+<p>That’s actually not flatpak specific, read-only access to the files is the standard for basically all packaging formats (deb, rpm, AppImage etc.). Isn’t this even the case on modern Windows when installing into <code>C:\Program Files</code>?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="May 11, 2024 11:02 AM">
+            <time itemprop="datePublished" datetime="2024-05-11 11:02:47 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>No, I’ve never had this kind of problem. Through innosetup however, you could easily choose the default directory and allow the user to change it. I always chose as the default directory: C:/Users/(user)/AppData/Local/Programs. I’m sure there must be a way. However even if flatpaks work in a sandbox it should be possible to access a sqlite archive in the same directory. Furthermore, I have already packaged the same application via AppImage and .deb and I had no problems.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="May 11, 2024 12:57 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 12:57:53 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok… I understood why the archive was being read to me from the terminal. In practice, if I give the command from the terminal (flatpak run org.tarro.lamiavideoteca) from a directory in which an archive is located, then the program searches in the directory in which the command was given from the terminal. I tried launching the program from the directory where the program is installed (var/lib/flatpak/app/org.tarro.lamiavideoteca) and I actually can’t modify the archive. From all this I deduce that I must necessarily modify the source code of the program and choose a fixed directory in which to put the archive and the editable files, then be able to install during the installation of the flatpak in a directory under /home in which the program with full read and write access. Furthermore, if I try to start the program from the /home/user/.local/share/flatpak/app directory, the program will look for the archive in the /home/user folder and not in /home/user/.local/share/flatpak /app. (clearly user is the user’s name).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="May 11, 2024 1:16 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 13:16:30 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So I asked myself what is the folder used (in flatpaks) to contain the editable files (like an archive) of the program? Searching online I discovered that it is ~/.var/app. After modifying the source code I have to try to put these files in the ~/.var/app/org.tarro.lamiavideoteca directory (directory that is created automatically when you launch the application after installing it via flatpak) . First I told: “Furthermore, I have already packaged the same application via AppImage and .deb and I had no problems.” Now that I remember, however, I had placed the archive in a folder under /home/user. So it is obvious that I could access the program files without any problems.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="May 11, 2024 5:18 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 17:18:49 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So I changed the executable code so that the application reads the archive and the necessary files in the ~/.var/app/org.tarro.lamiavideoteca/data directory. The .yml is:</p>
+<pre><code class="lang-auto">    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir -p ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Cassetta'
+      - mkdir -p ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Disco'
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -D BluRay4KUHD ~/.var/app/org.tarro.lamiavideoteca/data/BluRay4KUHD 
+      - install -D BluRayDisc ~/.var/app/org.tarro.lamiavideoteca/data/BluRayDisc 
+      - install -D 'BluRayHD&amp;UHD' ~/.var/app/org.tarro.lamiavideoteca/data/'BluRayHD&amp;UHD' 
+      - install -D 'DVD&amp;BluRayDisc' ~/.var/app/org.tarro.lamiavideoteca/data/'DVD&amp;BluRayDisc' 
+      - install -D DVDVideo ~/.var/app/org.tarro.lamiavideoteca/data/DVDVideo 
+      - install -D LaMiaVideoteca.ico ~/.var/app/org.tarro.lamiavideoteca/data/LaMiaVideoteca.ico 
+      - install -D rimuoviimmagine.png ~/.var/app/org.tarro.lamiavideoteca/data/rimuoviimmagine.png 
+      - install -D VHS /~/.var/app/org.tarro.lamiavideoteca/data/VHS 
+      - install -C -D  lamiavideoteca.db ~/.var/app/org.tarro.lamiavideoteca/data/lamiavideoteca.db 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - install -C -D Copertine/'Supporto Cassetta'/1 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Cassetta'/1
+      - install -C -D Copertine/'Supporto Cassetta'/2 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Cassetta'/2
+      - install -C -D Copertine/'Supporto Cassetta'/3 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Cassetta'/3
+      - install -C -D Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile' ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Cassetta'/'Nessuna Immagine Disponibile'
+      - install -C -D Copertine/'Supporto Disco'/1 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Disco'/1
+      - install -C -D Copertine/'Supporto Disco'/2 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Disco'/2
+      - install -C -D Copertine/'Supporto Disco'/3 ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Disco'/3
+      - install -C -D Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile' ~/.var/app/org.tarro.lamiavideoteca/data/Copertine/'Supporto Disco'/'Nessuna Immagine Disponibile'
+</code></pre>
+<p>I compile and create the .flatpak file but when I install it the files that need to be installed in the ~/.var/app/org.tarro.lamiavideoteca/data directory are not put. The .flatpak file actually weighs a bit less, so I imagine they won’t be included. Any idea?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="May 11, 2024 6:50 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 18:50:38 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This was already answered, it’s not possible. You have to handle this when running your application.</p>
+<p>And as was said: Prefer XDG_DATA_HOME (don’t forget the fallback/default location as documented). This will be set to <code>~/.var/app/org.tarro.lamiavideoteca/data</code> in the sandbox. There should be an Qt-API for this which will work for all operating systems.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="May 11, 2024 9:08 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 21:08:11 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Now I’m trying to copy the files after the installation is finished through a script. The problem is that it doesn’t start.</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+               
+    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir /app/data
+      - mkdir /app/data/Copertine
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -D BluRay4KUHD /app/data/BluRay4KUHD 
+      - install -D BluRayDisc /app/data/BluRayDisc 
+      - install -D 'BluRayHD&amp;UHD' /app/data/'BluRayHD&amp;UHD' 
+      - install -D 'DVD&amp;BluRayDisc' /app/data/'DVD&amp;BluRayDisc' 
+      - install -D DVDVideo /app/data/DVDVideo 
+      - install -D LaMiaVideoteca.ico /app/data/LaMiaVideoteca.ico 
+      - install -D rimuoviimmagine.png /app/data/rimuoviimmagine.png 
+      - install -D VHS /app/data/VHS 
+      - install -D lamiavideoteca.db /app/data/lamiavideoteca.db 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - cp -rn Copertine/* /app/data/Copertine
+        
+             
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally 
+  - --filesystem=host
+  - --filesystem=home
+  
+    
+scripts:
+    post-installation:
+        - mkdir -p ~/.var/app/org.tarro.lamiavideoteca/data
+        - cp -rn /var/lib/flatpak/app/org.tarro.lamiavideoteca/current/active/files/data/ ~/.var/app/org.tarro.lamiavideoteca/
+
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">enrico</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="May 11, 2024 9:57 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 21:57:51 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Now I tried to create a script and run it after the installation is complete. But even though the script works and has permission to run, it is not launched</p>
+<pre><code class="lang-auto">id: org.tarro.lamiavideoteca
+runtime: org.kde.Platform 
+runtime-version: '6.6' 
+sdk: org.kde.Sdk 
+command: LaMiaVideoteca 
+modules: 
+  - name: LaMiaVideoteca 
+    buildsystem: simple 
+    
+    sources: 
+      - type: file 
+        path: LaMiaVideoteca 
+      - type: file 
+        path: BluRay4KUHD 
+      - type: file 
+        path: BluRayDisc 
+      - type: file 
+        path: 'BluRayHD&amp;UHD' 
+      - type: file 
+        path: 'DVD&amp;BluRayDisc' 
+      - type: file 
+        path: DVDVideo 
+      - type: file 
+        path: LaMiaVideoteca.ico 
+      - type: file 
+        path: rimuoviimmagine.png 
+      - type: file 
+        path: VHS 
+      - type: file 
+        path: lamiavideoteca.db 
+      - type: script 
+        path: post-install.sh
+      - type: dir
+        path: /home/enrico/MEGA/Informatica/Programmazione/C/Qt Creator/Linux/LaMiaVideoteca/Setup/Release 2.45/FLATPAK/lamiavideoteca
+        
+               
+    build-commands: 
+      - mkdir /app/lib
+      - mkdir /app/share
+      - mkdir /app/bin
+      - mkdir /app/data
+      - mkdir /app/data/Copertine
+      - install -D LaMiaVideoteca /app/bin/LaMiaVideoteca 
+      - install -D BluRay4KUHD /app/data/BluRay4KUHD 
+      - install -D BluRayDisc /app/data/BluRayDisc 
+      - install -D 'BluRayHD&amp;UHD' /app/data/'BluRayHD&amp;UHD' 
+      - install -D 'DVD&amp;BluRayDisc' /app/data/'DVD&amp;BluRayDisc' 
+      - install -D DVDVideo /app/data/DVDVideo 
+      - install -D LaMiaVideoteca.ico /app/data/LaMiaVideoteca.ico 
+      - install -D rimuoviimmagine.png /app/data/rimuoviimmagine.png 
+      - install -D VHS /app/data/VHS 
+      - install -D lamiavideoteca.db /app/data/lamiavideoteca.db 
+      - install -D post-install.sh /app/data/post-install.sh 
+      - cp -r lib/* /app/lib
+      - cp -r share/* /app/share
+      - cp -rn Copertine/* /app/data/Copertine
+        
+             
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration if needed
+  - --device=dri
+  # Needs to save files locally
+  - --filesystem=host
+  - --filesystem=home
+  # Script di post-installazione 
+  - post-install: post-install.sh
+override-cmd: /post-install.sh
+
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="May 11, 2024 10:55 PM">
+            <time itemprop="datePublished" datetime="2024-05-11 22:55:32 +0000">May 11, 2024</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>what <code>override-cmd</code> and which part of the documentation talks about it. I’m trying to figure why you all put random things expecting them to work…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/shortcut-on-flatpak-and-a-strange-fact/6664/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

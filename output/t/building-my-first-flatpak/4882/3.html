@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building my first flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Building my first flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Building my first flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 11, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_41"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_41" title="Sep 24, 2023 9:30 PM">
+            <time itemprop="datePublished" datetime="2023-09-24 21:30:32 +0000">Sep 24, 2023</time>
+          </a>
+          <span class="post-number">#41</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It did just as much when I did have the file, but it simply refuses to tell me where it want/expects that file.<br>
+Anything that want to be that cryptic and depends on mind-reading, is just not for me <img src="/images/emoji/twitter/frowning.png?v=12" title=":frowning:" class="emoji" alt=":frowning:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_42"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_42" title="Sep 25, 2023 9:18 AM">
+            <time itemprop="datePublished" datetime="2023-09-25 09:18:52 +0000">Sep 25, 2023</time>
+          </a>
+          <span class="post-number">#42</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_41">Replying to #41</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That file needs to be in the bin inside your app folder.</p>
+<p>So in <code>/app/bin</code> inside of your flatpak</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_43"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_43" title="Sep 25, 2023 9:53 PM">
+            <time itemprop="datePublished" datetime="2023-09-25 21:53:36 +0000">Sep 25, 2023</time>
+          </a>
+          <span class="post-number">#43</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_42">Replying to #42</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That is good to know.<br>
+Still, I am thinking that if I wanted to port a C++ app to Linux, I should not have to install all of the flatpak project on my machine just to allow me to look behind the ‘curtain’ so that I can decipher the built-in secret passages and places.<br>
+I do have a CMake project which builds the app without a problem, but that same CMake project proves indigestible to flatpak and just labeling something a ‘cmake’ build-system is a bit deceptive <img src="/images/emoji/twitter/frowning.png?v=12" title=":frowning:" class="emoji" alt=":frowning:" loading="lazy" width="20" height="20"><br>
+It would se.em I might as well recommend a virtual box running some version of Windows and have my app installed there.<br>
+I understand you are trying to help me and I very much appreciate that.  <img src="/images/emoji/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_44"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_44" title="Sep 25, 2023 11:18 PM">
+            <time itemprop="datePublished" datetime="2023-09-25 23:18:24 +0000">Sep 25, 2023</time>
+          </a>
+          <span class="post-number">#44</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_43">Replying to #43</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The source you have posted fails on a missing <code>install</code> command due to your makefile. Don’t think that’s a flatpak problem.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_45"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_45" title="Sep 26, 2023 3:52 PM">
+            <time itemprop="datePublished" datetime="2023-09-26 15:52:05 +0000">Sep 26, 2023</time>
+          </a>
+          <span class="post-number">#45</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_44">Replying to #44</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We discussed the missing ‘install’ target, which I added several days back, but that did not help, if only because I have no idea where to install what.<br>
+Just having a target is pointless, unless it points to the right place for the expected data and I have not seen any helpful feedback on that from flatpak, I’m sorry.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_46"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_46" title="Sep 26, 2023 5:05 PM">
+            <time itemprop="datePublished" datetime="2023-09-26 17:05:53 +0000">Sep 26, 2023</time>
+          </a>
+          <span class="post-number">#46</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_45">Replying to #45</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I see that <a href="https://github.com/keepassxreboot/keepassxc/blob/cd7a53abbbb81e468efb33eb56eefc12739969b8/CMakeLists.txt#L453" rel="noopener nofollow ugc">keepassxc</a> uses cmake’s <code>CMAKE_INSTALL_BINDIR</code> variable to tell them where to put their binaries. (<a href="https://github.com/keepassxreboot/keepassxc/blob/cd7a53abbbb81e468efb33eb56eefc12739969b8/src/CMakeLists.txt#L420C28-L420C28" rel="noopener nofollow ugc">the variable they defined is later used here</a>)</p>
+<p>Some more on this here:<br>
+<a href="https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_47"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_47" title="Sep 26, 2023 5:21 PM">
+            <time itemprop="datePublished" datetime="2023-09-26 17:21:47 +0000">Sep 26, 2023</time>
+          </a>
+          <span class="post-number">#47</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_45">Replying to #45</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="George" data-post="45" data-topic="4882" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>We discussed the missing ‘install’ target, which I added several days back, but that did not help, if only because I have no idea where to install what.</p>
+</blockquote>
+</aside>
+<p>If you don’t need to install just set <code>no-make-install: true</code> as mentioned in the man page <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox">Flatpak Builder Command Reference - Flatpak documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_48"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_48" title="Sep 26, 2023 8:26 PM">
+            <time itemprop="datePublished" datetime="2023-09-26 20:26:54 +0000">Sep 26, 2023</time>
+          </a>
+          <span class="post-number">#48</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I do appreciate all your help.<br>
+Unfortunately, by now, I am so far down the frustration rabbit hole with my manifest file in shambles because of all the failed attempts at making progress, that I will have to start all over.<br>
+FWIW, looking through the Flatpak site and selecting the CMake projects to browse through</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/flathub?q=&amp;type=all&amp;language=cmake&amp;sort=">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/flathub?q=&amp;type=all&amp;language=cmake&amp;sort=" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="/uploads/original/2X/d/d26f8563e3034961316ced720bd64b2909f39045.png" class="thumbnail onebox-avatar" data-dominant-color="C2C2C2" width="200" height="200">
+
+<h3><a href="https://github.com/flathub?q=&amp;type=all&amp;language=cmake&amp;sort=" target="_blank" rel="noopener nofollow ugc">Flathub</a></h3>
+
+  <p>Flathub is a build and distribution service for Flatpak applications. Its goal is to act as a central hub for making desktop applications available to users. - Flathub</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<p>
+I see only 4 CMake projects, and I did not find anything helpful there</p>
+<p><span class="mention">@razzeee</span>: eventually I will have to install the results, so sooner or later I will have to sort that part out in any case. For a start I will disable the ‘install’ part.</p>
+<p>I have setup my own local git repo to make it easier to move back and forth, but when nothing seems to work and one does not make any positive progress, it is hard to spend the time to document exactly what did NOT work just because there is so much of that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_49"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_49" title="Sep 26, 2023 9:30 PM">
+            <time itemprop="datePublished" datetime="2023-09-26 21:30:56 +0000">Sep 26, 2023</time>
+          </a>
+          <span class="post-number">#49</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_48">Replying to #48</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="George" data-post="48" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>I see only 4 CMake projects, and I did not find anything helpful there</p>
+</blockquote>
+</aside>
+<p>More like 500 according to <a href="https://github.com/search?q=org%3Aflathub+buildsystem%3A+%22cmake%22&amp;type=code" class="inline-onebox">Code search results · GitHub</a> but that includes <code>cmake-ninja</code> (which is still cmake I guess) and there are some module builds.</p>
+<aside class="quote no-group" data-username="George" data-post="48" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p><span class="mention">@razzeee</span>: eventually I will have to install the results, so sooner or later I will have to sort that part out in any case. For a start I will disable the ‘install’ part.</p>
+</blockquote>
+</aside>
+<p>Correct, but you probably don’t want to do that from the makefile in the case of the flatpak build, but that’s just my gut feeling</p>
+<aside class="quote no-group" data-username="George" data-post="48" data-topic="4882">
+<div class="title">
+<div class="quote-controls"></div>
+George:</div>
+<blockquote>
+<p>I have setup my own local git repo to make it easier to move back and forth, but when nothing seems to work and one does not make any positive progress, it is hard to spend the time to document exactly what did NOT work just because there is so much of that.</p>
+</blockquote>
+</aside>
+<p>Understandable, same happens to me</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_50"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">George</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_50" title="Sep 27, 2023 4:27 PM">
+            <time itemprop="datePublished" datetime="2023-09-27 16:27:23 +0000">Sep 27, 2023</time>
+          </a>
+          <span class="post-number">#50</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By now, having started over, I have the following install script:</p>
+<pre><code class="lang-auto">#!/bin/bash
+
+# Install flatpak-builder - already installed on Mint
+#sudo apt -y install flatpak-builder
+
+
+# Create Manifest file
+cat &gt; org.cmlife.cmlife.yml  &lt;&lt;EOL
+app-id: org.cmlife.cmlife
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: life
+#rename-icon: life
+#rename-desktop-file: life.desktop
+
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+#  - --filesystem=xdg-documents
+#  - --env=PWS_HELPDIR=/app/share/passwordsafe/help/
+
+modules:
+# Note: the order of modules is important as the builder works its way
+# in a linear fashion - any dependencies need to be satisfied when 
+# the process tries to build a module
+
+  - name: wxwidgets
+    rm-configure: true
+    config-opts:
+      - --with-libpng
+      - --with-zlib
+      - --with-cxx=14
+      - --disable-sdltest
+      - --disable-webview
+      - --disable-webviewwebkit
+      - --disable-ribbon
+      - --disable-propgrid
+      - --disable-richtext
+      - --with-expat=builtin
+      - --with-libiconv=/usr
+    cleanup:
+#      - /bin
+#      - /include
+#      - /lib/cmake
+#      - /lib/wx
+#      - /share
+
+    sources:
+#      - type: git   # from: https://github.com/flathub/org.audacityteam.Audacity/blob/master/org.audacityteam.Audacity.yaml
+#        url: https://github.com/wxWidgets/wxWidgets.git
+#        tag: v3.1.5
+        
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  - name: life
+    buildsystem: cmake-ninja
+    #buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+#      - -DCMAKE_INSTALL_LIBDIR=/app/lib
+#      - -DAUDACITY_BUILD_LEVEL=2
+#      - -Dgtk=gtk+-3.0
+#      - -Dglib=glib-2.0
+      - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.1;/app/lib/wx/include/gtk3-unicode-3.1
+      - -DwxWidgets_CXX_FLAGS=-pthread
+#      - -DwxWidgets_DEFINITIONS_GENERAL=WXUSINGDLL;__WXGTK__;_FILE_OFFSET_BITS=64
+      - -DwxWidgets_LIBRARIES=-lwx_gtk3u_xrc-3.1;-lwx_gtk3u_html-3.1;-lwx_gtk3u_qa-3.1;-lwx_gtk3u_core-3.1;-lwx_baseu_xml-3.1;-lwx_baseu_net-3.1;-lwx_baseu-3.1
+#      -DCMAKE_INSTALL_PREFIX="/app/bin"
+#      -DFLATPAK=ON
+#      -DCMAKE_BUILD_TYPE="Release"
+#      -DBUILD_SHARED=OFF
+    sources:
+      - type: "dir"
+        path: "../"
+
+EOL
+
+# Build flatpak
+#flatpak-builder -v --force-clean build-dir --disable-cache org.cmlife.cmlife.yml
+f#latpak-builder --user --verbose  --build-only --force-clean build-dir   org.cmlife.cmlife.yml
+flatpak-builder --user --verbose --force-clean build-dir   org.cmlife.cmlife.yml
+
+#flatpak-builder --verbose --force-clean build-dir   org.cmlife.cmlife.yml
+## install locally
+#flatpak-builder --verbose --install  --build-only --force-clean build-dir   org.cmlife.cmlife.yml
+## show manifest only
+#flatpak-builder --verbose --show-manifest org.cmlife.cmlife.yml
+</code></pre>
+<p>with a lot of unused junk, but I don’t want to strip to avoid error.<br>
+Same goes for the current base CMakelists.txt</p>
+<pre><code class="lang-auto">
+#############################################################################
+# Name:        life CMakeListst.txt
+# Purpose:     CMake file for the life demo to be the base for the Cross-platform
+#              template following the example from:
+#              https://www.justdevtutorials.com/post/wxwidgets-cmake/
+# Author:      A. Wiegert
+# Created:     2018-03-22
+# Copyright:   (c) 2018  A. Wiegert
+# Licence:     wxWidgets licence
+# using the ideas from:
+# https://crascit.com/2016/01/31/enhanced-source-file-handling-with-target_sources/
+#############################################################################
+
+#
+# This file is was derived from both the minimal example CMake file
+# wxBUILD_SAMPLES option when using cmake on the library
+# as well as the template from D:\pkg\cmake\tmplt\wx_cmake_template
+#
+
+# Declare the minimum required CMake version
+# Note Windows version is much higher
+cmake_minimum_required(VERSION 3.6 FATAL_ERROR )
+
+# Name the project
+project(life LANGUAGES CXX )
+# set global variables
+# see also: https://matgomes.com/setting-cpp-standard-cmake/
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS Off)
+set(BUILD_SHARED_LIBS OFF)
+set(CMAKE_EXE_LINKER_FLAGS "-static" )
+
+# if these are uncommented, 'life ' is built in 
+# /home/arnold/Public/flatpak/flcmlife/flatpak/build-dir/files/bin
+# but will not run - seems to link dynamically
+#arnold@CarboMint:~/Public/flatpak/flcmlife/flatpak/build-dir/files/bin$ ./life
+#./life: error while loading shared libraries: libwx_baseu-3.2.so.0: cannot open shared object file: No such file or directory
+#arnold@CarboMint:~/Public/flatpak/flcmlife/flatpak/build-dir/files/bin$ 
+if( NOT CMAKE_BUILD_TYPE )
+  set( CMAKE_BUILD_TYPE Release )
+endif( NOT CMAKE_BUILD_TYPE )
+
+add_definitions(-DwxUSE_UNICODE -DwxUNICODE)
+# NEEDS '/' rather than '\\'
+# NO trailing '/' 
+# seems CMake does not like to have both defined
+set( wxWidgets_ROOT_DIR "D:/MSVC2022/wxWidgets-3.2.2" )
+set( wxWidgets_LIB_DIR  "D:/MSVC2022/wxWidgets-3.2.2/lib" )
+
+# Request the required wxWidgets libs
+find_package(wxWidgets 3.2 COMPONENTS adv aui base core html media net qa stc xml xrc REQUIRED)
+
+IF(wxWidgets_FOUND)
+  MESSAGE(  "wxWidgets 3.2.1 found!")
+ELSE(wxWidgets_FOUND)
+   # For convenience. When we cannot continue, inform the user
+   MESSAGE( FATAL_ERROR "wxWidgets 3.2.1  not found!")
+ENDIF(wxWidgets_FOUND)
+
+# Include the wxWidgets use file to initialize various settings
+# created by the find_wxWidgets process????
+if(wxWidgets_USE_FILE)
+  include( ${wxWidgets_USE_FILE} )
+endif()
+
+# Define a variable containing a list of source files for the project
+set(SRC_FILES
+    life.cpp
+    game.cpp
+    dialogs.cpp
+    reader.cpp
+    )
+
+set ( HEADERS
+    life.h
+    game.h
+    dialogs.h
+    )
+if(WIN32)
+    # Include a RC file for windows
+    list(APPEND SRC_FILES life.rc) 
+endif()
+
+# Define the build target for the executable
+if(APPLE)
+    # create bundle on apple compiles
+    add_executable(main MACOSX_BUNDLE ${SRCS})
+
+    # Set a custom plist file for the app bundle - needed for Mac OS Retina display
+    set_target_properties(main PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist)
+else()
+    # the WIN32 is needed for Windows in order for it to look for WinMain
+    # instead of the main function. This is ignored on other systems,
+    # so it works on all platforms
+    add_executable(${PROJECT_NAME} WIN32 ${SRC_FILES} ${HEADERS} )
+    set_property(TARGET ${PROJECT_NAME} PROPERTY
+       MSVC_RUNTIME_LIBRARY "MultiThreaded$&lt;$&lt;CONFIG:Debug&gt;:Debug&gt;")
+endif()
+
+#add_executable(${PROJECT_NAME} WIN32 ${SRC_FILES} ${HEADERS})
+#set_property(TARGET ${PROJECT_NAME} PROPERTY
+#    MSVC_RUNTIME_LIBRARY "MultiThreaded$&lt;$&lt;CONFIG:Debug&gt;:Debug&gt;")
+ 
+
+# Link required libraries to the executable
+if(WIN32)
+#target_link_libraries(${PROJECT_NAME}  libcurl)
+#target_link_libraries(${PROJECT_NAME} winhttp)
+endif()
+
+target_link_libraries( ${PROJECT_NAME} ${wxWidgets_LIBRARIES} -static)
+
+install( TARGETS life 
+  RUNTIME
+  CONFIGURATIONS release
+  DESTINATION "bin" )
+
+# --------------------------- eof ------------------------
+</code></pre>
+<p>Some of the options I have copied from one of the public wxWidgets projects Audacity and most seem unused in any case - surprisingly detected and spelled out in the builder output.<br>
+Again, linking the final executable fails because the linker can’t find the wxWidgets libraries</p>
+<pre><code class="lang-auto">
+[5/5] Linking CXX executable life
+FAILED: life 
+: &amp;&amp; /usr/bin/c++ -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -pthread -pthread -O2 -g -DNDEBUG -static CMakeFiles/life.dir/life.cpp.o CMakeFiles/life.dir/game.cpp.o CMakeFiles/life.dir/dialogs.cpp.o CMakeFiles/life.dir/reader.cpp.o -o life  -L/app/lib  -pthread  -lwx_gtk3u_aui-3.2  -lwx_baseu-3.2  -lwx_gtk3u_core-3.2  -lwx_gtk3u_html-3.2  -lwx_gtk3u_media-3.2  -lwx_baseu_net-3.2  -lwx_gtk3u_qa-3.2  -lwx_gtk3u_stc-3.2  -lwx_baseu_xml-3.2  -lwx_gtk3u_xrc-3.2  -static &amp;&amp; :
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_aui-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_baseu-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_core-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_html-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_media-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_baseu_net-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_qa-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_stc-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_baseu_xml-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lwx_gtk3u_xrc-3.2: No such file or directory
+/usr/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lm: No such file or directory
+collect2: error: ld returned 1 exit status
+</code></pre>
+<p>The question this raises right now:</p>
+<ul>
+<li>the builder does find the wxWidgets libraries, but the linker cannot. Why?<br>
+possibly because CMake uses a findwxWidgets function and does find the libraries</li>
+<li>how do I tell flatpak builder where to find these libraries</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/building-my-first-flatpak/4882/2.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 3 of 3</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

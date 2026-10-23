@@ -1,0 +1,2609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to include libraries into my first ever flatpak? - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How to include libraries into my first ever flatpak?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How to include libraries into my first ever flatpak?</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 21, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 21, 2023 3:06 PM">
+            <time itemprop="datePublished" datetime="2023-08-21 15:06:57 +0000">Aug 21, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I use Flatpak 1.14.4 on Ubuntu 22.03. I have been using like end-user flatpaks for years. But now I would like to build one of the flatpak myself.</p>
+<p>I would like to build probably quite simple flatpak using PasswordSafe password manager.<br>
+Home page: XXXwww.pwsafe.orgXXX<br>
+Source code: XXXhttps://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gzXXX</p>
+<p>I am complete newbee building flatpaks! I have been reading tons of internet sources related to flatpak and now I am try and miss…</p>
+<p><strong>BUILD PASSWORDSAFE PROGRAM FROM SOURCE</strong></p>
+<ol>
+<li>Download program’s source code from: <a href="https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz" rel="noopener nofollow ugc">https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz</a>
+</li>
+<li>Extract tar file.</li>
+<li>In extracted directory there is Misc subdir. From this subdir execute: ./setup-linux-dev-env.sh<br>
+This command installs dependency libraries.</li>
+<li>More or less compile program’s source code, by following instructions in: README.LINUX.DEVELOPERS.md file (just copy/paste few commands).</li>
+</ol>
+<p><strong>BUILDING FLATPAK</strong><br>
+Now I would like to create my first flatpak (if ignoring the ones on several internet sources).</p>
+<ol>
+<li>I opened terminal and changed directory to ~/Downloads, created file make.sh with 700 file permissions and then run the file: “./make.sh” Content of file is:</li>
+</ol>
+<pre><code class="lang-auto">#!/bin/bash
+
+# Install flatpak-builder
+sudo apt -y install flatpak-builder
+
+# Create src dir
+mkdir src
+
+# Download programs source code from https://github.com/pwsafe/pwsafe/releases?q=non-windows&amp;expanded=true
+wget https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz --directory-prefix src/
+
+# Create Manifest file
+cat &gt; com.github.pwsafe.pwsafe.yml &lt;&lt;EOL
+app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+modules:
+  - name: pwsafe
+    buildsystem: cmake
+    sources:
+      - type: archive
+        path: src/1.17.0.tar.gz
+EOL
+
+# Build flatpak
+flatpak-builder --force-clean build-dir com.github.pwsafe.pwsafe.yml
+</code></pre>
+<ol start="2">
+<li>Output of ./make.sh is missing dependency library: “libqrencode-dev(el) not installed”.</li>
+</ol>
+<details>
+<summary>
+Details</summary>
+<pre><code class="lang-auto">========================================================================
+Building module pwsafe in /home/igor/Downloads/.flatpak-builder/build/pwsafe-2
+========================================================================
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Interprocedural optimization (LTO/LTCG) is enabled.
+-- Found UnixCommands: /usr/bin/bash  
+-- Performing Test HARDEN_COMPILE_WFORMAT
+-- Performing Test HARDEN_COMPILE_WFORMAT - Success
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY - Success
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY - Failed
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION - Success
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG - Success
+-- Performing Test HARDEN_LINK_Z_RELRO
+-- Performing Test HARDEN_LINK_Z_RELRO - Success
+-- Performing Test HARDEN_LINK_Z_NOW
+-- Performing Test HARDEN_LINK_Z_NOW - Success
+-- Looking for qrencode.h
+-- Looking for qrencode.h - not found
+CMake Error at CMakeLists.txt:85 (message):
+  libqrencode-dev(el) not installed: install or select NO_QR
+</code></pre>
+</details>
+<p>Compiler is throwing out an error, because dependency library is missing. When compiling into binary file those packages are installed as “apt install libqrencode-dev” (from Misc/setup-linux-dev-env.sh).</p>
+<p>Like I understand, somehow in my Manifest file I need to include dependency libraries.</p>
+<p>For example I have found required library source code for my error “libqrencode-dev”. It is available from: <a href="https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.gz" rel="noopener nofollow ugc">https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.gz</a><br>
+Library home page: hhttps://fukuchi.org/works/qrencode/index.html</p>
+<p>Do I need to download and compile every dependent library main program is requiring or can I include it from some other source like deb package or something?</p>
+<p>I am stuck here… any idea is greatly appreciated.</p>
+<p>I know there are <a href="https://docs.flatpak.org/en/latest/dependencies.html" rel="noopener nofollow ugc">Dependencies</a> and <a href="https://docs.flatpak.org/en/latest/manifests.html" rel="noopener nofollow ugc">Manifests</a> in documentation, but… pretty steep learning curve.</p>
+<p>Regards</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 21, 2023 9:50 PM">
+            <time itemprop="datePublished" datetime="2023-08-21 21:50:44 +0000">Aug 21, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey, you can probably just borrow the module code from one of these. <a href="https://github.com/search?q=org%3Aflathub+libqrencode&amp;type=code">https://github.com/search?q=org%3Aflathub+libqrencode&amp;type=code</a></p>
+<p>I would also advice, to not build the flatpak in your download folder, as there are probably many more files in there, that could confuse you/make stuff hard to find. At least move it into a sub folder of downloads. (or better something else)</p>
+<p>And if you know your way around git, feel free to push it somewhere, makes it much easier to jump in and help you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 22, 2023 11:15 AM">
+            <time itemprop="datePublished" datetime="2023-08-22 11:15:09 +0000">Aug 22, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@razzeee</span>, your link really helped. I have added “libqrencode” to my manifest file following your advice and also added “wxwidgets” the same way, because of new error message I got.</p>
+<p>Now I am stuck at the error:</p>
+<blockquote>
+<p>fatal: unable to access XXXhttps://github.com/google/googletest.git/:XXX Could not resolve host: XXXgithub.comXXX</p>
+</blockquote>
+<p>Note: I have added XXX, because forum is complaining I can post those web links.</p>
+<details>
+<summary>
+Details</summary>
+<pre><code class="lang-auto">Downloading sources
+Starting build of com.github.pwsafe.pwsafe
+Cache hit for libqrencode, skipping build
+Cache hit for wxwidgets, skipping build
+Cache miss, checking out last cache hit
+========================================================================
+Building module pwsafe in /home/igor/flatpak/.flatpak-builder/build/pwsafe-12
+========================================================================
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Interprocedural optimization (LTO/LTCG) is enabled.
+-- Found UnixCommands: /usr/bin/bash  
+-- Performing Test HARDEN_COMPILE_WFORMAT
+-- Performing Test HARDEN_COMPILE_WFORMAT - Success
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY - Success
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY - Failed
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION - Success
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG - Success
+-- Performing Test HARDEN_LINK_Z_RELRO
+-- Performing Test HARDEN_LINK_Z_RELRO - Success
+-- Performing Test HARDEN_LINK_Z_NOW
+-- Performing Test HARDEN_LINK_Z_NOW - Success
+-- Looking for qrencode.h
+-- Looking for qrencode.h - found
+-- Found wxWidgets: -L/app/lib;-pthread;;;-lwx_gtk3u_aui-3.2;-lwx_baseu-3.2;-lwx_gtk3u_core-3.2;-lwx_gtk3u_html-3.2;-lwx_baseu_net-3.2 (found version "3.2.2") 
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.9")  
+-- Found Magic: /usr/lib/x86_64-linux-gnu/libmagic.so  
+-- Looking for uuid/uuid.h
+-- Looking for uuid/uuid.h - found
+-- Looking for yk_init in ykpers-1
+-- Looking for yk_init in ykpers-1 - not found
+-- Yubikey support disabled
+CMake Warning at CMakeLists.txt:147 (message):
+  XML enabled but XercesC_INCLUDE_DIR unset - using default
+
+
+CMake Warning at CMakeLists.txt:151 (message):
+  XML enabled but XercesC_LIBRARY unset - using default
+
+
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /run/build/pwsafe/googletest-download
+[ 11%] Creating directories for 'googletest'
+[ 22%] Performing download step (git clone) for 'googletest'
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+-- Had to git clone more than once: 3 times.
+CMake Error at googletest-download/googletest-prefix/tmp/googletest-gitclone.cmake:39 (message):
+  Failed to clone repository: 'https://github.com/google/googletest.git'
+
+
+make[2]: *** [CMakeFiles/googletest.dir/build.make:99: googletest-prefix/src/googletest-stamp/googletest-download] Error 1
+make[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/googletest.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+CMake Error at CMakeLists.txt:240 (add_subdirectory):
+  add_subdirectory given source "/run/build/pwsafe/googletest-src" which is
+  not an existing directory.
+
+
+-- Found Git: /usr/bin/git (found version "2.41.0") 
+-- Updating version file (1.17.0 local).
+-- Configuring incomplete, errors occurred!
+Error: module pwsafe: Child process exited with code 1
+</code></pre>
+</details>
+<p>My current manifest file:</p>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+modules:
+
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  - name: pwsafe
+    buildsystem: cmake
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Aug 22, 2023 9:15 PM">
+            <time itemprop="datePublished" datetime="2023-08-22 21:15:48 +0000">Aug 22, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The module <code>pwsafe</code> is trying to download <code>googletest</code> during the build stage, of which it cant as internet access is disabled then.</p>
+<p>So you will either need to add a module similar to how you did for <code>wxwidgets</code> and <code>libqrencode</code>, or somehow disable testing during the build, to avoid needing <code>googletest</code> in the first place.</p>
+<p>If you go the path off adding <code>googletest</code> to the manifest, since its just a build dependency you should remember to clean it up afterwards.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Aug 23, 2023 7:41 AM">
+            <time itemprop="datePublished" datetime="2023-08-23 07:41:30 +0000">Aug 23, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span>, thanks. According to your advice I have now added <code>googletest</code> to my manifest:</p>
+<pre><code class="lang-auto">  - name: gtest
+    buildsystem: cmake
+    sources:
+       -  type: archive
+          url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+          sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+</code></pre>
+<p>but I am still getting the same error message:<br>
+<code>fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com</code></p>
+<details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+modules:
+
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  - name: gtest
+    buildsystem: cmake
+    sources:
+       -  type: archive
+          url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+          sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: pwsafe
+    buildsystem: cmake
+    build-commands:
+        git config --global --unset https.proxy
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<details>
+<summary>
+New flatpak-builder output</summary>
+<pre><code class="lang-auto">Emptying app dir 'build-dir'
+Downloading sources
+Starting build of com.github.pwsafe.pwsafe
+Cache hit for libqrencode, skipping build
+Cache hit for wxwidgets, skipping build
+Cache hit for gtest, skipping build
+Cache miss, checking out last cache hit
+========================================================================
+Building module pwsafe in /opt/flatpak/.flatpak-builder/build/pwsafe-5
+========================================================================
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Interprocedural optimization (LTO/LTCG) is enabled.
+-- Found UnixCommands: /usr/bin/bash  
+-- Performing Test HARDEN_COMPILE_WFORMAT
+-- Performing Test HARDEN_COMPILE_WFORMAT - Success
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY - Success
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY - Failed
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION - Success
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG - Success
+-- Performing Test HARDEN_LINK_Z_RELRO
+-- Performing Test HARDEN_LINK_Z_RELRO - Success
+-- Performing Test HARDEN_LINK_Z_NOW
+-- Performing Test HARDEN_LINK_Z_NOW - Success
+-- Looking for qrencode.h
+-- Looking for qrencode.h - found
+-- Found wxWidgets: -L/app/lib;-pthread;;;-lwx_gtk3u_aui-3.2;-lwx_baseu-3.2;-lwx_gtk3u_core-3.2;-lwx_gtk3u_html-3.2;-lwx_baseu_net-3.2 (found version "3.2.2") 
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.9")  
+-- Found Magic: /usr/lib/x86_64-linux-gnu/libmagic.so  
+-- Looking for uuid/uuid.h
+-- Looking for uuid/uuid.h - found
+-- Looking for yk_init in ykpers-1
+-- Looking for yk_init in ykpers-1 - not found
+-- Yubikey support disabled
+CMake Warning at CMakeLists.txt:147 (message):
+  XML enabled but XercesC_INCLUDE_DIR unset - using default
+
+
+CMake Warning at CMakeLists.txt:151 (message):
+  XML enabled but XercesC_LIBRARY unset - using default
+
+
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /run/build/pwsafe/googletest-download
+[ 11%] Creating directories for 'googletest'
+[ 22%] Performing download step (git clone) for 'googletest'
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+Cloning into 'googletest-src'...
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+-- Had to git clone more than once: 3 times.
+CMake Error at googletest-download/googletest-prefix/tmp/googletest-gitclone.cmake:39 (message):
+  Failed to clone repository: 'https://github.com/google/googletest.git'
+
+
+make[2]: *** [CMakeFiles/googletest.dir/build.make:99: googletest-prefix/src/googletest-stamp/googletest-download] Error 1
+make[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/googletest.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+CMake Error at CMakeLists.txt:240 (add_subdirectory):
+  add_subdirectory given source "/run/build/pwsafe/googletest-src" which is
+  not an existing directory.
+
+
+-- Found Git: /usr/bin/git (found version "2.41.0") 
+-- Updating version file (1.17.0 local).
+-- Configuring incomplete, errors occurred!
+Error: module pwsafe: Child process exited with code 1
+</code></pre>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Aug 23, 2023 1:55 PM">
+            <time itemprop="datePublished" datetime="2023-08-23 13:55:18 +0000">Aug 23, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span> I have figured out how to disable Google Test. Option can be made to cmake compiter like:</p>
+<pre><code class="lang-auto">    config-opts:
+      - -DNO_GTEST=ON
+</code></pre>
+<p>Now build gone pass google-test, but now I am falling into new issue, like another library missing. I have search github flatpak, but can’t find “libos” library in any other flatpak manifest. Error I get:</p>
+<pre><code class="lang-auto">[ 23%] Linking CXX static library libos.a
+[ 23%] Built target os
+make: *** [Makefile:166: all] Error 2
+</code></pre>
+<details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+modules:
+
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: pwsafe
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<details>
+<summary>
+New flatpak-builder output</summary>
+<pre><code class="lang-auto">Downloading sources
+Starting build of com.github.pwsafe.pwsafe
+Cache hit for libqrencode, skipping build
+Cache hit for wxwidgets, skipping build
+Cache miss, checking out last cache hit
+========================================================================
+Building module pwsafe in /opt/flatpak/.flatpak-builder/build/pwsafe-15
+========================================================================
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Interprocedural optimization (LTO/LTCG) is enabled.
+-- Found UnixCommands: /usr/bin/bash  
+-- Performing Test HARDEN_COMPILE_WFORMAT
+-- Performing Test HARDEN_COMPILE_WFORMAT - Success
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WFORMAT_SECURITY - Success
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY
+-- Performing Test HARDEN_COMPILE_WERROR_FORMAT_SECURITY - Failed
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION
+-- Performing Test HARDEN_COMPILE_STACK_CLASH_PROTECTION - Success
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_COMPILE_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK
+-- Performing Test HARDEN_LINK_SANITIZE_SAFE_STACK - Failed
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG
+-- Performing Test HARDEN_COMPILE_STACK_PROTECTOR_STRONG - Success
+-- Performing Test HARDEN_LINK_Z_RELRO
+-- Performing Test HARDEN_LINK_Z_RELRO - Success
+-- Performing Test HARDEN_LINK_Z_NOW
+-- Performing Test HARDEN_LINK_Z_NOW - Success
+-- Looking for qrencode.h
+-- Looking for qrencode.h - found
+-- Found wxWidgets: -L/app/lib;-pthread;;;-lwx_gtk3u_aui-3.2;-lwx_baseu-3.2;-lwx_gtk3u_core-3.2;-lwx_gtk3u_html-3.2;-lwx_baseu_net-3.2 (found version "3.2.2") 
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.9")  
+-- Found Magic: /usr/lib/x86_64-linux-gnu/libmagic.so  
+-- Looking for uuid/uuid.h
+-- Looking for uuid/uuid.h - found
+-- Yubikey support disabled
+CMake Warning at CMakeLists.txt:147 (message):
+  XML enabled but XercesC_INCLUDE_DIR unset - using default
+
+
+CMake Warning at CMakeLists.txt:151 (message):
+  XML enabled but XercesC_LIBRARY unset - using default
+
+
+-- Found Git: /usr/bin/git (found version "2.41.0") 
+-- Updating version file (1.17.0 local).
+-- Configuring done (2.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /run/build/pwsafe
+[  0%] Generating core_st.cpp, core_st.h
+[  1%] Generating helpEN.zip
+[  2%] Generating version.h, version.h.nosuchfile
+[  3%] Generating helpRU.zip
+[  3%] Generating mos/da/LC_MESSAGES/pwsafe.mo
+[  3%] Building CXX object src/os/CMakeFiles/os.dir/unix/KeySend.cpp.o
+[  4%] Generating pwsafe.1.gz
+mv: '/run/build/pwsafe/src/core/core_st.cpp' and '/run/build/pwsafe/src/core/core_st.cpp' are the same file
+make[2]: *** [src/core/CMakeFiles/core.dir/build.make:75: src/core/core_st.cpp] Error 1
+make[2]: *** Deleting file 'src/core/core_st.cpp'
+make[1]: *** [CMakeFiles/Makefile2:327: src/core/CMakeFiles/core.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[  4%] Generating helpDE.zip
+-- Updating version file (1.17.0 local).
+[  5%] Building CXX object src/os/CMakeFiles/os.dir/unix/UUID.cpp.o
+[  5%] Built target manpage
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_da.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_da.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_da.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_da.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_da.po:8: warning: header field 'Language' still has the initial default value
+[  6%] Generating mos/de/LC_MESSAGES/pwsafe.mo
+[  6%] Built target pws_version_intermediate
+[  6%] Generating mos/es/LC_MESSAGES/pwsafe.mo
+[  6%] Generating helpES.zip
+[  7%] Generating helpFR.zip
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_es.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_es.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_es.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_es.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_es.po:8: warning: header field 'Language' still has the initial default value
+[  7%] Generating helpPL.zip
+[  7%] Generating helpZH.zip
+[  8%] Generating mos/fr/LC_MESSAGES/pwsafe.mo
+[  9%] Building CXX object src/os/CMakeFiles/os.dir/unix/cleanup.cpp.o
+[  9%] Building CXX object src/os/CMakeFiles/os.dir/unix/debug.cpp.o
+[ 10%] Building CXX object src/os/CMakeFiles/os.dir/unix/dir.cpp.o
+[ 10%] Building CXX object src/os/CMakeFiles/os.dir/unix/env.cpp.o
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_fr.po:7: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_fr.po:7: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_fr.po:7: warning: header field 'Language' still has the initial default value
+[ 10%] Generating mos/hu/LC_MESSAGES/pwsafe.mo
+[ 10%] Built target helpfiles
+[ 11%] Generating mos/it/LC_MESSAGES/pwsafe.mo
+[ 11%] Generating mos/ko/LC_MESSAGES/pwsafe.mo
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_it.po:7: warning: header field 'Language-Team' still has the initial default value
+[ 12%] Generating mos/nl/LC_MESSAGES/pwsafe.mo
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_ko.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_ko.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_ko.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_ko.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_ko.po:8: warning: header field 'Language' still has the initial default value
+[ 12%] Generating mos/pl/LC_MESSAGES/pwsafe.mo
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_nl.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_nl.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_nl.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_nl.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_nl.po:8: warning: header field 'Language' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_pl.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_pl.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_pl.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_pl.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_pl.po:8: warning: header field 'Language' still has the initial default value
+[ 13%] Generating mos/ru/LC_MESSAGES/pwsafe.mo
+[ 13%] Generating mos/sv/LC_MESSAGES/pwsafe.mo
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_sv.po:7: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_sv.po:7: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_sv.po:7: warning: header field 'Language' still has the initial default value
+[ 14%] Generating mos/zh/LC_MESSAGES/pwsafe.mo
+[ 15%] Building CXX object src/os/CMakeFiles/os.dir/unix/file.cpp.o
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_zh.po:8: warning: header field 'Project-Id-Version' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_zh.po:8: warning: header field 'PO-Revision-Date' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_zh.po:8: warning: header field 'Last-Translator' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_zh.po:8: warning: header field 'Language-Team' still has the initial default value
+/run/build/pwsafe/src/ui/wxWidgets/I18N/pos/pwsafe_zh.po:8: warning: header field 'Language' still has the initial default value
+[ 15%] Built target mos
+[ 15%] Building CXX object src/os/CMakeFiles/os.dir/unix/keyname.cpp.o
+[ 17%] Building CXX object src/os/CMakeFiles/os.dir/unix/logit.cpp.o
+[ 17%] Building CXX object src/os/CMakeFiles/os.dir/unix/media.cpp.o
+[ 18%] Building CXX object src/os/CMakeFiles/os.dir/unix/mem.cpp.o
+[ 19%] Building CXX object src/os/CMakeFiles/os.dir/unix/pws_str.cpp.o
+[ 19%] Building CXX object src/os/CMakeFiles/os.dir/unix/pws_time.cpp.o
+[ 19%] Building CXX object src/os/CMakeFiles/os.dir/unix/rand.cpp.o
+[ 20%] Building CXX object src/os/CMakeFiles/os.dir/unix/registry.cpp.o
+[ 20%] Building CXX object src/os/CMakeFiles/os.dir/unix/run.cpp.o
+[ 21%] Building CXX object src/os/CMakeFiles/os.dir/unix/sleep.cpp.o
+[ 21%] Building CXX object src/os/CMakeFiles/os.dir/unix/unicode2keysym.cpp.o
+[ 22%] Building CXX object src/os/CMakeFiles/os.dir/unix/utf8conv.cpp.o
+[ 22%] Building CXX object src/os/CMakeFiles/os.dir/unix/xsendstring.cpp.o
+/run/build/pwsafe/src/os/unix/utf8conv.cpp: In constructor ‘Startup::Startup()’:
+/run/build/pwsafe/src/os/unix/utf8conv.cpp:36:19: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   36 |       (void) write(STDERR_FILENO, wrnmess, sizeof(wrnmess)/sizeof(*wrnmess)-1);
+      |              ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/run/build/pwsafe/src/os/unix/utf8conv.cpp:42:19: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   42 |       (void) write(STDERR_FILENO, errmess, sizeof(errmess)/sizeof(*errmess)-1);
+      |              ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/run/build/pwsafe/src/os/unix/utf8conv.cpp:47:19: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   47 |       (void) write(STDERR_FILENO, errmess, sizeof(errmess)/sizeof(*errmess)-1);
+      |              ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 23%] Linking CXX static library libos.a
+[ 23%] Built target os
+make: *** [Makefile:166: all] Error 2
+Error: module pwsafe: Child process exited with code 2
+</code></pre>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 24, 2023 1:53 PM">
+            <time itemprop="datePublished" datetime="2023-08-24 13:53:25 +0000">Aug 24, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Maybe there is something else a problem…<br>
+Error from previous post when building is:</p>
+<pre><code class="lang-auto">/run/build/pwsafe/src/os/unix/utf8conv.cpp:36:19: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   36 |       (void) write(STDERR_FILENO, wrnmess, sizeof(wrnmess)/sizeof(*wrnmess)-1);
+      |              ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/run/build/pwsafe/src/os/unix
+</code></pre>
+<p>I have now opened file /run/build/pwsafe/src/os/unix/utf8conv.cpp and checked the 36 line:</p>
+<pre><code class="lang-auto"> 33 // Couldn't get environment-specified locale, warn user
+ 34 // and punt to default "C"
+ 35 char wrnmess[] = "Couldn't load locale, falling back to default\n";
+ 36 (void) write(STDERR_FILENO, wrnmess, sizeof(wrnmess)/sizeof(*wrnmess)-1);
+ 37 sl = setlocale(LC_ALL, gl);
+</code></pre>
+<p>Above code looks like a environment variable “language” problem. I remember when compiling PasswordSafe in “distrobox/podman” using fedora:38 I was required to install language package:<br>
+<code>sudo dnf install langpacks-en.noarch</code></p>
+<p>Maybe I need to add something additionally related to language. Any idea?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Aug 25, 2023 8:09 AM">
+            <time itemprop="datePublished" datetime="2023-08-25 08:09:05 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So, the error we care about appears to be this:</p>
+<pre><code class="lang-auto">mv: '/run/build/pwsafe/src/core/core_st.cpp' and '/run/build/pwsafe/src/core/core_st.cpp' are the same file
+make[2]: *** [src/core/CMakeFiles/core.dir/build.make:75: src/core/core_st.cpp] Error 1
+make[2]: *** Deleting file 'src/core/core_st.cpp'
+make[1]: *** [CMakeFiles/Makefile2:327: src/core/CMakeFiles/core.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+</code></pre>
+<p>Which is apparently caused by the project expecting an ‘out-of-source’ build, see:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/pwsafe/pwsafe/issues/265">
+  <header class="source">
+
+      <a href="https://github.com/pwsafe/pwsafe/issues/265" target="_blank" rel="noopener nofollow ugc">github.com/pwsafe/pwsafe</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/pwsafe/pwsafe/issues/265" target="_blank" rel="noopener nofollow ugc">CMake build fails when doing an in-tree build</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2017-01-27" data-time="03:43:41" data-timezone="UTC">03:43AM - 27 Jan 17 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2018-01-28" data-time="08:15:12" data-timezone="UTC">08:15AM - 28 Jan 18 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/saintdev" target="_blank" rel="noopener nofollow ugc">
+          <img alt="saintdev" src="/uploads/original/2X/e/e835d29077181e325827e91c40d654301afbe592.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="D3EADD">
+          saintdev
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">`PROJECT_SOURCE_DIR` equals `CMAKE_CURRENT_BINARY_DIR` for in-tree builds. This <span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">means the mv at [src/core/CMakeLists.txt:91-92](https://github.com/pwsafe/pwsafe/blob/f0f1503bd962e6294b78e29fa5f5b76e5de051d0/src/core/CMakeLists.txt#L91) fails because it is attempting to move the file over itself.
+
+```
+pwsafe $ cmake -DNO_YUBI=ON .
+-- The CXX compiler identification is GNU 6.3.0
+-- The C compiler identification is GNU 6.3.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found GTest: /usr/lib64/libgtest.so  
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found wxWidgets: -L/usr/lib64;-pthread;;;-lwx_gtk2u_adv-3.0;-lwx_baseu-3.0;-lwx_gtk2u_core-3.0;-lwx_gtk2u_html-3.0;-lwx_baseu_net-3.0 (found version "3.0.2") 
+-- Looking for uuid/uuid.h
+-- Looking for uuid/uuid.h - found
+-- Yubikey support disabled
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/saintdev/Projects/pwsafe
+pwsafe $ make
+[  0%] Generating core_st.cpp, core_st.h
+mv: ‘/home/saintdev/Projects/pwsafe/src/core/core_st.cpp’ and ‘/home/saintdev/Projects/pwsafe/src/core/core_st.cpp’ are the same file
+make[2]: *** [src/core/CMakeFiles/core.dir/build.make:63: src/core/core_st.cpp] Error 1
+make[2]: *** Deleting file 'src/core/core_st.cpp'
+make[1]: *** [CMakeFiles/Makefile2:178: src/core/CMakeFiles/core.dir/all] Error 2
+make: *** [Makefile:161: all] Error 2
+```</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>We can add the <code>builddir</code> option, set to true, to the <code>pwsafe</code> module, to have it build in a seperate directory, which should solve it.</p>
+<aside class="quote no-group" data-username="liz134" data-post="7" data-topic="4950">
+<div class="title">
+<div class="quote-controls"></div>
+liz134:</div>
+<blockquote>
+<pre><code class="lang-auto">/run/build/pwsafe/src/os/unix/utf8conv.cpp:36:19: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   36 |       (void) write(STDERR_FILENO, wrnmess, sizeof(wrnmess)/sizeof(*wrnmess)-1);
+      |              ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/run/build/pwsafe/src/os/unix
+</code></pre>
+</blockquote>
+</aside>
+<p>This is just a warning for an unused result, not really an error, so it shouldnt affect whether the build fails.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Aug 25, 2023 9:41 AM">
+            <time itemprop="datePublished" datetime="2023-08-25 09:41:19 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span>, thank you for advice.</p>
+<p>I fixed problems:</p>
+<ul>
+<li>In manifest file I have added: <code>builddir: true</code>  to my main program as you adviced and problem solved.</li>
+<li>Then a new problem appeared and I tracked it down to include another library<br>
+<code>- name: Xerces-C</code> in manifest file and problem solved.</li>
+</ul>
+<hr>
+<p>New issue:</p>
+<ol>
+<li>Now I have rerun flatpak-builder with my new manifest file and there is no error in output.</li>
+</ol>
+<details>
+<summary>
+My new manifest file</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+modules:
+
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<details>
+<summary>
+Flatpak-builder output</summary>
+<pre><code class="lang-auto">Emptying app dir 'build-dir'
+Downloading sources
+Fetching git repo https://github.com/apache/xerces-c, ref refs/tags/v3.2.4
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 1 (delta 0), pack-reused 0
+Receiving objects: 100% (1/1), 826 bytes | 826.00 KiB/s, done.
+Starting build of com.github.pwsafe.pwsafe
+Cache hit for libqrencode, skipping build
+Cache hit for wxwidgets, skipping build
+Cache hit for Xerces-C, skipping build
+Cache hit for pwsafe, skipping build
+Cache hit for cleanup, skipping
+Cache hit for finish, skipping
+Everything cached, checking out from cache
+Pruning cache
+</code></pre>
+</details>
+<ol start="2">
+<li>I tested the build and no error were returned.<br>
+<code>flatpak-builder --user --install --force-clean build-dir com.github.pwsafe.pwsafe.yml</code>
+</li>
+</ol>
+<details>
+<summary>
+Test install output</summary>
+<pre><code class="lang-auto">Emptying app dir 'build-dir'
+Downloading sources
+Fetching git repo https://github.com/apache/xerces-c, ref refs/tags/v3.2.4
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 1 (delta 0), pack-reused 0
+Receiving objects: 100% (1/1), 826 bytes | 826.00 KiB/s, done.
+Starting build of com.github.pwsafe.pwsafe
+Cache hit for libqrencode, skipping build
+Cache hit for wxwidgets, skipping build
+Cache hit for Xerces-C, skipping build
+Cache hit for pwsafe, skipping build
+Cache hit for cleanup, skipping
+Cache hit for finish, skipping
+Everything cached, checking out from cache
+Exporting com.github.pwsafe.pwsafe to repo
+Commit: e1c7784fe139f4c08fcd1a9c8406ed042ea57daa5f9a75492002e5047787d036
+Metadata Total: 135
+Metadata Written: 7
+Content Total: 568
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Exporting com.github.pwsafe.pwsafe.Locale to repo
+Commit: edb310ecc387e1c75dd1026fb4a04a2b92fe47491de308fe96363fdc201c1250
+Metadata Total: 101
+Metadata Written: 2
+Content Total: 13
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Exporting com.github.pwsafe.pwsafe.Debug to repo
+Commit: 59f744ec3281546c3f8d2add76c5237d16c1385d3ee8baf32bebea8c83a054c0
+Metadata Total: 255
+Metadata Written: 2
+Content Total: 2936
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+Installing runtime/com.github.pwsafe.pwsafe.Locale/x86_64/master
+Installing app/com.github.pwsafe.pwsafe/x86_64/master
+Pruning cache
+</code></pre>
+</details>
+<ol start="3">
+<li>I run a flatpak: <code>flatpak run com.github.pwsafe.pwsafe</code><br>
+and got an error:<br>
+<code>Error: Unable to initialize GTK+, is DISPLAY set properly?</code>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Aug 25, 2023 10:25 AM">
+            <time itemprop="datePublished" datetime="2023-08-25 10:25:13 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You havent given the app any permissions yet, so in this case it can’t access your display server/wayland compositer.</p>
+<p>In this case adding a finish-args section like this:</p>
+<pre><code class="lang-auto">finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+</code></pre>
+<p>Will let the application open its ui.</p>
+<p>also be sure to have a look at these aswell:</p>
+<p><a href="https://docs.flatpak.org/en/latest/manifests.html#finishing" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/manifests.html#finishing</a><br>
+<a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/sandbox-permissions.html</a><br>
+<a href="https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Aug 25, 2023 11:52 AM">
+            <time itemprop="datePublished" datetime="2023-08-25 11:52:12 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span>, thank you.</p>
+<ol>
+<li>I added your advised permissions.</li>
+<li>I additionally added permission to access Documents home directory.</li>
+<li>Uninstalled flatpak, installed it again (to get permissions), and run flatpak.<br>
+FLATPAK STARTED THE APPLICATION SUCCESSFULLY!!!</li>
+<li>I tested application:<br>
+– From GUI I clicked on “New” to create new password manager database.<br>
+– Selected Documents location to store new database.<br>
+– Right click on blank space bellow icons and Add Entry.<br>
+– Typed in data: Title, Username, Password, Confirm fields and OK button<br>
+– Closed down application.<br>
+– Started it again and saved entry appears. Double click on entry. Paste to text editor.<br>
+– Password is successfully pasted.<br>
+– IT LOOKS AT LEAST BASIC FUNCTIONALITY WORKS FINE!!!</li>
+</ol>
+<p>Few thinks not working:</p>
+<ol>
+<li>When I start application and press Alt+Tab there is incorrect program’s icon. Icon appears as “setting” icon. How to add icon to flatpak?</li>
+<li>I can successfully start flatpak application from terminal. But I am so used to launch applications by pressing “Super” key and type in like a letter or two of program name and application icon should be displayed and just pressing Enter key should launch application.</li>
+<li>Related to previous point. When icon is displayed right mouse on icon should work so “Add to favorites” could be selected and icon added to the Linux launcher bar.</li>
+<li>When I start application and click on “New” button file chooser dialog is displayed with default path pointing to: <code>/home/"user"/.var/app/com.github.pwsafe.pwsafe/config/pwsafe</code> This is probably location user do not want to save there password database. Is it possible to set default to <code>/home/"user"/Documents</code>
+</li>
+</ol>
+<details>
+<summary>
+My new manifesto</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=xdg-documents
+modules:
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Aug 25, 2023 1:49 PM">
+            <time itemprop="datePublished" datetime="2023-08-25 13:49:52 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="liz134" data-post="11" data-topic="4950">
+<div class="title">
+<div class="quote-controls"></div>
+liz134:</div>
+<blockquote>
+<ul>
+<li>When I start application and press Alt+Tab there is incorrect program’s icon. Icon appears as “setting” icon. How to add icon to flatpak?</li>
+<li>I can successfully start flatpak application from terminal. But I am so used to launch applications by pressing “Super” key and type in like a letter or two of program name and application icon should be displayed and just pressing Enter key should launch application.</li>
+<li>Related to previous point. When icon is displayed right mouse on icon should work so “Add to favorites” could be selected and icon added to the Linux launcher bar.</li>
+</ul>
+</blockquote>
+</aside>
+<p>This is because we are not providing the necessary metadata, in this case we are missing a <code>.desktop</code> file and an icon.</p>
+<p>we can install them by defining some post-install commands using the <code>post-install</code> option similar to this example:</p><aside class="onebox githubblob" data-onebox-src="https://github.com/flathub/ws.openarena.OpenArena/blob/709be6f4437d2fd9376a408fd194622c3aac3240/ws.openarena.OpenArena.json#L109">
+  <header class="source">
+
+      <a href="https://github.com/flathub/ws.openarena.OpenArena/blob/709be6f4437d2fd9376a408fd194622c3aac3240/ws.openarena.OpenArena.json#L109" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/flathub/ws.openarena.OpenArena/blob/709be6f4437d2fd9376a408fd194622c3aac3240/ws.openarena.OpenArena.json#L109" target="_blank" rel="noopener nofollow ugc">flathub/ws.openarena.OpenArena/blob/709be6f4437d2fd9376a408fd194622c3aac3240/ws.openarena.OpenArena.json#L109</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-json">
+      <ol class="start lines" start="99" style="counter-reset: li-counter 98 ;">
+          <li>            },</li>
+          <li>            {</li>
+          <li>                "type": "file",</li>
+          <li>                "path": "ws.openarena.OpenArena.appdata.xml"</li>
+          <li>            },</li>
+          <li>            {</li>
+          <li>                "type": "file",</li>
+          <li>                "path": "ws.openarena.OpenArena.desktop"</li>
+          <li>            }</li>
+          <li>        ],</li>
+          <li class="selected">        "post-install": [</li>
+          <li>            "mkdir -p /app/share/appdata",</li>
+          <li>            "cp ws.openarena.OpenArena.appdata.xml /app/share/appdata",</li>
+          <li>            "mkdir -p /app/share/applications",</li>
+          <li>            "cp ws.openarena.OpenArena.desktop /app/share/applications",</li>
+          <li>            "mkdir -p /app/share/icons/hicolor/128x128/apps",</li>
+          <li>            "cp ws.openarena.OpenArena.png /app/share/icons/hicolor/128x128/apps",</li>
+          <li>            "mv /app/bin/openarena.* /app/bin/openarena"</li>
+          <li>        ]</li>
+          <li>    }</li>
+          <li>]</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<p>
+In this case we dont need to add the <code>icon</code> and <code>.desktop</code> files as sources as they are in the source archive already.</p>
+<p>The project is as far as i can see appdata, which will mean for the time being we’ll need to provide our own (until its pushed upstream it that is).</p>
+<p>There is some info on that aswell as some other requirements here:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/requirements/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener nofollow ugc">Requirements | Flathub Documentation</a></h3>
+
+  <p>The goal of these requirements is to ensure that the applications hosted on Flathub are safe to use</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+<p>
+and here:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/appdata-guidelines/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/appdata-guidelines/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/appdata-guidelines/" target="_blank" rel="noopener nofollow ugc">AppData guidelines | Flathub Documentation</a></h3>
+
+  <p>These are a set of guidelines for AppData that should be followed for submission on Flathub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Aug 25, 2023 1:53 PM">
+            <time itemprop="datePublished" datetime="2023-08-25 13:53:05 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="liz134" data-post="11" data-topic="4950">
+<div class="title">
+<div class="quote-controls"></div>
+liz134:</div>
+<blockquote>
+<pre><code class="lang-auto">finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=xdg-documents
+</code></pre>
+</blockquote>
+</aside>
+<p>I didnt add it to the example earlier but apparently you get a performance penalty on x11 if you dont add:</p>
+<pre><code class="lang-auto">--share=ipc
+</code></pre>
+<p>So you probably should.</p>
+<p>Its also freely allowed on flathub, as per:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/requirements/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/requirements/" target="_blank" rel="noopener nofollow ugc">Requirements | Flathub Documentation</a></h3>
+
+  <p>The goal of these requirements is to ensure that the applications hosted on Flathub are safe to use</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Aug 25, 2023 3:07 PM">
+            <time itemprop="datePublished" datetime="2023-08-25 15:07:22 +0000">Aug 25, 2023</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span></p>
+<ol>
+<li>I have added permission for <code>--share=ipc</code> as you advised.</li>
+<li>I have added post install tasks. But my icon is still not displayed if I press Super key and type in pwsafe.</li>
+</ol>
+<pre><code class="lang-auto">    post-install:
+      mkdir -p /app/share/applications
+      cp install/desktop/pwsafe.desktop /app/share/applications
+      mkdir -p /app/share/icons/hicolor/128x128/apps
+      cp install/graphics/pwsafe.png /app/share/icons/hicolor/128x128/apps
+</code></pre>
+<p>Did I specify correct paths in post-install?</p>
+<details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+  - --filesystem=xdg-documents
+modules:
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+
+    post-install:
+    #  - install -Dm644 install/desktop/pwsafe.desktop /app/share/applications/pwsafe.desktop
+    #  - install -Dm644 install/graphics/pwsafe.png /app/share/icons/hicolor/128x128/apps/pwsafe.png
+      mkdir -p /app/share/applications
+      cp install/desktop/pwsafe.desktop /app/share/applications
+      mkdir -p /app/share/icons/hicolor/128x128/apps
+      cp install/graphics/pwsafe.png /app/share/icons/hicolor/128x128/apps
+</code></pre>
+</details>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Aug 26, 2023 4:49 AM">
+            <time itemprop="datePublished" datetime="2023-08-26 04:49:03 +0000">Aug 26, 2023</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, so i had another look and as it turns out they do actually install both the .desktop file and the icon during the build.</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/pwsafe/pwsafe/blob/master/CMakeLists.txt#L349">
+  <header class="source">
+
+      <a href="https://github.com/pwsafe/pwsafe/blob/master/CMakeLists.txt#L349" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/pwsafe/pwsafe/blob/master/CMakeLists.txt#L349" target="_blank" rel="noopener nofollow ugc">pwsafe/pwsafe/blob/master/CMakeLists.txt#L349</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-txt">
+      <ol class="start lines" start="339" style="counter-reset: li-counter 338 ;">
+          <li>
+          </li>
+<li>target_link_libraries(pwsafe harden_interface)</li>
+          <li>
+          </li>
+<li>if (NOT WIN32)</li>
+          <li>  install (DIRECTORY xml DESTINATION "share/passwordsafe")</li>
+          <li>  ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_BINARY_DIR}/pwsafe.1.gz</li>
+          <li>                     COMMAND ${GZIP} ARGS -9 -n -c ${PROJECT_SOURCE_DIR}/docs/pwsafe.1 &gt; pwsafe.1.gz</li>
+          <li>                     WORKING_DIRECTORY ${CMAKE_BINARY_DIR})</li>
+          <li>  ADD_CUSTOM_TARGET(manpage ALL DEPENDS ${CMAKE_BINARY_DIR}/pwsafe.1.gz)</li>
+          <li>  install (FILES ${CMAKE_BINARY_DIR}/pwsafe.1.gz DESTINATION "share/man/man1") </li>
+          <li class="selected">  install (FILES "install/desktop/pwsafe.desktop" DESTINATION "share/applications")</li>
+          <li>  install (FILES "install/graphics/pwsafe.png" DESTINATION "share/icons/hicolor/48x48/apps/")</li>
+          <li>  install (DIRECTORY "${CMAKE_BINARY_DIR}/src/ui/wxWidgets/I18N/mos/"</li>
+          <li>           DESTINATION "share/locale")</li>
+          <li>
+          </li>
+<li>  install (DIRECTORY ${PROJECT_BINARY_DIR}/help/</li>
+          <li>           DESTINATION "share/passwordsafe/help"</li>
+          <li>           FILES_MATCHING PATTERN "*.zip"</li>
+          <li>           PATTERN "CMakeFiles" EXCLUDE)</li>
+          <li>
+          </li>
+<li>else ()</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Meaning we dont need to. However the files need to be named after the app-id of the application, to be properly exported by flatpak.</p>
+<p><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest</a></p>
+<p>Luckily, this page lists a few manifest options that should help.  Namely <code>rename-desktop-file</code> and <code>rename-icon</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Aug 26, 2023 9:31 AM">
+            <time itemprop="datePublished" datetime="2023-08-26 09:31:30 +0000">Aug 26, 2023</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span>, thanks for help.</p>
+<p>I added <code>rename-desktop-file</code> and <code>rename-icon</code> to manifest file and now when pressing Super key and type in passwordsave (or less letters) program’s icon is displayed and I can launch the program. I can also add the icon to Linux lauchpad and also Alt+Tab show the icon. Excellent problem solved.</p>
+<details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+rename-icon: pwsafe
+rename-desktop-file: pwsafe.desktop
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+  - --filesystem=xdg-documents
+modules:
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<p>Now I have uninstalled flatpack application and removed the <code>$HOME/.var/app/com.github.pwsafe.pwsafe</code> directory. Rebuild application and now error appeared: <em>Could not initialize help subsystem. Help will not be available.</em> with<br>
+checkbox <em>Don’t show this warning again</em>. I remember I have checked this box before and confirmed with <em>OK</em> button and application GUI starts successfully. On another start it does not ask this question anymore, but inside application menu selection Help | Help does not work, no error is displayed.</p>
+<p>I have found exactly the same error message on project bug tracker and it looks like related to environment variable: XXXhttps://github.com/pwsafe/pwsafe/issues/720</p>
+<p>Few weeks ago I installed password safe inside distrobox/podman on Fedora Silverblue and I remember I was required to install <code>sudo dnf --assumeyes install langpacks-en.noarch</code></p>
+<p>Now I have searched for this “package” or “library” in github, but can’t figure it out if this is environment variable problem or some missing package/library.</p>
+<p>Any idea?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Aug 26, 2023 7:06 PM">
+            <time itemprop="datePublished" datetime="2023-08-26 19:06:12 +0000">Aug 26, 2023</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>By searching for the error message in the project, and backtracking through the code, I managed to trace the issue back to this function:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/pwsafe/pwsafe/blob/master/src/os/unix/dir.cpp#L215">
+  <header class="source">
+
+      <a href="https://github.com/pwsafe/pwsafe/blob/master/src/os/unix/dir.cpp#L215" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/pwsafe/pwsafe/blob/master/src/os/unix/dir.cpp#L215" target="_blank" rel="noopener nofollow ugc">pwsafe/pwsafe/blob/master/src/os/unix/dir.cpp#L215</a></h4>
+
+
+
+    <pre class="onebox"><code class="lang-cpp">
+      <ol class="start lines" start="205" style="counter-reset: li-counter 204 ;">
+          <li>
+          </li>
+<li>stringT pws_os::getxmldir(void)</li>
+          <li>{</li>
+          <li>#ifdef __FreeBSD__</li>
+          <li>  return _T("/usr/local/share/pwsafe/xml/");</li>
+          <li>#else</li>
+          <li>  return _T("/usr/share/passwordsafe/xml/");</li>
+          <li>#endif</li>
+          <li>}</li>
+          <li>
+          </li>
+<li class="selected">stringT pws_os::gethelpdir(void)</li>
+          <li>{</li>
+          <li>  stringT helpdir = pws_os::getenv("PWS_HELPDIR", true);</li>
+          <li>  if (helpdir.empty()) {</li>
+          <li>#if defined( __FreeBSD__) || defined(__OpenBSD)</li>
+          <li>    helpdir = _T("/usr/local/share/doc/passwordsafe/help/");</li>
+          <li>#else</li>
+          <li>    helpdir = _T("/usr/share/passwordsafe/help/");</li>
+          <li>#endif</li>
+          <li>  }</li>
+          <li>  return helpdir;</li>
+      </ol>
+    </code></pre>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>The helpfiles in the flatpak build get installed in <code>/app/share/passwordsafe/help/</code>, rather than in <code>/user/share</code>. This means we’ll need to set <code>PWS_HELPDIR</code> to our location and it should work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Aug 27, 2023 3:27 PM">
+            <time itemprop="datePublished" datetime="2023-08-27 15:27:16 +0000">Aug 27, 2023</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><span class="mention">@HighKingofMelons</span>, inside <code>finish-args</code> I have added <code>  - --env=PWS_HELPDIR=/app/share/passwordsafe/help/</code> and now flatpak application starts without error referencing to help. When I select menu option Help | Help and help is correctly displayed. Thanks a lot. Problem solved.</p>
+<details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+rename-icon: pwsafe
+rename-desktop-file: pwsafe.desktop
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+  - --filesystem=xdg-documents
+  - --env=PWS_HELPDIR=/app/share/passwordsafe/help/
+modules:
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_YUBI=ON
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<p>Reading documentation I have seen at the end of process “cleansing” processes is recommended, to make flatpak package as small as possible.</p>
+<p>I checked the size of installed flatpak: <code>flatpak run --command=sh --devel</code> and it outputs 49 MB. It is relatively small program.</p>
+<p>I entered into inside of flaptak package with: <code>flatpak run --command=sh --devel com.github.pwsafe.pwsafe</code> and list all of directories and files in it with <code>ls / -R &gt; out.txt</code></p>
+<p>List of all directories and files. Click on bellow link and click on “Download”. Untar the file and there is out.txt file in it with whole dir/file structure.</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://ufile.io/0tq8bxtr">
+  <header class="source">
+      <img src="/uploads/original/2X/3/3d4686c8d6d74942d1b76dc1599fb807339f1b3f.png" class="site-icon" width="96" height="96">
+
+      <a href="https://ufile.io/0tq8bxtr" target="_blank" rel="noopener nofollow ugc">ufile.io</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/362;"><img src="/uploads/optimized/2X/d/d8bb5a00e66fe7285dec27331a6d6b91963b7251_2_690x362.jpeg" class="thumbnail" width="690" height="362" srcset="/uploads/optimized/2X/d/d8bb5a00e66fe7285dec27331a6d6b91963b7251_2_690x362.jpeg, /uploads/optimized/2X/d/d8bb5a00e66fe7285dec27331a6d6b91963b7251_2_1035x543.jpeg 1.5x, /uploads/original/2X/d/d8bb5a00e66fe7285dec27331a6d6b91963b7251.jpeg 2x" data-dominant-color="F8F9FA"></div>
+
+<h3><a href="https://ufile.io/0tq8bxtr" target="_blank" rel="noopener nofollow ugc">Upload files for free - output.tar.xz - ufile.io</a></h3>
+
+  <p>Download output.tar.xz for free from ufile.io instantly, no signup required and no popup ads</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Aug 29, 2023 5:31 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 17:31:31 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <details>
+<summary>
+My new manifest</summary>
+<pre><code class="lang-auto">app-id: com.github.pwsafe.pwsafe
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: pwsafe
+rename-icon: pwsafe
+rename-desktop-file: pwsafe.desktop
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
+  - --filesystem=xdg-documents
+  - --env=PWS_HELPDIR=/app/share/passwordsafe/help/
+  # YubiKey USB access
+  - --device=all
+cleanup-commands:
+  # Delete unnecessary files after build 
+  - rm -rf /app/share/doc/xerces-c/
+  - rm -rf /app/include/xercesc/dom/*.hpp
+  - rm -rf /app/include/xercesc/dom/impl/*.hpp
+  - rm -rf /app/include/xercesc/framework/*.hpp
+  - rm -rf /app/include/xercesc/framework/psvi/*.hpp
+  - rm -rf /app/include/xercesc/internal/*.hpp
+  - rm -rf /app/include/xercesc/parsers/*.hpp
+  - rm -rf /app/include/xercesc/sax/*.hpp
+  - rm -rf /app/include/xercesc/sax2/*.hpp
+  - rm -rf /app/include/xercesc/util/*.hpp
+  - rm -rf /app/include/xercesc/util/FileManagers/*.hpp
+  - rm -rf /app/include/xercesc/util/MsgLoaders/*.hpp
+  - rm -rf /app/include/xercesc/util/MsgLoaders/InMemory/*.hpp
+  - rm -rf /app/include/xercesc/util/MutexManagers/*.hpp
+  - rm -rf /app/include/xercesc/util/NetAccessors/Curl/*.hpp
+  - rm -rf /app/include/xercesc/util/Transcoders/ICU/*.hpp
+  - rm -rf /app/include/xercesc/util/regx/*.hpp
+  - rm -rf /app/include/xercesc/validators/DTD/*.hpp
+  - rm -rf /app/include/xercesc/validators/common/*.hpp
+  - rm -rf /app/include/xercesc/validators/datatype/*.hpp
+  - rm -rf /app/include/xercesc/validators/datatype/*.hpp
+  - rm -rf /app/include/xercesc/validators/schema/*.hpp
+  - rm -rf /app/include/xercesc/validators/schema/identity/*.hpp
+  - rm -rf /app/include/xercesc/xinclude/*.hpp
+  - rm -rf /app/include/qrencode.h
+  - rm -rf /app/include/xercesc/dom/impl/*.c
+  - rm -rf /app/include/xercesc/framework/psvi/*.c
+  - rm -rf /app/include/xercesc/util/*.c
+  - rm -rf /app/lib/cmake/XercesC/*.cmake
+
+modules:
+  - name: libqrencode
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/fukuchi/libqrencode/archive/refs/tags/v4.1.1.tar.gz
+        sha256: 5385bc1b8c2f20f3b91d258bf8ccc8cf62023935df2d2676b5b67049f31a049c
+
+  - name: wxwidgets
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/wx
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+        sha256: dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2
+
+  ### Google tests
+  #- name: gtest
+  #  buildsystem: cmake
+  #  sources:
+  #     -  type: archive
+  #        url: https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
+  #        sha256: ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363
+  ### Google tests
+
+  - name: Xerces-C
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/apache/xerces-c
+        tag: v3.2.4
+        commit: 5052c90b067dcc347d58822b450897d16e2c31e5
+
+  - name: pwsafe
+    builddir: true
+    buildsystem: cmake
+    config-opts:
+      - -DNO_GTEST=ON
+      - -DGTEST_BUILD=OFF
+    sources:
+      - type: archive
+        url: 'https://github.com/pwsafe/pwsafe/archive/refs/tags/1.17.0.tar.gz'
+        sha256: 0890bb4163d596f12578dc82a378f01fcaa8077e7653db321ee4adb11ad20744
+</code></pre>
+</details>
+<p>I have manage to:</p>
+<ol>
+<li>Do some cleansing of unnecessary files (“cleanup-command” section in manifest file). It reduced flatpak package size from 49,2 MB to  44,6 MB which is 5 MB. Better something then nothing. <img src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20">
+</li>
+<li>I have added <em>YubiKey</em> support that I have temporally disabled before, to simplify the process.</li>
+</ol>
+<p>I am very satisfied with the current state of PasswordSafe flatpak package. I did some basic testing and so far no issue at all.</p>
+<p>Future next few days plan?<br>
+a) I need to perform in deep testing of flatpak package. I will probably need few days.<br>
+b) Then I will most probably need some help to go through publishing package in Flathub. Any hint at pointing me to some good source?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mikkel Hansen</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Aug 29, 2023 7:06 PM">
+            <time itemprop="datePublished" datetime="2023-08-29 19:06:02 +0000">Aug 29, 2023</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The whole <code>for-app-authors</code> section here:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/category/for-app-authors/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/category/for-app-authors/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png" class="thumbnail" width="690" height="459" srcset="/uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_690x459.png, /uploads/optimized/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241_2_1035x688.png 1.5x, /uploads/original/2X/a/a272dc5cb1e3a4cf2a7b0e4c0596d4cc5edaa241.png 2x" data-dominant-color="3C8BE5"></div>
+
+<h3><a href="https://docs.flathub.org/docs/category/for-app-authors/" target="_blank" rel="noopener nofollow ugc">Section overview | Flathub Documentation</a></h3>
+
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Is pretty good to go through, probably especially the <code>Requirements</code> and <code>Submission</code> sections.</p>
+<p>Otherwise you can also ask questions on matrix:</p><aside class="onebox allowlistedgeneric" data-onebox-src="https://matrix.to/#/%23flathub:matrix.org">
+  <header class="source">
+
+      <a href="https://matrix.to/#/%23flathub:matrix.org" target="_blank" rel="noopener nofollow ugc">matrix.to</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/345;"><img src="/uploads/original/2X/6/6774212efcac9b86b31540bc4cd7e9286f73f62f.png" class="thumbnail" width="690" height="345" data-dominant-color="DDDDDD"></div>
+
+<h3><a href="https://matrix.to/#/%23flathub:matrix.org" target="_blank" rel="noopener nofollow ugc">You're invited to talk on Matrix</a></h3>
+
+  <p>You're invited to talk on Matrix. If you don't already have a client this link will help you pick one, and join the conversation. If you already have one, this link will help you join the conversation</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/how-to-include-libraries-into-my-first-ever-flatpak/4950/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

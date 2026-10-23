@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introducing flutpak - automating Flathub submission for Flutter apps - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Introducing flutpak - automating Flathub submission for Flutter apps</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Introducing flutpak - automating Flathub submission for Flutter apps</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jun 2, 2026</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmytro Yaroshenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jun 2, 2026 2:36 PM">
+            <time itemprop="datePublished" datetime="2026-06-02 14:36:03 +0000">Jun 2, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h1><a name="p-22588-introducing-flutpak-automating-flathub-submission-for-flutter-apps-1" class="anchor" href="#p-22588-introducing-flutpak-automating-flathub-submission-for-flutter-apps-1" aria-label="Heading link"></a>Introducing flutpak - automating Flathub submission for Flutter apps</h1>
+<p><strong>Repo:</strong> <a href="https://github.com/o-murphy/flutpak" class="inline-onebox" rel="noopener nofollow ugc">GitHub - o-murphy/flutpak: Automates Flatpak packaging and offline builds for Flutter apps from pubspec.yaml. · GitHub</a><br>
+<strong>Version:</strong> 0.4.0-rc.2 (pre-1.0, breaking changes expected until stable)</p>
+<hr>
+<h2><a name="p-22588-the-problem-2" class="anchor" href="#p-22588-the-problem-2" aria-label="Heading link"></a>The problem</h2>
+<p>Flathub requires every source to be declared upfront with a SHA-256 checksum -<br>
+no network access at build time. For a typical Flutter project that means:</p>
+<ul>
+<li>Every pub.dev dependency needs <strong>two</strong> source entries in<br>
+<code>generated-sources.json</code>: an archive download and an inline hash file that<br>
+<code>pub get --offline</code> looks for separately. Miss the hash file and the build<br>
+fails even if the archive is present.</li>
+<li>The Flutter SDK brings its own set of artifacts - engine binaries, Dart SDK,<br>
+material fonts, Gradle wrapper - each with architecture-specific variants for<br>
+x86_64 and aarch64, all requiring correct checksums at a specific engine<br>
+revision.</li>
+<li>Packages like <code>objectbox_flutter_libs</code> require patch sources whose <code>dest:</code><br>
+path embeds the exact package version<br>
+(<code>.pub-cache/hosted/pub.dev/objectbox_flutter_libs-5.3.1</code>). Update the<br>
+package and that path silently goes stale, producing a manifest that passes<br>
+linting but breaks at build time.</li>
+<li>The Flutter SDK bootstrap script (<code>shared.sh</code>) calls <code>pub upgrade</code>, which<br>
+requires network. It needs to be patched to <code>pub get --offline</code> for every<br>
+Flatpak build, every Flutter version.</li>
+<li>None of the existing generator tooling (flatpak-pip-generator and its<br>
+siblings) understands the Dart/Flutter ecosystem.</li>
+</ul>
+<p>Doing all of this by hand for a non-trivial app means tracking hundreds of<br>
+source entries, re-verifying checksums on every dependency bump, and<br>
+re-hunting Flutter artifact URLs on every Flutter release. This is the main<br>
+reason Flutter apps are underrepresented on Flathub - not lack of interest, but<br>
+the sheer amount of manual work required just to get to the point where you can<br>
+open a submission PR.</p>
+<hr>
+<h2><a name="p-22588-what-flutpak-targets-3" class="anchor" href="#p-22588-what-flutpak-targets-3" aria-label="Heading link"></a>What flutpak targets</h2>
+<p>flutpak is not a general Flatpak build tool. It is specifically aimed at<br>
+producing the output that a Flathub submission expects:</p>
+<ul>
+<li>A <code>generated-sources.json</code> in the format Flathub reviewers are familiar with</li>
+<li>A manifest that passes <code>flatpak-builder-lint --exceptions</code> without manual<br>
+tweaks</li>
+<li>A <code>flathub.json</code> with correct submission metadata</li>
+<li>Metainfo and desktop entry validation via <code>appstreamcli</code> as part of the<br>
+generate step</li>
+<li>GitHub Actions that mirror the <code>flathub-build</code> pipeline used in Flathub CI,<br>
+so what passes locally also passes in review</li>
+</ul>
+<p>The goal is to reduce the gap between “my app builds with Flutter” and “my app<br>
+is published on Flathub” to a config file and two commands.</p>
+<hr>
+<h2><a name="p-22588-where-flutpak-started-4" class="anchor" href="#p-22588-where-flutpak-started-4" aria-label="Heading link"></a>Where flutpak started</h2>
+<p>The first version (<code>0.1.0</code>, May 2026) was a single <code>prepare</code> command that<br>
+generated <code>generated-sources.json</code> from a lock file and patched a manifest<br>
+using <code>__FLATPAK_TAG__</code> / <code>__FLATPAK_COMMIT__</code> placeholder strings. It also<br>
+generated metainfo XML and <code>.desktop</code> files from config, and had <code>lint</code>,<br>
+<code>validate</code>, and <code>export</code> wrapper commands around the official Flatpak toolchain.</p>
+<p>It worked for one app. It was also immediately clear what was wrong with it:</p>
+<ul>
+<li>The metainfo and desktop file generators were fragile and duplicated what<br>
+<code>appstreamcli</code> and the Flathub submission process already validate. Removed<br>
+in <code>0.2.8</code>.</li>
+<li>The <code>lint</code> and <code>validate</code> wrappers around official tools added complexity<br>
+without value. Removed in <code>0.2.5</code>-<code>0.2.6</code>.</li>
+<li>Patch sources were baked into <code>generated-sources.json</code> at <code>init</code> time. The<br>
+<code>dest:</code> path included the package version, so any version bump silently<br>
+produced a broken manifest. Fixed in <code>0.4.0-beta.2</code> by moving patch injection<br>
+to <code>generate</code> time, where the current <code>pubspec.lock</code> is always available.</li>
+<li>The manifest template carried <code>__FLATPAK_TAG__</code> and <code>__FLATPAK_COMMIT__</code><br>
+strings that <code>generate</code> replaced with <code>sed</code>. Any YAML structural change near<br>
+those strings risked breaking substitution. Replaced in <code>0.4.0-rc.1</code> with<br>
+direct <code>yaml_edit</code> injection into the correct YAML node - no strings to<br>
+maintain, no fragile text replacement.</li>
+<li>Config keys were inconsistently cased (<code>app_id</code>, <code>runtime_version</code>, etc.)<br>
+and mixed flutpak-specific fields with Flatpak manifest fields in the same<br>
+section. Cleaned up in <code>0.4.0-rc.1</code>: all keys are now kebab-case, and<br>
+flutpak-specific fields (<code>repo-url</code>, <code>metainfo-path</code>, <code>icons</code>) live at the<br>
+root level rather than inside <code>manifest:</code>.</li>
+</ul>
+<p>The general direction has been: remove everything that duplicates official<br>
+tooling, automate everything that is mechanical and error-prone, and keep<br>
+the config minimal.</p>
+<hr>
+<h2><a name="p-22588-what-it-looks-like-now-5" class="anchor" href="#p-22588-what-it-looks-like-now-5" aria-label="Heading link"></a>What it looks like now</h2>
+<p>Two commands cover the full workflow:</p>
+<p><strong><code>flutpak init</code></strong> - run once. Generates the editable template manifest, a<br>
+Flutter wrapper shell script, <code>flathub.json</code>, and <code>.gitignore</code>. Validates that<br>
+your metainfo, desktop entry, and icon files exist before writing anything.</p>
+<p><strong><code>flutpak generate --tag vX.Y.Z</code></strong> - run on every CI build. Reads the<br>
+committed template, writes <code>tag:</code> and <code>commit:</code> directly into the git source<br>
+block via <code>yaml_edit</code>, generates <code>generated-sources.json</code>, and copies<br>
+everything to <code>flatpak/generated/</code> ready for <code>flatpak-builder</code>.</p>
+<p>The minimum config to get started:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml"># flutpak.yaml
+flutter:
+  sdk: $FLUTTER_ROOT
+manifest:
+  app-id: io.github.YourOrg.YourApp
+</code></pre>
+<p>Everything else - command name, repo URL, flutter version file path, sandbox<br>
+permissions - is either auto-detected or written into the template on <code>init</code><br>
+with sensible defaults. You edit the template directly; <code>flutpak</code> never<br>
+overwrites it.</p>
+<p>The <code>known-patches/</code> directory ships reference patch files and companion<br>
+Flatpak module files for packages that commonly need offline build<br>
+modifications. For example, <code>objectbox_flutter_libs</code> needs a CMakeLists.txt<br>
+patch to use a prebuilt library instead of fetching it at build time. Copying<br>
+the relevant files and adding two lines to config is enough - <code>generate</code> handles<br>
+the rest, including the version-stamped <code>dest:</code> path and stripping CRLF line<br>
+endings if the upstream archive has them.</p>
+<p>GitHub Actions composite actions are provided for CI, mirroring the Flathub<br>
+build pipeline:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">- uses: o-murphy/flutpak/.github/actions/generate@v0.4.0-rc.2
+  with:
+    tag: ${{ github.ref_name }}
+    metainfo-path: app/share/metainfo/&lt;app-id&gt;.metainfo.xml
+- uses: o-murphy/flutpak/.github/actions/build-flatpak@v0.4.0-rc.2
+  with:
+    manifest: flatpak/generated/&lt;app-id&gt;.yml
+    app-id: io.github.YourOrg.YourApp
+</code></pre>
+<hr>
+<h2><a name="p-22588-dogfooding-6" class="anchor" href="#p-22588-dogfooding-6" aria-label="Heading link"></a>Dogfooding</h2>
+<p>I am using <code>flutpak</code> to package <a href="https://github.com/o-murphy/ebalistyka" rel="noopener nofollow ugc">ebalistyka</a><br>
+for Flathub. The tool exists because I needed it and nothing else filled this<br>
+gap. That submission is still in progress - which is exactly why the API is not<br>
+stable yet. Working through a real Flathub submission is what surfaces the<br>
+remaining rough edges.</p>
+<hr>
+<h2><a name="p-22588-where-community-help-matters-most-7" class="anchor" href="#p-22588-where-community-help-matters-most-7" aria-label="Heading link"></a>Where community help matters most</h2>
+<p><strong><code>known-patches/</code></strong> is where the most useful community contributions can land.<br>
+If you use a Flutter package that requires a patch source - pre-built native<br>
+libraries, CMake modifications, anything that needs a <code>type: patch</code> or<br>
+<code>type: shell</code> source in the manifest - contributing a patch file and companion<br>
+module there makes it work automatically for everyone using that package.</p>
+<p>Beyond patches:</p>
+<ul>
+<li>Bug reports and edge cases from real apps are the most valuable feedback at<br>
+this stage</li>
+<li>Feedback on the manifest structure that <code>flutpak init</code> generates</li>
+<li>Packages that require source handling not yet covered</li>
+</ul>
+<p>Issue tracker: <a href="https://github.com/o-murphy/flutpak/issues" class="inline-onebox" rel="noopener nofollow ugc">Issues · o-murphy/flutpak · GitHub</a></p>
+<hr>
+<p>*Pre-1.0 means breaking changes are possible between minor versions. The<br>
+changelog documents them. If you are packaging a Flutter app for Flathub - or<br>
+have been putting it off because the source generation work seemed too painful</p>
+<ul>
+<li>this is worth a look.*</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 3, 2026 2:55 PM">
+            <time itemprop="datePublished" datetime="2026-06-03 14:55:47 +0000">Jun 3, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There is a <a href="https://github.com/TheAppgineer/flatpak-flutter">flatpak-flutter</a> project already which a bunch of Flutter apps on Flathub are successfully using. I suggest collaborating with them in this effort.</p>
+<p>I would normally highlight community projects in the readme here <a href="https://github.com/flatpak/flatpak-builder-tools#flutter" class="inline-onebox">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder · GitHub</a> once there are some submissions or apps use it, but looking at your repo it is made using Claude which means I have to review it fully…</p>
+<p>Anyway, if you want it to be added to the readme there feel free to open a PR with some examples of which apps are using it, then we can consider what to do there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmytro Yaroshenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jun 3, 2026 3:13 PM">
+            <time itemprop="datePublished" datetime="2026-06-03 15:13:07 +0000">Jun 3, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t mind, I did take theirs project as a reference, but I left them an issue about this, unfortunately they don’t respond to issues and the project is poorly maintaining.</p>
+<p>Also their solution is different. Mine doesn’t require anything but dart, simplifies preparing submission assets to a few lines in pubspec.yaml. more focused on the flutter ecosystem, supports pub package patches, and native modules. Generates all on the fly and ready for CI.</p>
+<p>I propose you too visit the repo and compare approaches. Will happy to see ya.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmytro Yaroshenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jun 4, 2026 11:37 PM">
+            <time itemprop="datePublished" datetime="2026-06-04 23:37:35 +0000">Jun 4, 2026</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p><strong>Update:</strong> <code>flutpak</code> just passed Flathub CI on the first try (Proof of Concept)</p>
+</blockquote>
+<p>Hey everyone! Quick update on <code>flutpak</code> (the tool automating Flathub submissions for Flutter apps).</p>
+<p>Two days ago, I shared the tool while my own app’s submission (<code>io.github.o_murphy.ebalistyka</code>) was still in progress. Today, I’m thrilled to report that <strong>the Flathub test build has successfully passed on the very first attempt!</strong></p>
+<p><strong>Build succeeded for both <code>x86_64</code> and <code>aarch64</code>.</strong></p>
+<h3><a name="p-22612-whats-under-the-hood-1" class="anchor" href="#p-22612-whats-under-the-hood-1" aria-label="Heading link"></a>What’s under the hood?</h3>
+<p>The application is now built properly from source, except for <code>objectbox-c</code> dependency which is distributed only as pre-compiled binaries under the Apache License.</p>
+<p>Key improvements in the manifest:</p>
+<ul>
+<li><code>.desktop</code>, <code>.metainfo.xml</code>, and icon files have been moved upstream to the main repository (no longer committed directly to the Flathub repo)</li>
+<li>Screenshots in the metainfo file now point to an immutable release tag instead of the main branch tip</li>
+<li>Updated runtime to <code>25.08</code> with adjusted permissions</li>
+</ul>
+<h3><a name="p-22612-why-is-this-a-big-deal-2" class="anchor" href="#p-22612-why-is-this-a-big-deal-2" aria-label="Heading link"></a>Why is this a big deal?</h3>
+<ul>
+<li><strong>Zero manual manifest tweaks:</strong> The entire <code>generated-sources.json</code> (with hundreds of lines of pub.dev dependencies) and the manifest were generated entirely by <code>flutpak generate</code>.</li>
+<li><strong>Handled complex native dependencies:</strong> The <code>known-patches/</code> system worked flawlessly. It successfully injected the offline patch for <code>objectbox_flutter_libs</code>, mapping the correct version-stamped paths without breaking the strict offline network restriction of the Flathub compiler.</li>
+</ul>
+<p>The PR is now clean, passes all linters, and is currently awaiting final human review.</p>
+<p><strong>Pull Request:</strong> <a href="https://github.com/flathub/flathub/pull/8889" rel="noopener nofollow ugc">https://github.com/flathub/flathub/pull/8889</a></p>
+<p>If you’ve been holding back on bringing your Flutter app to Linux because of the painful manual packaging process, <code>flutpak</code> is officially proven to close that gap.</p>
+<p>Check out the repo, try it on your app, and if you use packages that require native C-bindings or offline patches, contributions to <code>known-patches/</code> are highly welcome!</p>
+<p><strong>Repo:</strong> <a href="https://github.com/o-murphy/flutpak" rel="noopener nofollow ugc">https://github.com/o-murphy/flutpak</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmytro Yaroshenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jun 10, 2026 3:47 PM">
+            <time itemprop="datePublished" datetime="2026-06-10 15:47:06 +0000">Jun 10, 2026</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h1><a name="p-22650-flutpak-major-update-080-rustcargo-support-flatpak-flutter-compatible-registry-no-local-sdk-required-1" class="anchor" href="#p-22650-flutpak-major-update-080-rustcargo-support-flatpak-flutter-compatible-registry-no-local-sdk-required-1" aria-label="Heading link"></a>flutpak — major update (0.8.0): Rust/Cargo support, flatpak-flutter-compatible registry, no local SDK required</h1>
+<p>Since the original post (and the first <a href="https://github.com/flathub/flathub/pull/8889" rel="noopener nofollow ugc">successful Flathub CI run</a>) a lot has landed. I want to give a proper update, especially on two points raised in the thread.</p>
+<h2><a name="p-22650-a-note-on-the-proof-of-concept-submission-2" class="anchor" href="#p-22650-a-note-on-the-proof-of-concept-submission-2" aria-label="Heading link"></a>A note on the proof-of-concept submission</h2>
+<p>The previous update in this thread reported that <a href="https://github.com/flathub/flathub/pull/8889" rel="noopener nofollow ugc">PR #8889</a> passed the Flathub test build on the first try — that part is still true: the build succeeded for both <code>x86_64</code> and <code>aarch64</code>. However, the PR was subsequently closed for reasons unrelated to the packaging itself:</p>
+<ol>
+<li><strong>Proprietary dependency</strong> — <code>objectbox-c</code> is distributed as a prebuilt binary under the Apache License with no source code available. <span class="mention">@hfiguiere</span> flagged this as incompatible with the app’s GPL-3.0 license.</li>
+<li><strong>Generative AI policy</strong> — Flathub’s <a href="https://docs.flathub.org/docs/for-app-authors/requirements#generative-ai-policy" rel="noopener nofollow ugc">requirements</a> restrict AI-generated code in submissions. Claude was used during development of the app, which made the PR ineligible.</li>
+</ol>
+<p>Neither of these is a flutpak issue — the tool produced a correct, buildable manifest. The rejection is about the specific app’s dependencies and its codebase, not the packaging toolchain. I mention it for transparency since this thread had the earlier “CI passed” update and it would be misleading to leave it without follow-up.</p>
+<hr>
+<h2><a name="p-22650-registry-now-compatible-with-flatpak-flutter-3" class="anchor" href="#p-22650-registry-now-compatible-with-flatpak-flutter-3" aria-label="Heading link"></a>Registry now compatible with flatpak-flutter</h2>
+<p><span class="mention">@bbhtt</span> raised the point about <code>flatpak-flutter</code>. Since then the foreign deps registry format has been aligned to be <strong>fully schema-compatible with <code>flatpak-flutter</code>’s <code>foreign_deps.json</code></strong>. Every entry from the <code>flatpak-flutter</code> registry can be used in flutpak with no changes. flutpak extends the schema by one optional field (<code>crlf:</code> on patch sources); <code>flatpak-flutter</code> silently ignores it.</p>
+<p>The registry currently covers 19 packages:</p>
+<ul>
+<li><code>objectbox_flutter_libs</code> / <code>objectbox_sync_flutter_libs</code></li>
+<li><code>sqlite3</code> / <code>sqlite3_flutter_libs</code> / <code>sqlcipher_flutter_libs</code></li>
+<li><code>simple_secure_storage_linux</code></li>
+<li><code>audiotags</code>, <code>flutter_webrtc</code>, <code>media_kit_libs_linux</code>, <code>pdfium_flutter</code>,<br>
+<code>printing</code>, <code>flutter_new_pipe_extractor</code>, <code>fvp</code>, <code>powersync</code></li>
+<li><code>rhttp</code>, <code>metadata_god</code>, <code>super_native_extensions</code>, <code>flutter_discord_rpc</code>,<br>
+<code>flutter_vodozemac</code> (cargokit/Rust — see below)</li>
+</ul>
+<p>All native archive sources, patches, and version-stamped <code>dest:</code> paths are<br>
+resolved and injected automatically by <code>flutpak generate</code>. No manual source<br>
+hunting per release.</p>
+<p><strong>Version matching is <code>≤</code></strong>: a registry entry for <code>1.0.0</code> covers <code>1.2.3</code>,<br>
+<code>1.5.0</code>, etc., reducing churn when upstream bumps patch/minor versions.</p>
+<hr>
+<h2><a name="p-22650-rust-cargo-offline-builds-080-4" class="anchor" href="#p-22650-rust-cargo-offline-builds-080-4" aria-label="Heading link"></a>Rust / Cargo offline builds (0.8.0)</h2>
+<p>Flutter plugins using <a href="https://github.com/nickel-lang/cargokit" rel="noopener nofollow ugc">cargokit</a><br>
+(<code>rhttp</code>, <code>metadata_god</code>, <code>super_native_extensions</code>, etc.) now work out of the<br>
+box. Add a <code>rust:</code> section to <code>flutpak.yaml</code>:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">rust:
+  version: 1.85.0
+  rustup-path: /var/lib/rustup
+</code></pre>
+<p><code>generate</code> will:</p>
+<ol>
+<li>Extract <code>Cargo.lock</code> from pub.dev archives, fetch SHA-256 checksums from the<br>
+<a href="http://crates.io" rel="noopener nofollow ugc">crates.io</a> sparse registry index, emit <code>cargo-sources.json</code></li>
+<li>Generate <code>rustup-&lt;version&gt;.json</code>: downloads the channel manifest,<br>
+<code>rustup-init</code> binaries, and a minimal toolchain (rustc, cargo, rust-std) for<br>
+both <code>x86_64</code> and <code>aarch64</code>; sets <code>RUSTUP_DIST_SERVER</code> to the pre-downloaded<br>
+static directory so nothing touches the network at build time</li>
+<li>Insert the <code>rustup</code> module before the app module in the generated manifest</li>
+<li>Wire <code>CARGO_HOME</code>, <code>RUSTUP_HOME</code>, and <code>PATH</code> into the app module’s<br>
+<code>build-options</code></li>
+</ol>
+<p>Known limitation: git-sourced crates (<code>git+https://...</code>) are skipped with a<br>
+warning — they require cloning at generate time, which is out of scope.<br>
+<a href="http://Crates.io" rel="noopener nofollow ugc">Crates.io</a> dependencies are fully supported.</p>
+<hr>
+<h2><a name="p-22650-no-local-flutter-sdk-required-for-generate-070-5" class="anchor" href="#p-22650-no-local-flutter-sdk-required-for-generate-070-5" aria-label="Heading link"></a>No local Flutter SDK required for <code>generate</code> (0.7.0)</h2>
+<p><code>flutpak generate</code> no longer reads from a local Flutter installation. Engine<br>
+versions (engine binary, Dart SDK, fonts, Gradle wrapper checksums) are fetched<br>
+from the GitHub raw API using <code>flutter.ref</code>:</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">flutter:
+  ref: "3.44.1" # tag, branch, or commit SHA
+</code></pre>
+<p>The Flutter SDK sources are emitted as a <strong>standalone module</strong><br>
+(<code>flutter-sdk-&lt;version&gt;.json</code>) — separate from <code>pubspec-sources.json</code>. Pre-built<br>
+module JSONs for recent Flutter releases are cached in the flutpak repo and<br>
+fetched on first use, avoiding regeneration across multiple projects on the same<br>
+SDK version.</p>
+<hr>
+<h2><a name="p-22650-llvm-sdk-extension-auto-injected-050-6" class="anchor" href="#p-22650-llvm-sdk-extension-auto-injected-050-6" aria-label="Heading link"></a>LLVM SDK extension auto-injected (0.5.0)</h2>
+<p>The correct <code>org.freedesktop.Sdk.Extension.llvmXX</code> is now selected automatically<br>
+based on <code>runtime-version</code> (25.08 → llvm20, 24.08 → llvm19, 23.08 → llvm17) with<br>
+<code>append-path</code> / <code>prepend-ld-library-path</code> wired up. No manual extension entry<br>
+needed.</p>
+<hr>
+<h2><a name="p-22650-breaking-changes-since-the-original-post-7" class="anchor" href="#p-22650-breaking-changes-since-the-original-post-7" aria-label="Heading link"></a>Breaking changes since the original post</h2>
+<pre data-code-wrap="yaml"><code class="lang-yaml"># before
+flutter:
+  sdk: $FLUTTER_ROOT
+  manifest:
+    app-id: io.github.YourOrg.YourApp
+
+# after (0.8.0)
+flutter:
+ref: "3.29.3"
+app-id: io.github.YourOrg.YourApp
+</code></pre>
+<ul>
+<li><code>generated-sources.json</code> → renamed to <code>pubspec-sources.json</code> (update <code>!include</code> references)</li>
+<li>Flutter SDK sources moved out of <code>pubspec-sources.json</code> into a separate module</li>
+<li>Re-run <code>flutpak init --force</code> after upgrading to 0.8.x to get a clean template</li>
+</ul>
+<hr>
+<h2><a name="p-22650-other-notable-changes-8" class="anchor" href="#p-22650-other-notable-changes-8" aria-label="Heading link"></a>Other notable changes</h2>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.8.0</td>
+<td><code>flutpak cache clear</code> — wipes <code>~/.cache/flutpak/</code></td>
+</tr>
+<tr>
+<td>0.7.0</td>
+<td><code>subdir:</code> — Flutter project in a monorepo subdirectory</td>
+</tr>
+<tr>
+<td>0.7.0</td>
+<td><code>flutpak sdk-mod</code> — standalone Flutter SDK module JSON for <code>!include</code></td>
+</tr>
+<tr>
+<td>0.6.0</td>
+<td><code>patches[].use-git</code> — <code>git apply</code> instead of <code>patch -p1</code></td>
+</tr>
+<tr>
+<td>0.5.0</td>
+<td><code>--binary</code> on every <code>type: patch</code> entry — deterministic CRLF handling</td>
+</tr>
+<tr>
+<td>0.5.0</td>
+<td><code>.gitattributes</code> with <code>*.patch -text</code> generated by <code>init</code></td>
+</tr>
+<tr>
+<td>0.4.0</td>
+<td><code>yaml_edit</code> injection — <code>tag:</code>/<code>commit:</code> written directly into the git source block</td>
+</tr>
+<tr>
+<td>0.4.0</td>
+<td><code>actions/generate</code> + <code>actions/build-flatpak</code> composite CI actions</td>
+</tr>
+<tr>
+<td>0.4.0</td>
+<td>Retry on 429/5xx for all network fetches</td>
+</tr>
+</tbody>
+</table>
+</div><hr>
+<h2><a name="p-22650-current-status-9" class="anchor" href="#p-22650-current-status-9" aria-label="Heading link"></a>Current status</h2>
+<p>The core workflow is stable. The demo app (<code>examples/demo_app/</code>) builds<br>
+sqlite3 + rhttp end-to-end inside the Flatpak sandbox on both architectures —<br>
+the CI workflow is a working reference.<br>
+The most impactful contribution right now: if you maintain or package a Flutter<br>
+app with a native dep not yet in the registry, a PR adding it to<br>
+<code>foreign_deps/foreign_deps.json</code> makes it work for everyone. The format is<br>
+identical to <code>flatpak-flutter</code>, so existing entries can be copied directly.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">O</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Dmytro Yaroshenko</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jun 10, 2026 3:58 PM">
+            <time itemprop="datePublished" datetime="2026-06-10 15:58:29 +0000">Jun 10, 2026</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p><span class="mention">@hfiguiere</span> / <span class="mention">@bbhtt</span> — a clarification question before I close this out</p>
+</blockquote>
+<p>Regarding the <code>objectbox-c</code> rejection: I want to make sure I understand the<br>
+policy correctly, because I’m seeing something inconsistent.</p>
+<p><code>flatpak-flutter</code>’s <code>foreign_deps.json</code> — which <span class="mention">@bbhtt</span> recommended — ships<br>
+prebuilt native binaries for at least two packages: <code>pdfium_flutter</code><br>
+(prebuilt PDFium from <a href="https://github.com/bblanchon/pdfium-binaries" rel="noopener nofollow ugc">pdfium-binaries</a>,<br>
+Apache 2.0) and <code>audiotags</code> (prebuilt <code>linux.tar.gz</code> from the audiotags GitHub<br>
+releases). Several apps listed in the<br>
+<a href="https://github.com/TheAppgineer/flatpak-flutter" rel="noopener nofollow ugc">flatpak-flutter README</a><br>
+as successfully published on Flathub use those entries.</p>
+<p><code>objectbox-c</code> is not in <code>flatpak-flutter</code>’s registry, so I’m not claiming<br>
+exact equivalence — but the broader pattern is the same: prebuilt native<br>
+binaries distributed under permissive licenses, bundled via Flatpak sources.</p>
+<p>On reflection I’m also dropping the “Mere Aggregation” argument I made in the<br>
+PR — the GPL FAQ is clear that modules running linked together in a shared<br>
+address space “almost surely means combining them into one program”, and the<br>
+FAQ explicitly states that containers do not change this analysis. So<br>
+dynamically linking <code>libobjectbox.so</code> into a GPL-3.0 app does constitute a<br>
+combined work, and the GPL’s source-availability requirement applies to the<br>
+whole. Since <code>objectbox-c</code> has no source available, that requirement can’t be<br>
+satisfied. The license conflict is real.</p>
+<p>That said, the question about <code>pdfium_flutter</code> and <code>audiotags</code> still stands —<br>
+both ship prebuilt binaries (Apache 2.0) via <code>flatpak-flutter</code> and those apps<br>
+pass review. Is the difference simply that those libraries are also dynamically<br>
+linked but their permissive license doesn’t create a conflict with the app’s<br>
+license? Or is there something else I’m missing about how Flathub evaluates<br>
+prebuilt binary dependencies?</p>
+<p>Knowing the answer would help anyone packaging a Flutter app that uses<br>
+ObjectBox and trying to understand what’s actually allowed on Flathub.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

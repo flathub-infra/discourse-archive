@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Running gnome-builder generated project from command line - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Running gnome-builder generated project from command line</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Running gnome-builder generated project from command line</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 25, 2024</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 25, 2024 10:27 AM">
+            <time itemprop="datePublished" datetime="2024-09-25 10:27:00 +0000">Sep 25, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi folks!</p>
+<p>My current project is a GTK Python application targeting the newly released Gnome SDK 47. I’ve generated the project files using the Gnome Builder application and it runs and builds fine via the IDE. As Gnome Builder is somewhat limited, I’m using PyCharm and building in the terminal. Previously I could do so, using the Gnome SDK 46. However, updating the SDK version in the manifest causes the following issue:</p>
+<pre><code class="lang-auto">$ flatpak-builder --force-clean --user --repo=repo builddir org.bswa.Gnome47Test.json 
+Emptying app dir 'builddir'
+Downloading sources
+Fetching full git repo file:///home/jr/Code/gnome_47_test
+Starting build of org.bswa.Gnome47Test
+Cache hit for gnome_47_test, skipping build
+Cache miss, checking out last cache hit
+Cleaning up
+Running appstream-compose
+bwrap: execvp appstream-compose: No such file or directory
+Error: ERROR: appstream-compose failed: Child process exited with code 1
+</code></pre>
+<p>I’ve installed the appropriate packages in Linux Mint and can run <code>appstream-compose</code> from the command line. Obviously Gnome Builder can run it, and could before I installed the packages.</p>
+<p>Any help would be greatly appreciated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 25, 2024 2:33 PM">
+            <time itemprop="datePublished" datetime="2024-09-25 14:33:09 +0000">Sep 25, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You need to update your flatpak-builder to the latest version 1.4.4</p>
+<p>appstream-compose support was removed last year and it was also removed from the runtime this year.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 26, 2024 3:01 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 03:01:34 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the tip! I’ve added the flatpak ppa and installed <code>flatpak-builder 1.4.4</code></p>
+<p>I now have the following error:</p>
+<pre><code class="lang-auto">$ flatpak-builder --force-clean --user builddir org.bswa.Gnome47Test.json 
+Emptying app dir 'builddir'
+Downloading sources
+Fetching full git repo file:///home/jr/Code/gnome_47_test
+Starting build of org.bswa.Gnome47Test
+Cache hit for gnome_47_test, skipping build
+Cache miss, checking out last cache hit
+Cleaning up
+Renaming org.bswa.Gnome47Test.appdata.xml to share/metainfo/org.bswa.Gnome47Test.metainfo.xml
+Running appstreamcli compose
+Only accepting components: org.bswa.Gnome47Test, org.bswa.Gnome47Test.desktop
+Processing directory: /home/jr/Code/gnome_47_test/.flatpak-builder/rofiles/rofiles-CMwPv0/files
+Composing metadata...
+Run failed, some data was ignored.
+Errors were raised during this compose run:
+org.bswa.Gnome47Test.desktop
+  E: metainfo-no-summary
+Refer to the generated issue report data for details on the individual problems.
+Error: ERROR: appstreamcli compose failed: Child process exited with code 1
+
+</code></pre>
+<p>I cannot find the <code>metainfo-no-summary</code> error on this page:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/">
+  <header class="source">
+      <img src="https://docs.flathub.org/img/favicon.svg" class="site-icon" width="16" height="16">
+
+      <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/" target="_blank" rel="noopener nofollow ugc">docs.flathub.org</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:690/459;"><img src="/uploads/optimized/2X/2/2382eb81a57f8161664101a6b6f0ada66186bbe0_2_690x459.png" class="thumbnail" data-dominant-color="3C8BE5" width="690" height="459"></div>
+
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/" target="_blank" rel="noopener nofollow ugc">MetaInfo guidelines | Flathub Documentation</a></h3>
+
+  <p>These are a set of guidelines for MetaInfo that should be followed for submission on Flathub.</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Cheers,</p>
+<p>J.R.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 26, 2024 4:03 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 04:03:37 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So digging into the build directory I find this:</p>
+<pre><code class="lang-auto">$ cat org.bswa.Gnome47Test.metainfo.xml 
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;component type="desktop"&gt;
+  &lt;id&gt;org.bswa.Gnome47Test.desktop&lt;/id&gt;
+  &lt;metadata_license&gt;CC0-1.0&lt;/metadata_license&gt;
+  &lt;project_license&gt;GPL-3.0-or-later&lt;/project_license&gt;
+  &lt;description&gt;
+    &lt;p&gt;No description&lt;/p&gt;
+  &lt;/description&gt;
+&lt;/component&gt;
+</code></pre>
+<p><code>$SOMETHING</code> has generated this, again not sure what.</p>
+<p>EDIT:</p>
+<p>BTW, this is just the hello world python GTK project generated by Gnome Builder, with the only change being the gnome platform version.</p>
+<p>Digging into the project files, we have</p>
+<p><code>data/org.bswa.Gnome47Test.appdata.xml.in</code></p>
+<p>The contents of which are the same as above.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 26, 2024 4:21 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 04:21:52 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You have to add all the required fields in that appdata file and validate it with <code>appstreamcli validate</code></p>
+<p>See the required fields starting from <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#header" class="inline-onebox" rel="noopener nofollow ugc">MetaInfo guidelines | Flathub Documentation</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 26, 2024 4:29 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 04:29:11 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So if I can satisfy this it should work?</p>
+<pre><code class="lang-auto">$ flatpak run --command=flatpak-builder-lint org.flatpak.Builder appstream data/org.bswa.Gnome47Test.appdata.xml.in
+E: org.bswa.Gnome47Test.desktop:~: component-name-missing
+   The component is missing a name (&lt;name/&gt; tag).
+
+E: org.bswa.Gnome47Test.desktop:~: component-summary-missing
+   The component is missing a summary (&lt;summary/&gt; tag).
+
+I: org.bswa.Gnome47Test.desktop:7: description-first-para-too-short No description
+   The first `description/p` paragraph of this component might be too short (&lt; 80 characters).
+   Please consider starting with a longer paragraph to improve how the description looks like in
+   software centers and to provide more detailed information on this component immediately in the
+   first paragraph.
+
+W: org.bswa.Gnome47Test.desktop:~: url-homepage-missing
+   This component is missing an `url` element of type `homepage` to link to the project's homepage.
+
+E: org.bswa.Gnome47Test.desktop:~: desktop-app-launchable-omitted
+   This `desktop-application` component has no `desktop-id` launchable tag, however it contains all
+   the necessary information to display the application. The omission of the launchable entry means
+   that this application can not be launched directly from installers or software centers. If this
+   is intended, this information can be ignored, otherwise it is strongly recommended to add a
+   launchable tag as well.
+
+E: org.bswa.Gnome47Test.desktop:~: releases-info-missing
+   This component is missing information about releases. Consider adding a `releases` tag to
+   describe releases and their changes.
+
+E: org.bswa.Gnome47Test.desktop:~: content-rating-missing
+   This component has no `content_rating` tag to provide age rating information. You can generate
+   the tag data online by answering a few questions at https://hughsie.github.io/oars/
+
+I: org.bswa.Gnome47Test.desktop:~: developer-info-missing
+   This component contains no `developer` element with information about its author.
+
+✘ Validation failed: errors: 5, warnings: 1, infos: 2, pedantic: 1
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 26, 2024 4:57 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 04:57:41 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I feel that I’m on the wrong track here. I ended up with this file:</p>
+<pre data-code-wrap="xml"><code class="lang-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;component type="desktop"&gt;
+	&lt;id&gt;org.bswa.Gnome47Test.desktop&lt;/id&gt;
+	&lt;metadata_license&gt;CC0-1.0&lt;/metadata_license&gt;
+	&lt;project_license&gt;GPL-3.0-or-later&lt;/project_license&gt;
+	&lt;description&gt;
+	  &lt;p&gt;This is a really long description that will surely satisfy our linter, right?
+	    No, longer! Seriously, we want something so long your jaw will drop.
+	  &lt;/p&gt;
+	&lt;/description&gt;
+  &lt;name&gt;App Name&lt;/name&gt;
+  &lt;summary&gt;Short summary&lt;/summary&gt;
+  &lt;url type="homepage"&gt;https://example.org/&lt;/url&gt;
+  &lt;launchable type="desktop-id"&gt;org.bswa.Gnome47Test.desktop&lt;/launchable&gt;
+  &lt;releases&gt;
+    &lt;release version="0.0.1" date="2024-09-26"&gt;
+      &lt;url type="details"&gt;https://example.org/changelog.html#version_0.0.1&lt;/url&gt;
+      &lt;description&gt;
+        &lt;p&gt;Release description&lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;List of changes&lt;/li&gt;
+            &lt;li&gt;List of changes&lt;/li&gt;
+          &lt;/ul&gt;
+      &lt;/description&gt;
+    &lt;/release&gt;
+  &lt;/releases&gt;
+  &lt;content_rating type="oars-1.1" /&gt;
+  &lt;developer id="org.bswa"&gt;
+    &lt;name&gt;J.R&gt;&lt;/name&gt;
+  &lt;/developer&gt;
+&lt;/component&gt;
+</code></pre>
+<p>And I still get the same error:</p>
+<pre><code class="lang-auto">Errors were raised during this compose run:
+org.bswa.Gnome47Test.desktop
+  E: metainfo-no-summary
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 26, 2024 5:21 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 05:21:08 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>I ended up with this file:</p>
+</blockquote>
+<p>Yes this one is fine.</p>
+<p>Can you share your manifest ?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 26, 2024 10:11 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 10:11:40 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here you go. Hope this helps.</p>
+<pre data-code-wrap="json"><code class="lang-json">{
+    "app-id" : "org.bswa.Gnome47Test",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "47",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "gnome_47_test",
+    "finish-args" : [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--socket=wayland"
+    ],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "gnome_47_test",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "file:///home/jr/Code/gnome_47_test"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 26, 2024 10:22 AM">
+            <time itemprop="datePublished" datetime="2024-09-26 10:22:28 +0000">Sep 26, 2024</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I can’t build it myself if you use <code>file://</code> sources.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 27, 2024 1:09 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 01:09:50 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The source for this project is entirely generated by Gnome Builder, with only the runtime version changed in the manifest. I’ve put the project up on GitHub:</p>
+<aside class="onebox githubrepo" data-onebox-src="https://github.com/jhanarato/gnome_47_test">
+  <header class="source">
+
+      <a href="https://github.com/jhanarato/gnome_47_test" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row" data-github-private-repo="false">
+  <img width="690" height="344" src="/uploads/optimized/2X/a/a19b8ab0b139382766a8317f226da57ef0794910_2_690x344.png" class="thumbnail" data-dominant-color="EAECEB">
+
+  <h3><a href="https://github.com/jhanarato/gnome_47_test" target="_blank" rel="noopener nofollow ugc">GitHub - jhanarato/gnome_47_test: Demonstrates an issue building flatpaks with Gnome...</a></h3>
+
+    <p><span class="github-repo-description">Demonstrates an issue building flatpaks with Gnome 47 runtime</span></p>
+</div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Maybe take a quick glance at the readme I created.</p>
+<p>Thanks again for taking the time to look at this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Sep 27, 2024 1:19 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 01:19:38 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I do wonder though, how much of this I really need. <code>meson</code>, <code>ninja</code>, <code>appstream</code> and so on and so forth.</p>
+<p>The goal I have in mind is to create a GTK front end to an existing python project. I had some success without flatpak, but I’d like to use the more modern Adwaita features available in the new runtime.</p>
+<p>The alternative is to roll my own flatpak project structure, but I’m not sure how difficult that would be.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Sep 27, 2024 2:00 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 02:00:15 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Well, your appdata.xml.in file is again missing those fields <a href="https://github.com/jhanarato/gnome_47_test/blob/master/data/org.bswa.Gnome47Test.appdata.xml.in" class="inline-onebox" rel="noopener nofollow ugc">gnome_47_test/data/org.bswa.Gnome47Test.appdata.xml.in at master · jhanarato/gnome_47_test · GitHub</a>. Add those extra fields to that file.</p>
+<p>Your meson.build is generating appdata.xml from appdata.xml.in and installing that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Sep 27, 2024 2:18 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 02:18:27 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I reverted the appstream changes before pushing to github. Adding them doesn’t solve the problem. However, I’ve put them back and pushed again.</p>
+<p>I suspect in my case I really don’t need the appstream metadata to be complete. I just ran the linter to see if I could figure out what was wrong.</p>
+<p>Perhaps the meson build script is failing to find a file it’s looking for?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Sep 27, 2024 2:30 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 02:30:17 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hang on a minute… I have a new error now:</p>
+<pre><code class="lang-auto">Errors were raised during this compose run:
+org.bswa.Gnome47Test.desktop
+  E: no-valid-category
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Sep 27, 2024 2:32 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 02:32:45 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Add some more categories to your desktop file <a href="https://github.com/jhanarato/gnome_47_test/blob/1a76bea379e6351057564dd49d7ceda299f01f39/data/org.bswa.Gnome47Test.desktop.in#L7" class="inline-onebox" rel="noopener nofollow ugc">gnome_47_test/data/org.bswa.Gnome47Test.desktop.in at 1a76bea379e6351057564dd49d7ceda299f01f39 · jhanarato/gnome_47_test · GitHub</a></p>
+<p>See the list of valid categories <a href="https://specifications.freedesktop.org/menu-spec/latest/apa.html" rel="noopener nofollow ugc">https://specifications.freedesktop.org/menu-spec/latest/apa.html</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">jhanarato</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Sep 27, 2024 2:44 AM">
+            <time itemprop="datePublished" datetime="2024-09-27 02:44:44 +0000">Sep 27, 2024</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I edited the <code>desktop</code> file, changing categories to “Development”</p>
+<p>It still didn’t work… but ohhhhh…</p>
+<p>I hadn’t realised that even though the files are stored locally, flatpak is pulling those changes via the local git repository. So I’ve been making all these changes, but not committing them. No wonder I’ve been struggling so much. Just putting the repo online gave me the answer.</p>
+<p>So thank you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dl.flathub.org times out - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Dl.flathub.org times out</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Dl.flathub.org times out</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 27, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jiube</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 27, 2024 2:32 PM">
+            <time itemprop="datePublished" datetime="2024-05-27 14:32:18 +0000">May 27, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Connection to <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a> fails. As the result, Flatpak neither updates, nor new software installations work. Interestingly enough, it resolves successfully and responds to pings. It’s just HTTP(S) traffic that gets blocked.</p>
+<p>The problem started around a week ago, maybe a bit more.</p>
+<p>Here’s how “flatpak update -vv” fails:</p>
+<pre><code class="lang-auto">F: No installations directory in /etc/flatpak/installations.d. Skipping
+F: Opening system flatpak installation at path /var/lib/flatpak
+F: Opening user flatpak installation at path /home/jiube/.local/share/flatpak
+Looking for updates…
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 5 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 4 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 3 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 2 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 1 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Failed to download optional summary index: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Transaction: update flathub:app/de.shorsh.discord-screenaudio/x86_64/stable[*]
+F: Transaction: update flathub:app/org.blender.Blender/x86_64/stable[*]
+F: Failed to get languages for all users: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable
+F: Transaction: update flathub:runtime/de.shorsh.discord_screenaudio.Locale/x86_64/stable[/en]
+F: Transaction: update flathub:runtime/org.blender.Blender.Codecs/x86_64/stable[*]
+F: Transaction: update flathub:runtime/org.blender.Blender.Locale/x86_64/stable[/en]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.Locale/x86_64/23.08[/en]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0[*]
+F: Transaction: update flathub:runtime/org.freedesktop.Platform/x86_64/23.08[*]
+F: Transaction: update flathub:runtime/org.kde.KStyle.Adwaita/x86_64/5.15-22.08[*]
+F: Transaction: update flathub:runtime/org.kde.KStyle.Adwaita/x86_64/6.6[*]
+F: Transaction: update flathub:runtime/org.kde.Platform.Locale/x86_64/6.6[/en]
+F: Transaction: update flathub:runtime/org.kde.Platform/x86_64/6.6[*]
+F: Looking for remote metadata updates for flathub
+F: Error updating remote metadata for 'flathub': Unable to load summary from remote flathub: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.kde.Platform/x86_64/6.6 is already installed: No such ref 'runtime/org.kde.Platform/x86_64/6.6' in remote flathub
+F: marking op update:runtime/org.kde.Platform/x86_64/6.6 resolved to a34c61c13fb4dc31bd219551c18f7a60e6c00c7e5f64b5091bcdba2ac3615be6
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.kde.Platform.Locale/x86_64/6.6 is already installed: No such ref 'runtime/org.kde.Platform.Locale/x86_64/6.6' in remote flathub
+F: marking op update:runtime/org.kde.Platform.Locale/x86_64/6.6 resolved to 0ba3636c97e9acb9868304bb7f3527c71489482c1cf82b3b3f991bd8083a118f
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.kde.KStyle.Adwaita/x86_64/6.6 is already installed: No such ref 'runtime/org.kde.KStyle.Adwaita/x86_64/6.6' in remote flathub
+F: marking op update:runtime/org.kde.KStyle.Adwaita/x86_64/6.6 resolved to ec244971bc2666d6e123962500bbd66e5ab7136b6aabca932a2e0737aa43fa50
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.kde.KStyle.Adwaita/x86_64/5.15-22.08 is already installed: No such ref 'runtime/org.kde.KStyle.Adwaita/x86_64/5.15-22.08' in remote flathub
+F: marking op update:runtime/org.kde.KStyle.Adwaita/x86_64/5.15-22.08 resolved to 1a3515edf77406ea82e51b14ac7ecf8dd5bbb0a4c93c02156e5480e0a0ce4956
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform/x86_64/23.08 is already installed: No such ref 'runtime/org.freedesktop.Platform/x86_64/23.08' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform/x86_64/23.08 resolved to ab9602713e7ba1760659679a2925d82e73f6835f199d5cb37f23e27d42b82f1f
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 is already installed: No such ref 'runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 resolved to bf24f23f3ba385f6e8c9215ed94d979db99814b0b614504a23a6d0751dc5f063
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08 is already installed: No such ref 'runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08 resolved to 7cd2c7371407ffc2ea229ec12266e00a9fe1c3ec407ae49231162df7bf82dabd
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.Locale/x86_64/23.08 is already installed: No such ref 'runtime/org.freedesktop.Platform.Locale/x86_64/23.08' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.Locale/x86_64/23.08 resolved to 2d02a0d8e1a1c33e80dcb984d8c474977e6ec3558d85bd1b2453bc4de77b6fe0
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 is already installed: No such ref 'runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 resolved to 1c4e15726084693c02f820b102e48bf8c3fe0b49a79e3a6665ee0ddddce5331d
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra is already installed: No such ref 'runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra resolved to 0ebaef70a4bf093d8c78a2a4d1f8ff22f74a5edd59f24c8518506f63d04a21ce
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 is already installed: No such ref 'runtime/org.freedesktop.Platform.GL.default/x86_64/23.08' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 resolved to d8be2926866b1a308b4c7842fb87b2e98c19cfa4a66813757e79c8b3177ef26e
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra is already installed: No such ref 'runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra resolved to 2dad3c1371cbed068ed3e16a487dd11aa14cc1eee4471d5f6a400a1b08662b10
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.freedesktop.Platform.GL.default/x86_64/22.08 is already installed: No such ref 'runtime/org.freedesktop.Platform.GL.default/x86_64/22.08' in remote flathub
+F: marking op update:runtime/org.freedesktop.Platform.GL.default/x86_64/22.08 resolved to 94fb8568fd83d6f35cc560d4ddaadc64e2041a51a64ce43af1b24ae161c55729
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.blender.Blender.Locale/x86_64/stable is already installed: No such ref 'runtime/org.blender.Blender.Locale/x86_64/stable' in remote flathub
+F: marking op update:runtime/org.blender.Blender.Locale/x86_64/stable resolved to 3eef5ad368c7c07366100f6f885f2d8341ddb633b62aa05d95d990bdb1857798
+F: Warning: Treating remote fetch error as non-fatal since runtime/org.blender.Blender.Codecs/x86_64/stable is already installed: No such ref 'runtime/org.blender.Blender.Codecs/x86_64/stable' in remote flathub
+F: marking op update:runtime/org.blender.Blender.Codecs/x86_64/stable resolved to e44725b46fb7345f80c4c93b836c435252b73e848678f18e8e99d6139ff85aad
+F: Warning: Treating remote fetch error as non-fatal since runtime/de.shorsh.discord_screenaudio.Locale/x86_64/stable is already installed: No such ref 'runtime/de.shorsh.discord_screenaudio.Locale/x86_64/stable' in remote flathub
+F: marking op update:runtime/de.shorsh.discord_screenaudio.Locale/x86_64/stable resolved to 381de26ce9106bc84847df1c9e3422a2b75dc40d8eb012809394e7e2237b4d67
+F: Warning: Treating remote fetch error as non-fatal since app/org.blender.Blender/x86_64/stable is already installed: No such ref 'app/org.blender.Blender/x86_64/stable' in remote flathub
+F: marking op update:app/org.blender.Blender/x86_64/stable resolved to 3e5838d03e01228cf8599d9a98147d168f33d5da8fc7da205f462636affa37d3
+F: Warning: Treating remote fetch error as non-fatal since app/de.shorsh.discord-screenaudio/x86_64/stable is already installed: No such ref 'app/de.shorsh.discord-screenaudio/x86_64/stable' in remote flathub
+F: marking op update:app/de.shorsh.discord-screenaudio/x86_64/stable resolved to 3c6c18ae5214a9db860ba923ed28275126804051d8219d86acac5c770f78d14c
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: flatpak_remote_state_match_subrefs with no summary
+F: Checking installation ‘system’ for EOL unused refs and autoprunes
+F: find_used_refs: Considering runtime runtime/org.kde.Platform/x86_64/6.6 used by app app/de.shorsh.discord-screenaudio/x86_64/stable (system)
+F: find_used_refs: Considering sdk runtime/org.kde.Sdk/x86_64/6.6 used by app/de.shorsh.discord-screenaudio/x86_64/stable (system)
+F: find_used_refs: Considering related ref runtime/de.shorsh.discord_screenaudio.Locale/x86_64/stable used by app/de.shorsh.discord-screenaudio/x86_64/stable (system)
+F: find_used_refs: Considering runtime runtime/org.freedesktop.Platform/x86_64/23.08 used by app app/org.blender.Blender/x86_64/stable (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by app/org.blender.Blender/x86_64/stable (system)
+F: find_used_refs: Considering related ref runtime/org.blender.Blender.Codecs/x86_64/stable used by app/org.blender.Blender/x86_64/stable (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08 used by app/org.blender.Blender/x86_64/stable (system)
+F: find_used_refs: Considering related ref runtime/org.blender.Blender.Locale/x86_64/stable used by app/org.blender.Blender/x86_64/stable (system)
+F: find_used_refs: Considering sdk runtime/org.kde.Sdk/x86_64/6.6 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.kde.KStyle.Adwaita/x86_64/6.6 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.kde.KStyle.Adwaita/x86_64/6.6 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering related ref runtime/org.kde.Platform.Locale/x86_64/6.6 used by runtime/org.kde.Platform/x86_64/6.6 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.Locale/x86_64/23.08 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering related ref runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 used by runtime/org.freedesktop.Platform/x86_64/23.08 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by runtime/org.freedesktop.Platform.GL.default/x86_64/23.08 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/23.08 used by runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/1.6 used by runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/1.6 used by runtime/org.freedesktop.Platform.GL.nvidia-550-78/x86_64/1.4 (system)
+F: find_used_refs: Considering sdk runtime/org.freedesktop.Sdk/x86_64/20.08 used by runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0 (system)
+F: find_used_refs: Considering sdk runtime/org.kde.Sdk/x86_64/6.6 used by runtime/org.kde.KStyle.Adwaita/x86_64/6.6 (system)
+F: find_used_refs: Considering sdk runtime/org.kde.Sdk/x86_64/6.6 used by runtime/org.kde.KStyle.Adwaita/x86_64/6.6 (system)
+F: Checking installation ‘system’ by checking for dependent refs in ‘user’
+F: flatpak_dir_list_unused_refs: Ref runtime/org.freedesktop.Platform.GL.default/x86_64/22.08 (system) not end-of-life, so excluding from unused refs
+F: flatpak_dir_list_unused_refs: Ref runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra (system) not end-of-life, so excluding from unused refs
+F: flatpak_dir_list_unused_refs: Ref runtime/org.kde.KStyle.Adwaita/x86_64/5.15-22.08 (system) not end-of-life, so excluding from unused refs
+
+Nothing to do.
+F: flathub:x86_64 appstream age 571614 is greater than ttl 86400
+F: Updating appstream data for remote flathub
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 5 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 4 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 3 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 2 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Should retry request (remaining: 1 retries), due to transient error: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Failed to download optional summary index: While fetching https://dl.flathub.org/repo/summary.idx: [28] Timeout was reached
+F: Error updating: Error updating appstream2: No such ref 'appstream2/x86_64' in remote flathub; Error updating appstream: No such ref 'appstream/x86_64' in remote flathub
+</code></pre>
+<p>Here’s the result of cURL output for the said link:</p>
+<pre><code class="lang-auto">[16:23:44 jiube: '~']$ curl -vL https://dl.flathub.org/repo/summary.idx
+* Host dl.flathub.org:443 was resolved.
+* IPv6: 2a04:4e42:600::347, 2a04:4e42:200::347, 2a04:4e42::347, 2a04:4e42:400::347
+* IPv4: 151.101.1.91, 151.101.65.91, 151.101.193.91, 151.101.129.91
+*   Trying 151.101.1.91:443...
+*   Trying [2a04:4e42:600::347]:443...
+* Immediate connect fail for 2a04:4e42:600::347: Network is unreachable
+*   Trying [2a04:4e42:200::347]:443...
+* Immediate connect fail for 2a04:4e42:200::347: Network is unreachable
+*   Trying [2a04:4e42::347]:443...
+* Immediate connect fail for 2a04:4e42::347: Network is unreachable
+*   Trying [2a04:4e42:400::347]:443...
+* Immediate connect fail for 2a04:4e42:400::347: Network is unreachable
+* connect to 151.101.1.91 port 443 from 192.168.1.34 port 52236 failed: Connection timed out
+*   Trying 151.101.65.91:443...
+* ipv4 connect timeout after 82185ms, move on!
+*   Trying 151.101.193.91:443...
+* ipv4 connect timeout after 41091ms, move on!
+*   Trying 151.101.129.91:443...
+* ipv4 connect timeout after 41091ms, move on!
+* Failed to connect to dl.flathub.org port 443 after 300954 ms: Timeout was reached
+* Closing connection
+curl: (28) Failed to connect to dl.flathub.org port 443 after 300954 ms: Timeout was reached
+</code></pre>
+<p>And here’s what the output of “mtr -T -P 443 <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a>” after some time running looks like:</p>
+<pre><code class="lang-auto"> Host                                                                                                                                                                                                               Loss%   Snt   Last   Avg  Best  Wrst StDev
+ 1. _gateway                                                                                                                                                                                                         0.0%   557    0.5   0.5   0.2  24.7   1.2
+ 2. 192.168.88.1                                                                                                                                                                                                     0.0%   557    0.9   1.0   0.5  11.2   1.1
+ 3. 254.64.57.37.triolan.net                                                                                                                                                                                         0.0%   557    1.1   1.8   0.8  33.1   2.6
+ 4. kyiv1-xe-11-1-0-3522.ett.ua                                                                                                                                                                                      0.0%   557    1.6   2.3   1.1  47.8   3.4
+ 5. var1-kv0.ett.ua                                                                                                                                                                                                  0.0%   557   22.4  23.7  21.8  62.3   4.5
+ 6. (waiting for reply)
+</code></pre>
+<p>I should however point out that <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a> responds to pings for me and sending ICMP packets to it via mtr instead of TCP port 443 packets looks like this, actually:</p>
+<pre><code class="lang-auto"> Host                                                                                                                                                                                                               Loss%   Snt   Last   Avg  Best  Wrst StDev
+ 1. _gateway                                                                                                                                                                                                         0.0%    68    0.3   0.3   0.2   1.5   0.3
+ 2. 192.168.88.1                                                                                                                                                                                                     0.0%    68    0.5   0.5   0.4   1.8   0.3
+ 3. 254.64.57.37.triolan.net                                                                                                                                                                                         0.0%    68    5.3   3.5   0.5  29.3   5.9
+ 4. kyiv1-xe-11-1-0-3522.ett.ua                                                                                                                                                                                      0.0%    68    1.2   1.9   1.0  15.4   2.5
+ 5. var1-kv0.ett.ua                                                                                                                                                                                                  0.0%    68   21.9  23.3  21.7  52.2   4.7
+ 6. 80.249.212.184                                                                                                                                                                                                   0.0%    68   41.7  41.7  41.5  43.1   0.2
+ 7. 151.101.1.91                                                                                                                                                                                                     0.0%    68   42.5  42.6  42.4  44.2   0.3
+</code></pre>
+<p>It is fairly normal that not all of the intermediate nodes respond to packets, so TCP not getting a response on step 6 is not necessarily invalid as long as the connection gets passed along. But it seems that it doesn’t connect beyond this point.</p>
+<p>So, it’s clear to me that connection stops either at this 80.249.212.184 host (which appears to be somewhere in Amsterdam) or at the final destination of 151.101.1.91 (which is the Fastly node my connection ends up routed through), and it only blocks HTTP(S) requests with ICMP requests passing through just fine.</p>
+<p>As you can see from the output I shared above, it’s neither my local setup, nor my local ISP blocking the connection.</p>
+<p>Flathub lacks any official repo mirrors (and I failed to find any unofficial mirrors too for that matter) which makes it tricky for me to resolve this problem by just using some other repo. Unless you have some repos in mind to suggest I used. That lack of mirrors is quite a shortsighted approach, IMHO, but I guess there’s nothing I can do about that. In any case, I’m frankly out of options.</p>
+<p>So, I have a question to the Flathub team. What solution do you propose that will fix this? Is it something you could fix? Do you need any additional information from me to do that? Or should I contact Fastly to unblock me or something? What’s the path forward from here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 27, 2024 2:54 PM">
+            <time itemprop="datePublished" datetime="2024-05-27 14:54:28 +0000">May 27, 2024</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Are you in Kiev or Ukraine? If so your ISP or country blocks the CDN used by Flathub -  Fastly.</p>
+<p>This was confirmed by the reporter here who resides there <a href="https://github.com/flathub/flathub/issues/5286" class="inline-onebox" rel="noopener nofollow ugc">Flathub repository index is not accessible in Kyiv, Ukraine · Issue #5286 · flathub/flathub · GitHub</a></p>
+<p>You have to contact them unfortunately.</p>
+<blockquote>
+<p>Flathub lacks any official repo mirrors (and I failed to find any unofficial mirrors too for that matter) which makes it tricky for me to resolve this problem by just using some other repo.</p>
+</blockquote>
+<p>Flatpak repos have no individual packages to like distro packages to mirror, it’s complicated to mirror something like that.</p>
+<blockquote>
+<p>Unless you have some repos in mind to suggest I used.</p>
+</blockquote>
+<p>Fedora hosts their own Flatpak repo, GNOME hosts their own Nightly repo, KDE has one too.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jiube</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 27, 2024 3:58 PM">
+            <time itemprop="datePublished" datetime="2024-05-27 15:58:31 +0000">May 27, 2024</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey, thanks for the response!</p>
+<p>I am indeed in Ukraine, although not in Kyiv; but the connection seems to route through it at some point.</p>
+<p>The GitHub issue was very helpful, thanks for that.</p>
+<p>ISP is definitely unrelated, neither is the country. I’m like 99.99% sure. The ISP is local to the country and the connections successfully reach IP addresses beyond the country. If this was an ISP or country level block for that routing, the traces sent by mtr would’ve never left it. We’d have seen those “(waiting for reply)” messages much earlier.</p>
+<p>It seems more and more like something related to Fastly. I guess, I’ll try reaching out to them.</p>
+<p>Or try one of the repos you suggested if it doesn’t work out. It’s a bummer those repos didn’t show up in my searches…</p>
+<p>Thankfully, the installed packages work at the moment, and I don’t need to install anything new immediately; I was just trying to do a mundane full system update and wanted to update Flatpak packages along with it like I usually do.</p>
+<p>Let’s see how it goes.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 27, 2024 4:59 PM">
+            <time itemprop="datePublished" datetime="2024-05-27 16:59:38 +0000">May 27, 2024</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="Jiube" data-post="3" data-topic="6763">
+<div class="title">
+<div class="quote-controls"></div>
+Jiube:</div>
+<blockquote>
+<p>Or try one of the repos you suggested if it doesn’t work out. It’s a bummer those repos didn’t show up in my searches…</p>
+</blockquote>
+</aside>
+<blockquote>
+<p>Or try one of the repos you suggested if it doesn’t work out. It’s a bummer those repos didn’t show up in my searches…</p>
+</blockquote>
+<p><a href="https://wiki.gnome.org/Apps/Nightly" class="onebox" target="_blank" rel="noopener nofollow ugc">https://wiki.gnome.org/Apps/Nightly</a></p>
+<p><a href="https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps" class="onebox" target="_blank" rel="noopener nofollow ugc">https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps</a></p>
+<p><a href="https://developer.fedoraproject.org/deployment/flatpak/flatpak-usage.html" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Usage — Fedora Developer Portal</a> (second one)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 27, 2024 5:01 PM">
+            <time itemprop="datePublished" datetime="2024-05-27 17:01:00 +0000">May 27, 2024</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You can also easily build and host something from Flathub to your own repo. <a href="https://docs.flatpak.org/en/latest/hosting-a-repository.html#hosting-a-repository-on-gitlab-github-pages" class="inline-onebox" rel="noopener nofollow ugc">Hosting a repository - Flatpak documentation</a> has an example for hosting on <a href="http://gitlab.com" rel="noopener nofollow ugc">gitlab.com</a> pages</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

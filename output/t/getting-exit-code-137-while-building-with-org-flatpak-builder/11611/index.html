@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting exit code 137 while building with org.flatpak.Builder - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Getting exit code 137 while building with org.flatpak.Builder</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Getting exit code 137 while building with org.flatpak.Builder</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 26, 2026</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Loup</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 26, 2026 12:54 PM">
+            <time itemprop="datePublished" datetime="2026-01-26 12:54:35 +0000">Jan 26, 2026</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I install org.flatpak.Builder according to <a href="https://docs.flathub.org/docs/for-app-authors/submission" rel="noopener nofollow ugc">instructions</a> but then i started getting this error<br>
+I was using <code>flatpak-builder</code> cli earlier and that was working, it still works on <a href="https://github.com/Loup-Garou911XD/ballistica/actions/runs/21335642388" rel="noopener nofollow ugc">github action</a><br>
+but now even that doesnt work<br>
+this is my <a href="https://github.com/Loup-Garou911XD/flathub/blob/net.froemling.bombsquad/net.froemling.bombsquad.yml" rel="noopener nofollow ugc">manifest</a><br>
+Google search tells 137 is out of memory error but i have 8 Gig free memory<br>
+i have tried to</p>
+<ul>
+<li>reinstall flatpak-builder and org.flatpak.Builder</li>
+<li>limit build to 2 jobs</li>
+</ul>
+<p>I could find post of someone running into this issue so i am lost<br>
+If you need any more info then lmk</p>
+<pre><code class="lang-auto">-- Looking for strstr - found
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for itoa
+-- Looking for itoa - not found
+-- Looking for _ltoa
+-- Looking for _ltoa - not found
+-- Looking for _uitoa
+-- Looking for _uitoa - not found
+-- Looking for _ultoa
+-- Looking for _ultoa - not found
+-- Looking for strtol
+FB: host_command_exited_cb 312363 35072
+
+Error: module SDL2: Child process exited with code 137
+FB: Unmounting read-only fs: fusermount -uz /home/loup/github_fork/ballistica/build/flathub/.flatpak-builder/rofiles/rofiles-wkIZb5
+
+</code></pre>
+<p>Also if i put rsync module before sdl, rsync gets built<br>
+only fails on sdl</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">CodedOre</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 26, 2026 2:27 PM">
+            <time itemprop="datePublished" datetime="2026-01-26 14:27:02 +0000">Jan 26, 2026</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since SDL is included in the Freedesktop SDK, do you need to build it manually?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Loup</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 26, 2026 2:30 PM">
+            <time itemprop="datePublished" datetime="2026-01-26 14:30:34 +0000">Jan 26, 2026</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>okay i found this post and flatpak reset-permissions actually helped</p>
+<aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak-builder/issues/389">
+  <header class="source">
+
+      <a href="https://github.com/flatpak/flatpak-builder/issues/389" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak-builder</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue" data-github-private-repo="false">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/flatpak/flatpak-builder/issues/389" target="_blank" rel="noopener nofollow ugc">Flatpak-builder exited with code 137, but plenty of un-use memory.</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2021-04-27" data-time="21:51:09" data-timezone="UTC">09:51PM - 27 Apr 21 UTC</span>
+      </div>
+
+        <div class="date">
+          closed <span class="discourse-local-date" data-format="ll" data-date="2021-08-23" data-time="07:53:05" data-timezone="UTC">07:53AM - 23 Aug 21 UTC</span>
+        </div>
+
+      <div class="user">
+        <a href="https://github.com/kevinsmia1939" target="_blank" rel="noopener nofollow ugc">
+          <img alt="" src="/uploads/original/2X/8/8ba914a8be5a4236a7faf1ca3ae896edb3b23c47.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="8597A4">
+          kevinsmia1939
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">Operating System: openSUSE Tumbleweed 20210425
+KDE Plasma Version: 5.21.4
+KDE <span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">Frameworks Version: 5.81.0
+Qt Version: 5.15.2
+Kernel Version: 5.11.15-1-default
+OS Type: 64-bit
+Graphics Platform: X11
+Processors: 8 × Intel® Core™ i7-3770 CPU @ 3.40GHz
+Memory: 7.5 GiB of RAM
+Swap file: 32 GiB
+Graphics Processor: Mesa DRI Intel® HD Graphics 4000
+
+flatpak-builder 1.0.12
+
+Flatpak 1.11.1
+
+I am building Avogadro2 on my local machine.
+https://github.com/flathub/org.openchemistry.Avogadro2
+
+I simply fork and clone all the files.
+Build with 
+`flatpak-builder --install --user build org.openchemistry.Avogadro2 --force-clean`
+
+During python3-numpy module, the error occurred.
+```
+x86_64-unknown-linux-gnu-gcc: numpy/core/src/umath/ufunc_type_resolution.c
+x86_64-unknown-linux-gnu-gcc: numpy/core/src/umath/override.c
+x86_64-unknown-linux-gnu-gcc: numpy/core/src/multiarray/mapping.c
+x86_64-unknown-linux-gnu-gcc: numpy/core/src/multiarray/methods.c
+Error: module python3-numpy: Child process exited with code 137
+```
+
+I look around for this code 137 and found that it is cause by not enough memory, which OOM killer kill it.
+
+But I look at htop all the time and memory never exceed 7.5 GiB.
+
+I could build other project that use more memory, but not Avogadro2 for some reason.
+I tried deleting .flatpak-builder and build folder, same error.
+
+Why am I getting code 137? Does it mean OOM killer kill flatpak-builder? Why do it got kill when memory is not full?</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

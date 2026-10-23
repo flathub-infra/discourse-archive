@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Need help debugging why my flatpak build is not working - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Need help debugging why my flatpak build is not working</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Need help debugging why my flatpak build is not working</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Nov 19, 2023</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">makeasnek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Nov 19, 2023 10:05 PM">
+            <time itemprop="datePublished" datetime="2023-11-19 22:05:21 +0000">Nov 19, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am working on build a flatpak for the open source software BOINC. It is used by scientists to distribute computational workloads to the computers of volunteers. I think I got the entire build process down right, but I can’t seem to actually run the app due to a missing file error.</p>
+<p>I’m guessing this is an easy fix, but I have googled and chatgptd to no avail. Any help would be greatly appreciated.</p>
+<p>In my build directory I have a file <code>org.thesciencecommons.boinc.yml</code> with the contents:</p>
+<pre><code class="lang-auto">app-id: org.thesciencecommons.boinc
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+runtime: org.freedesktop.Platform.GL
+runtime: org.freedesktop.Platform.GL.nvidia
+runtime: org.freedesktop.Platform.GL.mesa-git
+runtime: org.freedesktop.Platform.GL.default
+runtime: org.freedesktop.Platform.VAAPI.Intel
+command: boincmgr
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # Needs to talk to the network:
+  - --share=network
+  # Needs to save files locally
+  #- --filesystem=xdg-documents
+  #- --metadata=X-DConf=migrate-path=/org/gnome/dictionary/
+ # GPU acceleration
+  - --device=dri
+modules:
+  ##### freeglut and libXmu needed for projects that display graphics
+  ##### https://boinc.berkeley.edu/trac/wiki/GraphicsApi#api
+  - name: libnotify
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libnotify.git
+    config-opts:
+      - -Dtests=false
+      - -Dman=false
+      - -Dgtk_doc=false
+      - -Ddocbook_docs=disabled
+  - name: glu
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+    cleanup: 
+      - /include
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+  - name: freeglut
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/FreeGLUTProject/freeglut/releases/download/v3.4.0/freeglut-3.4.0.tar.gz
+        sha256: 3c0bcb915d9b180a97edaebd011b7a1de54583a838644dcd42bb0ea0c6f3eaec
+    cleanup:
+      - /include
+  - name: libXmu
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/libXmu-1.1.4.tar.gz
+        sha256: 3091d711cdc1d8ea0f545a13b90d1464c3c3ab64778fd121f0d789b277a80289
+    cleanup:
+      - /include
+      - /share
+  - name: wxWidgets
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/wxWidgets/wxWidgets.git
+        tag: v3.2.2.1
+        commit: a812fffda3fe686c94e24bff27e8effd96e4de64
+    cleanup:
+      - /bin
+      - /include
+      - /share
+      - /lib/wx/include
+  #####
+  - name: boinc
+    buildsystem: autotools
+    make-install-args:
+      - DESTDIR=${FLATPAK_DEST}
+      - prefix=
+      - exec_prefix=
+    sources:
+      - type: git
+        url: https://github.com/BOINC/boinc.git
+      ### Patch to change 2 prefs - workaround the broken simple GUI and exit the boinc client when boincmgr closes
+      - type: file
+        path: org.thesciencecommons.boinc.metainfo.xml
+     # - type: patch
+     #   path: change-application-defaults.patch
+      - type: shell
+        commands:
+          - ./_autosetup
+    config-opts:
+      - --disable-server
+      - --disable-fcgi
+    post-install:
+      ### Overwrite BOINCDIR or else it will warn that it can't find gui_rpc_auth.cfg
+      - sed -i 's:#BOINCDIR=/var/lib/boinc:BOINCDIR=/:' ${FLATPAK_DEST}/etc/boinc-client.conf
+      - install -Dm644 clientgui/res/boinc.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dm644 clientgui/res/boinc.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 org.thesciencecommons.boinc.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - desktop-file-edit --remove-key=Path ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-icon=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+    cleanup:
+      - /usr
+</code></pre>
+<p>This builds without any significant errors with <code>flatpak-builder --user --install --force-clean build-dir org.thesciencecommons.boinc.yml</code> however when I try a <code>flatpak run org.thesciencecommons.boinc</code> I get the error <code>bwrap: execvp /bin/boincmgr: No such file or directory</code></p>
+<p>I have gotten a shell within the flatpak with <code>flatpak run --command=sh --devel org.thesciencecommons.boinc</code> and have verified that there is a file at /app/bin/boincmgr as expected. And I can successfully run it from within the shell, but I can’t get it to run with <code>flatpak run</code> I have also tried specifying absolute and relative paths in my <code>flatpak run</code> command with no change in results.</p>
+<p>Why can’t flatpak see this binary?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Nov 20, 2023 5:34 PM">
+            <time itemprop="datePublished" datetime="2023-11-20 17:34:24 +0000">Nov 20, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think the wrong runtime gets set. flatpak-builder seems to take the last value which is in your case <code>runtime: org.freedesktop.Platform.VAAPI.Intel</code> but this is just a extension to the runtime. Remove all but <code>runtime: org.freedesktop.Platform</code>.</p>
+<p>All the extensions you’ve listed already get downloaded &amp; activated if the system requires them (see <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/23.08/elements/flatpak-images/platform.bst" rel="noopener nofollow ugc">Freedesktop Platform metadata</a> &amp; <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-metadata" rel="noopener nofollow ugc">Flatpak metadata</a> under <code>[Extension NAME]</code>).</p>
+<p>At least in my test flatpak fails with a similar error if the wrong runtime is set:</p>
+<pre><code class="lang-auto">flatpak run --runtime=org.freedesktop.Platform.GL.default//23.08 org.gnome.Evolution
+bwrap: execvp evolution: No such file or directory
+</code></pre>
+<p>If there’s still some issue you could try to run your application with <code>flatpak run --verbose</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">makeasnek</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Nov 20, 2023 9:40 PM">
+            <time itemprop="datePublished" datetime="2023-11-20 21:40:48 +0000">Nov 20, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That was exactly the problem, thank you!!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Framing of &quot;unsafe&quot; permissions scares off non-technincal users - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/feedback/9/index.html">Site Help and Feedback</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Framing of &quot;unsafe&quot; permissions scares off non-technincal users</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Framing of &quot;unsafe&quot; permissions scares off non-technincal users</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 1, 2023</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Connor Clark</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 1, 2023 7:09 PM">
+            <time itemprop="datePublished" datetime="2023-09-01 19:09:47 +0000">Sep 1, 2023</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello!</p>
+<p>My application is on flathub as: <a href="https://flathub.org/apps/com.zquestclassic.ZQuest" class="inline-onebox" rel="noopener nofollow ugc">ZQuest Classic | Flathub</a></p>
+<p>As of today, there is a “Potentially Unsafe” warning with this:</p>
+<blockquote>
+<p>Can access hardware devices; Can read/write your downloads; Uses a legacy windowing system</p>
+</blockquote>
+<p>I’m well aware that the permissions model protects users and this is to alert users that they are opting into a permission. My concern is how non-technical users view this - I’ve had a few reports from users in my community that upon seeing this notice they think best not to install the app (this is after failing to manually install it themselves via a source distribution, which of course they can’t manage being non-techincal). So the main usecase (in my view) of flathub for our project - being a great, simple method for anyone to install our app - is harmed.</p>
+<p>Going through the specific permissions:</p>
+<ol>
+<li>
+<p>“Can access hardware devices” - we support gamepads. As far as I can tell, there is no more-granular permission to request.</p>
+</li>
+<li>
+<p>“Can read/write downloads” - We could probably change this to just reading; but the reason for this is to make downloading assets from an external site simpler to load into the program (asking a user to move files to the right place would be a headache)</p>
+</li>
+<li>
+<p>The legacy windowing thing - yeah, that’s something we should change. No problems with this warning.</p>
+</li>
+</ol>
+<p>Ideally, flatpak would support some more granular perms for the gamepad usecase; but what would really help is if we could provide a “justification” for each permission that an app requires in the flatpak config. As it is today, the current messaging around “unsafe apps” is probably a little more user unfriendly than it needs to be, and being able to explain each permission needed (right alongside its warning) may help.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 2, 2023 1:58 PM">
+            <time itemprop="datePublished" datetime="2023-09-02 13:58:06 +0000">Sep 2, 2023</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I do mostly agree, but please be aware, that this (mostly) matches what gnome software does. And your non-technical users likely go through that to install.</p>
+<p>Current gnome 44<br>
+<img src="/uploads/original/2X/8/8e264cb6505510a7c563cc73a581eef72b810e14.png" alt="image" data-base62-sha1="khvRa00ABauZyUP1QZ7ViLbbh9G" width="293" height="211"></p>
+<p>New beta<br>
+<img src="/uploads/original/2X/b/b6c2e5acfed3e5208d9ecffd8abf5fed5086b0a7.png" alt="image" data-base62-sha1="q4MsP12vSdFNfHfgaY3VMxZDdLp" width="629" height="301"></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/f/fccecca8011e7737552786fe779f40c04ac0a5ca.png" data-download-href="/uploads/original/2X/f/fccecca8011e7737552786fe779f40c04ac0a5ca.png" title="image"><img src="/uploads/original/2X/f/fccecca8011e7737552786fe779f40c04ac0a5ca.png" alt="image" data-base62-sha1="A4ro4EonHhx3ItDvBt46SJi3Ddw" width="542" height="500" data-dominant-color="F8F7F6"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">588×542 26.2 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>In fact I’ve seem to have missed the implementation of the check for the documents folder on the website.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Grogfog</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 4, 2023 9:11 PM">
+            <time itemprop="datePublished" datetime="2023-09-04 21:11:33 +0000">Sep 4, 2023</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Virtually all of the most popular apps are labeled “potentially unsafe”, this is a very bad decision no sane software store should make, especially not one as promising as this one. Please reconsider.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Patrice Ferlet</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 9, 2023 7:30 AM">
+            <time itemprop="datePublished" datetime="2023-09-09 07:30:09 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello,</p>
+<p>I also think that this kind of message is harmful. I produce an application developed with Fyne (in Go), which uses GLFW for the interface. In no way is this library " unsafe ".</p>
+<p>The fact that the interface warns of access to peripherals doesn’t shock me. But how is an application that uses a windowing system other than Gnome “unreliable”?</p>
+<p>In my opinion, this message should clearly be revised.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 9, 2023 9:09 AM">
+            <time itemprop="datePublished" datetime="2023-09-09 09:09:07 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="metal3d" data-post="4" data-topic="5059">
+<div class="title">
+<div class="quote-controls"></div>
+metal3d:</div>
+<blockquote>
+<p>I also think that this kind of message is harmful. I produce an application developed with Fyne (in Go), which uses GLFW for the interface. In no way is this library " unsafe ".</p>
+<p>The fact that the interface warns of access to peripherals doesn’t shock me. But how is an application that uses a windowing system other than Gnome “unreliable”?</p>
+<p>In my opinion, this message should clearly be revised.</p>
+</blockquote>
+</aside>
+<p>It’s not about a “windowing system other than Gnome”, it’s about X11 vs. Wayland. X11 is considered potentially unsafe.</p>
+<p>Since GLFW does support Wayland (<a href="https://www.glfw.org/docs/latest/compile_guide.html" class="inline-onebox" rel="noopener nofollow ugc">GLFW: Compiling GLFW</a>), you should investigate if you can enable this for your application.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Patrice Ferlet</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 9, 2023 9:44 AM">
+            <time itemprop="datePublished" datetime="2023-09-09 09:44:37 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The problem at this time is that Gnome doesn’t provide a correct decoration for GLFW apps. So, Fyne uses X11 windowing. Libdecor is not fully implemented. And to be honest, the decorations is (my opinion) ugly (seeing the Blender window decorations on Gnome for example).</p>
+<p>As soon as Gnome could make SSD, there will not be this problem.</p>
+<p>But… it seems that Gnome Team doesn’t want to implement SSD.</p>
+<p>That will leave a lot of people being considered to provide unsafe app.</p>
+<p>Note· that fyne allows Wayland compilation. The decoration is ugly</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Mihnea Rădulescu</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Sep 9, 2023 10:44 AM">
+            <time itemprop="datePublished" datetime="2023-09-09 10:44:45 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have raised an issue regarding this concern on the flathub/website GitHub.</p>
+<p><a href="https://github.com/flathub/website/issues/1933" rel="noopener nofollow ugc">Rework of the App screen Permissions clickable header and its pop-up</a></p>
+<p>Feel free to comment and provide feedback to the raised issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Sep 9, 2023 12:33 PM">
+            <time itemprop="datePublished" datetime="2023-09-09 12:33:09 +0000">Sep 9, 2023</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I listed all of my flatpaks:<br>
+<code>flatpak list --app</code><br>
+and checked all of them on Flathub. Interesting all of flatpaks I use are marked as <em>Potentially unsafe</em> on Flathub.</p>
+<p>Exception is just one flatpak I use, which is marked as <em>Probably safe</em> and this is flatpak <em>(Gnome) Calculator</em> with “Has network access”. Interesting, why does Calculator needs network access?</p>
+<p><img src="/uploads/original/2X/0/0ee5e810ad1b8f9a847b0bee252d01b0a17f70e3.png" alt="image" data-base62-sha1="27NfVUnOBtvx7dGqYd0g59iMShJ" width="381" height="360"></p>
+<p><strong>EDIT:</strong> I have checked and one of the feature of <em>Calculator</em> is countries currency conversion and to get current currency rates, internet access is required.</p>
+<p>In my humble opinion it is nice Flathub is doing some research about safety, but in my humble opinion there is broader problem. Flatpacks itself should have better security mechanism like when application is trying to do some action that is potentially unsafe, to ask for permission. For example when <em>Calculator</em> tries to access network flatpak as system mechanism should temporally prevent network access and pop-up a question to user like: <em>Calculator is trying to access network</em> and there should be options user can select:</p>
+<ul>
+<li>Always allow</li>
+<li>Allow this time only</li>
+<li>Never allow</li>
+</ul>
+<hr>
+<p>Now what is purpose of marking almost all of the applications in application store as <em>Potentially unsafe</em>?</p>
+<ul>
+<li>Is this indication that Flathub is shit-store with unsafe applications? I don’t think Flathub is any less secure that e.g. Windows store or ordinary DEB/RPM package stores.</li>
+<li>If user see “Potentially unsafe”, what should this tell the user? In my humble opinion, unsafe applications should not be available on application store, this is responsibility of store provider. If there is “potentially unsafe” application, then application store should advice user to user some other “safe” application.</li>
+<li>What options developer have? In rare cases I see benefit, like Calculator really does not need network access permission and this permission should be removed. But in majority of cases developer can’t do any useful action. If app runs on X11 base, what can really be done. In most cases this is toolkit problem, that apps are build upon.</li>
+</ul>
+<hr>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Jacob Alzén</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Sep 10, 2023 12:11 PM">
+            <time itemprop="datePublished" datetime="2023-09-10 12:11:05 +0000">Sep 10, 2023</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am also developing an application using <a href="https://github.com/fyne-io/fyne" rel="noopener nofollow ugc">Fyne</a> and like <span class="mention">@metal3d</span> already has mentioned before, we don’t have Wayland support yet for various reasons. With my application <a href="https://flathub.org/apps/io.github.jacalz.rymdport" rel="noopener nofollow ugc">Rymdport</a>, I am also worried about scaring away potential users but there isn’t much I can do about making the warnings go away yet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Sep 11, 2023 1:19 PM">
+            <time itemprop="datePublished" datetime="2023-09-11 13:19:59 +0000">Sep 11, 2023</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="liz134" data-post="8" data-topic="5059">
+<div class="title">
+<div class="quote-controls"></div>
+liz134:</div>
+<blockquote>
+<p><em>Calculator is trying to access network</em> and there should be options user can select:</p>
+<ul>
+<li>Always allow</li>
+<li>Allow this time only</li>
+<li>Never allow</li>
+</ul>
+</blockquote>
+</aside>
+<p>What your describing is a portal <a href="https://github.com/flatpak/xdg-desktop-portal" class="inline-onebox">GitHub - flatpak/xdg-desktop-portal: Desktop integration portal</a><br>
+I don’t think there is one for internet (or for other critical ones yet), but it does exactly what you described, for e.g. for screen sharing etc.</p>
+<p>Which allows some apps to drop their static permissions, which will in turn lead to that app getting a better safety rating.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Emeric</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Sep 28, 2023 11:22 AM">
+            <time itemprop="datePublished" datetime="2023-09-28 11:22:35 +0000">Sep 28, 2023</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Now what is purpose of marking almost all of the applications in application store as <em>Potentially unsafe</em>?</p>
+</blockquote>
+<p>Yeah I really second that. When calculators are marked unsafe you know you really went too far.<br>
+Desktop applications may use files. I know right? They probably use network and Internet for many things, and that may range from checking if they are up-to-date, updating currency rates, to… Selling user data? Obviously.</p>
+<p>Now let me tell you about my dilemma.<br>
+I have one application that’s marked unsafe because of network access. Users can use a remote mysql database instead of embedded sqlite if they wish to use the app from multiple devices.<br>
+Should I remove the feature that make the app “unsafe” to get a green mark? After all, it’s not <em>that</em> important. Right?</p>
+<blockquote>
+<p><em>Calculator is trying to access network</em> and there should be options user can select</p>
+</blockquote>
+<blockquote>
+<p>What your describing is a portal</p>
+</blockquote>
+<p>If you think security can be solved by popups, then you really have learn nothing from Windows Vista.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Sep 28, 2023 12:53 PM">
+            <time itemprop="datePublished" datetime="2023-09-28 12:53:27 +0000">Sep 28, 2023</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emeric" data-post="11" data-topic="5059">
+<div class="title">
+<div class="quote-controls"></div>
+emeric:</div>
+<blockquote>
+<p>If you think security can be solved by popups, then you really have learn nothing from Windows Vista.</p>
+</blockquote>
+</aside>
+<p>Portals don’t necessitate a popup.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Emeric</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Sep 28, 2023 1:13 PM">
+            <time itemprop="datePublished" datetime="2023-09-28 13:13:56 +0000">Sep 28, 2023</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Portals don’t necessitate a popup.</p>
+</blockquote>
+<p>I know, and that’s for the best.</p>
+<p>If the users can adjust permissions in the gnome software that would be perfectly acceptable. In fact it would be pretty neat.<br>
+But then you would need to default permissions to on (or show a popup to let them choose, right ?) and not scare the user into thinking internet access (or a legacy windowing system) means doom.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Grow Fediverse</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="May 23, 2025 2:47 AM">
+            <time itemprop="datePublished" datetime="2025-05-23 02:47:01 +0000">May 23, 2025</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sorry for the topic bump (it seemed the “most recent” I could find on the matter), but still relevant and wanted to add updated feedback, particularly for fellow linux newbies.</p>
+<p>Brand new linux user here, about 3 weeks in. I have <em>zero</em> idea how this stuff works, self teaching atm after leaving the apple microsoft ecosystems. Like I only learned 2 weeks ago that an OS and the desktop can be separate things lol. SO imagine how good I am at understanding the “unsafe” designation.</p>
+<p>The “unsafe” designation definitely had a direct negative impact on my adoption of linux or open source offerings initially. As I looked around Flathub for various options, almost every single one had an “unsafe” designation. When I read the list of what was causing that designation, I don’t know enough to know how serious to take any of the warnings.</p>
+<p>Worst yet was a majority of the open source apps I wanted to use - apps that have a fairly high rating among open source advocates - had this “unsafe” designation. Even really reputable ones. Meanwhile the “verified” proprietary apps are by companies who quietly sell my PII data or scrape my content to train their LLMs without my consent. In this context the “unsafe” and “verified” designations didn’t give me any actionable end user feedback to avoid software with predatory intentions. It just made the Flathub seem unsafe. Thankfully when literally every single solitary app that I tried after a few hours was coming up “unsafe”, I figured that it had to be a display bug or something and not actually unsafe. A less persistent end user than me though would have just noped out and gone back to what they’re used to instead of giving this a real try.</p>
+<p>I hope someone address it and makes the feedback more meaningful for end users. What an app is capable of doing, and intuiting the intentions of the designers, are two different things. It’s the UI equivalent of labeling the kitchen drawer with “DANGEROUS WEAPON INSIDE” because it has a steak knife in it. Like um yeah, someone could in fact hurt someone or themself with a steak knife. But most ppl are just gonna use it to eat a steak, so how useful or informative is such a label in that context?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Kolja</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="May 25, 2025 5:59 PM">
+            <time itemprop="datePublished" datetime="2025-05-25 17:59:29 +0000">May 25, 2025</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="gfvs_ntl" data-post="14" data-topic="5059">
+<div class="title">
+<div class="quote-controls"></div>
+gfvs_ntl:</div>
+<blockquote>
+<p>In this context the “unsafe” and “verified” designations didn’t give me any actionable end user feedback to avoid software with predatory intentions.</p>
+</blockquote>
+</aside>
+<p><code>Verified</code> has nothing to do with <code>Unsafe</code> or <code>Safe</code>. You should not conflate these. Proprietary apps get unsafer, for being proprietary.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

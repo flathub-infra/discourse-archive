@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unable to load summary from remote flathub... public key not found - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Unable to load summary from remote flathub... public key not found</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Unable to load summary from remote flathub... public key not found</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 21, 2024</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">skierpage</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 21, 2024 11:47 PM">
+            <time itemprop="datePublished" datetime="2024-07-21 23:47:15 +0000">Jul 21, 2024</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, for about the last week I get errors from some <code>flatpak</code> commands:</p>
+<pre><code class="lang-plaintext">% flatpak install org.kde.elisa 
+Looking for matches…
+F: An error was encountered searching remote ‘flathub’ for ‘org.kde.elisa’: Unable to load summary from remote flathub: Signature made Sun 21 Jul 2024 03:05:33 PM PDT using RSA key ID 562702E9E3ED7EE8
+Can't check signature: public key not found
+</code></pre>
+<p>Installation does proceed successfully. This is version 1.15.8 on Fedora 40. Adding <code>--verbose</code> gives a little more info. It looks like flatpak makes a second request to load a different “<em>optional</em> summary index” from flathub:</p>
+<pre><code class="lang-plaintext">...
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loaded indexed summary file be774bf4dbc268ee9d525eccffcbb647a724d152a58a174575b0300fd6b8cdd6 from cache for remote ‘flathub’
+...
+F: Fetching summary index file for remote ‘flathub’
+F: Loading https://dl.flathub.org/repo/summary.idx using curl
+F: Received 10001 bytes
+F: Loading https://dl.flathub.org/repo/summaries/0bb07ce1ea4370a3658628ec315b068ded6227add7b0369115b259eb10aaf91d.idx.sig using curl
+F: Received 592 bytes
+F: Failed to download optional summary index: Signature made Sun 21 Jul 2024 03:05:33 PM PDT using RSA key ID 562702E9E3ED7EE8
+</code></pre>
+<p>Again, commands succeed, but I wonder what the problem is, maybe some invalid cached item, or an expired key? I ran <code>flatpak repair</code> with no issues. Here’s the <code>flathub</code> section of my /var/lib/flatpak/repo/config:</p>
+<pre data-code-wrap="ini"><code class="lang-ini">[remote "flathub"]
+url=https://dl.flathub.org/repo/
+gpg-verify=true
+gpg-verify-summary=true.
+xa.title=Flathub
+</code></pre>
+<p>Thanks. Flatpak is <img src="/images/emoji/twitter/1st_place_medal.png?v=12" title=":1st_place_medal:" class="emoji" alt=":1st_place_medal:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

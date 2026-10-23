@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metadata issues building Chitubox flatpak - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Metadata issues building Chitubox flatpak</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Metadata issues building Chitubox flatpak</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 15, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">nomorenails</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 15, 2025 2:00 PM">
+            <time itemprop="datePublished" datetime="2025-04-15 14:00:03 +0000">Apr 15, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello there</p>
+<p>I’m having issues building a flatpak using this repo: <a href="https://github.com/rmonk/chitubox-flatpak" class="inline-onebox" rel="noopener nofollow ugc">GitHub - rmonk/chitubox-flatpak: Flatpak builder for Chitubox</a></p>
+<p>I am building it on the Steam Deck and have managed to get all the way to the actual installation part of the script but keep getting the same error of <code>metainfo-license-invalid</code> followed by <code>filters-but-no-output</code>.</p>
+<p>I’ve done some research and previous issues flagged all seemed to be because a mismatching id was used in the metadata as shown <a href="/t/meta-issues-again/7847/index.html#post_6">here</a> and <a href="/t/troubleshooting-flatpak-builder-filters-but-no-output-error/7250/index.html">here</a> but that doesn’t seem to be the case with the metadata in this one as it matches the name (com.chitubox.Chitubox).</p>
+<p>Any help would greatly be appreciated!</p>
+<p>Quick link to the metadata is here: <a href="https://github.com/rmonk/chitubox-flatpak/blob/main/desktop/com.chitubox.Chitubox.appdata.xml" class="inline-onebox" rel="noopener nofollow ugc">chitubox-flatpak/desktop/com.chitubox.Chitubox.appdata.xml at main · rmonk/chitubox-flatpak · GitHub</a></p>
+<p>(Yaml file is also on the Github, new users can only post four links otherwise I would have linked here)</p>
+<p><strong>Note</strong>: In order to get this to build on the Steam Deck I had to run the commands as usual omitting <code>--user</code> and also running <code>sudo chmod u+s /usr/bin/bwrap</code> beforehand as the bwrap namespace is disable by default on SteamOS.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">bbhtt</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 15, 2025 2:44 PM">
+            <time itemprop="datePublished" datetime="2025-04-15 14:44:43 +0000">Apr 15, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><code>metadata_license</code> can’t be proprietary.</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-metadata_license">
+  <header class="source">
+
+      <a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-metadata_license" target="_blank" rel="noopener">freedesktop.org</a>
+  </header>
+
+  <article class="onebox-body">
+    
+
+<h3><a href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-metadata_license" target="_blank" rel="noopener">Upstream Metadata | AppStream | AppStream 1.0</a></h3>
+
+  <p>AppStream allows upstream projects to define metadata about the components they provide using small XML files, metainfo files, which get installed into locations on the client system and are used by distributors to enhance their metadata. A component...</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<blockquote>
+<p>Currently, the following licenses have been reviewed and can be used as metadata licenses:  […]</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">nomorenails</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 15, 2025 3:31 PM">
+            <time itemprop="datePublished" datetime="2025-04-15 15:31:25 +0000">Apr 15, 2025</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Changed the license to ‘MIT’ and that resolved the issue.</p>
+<p>Thanks for the help!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

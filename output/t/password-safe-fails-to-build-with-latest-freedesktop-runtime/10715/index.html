@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Safe fails to build with latest Freedesktop Runtime - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Password Safe fails to build with latest Freedesktop Runtime</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Password Safe fails to build with latest Freedesktop Runtime</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 16, 2025</span>
+        
+          <span class="topic-status topic-status--closed" title="Closed">Closed</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">liz134</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 16, 2025 10:41 AM">
+            <time itemprop="datePublished" datetime="2025-10-16 10:41:43 +0000">Oct 16, 2025</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am looking into this issue <a href="https://github.com/pwsafe/pwsafe/issues/1482" rel="noopener nofollow ugc">reported upstream</a> and I can reproduce the issue:</p>
+<ul>
+<li>Password Safe builds successfully with Freedesktop Runtime 23.08</li>
+<li>Password Safe fails to builds with Freedesktop Runtime 25.08</li>
+</ul>
+<p>I have uploaded file to: <a href="https://limewire.com/?referrer=pq7i8xx7p2" class="inline-onebox" rel="noopener nofollow ugc">LimeWire: Share Files - Secure File Upload Platform</a></p>
+<p>Download zip file and decompress:</p>
+<ul>
+<li>directory “works_fine” are files to create flatpak that works fine</li>
+<li>directory “fails” are files that fail to build</li>
+</ul>
+<p>in both cases manifest files are the same except of Freedesktop Runtime version. In bot cases from each of directory I run ./make.sh file. For second “fail” case I have outputted all of the terminal output to file: “case compile_runtime_25_08.txt” where is actual compile error.</p>
+<p>Any idea why program fails to compile with latest runtime but it compiles just file with 23.08 version?</p>
+<p>I have contacted Password Safe developer that also does not know what the issue is. But he will read this forum and cooperate.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Martin</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 16, 2025 5:23 PM">
+            <time itemprop="datePublished" datetime="2025-10-16 17:23:03 +0000">Oct 16, 2025</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The best sources are usually all other projects (<a href="https://github.com/search?q=org%3Aflathub+xerces&amp;type=code" class="inline-onebox" rel="noopener nofollow ugc">Code search results · GitHub</a>) or other distributions (e.g. Arch Linux has a simple build file).</p>
+<p>I don’t know what exactly triggers the issue but there seems to be an issue with the CMake file of xerces-c.</p>
+<ul>
+<li>Either patch the file (see <a href="https://github.com/flathub/org.freecad.FreeCAD/blob/c0b4ab595646c716226ddbdeaee86eaad40e241f/patches/xerces-c-cxx17.patch" class="inline-onebox" rel="noopener nofollow ugc">org.freecad.FreeCAD/patches/xerces-c-cxx17.patch at c0b4ab595646c716226ddbdeaee86eaad40e241f · flathub/org.freecad.FreeCAD · GitHub</a>)</li>
+<li>Use the archive as source instead of git &amp; <code>autotools</code> instead of <code>cmake</code> (I’ve tested the build with version 3.3.0)</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

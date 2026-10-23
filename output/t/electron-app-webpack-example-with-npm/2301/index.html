@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electron app webpack example with npm - Flathub Discourse</title>
+  
+  <meta name="description" content="A place for Flathub Contributors and Users">
+  
+  
+  <link rel="icon" href="/uploads/original/2X/1/1c598c2db208fefd68bbce58a9454aaac5377cb7.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="/uploads/original/2X/b/b5a3a6b2b03945cf97bbab4d2cb276f49d6d2013.svg" alt="Flathub Discourse" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general/1/index.html">General</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Electron app webpack example with npm</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Electron app webpack example with npm</h1>
+
+    <div class="topic-meta">
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 5, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 5, 2022 1:47 PM">
+            <time itemprop="datePublished" datetime="2022-03-05 13:47:18 +0000">Mar 5, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi. I am working on an electron app. I use npm, and webpack. I have been following the guide here:</p>
+<p><a href="https://docs.flatpak.org/en/latest/electron.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/electron.html</a></p>
+<p>I get my app to build but when I run the app the contents of the electron window are empty. This, I believe is due to the webpack contents. I have found the flatpak-builder-tools github repository. I see the webpack-quick-start project in the node directory. This project uses yarn.</p>
+<p>Is there a project or repository out there that explains making a flatpak package from electron and uses npm?</p>
+<p>This is the url to my yaml file.</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/radiodee1/electron-gpt/blob/main/flatpak/org.theguy.GptEtc.yaml">
+  <header class="source">
+
+      <a href="https://github.com/radiodee1/electron-gpt/blob/main/flatpak/org.theguy.GptEtc.yaml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/radiodee1/electron-gpt/blob/main/flatpak/org.theguy.GptEtc.yaml" target="_blank" rel="noopener nofollow ugc">radiodee1/electron-gpt/blob/main/flatpak/org.theguy.GptEtc.yaml</a></h4>
+
+
+      <pre><code class="lang-yaml">app-id: org.theguy.GptEtc
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '21.08'
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node14
+command: run.sh
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=home
+build-options:
+  append-path: /usr/lib/sdk/node14/bin
+  cflags: -O2 -g
+  cxxflags: -O2 -g
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/radiodee1/electron-gpt/blob/main/flatpak/org.theguy.GptEtc.yaml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>Thanks for your time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 6, 2022 3:32 PM">
+            <time itemprop="datePublished" datetime="2022-03-06 15:32:28 +0000">Mar 6, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>here is an exerpt from my output when the app is run.</p>
+<pre><code>    [3 preload-host-spawn-strategy] Running: /app/bin/zypak-helper child - /app/main/gpt-etc --type=zygote --enable-crashpad
+    libGL error: MESA-LOADER: failed to retrieve device information
+    [46:0306/102317.684665:ERROR:angle_platform_impl.cc(44)] renderergl_utils.cpp:496 (GenerateTextureFormatCaps): glGetInternalformativ generated error 0x00000500 for format 0x00008D62. Skipping multisample checks.
+    [46:0306/102317.684892:ERROR:angle_platform_impl.cc(44)] renderergl_utils.cpp:496 (GenerateTextureFormatCaps): glGetInternalformativ generated error 0x00000500 for format 0x0000906F. Skipping multisample checks.
+    [46:0306/102317.685104:ERROR:angle_platform_impl.cc(44)] Display.cpp:940 (initialize): ANGLE Display::initialize error 12289: OpenGL ES 2.0 is not supportable.
+    [46:0306/102317.685213:ERROR:gl_surface_egl.cc(808)] EGL Driver message (Critical) eglInitialize: OpenGL ES 2.0 is not supportable.
+    [46:0306/102317.685296:ERROR:gl_surface_egl.cc(1430)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+    [46:0306/102317.686000:ERROR:angle_platform_impl.cc(44)] Display.cpp:940 (initialize): ANGLE Display::initialize error 12289: Could not create a backing OpenGL context.
+    [46:0306/102317.686103:ERROR:gl_surface_egl.cc(808)] EGL Driver message (Critical) eglInitialize: Could not create a backing OpenGL context.
+    [46:0306/102317.686186:ERROR:gl_surface_egl.cc(1430)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+    [46:0306/102317.686269:ERROR:gl_ozone_egl.cc(20)] GLSurfaceEGL::InitializeOneOff failed.
+    [46:0306/102317.688666:ERROR:viz_main_impl.cc(188)] Exiting GPU process due to errors during initialization
+    false here.
+    libGL error: MESA-LOADER: failed to retrieve device information
+    [69:0306/102317.804770:ERROR:angle_platform_impl.cc(44)] renderergl_utils.cpp:496 (GenerateTextureFormatCaps): glGetInternalformativ generated error 0x00000500 for format 0x00008D62. Skipping multisample checks.
+    [69:0306/102317.804926:ERROR:angle_platform_impl.cc(44)] renderergl_utils.cpp:496 (GenerateTextureFormatCaps): glGetInternalformativ generated error 0x00000500 for format 0x0000906F. Skipping multisample checks.
+    [69:0306/102317.805097:ERROR:angle_platform_impl.cc(44)] Display.cpp:940 (initialize): ANGLE Display::initialize error 12289: OpenGL ES 2.0 is not supportable.
+    [69:0306/102317.805168:ERROR:gl_surface_egl.cc(808)] EGL Driver message (Critical) eglInitialize: OpenGL ES 2.0 is not supportable.
+    [69:0306/102317.805216:ERROR:gl_surface_egl.cc(1430)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+    [69:0306/102317.806001:ERROR:angle_platform_impl.cc(44)] Display.cpp:940 (initialize): ANGLE Display::initialize error 12289: Could not create a backing OpenGL context.
+    [69:0306/102317.806108:ERROR:gl_surface_egl.cc(808)] EGL Driver message (Critical) eglInitialize: Could not create a backing OpenGL context.
+    [69:0306/102317.806181:ERROR:gl_surface_egl.cc(1430)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+    [69:0306/102317.806268:ERROR:gl_ozone_egl.cc(20)] GLSurfaceEGL::InitializeOneOff failed.
+    [69:0306/102317.808346:ERROR:viz_main_impl.cc(188)] Exiting GPU process due to errors during initialization
+    libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+    [91:0306/102317.841194:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+    [57:0306/102317.848955:ERROR:command_buffer_proxy_impl.cc(125)] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+    (node:3) electron: Failed to load URL: file:///app/main/resources/app.asar/dist/index.html with error: ERR_FILE_NOT_FOUND
+    (Use `gpt-etc --trace-warnings ...` to show where the warning was created)
+    [3:0306/102318.034159:ERROR:interface_endpoint_client.cc(658)] Message 0 rejected by interface blink.mojom.WidgetHost
+</code></pre>
+<p>I think that one crucial line from the output is:</p>
+<pre><code>    (node:3) electron: Failed to load URL: file:///app/main/resources/app.asar/dist/index.html with error: ERR_FILE_NOT_FOUND
+</code></pre>
+<p>There is, in the ‘dist’ folder, an ‘index.html’ file. I tried making a link to that file, and later a link to the dir (‘dist’) but it did not work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">H</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">Hubert Figuière</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 6, 2022 5:31 PM">
+            <time itemprop="datePublished" datetime="2022-03-06 17:31:38 +0000">Mar 6, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>you probably need <code>--device=dri</code> in the <code>finish-args</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 6, 2022 7:22 PM">
+            <time itemprop="datePublished" datetime="2022-03-06 19:22:57 +0000">Mar 6, 2022</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s great. Thanks. This cuts out a lot of the messages. Here again is my output when the app is run.</p>
+<pre><code>    [3 preload-host-spawn-strategy] Running: /app/bin/zypak-helper child - /app/main/gpt-etc --type=zygote --enable-crashpad
+    [45:0306/141310.425242:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+    (node:3) electron: Failed to load URL: file:///app/main/resources/app.asar/dist/index.html with error: ERR_FILE_NOT_FOUND
+    (Use `gpt-etc --trace-warnings ...` to show where the warning was created)
+</code></pre>
+<p>Again this line stands out. The line from the output is:</p>
+<pre><code>    (node:3) electron: Failed to load URL: file:///app/main/resources/app.asar/dist/index.html with error: ERR_FILE_NOT_FOUND
+</code></pre>
+<p>Thanks for your response.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="user-link">D Liebman</span>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 10, 2022 8:03 PM">
+            <time itemprop="datePublished" datetime="2022-03-10 20:03:56 +0000">Mar 10, 2022</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think flatpak uses the <code>dev</code> folder, while I used the ‘dev’ folder for my index.html and other files. I changed the vue.config.js file so that it looked like this. Then my vue used another folder, called ‘out’ and flatpak found the index.html file. I also had to edit the /main.js file so that it looked for the index file in the right place.</p>
+<pre><code>    const path = require("path");
+
+    module.exports  = {
+       publicPath: process.env.NODE_ENV  ===  'production'  ?  './'  :  '/',
+       outputDir: "./out/",
+       indexPath: path.resolve(__dirname, "out", "index.html")
+    }
+</code></pre>
+<p>thanks for your time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>A read-only archive of Flathub Discourse</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>
