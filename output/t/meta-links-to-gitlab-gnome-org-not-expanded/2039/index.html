@@ -61,8 +61,9 @@
   <main class="site-main">
     <div class="main-inner" data-pagefind-body>
       <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <link itemprop="url" href="https://discourse.flathub.org/t/meta-links-to-gitlab-gnome-org-not-expanded/2039/index.html">
   <header class="topic-header">
-    <h1 class="topic-title" itemprop="name">Meta: Links to gitlab.gnome.org not expanded</h1>
+    <h1 class="topic-title" itemprop="name headline">Meta: Links to gitlab.gnome.org not expanded</h1>
 
     <div class="topic-meta">
       
@@ -78,7 +79,6 @@
   <div class="post-stream">
     
     <div class="post" id="post_1"
-         itemprop="articleBody"
          >
 
       <div class="post-header">
@@ -87,13 +87,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Will Thompson</span>
+            <span class="user-link" itemprop="name">Will Thompson</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_1" title="Jan 12, 2022 5:08 PM">
-            <time itemprop="datePublished" datetime="2022-01-12 17:08:39 +0000">Jan 12, 2022</time>
+            <time itemprop="datePublished" datetime="2022-01-12T17:08:39+00:00">Jan 12, 2022</time>
           </a>
           <span class="post-number">#1</span>
         </div>
@@ -103,7 +103,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>In <a href="/t/loading-of-passwords-via-libsecret-sometimes-not-working/2036/index.html#post_3">this post</a> I tried to add a link to <code>https://gitlab.gnome.org/GNOME/libsecret/-/issues/49</code> and was presented with the following warning:</p>
-<p><img src="/uploads/original/2X/1/1a774b8a548d159896728c387baf31526deb716c.png" alt="discourse.flathub.org_t_loading-of-passwords-via-libsecret-sometimes-not-working_2036" data-base62-sha1="3M80aBXJMZNC8RRTeoHLCUWMLve" width="489" height="130"></p>
+<p><img itemprop="image" src="/uploads/original/2X/1/1a774b8a548d159896728c387baf31526deb716c.png" alt="discourse.flathub.org_t_loading-of-passwords-via-libsecret-sometimes-not-working_2036" data-base62-sha1="3M80aBXJMZNC8RRTeoHLCUWMLve" width="489" height="130"></p>
 <p>It seems reproducible for anything at that domain. Looking at the network traffic, the box seems to be expanded on the Discourse server, not in the client browser. Every other domain I’ve tried seems to work fine, though of course I have not tried every known domain. Weird.</p>
       </div>
 
@@ -123,6 +123,7 @@
     <div class="post" id="post_2"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/meta-links-to-gitlab-gnome-org-not-expanded/2039/index.html#post_2">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -130,13 +131,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">maiki</span>
+            <span class="user-link" itemprop="name">maiki</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_2" title="Jan 14, 2022 7:57 PM">
-            <time itemprop="datePublished" datetime="2022-01-14 19:57:58 +0000">Jan 14, 2022</time>
+            <time itemprop="datePublished" datetime="2022-01-14T19:57:58+00:00">Jan 14, 2022</time>
           </a>
           <span class="post-number">#2</span>
         </div>
@@ -147,7 +148,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Able to reproduce on <code>https://discourse.flathub.org</code>, and see the links embedding as expected on other Discourse instances.</p>
 <p>Looking on the Discourse support site, I can’t find a solid reason it would be happening, though some debugging at <a href="https://meta.discourse.org/t/some-sites-are-blocked-from-oneboxing/189889" class="inline-onebox" rel="noopener nofollow ugc">Some sites are blocked from oneboxing - feature - Discourse Meta</a> proposed the idea the host domain is blocking the <code>curl</code> request… maybe <code>gitlab.gnome.org</code> is getting pinged too often from these forums?</p>
-<p><img src="/images/emoji/twitter/thinking.png?v=9" title=":thinking:" class="emoji only-emoji" alt=":thinking:"></p>
+<p><img itemprop="image" src="/images/emoji/twitter/thinking.png?v=9" title=":thinking:" class="emoji only-emoji" alt=":thinking:"></p>
       </div>
 
       <div class="post-footer">

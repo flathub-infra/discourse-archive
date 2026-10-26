@@ -61,8 +61,9 @@
   <main class="site-main">
     <div class="main-inner" data-pagefind-body>
       <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <link itemprop="url" href="https://discourse.flathub.org/t/device-usb-reports-unknown-device-type-usb-error/8993/index.html">
   <header class="topic-header">
-    <h1 class="topic-title" itemprop="name">&quot;--device=usb&quot; reports &quot;Unknown device type usb&quot; error</h1>
+    <h1 class="topic-title" itemprop="name headline">&quot;--device=usb&quot; reports &quot;Unknown device type usb&quot; error</h1>
 
     <div class="topic-meta">
       
@@ -80,7 +81,6 @@
   <div class="post-stream">
     
     <div class="post" id="post_1"
-         itemprop="articleBody"
          >
 
       <div class="post-header">
@@ -89,13 +89,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">liz134</span>
+            <span class="user-link" itemprop="name">liz134</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_1" title="Feb 26, 2025 9:30 AM">
-            <time itemprop="datePublished" datetime="2025-02-26 09:30:31 +0000">Feb 26, 2025</time>
+            <time itemprop="datePublished" datetime="2025-02-26T09:30:31+00:00">Feb 26, 2025</time>
           </a>
           <span class="post-number">#1</span>
         </div>
@@ -118,7 +118,7 @@
 </blockquote>
 <p>If we look at the <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc">flatpak documentation</a> the following is displayed: <code>DEVICE must be one of: dri, input, usb, kvm, shm, all.</code> so there is “usb” listed.</p>
 <p>But what I see from <a href="https://github.com/flatpak/flatpak/tree/main/doc" rel="noopener nofollow ugc">github flatpak’s documentation:</a></p>
-<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e.png" data-download-href="/uploads/original/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e.png" title="image" rel="noopener nofollow ugc"><img src="/uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_690x71.png" alt="image" data-base62-sha1="jGThsPzRjNbfGUpRY50hP0reJE" width="690" height="71" srcset="/uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_690x71.png, /uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_1035x106.png 1.5x, /uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_1380x142.png 2x" data-dominant-color="22262B"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1408×145 18.2 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e.png" data-download-href="/uploads/original/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e.png" title="image" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_690x71.png" alt="image" data-base62-sha1="jGThsPzRjNbfGUpRY50hP0reJE" width="690" height="71" srcset="/uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_690x71.png, /uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_1035x106.png 1.5x, /uploads/optimized/2X/0/0239d8d73cddf8871c3d97d832ea2452ef2af04e_2_1380x142.png 2x" data-dominant-color="22262B"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1408×145 18.2 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
 <p>This “–device=usb” was added to documentation 6 months ago. I assume at the same time this new feature was added.</p>
 <p>On my Fedora and Ubuntu I have checked the flatpak software version with <code>flatpak --version</code> and for latest Fedora Silverblue “flatpak 1.16” version is displayed, but for Ubuntu 24.04 I see it still has “flatpak 1.14.6”.</p>
 <p>Is there some flatpak version restriction for Flathub build packages, like minimum version flatpak software is required? If yes, what is flatpak software version currently <a href="http://Flathub.org" rel="noopener nofollow ugc">Flathub.org</a> flatpaks are targeted at?</p>
@@ -133,6 +133,7 @@
     <div class="post" id="post_2"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/device-usb-reports-unknown-device-type-usb-error/8993/index.html#post_2">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -140,13 +141,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Kolja</span>
+            <span class="user-link" itemprop="name">Kolja</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_2" title="Feb 26, 2025 11:08 AM">
-            <time itemprop="datePublished" datetime="2025-02-26 11:08:24 +0000">Feb 26, 2025</time>
+            <time itemprop="datePublished" datetime="2025-02-26T11:08:24+00:00">Feb 26, 2025</time>
           </a>
           <span class="post-number">#2</span>
         </div>
@@ -175,6 +176,7 @@
     <div class="post" id="post_3"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/device-usb-reports-unknown-device-type-usb-error/8993/index.html#post_3">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -182,13 +184,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Hubert Figuière</span>
+            <span class="user-link" itemprop="name">Hubert Figuière</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_3" title="Feb 26, 2025 1:25 PM">
-            <time itemprop="datePublished" datetime="2025-02-26 13:25:50 +0000">Feb 26, 2025</time>
+            <time itemprop="datePublished" datetime="2025-02-26T13:25:50+00:00">Feb 26, 2025</time>
           </a>
           <span class="post-number">#3</span>
         </div>

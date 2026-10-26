@@ -61,8 +61,9 @@
   <main class="site-main">
     <div class="main-inner" data-pagefind-body>
       <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <link itemprop="url" href="https://discourse.flathub.org/t/creating-a-convergence-tracking-website/1846/index.html">
   <header class="topic-header">
-    <h1 class="topic-title" itemprop="name">Creating a convergence tracking website</h1>
+    <h1 class="topic-title" itemprop="name headline">Creating a convergence tracking website</h1>
 
     <div class="topic-meta">
       
@@ -78,7 +79,6 @@
   <div class="post-stream">
     
     <div class="post" id="post_1"
-         itemprop="articleBody"
          >
 
       <div class="post-header">
@@ -87,13 +87,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Gamerminstrel</span>
+            <span class="user-link" itemprop="name">Gamerminstrel</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_1" title="Nov 11, 2021 3:19 PM">
-            <time itemprop="datePublished" datetime="2021-11-11 15:19:41 +0000">Nov 11, 2021</time>
+            <time itemprop="datePublished" datetime="2021-11-11T15:19:41+00:00">Nov 11, 2021</time>
           </a>
           <span class="post-number">#1</span>
         </div>
@@ -109,19 +109,19 @@ Is pulling and displaying info from <a href="http://flathub.org" rel="noopener n
 I’m working on a website that keeps track how well linux apps work on linux phones (like the Pinephone mainly). It currently pulls from <a href="https://flathub.org/api/v1/apps" rel="noopener nofollow ugc">here</a> to make a database of all flathub apps, and on my website you can give those apps grades for how well they work (does it fit on a phone screen, can it use the touch screen, does it even launch, etc).</p>
 <p>For the baseline, I am aiming to get all linux apps from flathub, Debian, and Manjaro repos.</p>
 <p>Below are some rough mockups of my progress so far if it helps illustrate what I’m going for:</p>
-<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" data-download-href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" title="Screenshot_20211107_140412" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png" alt="Screenshot_20211107_140412" data-base62-sha1="7XPdf7nOyWjqtue53lzqJHVdIgU" width="605" height="499" srcset="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png, /uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_907x748.png 1.5x, /uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png 2x" data-small-upload="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_10x10.png"><div class="meta">
+<p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" data-download-href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" title="Screenshot_20211107_140412" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png" alt="Screenshot_20211107_140412" data-base62-sha1="7XPdf7nOyWjqtue53lzqJHVdIgU" width="605" height="499" srcset="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png, /uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_907x748.png 1.5x, /uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png 2x" data-small-upload="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_10x10.png"><div class="meta">
 <svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20211107_140412</span><span class="informations">1083×895 163 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
 </div></a></div><br>
-<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png" data-download-href="/uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png" title="Screenshot_20211107_140442" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_598x500.png" alt="Screenshot_20211107_140442" data-base62-sha1="dMeTInvjkQcgvQnM2j8H1iMFebZ" width="598" height="500" srcset="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_598x500.png, /uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_897x750.png 1.5x, /uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png 2x" data-small-upload="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_10x10.png"><div class="meta">
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png" data-download-href="/uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png" title="Screenshot_20211107_140442" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_598x500.png" alt="Screenshot_20211107_140442" data-base62-sha1="dMeTInvjkQcgvQnM2j8H1iMFebZ" width="598" height="500" srcset="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_598x500.png, /uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_897x750.png 1.5x, /uploads/original/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57.png 2x" data-small-upload="/uploads/optimized/1X/609040dea80fb2f8faa9cf6e13d4bd6e98bd3c57_2_10x10.png"><div class="meta">
 <svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20211107_140442</span><span class="informations">1083×905 103 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
 </div></a></div><br>
-<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png" data-download-href="/uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png" title="Screenshot_20211107_140557" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_616x500.png" alt="Screenshot_20211107_140557" data-base62-sha1="3BiqaB04WP9AEHVZYy9jw7cdqKD" width="616" height="500" srcset="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_616x500.png, /uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_924x750.png 1.5x, /uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png 2x" data-small-upload="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_10x10.png"><div class="meta">
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png" data-download-href="/uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png" title="Screenshot_20211107_140557" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_616x500.png" alt="Screenshot_20211107_140557" data-base62-sha1="3BiqaB04WP9AEHVZYy9jw7cdqKD" width="616" height="500" srcset="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_616x500.png, /uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_924x750.png 1.5x, /uploads/original/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab.png 2x" data-small-upload="/uploads/optimized/1X/193dd64b6886b0da1301e0bbe36b0d231feecfab_2_10x10.png"><div class="meta">
 <svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20211107_140557</span><span class="informations">1083×878 118 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
 </div></a></div><br>
-<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png" data-download-href="/uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png" title="Screenshot_20211109_175247" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_327x500.png" alt="Screenshot_20211109_175247" data-base62-sha1="u06KlrbBDaMzNkSmhx5ytjK54K6" width="327" height="500" srcset="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_327x500.png, /uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png 1.5x, /uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png 2x" data-small-upload="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_10x10.png"><div class="meta">
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png" data-download-href="/uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png" title="Screenshot_20211109_175247" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_327x500.png" alt="Screenshot_20211109_175247" data-base62-sha1="u06KlrbBDaMzNkSmhx5ytjK54K6" width="327" height="500" srcset="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_327x500.png, /uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png 1.5x, /uploads/original/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2.png 2x" data-small-upload="/uploads/optimized/1X/d2445e526ced621afc67764b2f0e43927bbe1fd2_2_10x10.png"><div class="meta">
 <svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20211109_175247</span><span class="informations">489×747 64.8 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
 </div></a></div><br>
-<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png" data-download-href="/uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png" title="Screenshot_20211109_175301" rel="noopener nofollow ugc"><img src="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_327x500.png" alt="Screenshot_20211109_175301" data-base62-sha1="8iLdul78mtPx8UoyNYTjqGGkgbE" width="327" height="500" srcset="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_327x500.png, /uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png 1.5x, /uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png 2x" data-small-upload="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_10x10.png"><div class="meta">
+<div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png" data-download-href="/uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png" title="Screenshot_20211109_175301" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_327x500.png" alt="Screenshot_20211109_175301" data-base62-sha1="8iLdul78mtPx8UoyNYTjqGGkgbE" width="327" height="500" srcset="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_327x500.png, /uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png 1.5x, /uploads/original/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2.png 2x" data-small-upload="/uploads/optimized/1X/3a3051d1e15fe0dd15acca8c2bca7b22237183d2_2_10x10.png"><div class="meta">
 <svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20211109_175301</span><span class="informations">489×747 93.9 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
 </div></a></div></p>
       </div>
@@ -135,6 +135,7 @@ I’m working on a website that keeps track how well linux apps work on linux ph
     <div class="post" id="post_2"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/creating-a-convergence-tracking-website/1846/index.html#post_2">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -142,13 +143,13 @@ I’m working on a website that keeps track how well linux apps work on linux ph
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Felipe Borges</span>
+            <span class="user-link" itemprop="name">Felipe Borges</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_2" title="Nov 12, 2021 9:47 AM">
-            <time itemprop="datePublished" datetime="2021-11-12 09:47:25 +0000">Nov 12, 2021</time>
+            <time itemprop="datePublished" datetime="2021-11-12T09:47:25+00:00">Nov 12, 2021</time>
           </a>
           <span class="post-number">#2</span>
         </div>
@@ -177,6 +178,7 @@ I’m working on a website that keeps track how well linux apps work on linux ph
     <div class="post" id="post_3"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/creating-a-convergence-tracking-website/1846/index.html#post_3">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -184,13 +186,13 @@ I’m working on a website that keeps track how well linux apps work on linux ph
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Gamerminstrel</span>
+            <span class="user-link" itemprop="name">Gamerminstrel</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_3" title="Nov 12, 2021 2:44 PM">
-            <time itemprop="datePublished" datetime="2021-11-12 14:44:30 +0000">Nov 12, 2021</time>
+            <time itemprop="datePublished" datetime="2021-11-12T14:44:30+00:00">Nov 12, 2021</time>
           </a>
           <span class="post-number">#3</span>
         </div>
