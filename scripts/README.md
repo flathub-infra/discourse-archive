@@ -22,3 +22,23 @@ author URL warnings may remain; do not fabricate URLs to silence them.
 After deployment, test representative first and continuation pages using Google's
 Rich Results Test, then request validation in Search Console. Existing reports
 will not update until Google recrawls the changed pages.
+
+## Reply URL redirects
+
+The Docker build generates an nginx map from the archived `post_<number>`
+anchors. Legacy Discourse reply URLs redirect permanently to the page containing
+the reply, including continuation pages. Missing topics and replies remain 404s.
+Query strings are discarded on these redirects.
+
+To check the production image locally (replace `docker` with `podman` if needed):
+
+```sh
+docker build -t discourse-archive:test .
+docker run --detach --rm --name archive-test -p 127.0.0.1:18080:8080 discourse-archive:test
+docker exec archive-test nginx -t
+python3 scripts/check_reply_redirects.py http://127.0.0.1:18080
+docker stop archive-test
+```
+
+The map generator is covered by the standard unittest discovery command above;
+the HTTP checks run separately because they need a running nginx.
