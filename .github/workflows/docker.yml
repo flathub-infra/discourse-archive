@@ -21,6 +21,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Validate archived structured data
+        run: |
+          python3 -m unittest discover -s scripts
+          python3 scripts/fix_structured_data.py --check
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 

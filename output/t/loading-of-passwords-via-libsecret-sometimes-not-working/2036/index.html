@@ -61,8 +61,9 @@
   <main class="site-main">
     <div class="main-inner" data-pagefind-body>
       <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <link itemprop="url" href="https://discourse.flathub.org/t/loading-of-passwords-via-libsecret-sometimes-not-working/2036/index.html">
   <header class="topic-header">
-    <h1 class="topic-title" itemprop="name">Loading of passwords via libsecret (sometimes) not working</h1>
+    <h1 class="topic-title" itemprop="name headline">Loading of passwords via libsecret (sometimes) not working</h1>
 
     <div class="topic-meta">
       
@@ -78,7 +79,6 @@
   <div class="post-stream">
     
     <div class="post" id="post_1"
-         itemprop="articleBody"
          >
 
       <div class="post-header">
@@ -87,13 +87,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Martin Höher</span>
+            <span class="user-link" itemprop="name">Martin Höher</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_1" title="Jan 11, 2022 11:05 PM">
-            <time itemprop="datePublished" datetime="2022-01-11 23:05:13 +0000">Jan 11, 2022</time>
+            <time itemprop="datePublished" datetime="2022-01-11T23:05:13+00:00">Jan 11, 2022</time>
           </a>
           <span class="post-number">#1</span>
         </div>
@@ -103,7 +103,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi everyone,</p>
-<p>not sure if this is a good place to ask such a question, nevertheless, I’d like to try <img src="/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+<p>not sure if this is a good place to ask such a question, nevertheless, I’d like to try <img itemprop="image" src="/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
 <p>I am the developer of the app OpenTodoList, which is - among others - also packaged as a Flatpak app. This app uses QtKeychain to save and load passwords/tokens. Internally, this library uses any available backend for storing such information - within Flatpak, this means that it uses <code>libsecret</code> for getting the job done. This worked fine most of the time.</p>
 <p>Since some weeks (unfortunately, I cannot tell exactly when), I noticed that the app would not load any passwords at all. Before that, I occasionally had this, but usually restarting the app would cure this and passwords would be back again.</p>
 <p>I tried to debug this as far as I could and what I can tell so far: It seems that QtKeychain calls <code>libsecret</code> (specifically, the simple API which - according to the information I found - should use some special Flatpak magic to store passwords in an app specific keystore). However, the callbacks that are passed into the <code>libsecret</code> functions never get called.</p>
@@ -126,6 +126,7 @@
     <div class="post" id="post_2"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/loading-of-passwords-via-libsecret-sometimes-not-working/2036/index.html#post_2">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -133,13 +134,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Will Thompson</span>
+            <span class="user-link" itemprop="name">Will Thompson</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_2" title="Jan 12, 2022 5:05 PM">
-            <time itemprop="datePublished" datetime="2022-01-12 17:05:29 +0000">Jan 12, 2022</time>
+            <time itemprop="datePublished" datetime="2022-01-12T17:05:29+00:00">Jan 12, 2022</time>
           </a>
           <span class="post-number">#2</span>
         </div>
@@ -174,7 +175,7 @@
 
       <div class="user">
         <a href="https://github.com/bellegarde-c" target="_blank" rel="noopener nofollow ugc">
-          <img alt="bellegarde-c" src="/uploads/original/2X/4/444915d09e3197ea4d12757dec74276cf4ebfaee.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          <img itemprop="image" alt="bellegarde-c" src="/uploads/original/2X/4/444915d09e3197ea4d12757dec74276cf4ebfaee.jpeg" class="onebox-avatar-inline" width="20" height="20">
           bellegarde-c
         </a>
       </div>
@@ -231,6 +232,7 @@ __on_secret_search() is never called. If i disable LIBRE.FM code, then it works 
     <div class="post" id="post_3"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/loading-of-passwords-via-libsecret-sometimes-not-working/2036/index.html#post_3">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -238,13 +240,13 @@ __on_secret_search() is never called. If i disable LIBRE.FM code, then it works 
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Martin Höher</span>
+            <span class="user-link" itemprop="name">Martin Höher</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_3" title="Jan 12, 2022 5:32 PM">
-            <time itemprop="datePublished" datetime="2022-01-12 17:32:52 +0000">Jan 12, 2022</time>
+            <time itemprop="datePublished" datetime="2022-01-12T17:32:52+00:00">Jan 12, 2022</time>
           </a>
           <span class="post-number">#3</span>
         </div>

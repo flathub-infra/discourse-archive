@@ -61,8 +61,9 @@
   <main class="site-main">
     <div class="main-inner" data-pagefind-body>
       <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html">
   <header class="topic-header">
-    <h1 class="topic-title" itemprop="name">[HOW TO] Run Firefox *and* KeePassXC in a flatpak and get the KeePassXC-Browser add-on to work</h1>
+    <h1 class="topic-title" itemprop="name headline">[HOW TO] Run Firefox *and* KeePassXC in a flatpak and get the KeePassXC-Browser add-on to work</h1>
 
     <div class="topic-meta">
       
@@ -80,7 +81,6 @@
   <div class="post-stream">
     
     <div class="post" id="post_1"
-         itemprop="articleBody"
          >
 
       <div class="post-header">
@@ -89,13 +89,13 @@
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">rugk</span>
+            <span class="user-link" itemprop="name">rugk</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_1" title="May 5, 2020 6:47 AM">
-            <time itemprop="datePublished" datetime="2020-05-05 06:47:57 +0000">May 5, 2020</time>
+            <time itemprop="datePublished" datetime="2020-05-05T06:47:57+00:00">May 5, 2020</time>
           </a>
           <span class="post-number">#1</span>
         </div>
@@ -139,12 +139,12 @@ Note: At that step, you can already run the variation: Firefox (sandboxed), KeeP
 <ol>
 <li>Worst things first: We need the <code>keepassxc-proxy</code> as a binary, because we want to have it run inside of the Firefox flatpak. Good for us: it has not many depenencies and is available as a stand-alone application.
 <ol>
-<li>So I chose the <a href="https://github.com/varjolintu/keepassxc-proxy-rust">Rust proxy application</a> (because why should not I? <img src="/images/emoji/twitter/upside_down_face.png?v=15" title=":upside_down_face:" class="emoji" alt=":upside_down_face:" loading="lazy" width="20" height="20">). If you trust me, you can get my compiled binary below, just skip to two steps ahead.</li>
+<li>So I chose the <a href="https://github.com/varjolintu/keepassxc-proxy-rust">Rust proxy application</a> (because why should not I? <img itemprop="image" src="/images/emoji/twitter/upside_down_face.png?v=15" title=":upside_down_face:" class="emoji" alt=":upside_down_face:" loading="lazy" width="20" height="20">). If you trust me, you can get my compiled binary below, just skip to two steps ahead.</li>
 <li>Clone the git repo and compile it (run <code>cargo build --release</code>).</li>
 <li>You find the result in <code>./target/release</code>.<br>
 The <code>keepassxc-proxy</code> binary, version <a href="https://github.com/varjolintu/keepassxc-proxy-rust/commit/211ae91"><code>211ae91</code></a>, compiled with rustc 1.43.0 (the current stable in Fedora 32) for x86_64 (and if it helps and you wanna know more <a href="https://gist.github.com/rugk/9709fc34b3763edaa00dd1f0c90a2837">that <code>.rustc_info.json</code></a>).<br>
 And altghough <a href="https://github.com/rust-lang/rust/issues/34902">Rust is not (yet) totally reproducibly compiling</a> I did got the same bit-by-bit result on two machines with Fedora 32. The SHA-256 hash is <code>c5c4c6c011a4d64f7e4dd6c444dcc70bee74d23ffb28c9b65f7ff6d89a8f86ea</code>.<br>
-So if you are in a risky mood, you can <strong><a href="https://github.com/rugk/keepassxc-proxy-rust/releases/download/211ae91/keepassxc-proxy">just download my keepassxc-proxy binary here</a></strong>. (<a href="https://github.com/rugk/keepassxc-proxy-rust/releases/tag/211ae91">hosted by GitHub <img src="/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=15" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:" loading="lazy" width="20" height="20"></a>)</li>
+So if you are in a risky mood, you can <strong><a href="https://github.com/rugk/keepassxc-proxy-rust/releases/download/211ae91/keepassxc-proxy">just download my keepassxc-proxy binary here</a></strong>. (<a href="https://github.com/rugk/keepassxc-proxy-rust/releases/tag/211ae91">hosted by GitHub <img itemprop="image" src="/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=15" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:" loading="lazy" width="20" height="20"></a>)</li>
 </ol>
 </li>
 <li>Now we need to tell Firefox about the new binary.
@@ -171,7 +171,7 @@ Note that only absolute paths work (I guess), so replace <code>REPLACE_WITH_USER
 <p>Fortunately, this is easy. Just run:</p>
 <pre><code class="lang-auto">$ sudo flatpak override --filesystem=xdg-run/kpxc_server:ro org.mozilla.firefox
 </code></pre>
-<p><strong>Hooray!:</strong> For those, who install KeePassXC <strong>on the host</strong> (without any sandbox/flatpak), this is enough. Start KeePassXC and <em>then</em> Firefox and it should be able to connect. <img src="/images/emoji/twitter/tada.png?v=15" title=":tada:" class="emoji" alt=":tada:" loading="lazy" width="20" height="20"><br>
+<p><strong>Hooray!:</strong> For those, who install KeePassXC <strong>on the host</strong> (without any sandbox/flatpak), this is enough. Start KeePassXC and <em>then</em> Firefox and it should be able to connect. <img itemprop="image" src="/images/emoji/twitter/tada.png?v=15" title=":tada:" class="emoji" alt=":tada:" loading="lazy" width="20" height="20"><br>
 Please note the “existing problems” section at the bottom, though.</p>
 <p>Continue, if you also want to run KeePassXC in a flatpak.</p>
 <h2><a name="p-782-exposing-the-unix-socket-from-the-keepassxc-flatpak-6" class="anchor" href="#p-782-exposing-the-unix-socket-from-the-keepassxc-flatpak-6" aria-label="Heading link"></a>Exposing the UNIX socket from the KeePassXC flatpak</h2>
@@ -188,7 +188,7 @@ That’s why we make use of <a href="https://www.freedesktop.org/software/system
 This is basically a config file for <code>systemd-tmpfiles</code> that says it to create that symbolic link for the user.</li>
 <li>Reboot, so <code>systemd-tmpfiles</code> can apply the changes and create the config file.</li>
 </ol>
-<p><strong>Hooray!:</strong> Afterwards start the KeePassXC flatpak and <em>then</em> Firefox and it should be able to connect. <img src="/images/emoji/twitter/tada.png?v=15" title=":tada:" class="emoji" alt=":tada:" loading="lazy" width="20" height="20"></p>
+<p><strong>Hooray!:</strong> Afterwards start the KeePassXC flatpak and <em>then</em> Firefox and it should be able to connect. <img itemprop="image" src="/images/emoji/twitter/tada.png?v=15" title=":tada:" class="emoji" alt=":tada:" loading="lazy" width="20" height="20"></p>
 <p>Please note the “existing problems” section below.</p>
 <h2><a name="p-782-existing-problems-7" class="anchor" href="#p-782-existing-problems-7" aria-label="Heading link"></a>Existing problems</h2>
 <ul>
@@ -206,12 +206,12 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
 <p>Things that do <strong>not</strong> work:<br>
 <small><em>Preserved for future solutions and better™ workarounds.</em></small></p>
 <ul>
-<li>all things in <code>$XDG_RUNTIME_DIR/app</code> are highly sandboxed, even with flatpak overrides I could not get the Firefox flatpak to read the content of the <code>../org.keepassxc.KeePassXC</code> dir. Even with crazy symbolic links in it’s own dir. (Do try it though, maybe you’ll make it! At least you’ll learn something. <img src="/images/emoji/twitter/wink.png?v=15" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20">.)</li>
+<li>all things in <code>$XDG_RUNTIME_DIR/app</code> are highly sandboxed, even with flatpak overrides I could not get the Firefox flatpak to read the content of the <code>../org.keepassxc.KeePassXC</code> dir. Even with crazy symbolic links in it’s own dir. (Do try it though, maybe you’ll make it! At least you’ll learn something. <img itemprop="image" src="/images/emoji/twitter/wink.png?v=15" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20">.)</li>
 <li>what works though is: You can override the KeePassXC flatpak to get access to Mozilla. Only <strong>write</strong> access possible though! Thus, if it would place the proxy there (again: symbolic links here don’t work!), Firefox could also read it.</li>
 <li>The symbolic link must be created by an application outside of the sandbox. Inside of it, it’s again – sandboxed – and one only visible inside of it.</li>
 </ul>
 <h1><a name="p-782-final-notes-10" class="anchor" href="#p-782-final-notes-10" aria-label="Heading link"></a>Final notes</h1>
-<p>If this helped, feel free to leave me a <img src="/images/emoji/twitter/heart.png?v=15" title=":heart:" class="emoji" alt=":heart:" loading="lazy" width="20" height="20"> for this post and/or <a href="https://unix.stackexchange.com/q/584521/146739">upvote it on Unix Stackexchange</a>. It took quite some time to figure it out.</p>
+<p>If this helped, feel free to leave me a <img itemprop="image" src="/images/emoji/twitter/heart.png?v=15" title=":heart:" class="emoji" alt=":heart:" loading="lazy" width="20" height="20"> for this post and/or <a href="https://unix.stackexchange.com/q/584521/146739">upvote it on Unix Stackexchange</a>. It took quite some time to figure it out.</p>
 <p>I do try to continue improving this workaround and find solutions in <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/29">this GitHub issue</a>. It’s best to follow there, if you are interested.</p>
 <hr>
 <p>I’ve cross-posted this question and answer <a href="https://unix.stackexchange.com/q/584521/146739">on Unix Stackexchange</a> and <a href="https://discussion.fedoraproject.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/19452?u=rugk">in the Fedora community</a>.</p>
@@ -233,6 +233,7 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
     <div class="post" id="post_2"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_2">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -240,13 +241,13 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Will</span>
+            <span class="user-link" itemprop="name">Will</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_2" title="May 5, 2020 3:21 PM">
-            <time itemprop="datePublished" datetime="2020-05-05 15:21:33 +0000">May 5, 2020</time>
+            <time itemprop="datePublished" datetime="2020-05-05T15:21:33+00:00">May 5, 2020</time>
           </a>
           <span class="post-number">#2</span>
         </div>
@@ -274,6 +275,7 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
     <div class="post" id="post_3"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_3">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -281,13 +283,13 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Johannes Rohr</span>
+            <span class="user-link" itemprop="name">Johannes Rohr</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_3" title="Aug 27, 2020 6:28 AM">
-            <time itemprop="datePublished" datetime="2020-08-27 06:28:11 +0000">Aug 27, 2020</time>
+            <time itemprop="datePublished" datetime="2020-08-27T06:28:11+00:00">Aug 27, 2020</time>
           </a>
           <span class="post-number">#3</span>
         </div>
@@ -328,6 +330,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
     <div class="post" id="post_4"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_4">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -335,13 +338,13 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Johannes Rohr</span>
+            <span class="user-link" itemprop="name">Johannes Rohr</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_4" title="Aug 29, 2020 10:39 AM">
-            <time itemprop="datePublished" datetime="2020-08-29 10:39:52 +0000">Aug 29, 2020</time>
+            <time itemprop="datePublished" datetime="2020-08-29T10:39:52+00:00">Aug 29, 2020</time>
           </a>
           <span class="post-number">#4</span>
         </div>
@@ -362,6 +365,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
     <div class="post" id="post_5"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_5">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -369,13 +373,13 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">rugk</span>
+            <span class="user-link" itemprop="name">rugk</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_5" title="Oct 4, 2020 2:58 PM">
-            <time itemprop="datePublished" datetime="2020-10-04 14:58:27 +0000">Oct 4, 2020</time>
+            <time itemprop="datePublished" datetime="2020-10-04T14:58:27+00:00">Oct 4, 2020</time>
           </a>
           <span class="post-number">#5</span>
         </div>
@@ -407,6 +411,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
     <div class="post" id="post_6"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_6">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -414,13 +419,13 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Johannes Rohr</span>
+            <span class="user-link" itemprop="name">Johannes Rohr</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_6" title="Oct 24, 2020 11:28 PM">
-            <time itemprop="datePublished" datetime="2020-10-24 23:28:55 +0000">Oct 24, 2020</time>
+            <time itemprop="datePublished" datetime="2020-10-24T23:28:55+00:00">Oct 24, 2020</time>
           </a>
           <span class="post-number">#6</span>
         </div>
@@ -445,6 +450,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
     <div class="post" id="post_7"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_7">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -452,13 +458,13 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">Eshant Gupta</span>
+            <span class="user-link" itemprop="name">Eshant Gupta</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_7" title="Jun 7, 2022 11:48 AM">
-            <time itemprop="datePublished" datetime="2022-06-07 11:48:21 +0000">Jun 7, 2022</time>
+            <time itemprop="datePublished" datetime="2022-06-07T11:48:21+00:00">Jun 7, 2022</time>
           </a>
           <span class="post-number">#7</span>
         </div>
@@ -479,6 +485,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
     <div class="post" id="post_8"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_8">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -486,13 +493,13 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">rugk</span>
+            <span class="user-link" itemprop="name">rugk</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_8" title="Jun 19, 2022 4:27 PM">
-            <time itemprop="datePublished" datetime="2022-06-19 16:27:15 +0000">Jun 19, 2022</time>
+            <time itemprop="datePublished" datetime="2022-06-19T16:27:15+00:00">Jun 19, 2022</time>
           </a>
           <span class="post-number">#8</span>
         </div>
@@ -530,6 +537,7 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
     <div class="post" id="post_9"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_9">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -537,13 +545,13 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">rugk</span>
+            <span class="user-link" itemprop="name">rugk</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_9" title="Jun 28, 2022 8:16 PM">
-            <time itemprop="datePublished" datetime="2022-06-28 20:16:32 +0000">Jun 28, 2022</time>
+            <time itemprop="datePublished" datetime="2022-06-28T20:16:32+00:00">Jun 28, 2022</time>
           </a>
           <span class="post-number">#9</span>
         </div>
@@ -578,7 +586,7 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
 
       <div class="user">
         <a href="https://github.com/BikramKumar6928" target="_blank" rel="noopener">
-          <img alt="BikramKumar6928" src="/uploads/original/2X/4/4bdc9d8e420feac3a3374a2dfb663a3309f0a353.jpeg" class="onebox-avatar-inline" width="20" height="20">
+          <img itemprop="image" alt="BikramKumar6928" src="/uploads/original/2X/4/4bdc9d8e420feac3a3374a2dfb663a3309f0a353.jpeg" class="onebox-avatar-inline" width="20" height="20">
           BikramKumar6928
         </a>
       </div>
@@ -665,6 +673,7 @@ It is able to detect the keepassxc running locally, as it is able to retrieve cr
     <div class="post" id="post_10"
          itemprop="comment"
          itemscope itemtype="http://schema.org/Comment">
+      <link itemprop="url" href="https://discourse.flathub.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/437/index.html#post_10">
 
       <div class="post-header">
         <div class="post-avatar">
@@ -672,13 +681,13 @@ It is able to detect the keepassxc running locally, as it is able to retrieve cr
         </div>
         <div class="post-author">
           <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="user-link">rugk</span>
+            <span class="user-link" itemprop="name">rugk</span>
           </span>
           
         </div>
         <div class="post-date">
           <a href="#post_10" title="Jan 16, 2025 9:59 PM">
-            <time itemprop="datePublished" datetime="2025-01-16 21:59:53 +0000">Jan 16, 2025</time>
+            <time itemprop="datePublished" datetime="2025-01-16T21:59:53+00:00">Jan 16, 2025</time>
           </a>
           <span class="post-number">#10</span>
         </div>
