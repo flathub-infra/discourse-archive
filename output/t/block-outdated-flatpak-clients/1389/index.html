@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -107,17 +108,17 @@
 <p><strong>Background</strong></p>
 <p>Let’s wind the clock back a few months. I distributed an important update for Lollypop, which reworks the filesystem access. As such, Lollypop is now mostly sandboxed and this really helps with the goal of Flatpakking. In the days that followed, I received numerous reports of people who could no longer access their music on a secondary harddrive or NAS. It turned out that they were running Flatpak 1.6.x.</p>
 <ul>
-<li><a href="https://github.com/flathub/org.gnome.Lollypop/issues/123" rel="noopener nofollow ugc">Github issue</a></li>
+<li><a href="https://github.com/flathub/org.gnome.Lollypop/issues/123" rel="noopener nofollow ugc noreferrer">Github issue</a></li>
 </ul>
 <p>This shined a light on a far bigger issue: The majority of Flatpak versions out there is outdated and about half the people that download packages from Flathub is doing so with 1.6 or lower.</p>
 <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93.png" data-download-href="/uploads/original/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93.png" title="Screenshot from 2021-04-29 17-42-22" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93_2_552x499.png" alt="Screenshot from 2021-04-29 17-42-22" data-base62-sha1="nSDfsTR233orPWX8Pk3i4PKS5Mf" width="552" height="499" srcset="/uploads/optimized/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93_2_552x499.png, /uploads/optimized/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93_2_828x748.png 1.5x, /uploads/original/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93.png 2x" data-small-upload="/uploads/optimized/1X/a75efd0d4de5da78ff13e4bf1a1d1f7fe4396e93_2_10x10.png"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot from 2021-04-29 17-42-22</span><span class="informations">961×870 68 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
 <ul>
-<li><a href="https://ahayzen.com/direct/flathub.html" rel="noopener nofollow ugc">Stats</a></li>
-<li><a href="https://repology.org/project/flatpak/versions" rel="noopener nofollow ugc">Repology</a></li>
+<li><a href="https://ahayzen.com/direct/flathub.html" rel="noopener nofollow ugc noreferrer">Stats</a></li>
+<li><a href="https://repology.org/project/flatpak/versions" rel="noopener nofollow ugc noreferrer">Repology</a></li>
 </ul>
 <p>This creates a security conundrum for two reasons:</p>
 <ul>
-<li>Users don’t have all available security patches (<a href="https://github.com/flatpak/flatpak/security/advisories/GHSA-4ppf-fxf6-vxg2" rel="noopener nofollow ugc">CVE</a>)</li>
+<li>Users don’t have all available security patches (<a href="https://github.com/flatpak/flatpak/security/advisories/GHSA-4ppf-fxf6-vxg2" rel="noopener nofollow ugc noreferrer">CVE</a>)</li>
 <li>Flatpakking stagnates because clients miss newer features</li>
 </ul>
 <p><strong>Action</strong></p>
@@ -302,7 +303,7 @@ sonny:</div>
 <p>Something important to take into consideration is that when Android/iOS/“PWA” applications do such a thing, they offer an option to their users to continue using the service - usually it’s as easy as “Please update the application” or “Accept new terms and conditions”.</p>
 </blockquote>
 </aside>
-<p><em>This is a bit of a factual inaccuracy. Most of the time, when apps break compatibility with a certain version of iOS or Android, updating the app is not the solution; only upgrading the phone is. An example of this is the <a href="https://source.android.com/security/keystore" rel="noopener nofollow ugc">Hardware Backed Keystore</a> for Android 6. As an app moves to this secure enclave for authentication tokens, it breaks all support for Android 5 and earlier. No app update can undo that and users will have to upgrade their phone instead. If you check the Android app of many banks, you’ll find that many of their 1-star ratings are thanks to breaking such backwards compatibility since manually upgrading Android is not easy.</em></p>
+<p><em>This is a bit of a factual inaccuracy. Most of the time, when apps break compatibility with a certain version of iOS or Android, updating the app is not the solution; only upgrading the phone is. An example of this is the <a href="https://source.android.com/security/keystore" rel="noopener nofollow ugc noreferrer">Hardware Backed Keystore</a> for Android 6. As an app moves to this secure enclave for authentication tokens, it breaks all support for Android 5 and earlier. No app update can undo that and users will have to upgrade their phone instead. If you check the Android app of many banks, you’ll find that many of their 1-star ratings are thanks to breaking such backwards compatibility since manually upgrading Android is not easy.</em></p>
 <p>You do have a point <span class="mention">@sonny</span>, related to offering ‘alternatives’. What can a user do when their Flatpak is outdated, apart from complaining to their distribution maintainers? Perhaps it’s good to also offer a series of .deb and .rpm packages that people can update at any time, if the situation calls for it. We already have a PPA for Ubuntu 18.04 and 20.04 so it’s not like we don’t try to help users.</p>
 <p>Also the idea of enforcing a minimum Flatpak version for new submissions sounds like a good idea. If all new apps on Flathub only work with supported Flatpak versions, then that enforces updates in a more granular and workflow retaining way. What do the maintainers think of this idea?</p>
 <p>For security, the biggest issue right now, is that apps are not embracing better sandboxing, while this technology is available at large. It becomes something akin to the network effect: Our apps will be less secure then possible because app maintainers will keep support for insecure versions. Something you also see in the Android reference I just gave.</p>
@@ -364,7 +365,7 @@ sonny:</div>
 <div class="quote-controls"></div>
 Eonfge:</div>
 <blockquote>
-<p>This is a bit of a factual inaccuracy. Most of the time, when apps break compatibility with a certain version of iOS or Android, updating the app is not the solution; only upgrading the phone is. An example of this is the <a href="https://source.android.com/security/keystore" rel="noopener nofollow ugc">Hardware Backed Keystore</a> for Android 6. As an app moves to this secure enclave for authentication tokens, it breaks all support for Android 5 and earlier. No app update can undo that and users will have to upgrade their phone instead. If you check the Android app of many banks, you’ll find that many of their 1-star ratings are thanks to breaking such backwards compatibility since manually upgrading Android is not easy.</p>
+<p>This is a bit of a factual inaccuracy. Most of the time, when apps break compatibility with a certain version of iOS or Android, updating the app is not the solution; only upgrading the phone is. An example of this is the <a href="https://source.android.com/security/keystore" rel="noopener nofollow ugc noreferrer">Hardware Backed Keystore</a> for Android 6. As an app moves to this secure enclave for authentication tokens, it breaks all support for Android 5 and earlier. No app update can undo that and users will have to upgrade their phone instead. If you check the Android app of many banks, you’ll find that many of their 1-star ratings are thanks to breaking such backwards compatibility since manually upgrading Android is not easy.</p>
 </blockquote>
 </aside>
 <p>Right - I thought you were referring to a service (backend) dropping support for older versions of their own clients which is more or less the use case here with flathub/flatpak.</p>
@@ -725,7 +726,7 @@ ahayzen:</div>
 <p>Flatpak update itself</p>
 </blockquote>
 </aside>
-<p>That would even be possible with the upcoming release of Flatpak, when it becomes possible for applications to bring their own runtimes. That said… <a href="https://knowyourmeme.com/memes/xzibit-yo-dawg" rel="noopener nofollow ugc">I can already see the memes</a>. It also won’t help us today, as it will take another 5 years for the old-stables of Red Hat and Canonical use Flatpak 1.12</p>
+<p>That would even be possible with the upcoming release of Flatpak, when it becomes possible for applications to bring their own runtimes. That said… <a href="https://knowyourmeme.com/memes/xzibit-yo-dawg" rel="noopener nofollow ugc noreferrer">I can already see the memes</a>. It also won’t help us today, as it will take another 5 years for the old-stables of Red Hat and Canonical use Flatpak 1.12</p>
 <h2><a name="p-2783-in-summary-1" class="anchor" href="#p-2783-in-summary-1" aria-label="Heading link"></a>In summary</h2>
 <p>it’s hard, and I don’t know if there are smarter solutions. This also sums up why I don’t think that the solution should be purely technical in nature.</p>
 <p>As in my original proposal, the idea of slowly bringing the heat to distributions, encouraging them to improve their compatibility, sounds like an implicit requirement: If we can’t slowly encourage others to go along with us, we can make it work.</p>

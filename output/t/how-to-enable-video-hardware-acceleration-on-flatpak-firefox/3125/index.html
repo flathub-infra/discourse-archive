@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Note: So far this has been tested with an AMD GPU, but I believe Intel and Nvidia should also work. This guide also assumes you are running Xorg.</p>
 <ol>
 <li>
-<p>Follow the instructions on the Arch Wiki <a href="https://wiki.archlinux.org/index.php/Hardware_video_acceleration#Verifying_VA-API" rel="noopener nofollow ugc">here</a> on how to verify if your GPU supports hardware acceleration and which codecs it supports.</p>
+<p>Follow the instructions on the Arch Wiki <a href="https://wiki.archlinux.org/index.php/Hardware_video_acceleration#Verifying_VA-API" rel="noopener nofollow ugc noreferrer">here</a> on how to verify if your GPU supports hardware acceleration and which codecs it supports.</p>
 <ul>
 <li>For Fedora: <code>sudo dnf install libva-utils</code>
 </li>
@@ -149,7 +150,7 @@ media.av1.enabled=false (maybe not required anymore?)
 </div></a></div></p>
 <ol start="6">
 <li>
-<p>To allow hardware decoding on YouTube, the video codec used must be supported by the hardware. By default, YouTube streams VP8/VP9 encoded video, and since my GPU doesn’t support decoding of that codec, I use the <a href="https://addons.mozilla.org/en-US/firefox/addon/enhanced-h264ify/" rel="noopener nofollow ugc">enhanced-h264ify</a> extension to force H.264 videos on YouTube. I recommend installing this extension if you are in the same position.</p>
+<p>To allow hardware decoding on YouTube, the video codec used must be supported by the hardware. By default, YouTube streams VP8/VP9 encoded video, and since my GPU doesn’t support decoding of that codec, I use the <a href="https://addons.mozilla.org/en-US/firefox/addon/enhanced-h264ify/" rel="noopener nofollow ugc noreferrer">enhanced-h264ify</a> extension to force H.264 videos on YouTube. I recommend installing this extension if you are in the same position.</p>
 </li>
 <li>
 <p>Verify that hardware acceleration is working by running the Firefox Flatpak from the terminal with verbose logging: <code>flatpak run --verbose org.mozilla.firefox</code>. Then, open a YouTube video. Right as the video starts playing, look for logs indicating that it’s working. As an example, I will show the relevant lines of output from the logs that I see, indicating that it’s working:</p>
@@ -320,9 +321,9 @@ freechelmi:</div>
 </blockquote>
 </aside>
 <p>It already is, accourding to</p>
-<p><a href="https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding" class="onebox" target="_blank" rel="noopener nofollow ugc">https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding</a></p>
+<p><a href="https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://fedoraproject.org/wiki/Firefox_Hardware_acceleration#Video_decoding</a></p>
 <blockquote>
-<p>Hardware accelerated video decoding (for video playback or for WebRTC) is <a href="https://mastransky.wordpress.com/2020/09/29/firefox-81-on-fedora-with-va-api-webrtc-and-x11/" rel="noopener nofollow ugc">available </a> via VA-API for both X11 and Wayland. Since <strong>firefox-101.0.1-4</strong> package it’s enabled by default for Intel/AMD users.</p>
+<p>Hardware accelerated video decoding (for video playback or for WebRTC) is <a href="https://mastransky.wordpress.com/2020/09/29/firefox-81-on-fedora-with-va-api-webrtc-and-x11/" rel="noopener nofollow ugc noreferrer">available </a> via VA-API for both X11 and Wayland. Since <strong>firefox-101.0.1-4</strong> package it’s enabled by default for Intel/AMD users.</p>
 </blockquote>
       </div>
 

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,13 +103,13 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://github.com/GPUOpen-Effects/FidelityFX-FSR" rel="noopener nofollow ugc">AMD FSR</a> is an upscaling technology designed to run games at a low resolution and upscale them to achieve better performance without losing image quality.</p>
-<p><a href="https://github.com/Plagman/gamescope" rel="noopener nofollow ugc">Gamescope</a> is a microcompositor to run a single program within with low latency and high performance, it was made for SteamOS but it can be run as a client on any normal Desktop Enviroment.</p>
+        <p><a href="https://github.com/GPUOpen-Effects/FidelityFX-FSR" rel="noopener nofollow ugc noreferrer">AMD FSR</a> is an upscaling technology designed to run games at a low resolution and upscale them to achieve better performance without losing image quality.</p>
+<p><a href="https://github.com/Plagman/gamescope" rel="noopener nofollow ugc noreferrer">Gamescope</a> is a microcompositor to run a single program within with low latency and high performance, it was made for SteamOS but it can be run as a client on any normal Desktop Enviroment.</p>
 <p>Recently an update to Gamescope included AMD FSR upscaling support. This update has now reached Flathub, allowing anyone to easily use FSR with any Steam game anywhere with Flatpak.</p>
 <h3><a name="p-4659-step-by-step-instructions-1" class="anchor" href="#p-4659-step-by-step-instructions-1" aria-label="Heading link"></a>Step by Step Instructions</h3>
 <ul>
 <li>
-<p>Install Flatpak and Flathub, you can follow the instructions for your distro on <a href="https://flatpak.org/setup/" rel="noopener nofollow ugc">Flathub website</a>. Note that you will need a minimum of Flatpak 1.12.x in order for this to work. (Note to Ubuntu 20.04 and derivatives users, you will need to use the PPA in the setup instructions, flatpak in universe will not work for this).</p>
+<p>Install Flatpak and Flathub, you can follow the instructions for your distro on <a href="https://flatpak.org/setup/" rel="noopener nofollow ugc noreferrer">Flathub website</a>. Note that you will need a minimum of Flatpak 1.12.x in order for this to work. (Note to Ubuntu 20.04 and derivatives users, you will need to use the PPA in the setup instructions, flatpak in universe will not work for this).</p>
 <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c.png" data-download-href="/uploads/original/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c.png" title="Screenshot from 2022-02-11 17-46-16" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c_2_345x221.png" alt="Screenshot from 2022-02-11 17-46-16" data-base62-sha1="vJxWddNojobrrR5Rkq5glbLVMXW" width="345" height="221" srcset="/uploads/optimized/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c_2_345x221.png, /uploads/optimized/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c_2_517x331.png 1.5x, /uploads/optimized/2X/d/de6974fafffacac4ebff6e6b695480c2753c044c_2_690x442.png 2x" data-dominant-color="2D2D2D"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot from 2022-02-11 17-46-16</span><span class="informations">1018×653 37.7 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
 <p>Here’s the CLI command if you prefer to do it that way: <code>flatpak install flathub com.valvesoftware.Steam com.valvesoftware.Steam.Utility.gamescope</code></p>
 </li>
@@ -120,7 +121,7 @@
 <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b.png" data-download-href="/uploads/original/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b.png" title="Screenshot from 2022-02-10 17-08-02" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b_2_316x250.png" alt="Screenshot from 2022-02-10 17-08-02" data-base62-sha1="1k2YNUcRzFlsehS8lghA85zf4Lh" width="316" height="250" srcset="/uploads/optimized/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b_2_316x250.png, /uploads/optimized/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b_2_474x375.png 1.5x, /uploads/optimized/2X/0/094654bcf9f05fdd112b0ea232c0c72f9493969b_2_632x500.png 2x" data-dominant-color="31353B"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot from 2022-02-10 17-08-02</span><span class="informations">740×585 80.5 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
 </li>
 <li>
-<p>On the General tab of game properties, on launch options put a Gamescope command, example: <code>gamescope -h 720 -H 1080 -U -f -- %command%</code>. That will launch the game at 720p rescaled to 1080p in fullscreen. Most likely you will only need to change the resolutions, for more details as to how to configure Gamescope <a href="https://github.com/Plagman/gamescope" rel="noopener nofollow ugc">check out the README</a>.</p>
+<p>On the General tab of game properties, on launch options put a Gamescope command, example: <code>gamescope -h 720 -H 1080 -U -f -- %command%</code>. That will launch the game at 720p rescaled to 1080p in fullscreen. Most likely you will only need to change the resolutions, for more details as to how to configure Gamescope <a href="https://github.com/Plagman/gamescope" rel="noopener nofollow ugc noreferrer">check out the README</a>.</p>
 </li>
 <li>
 <p>Next install Steam and Gamescope, searching for gamescope in gnome-software will show both, click on them to install them:</p>
@@ -230,7 +231,7 @@ I think gamescope should be included as a Freedesktop extension and not just for
 
       <div class="post-body cooked" itemprop="text">
         <p>I’m not sure on the others, that might be worth reporting in the bug tracker for the gamescope flatpak perhaps? Ideally I’d love to have a post like this for integrating different gaming tools with other launchers, etc.</p>
-<p>EDIT: Someone filed a similar request: <a href="https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/4">https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/4</a></p>
+<p>EDIT: Someone filed a similar request: <a href="https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/4" rel="noreferrer nofollow ugc">https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/4</a></p>
       </div>
 
       <div class="post-footer">

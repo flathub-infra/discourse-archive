@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -189,8 +190,8 @@
 <p>I’m building two different LilyPond versions. The development version installed in the /app/dev prefixes gets normal paths for the .mo files, that is for example: <code>/app/dev/share/locale/fr/LC_MESSAGES/lilypond.mo</code>. For the stable version installed in the /app prefix instead the .mo files paths are: <code>/app/share/runtime/locale/fr/share/fr/LC_MESSAGES/lilypond.mo</code>. Why is this happening?</p>
 </li>
 <li>
-<p>The main app Frescobaldi is a simple python project which does not use Meson or any other similar tool to handle the installation. So the .mo files are copied only in the python install dir <code>/app/lib/python3.12/site-packages/frescobaldi</code>. I know I should add a command to copy these files to /app/share/locale, in order for appstream to build the translation metadata used by software centers to inform the users if the app is available in their language or not. However it seems that I cannot touch /app/share/locale; it seems a reserved directory. See <a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/pull/76" rel="noopener nofollow ugc">my attempts in this PR</a>.<br>
-I should search other Python projects in Flathub which do not use Meson and see how they deal with this, but I haven’t found any yet. EDIT: I’ve found <a href="https://github.com/flathub/com.rtosta.zapzap/blob/master/com.rtosta.zapzap.yaml" rel="noopener nofollow ugc">this one</a>: it seems to have .mo files in /app/share/locale but I cannot understand how this is achieved.</p>
+<p>The main app Frescobaldi is a simple python project which does not use Meson or any other similar tool to handle the installation. So the .mo files are copied only in the python install dir <code>/app/lib/python3.12/site-packages/frescobaldi</code>. I know I should add a command to copy these files to /app/share/locale, in order for appstream to build the translation metadata used by software centers to inform the users if the app is available in their language or not. However it seems that I cannot touch /app/share/locale; it seems a reserved directory. See <a href="https://github.com/flathub/org.frescobaldi.Frescobaldi/pull/76" rel="noopener nofollow ugc noreferrer">my attempts in this PR</a>.<br>
+I should search other Python projects in Flathub which do not use Meson and see how they deal with this, but I haven’t found any yet. EDIT: I’ve found <a href="https://github.com/flathub/com.rtosta.zapzap/blob/master/com.rtosta.zapzap.yaml" rel="noopener nofollow ugc noreferrer">this one</a>: it seems to have .mo files in /app/share/locale but I cannot understand how this is achieved.</p>
 </li>
 <li>
 <p><code>/app/share/locale/en_US/LC_MESSAGES/mit-krb5.mo</code> seems something not cleaned up by the PyQt.BaseApp? Is it really useful?</p>
@@ -233,7 +234,7 @@ I should search other Python projects in Flathub which do not use Meson and see 
         <blockquote>
 <p>Why is this happening?</p>
 </blockquote>
-<p>I think that’s how the Locale extension works, it’s mounted in <code>/app/share/runtime/locale/</code> rather than <code>/app/share/locale</code>. Because you put your development version into a subfolder it can’t be automatically separated (it only works for the default folder, i.e. <code>/app/share/locale</code>), see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">flatpak-manifest</a>:</p>
+<p>I think that’s how the Locale extension works, it’s mounted in <code>/app/share/runtime/locale/</code> rather than <code>/app/share/locale</code>. Because you put your development version into a subfolder it can’t be automatically separated (it only works for the default folder, i.e. <code>/app/share/locale</code>), see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc noreferrer">flatpak-manifest</a>:</p>
 <pre><code class="lang-auto">       separate-locales (boolean)
            Separate out locale files and translations to an extension runtime. Defaults to true.
 </code></pre>

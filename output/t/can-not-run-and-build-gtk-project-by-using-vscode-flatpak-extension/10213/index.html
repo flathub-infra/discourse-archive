@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -114,7 +115,7 @@ MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:905: FINISHME: support mo
 &gt;&gt;&gt; Error: Child process exited with code 133
 </code></pre>
 <p>My host is: NixOS<br>
-github link: <a href="https://github.com/xinux-org/e-imzo" class="inline-onebox" rel="noopener nofollow ugc">GitHub - xinux-org/e-imzo: 🤝 | Improving E-IMZO support &amp; compatibility for *NIX [maintainer=@bahrom04]</a></p>
+github link: <a href="https://github.com/xinux-org/e-imzo" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - xinux-org/e-imzo: 🤝 | Improving E-IMZO support &amp; compatibility for *NIX [maintainer=@bahrom04]</a></p>
 <p>So question is how to run my project successfully on flatpak extencion</p>
       </div>
 
@@ -331,9 +332,9 @@ MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:905: FINISHME: support mo
 
       <div class="post-body cooked" itemprop="text">
         <p>So, as I understand it, here is the issue:</p>
-<p>When building a development version, you set the application id to use a <code>.Devel</code> suffix. That’s a good idea, however since your <a href="https://github.com/xinux-org/e-imzo/blob/main/src/app.rs#L195" rel="noopener nofollow ugc">code loading the GSettings</a> uses the application id, it expects a schema for <code>org.xinux.EIMZOManager.Devel</code>.</p>
-<p>But your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/org.xinux.EIMZOManager.gschema.xml.in#L3" rel="noopener nofollow ugc">GSettings configuration</a> doesn’t provide a GSettings schema for the id <code>org.xinux.EIMZOManager.Devel</code>, only for <code>org.xinux.EIMZOManager</code>.</p>
-<p>In your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/meson.build#L76" rel="noopener nofollow ugc">meson build file for the data</a> there seems to be a configuration that would replace <code>@app-id@</code> for the current application id, so try to replace the id in your GSettings file with this.</p>
+<p>When building a development version, you set the application id to use a <code>.Devel</code> suffix. That’s a good idea, however since your <a href="https://github.com/xinux-org/e-imzo/blob/main/src/app.rs#L195" rel="noopener nofollow ugc noreferrer">code loading the GSettings</a> uses the application id, it expects a schema for <code>org.xinux.EIMZOManager.Devel</code>.</p>
+<p>But your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/org.xinux.EIMZOManager.gschema.xml.in#L3" rel="noopener nofollow ugc noreferrer">GSettings configuration</a> doesn’t provide a GSettings schema for the id <code>org.xinux.EIMZOManager.Devel</code>, only for <code>org.xinux.EIMZOManager</code>.</p>
+<p>In your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/meson.build#L76" rel="noopener nofollow ugc noreferrer">meson build file for the data</a> there seems to be a configuration that would replace <code>@app-id@</code> for the current application id, so try to replace the id in your GSettings file with this.</p>
       </div>
 
       <div class="post-footer">
@@ -391,7 +392,7 @@ MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:905: FINISHME: support mo
 <div class="quote-controls"></div>
 CodedOre:</div>
 <blockquote>
-<p>In your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/meson.build#L76" rel="noopener nofollow ugc">meson build file for the data</a> there seems to be a configuration that would replace <code>@app-id@</code> for the current application id, so try to replace the id in your GSettings file with this.</p>
+<p>In your <a href="https://github.com/xinux-org/e-imzo/blob/main/data/meson.build#L76" rel="noopener nofollow ugc noreferrer">meson build file for the data</a> there seems to be a configuration that would replace <code>@app-id@</code> for the current application id, so try to replace the id in your GSettings file with this.</p>
 </blockquote>
 </aside>
 <p>yes it was the solution that i did it yesterday. Thank you <img itemprop="image" src="/images/emoji/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>

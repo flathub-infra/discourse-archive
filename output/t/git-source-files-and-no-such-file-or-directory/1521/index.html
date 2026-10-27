@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,9 +105,9 @@
       <div class="post-body cooked" itemprop="text">
         <p>Hi,<br>
 I’m working on the beta branch of an application I package,<br>
-one of the steps downloads a git repository and installs the content: <a href="https://github.com/flathub/com.icanblink.blink/blob/beta/com.icanblink.blink.json#L485" rel="noopener nofollow ugc">https://github.com/flathub/com.icanblink.blink/blob/beta/com.icanblink.blink.json#L485</a></p>
+one of the steps downloads a git repository and installs the content: <a href="https://github.com/flathub/com.icanblink.blink/blob/beta/com.icanblink.blink.json#L485" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/com.icanblink.blink/blob/beta/com.icanblink.blink.json#L485</a></p>
 <p>This step works fine when I flatpak-builder on my own pc, but doesn’t work on flathub.<br>
-See <a href="https://flathub.org/builds/#/builders/32/builds/51511" rel="noopener nofollow ugc">https://flathub.org/builds/#/builders/32/builds/51511</a></p>
+See <a href="https://flathub.org/builds/#/builders/32/builds/51511" rel="noopener nofollow ugc noreferrer">https://flathub.org/builds/#/builders/32/builds/51511</a></p>
 <p>Can anyone shed some light onto it?<br>
 Thanks</p>
       </div>
@@ -145,10 +146,10 @@ Thanks</p>
       <div class="post-body cooked" itemprop="text">
         <p>The error from the log is:<br>
 <code>bash: get_dependencies.sh: No such file or directory</code></p>
-<p>First, you don’t need to prepend <code>bash</code> to execute a shell file, just put the file path directly, like <a href="https://github.com/flathub/org.verapdf.veraPDF/blob/82f0fc927857e88fa3f0dc6b1b7222c589bea5a7/org.verapdf.veraPDF.json#L91" rel="noopener nofollow ugc">can be seen here</a>.</p>
+<p>First, you don’t need to prepend <code>bash</code> to execute a shell file, just put the file path directly, like <a href="https://github.com/flathub/org.verapdf.veraPDF/blob/82f0fc927857e88fa3f0dc6b1b7222c589bea5a7/org.verapdf.veraPDF.json#L91" rel="noopener nofollow ugc noreferrer">can be seen here</a>.</p>
 <p>So, try with <code>"get_dependencies.sh"</code></p>
 <p>If failed, try with <code>"./get_dependencies.sh"</code></p>
-<p>If still don’t work, you can download the file directly from git as a individual <code>"file"</code> like <a href="https://github.com/flathub/org.verapdf.veraPDF/blob/82f0fc927857e88fa3f0dc6b1b7222c589bea5a7/org.verapdf.veraPDF.json#L116" rel="noopener nofollow ugc">can be seen here</a></p>
+<p>If still don’t work, you can download the file directly from git as a individual <code>"file"</code> like <a href="https://github.com/flathub/org.verapdf.veraPDF/blob/82f0fc927857e88fa3f0dc6b1b7222c589bea5a7/org.verapdf.veraPDF.json#L116" rel="noopener nofollow ugc noreferrer">can be seen here</a></p>
 <p>Hopefully some of these options will work for you. Let us know!</p>
       </div>
 
@@ -281,7 +282,7 @@ Thanks</p>
         <p>That file is contained in the git repository downloaded with this json:<br>
 {<br>
 “type”: “git”,<br>
-“url”: “<a href="https://github.com/syco/python3-sipsimple.git" rel="noopener nofollow ugc">https://github.com/syco/python3-sipsimple.git</a>”,<br>
+“url”: “<a href="https://github.com/syco/python3-sipsimple.git" rel="noopener nofollow ugc noreferrer">https://github.com/syco/python3-sipsimple.git</a>”,<br>
 “branch”: “master”<br>
 },</p>
 <p>so it doesn’t need network access, am I missing something here?<br>
@@ -324,7 +325,7 @@ What is the right way to download sources from a git repository?</p>
 <pre><code class="lang-auto">(flatpak-builder:1135937): flatpak-builder-WARNING **: 14:56:24.915: Invalid source: No slashes allowed in dest-filename
 </code></pre>
 <p><a href="/t/modules-script-failing-on-flathub-worked-fine-3-months-ago/1532/index.html">Modules Script Failing on Flathub, worked fine 3 months ago</a><br>
-<a href="https://github.com/flatpak/flatpak-builder/issues/399" rel="noopener nofollow ugc">flatpak-builder 1.0.14 breaks build of org.libreoffice.LibreOffice, empty /run/build/libreoffice</a></p>
+<a href="https://github.com/flatpak/flatpak-builder/issues/399" rel="noopener nofollow ugc noreferrer">flatpak-builder 1.0.14 breaks build of org.libreoffice.LibreOffice, empty /run/build/libreoffice</a></p>
 <p>You have to remove the relative path from <code>dest-filename</code>:</p>
 <pre><code class="lang-auto">{
   "type": "file",

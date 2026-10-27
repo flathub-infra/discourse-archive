@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -426,7 +427,7 @@ flatpak build-bundle repo/ AppName.flatpak org.flatpak.AppName
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hmmm, actually I use Qt and its <a href="https://doc.qt.io/qt-6/qstandardpaths.html" rel="noopener nofollow ugc">QStandardPaths class</a> (QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)) to set directory. As far as I understand, it uses XDG standard.<br>
+        <p>Hmmm, actually I use Qt and its <a href="https://doc.qt.io/qt-6/qstandardpaths.html" rel="noopener nofollow ugc noreferrer">QStandardPaths class</a> (QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)) to set directory. As far as I understand, it uses XDG standard.<br>
 So when I do not use Flatpak, my file is located in $HOME/.local/share/AppName. It works well.</p>
 <p>Now I understood that I cannot write in $HOME/.local/share with Flatpak so I thought Flatpak could write into $HOME/.var/app/org.flatpak.AppName.</p>
 <p>But you are telling me that it is not possible…</p>

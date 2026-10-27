@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -184,9 +185,9 @@
         <p>The XDG directories are hard-coded &amp; you’re not supposed to change its values.<br>
 Instead there are other ways to access the contents:</p>
 <ul>
-<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
+<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc noreferrer">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
 <li><code>--filesystem=xdg-cache/&lt;SUBDIR&gt;</code> will bind mount <code>&lt;SUBDIR&gt;</code> into the sandboxed cache. This will require that you know which subdirectories could exist &amp; hard-code them into your application.</li>
-<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc">File Chooser portal</a>.</li>
+<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc noreferrer">File Chooser portal</a>.</li>
 </ul>
 <p>And you have to consider: If someone is using one of the launchers from Flatpak then the cache files won’t be inside the home cache but in the sandboxed cache of the corresponding app id.</p>
       </div>
@@ -245,9 +246,9 @@ cxrvh:</div>
 <p>The XDG directories are hard-coded &amp; you’re not supposed to change its values.<br>
 Instead there are other ways to access the contents:</p>
 <ul>
-<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
+<li><code>--filesystem=xdg-cache</code> &amp; access <code>HOST_XDG_CACHE_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc noreferrer">flatpak-run</a>). It’s only set if <code>XDG_CACHE_HOME</code> is set and else you’ll have to fallback to <code>~/.cache</code>.</li>
 <li><code>--filesystem=xdg-cache/&lt;SUBDIR&gt;</code> will bind mount <code>&lt;SUBDIR&gt;</code> into the sandboxed cache. This will require that you know which subdirectories could exist &amp; hard-code them into your application.</li>
-<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc">File Chooser portal</a>.</li>
+<li>If possible, just let the user select the folders from XDG_CACHE_HOME via the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html#" rel="noopener nofollow ugc noreferrer">File Chooser portal</a>.</li>
 </ul>
 <p>And you have to consider: If someone is using one of the launchers from Flatpak then the cache files won’t be inside the home cache but in the sandboxed cache of the corresponding app id.</p>
 </blockquote>
@@ -293,7 +294,7 @@ Instead there are other ways to access the contents:</p>
       <div class="post-body cooked" itemprop="text">
         <p>The following may be a cruft hack for your case, but at least may give you more ideas to try:</p>
 <p>You could replace your <code>Exec</code> key in the <code>.desktop</code> file to <code>Exec=launch.sh</code> and you create that <code>launch.sh</code> script that first copies/links the host’s cache files inside the corresponding sandbox dir, and then executes the application.</p>
-<p>Many flatpak Java apps use a similar approach to prepare some flags and arguments prior to launch the main java app. Eg. see here the <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/com.itextpdf.RUPS.desktop" rel="noopener nofollow ugc">.desktop file</a> and its <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/rups.sh" rel="noopener nofollow ugc">launch script</a>.</p>
+<p>Many flatpak Java apps use a similar approach to prepare some flags and arguments prior to launch the main java app. Eg. see here the <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/com.itextpdf.RUPS.desktop" rel="noopener nofollow ugc noreferrer">.desktop file</a> and its <a href="https://github.com/flathub/com.itextpdf.RUPS/blob/master/rups.sh" rel="noopener nofollow ugc noreferrer">launch script</a>.</p>
       </div>
 
       <div class="post-footer">

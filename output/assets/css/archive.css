@@ -3,17 +3,21 @@
    ========================================================================== */
 
 :root {
-  --text: #1a1a1a;
-  --text-muted: #6b7280;
-  --text-faint: #9ca3af;
-  --bg: #ffffff;
-  --bg-subtle: #f9fafb;
-  --bg-hover: #f3f4f6;
-  --border: #e5e7eb;
-  --border-light: #f0f0f0;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-subtle: #eff6ff;
+  color-scheme: light dark;
+  /* Flathub website palette: frontend/styles/main.css. */
+  --text: light-dark(oklch(25.61% 0.0354 296.84), oklch(89.56% 0.0045 91.45));
+  --text-muted: light-dark(oklch(48.56% 0.0136 312.8), oklch(80.84% 0.0041 91.45));
+  --text-faint: light-dark(oklch(48.56% 0.0136 312.8), oklch(68.62% 0.0046 91.47));
+  --bg: light-dark(#fff, oklch(35.42% 0.0248 301.11));
+  --bg-subtle: light-dark(oklch(98.48% 0 0), oklch(25.61% 0.0354 296.84));
+  --bg-hover: light-dark(oklch(89.56% 0.0045 91.45), oklch(48.56% 0.0136 312.8));
+  --border: light-dark(oklch(89.56% 0.0045 91.45), oklch(48.56% 0.0136 312.8));
+  --border-light: light-dark(oklch(89.56% 0.0045 91.45), oklch(48.56% 0.0136 312.8));
+  --accent: light-dark(oklch(49.79% 0.1314 251.94), oklch(70% 0.1314 251.94));
+  --accent-hover: light-dark(oklch(40% 0.1314 251.94), oklch(80% 0.1 251.94));
+  --accent-subtle: light-dark(#eff6ff, oklch(25.61% 0.0354 296.84));
+  --button-bg: oklch(49.79% 0.1314 251.94);
+  --button-hover: oklch(40% 0.1314 251.94);
   --radius: 6px;
   --radius-lg: 10px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
@@ -22,6 +26,19 @@
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --max-width: 1100px;
   --love: #ef4444;
+}
+
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+/* Keep Pagefind's separately loaded search UI in the same palette. */
+#search {
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--bg-hover);
+  --pagefind-ui-font: var(--font);
 }
 
 /* --- Reset & Base --- */
@@ -65,6 +82,10 @@ img { max-width: 100%; height: auto; }
 
 .site-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .logo-img { height: 32px; width: auto; }
+:root[data-theme="dark"] .logo-img { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-img { filter: invert(1); }
+}
 .logo-text { font-size: 1.125rem; font-weight: 700; color: var(--text); }
 
 .site-nav { display: flex; align-items: center; gap: 0.125rem; margin-left: auto; }
@@ -82,6 +103,22 @@ img { max-width: 100%; height: auto; }
 
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; margin-left: auto; }
 .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 1px; }
+
+.theme-chooser {
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.theme-chooser:hover { color: var(--text); border-color: var(--text-muted); }
+.theme-chooser:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* --- Breadcrumbs --- */
 
@@ -140,13 +177,13 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius);
   font-size: 0.875rem;
   font-weight: 500;
-  background: var(--accent);
+  background: var(--button-bg);
   color: #fff;
   transition: background 0.15s;
 }
 
 .pagination-prev:hover,
-.pagination-next:hover { background: var(--accent-hover); text-decoration: none; }
+.pagination-next:hover { background: var(--button-hover); text-decoration: none; }
 
 .pagination-info { font-size: 0.8125rem; color: var(--text-faint); }
 

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -118,7 +119,7 @@ Error: ERROR: appstreamcli compose failed: Child process exited with code 1
 </code></pre>
 <p>I cannot find any generated issue report data. As soon as I comment out this line it works:<br>
 <code>install -D io.github.nmstr.taskZen.metainfo.xml /app/share/metainfo/io.github.nmstr.taskZen.metainfo.xml</code></p>
-<p>This leads me to the belive that it is a problem with my metainfo file. I uploaded it to pastebin (<a href="https://pastebin.com/VVLLwtc4" class="inline-onebox" rel="noopener nofollow ugc">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;component type="desktop-application"&gt; - Pastebin.com</a>) as it is a little too large for good readability in this post (abt 50 lines). This is the affected part of my manifest:</p>
+<p>This leads me to the belive that it is a problem with my metainfo file. I uploaded it to pastebin (<a href="https://pastebin.com/VVLLwtc4" class="inline-onebox" rel="noopener nofollow ugc noreferrer">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;component type="desktop-application"&gt; - Pastebin.com</a>) as it is a little too large for good readability in this post (abt 50 lines). This is the affected part of my manifest:</p>
 <pre><code class="lang-auto">  - name: misc
     buildsystem: simple
     sources:
@@ -131,7 +132,7 @@ Error: ERROR: appstreamcli compose failed: Child process exited with code 1
       - cp run.sh /app/bin
       - cp gui.sh /app/bin
 </code></pre>
-<p>The entire manifest can again be found on pastebin (<a href="https://pastebin.com/f4CGZS3y" class="inline-onebox" rel="noopener nofollow ugc">app-id: io.github.nmstr.taskZenruntime: org.kde.Platformruntime-version: 6.7 - Pastebin.com</a>).</p>
+<p>The entire manifest can again be found on pastebin (<a href="https://pastebin.com/f4CGZS3y" class="inline-onebox" rel="noopener nofollow ugc noreferrer">app-id: io.github.nmstr.taskZenruntime: org.kde.Platformruntime-version: 6.7 - Pastebin.com</a>).</p>
 <p>My projects directory structure is laid out like this:</p>
 <ul>
 <li>flatpak</li>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,7 +105,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Hi,</p>
 <p>New here, please be patient.</p>
-<p>My app was just published on flathub (<a href="https://flathub.org/apps/org.pwsafe.pwsafe" class="inline-onebox" rel="noopener nofollow ugc">Install Password Safe on Linux | Flathub</a>), and of course people have started finding issues, mainly related to files not being where they’re expected. Specifically:</p>
+<p>My app was just published on flathub (<a href="https://flathub.org/apps/org.pwsafe.pwsafe" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Install Password Safe on Linux | Flathub</a>), and of course people have started finding issues, mainly related to files not being where they’re expected. Specifically:</p>
 <ol>
 <li>
 <p>The app expects to find a file under /usr/share/passwordsafe/xml/. Looking in the sandbox via ‘flatpak enter’, I see the file under /app/share/passwordsafe/xml. How is this mapped to /usr/share? What’s odd is that the app “sees” the help file under /app/share/passwordsafe/help. Why this but not the xml file?</p>
@@ -160,7 +161,7 @@ Any suggestions on how to approach this would be greatly appreciated.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>In the sandbox, the app is mounted at <code>/app</code>, the runtime is mounted at <code>/usr</code>, and various extensions are mounted below those.</p>
-<p>flatpak-builder just sets the CMake install prefix to <code>/app</code>. Instead of hardcoding the location of that directory, you should use a config header to get it from the buildsystem: <a href="https://cmake.org/cmake/help/latest/command/configure_file.html" class="inline-onebox" rel="noopener nofollow ugc">configure_file — CMake 3.28.3 Documentation</a></p>
+<p>flatpak-builder just sets the CMake install prefix to <code>/app</code>. Instead of hardcoding the location of that directory, you should use a config header to get it from the buildsystem: <a href="https://cmake.org/cmake/help/latest/command/configure_file.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">configure_file — CMake 3.28.3 Documentation</a></p>
 <p>Flatpak does set <code>XDG_DATA_DIRS</code> to include <code>/app/share</code>, which may be how the other directory is working.</p>
 <aside class="quote no-group" data-username="ronys" data-post="1" data-topic="6084">
 <div class="title">
@@ -174,7 +175,7 @@ ronys:</div>
 </aside>
 <p>I’m not an expert on the <code>.Locale</code> extension system, but this seems to match other apps. flatpak-builder defines the Locale extension point automatically with <code>directory=share/runtime/locale</code> and <code>locale-subset=true</code>. This requires that the locale extension contain top-level directories corresponding to each language code. The seemingly redundant path allows locale subsets to also include locale definitions for <code>lib/locale</code>. This is necessary for the platform locale extension at least.</p>
 <p>The app gets access to these via symlinks in <code>/app/share/locale</code>. I notice those are mostly missing for your app; only <code>ko</code> is present. I’m not sure what layer creates them, but I’d guess that they’re created for each directory the app creates in <code>/app/share/locale</code>.</p>
-<p>After writing most of this, I found a great explanation from Alex here: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621074#c21" class="inline-onebox" rel="noopener nofollow ugc">1621074 - fix l10n in Flatpaks</a></p>
+<p>After writing most of this, I found a great explanation from Alex here: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621074#c21" class="inline-onebox" rel="noopener nofollow ugc noreferrer">1621074 - fix l10n in Flatpaks</a></p>
       </div>
 
       <div class="post-footer">

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -115,8 +116,8 @@ I ran all of the distros mentioned here in a virtual machine, except Mint.</p>
 <p>Detailed steps to reproduce:<br>
 1)Run <code>flatpak install flathub org.kde.alligator org.kde.tokodon org.kde.keysmith</code><br>
 2)Perform the necessary steps to allow QT flatpak apps to use the system theme.  This will depend on the desktop enviroment:<br>
-2a)<a href="https://docs.flatpak.org/en/latest/desktop-integration.html#instructions-for-qt" rel="noopener nofollow ugc">In Gnome</a>, install <code>org.gtk.Gtk3theme.Adwaita-dark</code>, <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and <code>org.kde.PlatformTheme.QGnomePlatform//5.15-21.08</code>.<br>
-2b)<a href="https://forums.linuxmint.com/viewtopic.php?p=2172752&amp;sid=d8230c85d94e2becbbd122fd03b22ab1#p2172752" rel="noopener nofollow ugc">In Mate or Cinnamon</a>, install <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and run <code>sudo flatpak override --env=QT_STYLE_OVERRIDE=Adwaita-dark</code>.</p>
+2a)<a href="https://docs.flatpak.org/en/latest/desktop-integration.html#instructions-for-qt" rel="noopener nofollow ugc noreferrer">In Gnome</a>, install <code>org.gtk.Gtk3theme.Adwaita-dark</code>, <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and <code>org.kde.PlatformTheme.QGnomePlatform//5.15-21.08</code>.<br>
+2b)<a href="https://forums.linuxmint.com/viewtopic.php?p=2172752&amp;sid=d8230c85d94e2becbbd122fd03b22ab1#p2172752" rel="noopener nofollow ugc noreferrer">In Mate or Cinnamon</a>, install <code>org.kde.KStyle.Adwaita//5.15-21.08</code> and run <code>sudo flatpak override --env=QT_STYLE_OVERRIDE=Adwaita-dark</code>.</p>
 <p>Expected result: QT-based flatpak apps which can use the system theme automatically switch to dark mode.<br>
 Actual result: <em>Most</em> QT-based flatpak apps which can use the system theme automatically switch to dark mode, including VLC, Kate, Dolphin, and KolourPaint.  However, the three apps mentioned in the title, Alligator, Tokodon, and Keysmith, continue to use light mode, and there is thus seemingly no way to make them use a dark theme.  I don’t know what about these three apps is different from all the other KDE/QT apps I’ve used.</p>
 <p>Other information:<br>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>So, i have a app called <a href="https://github.com/Keshav-writes-code/Cherit" rel="noopener nofollow ugc">Cherit</a>, and i want to distribute it as a flatpak. i can’t find a startight forward way of doing it. can you please help?</p>
+        <p>So, i have a app called <a href="https://github.com/Keshav-writes-code/Cherit" rel="noopener nofollow ugc noreferrer">Cherit</a>, and i want to distribute it as a flatpak. i can’t find a startight forward way of doing it. can you please help?</p>
       </div>
 
       <div class="post-footer">
@@ -137,21 +138,21 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>First of all, you may know this already, but for general information about how an Flatpak app is build, you can see the Flatpak documentation, like the <a href="https://docs.flatpak.org/en/latest/first-build.html" rel="noopener nofollow ugc">Building your first Flatpak</a> introduction and the section about <a href="https://docs.flatpak.org/en/latest/building.html" rel="noopener nofollow ugc">Building</a>.</p>
-<p>You should also have read the <a href="https://docs.flathub.org/docs/for-app-authors/requirements" rel="noopener nofollow ugc">Flathub requirements</a> beforehand. It makes the job of the reviewer, and your submission process, much easier if you follow the requirements from the get-go.</p>
-<p>Also, see the documentation for <a href="https://docs.flathub.org/docs/for-app-authors/submission" rel="noopener nofollow ugc">Submission</a> on how the submission process happens.</p>
+        <p>First of all, you may know this already, but for general information about how an Flatpak app is build, you can see the Flatpak documentation, like the <a href="https://docs.flatpak.org/en/latest/first-build.html" rel="noopener nofollow ugc noreferrer">Building your first Flatpak</a> introduction and the section about <a href="https://docs.flatpak.org/en/latest/building.html" rel="noopener nofollow ugc noreferrer">Building</a>.</p>
+<p>You should also have read the <a href="https://docs.flathub.org/docs/for-app-authors/requirements" rel="noopener nofollow ugc noreferrer">Flathub requirements</a> beforehand. It makes the job of the reviewer, and your submission process, much easier if you follow the requirements from the get-go.</p>
+<p>Also, see the documentation for <a href="https://docs.flathub.org/docs/for-app-authors/submission" rel="noopener nofollow ugc noreferrer">Submission</a> on how the submission process happens.</p>
 <hr>
 <p>Now, with the general stuff out of the way, for your app specifically you need to be able to make an offline build and installation inside the Flatpak sandbox, as a Flatpak build on Flathub is build with the full sandbox enforcement, so no network. And nowadays it should be from source whenever possible.</p>
 <p>The main question would be about dependencies, which you will need to add to your manifest as well. If they are “classic” dependencies, like an dynamic library that you link to, you build the library according to its building instructions in an addition module before your app into the <code>/app</code> prefix and it should be then available.</p>
 <p>For Tauri, I think you can build it from with Cargo, but you need to create manifest sources for each crate, as Flatpak Builder needs to download them before build for Cargo, since Cargo will not have a internet connection.<br>
-Luckily, you can use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" rel="noopener nofollow ugc">Flatpak Cargo Generator</a> to generate them for you.</p>
+Luckily, you can use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" rel="noopener nofollow ugc noreferrer">Flatpak Cargo Generator</a> to generate them for you.</p>
 <p>Looking at your repository, your webapp seems to use Bun (?), which is totally new for me. The tricky part will likely be to build that inside the Flatpak sandbox, should you need to use that runtime. Look in the documentation if there are some instructions on how to build the runtime from source.<br>
-As for the node dependencies for the webapp itself, you should (hopefully) be able to use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/node" rel="noopener nofollow ugc">Flatpak Node Generator</a>.</p>
+As for the node dependencies for the webapp itself, you should (hopefully) be able to use the <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/node" rel="noopener nofollow ugc noreferrer">Flatpak Node Generator</a>.</p>
 <hr>
 <p>A few general hints on the end:<br>
 You can locally start your manifest with the Flatpak Builder having internet access, to first get an direction for it. But, in the end, it will be necessary for Flatpak Builder to pull the sources before the app is build offline.</p>
-<p>Also, you can look at how existing Tauri apps have been build on Flatpak. All apps on Flathub have a link on their app page linking to their build manifest, for example here is the one for <a href="https://github.com/flathub/io.github.CyberTimon.RapidRAW" rel="noopener nofollow ugc">RapidRAW</a>.</p>
-<p>Finally, you can always ask questions in this forum or in the <a href="https://matrix.to/#/#flatpak:matrix.org" rel="noopener nofollow ugc">Flatpak</a> or <a href="https://matrix.to/#/#flathub:matrix.org" rel="noopener nofollow ugc">Flathub</a> Matrix rooms.</p>
+<p>Also, you can look at how existing Tauri apps have been build on Flatpak. All apps on Flathub have a link on their app page linking to their build manifest, for example here is the one for <a href="https://github.com/flathub/io.github.CyberTimon.RapidRAW" rel="noopener nofollow ugc noreferrer">RapidRAW</a>.</p>
+<p>Finally, you can always ask questions in this forum or in the <a href="https://matrix.to/#/#flatpak:matrix.org" rel="noopener nofollow ugc noreferrer">Flatpak</a> or <a href="https://matrix.to/#/#flathub:matrix.org" rel="noopener nofollow ugc noreferrer">Flathub</a> Matrix rooms.</p>
       </div>
 
       <div class="post-footer">

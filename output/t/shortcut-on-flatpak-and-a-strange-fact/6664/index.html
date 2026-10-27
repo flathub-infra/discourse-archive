@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -340,10 +341,10 @@ enrico94:</div>
 <p>Given your screenshots: If you run the application from within your build folder, I suspect your application uses the database from the build folder since flatpak will keep your current working directory.</p>
 <p>Run from any other location or without any filesystem permissions (<code>flatpak run --sandbox</code> or with <code>--nofilesystem=host</code>) and it doesn’t work anymore. This is happening when running from the desktop file.</p>
 <hr>
-<p>Your application must use or create a file in a user writeable folder, preferably in XDG_DATA_HOME (<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html" class="inline-onebox" rel="noopener nofollow ugc">XDG Base Directory Specification</a>, <a href="https://wiki.archlinux.org/title/XDG_Base_Directory" class="inline-onebox" rel="noopener nofollow ugc">XDG Base Directory - ArchWiki</a>, Qt probably provides a method for this). Inside this you create your own subfolder to put your user files in.</p>
+<p>Your application must use or create a file in a user writeable folder, preferably in XDG_DATA_HOME (<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">XDG Base Directory Specification</a>, <a href="https://wiki.archlinux.org/title/XDG_Base_Directory" class="inline-onebox" rel="noopener nofollow ugc noreferrer">XDG Base Directory - ArchWiki</a>, Qt probably provides a method for this). Inside this you create your own subfolder to put your user files in.</p>
 <hr>
 <p>If your application doesn’t require any other files you can then drop all filesystem permissions since the base directories are always available &amp; writeable.</p>
-<p>Even if you need access to some files you should check to implement the file portal: <a href="https://flatpak.github.io/xdg-desktop-portal/docs/" class="inline-onebox" rel="noopener nofollow ugc">XDG Desktop Portal documentation</a> .<br>
+<p>Even if you need access to some files you should check to implement the file portal: <a href="https://flatpak.github.io/xdg-desktop-portal/docs/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">XDG Desktop Portal documentation</a> .<br>
 This allows you to drop all filesystem permissions but still get access to files (as granted by the user).</p>
       </div>
 

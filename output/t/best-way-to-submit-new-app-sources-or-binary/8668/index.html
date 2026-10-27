@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -126,9 +127,9 @@ This is the simplest approach, but I’m unsure if it’s acceptable.</li>
 <p>Additionally, I have a question about the runtime: electron-forge builds against the old runtime (20.08). Is it valid to use this for submission?</p>
 <p>–<br>
 Project refreneces:<br>
-<strong>emulation engine</strong> (I am an author): <a href="https://github.com/caiiiycuk/js-dos" class="inline-onebox" rel="noopener nofollow ugc">GitHub - caiiiycuk/js-dos: The best API for running dos programs in browser</a> GPL-2.0. js-dos allows to run DOS/Win 9x program in browser, so the DOS Browser is made to accelerate such websites.<br>
+<strong>emulation engine</strong> (I am an author): <a href="https://github.com/caiiiycuk/js-dos" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - caiiiycuk/js-dos: The best API for running dos programs in browser</a> GPL-2.0. js-dos allows to run DOS/Win 9x program in browser, so the DOS Browser is made to accelerate such websites.<br>
 <strong>dos.zone</strong> - is a community driven library of DOS games which can be viewed by DOS Browser.<br>
-<strong>DOS Browser</strong> download page: <a href="https://dos.zone/download/" class="inline-onebox" rel="noopener nofollow ugc">Download | DOS games in browser</a> (already have deb/rpm)</p>
+<strong>DOS Browser</strong> download page: <a href="https://dos.zone/download/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Download | DOS games in browser</a> (already have deb/rpm)</p>
 <p>–<br>
 <strong>P.S.</strong> DOS Browser is a just browser + emulation layer, it does not break any legal rights. Currently it able to view only dos.zone website but soon it will support any site that based on actual js-dos library (working on it).</p>
       </div>
@@ -374,7 +375,7 @@ caiiiycuk:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p>While redistributing the binaries would probably be the easiest way, you could base a source-build on existing manifests.</p>
-<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc">the manifest</a> correctly.<br>
+<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc noreferrer">the manifest</a> correctly.<br>
 You could take the modules there as a base for building it in your app.</p>
 <aside class="quote no-group" data-username="caiiiycuk" data-post="1" data-topic="8668">
 <div class="title">
@@ -438,7 +439,7 @@ And if you need to run electron-forge for some reason, it would run inside the e
 <div class="quote-controls"></div>
 CodedOre:</div>
 <blockquote>
-<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc">the manifest</a> correctly.<br>
+<p>As far as I can tell, DOSBox-X is build from sources, if I read <a href="https://github.com/flathub/com.dosbox_x.DOSBox-X/blob/master/com.dosbox_x.DOSBox-X.yaml" rel="noopener nofollow ugc noreferrer">the manifest</a> correctly.<br>
 You could take the modules there as a base for building it in your app.</p>
 </blockquote>
 </aside>
@@ -498,8 +499,8 @@ caiiiycuk:</div>
 <p>Wow, this is very helpful. I mean, yeah, I could probably build everything from source, but since I’m very new here, it seems like a difficult task to build SDL, SDL2, and an Electron app all together for Flatpak (it is easier to build each in isolated environment).</p>
 </blockquote>
 </aside>
-<p>There are shared-modules for SDL at least <a href="https://github.com/flathub/shared-modules" class="inline-onebox">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a></p>
-<p>And you will want to use <a href="https://github.com/flathub/org.electronjs.Electron2.BaseApp" class="inline-onebox">GitHub - flathub/org.electronjs.Electron2.BaseApp</a> as it should make your life easier.</p>
+<p>There are shared-modules for SDL at least <a href="https://github.com/flathub/shared-modules" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a></p>
+<p>And you will want to use <a href="https://github.com/flathub/org.electronjs.Electron2.BaseApp" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/org.electronjs.Electron2.BaseApp</a> as it should make your life easier.</p>
 <aside class="quote no-group" data-username="caiiiycuk" data-post="7" data-topic="8668">
 <div class="title">
 <div class="quote-controls"></div>
@@ -517,9 +518,9 @@ caiiiycuk:</div>
 <p>So, can I start with option 2 and then migrate to option 1 later?</p>
 </blockquote>
 </aside>
-<p>Yes, you’ll probably need <a href="https://docs.flathub.org/docs/for-app-authors/maintenance#only-build-on-x86_64" class="inline-onebox">Maintenance | Flathub Documentation</a> then.<br>
+<p>Yes, you’ll probably need <a href="https://docs.flathub.org/docs/for-app-authors/maintenance#only-build-on-x86_64" class="inline-onebox" rel="noreferrer nofollow ugc">Maintenance | Flathub Documentation</a> then.<br>
 And maybe take inspiration from other electron apps, we have<br>
-<a href="https://github.com/flathub/electron-sample-app" class="inline-onebox">GitHub - flathub/electron-sample-app: Sample application based on electron</a> or <a href="https://github.com/flathub/im.riot.Riot" class="inline-onebox">GitHub - flathub/im.riot.Riot</a> or <a href="https://github.com/flathub/org.signal.Signal" class="inline-onebox">GitHub - flathub/org.signal.Signal</a> come to mind</p>
+<a href="https://github.com/flathub/electron-sample-app" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/electron-sample-app: Sample application based on electron</a> or <a href="https://github.com/flathub/im.riot.Riot" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/im.riot.Riot</a> or <a href="https://github.com/flathub/org.signal.Signal" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/org.signal.Signal</a> come to mind</p>
       </div>
 
       <div class="post-footer">
@@ -555,7 +556,7 @@ And maybe take inspiration from other electron apps, we have<br>
 
       <div class="post-body cooked" itemprop="text">
         <p>Oh, I’m really frustrated. I’m trying to create an Electron Forge app but no luck, it should be a simple task but I’ve spent too much time on it…</p>
-<p>I created an issue: <a href="https://github.com/flatpak/flatpak-builder/issues/629" class="inline-onebox" rel="noopener nofollow ugc">Unable to build simple eletron-forge application using yarn / npm, failing on node-gyp · Issue #629 · flatpak/flatpak-builder · GitHub</a></p>
+<p>I created an issue: <a href="https://github.com/flatpak/flatpak-builder/issues/629" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Unable to build simple eletron-forge application using yarn / npm, failing on node-gyp · Issue #629 · flatpak/flatpak-builder · GitHub</a></p>
       </div>
 
       <div class="post-footer">
@@ -637,7 +638,7 @@ And maybe take inspiration from other electron apps, we have<br>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Well, this is my submission <a href="https://github.com/flathub/flathub/pull/6053" class="inline-onebox" rel="noopener nofollow ugc">Add zone.dos.Browser by caiiiycuk · Pull Request #6053 · flathub/flathub · GitHub</a></p>
+        <p>Well, this is my submission <a href="https://github.com/flathub/flathub/pull/6053" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Add zone.dos.Browser by caiiiycuk · Pull Request #6053 · flathub/flathub · GitHub</a></p>
       </div>
 
       <div class="post-footer">

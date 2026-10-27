@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>One of the apps I’ve packaged has artifact issues on Mesa versions 23.x and up (<a href="https://docs.mesa3d.org/relnotes.html" rel="noopener nofollow ugc">see versions</a>), so I would like to package the app to use the latest 22.x version (22.3.7). Is there a way I can specify this?</p>
+        <p>One of the apps I’ve packaged has artifact issues on Mesa versions 23.x and up (<a href="https://docs.mesa3d.org/relnotes.html" rel="noopener nofollow ugc noreferrer">see versions</a>), so I would like to package the app to use the latest 22.x version (22.3.7). Is there a way I can specify this?</p>
 <p>I currently have this at the top of my manifest:</p>
 <pre><code class="lang-json">    "id": "my.app.id",
     "runtime": "org.freedesktop.Platform",
@@ -148,7 +149,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Changing the runtime-version to <code>21.08</code> did the trick for us: <a href="https://github.com/flathub/org._2009scape.Launcher/pull/28" class="inline-onebox" rel="noopener nofollow ugc">Rollback freedesktop to 21.08 since newer Mesa has issues by dginovker · Pull Request #28 · flathub/org._2009scape.Launcher · GitHub</a></p>
+        <p>Changing the runtime-version to <code>21.08</code> did the trick for us: <a href="https://github.com/flathub/org._2009scape.Launcher/pull/28" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Rollback freedesktop to 21.08 since newer Mesa has issues by dginovker · Pull Request #28 · flathub/org._2009scape.Launcher · GitHub</a></p>
 <p>(This didn’t give us the 22.3.7 exactly, but it gave 21.3.9  which has no issues)</p>
       </div>
 

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -106,10 +107,10 @@
 <p>I noticed that Avogadro2 does not create menu entry when install.<br>
 </p><aside class="onebox githubblob">
   <header class="source">
-      <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc">github.com</a>
+      <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc noreferrer">github.com</a>
   </header>
   <article class="onebox-body">
-    <h4><a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc">flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234</a></h4>
+    <h4><a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234" target="_blank" rel="noopener nofollow ugc noreferrer">flathub/org.openchemistry.Avogadro2/blob/master/org.openchemistry.Avogadro2.yaml#L234</a></h4>
 <pre class="onebox"><code class="lang-yaml"><ol class="start lines" start="224" style="counter-reset: li-counter 223 ;">
 <li>    - type: patch</li><li>      path: fix_find_spglib.patch</li><li></li><li>- name: Avogadro2</li><li>  buildsystem: cmake</li><li>  config-opts:</li><li>    - -DENABLE_RPATH:BOOL=ON</li><li>    - -DENABLE_TESTING:BOOL=OFF</li><li>    - -DBUILD_DOCUMENTATION:BOOL=OFF</li><li>    - -DCMAKE_BUILD_TYPE:STRING=Release</li><li class="selected">  post-install:</li><li>    - install -Dm644 avogadro/icons/avogadro2_64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/$FLATPAK_ID.png</li><li>    - install -Dm644 avogadro/icons/avogadro2_512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png</li><li>    - desktop-file-edit --set-key=Icon --set-value=$FLATPAK_ID ${FLATPAK_DEST}/share/applications/avogadro2.desktop</li><li>    - install -Dm644 $FLATPAK_ID.metainfo.xml ${FLATPAK_DEST}/share/metainfo/$FLATPAK_ID.metainfo.xml</li><li>  sources:</li><li>    - type: git</li><li>      url: https://github.com/OpenChemistry/avogadroapp</li><li>      tag: '1.93.0'</li>
 </ol></code></pre>

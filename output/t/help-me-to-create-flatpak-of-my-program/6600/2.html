@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -837,7 +838,7 @@ enrico94:</div>
 </blockquote>
 </aside>
 <p>You have to create a local repository &amp; then you can use <code>flatpak build-bundle</code> to create a <code>.flatpak</code> from it. See the documentation I’ve linked.</p>
-<p>You should read the <a href="https://docs.flatpak.org/en/latest/index.html" rel="noopener nofollow ugc">Flatpak documentation</a> anyway because you haven’t set any <code>finish-args</code>. Currently your app is not allowed to access anything, it’s not even allowed to display the GUI.</p>
+<p>You should read the <a href="https://docs.flatpak.org/en/latest/index.html" rel="noopener nofollow ugc noreferrer">Flatpak documentation</a> anyway because you haven’t set any <code>finish-args</code>. Currently your app is not allowed to access anything, it’s not even allowed to display the GUI.</p>
       </div>
 
       <div class="post-footer">
@@ -1423,7 +1424,7 @@ enrico94:</div>
 </blockquote>
 </aside>
 <p>The method is ok. But you don’t want to copy all the libraries from your system. You should remove all libs &amp; then execute <code>ldd</code> from within the Flatpak sandbox (see <code>flatpak-builder --run</code>). Then only a few libraries should be missing. The list should become even shorter if you switch to <code>org.kde.Platform</code>.</p>
-<p>If possible, you would then build the missing dependencies from source (see the Flatpak documentation &amp; the existing manifests at <a href="https://github.com/flathub/" class="inline-onebox" rel="noopener nofollow ugc">Flathub · GitHub</a>).</p>
+<p>If possible, you would then build the missing dependencies from source (see the Flatpak documentation &amp; the existing manifests at <a href="https://github.com/flathub/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flathub · GitHub</a>).</p>
       </div>
 
       <div class="post-footer">
@@ -1649,7 +1650,7 @@ finish-args:
 <blockquote>
 <p>flatpak-builder --run DIRECTORY MANIFEST COMMAND</p>
 </blockquote>
-<p>See the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">documentaton</a>:</p>
+<p>See the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc noreferrer">documentaton</a>:</p>
 <blockquote>
 <p>–run<br>
 Run a command in a sandbox based on the build dir. This starts flatpak build, with some extra arguments to give the same environment as the build, and the same permissions the final app will have (except filesystem permissions). The command to run must be the last argument passed to flatpak-builder, after the directory and the manifest.</p>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,8 +103,8 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>There are multiple applications that I’d like to use on Fedora, but some of the most important applications (such as <a href="https://flathub.org/apps/com.bitwarden.desktop" rel="noopener nofollow ugc">Bitwarden</a> and <a href="https://flathub.org/apps/org.standardnotes.standardnotes" rel="noopener nofollow ugc">Standard Notes)</a> I want to use are not officially available as Flatpaks or RPMs. However, they are still on Flathub, presumably built by Flathub developers or maybe random people in the community. So I’m left wondering if/what measures Flathub takes to ensure the validity and security of unofficially built packages like Bitwarden and Standard Notes so I can better determine whether or not I could use them safely as Flatpaks.</p>
-<p>(That being said, there are still some important applications which I might not be able to reasonably avoid on Flathub, such as <a href="https://flathub.org/apps/org.signal.Signal" rel="noopener nofollow ugc">Signal</a>. Unfortunately, they only officially support Debian-based distributions, so it seems like I have no other choice but to use unofficial builds of Signal.)</p>
+        <p>There are multiple applications that I’d like to use on Fedora, but some of the most important applications (such as <a href="https://flathub.org/apps/com.bitwarden.desktop" rel="noopener nofollow ugc noreferrer">Bitwarden</a> and <a href="https://flathub.org/apps/org.standardnotes.standardnotes" rel="noopener nofollow ugc noreferrer">Standard Notes)</a> I want to use are not officially available as Flatpaks or RPMs. However, they are still on Flathub, presumably built by Flathub developers or maybe random people in the community. So I’m left wondering if/what measures Flathub takes to ensure the validity and security of unofficially built packages like Bitwarden and Standard Notes so I can better determine whether or not I could use them safely as Flatpaks.</p>
+<p>(That being said, there are still some important applications which I might not be able to reasonably avoid on Flathub, such as <a href="https://flathub.org/apps/org.signal.Signal" rel="noopener nofollow ugc noreferrer">Signal</a>. Unfortunately, they only officially support Debian-based distributions, so it seems like I have no other choice but to use unofficial builds of Signal.)</p>
       </div>
 
       <div class="post-footer">
@@ -145,7 +146,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can verify the safety by looking at the build logs under <a href="https://buildbot.flathub.org/">https://buildbot.flathub.org/</a> and the manifests in the respective app repos (there is a manifest link on each flathub page you linked)</p>
+        <p>You can verify the safety by looking at the build logs under <a href="https://buildbot.flathub.org/" rel="noreferrer nofollow ugc">https://buildbot.flathub.org/</a> and the manifests in the respective app repos (there is a manifest link on each flathub page you linked)</p>
 <p>With that you can also build your flathub apps locally, if you don’t trust the server. Which is building in an  offline environment.</p>
       </div>
 
@@ -197,7 +198,7 @@
 <div class="quote-controls"></div>
 razzeee:</div>
 <blockquote>
-<p>You can verify the safety by looking at the build logs under <a href="https://buildbot.flathub.org/" rel="noopener nofollow ugc">https://buildbot.flathub.org/ </a> and the manifests in the respective app repos (there is a manifest link on each flathub page you linked)</p>
+<p>You can verify the safety by looking at the build logs under <a href="https://buildbot.flathub.org/" rel="noopener nofollow ugc noreferrer">https://buildbot.flathub.org/ </a> and the manifests in the respective app repos (there is a manifest link on each flathub page you linked)</p>
 </blockquote>
 </aside>
 <p>I’m not quite sure what I’m specifically meant to be looking for to verify the safety of an application. Would you be able to elaborate? Apologies in advance, I’m very much a noob when it comes to the Linux ecosystem. <img itemprop="image" src="/images/emoji/twitter/sweat_smile.png?v=12" title=":sweat_smile:" class="emoji" alt=":sweat_smile:" loading="lazy" width="20" height="20"></p>
@@ -244,7 +245,7 @@ razzeee:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p><strong>UPDATE</strong></p>
-<p>Some discussion is taking place over on <a href="https://discuss.privacyguides.net/t/should-i-trust-flathub-with-important-applications/13898" rel="noopener nofollow ugc">Privacy Guides Discussions</a>. Some people are suggesting others to avoid unofficial Flatpaks entirely, but I’m still hoping someone from Flathub will explain how they verify the integrity and safety of unofficial builds… Or at least maybe a plan to do so in the future.</p>
+<p>Some discussion is taking place over on <a href="https://discuss.privacyguides.net/t/should-i-trust-flathub-with-important-applications/13898" rel="noopener nofollow ugc noreferrer">Privacy Guides Discussions</a>. Some people are suggesting others to avoid unofficial Flatpaks entirely, but I’m still hoping someone from Flathub will explain how they verify the integrity and safety of unofficial builds… Or at least maybe a plan to do so in the future.</p>
       </div>
 
       <div class="post-footer">
@@ -291,15 +292,15 @@ razzeee:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p>Generally speaking, each app gets it’s build code and flatpak settings (what can it access) vetted when it’s first included in the repository.</p>
-<p>After that it’s up to the developer to keep it tight, with oversight from the community. For example, you can check <a href="https://github.com/flathub/org.signal.Signal" class="inline-onebox">GitHub - flathub/org.signal.Signal</a> to read the configuration for signal. That’s on top of the code that the signal app itself uses. Ideally, those sources would live with the original app, at some point in the future.</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/flathub.json">https://github.com/flathub/org.signal.Signal/blob/master/flathub.json</a> is configuration to only build the app for x64 cpus and automatically merge security fixes from dependencies.</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.metainfo.xml">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.metainfo.xml</a> is just data for showing the app in the software centers - nothing that’s relevant for privacy</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/signal-desktop.sh">https://github.com/flathub/org.signal.Signal/blob/master/signal-desktop.sh</a> is a file that gets called, when you start the app it figures out some options and uses a tool, that allows running chromium apps in a flatpak sandbox</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml</a> is the most interesting, as it’s the build instructions.<br>
-<a href="https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L11-L44">https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L11-L44</a> are probably the most interesting, as that configures the sandboxing (which you won’t have with most non flatpak apps)</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml</a> shows, that it’s just downloading the sources from the original website and even checks the sha. It’s build from the .deb, that’s also the reason, why there is only a x64 build.</p>
-<p><a href="https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L50-L63">https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L50-L63</a> basically takes that file, unzips it, moves it, sets some file permissions and changes the .desktop file to point to the flatpak</p>
-<p>You might also want to read for more on verified apps <a href="https://docs.flathub.org/docs/for-users/verification" class="inline-onebox">Verified apps | Flathub Documentation</a></p>
+<p>After that it’s up to the developer to keep it tight, with oversight from the community. For example, you can check <a href="https://github.com/flathub/org.signal.Signal" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/org.signal.Signal</a> to read the configuration for signal. That’s on top of the code that the signal app itself uses. Ideally, those sources would live with the original app, at some point in the future.</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/flathub.json" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/master/flathub.json</a> is configuration to only build the app for x64 cpus and automatically merge security fixes from dependencies.</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.metainfo.xml" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.metainfo.xml</a> is just data for showing the app in the software centers - nothing that’s relevant for privacy</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/signal-desktop.sh" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/master/signal-desktop.sh</a> is a file that gets called, when you start the app it figures out some options and uses a tool, that allows running chromium apps in a flatpak sandbox</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml</a> is the most interesting, as it’s the build instructions.<br>
+<a href="https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L11-L44" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L11-L44</a> are probably the most interesting, as that configures the sandboxing (which you won’t have with most non flatpak apps)</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/master/org.signal.Signal.yaml</a> shows, that it’s just downloading the sources from the original website and even checks the sha. It’s build from the .deb, that’s also the reason, why there is only a x64 build.</p>
+<p><a href="https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L50-L63" rel="noreferrer nofollow ugc">https://github.com/flathub/org.signal.Signal/blob/69b54db509fc91c57104160e9f291c805f89c759/org.signal.Signal.yaml#L50-L63</a> basically takes that file, unzips it, moves it, sets some file permissions and changes the .desktop file to point to the flatpak</p>
+<p>You might also want to read for more on verified apps <a href="https://docs.flathub.org/docs/for-users/verification" class="inline-onebox" rel="noreferrer nofollow ugc">Verified apps | Flathub Documentation</a></p>
 <p>So yeah, verified apps are cool, but it does not mean, that non verified apps are bad per se. Especially high profile apps like signal (that are also used in the flathub team) should be in a good state.</p>
       </div>
 

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -119,13 +120,13 @@
 </blockquote>
 <blockquote>
 <p>The ostree ref is missing a <code>screenshots/{arch}</code> ref.<br>
-This error should not be reached on Flathub. Externally uploaded apps must ensure to <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" rel="noopener nofollow ugc">mirror screenshots</a>, commit the screenshot ref and upload the screenshot ref for all architectures.</p>
+This error should not be reached on Flathub. Externally uploaded apps must ensure to <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" rel="noopener nofollow ugc noreferrer">mirror screenshots</a>, commit the screenshot ref and upload the screenshot ref for all architectures.</p>
 </blockquote>
 <blockquote>
-<p>Committing is done after <a href="https://docs.flatpak.org/en/latest/flatpak-builder.html" rel="noopener nofollow ugc">Flatpak Builder</a> exported a repo, using <code>ostree commit --repo=&lt;repo name&gt; --canonical-permissions --branch=screenshots/&lt;arch&gt; &lt;builddir&gt;/files/share/app-info/media</code>.</p>
+<p>Committing is done after <a href="https://docs.flatpak.org/en/latest/flatpak-builder.html" rel="noopener nofollow ugc noreferrer">Flatpak Builder</a> exported a repo, using <code>ostree commit --repo=&lt;repo name&gt; --canonical-permissions --branch=screenshots/&lt;arch&gt; &lt;builddir&gt;/files/share/app-info/media</code>.</p>
 </blockquote>
 <blockquote>
-<p>The process is automated when using <a href="https://github.com/flathub-infra/flatpak-github-actions#inputs" rel="noopener nofollow ugc">flatpak-github-actions</a>.</p>
+<p>The process is automated when using <a href="https://github.com/flathub-infra/flatpak-github-actions#inputs" rel="noopener nofollow ugc noreferrer">flatpak-github-actions</a>.</p>
 </blockquote>
 <p>The explanation seems to suggest that Flatpak Builder does that behind the scenes. What should I do to fix that linting error?</p>
 <p>I’m using the following linting command:</p>

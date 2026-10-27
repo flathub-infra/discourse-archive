@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>The Flatpak documents <a href="https://docs.flatpak.org/en/latest/conventions.html#expected-standards" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/conventions.html#expected-standards</a><br>
+        <p>The Flatpak documents <a href="https://docs.flatpak.org/en/latest/conventions.html#expected-standards" rel="noopener nofollow ugc noreferrer">https://docs.flatpak.org/en/latest/conventions.html#expected-standards</a><br>
 say icons should be in:<br>
 <strong>/app/share/</strong> icons/hicolor/128x128/apps/org.gnome.Dictionary.png<br>
 There is no such directory on my PC, even though I have several Flatpaks installed!</p>
@@ -147,7 +148,7 @@ Do I give up and put a copy somewhere else especially for Plank?</p>
       <div class="post-body cooked" itemprop="text">
         <p>Hi<br>
 There’s no /app directory on a normal Linux system. However, all Flatpak app containers do have a /app directory. If you open a shell in any of your Flatpak apps (something like <code>flatpak run --command/bin/bash org.gnome.Nautilus</code>) you’ll see it.</p>
-<p>For Meson to install in this directory you need to configure with <code>--prefix=/app</code>. The flatpak-builder <a href="https://docs.flatpak.org/en/latest/manifests.html?highlight=meson#supported-build-systems" rel="noopener nofollow ugc">‘meson’ build type</a> should do this automatically – are you using that in the app manifest?</p>
+<p>For Meson to install in this directory you need to configure with <code>--prefix=/app</code>. The flatpak-builder <a href="https://docs.flatpak.org/en/latest/manifests.html?highlight=meson#supported-build-systems" rel="noopener nofollow ugc noreferrer">‘meson’ build type</a> should do this automatically – are you using that in the app manifest?</p>
       </div>
 
       <div class="post-footer">

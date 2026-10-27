@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -155,7 +156,7 @@ If you have a fix, I’d like to hear it.  This issue seems to put a lie to the 
 
       <div class="post-body cooked" itemprop="text">
         <p>The nvidia driver is uniquely problematic because it doesn’t maintain a stable ABI between its kernel and userspace components. A separate flatpak extension is made for each driver version, but you need to <code>flatpak update</code> (or equivalent) to get it.</p>
-<p>I’ve seen <a href="https://github.com/flatpak/flatpak/issues/5616" rel="noopener nofollow ugc">one other report</a> similar to the behavior you describe, but it clearly isn’t a widespread issue. The same debugging info I requested there would be of use here:</p>
+<p>I’ve seen <a href="https://github.com/flatpak/flatpak/issues/5616" rel="noopener nofollow ugc noreferrer">one other report</a> similar to the behavior you describe, but it clearly isn’t a widespread issue. The same debugging info I requested there would be of use here:</p>
 <blockquote>
 <p>When this happens, please compare the nvidia version in <code>flatpak --gl-drivers</code> to the driver version in <code>nvidia-smi</code>. Also confirm that <code>org.freedesktop.Platform.GL.nvidia-VERSION</code> is installed, using something like <code>flatpak list --runtime | grep nvidia</code></p>
 <p>The output of the guilty <code>flatpak update</code> command (or the relevant excerpt from <code>flatpak history</code>) could also be helpful.</p>
@@ -279,8 +280,8 @@ What is most troubling is the idea that one day the ubuntu driver might not resu
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>It’s an unfortunate quirk of how the nvidia extension is packaged on Flathub that adding a new driver version triggers an update for <em>every</em> other version, and that update causes the driver to be re-downloaded from nvidia. There is <a href="https://github.com/flathub/org.freedesktop.Platform.GL.nvidia/pull/234" rel="noopener nofollow ugc">a plan in the works</a> to fix the latter so the bogus updates will be no-ops at least. This should also make things a bit more robust.</p>
-<p><code>org.freedesktop.Platform.GL.nvidia-390-157</code> is the flatpak extension for that nvidia driver version. It was released in 2022, and there apparently haven’t been any updates for that legacy driver series since. There are some reports of breakage with that driver here: <a href="https://github.com/flathub/org.freedesktop.Platform.GL.nvidia/issues/211" class="inline-onebox" rel="noopener nofollow ugc">Several flatpak applications, on operating systems with Nvidia GPU and 390-157 driver, with "org.freedesktop.Platform.GL.nvidia-390-157" runtime, don't launch. · Issue #211 · flathub/org.freedesktop.Platform.GL.nvidia · GitHub</a></p>
+        <p>It’s an unfortunate quirk of how the nvidia extension is packaged on Flathub that adding a new driver version triggers an update for <em>every</em> other version, and that update causes the driver to be re-downloaded from nvidia. There is <a href="https://github.com/flathub/org.freedesktop.Platform.GL.nvidia/pull/234" rel="noopener nofollow ugc noreferrer">a plan in the works</a> to fix the latter so the bogus updates will be no-ops at least. This should also make things a bit more robust.</p>
+<p><code>org.freedesktop.Platform.GL.nvidia-390-157</code> is the flatpak extension for that nvidia driver version. It was released in 2022, and there apparently haven’t been any updates for that legacy driver series since. There are some reports of breakage with that driver here: <a href="https://github.com/flathub/org.freedesktop.Platform.GL.nvidia/issues/211" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Several flatpak applications, on operating systems with Nvidia GPU and 390-157 driver, with "org.freedesktop.Platform.GL.nvidia-390-157" runtime, don't launch. · Issue #211 · flathub/org.freedesktop.Platform.GL.nvidia · GitHub</a></p>
 <p>Ultimately, this is an unmaintained proprietary driver, and I’m not sure there’s much we can do.</p>
 <p>When you run <code>flatpak update</code>, is the nvidia extension being installed or upgraded? It’s conceivable that you’re running the flatpak apps without any nvidia extension, and when flatpak installs the nvidia extension, it breaks like in the above issue. To confirm, you could try <code>flatpak uninstall org.freedesktop.Platform.GL.nvidia-390-157</code> and see if apps work without it installed. It’s not clear to me whether apps would use software rendering or simply fail (but the latter seems more likely).</p>
       </div>

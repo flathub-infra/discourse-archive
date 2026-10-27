@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -107,10 +108,10 @@
         <p>I’m trying to flatpak a Rust application that uses fltk-rs.<br>
 I successfully managed to add the missing libpangoxft-1.0 by rebuilding libpango with the appropriate features.<br>
 But now I’m stuck on the missing libsupc++, the fltk build seems to need this library and I have no idea where to get it or how to add it.</p>
-<p>The project: <a href="https://github.com/dheijl/swyh-rs/" class="inline-onebox" rel="noopener nofollow ugc">GitHub - dheijl/swyh-rs: Stream What You Hear written in rust, inspired by SWYH.</a><br>
-The flatpak build script: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.sh" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/build.sh at master · dheijl/swyh-rs · GitHub</a><br>
-The flatpak manifest: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/com.github.dheijl.swyh-rs.json" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/com.github.dheijl.swyh-rs.json at master · dheijl/swyh-rs · GitHub</a><br>
-The build log: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.log" class="inline-onebox" rel="noopener nofollow ugc">swyh-rs/deploy/flatpak/build.log at master · dheijl/swyh-rs · GitHub</a></p>
+<p>The project: <a href="https://github.com/dheijl/swyh-rs/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - dheijl/swyh-rs: Stream What You Hear written in rust, inspired by SWYH.</a><br>
+The flatpak build script: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.sh" class="inline-onebox" rel="noopener nofollow ugc noreferrer">swyh-rs/deploy/flatpak/build.sh at master · dheijl/swyh-rs · GitHub</a><br>
+The flatpak manifest: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/com.github.dheijl.swyh-rs.json" class="inline-onebox" rel="noopener nofollow ugc noreferrer">swyh-rs/deploy/flatpak/com.github.dheijl.swyh-rs.json at master · dheijl/swyh-rs · GitHub</a><br>
+The build log: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/flatpak/build.log" class="inline-onebox" rel="noopener nofollow ugc noreferrer">swyh-rs/deploy/flatpak/build.log at master · dheijl/swyh-rs · GitHub</a></p>
 <p>Any help is greatly appreciated…</p>
       </div>
 
@@ -156,14 +157,14 @@ The build log: <a href="https://github.com/dheijl/swyh-rs/tree/master/deploy/fla
 <p>You can find my current manifest here (not working yet, as <em>gcc</em> cannot find <em>mpc</em> libraries)</p><aside class="onebox githubblob" data-onebox-src="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml">
   <header class="source">
 
-      <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">github.com/yveszoundi/entrusted-flatpak</a>
+      <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">github.com/yveszoundi/entrusted-flatpak</a>
   </header>
 
   <article class="onebox-body">
-    <h4><a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
+    <h4><a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
 
 <div class="git-blob-info">
-  <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc"><code>main</code></a>
+  <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc noreferrer"><code>main</code></a>
 </div>
 
 
@@ -191,7 +192,7 @@ build-options:
 
 
 
-  This file has been truncated. <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+  This file has been truncated. <a href="https://github.com/yveszoundi/entrusted-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">show original</a>
 
   </article>
 
@@ -301,7 +302,7 @@ build-options:
           /usr/lib/gcc/x86_64-unknown-linux-gnu/14.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: failed to set dynamic section sizes: bad value
           collect2: error: ld returned 1 exit status
 </code></pre>
-<p>You can find my new Flatpak manifest <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc">here</a>.</p>
+<p>You can find my new Flatpak manifest <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc noreferrer">here</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -378,14 +379,14 @@ build-options:
 <p>Here’s the updated manifest</p><aside class="onebox githubblob" data-onebox-src="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml">
   <header class="source">
 
-      <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">github.com/yveszoundi/fltk-rs-flatpak</a>
+      <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">github.com/yveszoundi/fltk-rs-flatpak</a>
   </header>
 
   <article class="onebox-body">
-    <h4><a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
+    <h4><a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">flatpak/com.rimerosolutions.Entrusted.yml</a></h4>
 
 <div class="git-blob-info">
-  <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc"><code>main</code></a>
+  <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" rel="noopener nofollow ugc noreferrer"><code>main</code></a>
 </div>
 
 
@@ -413,7 +414,7 @@ modules:
 
 
 
-  This file has been truncated. <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+  This file has been truncated. <a href="https://github.com/yveszoundi/fltk-rs-flatpak/blob/main/flatpak/com.rimerosolutions.Entrusted.yml" target="_blank" rel="noopener nofollow ugc noreferrer">show original</a>
 
   </article>
 

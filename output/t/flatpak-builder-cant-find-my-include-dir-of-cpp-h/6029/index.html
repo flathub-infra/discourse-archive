@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -254,7 +255,7 @@ Stephen-Hazel:</div>
 <p>now i’m pretty new to linux. I just made a softlink in each dir (~/src/pcheetah/initme/stv → which points to ~/src/stv)</p>
 </blockquote>
 </aside>
-<p>I think that’s your problem. Flatpak runs everything in a sandbox, including the build process of flatpak-builder. Directory &amp; file sources will be copied into the build folder (see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">flatpak-manifest</a>)</p>
+<p>I think that’s your problem. Flatpak runs everything in a sandbox, including the build process of flatpak-builder. Directory &amp; file sources will be copied into the build folder (see <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc noreferrer">flatpak-manifest</a>)</p>
 <blockquote>
 <pre><code>   Directory sources
 
@@ -268,7 +269,7 @@ Stephen-Hazel:</div>
 </code></pre>
 </blockquote>
 <p>As a result, I suspect your link targets simply don’t exist while building.</p>
-<p><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">flatpak-builder</a> provides some options to debug &amp; investigate the build environment (<code>--stop-at</code> &amp; <code>--build-shell</code>). You can use this to take a look at what’s happening:</p>
+<p><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc noreferrer">flatpak-builder</a> provides some options to debug &amp; investigate the build environment (<code>--stop-at</code> &amp; <code>--build-shell</code>). You can use this to take a look at what’s happening:</p>
 <p>Initialize the build directory:<br>
 <code>flatpak-builder --stop-at=initme --force-clean _app _mani -v</code></p>
 <p>Start a shell in the build environment:<br>
@@ -422,7 +423,7 @@ Failed to setup module: module initme: Child process exited with code 1
 FB: Unmounting read-only fs: fusermount -uz /home/sh/src/pcheetah/.flatpak-builder/rofiles/rofiles-diXdns
 </code></pre>
 <p>Ok I’ve come across this:<br>
-<a href="https://qt-flatpak-demo" rel="noopener nofollow ugc">https://github.com/flatpak/qt-flatpak-demo/blob/master/CMakeLists.txt</a></p>
+<a href="https://qt-flatpak-demo" rel="noopener nofollow ugc noreferrer">https://github.com/flatpak/qt-flatpak-demo/blob/master/CMakeLists.txt</a></p>
 <p>This CMakeLists.txt looks radically different than what qtcreator makes.</p>
 <p>I’m not having a great time followin’ these docs.  When it comes to putting a qt executable into flatpak, there sure isn’t much detail.</p>
 <p>I’d really like to find a qt6 demo app if anyone knows of one.</p>
@@ -470,7 +471,7 @@ FB: Unmounting read-only fs: fusermount -uz /home/sh/src/pcheetah/.flatpak-build
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>It seems that <code>--build-shell</code> stops after the configuration step (<a href="https://github.com/flatpak/flatpak-builder/issues/479" rel="noopener nofollow ugc">Issue</a>). I didn’t catch this because I tried it with a simple example without a configuration step.</p>
+        <p>It seems that <code>--build-shell</code> stops after the configuration step (<a href="https://github.com/flatpak/flatpak-builder/issues/479" rel="noopener nofollow ugc noreferrer">Issue</a>). I didn’t catch this because I tried it with a simple example without a configuration step.</p>
 <p>But flatpak-builder just uses <code>flatpak build</code>, you can run your own commands according the verbose log. This should work as well if (the build folder must have been previously initialized by flatpak-builder, maybe you have to adjust the <code>initme-2</code> build folder):</p>
 <pre><code class="lang-auto">flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/initme --nofilesystem=host:reset --filesystem=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/home/sh/src/pcheetah/.flatpak-builder/build/initme-2=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --bind-mount=/run/build/initme=/media/sh/bu/x/src_kub/pcheetah/.flatpak-builder/build/initme-2 --build-dir=/run/build/initme --bind-mount=/run/ccache=/home/sh/src/pcheetah/.flatpak-builder/ccache _app bash
 </code></pre>
@@ -492,7 +493,7 @@ Stephen-Hazel:</div>
 </blockquote>
 </aside>
 <p>Maybe you’ll find one in the GitHub repos, most will use the KDE runtime:<br>
-<a href="https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code" rel="noopener nofollow ugc">https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code</a></p>
+<a href="https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code" rel="noopener nofollow ugc noreferrer">https://github.com/search?q=org%3Aflathub+org.kde.Sdk&amp;type=code</a></p>
       </div>
 
       <div class="post-footer">

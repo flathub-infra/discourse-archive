@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’m debugging in issue of our application that occurs only with the recently released flatpak. Our application can run in Single Instance mode and we check if another instance is already running by creating an entry in shared memory <a href="https://doc.qt.io/qt-5/qsharedmemory.html" class="inline-onebox-loading" rel="nofollow noopener">https://doc.qt.io/qt-5/qsharedmemory.html</a>. Works on all kind of Distros, Windows, in Snap too but with the flatpak we seem to have a problem. Should we be able to use SharedMemory in Flatpaks? Do we need to enable something in the manifest?</p>
+        <p>I’m debugging in issue of our application that occurs only with the recently released flatpak. Our application can run in Single Instance mode and we check if another instance is already running by creating an entry in shared memory <a href="https://doc.qt.io/qt-5/qsharedmemory.html" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://doc.qt.io/qt-5/qsharedmemory.html</a>. Works on all kind of Distros, Windows, in Snap too but with the flatpak we seem to have a problem. Should we be able to use SharedMemory in Flatpaks? Do we need to enable something in the manifest?</p>
       </div>
 
       <div class="post-footer">
@@ -144,7 +145,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You need --device=shm for that, see <a href="https://github.com/flatpak/flatpak/blob/ec59cd6b5e536c2997c9ea88ee9763506c21c401/NEWS#L121" class="inline-onebox-loading">https://github.com/flatpak/flatpak/blob/ec59cd6b5e536c2997c9ea88ee9763506c21c401/NEWS#L121</a>. You will also need to enforce the required flatpak version with <code>--require-version=1.6.1</code> on finish-args.</p>
+        <p>You need --device=shm for that, see <a href="https://github.com/flatpak/flatpak/blob/ec59cd6b5e536c2997c9ea88ee9763506c21c401/NEWS#L121" class="inline-onebox-loading" rel="noreferrer nofollow ugc">https://github.com/flatpak/flatpak/blob/ec59cd6b5e536c2997c9ea88ee9763506c21c401/NEWS#L121</a>. You will also need to enforce the required flatpak version with <code>--require-version=1.6.1</code> on finish-args.</p>
       </div>
 
       <div class="post-footer">

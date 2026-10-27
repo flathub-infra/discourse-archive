@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -246,7 +247,7 @@ paul:</div>
 <p>it finds SDL2 and sdl_mixer from my system</p>
 </blockquote>
 </aside>
-<p>That’s not how flatpak works, it likely finds these from the freedesktop.Platform you are using. Stuff thats missing like glew needs to be added as modules, in the case of glew you can use the prepared one from <a href="https://github.com/flathub/shared-modules" class="inline-onebox">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a> if you need it unmodified.</p>
+<p>That’s not how flatpak works, it likely finds these from the freedesktop.Platform you are using. Stuff thats missing like glew needs to be added as modules, in the case of glew you can use the prepared one from <a href="https://github.com/flathub/shared-modules" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flathub/shared-modules: Common Flatpak modules that can be used as a git submodule</a> if you need it unmodified.</p>
       </div>
 
       <div class="post-footer">
@@ -470,7 +471,7 @@ Error: Command 'ScreenDemo-Linux64-GNU_Debug' not found
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I have found <a href="https://stackoverflow.com/questions/17164731/installing-only-one-target-and-its-dependencies-out-of-a-complex-project-with" rel="noopener nofollow ugc">a post</a> that may solve the target issue. It seems CMake builds all targets when something is installed. It can be disabled using <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_SKIP_INSTALL_ALL_DEPENDENCY.html" class="inline-onebox" rel="noopener nofollow ugc">CMAKE_SKIP_INSTALL_ALL_DEPENDENCY — CMake 3.28.3 Documentation</a></p>
+        <p>I have found <a href="https://stackoverflow.com/questions/17164731/installing-only-one-target-and-its-dependencies-out-of-a-complex-project-with" rel="noopener nofollow ugc noreferrer">a post</a> that may solve the target issue. It seems CMake builds all targets when something is installed. It can be disabled using <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_SKIP_INSTALL_ALL_DEPENDENCY.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">CMAKE_SKIP_INSTALL_ALL_DEPENDENCY — CMake 3.28.3 Documentation</a></p>
 <p>But now it doesn’t find glew anymore<br>
 I have updated the flathub shared modules:</p>
 <pre><code class="lang-auto">git submodule update --remote --merge
@@ -687,7 +688,7 @@ You can see, the library is installed at the correct path, but the other apps ar
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can add <code>-v</code> to flatpak-builder then it logs the build commands it’s running (<code>flatpak-builder -v …</code>) (<a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc">reference</a>).</p>
+        <p>You can add <code>-v</code> to flatpak-builder then it logs the build commands it’s running (<code>flatpak-builder -v …</code>) (<a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-builder" rel="noopener nofollow ugc noreferrer">reference</a>).</p>
 <aside class="quote no-group" data-username="paul" data-post="7" data-topic="6003">
 <div class="title">
 <div class="quote-controls"></div>
@@ -1055,7 +1056,7 @@ paul:</div>
 <p>I have tried a lot of things, but it never finds my app. […] and no way to select the installation path.</p>
 </blockquote>
 </aside>
-<p>I’m still not sure I understand what you mean. flatpak-builder never searches for your app. Your data is either found in <code>/app</code> (especially the command must be in <code>/app/bin/ScreenDemo-Linux64-GNU_Debug</code>*) or not found in any other place. You cannot change this behaviour. Your buildsystem and/or manifest are responsible to put the files in the correct locations. There are some additional folders which you must adhere to, see <a href="https://docs.flatpak.org/en/latest/conventions.html" rel="noopener nofollow ugc">Requirements &amp; Conventions</a>.</p>
+<p>I’m still not sure I understand what you mean. flatpak-builder never searches for your app. Your data is either found in <code>/app</code> (especially the command must be in <code>/app/bin/ScreenDemo-Linux64-GNU_Debug</code>*) or not found in any other place. You cannot change this behaviour. Your buildsystem and/or manifest are responsible to put the files in the correct locations. There are some additional folders which you must adhere to, see <a href="https://docs.flatpak.org/en/latest/conventions.html" rel="noopener nofollow ugc noreferrer">Requirements &amp; Conventions</a>.</p>
 <p>* You could create a script instead which executes another command in a different location within <code>/app</code>.</p>
 <aside class="quote no-group quote-modified" data-username="paul" data-post="11" data-topic="6003">
 <div class="title">
@@ -1083,7 +1084,7 @@ paul:</div>
 <p>Should I set the buildsystem to ‘simple’ and pass every parameter to CMake in my own way?</p>
 </blockquote>
 </aside>
-<p>Of course, you can try a manual way, this removes any build commands run by flatpak. There are also more options in the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc">manifest</a> you can use to customize the other buildsystems, for example to manually move files into <code>/app</code>):</p>
+<p>Of course, you can try a manual way, this removes any build commands run by flatpak. There are also more options in the <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html#flatpak-manifest" rel="noopener nofollow ugc noreferrer">manifest</a> you can use to customize the other buildsystems, for example to manually move files into <code>/app</code>):</p>
 <blockquote>
 <p>install-rule (string)<br>
 Name of the rule passed to make for the install phase, default is install</p>

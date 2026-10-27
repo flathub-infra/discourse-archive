@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,7 +105,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>When I created my Fedora system disk partition I didn’t have Flatpaks in mind - they are installed here and use rather more space than RPMs. I am now very short of space.</p>
 <p>IMHO Flatpaks are the future, so next time I will create a larger partition, but rather than re-installing the system on another disk now, as a quick fix I have replaced the Flatpaks with RPMs where they are available.</p>
-<p>However I don’t seem to have regained any space. I have checked the <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc">Flatpak command reference</a> for some sort of purge command, but can’t see one. Am I on the right track and if so how can I do this?</p>
+<p>However I don’t seem to have regained any space. I have checked the <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc noreferrer">Flatpak command reference</a> for some sort of purge command, but can’t see one. Am I on the right track and if so how can I do this?</p>
       </div>
 
       <div class="post-footer">
@@ -141,7 +142,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Have you tried <code>flatpak remove --unused</code> ?</p>
 <p>Also, if you have a separated /home partition, you could use <code>flatpak --user install &lt;app-name&gt;</code> instead. This way your Flatpaks are per-user but they get stored in <code>~/.local/share/flatpak/...</code></p>
-<p>Alternatively (and a bit more advanced), you can configure Flatpak to use a custom installation with a different path, see <a href="https://docs.flatpak.org/en/latest/tips-and-tricks.html#adding-a-custom-installation" class="inline-onebox" rel="noopener nofollow ugc">Tips and Tricks — Flatpak documentation</a></p>
+<p>Alternatively (and a bit more advanced), you can configure Flatpak to use a custom installation with a different path, see <a href="https://docs.flatpak.org/en/latest/tips-and-tricks.html#adding-a-custom-installation" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Tips and Tricks — Flatpak documentation</a></p>
       </div>
 
       <div class="post-footer">
@@ -261,7 +262,7 @@ flatpak install flathub com.giuspen.cherrytree</p>
 flatpak --user install flathub com.giuspen.cherrytree</p>
 </blockquote>
 <p>wherever in the statement the --user is placed.</p>
-<p><a href="https://docs.flatpak.org/" rel="noopener nofollow ugc">docs</a> doesn’t show any detail, but the syntax is correct according to <a href="https://www.linuxandubuntu.com/home/install-manage-flatpak-applications-on-standard-user-accounts" rel="noopener nofollow ugc">linuxandubuntu</a></p>
+<p><a href="https://docs.flatpak.org/" rel="noopener nofollow ugc noreferrer">docs</a> doesn’t show any detail, but the syntax is correct according to <a href="https://www.linuxandubuntu.com/home/install-manage-flatpak-applications-on-standard-user-accounts" rel="noopener nofollow ugc noreferrer">linuxandubuntu</a></p>
       </div>
 
       <div class="post-footer">

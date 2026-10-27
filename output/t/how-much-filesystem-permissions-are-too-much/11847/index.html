@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -178,9 +179,9 @@ The ideal amount of filesystem permissions should be none. Applications should r
 <hr>
 <p>Now, a note specific to your submission:</p>
 <p>As far as I could tell from my quick test run, your application should be able to utilize the FileChooser portal. And it does on my system. So it should be able to do its tasks just fine, even without a filesystem permissions.</p>
-<p>The issues you’ve shown in the <a href="https://github.com/flathub/flathub/pull/8071#discussion_r2925984019" rel="noopener nofollow ugc">discussion in the PR</a> seemed to me more that on your system, the application failed to call the FileChooser portal, falling back to the internal one. This could be due to no portal implementation being active on the system to show the file chooser on the system.</p>
-<p>GNOME and KDE have their own portal implementations and should work in most cases. Some of the smaller desktops have not at the moment. Some have an interest in providing their own file chooser, such as <a href="https://gitlab.xfce.org/xfce/thunar/-/issues/547" rel="noopener nofollow ugc">Xfce for Thunar</a>, but haven’t completed that yet.</p>
-<p>For these, <code>xdg-desktop-portal-gtk</code> provides a simple file chooser implementation to use in the meantime. If installed and configured to be used (see the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/configuration-file.html" rel="noopener nofollow ugc">documentation</a> for this), it should provide it.</p>
+<p>The issues you’ve shown in the <a href="https://github.com/flathub/flathub/pull/8071#discussion_r2925984019" rel="noopener nofollow ugc noreferrer">discussion in the PR</a> seemed to me more that on your system, the application failed to call the FileChooser portal, falling back to the internal one. This could be due to no portal implementation being active on the system to show the file chooser on the system.</p>
+<p>GNOME and KDE have their own portal implementations and should work in most cases. Some of the smaller desktops have not at the moment. Some have an interest in providing their own file chooser, such as <a href="https://gitlab.xfce.org/xfce/thunar/-/issues/547" rel="noopener nofollow ugc noreferrer">Xfce for Thunar</a>, but haven’t completed that yet.</p>
+<p>For these, <code>xdg-desktop-portal-gtk</code> provides a simple file chooser implementation to use in the meantime. If installed and configured to be used (see the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/configuration-file.html" rel="noopener nofollow ugc noreferrer">documentation</a> for this), it should provide it.</p>
       </div>
 
       <div class="post-footer">

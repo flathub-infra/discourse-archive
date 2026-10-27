@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Hi there!</p>
 <p>I’m trying to package Savage 2, a 2008 linux game, in flatpak. The objective is to be able to run it everywhere, in particular on a steam deck. And I’m very new to flatpak.</p>
 <p>I wrote a manifest that works on debian 12 and on gentoo, see below. But the game does not start on a steam deck, and I struggle to understand how to debug it.</p>
-<p>I don’t see an easy way to rebuild the game from source, so I have to use the binary from <a href="http://savage2.net" rel="noopener nofollow ugc">savage2.net</a>. The manifest is pretty straightforward:</p>
+<p>I don’t see an easy way to rebuild the game from source, so I have to use the binary from <a href="http://savage2.net" rel="noopener nofollow ugc noreferrer">savage2.net</a>. The manifest is pretty straightforward:</p>
 <pre data-code-wrap="yaml"><code class="lang-yaml">id: net.savage2.game
 runtime: org.freedesktop.Platform
 runtime-version: '24.08'
@@ -274,7 +275,7 @@ X Error of failed request:  BadValue (integer parameter out of range for operati
 </code></pre>
 <p>I already remove some libraries in the manifest, and that’s enough to get the game running on both debian and gentoo.</p>
 <p>In the meanwhile, I could launch the game on the steam deck if I set <code>SetSave vid_xrandr "false"</code>. This, if I understand correctly, turns off using xrandr to detect screen settings. But on other systems this wasn’t necessary.</p>
-<p>Inside the game, the xrandr business is probably happening in <code>/app/savage2/vid_gl2.so</code>. This is a part of the k2 game engine, and it should be close to <a href="https://github.com/shawwn/noh/tree/main/src/vid_gl2" class="inline-onebox" rel="noopener nofollow ugc">noh/src/vid_gl2 at main · shawwn/noh · GitHub</a><br>
+<p>Inside the game, the xrandr business is probably happening in <code>/app/savage2/vid_gl2.so</code>. This is a part of the k2 game engine, and it should be close to <a href="https://github.com/shawwn/noh/tree/main/src/vid_gl2" class="inline-onebox" rel="noopener nofollow ugc noreferrer">noh/src/vid_gl2 at main · shawwn/noh · GitHub</a><br>
 So, if the problem is with the game and not the environment, it may be possible to fix something inside vid_gl2.so.</p>
       </div>
 

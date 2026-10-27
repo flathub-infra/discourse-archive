@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi! I’m developing <a href="https://github.com/azymohliad/watchmate" rel="noopener nofollow ugc">WatchMate</a> (a companion app for PineTime smartwatch). Recently I added a feature to forward desktop notifications to the watch. But this feature requires monitoring session bus to intercept <code>org.freedesktop.Notifications</code> calls, hence needs <code>--socket=session-bus</code> permission.</p>
+        <p>Hi! I’m developing <a href="https://github.com/azymohliad/watchmate" rel="noopener nofollow ugc noreferrer">WatchMate</a> (a companion app for PineTime smartwatch). Recently I added a feature to forward desktop notifications to the watch. But this feature requires monitoring session bus to intercept <code>org.freedesktop.Notifications</code> calls, hence needs <code>--socket=session-bus</code> permission.</p>
 <p>Is it strictly forbidden on flathub? Is asking users to give this permission manually my best option?</p>
       </div>
 
@@ -138,7 +139,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>No, this is not forbidden, but you need a legitimate reason (e.g. a D-Bus Debugger) to give it your App this Permission. If your App does not work with fewer Permissions, like <code>--talk=org.freedesktop.Notifications</code> (I don’t know details about this Interface), you can do this. Make sure to add a exception for your App <a href="https://github.com/flathub/flatpak-builder-lint/blob/master/flatpak_builder_lint/staticfiles/exceptions.json" rel="noopener nofollow ugc">here</a>.</p>
+        <p>No, this is not forbidden, but you need a legitimate reason (e.g. a D-Bus Debugger) to give it your App this Permission. If your App does not work with fewer Permissions, like <code>--talk=org.freedesktop.Notifications</code> (I don’t know details about this Interface), you can do this. Make sure to add a exception for your App <a href="https://github.com/flathub/flatpak-builder-lint/blob/master/flatpak_builder_lint/staticfiles/exceptions.json" rel="noopener nofollow ugc noreferrer">here</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -192,8 +193,8 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Thank you!</p>
-<p>It needs full session bus permission because it uses <a href="https://dbus.freedesktop.org/doc/dbus-specification.html#bus-messages-become-monitor" rel="noopener nofollow ugc">org.freedesktop.DBus.Monitoring.BecomeMonitor</a> interface, so that it could listen what other apps send via <code>org.freedesktop.Notifications</code> interface. Afaik, there’s no better way to implement such functionality via Freedesktop APIs (if there is, I’d be very happy to re-implement it). <code>--talk=org.freedesktop.Notifications</code> would allow my app to send notifications, but not to read others.</p>
-<p>For now I released it without <code>--socket=session-bus</code>, and just show an error message asking for manual  permission grant if the user tries to enable notifications (<a href="https://cdn.fosstodon.org/media_attachments/files/109/812/501/591/159/362/original/8699ce379409d3d3.png" rel="noopener nofollow ugc">screenshot</a>). Given that the notification forwarding is not an essential feature of the app, and that full session-bus access is such a coarse-grained permission, I actually think it’s a very reasonable default. If users are unhappy about it, I’ll make a PR with elaborated exception to the repo you linked. Thank you!</p>
+<p>It needs full session bus permission because it uses <a href="https://dbus.freedesktop.org/doc/dbus-specification.html#bus-messages-become-monitor" rel="noopener nofollow ugc noreferrer">org.freedesktop.DBus.Monitoring.BecomeMonitor</a> interface, so that it could listen what other apps send via <code>org.freedesktop.Notifications</code> interface. Afaik, there’s no better way to implement such functionality via Freedesktop APIs (if there is, I’d be very happy to re-implement it). <code>--talk=org.freedesktop.Notifications</code> would allow my app to send notifications, but not to read others.</p>
+<p>For now I released it without <code>--socket=session-bus</code>, and just show an error message asking for manual  permission grant if the user tries to enable notifications (<a href="https://cdn.fosstodon.org/media_attachments/files/109/812/501/591/159/362/original/8699ce379409d3d3.png" rel="noopener nofollow ugc noreferrer">screenshot</a>). Given that the notification forwarding is not an essential feature of the app, and that full session-bus access is such a coarse-grained permission, I actually think it’s a very reasonable default. If users are unhappy about it, I’ll make a PR with elaborated exception to the repo you linked. Thank you!</p>
       </div>
 
       <div class="post-footer">

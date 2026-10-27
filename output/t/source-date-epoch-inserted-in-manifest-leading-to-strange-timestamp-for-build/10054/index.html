@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -147,7 +148,7 @@ Christian</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I think I figured it out. In the <code>vorarbeiter</code> piepline, <code>flatpak-builder</code> is called with argument <code>--override-source-date-epoch 1321009871</code> <a href="https://github.com/flathub-infra/vorarbeiter/blob/21598ace06f9d3aed1ae281186b022befc87c553/justfile#L182" rel="noopener nofollow ugc">see github repo</a>. This timestamp evaluates to 2011-11-11 11:11:11. I could not find documentation on this <code>flatpak-builder</code> option, but I  assume that it sets the <code>SOURCE_DATE_EPOCH</code> env variable for the build process and also adds the <code>source-date-epoch</code> to the manifest.</p>
+        <p>I think I figured it out. In the <code>vorarbeiter</code> piepline, <code>flatpak-builder</code> is called with argument <code>--override-source-date-epoch 1321009871</code> <a href="https://github.com/flathub-infra/vorarbeiter/blob/21598ace06f9d3aed1ae281186b022befc87c553/justfile#L182" rel="noopener nofollow ugc noreferrer">see github repo</a>. This timestamp evaluates to 2011-11-11 11:11:11. I could not find documentation on this <code>flatpak-builder</code> option, but I  assume that it sets the <code>SOURCE_DATE_EPOCH</code> env variable for the build process and also adds the <code>source-date-epoch</code> to the manifest.</p>
       </div>
 
       <div class="post-footer">
@@ -217,7 +218,7 @@ Christian</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I used to do that and some apps (e.g. QtCreator via <code>string(TIMESTAMP timestamp "%Y-%m-%d")</code> ) still do it. That’s a convenient way to ensure that the release date matches the date of the build of the released executable. If you look at these apps on <a href="http://flathub.org" rel="noopener nofollow ugc">flathub.org</a>, they are said to be released “more than 13 years ago”, which of course is incorrect.<br>
+        <p>I used to do that and some apps (e.g. QtCreator via <code>string(TIMESTAMP timestamp "%Y-%m-%d")</code> ) still do it. That’s a convenient way to ensure that the release date matches the date of the build of the released executable. If you look at these apps on <a href="http://flathub.org" rel="noopener nofollow ugc noreferrer">flathub.org</a>, they are said to be released “more than 13 years ago”, which of course is incorrect.<br>
 Perhaps we should be able to set <code>SOURCE_DATE_EPOC</code> in the manifest.</p>
       </div>
 

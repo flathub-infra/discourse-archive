@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -152,7 +153,7 @@ modules:
       - install -Dm644 com.gitlab.adnan338.Nixwriter.metainfo.xml --target-directory=/app/share/metainfo
 </code></pre>
 <p>In the git source I mentioned, there is a Cargo.toml, <code>deptree.json</code> and a <code>resources</code> folder. I want flatpak-builder to build my project with the content of these folders and files.</p>
-<p>However I realized flatpak builder <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748876502" rel="noopener nofollow ugc">can’t recognize my deptree.json file</a> and <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748606483" rel="noopener nofollow ugc">can’t access anything fetched from the upstream git repo.</a></p>
+<p>However I realized flatpak builder <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748876502" rel="noopener nofollow ugc noreferrer">can’t recognize my deptree.json file</a> and <a href="https://github.com/flathub/flathub/pull/2002#issuecomment-748606483" rel="noopener nofollow ugc noreferrer">can’t access anything fetched from the upstream git repo.</a></p>
 <p>Where is the git-fetched repos downloaded. I tried <code>/run/build/$module</code> but it didn’t work.</p>
       </div>
 

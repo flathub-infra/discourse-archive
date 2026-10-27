@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,7 +105,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’ve never made a flatpak app before, so after many trials and tribulations, I finally managed to make a proper Flatpak version of the <a href="https://github.com/Amulet-Team/Amulet-Map-Editor" data-bbcode="true" rel="noopener nofollow ugc">Amulet Team’s Minecraft Editor</a>. I worked out all the kinks (or, since I’m here, obviously not, right?) in my manifest, and when it compiled, it didn’t complain about anything.</p>
+        <p>I’ve never made a flatpak app before, so after many trials and tribulations, I finally managed to make a proper Flatpak version of the <a href="https://github.com/Amulet-Team/Amulet-Map-Editor" data-bbcode="true" rel="noopener nofollow ugc noreferrer">Amulet Team’s Minecraft Editor</a>. I worked out all the kinks (or, since I’m here, obviously not, right?) in my manifest, and when it compiled, it didn’t complain about anything.</p>
 <p>Then I installed it. This was also reported as a success:</p>
 <pre><code class="lang-auto">(python-3119) evilsupahfly on Black-Beast at Tue 20 Aug 2024 22:20:38 EDT
 [~/Downloads/flatpack-stuff/Amulet-Flatpak/Amulet-Flatpak] flatpak install -v -u amulet.flatpak
@@ -175,7 +176,7 @@ F: Running: 'bwrap --args 31 ldconfig -X -C /run/ld-so-cache-dir/04e4cee2920767c
 bwrap: Can't mkdir parents for /app/lib/x86_64-linux-gnu/GL: Read-only file system
 error: ldconfig failed, exit status 256</code></pre>
 <p>As it stands, I have removed, tweaked, reinstalled, and pounded my fist on the desk in anger and frustration repeatedly over the last week because I just don’t understand what’s going wrong.</p>
-<p>If it helps, and you’re fluent in Flatpak’s abstract promulgation of .YAML manifesto conspectus, my project recipe is <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/main/amulet.yml" rel="noopener nofollow ugc">available on my GIT</a>. New users are only permitted two links, and my manifest is full of Python package download links, so I can’t post it directly here.</p>
+<p>If it helps, and you’re fluent in Flatpak’s abstract promulgation of .YAML manifesto conspectus, my project recipe is <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/main/amulet.yml" rel="noopener nofollow ugc noreferrer">available on my GIT</a>. New users are only permitted two links, and my manifest is full of Python package download links, so I can’t post it directly here.</p>
 <p>And this is the script I wrote to make my life a little easier, which just runs two steps for me because I’m lazy, but it’s also for consistency so it runs the same two steps the same way, every time. Plus, I like the little splash of colour it adds.</p>
 <pre><code class="lang-auto">#!/bin/bash
 
@@ -254,11 +255,11 @@ echo</code></pre>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
-<p><code>sdk-version</code> is not a valid key <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L6" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a></p>
-<p>Drop these entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L293-L310" class="inline-onebox" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a>. That entire block is invalid keys.</p>
+        <p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+<p><code>sdk-version</code> is not a valid key <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L6" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a></p>
+<p>Drop these entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L293-L310" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub</a>. That entire block is invalid keys.</p>
 <p>Where did you find these? The docs there should be fixed.</p>
-<p>You can refer to the official documentation <a href="https://docs.flatpak.org/en/latest/manifests.html" class="inline-onebox" rel="noopener nofollow ugc">Manifests - Flatpak documentation</a> for a guide and <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Builder Command Reference - Flatpak documentation</a> for valid manifest properties.</p>
+<p>You can refer to the official documentation <a href="https://docs.flatpak.org/en/latest/manifests.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Manifests - Flatpak documentation</a> for a guide and <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flatpak Builder Command Reference - Flatpak documentation</a> for valid manifest properties.</p>
       </div>
 
       <div class="post-footer">
@@ -309,7 +310,7 @@ echo</code></pre>
 <div class="quote-controls"></div>
 bbhtt:</div>
 <blockquote>
-<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" rel="noreferrer nofollow ugc">Amulet-Flatpak/amulet.yml at 02376bd31311737673b476e4e95a4ddbcf3180c5 · EvilSupahFly/Amulet-Flatpak · GitHub </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
 </blockquote>
 </aside>
 <p>What documentation told you to put that in the manifest? I’m asking so we can get that documentation fix as it is wrong.</p>
@@ -354,10 +355,10 @@ bbhtt:</div>
 <div class="quote-controls"></div>
 bbhtt:</div>
 <blockquote>
-<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" rel="noopener nofollow ugc">Amulet-Flatpak/amulet.yml - L7-L14 </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
+<p>Drop this entire block <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/blob/02376bd31311737673b476e4e95a4ddbcf3180c5/amulet.yml#L7-L14" rel="noopener nofollow ugc noreferrer">Amulet-Flatpak/amulet.yml - L7-L14 </a> This part is creating the issue, these extensions are “managed” by the runtime, you don’t need to list them in your app manifest. It works OOTB.</p>
 </blockquote>
 </aside>
-<p>The guide at <a href="https://docs.flatpak.org/en/latest/extension.html" class="inline-onebox" rel="noopener nofollow ugc">Extensions - Flatpak documentation</a> is actually where I got the information because previously, I was using <code>add-extensions:</code> and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc">as referenced here.</a></p>
+<p>The guide at <a href="https://docs.flatpak.org/en/latest/extension.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Extensions - Flatpak documentation</a> is actually where I got the information because previously, I was using <code>add-extensions:</code> and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc noreferrer">as referenced here.</a></p>
 <aside class="quote no-group quote-modified" data-username="bbhtt" data-post="2" data-topic="7542">
 <div class="title">
 <div class="quote-controls"></div>
@@ -423,7 +424,7 @@ That entire block is invalid keys.</p>
 <div class="quote-controls"></div>
 EvilSupahFly:</div>
 <blockquote>
-<p>and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc">as referenced here.</a></p>
+<p>and the app would load initially, but it would cause wxPython to crash when attempting to render the OpenGL window for the 3D map after opening a world <a href="https://github.com/EvilSupahFly/Amulet-Flatpak/issues/2" rel="noopener nofollow ugc noreferrer">as referenced here.</a></p>
 </blockquote>
 </aside>
 <p>That’s an issue with the app or wxpython. The page doesn’t say to add those extensions. I’ll add a warning.</p>

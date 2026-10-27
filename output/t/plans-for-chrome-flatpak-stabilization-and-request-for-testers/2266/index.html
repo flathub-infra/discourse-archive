@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hello! I currently maintain the Chrome Flatpak on Flathub beta, and I wanted to share some of the plans to move to stable, as well as request some consistent testing for future releases.</p>
-<p>TLDR: I have had a <em>lot</em> of requests to move this to Flathub stable, and I’m looking to clean up everything and do this by the end of March. For some context on my concerns, the way Chrome works via <a href="https://github.com/refi64/zypak" rel="noopener nofollow ugc">Zypak</a> is fundamentally a lot more hack-ish than Chromium, and thus has a higher risk of breaking on updates. (Yes, this applies to Electron apps too, but Chrome is undoubtedly more complex, and Electron releases will come after anyway, i.e. Chrome would break first). There are users using unstable Chrome releases that have reported Zypak bugs in the past (thanks <span class="mention">@tinywrkb</span>!), but I want something a bit more reliable to be in place here.</p>
+<p>TLDR: I have had a <em>lot</em> of requests to move this to Flathub stable, and I’m looking to clean up everything and do this by the end of March. For some context on my concerns, the way Chrome works via <a href="https://github.com/refi64/zypak" rel="noopener nofollow ugc noreferrer">Zypak</a> is fundamentally a lot more hack-ish than Chromium, and thus has a higher risk of breaking on updates. (Yes, this applies to Electron apps too, but Chrome is undoubtedly more complex, and Electron releases will come after anyway, i.e. Chrome would break first). There are users using unstable Chrome releases that have reported Zypak bugs in the past (thanks <span class="mention">@tinywrkb</span>!), but I want something a bit more reliable to be in place here.</p>
 <p>In addition, Zypak has two modes of operation, one for Flatpak 1.8+ if unprivileged user namespaces are  enabled, and one for any other cases. However, the latter is rarely used at this point, and although it’s probably fine for Electron (it only ever forks the Zygote once or twice anyway), I’m a bit more hesitant here, because again, Chrome is the most likely one to break first.</p>
 <p>To compound all this, there’s a decently high chance I’ll be switching to Chrom<em>ium</em> soon as my primary browser due to its arm64 support (feel free to guess why), so I won’t be putting Chrome through day-to-day testing like currently.</p>
 <p>With all this in mind, I have two key points to my plan:</p>
@@ -192,7 +193,7 @@ refi64:</div>
 </blockquote>
 </aside>
 <p>I think you could even consider a higher minimum version since the status quo is that Chrome is not available at all (ignoring beta). Maybe this would mean being able to rely on newer portal versions too?</p>
-<p>I looked at <a href="https://ahayzen.com/direct/flathub.html#downloadsbyflatpakmajorstacked" class="inline-onebox" rel="noopener nofollow ugc">Flathub Statistics</a> and Flatpak 1.8+ covers the vast majority of systems.</p>
+<p>I looked at <a href="https://ahayzen.com/direct/flathub.html#downloadsbyflatpakmajorstacked" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flathub Statistics</a> and Flatpak 1.8+ covers the vast majority of systems.</p>
 <p>(8–9k online Endless OS users are on Flatpak 1.8 or older; the remaining 20–21k are on 1.10 until we push a release with 1.12 in the next few months. But all these released versions pre-emptively hide any <code>com.google.Chrome</code> coming from Flathub from appearing in GNOME Software so they are not a reason to require anything older than 1.12.)</p>
       </div>
 
@@ -557,7 +558,7 @@ So if no else says it, then let me just thank you here for your efforts.</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://flathub.org/apps/details/com.google.ChromeDev" rel="noopener nofollow ugc">Chrome Dev is now up on Flathub!</a> All testers are now free to, err, test <img itemprop="image" src="/images/emoji/twitter/smile.png?v=12" title=":smile:" class="emoji" alt=":smile:"></p>
+        <p><a href="https://flathub.org/apps/details/com.google.ChromeDev" rel="noopener nofollow ugc noreferrer">Chrome Dev is now up on Flathub!</a> All testers are now free to, err, test <img itemprop="image" src="/images/emoji/twitter/smile.png?v=12" title=":smile:" class="emoji" alt=":smile:"></p>
       </div>
 
       <div class="post-footer">
@@ -599,7 +600,7 @@ So if no else says it, then let me just thank you here for your efforts.</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://beta.flathub.org/apps/details/com.google.Chrome" rel="noopener nofollow ugc">Chrome stable is now on Flathub!</a></p>
+        <p><a href="https://beta.flathub.org/apps/details/com.google.Chrome" rel="noopener nofollow ugc noreferrer">Chrome stable is now on Flathub!</a></p>
       </div>
 
       <div class="post-footer">

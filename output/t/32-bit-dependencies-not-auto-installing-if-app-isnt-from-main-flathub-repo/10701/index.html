@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,9 +104,9 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hello all</p>
-<p>We’re currently in the process of updating a Flatpak package from Freedesktop runtime 23.08 to 25.08. Our app (the Heroic Games Launcher) needs 32-bit dependencies, so we’ve added them <a href="https://github.com/flathub/com.heroicgameslauncher.hgl/blob/66e1b4d6bbd380748ba4564851a534d779c97577/com.heroicgameslauncher.hgl.yml#L94-L115" rel="noopener nofollow ugc">here</a>, following <a href="https://docs.flatpak.org/en/latest/multiarch.html" rel="noopener nofollow ugc">Multiarch support</a>. For users installing the app from the main Flathub repository, this works fine</p>
+<p>We’re currently in the process of updating a Flatpak package from Freedesktop runtime 23.08 to 25.08. Our app (the Heroic Games Launcher) needs 32-bit dependencies, so we’ve added them <a href="https://github.com/flathub/com.heroicgameslauncher.hgl/blob/66e1b4d6bbd380748ba4564851a534d779c97577/com.heroicgameslauncher.hgl.yml#L94-L115" rel="noopener nofollow ugc noreferrer">here</a>, following <a href="https://docs.flatpak.org/en/latest/multiarch.html" rel="noopener nofollow ugc noreferrer">Multiarch support</a>. For users installing the app from the main Flathub repository, this works fine</p>
 <p>For the runtime update, we’ve made the changes on our <code>beta</code> branch, which is on the Flathub Beta repository. When installing <em>that</em> version (<code>flatpak install flathub-beta com.heroicgameslauncher.hgl</code>), the 32-bit runtimes are <em>not</em> auto-installed</p>
-<p>GitHub user <code>Oppzippy</code> has discovered that this doesn’t just affect Heroic, but seemingly any Flatpak app not installed from the main Flathub repo. In <a href="https://github.com/flathub/com.heroicgameslauncher.hgl/pull/247#issuecomment-3398695651" rel="noopener nofollow ugc">this post</a>, they’re highlighting the same behavior happening for the Steam Flatpak</p>
+<p>GitHub user <code>Oppzippy</code> has discovered that this doesn’t just affect Heroic, but seemingly any Flatpak app not installed from the main Flathub repo. In <a href="https://github.com/flathub/com.heroicgameslauncher.hgl/pull/247#issuecomment-3398695651" rel="noopener nofollow ugc noreferrer">this post</a>, they’re highlighting the same behavior happening for the Steam Flatpak</p>
 <p>Is this intentional? Can we do anything to auto-install the dependencies in this case?</p>
 <p>Thanks</p>
       </div>
@@ -149,7 +150,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Seems to be the expected behaviour: <a href="https://github.com/flatpak/flatpak/issues/3094" class="inline-onebox" rel="noopener nofollow ugc">Flatpak doesn't follow all dependencies across repos · Issue #3094 · flatpak/flatpak · GitHub</a></p>
+        <p>Seems to be the expected behaviour: <a href="https://github.com/flatpak/flatpak/issues/3094" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flatpak doesn't follow all dependencies across repos · Issue #3094 · flatpak/flatpak · GitHub</a></p>
       </div>
 
       <div class="post-footer">

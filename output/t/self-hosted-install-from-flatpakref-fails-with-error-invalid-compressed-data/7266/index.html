@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -121,7 +122,7 @@ F: Loading https://flatpak.3dct.at/summaries/ac86708263c25ca318b4ca8e999c455dfc8
 F: Received 810 bytes
 error: Invalid compressed data
 </code></pre>
-<p>Searching for this error didn’t give me any results that seemed to apply for my case - the only thing that stuck out as possibly remotely relevant is <a href="https://github.com/flatpak/flatpak/issues/5452" rel="noopener nofollow ugc">some bug in ostree a while back, which should be fixed by now</a>.</p>
+<p>Searching for this error didn’t give me any results that seemed to apply for my case - the only thing that stuck out as possibly remotely relevant is <a href="https://github.com/flatpak/flatpak/issues/5452" rel="noopener nofollow ugc noreferrer">some bug in ostree a while back, which should be fixed by now</a>.</p>
 <p>Later, I noticed that I even got the same error when I host the “old” repository which I had backed up (a repository only containing the old version of our program, where installation previously used to work).</p>
 <p>I have tested both building and installing on Fedora 40 and Ubuntu 24.04; in both cases, building, local installation and running works fine, but installing from .flatpakref fails with above error.</p>
 <p>How can I get more information on what is actually failing here? The verbose output suggests there is something wrong with the content of <em>summaries/ac86708263c25ca318b4ca8e999c455dfc88790ec01b4284862e2ead894e5070.gz</em> but I have no idea what. When extracting the .gz, the resulting file does look strange (mixing text with binary data), but from what I can gather this has always looked that way?</p>
@@ -222,7 +223,7 @@ DCONF_USER_CONFIG_DIR=.config/dconf
 
       <div class="post-body cooked" itemprop="text">
         <p>Sorry to push this, but I really want to solve this issue as soon as possible. Some small hint where I possibly could look for more information would be enough! I just am very stuck at this point and have no more idea what to check…</p>
-<p>By the way, I hope I am asking the question in the right place (got here from the forum link on <a href="http://flatpak.org" rel="noopener nofollow ugc">flatpak.org</a>) - or if it’s not, maybe someone can point me to a more suitable one?</p>
+<p>By the way, I hope I am asking the question in the right place (got here from the forum link on <a href="http://flatpak.org" rel="noopener nofollow ugc noreferrer">flatpak.org</a>) - or if it’s not, maybe someone can point me to a more suitable one?</p>
       </div>
 
       <div class="post-footer">
@@ -378,8 +379,8 @@ razzeee:</div>
 <p>This seems however like a flatpak bug to me - if both wget and curl can download the files properly, but flatpak just reports a somewhat cryptic error…</p>
 <p>EDIT: On a quick glance I didn’t see any major differences (both use HTTP/2, compression), and I don’t have more time for this at the moment. If somebody cares to look into it, here are the two base URLs:</p>
 <ul>
-<li><a href="https://flatpak.3dct.at" rel="noopener nofollow ugc">https://flatpak.3dct.at</a> (faulty)</li>
-<li><a href="https://flatpak.froehler.org" rel="noopener nofollow ugc">https://flatpak.froehler.org</a> (working)</li>
+<li><a href="https://flatpak.3dct.at" rel="noopener nofollow ugc noreferrer">https://flatpak.3dct.at</a> (faulty)</li>
+<li><a href="https://flatpak.froehler.org" rel="noopener nofollow ugc noreferrer">https://flatpak.froehler.org</a> (working)</li>
 </ul>
 <p>The summaries file is called <code>/summaries/0770ef8de810232dc14247c5a08c89b9f296c81559195d61c140b0d37251216d.gz</code><br>
 I have changed to the “full” repository again with all previous versions included, that’s why the file has a different name than in my original error message.</p>

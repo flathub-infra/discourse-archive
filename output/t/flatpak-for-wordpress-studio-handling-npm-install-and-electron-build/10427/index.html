@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’m planning to create a Flatpak package for the <a href="https://github.com/Automattic/studio" rel="noopener nofollow ugc">WordPress Studio project</a>. This won’t be an official package, but while working on it I ran into a few issues that I couldn’t resolve by searching or reading the documentation.</p>
+        <p>I’m planning to create a Flatpak package for the <a href="https://github.com/Automattic/studio" rel="noopener nofollow ugc noreferrer">WordPress Studio project</a>. This won’t be an official package, but while working on it I ran into a few issues that I couldn’t resolve by searching or reading the documentation.</p>
 <p>My main problem is that the project requires installing npm packages (<code>node_modules</code>) and then running a build step (some commands to generate the Electron package). Currently, WordPress Studio doesn’t provide Linux builds, but my plan is to generate an unofficial build and make it available on Flathub. The part I’m stuck on is how to handle this installation/build process in the Flatpak context for the NPM Packages.</p>
 <p>The documentation says:</p>
 <blockquote>
@@ -146,7 +147,7 @@ comes to the build.</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Look at <a href="https://github.com/flatpak/flatpak-builder-tools" class="inline-onebox">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a> for npm/yarn handling. I don’t think we have any electron apps, that are build from source. They usually repackage some deb/rpm binary. Those obviously already have the npm/yarn stuff baked in.</p>
+        <p>Look at <a href="https://github.com/flatpak/flatpak-builder-tools" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a> for npm/yarn handling. I don’t think we have any electron apps, that are build from source. They usually repackage some deb/rpm binary. Those obviously already have the npm/yarn stuff baked in.</p>
       </div>
 
       <div class="post-footer">

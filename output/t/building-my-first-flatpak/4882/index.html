@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -185,7 +186,7 @@ TIA</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>A Flatpak application is isolated from the host system, you can’t use libraries from your system. You should build them with your manifest to bundle them with your application.</p>
-<p>Check out the documentation for more information: <a href="https://docs.flatpak.org/en/latest/dependencies.html" rel="noopener nofollow ugc">Dependencies</a> &amp; <a href="https://docs.flatpak.org/en/latest/manifests.html" rel="noopener nofollow ugc">Manifests</a>.</p>
+<p>Check out the documentation for more information: <a href="https://docs.flatpak.org/en/latest/dependencies.html" rel="noopener nofollow ugc noreferrer">Dependencies</a> &amp; <a href="https://docs.flatpak.org/en/latest/manifests.html" rel="noopener nofollow ugc noreferrer">Manifests</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -258,7 +259,7 @@ My intent was to copy those  existing  libraries so that the flatpak builder cou
 
       <div class="post-body cooked" itemprop="text">
         <p>If possible, you should still build the dependencies &amp; the application in your manifest. Your build host &amp; the Flatpak runtime are not necessary compatible.</p>
-<p>You can try to find existing modules in the <a href="https://github.com/flathub/" rel="noopener nofollow ugc">Flathub</a> organization, but should try to build the latest version of the dependencies. I don’t know which package would provide the library so I couldn’t look for it.</p>
+<p>You can try to find existing modules in the <a href="https://github.com/flathub/" rel="noopener nofollow ugc noreferrer">Flathub</a> organization, but should try to build the latest version of the dependencies. I don’t know which package would provide the library so I couldn’t look for it.</p>
       </div>
 
       <div class="post-footer">
@@ -403,8 +404,8 @@ George:</div>
 <p>why I would need to download and install anything from the 'net, when I have just built my app locally and presumably have all it needs ‘right here’?</p>
 </blockquote>
 </aside>
-<p>Like I understand this is Flathub <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" rel="noopener nofollow ugc">requirement</a> (check the “reproducible builds” paragraph) if application is built from open source software, to be reproducible. I assume because of a trust, there is program’s open source and I build it in reproducible way, that means I haven’t injected any “my special” code into the product.</p>
-<p>But… on Flathub I see there are also flatpak with proprietary license, that for sure do not have source code available for reproducibility. In <a href="https://flathub.org/apps/search" rel="noopener nofollow ugc">Flathub</a> on left site there is “License” and you can filter by “Proprietary”.</p>
+<p>Like I understand this is Flathub <a href="https://docs.flathub.org/docs/for-app-authors/requirements/" rel="noopener nofollow ugc noreferrer">requirement</a> (check the “reproducible builds” paragraph) if application is built from open source software, to be reproducible. I assume because of a trust, there is program’s open source and I build it in reproducible way, that means I haven’t injected any “my special” code into the product.</p>
+<p>But… on Flathub I see there are also flatpak with proprietary license, that for sure do not have source code available for reproducibility. In <a href="https://flathub.org/apps/search" rel="noopener nofollow ugc noreferrer">Flathub</a> on left site there is “License” and you can filter by “Proprietary”.</p>
 <p>I don’t know if I am of any use now, because your case is pretty different them my. Hope this helps.</p>
       </div>
 
@@ -493,7 +494,7 @@ and that from instructions from the current PDF document - a bit discouraging.</
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>As far as I know: You should build your application &amp; dependencies in the manifest to ensure compatibility. You take libwx from your distribution, build against one release GTK 3, and use it in the runtime which probably provides a different GTK 3 release. I think this can lead to crashes (<a href="https://docs.gtk.org/gtk3/changes.html" rel="noopener nofollow ugc">Changes in GTK 3</a>).</p>
+        <p>As far as I know: You should build your application &amp; dependencies in the manifest to ensure compatibility. You take libwx from your distribution, build against one release GTK 3, and use it in the runtime which probably provides a different GTK 3 release. I think this can lead to crashes (<a href="https://docs.gtk.org/gtk3/changes.html" rel="noopener nofollow ugc noreferrer">Changes in GTK 3</a>).</p>
 <p>It’s always easier to provide assistance if you simply post your manifest. Currently we can only guess what could be wrong.</p>
 <p>But I tried the current example and can confirm that it still works. The whitespaces seem to get lost when copied from the PDF, but indentation is part of the syntax &amp; therefore required. Just copy the examples from the browser.</p>
       </div>
@@ -806,7 +807,7 @@ George:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>That buildsystem is supported directly and you don’t need simple for that <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox">Flatpak Builder Command Reference — Flatpak documentation</a></p>
+        <p>That buildsystem is supported directly and you don’t need simple for that <a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" class="inline-onebox" rel="noreferrer nofollow ugc">Flatpak Builder Command Reference — Flatpak documentation</a></p>
       </div>
 
       <div class="post-footer">
@@ -893,7 +894,7 @@ Still at this time, I have just barely made the test project compile &amp; run u
 
       <div class="post-body cooked" itemprop="text">
         <p>I usually recommend searching through the flathub sources here<br>
-<a href="https://github.com/search?q=org%3Aflathub+%22buildsystem%22%3A+%22cmake&amp;type=code" class="onebox" target="_blank" rel="noopener">https://github.com/search?q=org%3Aflathub+"buildsystem"%3A+"cmake&amp;type=code</a></p>
+<a href="https://github.com/search?q=org%3Aflathub+%22buildsystem%22%3A+%22cmake&amp;type=code" class="onebox" target="_blank" rel="noopener noreferrer nofollow ugc">https://github.com/search?q=org%3Aflathub+"buildsystem"%3A+"cmake&amp;type=code</a></p>
 <p>But YMMV and it depends how your app is setup quiet a bit.</p>
       </div>
 
@@ -969,14 +970,14 @@ My current test project is based on the latest wxWidgets demo ‘life’.<br>
 I have uploaded the basic code to Github and the package is available at:</p><aside class="onebox githubrepo" data-onebox-src="https://github.com/tester0077/flcmlife">
   <header class="source">
 
-      <a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc">github.com</a>
+      <a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc noreferrer">github.com</a>
   </header>
 
   <article class="onebox-body">
     <div class="github-row" data-github-private-repo="false">
   <img itemprop="image" width="690" height="344" src="/uploads/optimized/2X/7/797bd8fd8b7972ba9b6c8e0df8c4737f6424aece_2_690x344.png" class="thumbnail" data-dominant-color="F4F5F7">
 
-  <h3><a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc">GitHub - tester0077/flcmlife: Test code for flatpak creation of the wxWidgets...</a></h3>
+  <h3><a href="https://github.com/tester0077/flcmlife" target="_blank" rel="noopener nofollow ugc noreferrer">GitHub - tester0077/flcmlife: Test code for flatpak creation of the wxWidgets...</a></h3>
 
     <p><span class="github-repo-description">Test code for flatpak creation of the wxWidgets Life demo using Cmake-Ninja build for linux</span></p>
 </div>
@@ -991,7 +992,7 @@ I have uploaded the basic code to Github and the package is available at:</p><as
   <div style="clear: both"></div>
 </aside>
 
-<p>It consists of the source code from the wxWidgets demos/life and includes a the CMake build script adapted from the blog <a href="https://www.justdevtutorials.com/post/wxwidgets-cmake/" rel="noopener nofollow ugc">https://www.justdevtutorials.com/post/wxwidgets-cmake/</a> for this code and for CMake-Ninja.<br>
+<p>It consists of the source code from the wxWidgets demos/life and includes a the CMake build script adapted from the blog <a href="https://www.justdevtutorials.com/post/wxwidgets-cmake/" rel="noopener nofollow ugc noreferrer">https://www.justdevtutorials.com/post/wxwidgets-cmake/</a> for this code and for CMake-Ninja.<br>
 FWIW, the base CMake project still has a way to go and I am working on that in parallel. I evidently need more platform specific code fixes. Right now, I don’t see those issues getting in the way of my flatpak packaging.</p>
 <h2><a name="p-9851-the-script-to-create-the-flatpak-yml-file-and-start-the-build-process-flmakelifesh-1" class="anchor" href="#p-9851-the-script-to-create-the-flatpak-yml-file-and-start-the-build-process-flmakelifesh-1" aria-label="Heading link"></a>The script to create the flatpak YML file and start the build process:  flmakelife.sh</h2>
 <pre><code class="lang-auto">#!/bin/bash

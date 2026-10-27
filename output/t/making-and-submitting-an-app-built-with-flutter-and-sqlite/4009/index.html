@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -115,13 +116,13 @@ You can look at the workflows to see the build commands.</p>
   <header class="source">
       <img itemprop="image" src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
 
-      <a href="https://github.com/bksubhuti/tipitaka-pali-reader" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+      <a href="https://github.com/bksubhuti/tipitaka-pali-reader" target="_blank" rel="noopener nofollow ugc noreferrer">GitHub</a>
   </header>
 
   <article class="onebox-body">
     <img itemprop="image" src="/uploads/original/2X/1/19d076aa5219070cf229a3b6cb5348a80282ffab.png" class="thumbnail onebox-avatar" width="192" height="192">
 
-<h3><a href="https://github.com/bksubhuti/tipitaka-pali-reader" target="_blank" rel="noopener nofollow ugc">GitHub - bksubhuti/tipitaka-pali-reader</a></h3>
+<h3><a href="https://github.com/bksubhuti/tipitaka-pali-reader" target="_blank" rel="noopener nofollow ugc noreferrer">GitHub - bksubhuti/tipitaka-pali-reader</a></h3>
 
   <p>Contribute to bksubhuti/tipitaka-pali-reader development by creating an account on GitHub.</p>
 
@@ -171,14 +172,14 @@ You can look at the workflows to see the build commands.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi <span class="mention">@bksubhuti</span>,</p>
-<p>There are three Flutter apps that I helped bring to Flathub — <a href="https://flathub.org/apps/com.enjoyingfoss.feeel" rel="noopener nofollow ugc">Feeel</a>, <a href="https://flathub.org/apps/com.enjoyingfoss.Parlera" rel="noopener nofollow ugc">Parlera</a>, and <a href="https://flathub.org/apps/ca.hamaluik.Timecop" rel="noopener nofollow ugc">Time Cop</a>. You can take a look at the manifests for those; <a href="https://github.com/flathub/com.enjoyingfoss.feeel" rel="noopener nofollow ugc">Feeel</a> uses SQlite for now, so it’s particularly relevant.</p>
+<p>There are three Flutter apps that I helped bring to Flathub — <a href="https://flathub.org/apps/com.enjoyingfoss.feeel" rel="noopener nofollow ugc noreferrer">Feeel</a>, <a href="https://flathub.org/apps/com.enjoyingfoss.Parlera" rel="noopener nofollow ugc noreferrer">Parlera</a>, and <a href="https://flathub.org/apps/ca.hamaluik.Timecop" rel="noopener nofollow ugc noreferrer">Time Cop</a>. You can take a look at the manifests for those; <a href="https://github.com/flathub/com.enjoyingfoss.feeel" rel="noopener nofollow ugc noreferrer">Feeel</a> uses SQlite for now, so it’s particularly relevant.</p>
 <p>The idea is to pre-compile the app and then just ship binaries as part of the Flatpak.</p>
 <p>I built each of those Flatpaks manually. However, I am working on automating builds through Github Actions. The first project that I’m building this way is Parlera — see:</p>
 <ul>
-<li><a href="https://github.com/EnjoyingFOSS/parlera/blob/master/.github/workflows/flatpak.yml" rel="noopener nofollow ugc">the Github Actions workflow</a></li>
-<li><a href="https://github.com/EnjoyingFOSS/parlera/tree/master/flatpak/scripts" rel="noopener nofollow ugc">the custom Dart scripts I’m using in that workflow</a></li>
+<li><a href="https://github.com/EnjoyingFOSS/parlera/blob/master/.github/workflows/flatpak.yml" rel="noopener nofollow ugc noreferrer">the Github Actions workflow</a></li>
+<li><a href="https://github.com/EnjoyingFOSS/parlera/tree/master/flatpak/scripts" rel="noopener nofollow ugc noreferrer">the custom Dart scripts I’m using in that workflow</a></li>
 </ul>
-<p>I’m automating it to the point of creating the x86_64 Github release. Then I manually still upload the ARM builds and the Flathub manifest file. However, if you forgo the ARM builds (or if you pay extra for Linux ARM VMs on Github), the Flathub manifest could also be automated away — see <a href="https://github.com/wger-project/flutter/blob/feature/flatpak-build/.github/workflows/build-release.yml" rel="noopener nofollow ugc">wger</a> for inspiration for that.</p>
+<p>I’m automating it to the point of creating the x86_64 Github release. Then I manually still upload the ARM builds and the Flathub manifest file. However, if you forgo the ARM builds (or if you pay extra for Linux ARM VMs on Github), the Flathub manifest could also be automated away — see <a href="https://github.com/wger-project/flutter/blob/feature/flatpak-build/.github/workflows/build-release.yml" rel="noopener nofollow ugc noreferrer">wger</a> for inspiration for that.</p>
 <p>This automation is a brand new for me, and I’m <a href="/t/build-fails-during-check-for-appstream-xml/4480/index.html">currently getting stuck</a> at the “Check for AppStream XML” step for some reason. I’m doubtful that the automation is at fault here, though.</p>
 <p>I know this was a mouthful, so let me know if you have specific questions that I could help with.</p>
       </div>
@@ -285,15 +286,15 @@ if you can make a simple counter app and fake put the dependency of sqlite, I wo
 <ol>
 <li>Your binary = the contents of <code>./build/linux/x64/release/bundle</code> (if you’re building for the x86_64 architecture) inside your Flutter project folder. You generate this via <code>flutter build linux --release</code>.</li>
 <li>
-<a href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html" rel="noopener nofollow ugc">The desktop file</a>, which you create manually.</li>
+<a href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html" rel="noopener nofollow ugc noreferrer">The desktop file</a>, which you create manually.</li>
 <li>
-<a href="https://www.freedesktop.org/wiki/Distributions/AppStream/" rel="noopener nofollow ugc">The AppStream metainfo file</a>, which you also create manually.</li>
+<a href="https://www.freedesktop.org/wiki/Distributions/AppStream/" rel="noopener nofollow ugc noreferrer">The AppStream metainfo file</a>, which you also create manually.</li>
 <li>
-<a href="https://specifications.freedesktop.org/icon-theme-spec/latest/ar01s07.html" rel="noopener nofollow ugc">Desktop icons</a>, which is also a manual job.</li>
+<a href="https://specifications.freedesktop.org/icon-theme-spec/latest/ar01s07.html" rel="noopener nofollow ugc noreferrer">Desktop icons</a>, which is also a manual job.</li>
 <li>(Anything else you need to include that isn’t part of the compiled binary.)</li>
 </ol>
 <p>You should upload this tarball somewhere where others can easily download it — e.g. as a Github Release.</p>
-<p>Once you’re done with that, you also need to create the <strong>Flatpak manifest</strong> manually — see <a href="https://docs.flatpak.org/en/latest/first-build.html" rel="noopener nofollow ugc">the official tutorial</a> for how to do that.</p>
+<p>Once you’re done with that, you also need to create the <strong>Flatpak manifest</strong> manually — see <a href="https://docs.flatpak.org/en/latest/first-build.html" rel="noopener nofollow ugc noreferrer">the official tutorial</a> for how to do that.</p>
 <p>If you use SQlite and are building just for the x86_64 architecture, you need to include this command as part of your build commands in your manifest:</p>
 <p><code>ln -s /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 /app/lib/libsqlite3.so</code></p>
 <p>I’d recommend doing things this way first before you try to automate things.</p>
@@ -396,7 +397,7 @@ Android no longer cares about this permission anymore.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Since it’s Flutter, your app does not use the GTK theme, except possibly for the headerbar. (I personally replace the headerbar with a standard title bar in my Flutter apps, so I have no idea how those behave.)</p>
-<p>As for permissions, they’re described in the <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" rel="noopener nofollow ugc">Flatpak documentation</a>. <code>--share=network</code> is the one you want for network access. The other common ones, which you will likely need, are described there as well.</p>
+<p>As for permissions, they’re described in the <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" rel="noopener nofollow ugc noreferrer">Flatpak documentation</a>. <code>--share=network</code> is the one you want for network access. The other common ones, which you will likely need, are described there as well.</p>
       </div>
 
       <div class="post-footer">

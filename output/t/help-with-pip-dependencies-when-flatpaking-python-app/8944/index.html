@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -108,13 +109,13 @@
   <header class="source">
       <img itemprop="image" src="/uploads/original/2X/7/7ee7d2603544b81b4acc1aa0c7b54e64ff57fc44.png" class="site-icon" data-dominant-color="EE5C28" width="32" height="32">
 
-      <a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc">GitLab</a>
+      <a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc noreferrer">GitLab</a>
   </header>
 
   <article class="onebox-body">
     <img itemprop="image" width="64" height="64" src="/uploads/optimized/2X/3/3197daf5565c6657f1af4758d2a9b3178181cfa5_2_64x64.jpeg" class="thumbnail onebox-avatar" data-dominant-color="F4C4BB">
 
-<h3><a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc">GitFr33 / What Am I Doing · GitLab</a></h3>
+<h3><a href="https://gitlab.com/GitFr33/what-am-i-doing" target="_blank" rel="noopener nofollow ugc noreferrer">GitFr33 / What Am I Doing · GitLab</a></h3>
 
   <p>GitLab.com</p>
 
@@ -221,12 +222,12 @@ python3 flatpak-pip-generator --build-isolation --requirements-file=requirements
         <p>Well, Flatpak requires all dependencies to be declared in the manifest. If something is missing on build or after installation, it is most likely because you didn’t add an dependency to the manifest.</p>
 <p>A few things I can point out:</p>
 <p>First, the <code>requirements.txt</code> seems not to be the simplest way of creating all pip dependencies for Flatpak. In this case, the <code>requirements.txt</code> does have to include all dependencies, including dependencies of dependencies.<br>
-In the <a href="https://docs.flatpak.org/en/latest/python.html" rel="noopener nofollow ugc">Flatpak Docs</a> the normal command omits the argument for the requirements file, but instead specifies the module name of the app, so the dependencies are gathered for this module. May be worth trying.</p>
-<p>See also the <a href="https://github.com/flatpak/flatpak-builder-tools/blob/master/pip/readme.md" rel="noopener nofollow ugc">flatpak-pip-generator ReadMe</a> for further details.</p>
+In the <a href="https://docs.flatpak.org/en/latest/python.html" rel="noopener nofollow ugc noreferrer">Flatpak Docs</a> the normal command omits the argument for the requirements file, but instead specifies the module name of the app, so the dependencies are gathered for this module. May be worth trying.</p>
+<p>See also the <a href="https://github.com/flatpak/flatpak-builder-tools/blob/master/pip/readme.md" rel="noopener nofollow ugc noreferrer">flatpak-pip-generator ReadMe</a> for further details.</p>
 <p>Secondly, a note on app name and app id:<br>
 The name “What am I doing?” is an… let’s say unique name. May be worth a change.<br>
 Also, in the app id (<code>org.curiositry.selfctrlpanel</code>), the app is called “selfctrlpanel”. That part should match the app name.<br>
-Also, the domain in the app id <code>org.curiositry</code> appears to not be owned by you. If you intend to publish your app, the app id needs to be owned by you as per Flathub Policy. Refer to their <a href="https://docs.flathub.org/docs/for-app-authors/requirements#application-id" rel="noopener nofollow ugc">documentation</a> for further details.</p>
+Also, the domain in the app id <code>org.curiositry</code> appears to not be owned by you. If you intend to publish your app, the app id needs to be owned by you as per Flathub Policy. Refer to their <a href="https://docs.flathub.org/docs/for-app-authors/requirements#application-id" rel="noopener nofollow ugc noreferrer">documentation</a> for further details.</p>
       </div>
 
       <div class="post-footer">
@@ -424,7 +425,7 @@ curiositry:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><span class="mention">@CodedOre</span> I also now have the Flatpak building, and am able to run it and it runs main.py, using simple build system like you suggested, with a modules manifest inspired by <a href="https://develop.kde.org/docs/getting-started/python/python-flatpak/" rel="noopener nofollow ugc">this KDE project</a>:</p>
+        <p><span class="mention">@CodedOre</span> I also now have the Flatpak building, and am able to run it and it runs main.py, using simple build system like you suggested, with a modules manifest inspired by <a href="https://develop.kde.org/docs/getting-started/python/python-flatpak/" rel="noopener nofollow ugc noreferrer">this KDE project</a>:</p>
 <pre><code class="lang-auto">modules:
   # - python3-pyproject.toml.json
   - name: what-am-i-doing
@@ -488,7 +489,7 @@ curiositry:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p>The project itself is now on PyPI:</p>
-<p><a href="https://pypi.org/project/what-am-i-doing/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://pypi.org/project/what-am-i-doing/</a></p>
+<p><a href="https://pypi.org/project/what-am-i-doing/" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://pypi.org/project/what-am-i-doing/</a></p>
 <p>However, when I run:</p>
 <pre><code class="lang-auto">python3 flatpak-pip-generator --runtime=org.gnome.Sdk/x86_64/47 what-am-i-doing
 </code></pre>

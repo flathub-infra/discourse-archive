@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,7 +105,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>So, I’m attempting to make a Flatpak of the Amulet Minecraft Map Editor. I feed my <a href="https://pastebin.com/JHDx302z" rel="noopener nofollow ugc">requirements.txt</a> to <code>flatpak-pip-generator</code>, save the output (in YAML) to <a href="https://pastebin.com/xLw58tTJ" rel="noopener nofollow ugc">amulet.yml</a>, and run this:</p>
+        <p>So, I’m attempting to make a Flatpak of the Amulet Minecraft Map Editor. I feed my <a href="https://pastebin.com/JHDx302z" rel="noopener nofollow ugc noreferrer">requirements.txt</a> to <code>flatpak-pip-generator</code>, save the output (in YAML) to <a href="https://pastebin.com/xLw58tTJ" rel="noopener nofollow ugc noreferrer">amulet.yml</a>, and run this:</p>
 <pre><code class="lang-auto">flatpak-builder --sandbox --user --install-deps-from=flathub --mirror-screenshots-url=https://dl.flathub.org/media/ --add-tag=0.10.35 --bundle-sources --repo=amulet_flatpak_repo amulet_build_dir amulet.yml --force-clean
 </code></pre>
 <p>And it after a while, it fails on <code>pyyaml</code>:</p>
@@ -236,7 +237,7 @@ Error: module python3-pre-commit: Child process exited with code 1
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Using my new <a href="https://pastebin.com/pQbiAuU3" rel="noopener nofollow ugc">requirements.txt</a>, I have a new <a href="https://pastebin.com/tG38HFmi" rel="noopener nofollow ugc">amulet.yml</a>. and I’m still up against the wall:</p>
+        <p>Using my new <a href="https://pastebin.com/pQbiAuU3" rel="noopener nofollow ugc noreferrer">requirements.txt</a>, I have a new <a href="https://pastebin.com/tG38HFmi" rel="noopener nofollow ugc noreferrer">amulet.yml</a>. and I’m still up against the wall:</p>
 <pre><code class="lang-auto">========================================================================
 Building module python3-pyyaml in /home/evilsupahfly/Downloads/Amulet/.flatpak-builder/build/python3-pyyaml-6
 ========================================================================
@@ -269,7 +270,7 @@ FB: Unmounting read-only fs: fusermount -uz /home/evilsupahfly/Downloads/Amulet/
         url: https://files.pythonhosted.org/packages/6b/4e/1523cb902fd98355e2e9ea5e5eb237cbc5f3ad5f3075fa65087aa0ecb669/PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
         sha256: ec031d5d2feb36d1d1a24380e4db6d43695f3748343d99434e6f5f9156aaa2ed
 </code></pre>
-<p><strong>Edit:</strong> There’s a ton of info on <a href="https://pypi.org/pypi/PyYAML/json" rel="noopener nofollow ugc">pypi.org</a> and I don’t know if it’s being somehow missed or just ignored but even my manual override failed.</p>
+<p><strong>Edit:</strong> There’s a ton of info on <a href="https://pypi.org/pypi/PyYAML/json" rel="noopener nofollow ugc noreferrer">pypi.org</a> and I don’t know if it’s being somehow missed or just ignored but even my manual override failed.</p>
 <p><strong>Edit 2:</strong> I don’t know why this was flagged as spam. I didn’t do anything spammy.</p>
       </div>
 
@@ -310,8 +311,8 @@ FB: Unmounting read-only fs: fusermount -uz /home/evilsupahfly/Downloads/Amulet/
 </code></pre>
 </blockquote>
 <p>Freedesktop SDK has python 3.11, you are using a wheel for python 3.10</p>
-<p>If you want to use wheels choose the correct one <a href="https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</a></p>
-<p>Or use the sdist <a href="https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz" rel="noopener nofollow ugc">https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz</a></p>
+<p>If you want to use wheels choose the correct one <a href="https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" rel="noopener nofollow ugc noreferrer">https://files.pythonhosted.org/packages/67/a4/1f5fbd3f58d4069000522196b0b776a014f3feec1796da03e495cf23532d/lxml-5.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</a></p>
+<p>Or use the sdist <a href="https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz" rel="noopener nofollow ugc noreferrer">https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz</a></p>
       </div>
 
       <div class="post-footer">

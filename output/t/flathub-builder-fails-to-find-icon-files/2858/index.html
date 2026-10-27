@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,9 +104,9 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hello everyone,</p>
-<p>I’ve recently updated the JReleaser flatpak repository (<a href="https://github.com/flathub/org.jreleaser.cli" rel="noopener nofollow ugc">https://github.com/flathub/org.jreleaser.cli</a>) with new settings. One of which copies icons found in <code>icons/256x256/jreleaser.png</code> into the target app install.</p>
+<p>I’ve recently updated the JReleaser flatpak repository (<a href="https://github.com/flathub/org.jreleaser.cli" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/org.jreleaser.cli</a>) with new settings. One of which copies icons found in <code>icons/256x256/jreleaser.png</code> into the target app install.</p>
 <p>As you may appreciate the file does exist in the repository. Build instructions specify where to get this file<br>
-<a href="https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122" rel="noopener nofollow ugc">https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122</a> and copy it</p>
+<a href="https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/org.jreleaser.cli/blob/7d8d9b81512576e3de5bb183df5749fe48221c9c/org.jreleaser.cli.yml#L115-L122</a> and copy it</p>
 <pre><code class="lang-auto">      - install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png
     sources:
       - type: archive
@@ -116,7 +117,7 @@
       - type: file
         path: icons/256x256/jreleaser.png
 </code></pre>
-<p>However, the Flathub build files because it cannot find the icon file <a href="https://buildbot.flathub.org/#/builders/28/builds/12844" class="inline-onebox" rel="noopener nofollow ugc">Flathub builds</a></p>
+<p>However, the Flathub build files because it cannot find the icon file <a href="https://buildbot.flathub.org/#/builders/28/builds/12844" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flathub builds</a></p>
 <pre><code class="lang-auto">Running: install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png
 FB: Running 'flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/jreleaser --nofilesystem=host:reset --filesystem=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/build/jreleaser-1 --bind-mount=/run/build/jreleaser=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/build/jreleaser-1 --build-dir=/run/build/jreleaser --bind-mount=/run/ccache=/srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/ccache --unshare=network --env=SOURCE_DATE_EPOCH=1661619706 '--env=CFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=48 /srv/buildbot/worker/build-x86_64-1/build/.flatpak-builder/rofiles/rofiles-48mpAm /bin/sh -c 'install -Dm644 icons/256x256/jreleaser.png /app/share/icons/hicolor/256x256/apps/org.jreleaser.cli.png'' on host
 install: cannot stat 'icons/256x256/jreleaser.png': No such file or directory
@@ -286,7 +287,7 @@ FB: host_command_exited_cb 1490685 256
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Well, without <code>dest</code> I get a build failure. With it, I get a green build. <a href="https://buildbot.flathub.org/#/builders/8/builds/12923" rel="noopener nofollow ugc">https://buildbot.flathub.org/#/builders/8/builds/12923</a></p>
+        <p>Well, without <code>dest</code> I get a build failure. With it, I get a green build. <a href="https://buildbot.flathub.org/#/builders/8/builds/12923" rel="noopener nofollow ugc noreferrer">https://buildbot.flathub.org/#/builders/8/builds/12923</a></p>
       </div>
 
       <div class="post-footer">

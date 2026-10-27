@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -151,7 +152,7 @@ Minecraft itself uses java, one of the things i noticed however that the package
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Created relevant issue: <a href="https://github.com/flathub/org.polymc.PolyMC/issues/18" class="inline-onebox" rel="noopener nofollow ugc">Use flathub version of openjdk · Issue #18 · flathub/org.polymc.PolyMC · GitHub</a></p>
+        <p>Created relevant issue: <a href="https://github.com/flathub/org.polymc.PolyMC/issues/18" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Use flathub version of openjdk · Issue #18 · flathub/org.polymc.PolyMC · GitHub</a></p>
       </div>
 
       <div class="post-footer">
@@ -324,7 +325,7 @@ Minecraft itself uses java, one of the things i noticed however that the package
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I can’t answer your question but wanted to point out <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71">this script</a> that will give you some more info on how the dedup in ostree is working.</p>
+        <p>I can’t answer your question but wanted to point out <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71" rel="noreferrer nofollow ugc">this script</a> that will give you some more info on how the dedup in ostree is working.</p>
       </div>
 
       <div class="post-footer">
@@ -371,7 +372,7 @@ Minecraft itself uses java, one of the things i noticed however that the package
 
       <div class="post-body cooked" itemprop="text">
         <p>I think you posted the wrong link as this points to an askubuntu question about the difference between upstream and downstream.</p>
-<p>From what I understand all unique files used by OSTree are stored only once and are probably identified by their hash. The hashes are used by Flatpak to indicate which files belong to a package and are then hard linked to compose the filesystem required to run the application (<a href="https://docs.flatpak.org/en/latest/under-the-hood.html" class="inline-onebox" rel="noopener nofollow ugc">Under the Hood - Flatpak documentation</a>). So far so good, however:</p>
+<p>From what I understand all unique files used by OSTree are stored only once and are probably identified by their hash. The hashes are used by Flatpak to indicate which files belong to a package and are then hard linked to compose the filesystem required to run the application (<a href="https://docs.flatpak.org/en/latest/under-the-hood.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Under the Hood - Flatpak documentation</a>). So far so good, however:</p>
 <aside class="quote no-group" data-username="SViN" data-post="1" data-topic="2268">
 <div class="title">
 <div class="quote-controls"></div>
@@ -381,7 +382,7 @@ SViN:</div>
 </blockquote>
 </aside>
 <p>this is correct and I haven’t seen anything to indicate that all packages that require an SDK extension are automatically rebuild if the SDK extension is updated. So even though there is deduplication using OSTree, that is just based on the hashes of the files and if no rebuilds are triggered you might well have multiple (minor and/or micro) versions of binaries produced by the SDK extension in the filesystem if one package is updated, but another is not.</p>
-<p>I’ve been pondering on a solution for that lately and what I’ve been thinking so far is that it would probably be possible to add an extra module to the manifests that use an SDK extension and use the <a href="https://github.com/flathub/flatpak-external-data-checker" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub-infra/flatpak-external-data-checker: A tool for checking if the external data used in Flatpak manifests is still up to date</a> to make sure a PR is created when the repo is updated. Needless to say that module should not really be built.</p>
+<p>I’ve been pondering on a solution for that lately and what I’ve been thinking so far is that it would probably be possible to add an extra module to the manifests that use an SDK extension and use the <a href="https://github.com/flathub/flatpak-external-data-checker" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - flathub-infra/flatpak-external-data-checker: A tool for checking if the external data used in Flatpak manifests is still up to date</a> to make sure a PR is created when the repo is updated. Needless to say that module should not really be built.</p>
       </div>
 
       <div class="post-footer">
@@ -435,7 +436,7 @@ SViN:</div>
 <p>I think you posted the wrong link as this points to an askubuntu question about the difference between upstream and downstream.</p>
 </blockquote>
 </aside>
-<p>Fixed, cheers! Here’s the URL for future readers: <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71" class="inline-onebox">flatpak-ostree-dedup-stats.py · GitHub</a></p>
+<p>Fixed, cheers! Here’s the URL for future readers: <a href="https://gist.github.com/powpingdone/001a46aa7db190b9c935f71c6091eb71" class="inline-onebox" rel="noreferrer nofollow ugc">flatpak-ostree-dedup-stats.py · GitHub</a></p>
       </div>
 
       <div class="post-footer">

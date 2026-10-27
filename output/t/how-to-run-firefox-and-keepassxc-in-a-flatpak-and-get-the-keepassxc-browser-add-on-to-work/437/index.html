@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,25 +106,25 @@
 
       <div class="post-body cooked" itemprop="text">
         <h1><a name="p-782-problem-1" class="anchor" href="#p-782-problem-1" aria-label="Heading link"></a>Problem</h1>
-<p>If KeePassXC is sandboxed <a href="https://flathub.org/apps/details/org.keepassxc.KeePassXC">in a Flatpak</a>, browsers can only access it, if they are <em>not</em> sandboxed, i.e. installed as an deb/rpm package or similar on the host.<br>
-Sandboxing both the browser, i.e. <a href="https://flathub.org/apps/details/org.mozilla.firefox">Firefox</a>, and KeePassXC – or at least the browser and installing KeePassXC natively, which you’d actually want for security reasons – is not possible.</p>
+<p>If KeePassXC is sandboxed <a href="https://flathub.org/apps/details/org.keepassxc.KeePassXC" rel="noreferrer nofollow ugc">in a Flatpak</a>, browsers can only access it, if they are <em>not</em> sandboxed, i.e. installed as an deb/rpm package or similar on the host.<br>
+Sandboxing both the browser, i.e. <a href="https://flathub.org/apps/details/org.mozilla.firefox" rel="noreferrer nofollow ugc">Firefox</a>, and KeePassXC – or at least the browser and installing KeePassXC natively, which you’d actually want for security reasons – is not possible.</p>
 <p>TL;DR:</p>
 <ul>
 <li>this should work out-of-the box: Firefox (host-installed), KeePassXC (flatpak from flathub)</li>
 <li>this does not: Firefox (sandboxed), KeePassXC (host or sandboxed, does not matter)</li>
 </ul>
 <p>I show a workaround that makes it possible to use both configurations.</p>
-<p>This problem is shown in various GitHub issues: <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/29">flathub/org.keepassxc.KeePassXC#29</a>, <a href="https://github.com/keepassxreboot/keepassxc/issues/2656">keepassxreboot/keepassxc#2656</a>, <a href="https://github.com/xhorak/firefox-devedition-flatpak/issues/92">xhorak/firefox-devedition-flatpak#92</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/297">keepassxreboot/keepassxc-browser#297</a>, <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/13">flathub/org.keepassxc.KeePassXC#13</a>, <a href="https://github.com/xhorak/firefox-devedition-flatpak/issues/92">xhorak/firefox-devedition-flatpak#92</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763">this Bugzilla bug</a>, not to mention the many dupes like <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/297">keepassxreboot/keepassxc-browser#297</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/276">keepassxreboot/keepassxc-browser#276</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/102">keepassxreboot/keepassxc-browser#102</a> etc.</p>
+<p>This problem is shown in various GitHub issues: <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/29" rel="noreferrer nofollow ugc">flathub/org.keepassxc.KeePassXC#29</a>, <a href="https://github.com/keepassxreboot/keepassxc/issues/2656" rel="noreferrer nofollow ugc">keepassxreboot/keepassxc#2656</a>, <a href="https://github.com/xhorak/firefox-devedition-flatpak/issues/92" rel="noreferrer nofollow ugc">xhorak/firefox-devedition-flatpak#92</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/297" rel="noreferrer nofollow ugc">keepassxreboot/keepassxc-browser#297</a>, <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/13" rel="noreferrer nofollow ugc">flathub/org.keepassxc.KeePassXC#13</a>, <a href="https://github.com/xhorak/firefox-devedition-flatpak/issues/92" rel="noreferrer nofollow ugc">xhorak/firefox-devedition-flatpak#92</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763" rel="noreferrer nofollow ugc">this Bugzilla bug</a>, not to mention the many dupes like <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/297" rel="noreferrer nofollow ugc">keepassxreboot/keepassxc-browser#297</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/276" rel="noreferrer nofollow ugc">keepassxreboot/keepassxc-browser#276</a>, <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/102" rel="noreferrer nofollow ugc">keepassxreboot/keepassxc-browser#102</a> etc.</p>
 <h1><a name="p-782-background-2" class="anchor" href="#p-782-background-2" aria-label="Heading link"></a>Background</h1>
 <p>If you just want the solution, you can skip this part. But for the curious, I’ll explain the problems we face:</p>
 <ul>
-<li>KeePassXC creates an UNIX socket in <code>$XDG_RUNTIME_DIR/kpxc_server</code> for applications to listen too. <code>keepassxc-proxy</code> is started – via <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Native_messaging">native messaging</a> – <em>by the browser</em> (triggered by the add-on <code>keepassxc-browser@keepassxc.org</code>, i.e. KeePassXC-Browser) and tries to listen on that socket to find messages.</li>
+<li>KeePassXC creates an UNIX socket in <code>$XDG_RUNTIME_DIR/kpxc_server</code> for applications to listen too. <code>keepassxc-proxy</code> is started – via <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Native_messaging" rel="noreferrer nofollow ugc">native messaging</a> – <em>by the browser</em> (triggered by the add-on <code>keepassxc-browser@keepassxc.org</code>, i.e. KeePassXC-Browser) and tries to listen on that socket to find messages.</li>
 <li>If Firefox is not sandboxed, that proxy can start as usual. The only thing it possibly needs to do is get into the KeePassXC flatpak.</li>
-<li>Flathub KeePassXC <a href="https://github.com/flathub/org.keepassxc.KeePassXC/blob/master/patch/keepassxc/0003-Support-KeePassXC-Browser-Flatpak-environments.patch">has a patch</a> that allows the keepassxc-proxy to be started via <code>flatpak run</code>, i.e. Firefox can now run a</li>
+<li>Flathub KeePassXC <a href="https://github.com/flathub/org.keepassxc.KeePassXC/blob/master/patch/keepassxc/0003-Support-KeePassXC-Browser-Flatpak-environments.patch" rel="noreferrer nofollow ugc">has a patch</a> that allows the keepassxc-proxy to be started via <code>flatpak run</code>, i.e. Firefox can now run a</li>
 <li>That is, so far, why Firefox installed on the host does work…</li>
-<li>Now why it does not work if Firefox is installed as a flatpak: The very good official <a href="https://flathub.org/apps/details/org.mozilla.firefox">Firefox flatpak by Mozilla</a> really does have few permissions for being a browser. E.g. it does not have any generic access to the file system (it uses <a href="https://docs.flatpak.org/en/latest/portal-api-reference.html">portals</a>). Anyway, whatever it does, it cannot do one thing: <a href="https://github.com/flatpak/xdg-desktop-portal/issues/283">Spawn a process on the host or in another flatpak</a>.</li>
+<li>Now why it does not work if Firefox is installed as a flatpak: The very good official <a href="https://flathub.org/apps/details/org.mozilla.firefox" rel="noreferrer nofollow ugc">Firefox flatpak by Mozilla</a> really does have few permissions for being a browser. E.g. it does not have any generic access to the file system (it uses <a href="https://docs.flatpak.org/en/latest/portal-api-reference.html" rel="noreferrer nofollow ugc">portals</a>). Anyway, whatever it does, it cannot do one thing: <a href="https://github.com/flatpak/xdg-desktop-portal/issues/283" rel="noreferrer nofollow ugc">Spawn a process on the host or in another flatpak</a>.</li>
 </ul>
-<p>So we could solve that by making wrapper scripts and <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-spawn">using flatpak-spawn</a> to let Firefox escape it’s sandbox. However, seeing how lovely and quite securley the Firefox sandbox is already built, I would not dare to destroy that security for such a feature. After all, from a security POV you could then also just install Firefox on the host, yet again.<br>
+<p>So we could solve that by making wrapper scripts and <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-spawn" rel="noreferrer nofollow ugc">using flatpak-spawn</a> to let Firefox escape it’s sandbox. However, seeing how lovely and quite securley the Firefox sandbox is already built, I would not dare to destroy that security for such a feature. After all, from a security POV you could then also just install Firefox on the host, yet again.<br>
 So glad news ahead: <strong>This solution preserves all sandboxes and security aspects!</strong></p>
 <p>However, even if we’ve solved the fact of Firefox having to run the proxy, there are more problems. To spoiler, this are the main points we need to solve:</p>
 <ol>
@@ -139,12 +140,12 @@ Note: At that step, you can already run the variation: Firefox (sandboxed), KeeP
 <ol>
 <li>Worst things first: We need the <code>keepassxc-proxy</code> as a binary, because we want to have it run inside of the Firefox flatpak. Good for us: it has not many depenencies and is available as a stand-alone application.
 <ol>
-<li>So I chose the <a href="https://github.com/varjolintu/keepassxc-proxy-rust">Rust proxy application</a> (because why should not I? <img itemprop="image" src="/images/emoji/twitter/upside_down_face.png?v=15" title=":upside_down_face:" class="emoji" alt=":upside_down_face:" loading="lazy" width="20" height="20">). If you trust me, you can get my compiled binary below, just skip to two steps ahead.</li>
+<li>So I chose the <a href="https://github.com/varjolintu/keepassxc-proxy-rust" rel="noreferrer nofollow ugc">Rust proxy application</a> (because why should not I? <img itemprop="image" src="/images/emoji/twitter/upside_down_face.png?v=15" title=":upside_down_face:" class="emoji" alt=":upside_down_face:" loading="lazy" width="20" height="20">). If you trust me, you can get my compiled binary below, just skip to two steps ahead.</li>
 <li>Clone the git repo and compile it (run <code>cargo build --release</code>).</li>
 <li>You find the result in <code>./target/release</code>.<br>
-The <code>keepassxc-proxy</code> binary, version <a href="https://github.com/varjolintu/keepassxc-proxy-rust/commit/211ae91"><code>211ae91</code></a>, compiled with rustc 1.43.0 (the current stable in Fedora 32) for x86_64 (and if it helps and you wanna know more <a href="https://gist.github.com/rugk/9709fc34b3763edaa00dd1f0c90a2837">that <code>.rustc_info.json</code></a>).<br>
-And altghough <a href="https://github.com/rust-lang/rust/issues/34902">Rust is not (yet) totally reproducibly compiling</a> I did got the same bit-by-bit result on two machines with Fedora 32. The SHA-256 hash is <code>c5c4c6c011a4d64f7e4dd6c444dcc70bee74d23ffb28c9b65f7ff6d89a8f86ea</code>.<br>
-So if you are in a risky mood, you can <strong><a href="https://github.com/rugk/keepassxc-proxy-rust/releases/download/211ae91/keepassxc-proxy">just download my keepassxc-proxy binary here</a></strong>. (<a href="https://github.com/rugk/keepassxc-proxy-rust/releases/tag/211ae91">hosted by GitHub <img itemprop="image" src="/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=15" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:" loading="lazy" width="20" height="20"></a>)</li>
+The <code>keepassxc-proxy</code> binary, version <a href="https://github.com/varjolintu/keepassxc-proxy-rust/commit/211ae91" rel="noreferrer nofollow ugc"><code>211ae91</code></a>, compiled with rustc 1.43.0 (the current stable in Fedora 32) for x86_64 (and if it helps and you wanna know more <a href="https://gist.github.com/rugk/9709fc34b3763edaa00dd1f0c90a2837" rel="noreferrer nofollow ugc">that <code>.rustc_info.json</code></a>).<br>
+And altghough <a href="https://github.com/rust-lang/rust/issues/34902" rel="noreferrer nofollow ugc">Rust is not (yet) totally reproducibly compiling</a> I did got the same bit-by-bit result on two machines with Fedora 32. The SHA-256 hash is <code>c5c4c6c011a4d64f7e4dd6c444dcc70bee74d23ffb28c9b65f7ff6d89a8f86ea</code>.<br>
+So if you are in a risky mood, you can <strong><a href="https://github.com/rugk/keepassxc-proxy-rust/releases/download/211ae91/keepassxc-proxy" rel="noreferrer nofollow ugc">just download my keepassxc-proxy binary here</a></strong>. (<a href="https://github.com/rugk/keepassxc-proxy-rust/releases/tag/211ae91" rel="noreferrer nofollow ugc">hosted by GitHub <img itemprop="image" src="/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=15" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:" loading="lazy" width="20" height="20"></a>)</li>
 </ol>
 </li>
 <li>Now we need to tell Firefox about the new binary.
@@ -181,10 +182,10 @@ Please note the “existing problems” section at the bottom, though.</p>
 As you can verify, this actually solves our problem. For some very strange reason, the Flatpak sandbox now allows Firefox (and all other flatpaks! Just FYI, be aware of that.) to see that UNIX socket file.<br>
 As it should turn out later, this does not work when you move that symbolic link anywhere else (even another file name already prevents it from working – I’ve tried a lot of things.).</p>
 <p>However, <code>$XDG_RUNTIME_DIR</code> is usually deleted at shutdown. So we need to recreate it at startup/user login. Good for us there, is already a tool for that. (you could also mangle with shell scripts in your autostart of course, but that is ugly.)<br>
-That’s why we make use of <a href="https://www.freedesktop.org/software/systemd/man/systemd-tmpfiles.html">systemd-tmpfiles</a>. (The man page for <a href="https://www.freedesktop.org/software/systemd/man/tmpfiles.d">tmpfiles.d</a> is more useful for us actually.)</p>
+That’s why we make use of <a href="https://www.freedesktop.org/software/systemd/man/systemd-tmpfiles.html" rel="noreferrer nofollow ugc">systemd-tmpfiles</a>. (The man page for <a href="https://www.freedesktop.org/software/systemd/man/tmpfiles.d" rel="noreferrer nofollow ugc">tmpfiles.d</a> is more useful for us actually.)</p>
 <ol>
 <li>Go to <code>~/.local/share/user-tmpfiles.d</code>. Again, there is a high chance the <code>user-tmpfiles.d</code> dir does not exist yet. If so… well… you know what to do…</li>
-<li>Now download and place the following config file in there: <strong><a href="https://gist.github.com/rugk/96b778603037a6bc5a690d7bac178c79">kpxc_server.conf</a></strong><br>
+<li>Now download and place the following config file in there: <strong><a href="https://gist.github.com/rugk/96b778603037a6bc5a690d7bac178c79" rel="noreferrer nofollow ugc">kpxc_server.conf</a></strong><br>
 This is basically a config file for <code>systemd-tmpfiles</code> that says it to create that symbolic link for the user.</li>
 <li>Reboot, so <code>systemd-tmpfiles</code> can apply the changes and create the config file.</li>
 </ol>
@@ -211,10 +212,10 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
 <li>The symbolic link must be created by an application outside of the sandbox. Inside of it, it’s again – sandboxed – and one only visible inside of it.</li>
 </ul>
 <h1><a name="p-782-final-notes-10" class="anchor" href="#p-782-final-notes-10" aria-label="Heading link"></a>Final notes</h1>
-<p>If this helped, feel free to leave me a <img itemprop="image" src="/images/emoji/twitter/heart.png?v=15" title=":heart:" class="emoji" alt=":heart:" loading="lazy" width="20" height="20"> for this post and/or <a href="https://unix.stackexchange.com/q/584521/146739">upvote it on Unix Stackexchange</a>. It took quite some time to figure it out.</p>
-<p>I do try to continue improving this workaround and find solutions in <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/29">this GitHub issue</a>. It’s best to follow there, if you are interested.</p>
+<p>If this helped, feel free to leave me a <img itemprop="image" src="/images/emoji/twitter/heart.png?v=15" title=":heart:" class="emoji" alt=":heart:" loading="lazy" width="20" height="20"> for this post and/or <a href="https://unix.stackexchange.com/q/584521/146739" rel="noreferrer nofollow ugc">upvote it on Unix Stackexchange</a>. It took quite some time to figure it out.</p>
+<p>I do try to continue improving this workaround and find solutions in <a href="https://github.com/flathub/org.keepassxc.KeePassXC/issues/29" rel="noreferrer nofollow ugc">this GitHub issue</a>. It’s best to follow there, if you are interested.</p>
 <hr>
-<p>I’ve cross-posted this question and answer <a href="https://unix.stackexchange.com/q/584521/146739">on Unix Stackexchange</a> and <a href="https://discussion.fedoraproject.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/19452?u=rugk">in the Fedora community</a>.</p>
+<p>I’ve cross-posted this question and answer <a href="https://unix.stackexchange.com/q/584521/146739" rel="noreferrer nofollow ugc">on Unix Stackexchange</a> and <a href="https://discussion.fedoraproject.org/t/how-to-run-firefox-and-keepassxc-in-a-flatpak-and-get-the-keepassxc-browser-add-on-to-work/19452?u=rugk" rel="noreferrer nofollow ugc">in the Fedora community</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -256,7 +257,7 @@ In practise, this results in <strong>one big disadvantage:</strong> You <strong>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I haven’t had a chance to digest all of this yet, but besides all the GitHub links it is probably worth referencing <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763" rel="nofollow noopener">this ticket in Mozilla’s bug tracker for the Firefox Flatpak</a> regarding support for KeePassXC and other extensions that use native messaging. Also, perhaps you want to provide a reference for your solution on that ticket.</p>
+        <p>I haven’t had a chance to digest all of this yet, but besides all the GitHub links it is probably worth referencing <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763" rel="nofollow noopener noreferrer ugc">this ticket in Mozilla’s bug tracker for the Firefox Flatpak</a> regarding support for KeePassXC and other extensions that use native messaging. Also, perhaps you want to provide a reference for your solution on that ticket.</p>
       </div>
 
       <div class="post-footer">
@@ -392,7 +393,7 @@ Therefore my ~/.local/share/user-tmpfiles.d/kpxc_server.conf now goes<br>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Thanks for the hint. <a href="https://gist.github.com/rugk/96b778603037a6bc5a690d7bac178c79/revisions#diff-53e2110c90e97c8afe8e997e1af78281">I’ve changed it in my template.</a></p>
+        <p>Thanks for the hint. <a href="https://gist.github.com/rugk/96b778603037a6bc5a690d7bac178c79/revisions#diff-53e2110c90e97c8afe8e997e1af78281" rel="noreferrer nofollow ugc">I’ve changed it in my template.</a></p>
       </div>
 
       <div class="post-footer">
@@ -515,8 +516,8 @@ As this issue <a href="/t/issue-with-bitwarden-browser-integration/2627/index.ht
 Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</p>
 <p>However a proper solution would (likely) involve both flatpak and Mozilla to provide a compatible way to communicate in such a case. See and support/upvote these issues:</p>
 <ul>
-<li>Mozilla Firefox’ side: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763">https://bugzilla.mozilla.org/show_bug.cgi?id=1621763</a></li>
-<li>Flatpak’s side: <a href="https://github.com/flatpak/xdg-desktop-portal/issues/655" class="inline-onebox">NativeMessaging portal for sandboxed browsers · Issue #655 · flatpak/xdg-desktop-portal · GitHub</a></li>
+<li>Mozilla Firefox’ side: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1621763" rel="noreferrer nofollow ugc">https://bugzilla.mozilla.org/show_bug.cgi?id=1621763</a></li>
+<li>Flatpak’s side: <a href="https://github.com/flatpak/xdg-desktop-portal/issues/655" class="inline-onebox" rel="noreferrer nofollow ugc">NativeMessaging portal for sandboxed browsers · Issue #655 · flatpak/xdg-desktop-portal · GitHub</a></li>
 </ul>
 </blockquote>
       </div>
@@ -564,7 +565,7 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
 <p>For more information I refer to:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/keepassxreboot/keepassxc-browser/issues/1631#issuecomment-1153736766">
   <header class="source">
 
-      <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/1631#issuecomment-1153736766" target="_blank" rel="noopener">github.com/keepassxreboot/keepassxc-browser</a>
+      <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/1631#issuecomment-1153736766" target="_blank" rel="noopener noreferrer nofollow ugc">github.com/keepassxreboot/keepassxc-browser</a>
   </header>
 
   <article class="onebox-body">
@@ -575,7 +576,7 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/1631#issuecomment-1153736766" target="_blank" rel="noopener">Cannot save new credentials using browser</a>
+      <a href="https://github.com/keepassxreboot/keepassxc-browser/issues/1631#issuecomment-1153736766" target="_blank" rel="noopener noreferrer nofollow ugc">Cannot save new credentials using browser</a>
     </h4>
 
     <div class="github-info">
@@ -585,7 +586,7 @@ Theoretically, similar workarounds as I proposed for KeePassXC could be tried.</
 
 
       <div class="user">
-        <a href="https://github.com/BikramKumar6928" target="_blank" rel="noopener">
+        <a href="https://github.com/BikramKumar6928" target="_blank" rel="noopener noreferrer nofollow ugc">
           <img itemprop="image" alt="BikramKumar6928" src="/uploads/original/2X/4/4bdc9d8e420feac3a3374a2dfb663a3309f0a353.jpeg" class="onebox-avatar-inline" width="20" height="20">
           BikramKumar6928
         </a>
@@ -711,7 +712,7 @@ Also explained a (now somewhat outdated, but see replies, solution) here in this
 <a name="p-16517-problem-1" class="anchor" href="#p-16517-problem-1" aria-label="Heading link"></a>Problem
 The issue appears as follows: 
 
-Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox" class="inline-onebox-loading">https://flathub.org/apps/details/org.moz…</a>
+Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox" class="inline-onebox-loading" rel="noreferrer nofollow ugc">https://flathub.org/apps/details/org.moz…</a>
   </blockquote>
 </aside>
 

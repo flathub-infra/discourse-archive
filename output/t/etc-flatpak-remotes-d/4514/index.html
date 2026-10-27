@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I am currently trying to install flathub as a repository on NixOS from within my configuration.nix (so that I don’t have manual steps to run every install).  The <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc">flatpak command reference</a> has a comment which states that a flatpakrepo dropped into /etc/flatpak/remotes can be used to setup static system-wide repos.  A nice gentlemen from the NixOS discourse helped me come up with the code for that:</p>
+        <p>I am currently trying to install flathub as a repository on NixOS from within my configuration.nix (so that I don’t have manual steps to run every install).  The <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html" rel="noopener nofollow ugc noreferrer">flatpak command reference</a> has a comment which states that a flatpakrepo dropped into /etc/flatpak/remotes can be used to setup static system-wide repos.  A nice gentlemen from the NixOS discourse helped me come up with the code for that:</p>
 <pre><code class="lang-auto">  environment.etc = {
     "flatpak/remotes.d/flathub.flatpakrepo".source = pkgs.fetchurl {
       url = "https://dl.flathub.org/repo/flathub.flatpakrepo";
@@ -147,7 +148,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Just to be safe: This is not a very old Flatpak version? The behaviour was changed with <a href="https://github.com/flatpak/flatpak/blob/ad1797901845001d6b5f7052d81ef8907f211835/NEWS#L1107C1-L1107C17" rel="noopener nofollow ugc">version 1.3.4</a>.</p>
+        <p>Just to be safe: This is not a very old Flatpak version? The behaviour was changed with <a href="https://github.com/flatpak/flatpak/blob/ad1797901845001d6b5f7052d81ef8907f211835/NEWS#L1107C1-L1107C17" rel="noopener nofollow ugc noreferrer">version 1.3.4</a>.</p>
 <p>The repository is only added to <strong>system-wide repositories</strong>. If you’re using <code>--user</code> then this won’t work.</p>
 <p>At least for 1.15.4 I can confirm that it works:</p>
 <pre><code class="lang-auto">$ cat /etc/flatpak/remotes.d/flathub.flatpakrepo 
@@ -280,7 +281,7 @@ Do you think that could be messing it up?  Does the file need to be more than re
 
       <div class="post-body cooked" itemprop="text">
         <p>It works here with a symbolic link to a read-only file, this shouldn’t be the problem. You could manually copy the file to verify this (I’m still testing on 1.15.4).</p>
-<p>What about authorization? My local user has the necessary rights via the <code>wheel</code> group. The system-helper requires authorization to change system installations (<a href="https://github.com/flatpak/flatpak/blob/main/CONTRIBUTING.md#more-info" rel="noopener nofollow ugc">CONTRIBUTING.md</a>):</p>
+<p>What about authorization? My local user has the necessary rights via the <code>wheel</code> group. The system-helper requires authorization to change system installations (<a href="https://github.com/flatpak/flatpak/blob/main/CONTRIBUTING.md#more-info" rel="noopener nofollow ugc noreferrer">CONTRIBUTING.md</a>):</p>
 <blockquote>
 <ul>
 <li><code>system-helper</code>: The flatpak-system-helper service, which runs as root on the system bus and allows non-root users to modify system installations</li>

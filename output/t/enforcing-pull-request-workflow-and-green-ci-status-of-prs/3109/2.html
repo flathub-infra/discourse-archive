@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -145,7 +146,7 @@ This leads to increased costs for maintaining a flatpak package.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>I think a workflow with forced PRs can work nicely without a lot of human interaction. You can use a develop branch for your development between releases and create a PR from develop to master whenever you want a test build. What you can do to automate updates is create a Github action that checks upstream for new versions, updates your manifest and commits the change to develop. The only missing piece is the ability to automatically create PRs from such a Github action.</p>
-<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request" rel="noopener nofollow ugc">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
+<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request" rel="noopener nofollow ugc noreferrer">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
       </div>
 
       <div class="post-footer">
@@ -196,7 +197,7 @@ This leads to increased costs for maintaining a flatpak package.</p>
 <div class="quote-controls"></div>
 mfschumann:</div>
 <blockquote>
-<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
+<p><span class="mention">@barthalion</span> There is a <a href="https://github.com/marketplace/actions/create-pull-request" rel="noreferrer nofollow ugc">Github action for creating PRs</a> that seems to be widely used, but it is not allowed to run in flathub repos. Allowing such an action would help developers automating the update process as outlined above.</p>
 </blockquote>
 </aside>
 <p>Thanks, added it to the list of allowed actions.</p>

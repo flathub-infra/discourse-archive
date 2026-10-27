@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -330,7 +331,7 @@ Which is the “totally solved and done” part. At least in my opinion.</p>
 </blockquote>
 </aside>
 <p>No it heavily depends on the app. I’ve had to bring my own python version, due to reasons - runtimes don’t help with that.</p>
-<p>The other problem sounds more like KDE isn’t handling the portal correctly. If you go via the portal it shouldn’t need a filesystem premission at all. Then again there seems to be an implementation <a href="https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/tree/master/src?ref_type=heads" class="inline-onebox">src · master · Plasma / KDE Portal for XDG Desktop · GitLab</a> maybe you’re not using the correct api. I would also expect the KDE filepicker to remember the folder.</p>
+<p>The other problem sounds more like KDE isn’t handling the portal correctly. If you go via the portal it shouldn’t need a filesystem premission at all. Then again there seems to be an implementation <a href="https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/tree/master/src?ref_type=heads" class="inline-onebox" rel="noreferrer nofollow ugc">src · master · Plasma / KDE Portal for XDG Desktop · GitLab</a> maybe you’re not using the correct api. I would also expect the KDE filepicker to remember the folder.</p>
       </div>
 
       <div class="post-footer">
@@ -574,7 +575,7 @@ Stephen-Hazel:</div>
 the dir argument is thrown away and the home dir is where it starts from.</p>
 </blockquote>
 </aside>
-<p>File dialogs go through the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html" rel="noopener nofollow ugc">FileChooser portal</a>. There’s a <code>current_folder</code> option, but the docs mention that</p>
+<p>File dialogs go through the <a href="https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html" rel="noopener nofollow ugc noreferrer">FileChooser portal</a>. There’s a <code>current_folder</code> option, but the docs mention that</p>
 <blockquote>
 <p>The portal implementation is free to ignore this option.</p>
 </blockquote>
@@ -718,7 +719,7 @@ Stephen-Hazel:</div>
 <p>I believe it’s the toolkit (Qt, GTK) that calls the portal business, right? If it -is- the desktop, please correct me.</p>
 </blockquote>
 </aside>
-<p>The toolkit calls the portal, but the desktop provides the thing it calls. I’m assuming Qt passes the directory you give it through as the <code>current_folder</code> option to the portal, but then the portal implementation ignores it. That’s actually worth checking, though - maybe it’s not even getting passed to the portal. If you do want to check that, use a tool like <a href="https://flathub.org/apps/org.freedesktop.Bustle" rel="noopener nofollow ugc">Bustle</a> to record D-Bus messages while you try it.</p>
+<p>The toolkit calls the portal, but the desktop provides the thing it calls. I’m assuming Qt passes the directory you give it through as the <code>current_folder</code> option to the portal, but then the portal implementation ignores it. That’s actually worth checking, though - maybe it’s not even getting passed to the portal. If you do want to check that, use a tool like <a href="https://flathub.org/apps/org.freedesktop.Bustle" rel="noopener nofollow ugc noreferrer">Bustle</a> to record D-Bus messages while you try it.</p>
 <aside class="quote no-group" data-username="Stephen-Hazel" data-post="11" data-topic="6509">
 <div class="title">
 <div class="quote-controls"></div>
@@ -729,7 +730,7 @@ Stephen-Hazel:</div>
 </blockquote>
 </aside>
 <p>It seems that the deal with the FileChooser portal today is that it gives the sandboxed app access to the file with the real filename, but not the real path. The <code>/run/user/...</code> path is obviously not something you’d normally show to the user, unless they go looking for details to debug something.</p>
-<p>This isn’t set in stone - here’s a pull request that would add a function to look up the ‘real’ path, i.e. the location where the user sees the file: <a href="https://github.com/flatpak/xdg-desktop-portal/pull/1269" class="inline-onebox" rel="noopener nofollow ugc">Add GetRealPath to document portal by JakobDev · Pull Request #1269 · flatpak/xdg-desktop-portal · GitHub</a></p>
+<p>This isn’t set in stone - here’s a pull request that would add a function to look up the ‘real’ path, i.e. the location where the user sees the file: <a href="https://github.com/flatpak/xdg-desktop-portal/pull/1269" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Add GetRealPath to document portal by JakobDev · Pull Request #1269 · flatpak/xdg-desktop-portal · GitHub</a></p>
 <aside class="quote no-group" data-username="Stephen-Hazel" data-post="11" data-topic="6509">
 <div class="title">
 <div class="quote-controls"></div>
@@ -738,7 +739,7 @@ Stephen-Hazel:</div>
 <p>It just seems like “sandboxing” doesn’t have an exact spec - it’s just what the developer working on this or that portal decides it should be…</p>
 </blockquote>
 </aside>
-<p>The portal methods and behaviour are <a href="https://flatpak.github.io/xdg-desktop-portal/docs/index.html" rel="noopener nofollow ugc">documented</a> - they have to be similar enough between Gnome &amp; KDE &amp; any other implementations, so there has to be some spec. There’s also a <a href="https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html" rel="noopener nofollow ugc">reference</a> for the different permissions a Flatpak app can have.</p>
+<p>The portal methods and behaviour are <a href="https://flatpak.github.io/xdg-desktop-portal/docs/index.html" rel="noopener nofollow ugc noreferrer">documented</a> - they have to be similar enough between Gnome &amp; KDE &amp; any other implementations, so there has to be some spec. There’s also a <a href="https://docs.flatpak.org/en/latest/sandbox-permissions-reference.html" rel="noopener nofollow ugc noreferrer">reference</a> for the different permissions a Flatpak app can have.</p>
 <p>But of course all of this has come about by people making decisions, and it’s still evolving.</p>
       </div>
 

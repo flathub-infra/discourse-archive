@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -109,7 +110,7 @@
 <img itemprop="image" src="/uploads/original/2X/0/0c714c56202c57f8e05984435403bcda31700ad1.png" alt="PWA-flatpak-has-no-write-access-to" data-base62-sha1="1M4t8hpWsfFNnkPSnrsyAtWxC13" width="526" height="192"><br>
 <em>(screenshot made by <span class="mention">@Aqualung</span>, taken from the topic linked below)</em></p>
 <p>There is an existing topic about this, however, for me, the error message kept appearing, no matter which solution I used. Please have a quick look here: <a href="/t/pwas-this-flatpak-does-not-have-write-access-to/3830/index.html">PWAs: This Flatpak does not have write access to</a></p>
-<p>In order to give access to these locations to the Google Chrome flatpak, we can use <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" rel="noopener nofollow ugc">Flatseal</a> or the <code>flatpak override</code> CLI command as mentioned in the other post:</p>
+<p>In order to give access to these locations to the Google Chrome flatpak, we can use <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" rel="noopener nofollow ugc noreferrer">Flatseal</a> or the <code>flatpak override</code> CLI command as mentioned in the other post:</p>
 <pre><code class="lang-auto">flatpak override --user --filesystem=~/.local/share/applications --filesystem=~/.local/share/icons com.google.Chrome
 </code></pre>
 <p>These overrides added in the CLI will appear in Flatseal too, in the “Filesystem / Other files” section, so both solutions will do the same thing.</p>

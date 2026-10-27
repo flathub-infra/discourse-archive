@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>There is an app that has an <code>app-id</code> of <code>X.Y.ActualAppName</code> but it needs to own <code>X.Y.SingleApplication</code> specifically, to be able to establish a quasi leader-follower relationship between it’s instances via D-Bus.<br>
-Can an exception from the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc">finish-args-own-name-cpt</a> be granted for such a case or does the app have to be patched to only use <code>X.Y.ActualAppName</code> instead, potentially breaking coordination between instances installed from non-flatpak sources?</p>
+Can an exception from the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc noreferrer">finish-args-own-name-cpt</a> be granted for such a case or does the app have to be patched to only use <code>X.Y.ActualAppName</code> instead, potentially breaking coordination between instances installed from non-flatpak sources?</p>
       </div>
 
       <div class="post-footer">
@@ -213,7 +214,7 @@ CodedOre:</div>
 <p>to use the proper application id in the Flatpak.</p>
 </blockquote>
 <p>I am using a proper application id. That is part of the problem. A proper application id IMHO can’t literally end with <code>SingleApplication</code>as this exact verbatim string doesn’t carry any meaning and nobody names applications literally that, and if they did it would be a rather useless name from user perspective. So I am excluding the possibility to rename the application id to end literally with <code>SingleApplication</code>.<br>
-Now, the way I see, the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc">ominous flathub rule</a>, would require one of these 2 options:</p>
+Now, the way I see, the <a href="https://docs.flathub.org/docs/for-app-authors/linter#finish-args-own-name-cpt" rel="noopener nofollow ugc noreferrer">ominous flathub rule</a>, would require one of these 2 options:</p>
 <ol>
 <li>Get an exception from this rule.</li>
 <li>Patch the application with one more patch, to not use literally the <code>SingleApplication</code> suffix, but to match the actual application id. And at the same time lose the coordination capabilities with let’s say AppImage instances, which still literally use the <code>SingleApplication</code> suffix</li>

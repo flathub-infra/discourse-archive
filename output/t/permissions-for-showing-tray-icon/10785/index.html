@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -115,7 +116,7 @@
 <p>If I run my app natively, surely enough an icon file appears at that path when the app creates a tray icon. But without the <code>/run/user</code> permission flatpak does not create the same file and I figured that is why icon is missing from the tray, even though the menu is there.</p>
 <p>What I am unsure about is if there is more correct approach to allow flatpak app to write to $XDG_RUNTIME_DIR/tray-icon so that host can see it and display in the tray applet.</p>
 <p>The behavior I’m describing is same for both libappindicator or libayatana-appindicator from flatpak shared modules. I’m seeing it on stock debian trixie with both cinnamon and kde plasma, either x11 or wayland sessions.</p>
-<p>For context my app is <a href="https://github.com/flathub/org.openscopeproject.TrguiNG" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/org.openscopeproject.TrguiNG</a> and is already published but last released version uses some different method of displaying the tray icon which does not rely on writing files to runtime dir. I can not easily switch back to old method because it is done by the framework I’m using which I’m forced to update to be compatible with new platforms.</p>
+<p>For context my app is <a href="https://github.com/flathub/org.openscopeproject.TrguiNG" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - flathub/org.openscopeproject.TrguiNG</a> and is already published but last released version uses some different method of displaying the tray icon which does not rely on writing files to runtime dir. I can not easily switch back to old method because it is done by the framework I’m using which I’m forced to update to be compatible with new platforms.</p>
       </div>
 
       <div class="post-footer">

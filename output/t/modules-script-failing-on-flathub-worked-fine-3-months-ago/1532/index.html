@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://github.com/flathub/org.gnucash.GnuCash/" rel="noopener nofollow ugc">GnuCash</a> has been using  <a href="https://github.com/flathub/org.gnucash.GnuCash/blob/master/modules/finance-quote-sources.json#L410" rel="noopener nofollow ugc">this script</a> to build a perl-based dependency for over a year without trouble. The latest builds have failed trying to execute that script with the following error:</p>
+        <p><a href="https://github.com/flathub/org.gnucash.GnuCash/" rel="noopener nofollow ugc noreferrer">GnuCash</a> has been using  <a href="https://github.com/flathub/org.gnucash.GnuCash/blob/master/modules/finance-quote-sources.json#L410" rel="noopener nofollow ugc noreferrer">this script</a> to build a perl-based dependency for over a year without trouble. The latest builds have failed trying to execute that script with the following error:</p>
 <pre><code class="lang-auto">========================================================================
 Building module finance-quote in /srv/buildbot/worker/build-x86_64-5/build/.flatpak-builder/build/finance-quote-1
 ========================================================================
@@ -148,7 +149,7 @@ FB: Unmounting read-only fs: fusermount -uz /srv/buildbot/worker/build-x86_64-5/
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Found the problem by building on Arch Linux, which has the latest flathub-builder release. <a href="https://github.com/flatpak/flatpak-builder/commit/a7d93af345cbd1ba1513fdb12505cf67e9a45f8c" rel="noopener nofollow ugc"> sources: Validate that dest-filename is not a path</a> precents the script from being created in a subdirectory of the build dir.</p>
+        <p>Found the problem by building on Arch Linux, which has the latest flathub-builder release. <a href="https://github.com/flatpak/flatpak-builder/commit/a7d93af345cbd1ba1513fdb12505cf67e9a45f8c" rel="noopener nofollow ugc noreferrer"> sources: Validate that dest-filename is not a path</a> precents the script from being created in a subdirectory of the build dir.</p>
       </div>
 
       <div class="post-footer">

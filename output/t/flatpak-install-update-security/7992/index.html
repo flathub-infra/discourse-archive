@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -274,7 +275,7 @@ ebsg:</div>
         <p>Piggybacking on <strong>Question1</strong>:</p>
 <p>Can a flatpak distributed via flathub include <em>code</em> which is <em>run with UID 0</em>  during a <code>flatpak install</code> or <code>flatpak update</code>?</p>
 <p>This is typically the case with platform native packages, usually in the form of pre- and post-install scripts in the package, even for software which never itself runs with elevated privilege.</p>
-<p>My personal preference for desktops, which accounts for all flatpak use, is to use only <a href="https://docs.flathub.org/docs/for-users/user-vs-system-install/" rel="noopener nofollow ugc">per-user installs</a>. In addition to separating the application files from the OS, it precludes any flatpack interfering with the OS - from the innocent littering of files to the insidious deployment of <a href="https://attack.mitre.org/techniques/T1014/" rel="noopener nofollow ugc">UEFI rootkits</a>.<br>
+<p>My personal preference for desktops, which accounts for all flatpak use, is to use only <a href="https://docs.flathub.org/docs/for-users/user-vs-system-install/" rel="noopener nofollow ugc noreferrer">per-user installs</a>. In addition to separating the application files from the OS, it precludes any flatpack interfering with the OS - from the innocent littering of files to the insidious deployment of <a href="https://attack.mitre.org/techniques/T1014/" rel="noopener nofollow ugc noreferrer">UEFI rootkits</a>.<br>
 The applicable trust model(s) and threats can become quickly complex, so this provides no blanket protection against other categories of threats from snooping audio and video inputs to exfiltrating <code>~/Documents/passwords.csv</code>, though flatpak’s permissions model provides some relevant access controls.</p>
       </div>
 
@@ -369,9 +370,9 @@ ebsg:</div>
 <p>Where do flatpak runtimes come from? From the same repo (let’s say flathub) as the app being downloaded? Who maintains and builds these runtimes?</p>
 </blockquote>
 <p>They are published on Flathub directly by the upstream.</p>
-<p>Freedesktop: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/" class="inline-onebox" rel="noopener nofollow ugc">freedesktop-sdk / freedesktop-sdk · GitLab</a><br>
-GNOME: <a href="https://gitlab.gnome.org/GNOME/gnome-build-meta/" class="inline-onebox" rel="noopener nofollow ugc">GNOME / gnome-build-meta · GitLab</a><br>
-KDE: <a href="https://invent.kde.org/packaging/flatpak-kde-runtime" class="inline-onebox" rel="noopener nofollow ugc">Packaging / Flatpak KDE Runtime · GitLab</a></p>
+<p>Freedesktop: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">freedesktop-sdk / freedesktop-sdk · GitLab</a><br>
+GNOME: <a href="https://gitlab.gnome.org/GNOME/gnome-build-meta/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GNOME / gnome-build-meta · GitLab</a><br>
+KDE: <a href="https://invent.kde.org/packaging/flatpak-kde-runtime" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Packaging / Flatpak KDE Runtime · GitLab</a></p>
       </div>
 
       <div class="post-footer">

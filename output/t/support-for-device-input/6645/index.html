@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,11 +104,11 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hello, everyone</p>
-<p>Currently, the app I maintain, <a href="https://flathub.org/apps/org.diasurgical.DevilutionX" rel="noopener nofollow ugc">DevilutionX</a>, a source port for Diablo 1/Hellfire expansion needs an overly permissive <code>device=all</code> permission to support game controllers</p>
+<p>Currently, the app I maintain, <a href="https://flathub.org/apps/org.diasurgical.DevilutionX" rel="noopener nofollow ugc noreferrer">DevilutionX</a>, a source port for Diablo 1/Hellfire expansion needs an overly permissive <code>device=all</code> permission to support game controllers</p>
 <p>I have noticed, that since November 2023, there’s a new permission that addresses this, <code>device=input</code>, and it’s available since flatpak 1.15.6</p><aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flatpak/flatpak/pull/5481">
   <header class="source">
 
-      <a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc">github.com/flatpak/flatpak</a>
+      <a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc noreferrer">github.com/flatpak/flatpak</a>
   </header>
 
   <article class="onebox-body">
@@ -124,7 +125,7 @@
 
 
       <h4>
-        <a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc">Add --device=input permission</a>
+        <a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc noreferrer">Add --device=input permission</a>
       </h4>
 
     <div class="branches">
@@ -137,14 +138,14 @@
         </div>
 
         <div class="user">
-          <a href="https://github.com/foresto" target="_blank" rel="noopener nofollow ugc">
+          <a href="https://github.com/foresto" target="_blank" rel="noopener nofollow ugc noreferrer">
             <img itemprop="image" alt="foresto" src="/uploads/original/2X/8/8afe6c4888ff29eb9a023dc80290844bc4cb6a8f.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="CBCED2">
             foresto
           </a>
         </div>
 
         <div class="lines" title="1 commits changed 8 files with 24 additions and 8 deletions">
-          <a href="https://github.com/flatpak/flatpak/pull/5481/files" target="_blank" rel="noopener nofollow ugc">
+          <a href="https://github.com/flatpak/flatpak/pull/5481/files" target="_blank" rel="noopener nofollow ugc noreferrer">
             <span class="added">+24</span>
             <span class="removed">-8</span>
           </a>
@@ -155,7 +156,7 @@
 
   <div class="github-row">
     <p class="github-body-container">This new permission exposes the host's /dev/input directory, providing
-minimal <span class="show-more-container"><a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">game controller support without resorting to --device=all.
+minimal <span class="show-more-container"><a href="https://github.com/flatpak/flatpak/pull/5481" target="_blank" rel="noopener nofollow ugc noreferrer" class="show-more">…</a></span><span class="excerpt hidden">game controller support without resorting to --device=all.
 
 (It originally handled /dev/uinput and /dev/hidraw* as well, for the sake of motion controls, Steam Input, and similar advanced features, but that functionality has since been removed.)
 
@@ -176,7 +177,7 @@ https://github.com/flatpak/flatpak/issues/4405#issuecomment-916792716</span></p>
   <div style="clear: both"></div>
 </aside>
 <p>
-It’s even on the current list of standard permissions: <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#standard-permissions" class="inline-onebox" rel="noopener nofollow ugc">Sandbox Permissions - Flatpak documentation</a></p>
+It’s even on the current list of standard permissions: <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#standard-permissions" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Sandbox Permissions - Flatpak documentation</a></p>
 <p>However, when I tried to use a new permission, Flathub builders rejected it<br>
 <code>error: Unknown device type input, valid types are: dri, all, kvm, shm</code></p>
 <p>I suspect this is because flathub builders are still on 1.14 version<br>
@@ -258,7 +259,7 @@ So, when can I expect Flathub to support this new permission? This will greatly 
 
       <div class="post-body cooked" itemprop="text">
         <p>Support or device=input has landed without compatibility consideration.</p>
-<p>See <a href="https://github.com/flatpak/flatpak/issues/5681" class="inline-onebox">Device permission compatibility · Issue #5681 · flatpak/flatpak · GitHub</a></p>
+<p>See <a href="https://github.com/flatpak/flatpak/issues/5681" class="inline-onebox" rel="noreferrer nofollow ugc">Device permission compatibility · Issue #5681 · flatpak/flatpak · GitHub</a></p>
 <p>Don’t use it.</p>
       </div>
 

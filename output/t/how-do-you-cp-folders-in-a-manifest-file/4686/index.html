@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,12 +103,12 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Maybe I’m asking the wrong question here, but the ares (emulator) flatpak: <a href="https://github.com/flathub/dev.ares.ares" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/dev.ares.ares</a> currently does not copy over two folders from ares, a “Shaders” and a “Database” folder.</p>
+        <p>Maybe I’m asking the wrong question here, but the ares (emulator) flatpak: <a href="https://github.com/flathub/dev.ares.ares" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - flathub/dev.ares.ares</a> currently does not copy over two folders from ares, a “Shaders” and a “Database” folder.</p>
 <p>These are fairly important folders so I was trying to look into how to fix it but I wasn’t able to come up with anything conclusive.</p>
 <p>The aur package for ares is able to solve this issue by using both a patch file and using two “-cp” lines:</p>
 <ul>
-<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40" rel="noopener nofollow ugc">https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40</a></li>
-<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/ares-paths.patch?h=ares-emu" class="inline-onebox" rel="noopener nofollow ugc">ares-paths.patch - aur.git - AUR Package Repositories</a></li>
+<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40" rel="noopener nofollow ugc noreferrer">https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ares-emu#n40</a></li>
+<li><a href="https://aur.archlinux.org/cgit/aur.git/tree/ares-paths.patch?h=ares-emu" class="inline-onebox" rel="noopener nofollow ugc noreferrer">ares-paths.patch - aur.git - AUR Package Repositories</a></li>
 </ul>
 <p>Is something like what the aur package does possible for the manifest or any ideas on how to properly copy the “Shaders” and “Database” folders with the Flatpak?</p>
       </div>
@@ -152,11 +153,11 @@
 <aside class="onebox githubblob" data-onebox-src="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130">
   <header class="source">
 
-      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc">github.com</a>
+      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc noreferrer">github.com</a>
   </header>
 
   <article class="onebox-body">
-    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130</a></h4>
+    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130" target="_blank" rel="noopener nofollow ugc noreferrer">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/desktop-ui/GNUmakefile#L130</a></h4>
 
 
 
@@ -261,7 +262,7 @@ cp out/ares /app/bin/ares<br>
 cp -R …/ares/Shaders/* /app/share/ares/Shaders/<br>
 cp resource/ares.desktop /app/share/applications/ares.desktop<br>
 cp resource/ares.png /app/share/icons/hicolor/256x256/apps/ares.png</p>
-<p>You can see a bit more info here on this GitHub issue: <a href="https://github.com/flathub/dev.ares.ares/issues/18" class="inline-onebox" rel="noopener nofollow ugc">Ares missing shaders · Issue #18 · flathub/dev.ares.ares · GitHub</a></p>
+<p>You can see a bit more info here on this GitHub issue: <a href="https://github.com/flathub/dev.ares.ares/issues/18" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Ares missing shaders · Issue #18 · flathub/dev.ares.ares · GitHub</a></p>
 <p>I’ll poke around with the build-commands though.</p>
       </div>
 
@@ -313,11 +314,11 @@ cp resource/ares.png /app/share/icons/hicolor/256x256/apps/ares.png</p>
 <aside class="onebox githubblob" data-onebox-src="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122">
   <header class="source">
 
-      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc">github.com</a>
+      <a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc noreferrer">github.com</a>
   </header>
 
   <article class="onebox-body">
-    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122</a></h4>
+    <h4><a href="https://github.com/ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122" target="_blank" rel="noopener nofollow ugc noreferrer">ares-emulator/ares/blob/8e62cd8162f477ddee1cea3da74f17ef299d750f/nall/path.cpp#L122</a></h4>
 
 
 

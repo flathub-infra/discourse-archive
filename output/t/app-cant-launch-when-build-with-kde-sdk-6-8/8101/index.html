@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,12 +105,12 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi, I am helping to maintain the <a href="https://flathub.org/apps/org.openchemistry.Avogadro2" rel="noopener nofollow ugc"><code>org.openchemistry.Avogadro2</code></a> Flatpak of <a href="https://two.avogadro.cc/" rel="noopener nofollow ugc">Avogadro</a>. I’m having an issue and was hoping someone might be able to provide some help or advice as to what’s going on.</p>
-<p>Our <code>beta</code> branch is currently building against version 6.7 of the KDE runtime, but we’d like to bump it to 6.8, see my PR <a href="https://github.com/flathub/org.openchemistry.Avogadro2/pull/179" rel="noopener nofollow ugc">here</a>. Running the beta with 6.8 using <code>flatpak run --runtime-version=6.8 org.openchemistry.Avogadro2//beta</code> works fine (haven’t checked everything in detail but it starts correctly), but running the <code>test</code> build created by Buildbot<sup class="footnote-ref"><a href="#footnote-15584-1" id="footnote-ref-15584-1">[1]</a></sup> results in the error:</p>
+        <p>Hi, I am helping to maintain the <a href="https://flathub.org/apps/org.openchemistry.Avogadro2" rel="noopener nofollow ugc noreferrer"><code>org.openchemistry.Avogadro2</code></a> Flatpak of <a href="https://two.avogadro.cc/" rel="noopener nofollow ugc noreferrer">Avogadro</a>. I’m having an issue and was hoping someone might be able to provide some help or advice as to what’s going on.</p>
+<p>Our <code>beta</code> branch is currently building against version 6.7 of the KDE runtime, but we’d like to bump it to 6.8, see my PR <a href="https://github.com/flathub/org.openchemistry.Avogadro2/pull/179" rel="noopener nofollow ugc noreferrer">here</a>. Running the beta with 6.8 using <code>flatpak run --runtime-version=6.8 org.openchemistry.Avogadro2//beta</code> works fine (haven’t checked everything in detail but it starts correctly), but running the <code>test</code> build created by Buildbot<sup class="footnote-ref"><a href="#footnote-15584-1" id="footnote-ref-15584-1">[1]</a></sup> results in the error:</p>
 <pre><code class="lang-auto">$ flatpak run org.openchemistry.Avogadro2//test
 avogadro2: error while loading shared libraries: libAvogadroQtOpenGL.so.1: cannot open shared object file: No such file or directory
 </code></pre>
-<p>Over on the KDE discourse the <a href="https://discuss.kde.org/t/flatpak-org-kde-sdk-6-8-runtime-is-now-available/24717/2?u=matterhorn103" rel="noopener nofollow ugc">announcement</a> from <span class="mention">@bbhtt</span> included the note that</p>
+<p>Over on the KDE discourse the <a href="https://discuss.kde.org/t/flatpak-org-kde-sdk-6-8-runtime-is-now-available/24717/2?u=matterhorn103" rel="noopener nofollow ugc noreferrer">announcement</a> from <span class="mention">@bbhtt</span> included the note that</p>
 <aside class="quote no-group quote-post-not-found" data-username="bbhtt" data-post="2" data-topic="24717" data-full="true">
 <div class="title">
 <div class="quote-controls"></div>
@@ -123,7 +124,7 @@ avogadro2: error while loading shared libraries: libAvogadroQtOpenGL.so.1: canno
 </aside>
 <p>So this clearly had an effect on the way that Avogadro is being bundled; the <code>beta</code> branch has everything in <code>/app/lib</code> whereas this <code>test</code> branch has stuff split between <code>/app/lib</code> and <code>/app/lib64</code>, and the library that can’t be loaded is now in the latter.</p>
 <p>The thing is, I don’t know why this should break the Flatpak; a normal local non-Flatpak build (against Qt 6.8) also splits things between <code>lib</code> and <code>lib64</code>, but the resulting binary launches absolutely fine.</p>
-<p>The <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/beta/org.openchemistry.Avogadro2.yaml" rel="noopener nofollow ugc">manifest</a> doesn’t have anything weird in it I don’t think. It uses <code>builddir: true</code> and <code>no-make-install: true</code> because the umbrella project doesn’t have <code>install</code> command defined, which means there’s a post-install step where the entire prefix directory is copied into <code>/app</code>. But I don’t see why those things should pose an issue.</p>
+<p>The <a href="https://github.com/flathub/org.openchemistry.Avogadro2/blob/beta/org.openchemistry.Avogadro2.yaml" rel="noopener nofollow ugc noreferrer">manifest</a> doesn’t have anything weird in it I don’t think. It uses <code>builddir: true</code> and <code>no-make-install: true</code> because the umbrella project doesn’t have <code>install</code> command defined, which means there’s a post-install step where the entire prefix directory is copied into <code>/app</code>. But I don’t see why those things should pose an issue.</p>
 <p>Is it maybe incorrect to use <code>/app/lib64</code> with a Flatpak?</p>
 <hr class="footnotes-sep">
 

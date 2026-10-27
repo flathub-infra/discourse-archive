@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -250,7 +251,7 @@ modules:
 
       <div class="post-body cooked" itemprop="text">
         <p>I think the wrong runtime gets set. flatpak-builder seems to take the last value which is in your case <code>runtime: org.freedesktop.Platform.VAAPI.Intel</code> but this is just a extension to the runtime. Remove all but <code>runtime: org.freedesktop.Platform</code>.</p>
-<p>All the extensions you’ve listed already get downloaded &amp; activated if the system requires them (see <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/23.08/elements/flatpak-images/platform.bst" rel="noopener nofollow ugc">Freedesktop Platform metadata</a> &amp; <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-metadata" rel="noopener nofollow ugc">Flatpak metadata</a> under <code>[Extension NAME]</code>).</p>
+<p>All the extensions you’ve listed already get downloaded &amp; activated if the system requires them (see <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/23.08/elements/flatpak-images/platform.bst" rel="noopener nofollow ugc noreferrer">Freedesktop Platform metadata</a> &amp; <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-metadata" rel="noopener nofollow ugc noreferrer">Flatpak metadata</a> under <code>[Extension NAME]</code>).</p>
 <p>At least in my test flatpak fails with a similar error if the wrong runtime is set:</p>
 <pre><code class="lang-auto">flatpak run --runtime=org.freedesktop.Platform.GL.default//23.08 org.gnome.Evolution
 bwrap: execvp evolution: No such file or directory

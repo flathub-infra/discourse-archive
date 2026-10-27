@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,9 +105,9 @@
       <div class="post-body cooked" itemprop="text">
         <p>Hi! I’m a Junior-level developer with a passion project I started on about a week ago, but I want to make sure this isn’t going to get me in trouble.</p>
 <p>The big question:<br>
-Is pulling and displaying info from <a href="http://flathub.org" rel="noopener nofollow ugc">flathub.org</a> on my own website allowed/legal?</p>
+Is pulling and displaying info from <a href="http://flathub.org" rel="noopener nofollow ugc noreferrer">flathub.org</a> on my own website allowed/legal?</p>
 <p>What I’m doing:<br>
-I’m working on a website that keeps track how well linux apps work on linux phones (like the Pinephone mainly). It currently pulls from <a href="https://flathub.org/api/v1/apps" rel="noopener nofollow ugc">here</a> to make a database of all flathub apps, and on my website you can give those apps grades for how well they work (does it fit on a phone screen, can it use the touch screen, does it even launch, etc).</p>
+I’m working on a website that keeps track how well linux apps work on linux phones (like the Pinephone mainly). It currently pulls from <a href="https://flathub.org/api/v1/apps" rel="noopener nofollow ugc noreferrer">here</a> to make a database of all flathub apps, and on my website you can give those apps grades for how well they work (does it fit on a phone screen, can it use the touch screen, does it even launch, etc).</p>
 <p>For the baseline, I am aiming to get all linux apps from flathub, Debian, and Manjaro repos.</p>
 <p>Below are some rough mockups of my progress so far if it helps illustrate what I’m going for:</p>
 <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" data-download-href="/uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png" title="Screenshot_20211107_140412" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png" alt="Screenshot_20211107_140412" data-base62-sha1="7XPdf7nOyWjqtue53lzqJHVdIgU" width="605" height="499" srcset="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_605x499.png, /uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_907x748.png 1.5x, /uploads/original/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0.png 2x" data-small-upload="/uploads/optimized/1X/37d27b0c9542c64ec2090d90f8f3ae552c1e5cd0_2_10x10.png"><div class="meta">
@@ -206,7 +207,7 @@ I’m working on a website that keeps track how well linux apps work on linux ph
 
       <div class="post-body cooked" itemprop="text">
         <p>I would be glad to share the source code, once its a bit more functional. I was going to look into how to post my source code as open-source somewhere like Github, maybe once I’ve achieved a base line of functionality</p>
-<p>I’m pretty new to working with databases, so Im starting simple and will obviously expand functionality as I go. I have a python script that grabs the contents of <a href="https://flathub.org/api/v1/apps" rel="noopener nofollow ugc">https://flathub.org/api/v1/apps</a> and saves it as a list of dictionaries.</p>
+<p>I’m pretty new to working with databases, so Im starting simple and will obviously expand functionality as I go. I have a python script that grabs the contents of <a href="https://flathub.org/api/v1/apps" rel="noopener nofollow ugc noreferrer">https://flathub.org/api/v1/apps</a> and saves it as a list of dictionaries.</p>
 <p>I was thinking of grabbing this and updating my site’s database for changes to apps and what new apps have been added maybe once or twice a day.</p>
 <pre><code class="lang-auto">with urlopen('https://flathub.org/api/v1/apps') as response: #get all apps &amp; info from flathub.org 
     app_list = json.load(response)  #convert info into List of Dicts

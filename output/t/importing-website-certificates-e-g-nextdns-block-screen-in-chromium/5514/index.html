@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Flatpak: Chromium</p>
-<p>When I follow the instructions at NextDNS to add a certificate in Linux for Chromium (see [<a href="https://help.nextdns.io/t/g9hmv0a/how-to-install-and-trust-nextdns-root-ca" class="inline-onebox" rel="noopener nofollow ugc">How to install and trust NextDNS Root CA - How-To Guides - NextDNS Help Center</a>]} the certifcate for websites is installed, but when I relaunch Chromium the certificate is lost.</p>
+<p>When I follow the instructions at NextDNS to add a certificate in Linux for Chromium (see [<a href="https://help.nextdns.io/t/g9hmv0a/how-to-install-and-trust-nextdns-root-ca" class="inline-onebox" rel="noopener nofollow ugc noreferrer">How to install and trust NextDNS Root CA - How-To Guides - NextDNS Help Center</a>]} the certifcate for websites is installed, but when I relaunch Chromium the certificate is lost.</p>
 <p>So the obvious reason is that this is not stored permanently in Flatpak Chromium. What folder do I have to give Chromium running in Flatpak permanent write permission to keep this certificate installed?</p>
       </div>
 
@@ -141,7 +142,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Hi, I am pasting this as I had a similar problem on my steam deck and found the solution. Figured I’d share wherever I can for the next guy…</p>
 <p>The directory you’re looking for is ~/.pki/nssdb</p>
-<p>Found it in the public Chromium docs here: <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux/cert_management.md" class="inline-onebox" rel="noopener nofollow ugc">Chromium Docs - Linux Cert Management</a></p>
+<p>Found it in the public Chromium docs here: <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux/cert_management.md" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Chromium Docs - Linux Cert Management</a></p>
 <p>The specific command I ran on my steam deck was as follows: sudo flatpak override com.google.Chrome --filesystem=/home/deck/.pki/nssdb</p>
       </div>
 

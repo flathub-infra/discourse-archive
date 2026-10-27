@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,9 +106,9 @@
         <p>I tried to build a Flatpak with a <em>Desktop Entry file</em> (<code>.desktop</code> file) using the key <code>Version=1.5</code>.<br>
 Version 1.5 of <em>Desktop Entry file</em> allows us to use the key <code>SingleMainWindow</code>.<br>
 This key is used by Zotero upstream project (that I’m packaging).<br>
-But the <a href="https://flathub.org/builds/#/builders/10/builds/9829" rel="noopener nofollow ugc">Flathub bot failed to build saying</a> the Version 1.5 “is not a known version” and also refused the key <code>SingleMainWindow</code>.<br>
+But the <a href="https://flathub.org/builds/#/builders/10/builds/9829" rel="noopener nofollow ugc noreferrer">Flathub bot failed to build saying</a> the Version 1.5 “is not a known version” and also refused the key <code>SingleMainWindow</code>.<br>
 What version of Desktop Entry file is allowed?</p>
-<p>About the versions of Desktop Entry file see <a href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html" rel="noopener nofollow ugc">here</a>.</p>
+<p>About the versions of Desktop Entry file see <a href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html" rel="noopener nofollow ugc noreferrer">here</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -150,7 +151,7 @@ What version of Desktop Entry file is allowed?</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>I’m just guessing… what happens if you remove the <code>Version</code> key and keep the <code>SingleMainWindow</code> key?</p>
-<p>I’m asking because I see a couple of apps using this key and they don’t have any Version key, see the first results (joplin and PortfolioPerformance) <a href="https://github.com/search?q=org%3Aflathub+SingleMainWindow&amp;type=code" rel="noopener nofollow ugc">in this search</a>.</p>
+<p>I’m asking because I see a couple of apps using this key and they don’t have any Version key, see the first results (joplin and PortfolioPerformance) <a href="https://github.com/search?q=org%3Aflathub+SingleMainWindow&amp;type=code" rel="noopener nofollow ugc noreferrer">in this search</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -196,7 +197,7 @@ What version of Desktop Entry file is allowed?</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Someone tried without the <code>Version</code> key, keeping only the <code>SingleMainWindow</code>key. But it also <a href="https://flathub.org/builds/#/builders/8/builds/9885" rel="noopener nofollow ugc">failed with the warning</a>:</p>
+        <p>Someone tried without the <code>Version</code> key, keeping only the <code>SingleMainWindow</code>key. But it also <a href="https://flathub.org/builds/#/builders/8/builds/9885" rel="noopener nofollow ugc noreferrer">failed with the warning</a>:</p>
 <pre><code class="lang-auto">Running: desktop-file-install --dir=/app/share/applications --set-key=Exec --set-value='zotero -url %U' --set-key=Icon --set-value=org.zotero.Zotero zotero.desktop --add-mime-type=x-scheme-handler/zotero
 FB: Running 'flatpak build --die-with-parent --env=FLATPAK_BUILDER_BUILDDIR=/run/build/zotero --nofilesystem=host:reset --filesystem=/srv/buildbot/worker/build-x86_64-2/build/.flatpak-builder/build/zotero-1 --bind-mount=/run/build/zotero=/srv/buildbot/worker/build-x86_64-2/build/.flatpak-builder/build/zotero-1 --build-dir=/run/build/zotero --bind-mount=/run/ccache=/srv/buildbot/worker/build-x86_64-2/build/.flatpak-builder/ccache --unshare=network --env=SOURCE_DATE_EPOCH=1647585808 '--env=CFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=CXXFLAGS=-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer ' '--env=LDFLAGS=-L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed ' --env=CCACHE_DIR=/run/ccache/disabled --env=PATH=/app/bin:/usr/bin --env=LD_LIBRARY_PATH=/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --env=FLATPAK_BUILDER_N_JOBS=48 /srv/buildbot/worker/build-x86_64-2/build/.flatpak-builder/rofiles/rofiles-6EO70G /bin/sh -c 'desktop-file-install --dir=/app/share/applications --set-key=Exec --set-value='\''zotero -url %U'\'' --set-key=Icon --set-value=org.zotero.Zotero zotero.desktop --add-mime-type=x-scheme-handler/zotero'' on host
 /app/share/applications/zotero.desktop: error: file contains key "SingleMainWindow" in group "Desktop Entry", but keys extending the format should start with "X-"
@@ -244,7 +245,7 @@ FB: host_command_exited_cb 683543 256
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/59" rel="noopener nofollow ugc">1.4</a>, at least until desktop-file-utils 0.27 is released, and Flathub build servers have the updated package.</p>
+        <p><a href="https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/59" rel="noopener nofollow ugc noreferrer">1.4</a>, at least until desktop-file-utils 0.27 is released, and Flathub build servers have the updated package.</p>
       </div>
 
       <div class="post-footer">

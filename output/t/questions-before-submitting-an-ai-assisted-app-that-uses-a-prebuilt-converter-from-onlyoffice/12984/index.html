@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi all, I maintain <a href="https://github.com/delmarguillen/euro-office-lite" rel="noopener nofollow ugc">Euro-Office Lite</a>, a desktop office suite under AGPL-3.0 built on the Euro-Office editors. <a href="https://github.com/delmarguillen/euro-office-lite/issues/58" rel="noopener nofollow ugc">Some users asked for it on Flathub</a>, and before preparing a submission I would like to check two points, so I don’t take reviewers’ time with something that would not be accepted.</p>
+        <p>Hi all, I maintain <a href="https://github.com/delmarguillen/euro-office-lite" rel="noopener nofollow ugc noreferrer">Euro-Office Lite</a>, a desktop office suite under AGPL-3.0 built on the Euro-Office editors. <a href="https://github.com/delmarguillen/euro-office-lite/issues/58" rel="noopener nofollow ugc noreferrer">Some users asked for it on Flathub</a>, and before preparing a submission I would like to check two points, so I don’t take reviewers’ time with something that would not be accepted.</p>
 <p>The first one is AI. Most of the code of the desktop shell (Rust and JavaScript, around the editors) was written with AI assistance (Claude), with my personal directions and manual reviews and testing on real machines for each change, my vision is to increase the quality on each release instead of quick release or just create AI software slop. The editors themselves come unmodified from Euro-Office. I would disclose this in detail in the submission. Reading the policy and recent threads here i found that this might be enough for a rejection, and I would rather know that now.</p>
 <p>The second one is the document converter, x2t. The app itself can probably be built from source with offline cargo and npm sources, but x2t comes unmodified from the ONLYOFFICE Desktop Editors releases, with its source in ONLYOFFICE/core under the matching version tags (AGPL-3.0). It is the same converter that ships in org.onlyoffice.desktopeditors. Would it be acceptable to take it from the official ONLYOFFICE release archive as an archive source with a pinned sha256, or would it need to be built from ONLYOFFICE/core inside the manifest?</p>
 <p>I also understand the app would need a new name and an app ID under io.github, so it does not suggest it is an official Euro-Office app right?</p>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -386,7 +387,7 @@ hub:</div>
 </blockquote>
 </aside>
 <p>Currently nothing has been pushed to a repo, was hoping to get it working first. Minus the png file (which is the window.ico packaged in the RimPy_Linux.tar.gz), these are all the files. I can go ahead and push it to my repo soon.</p>
-<p>EDIT: If you’re referencing the repo of the app I’m attempting to package, this is it: <a href="https://github.com/rimpy-custom/RimPy" class="inline-onebox" rel="noopener nofollow ugc">GitHub - rimpy-custom/RimPy: Mod Manager For Rimworld game</a><br>
+<p>EDIT: If you’re referencing the repo of the app I’m attempting to package, this is it: <a href="https://github.com/rimpy-custom/RimPy" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - rimpy-custom/RimPy: Mod Manager For Rimworld game</a><br>
 The only file really provided by the repo is the pre-built application though.</p>
       </div>
 
@@ -751,12 +752,12 @@ LD_PRELOAD="/app/lib/libpcre.so.3:$LD_PRELOAD" ./RimPy
 <pre data-code-wrap="bash"><code class="lang-bash">blase@solus-blase ~/D/W/git [SIGINT]❥ flatpak run --devel --command=sh io.github.kuuchuu.RimPy
 [📦 io.github.kuuchuu.RimPy git]$ /tmp/templauncher.sh # rimpy-wrapper.sh with LD_DEBUG=libs,files
 </code></pre>
-<p>Output log: <a href="https://0x0.st/XqR8.log" rel="noopener nofollow ugc">https://0x0.st/XqR8.log</a></p>
+<p>Output log: <a href="https://0x0.st/XqR8.log" rel="noopener nofollow ugc noreferrer">https://0x0.st/XqR8.log</a></p>
 <p>Working, Unbundled flatpak, <code>flatpak-builder --run build-dir manifest.json sh</code>:</p>
 <pre data-code-wrap="bash"><code class="lang-bash">blase@solus-blase ~/D/W/git [SIGINT]❥ flatpak-builder --run build-dir manifest.json sh
 [📦 io.github.kuuchuu.RimPy git]$ /tmp/templauncher.sh # rimpy-wrapper.sh with LD_DEBUG=libs,files
 </code></pre>
-<p>Output log: <a href="https://0x0.st/XqRP.log" rel="noopener nofollow ugc">https://0x0.st/XqRP.log</a></p>
+<p>Output log: <a href="https://0x0.st/XqRP.log" rel="noopener nofollow ugc noreferrer">https://0x0.st/XqRP.log</a></p>
 <p>The output is pretty identical until it reaches</p>
 <pre data-code-wrap="bash"><code class="lang-bash">       #:	calling init: /app/pyexpat.so
        #:	
@@ -1002,8 +1003,8 @@ The app-specific variants (inside <code>~/.var/app/&lt;ID&gt;</code>) are availa
       <div class="post-body cooked" itemprop="text">
         <p>Speaking of XDG base directories:<br>
 You shouldn’t hard code <code>$HOME/.config</code> into the application. This will work most of the time but the location can be changed by the user.</p>
-<p>You can just use <code>$XDG_CONFIG_HOME/&lt;your folders&gt;</code>: The directories from <code>--filesystem=&lt;your folders&gt;</code> will be available in the app specific folder, too (see <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#f3" rel="noopener nofollow ugc">Sandbox Permissions Footnote #3</a>).</p>
-<p>An alternative would be to use <code>$HOST_XDG_CONFIG_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak-run</a>). But unlike <code>XDG_CONFIG_HOME</code> this is not always set (so you’ll have to handle the fallback).<br>
+<p>You can just use <code>$XDG_CONFIG_HOME/&lt;your folders&gt;</code>: The directories from <code>--filesystem=&lt;your folders&gt;</code> will be available in the app specific folder, too (see <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html#f3" rel="noopener nofollow ugc noreferrer">Sandbox Permissions Footnote #3</a>).</p>
+<p>An alternative would be to use <code>$HOST_XDG_CONFIG_HOME</code> (see <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc noreferrer">flatpak-run</a>). But unlike <code>XDG_CONFIG_HOME</code> this is not always set (so you’ll have to handle the fallback).<br>
 If a user decides to remove the filesystem access then the files won’t be persisted anymore. With <code>$XDG_CONFIG_HOME</code> there’s always a fallback inside <code>.var/app/&lt;id&gt;/config</code>.</p>
 <p>(As a suggestion: I’d argue a log file is either cache or data but never config)</p>
       </div>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,22 +105,22 @@
       <div class="post-body cooked" itemprop="text">
         <p>Flatpak doesn’t make it easy to have Audio plugins for Audio application. There are 4 formats at least: LADSPA, DSSI, LV and VST (native + windows). For now I’ll focus on the first 3, VST will come next.</p>
 <p>Here is my proposal for audio plugins in Flatpak on flathub:</p>
-<p>I created a base app used to build audio application AND plugins. This will provide the base libraries built to support the plugins: See <a href="https://github.com/flathub/flathub/pull/1460" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1460</a> (current status: Pull Request)<br>
+<p>I created a base app used to build audio application AND plugins. This will provide the base libraries built to support the plugins: See <a href="https://github.com/flathub/flathub/pull/1460" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/flathub/pull/1460</a> (current status: Pull Request)<br>
 It is based off the KDE 5.14 runtime as to have Qt5 and has gtk2 built, as well as common modules needed for the audio plugins. One of the issues I have run into is that if GNOME 3.36 is required, it’s a bit more complicated.</p>
-<p><strong>Please, feel free to submit feedback on the <a href="https://github.com/flathub/flathub/pull/1460" rel="nofollow noopener">pull request</a>.</strong></p>
-<p>Once it is available on Flathub, plugins shall be submitted (they can’t build otherwise). I already have a few that I did package to actually test this concept, in all 3 formats, with the first being So-SynthLV2: <a href="https://github.com/flathub/flathub/pull/1459" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1459</a></p>
+<p><strong>Please, feel free to submit feedback on the <a href="https://github.com/flathub/flathub/pull/1460" rel="nofollow noopener noreferrer ugc">pull request</a>.</strong></p>
+<p>Once it is available on Flathub, plugins shall be submitted (they can’t build otherwise). I already have a few that I did package to actually test this concept, in all 3 formats, with the first being So-SynthLV2: <a href="https://github.com/flathub/flathub/pull/1459" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/flathub/pull/1459</a></p>
 <p>Also update the following Flatpaks to build against the base app and add the extension point (I have already done the work locally for some):</p>
 <ul>
 <li>Muse3 sequencer (LADSPA, DSSI)</li>
 <li>Hydrogen (LADSPA)</li>
 <li>gsequencer (LADSPA, DSSI and LV2) that ship with some plugins that instead should be build as Flatpak extensions first.</li>
 <li>Audacity (LADSPA, LV2)</li>
-<li>Ardour (current status: Pull Request <a href="https://github.com/flathub/flathub/pull/831" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flathub/flathub/pull/831</a>) (LADSPA, LV2) - this one was actually the motivation to push this effort.</li>
+<li>Ardour (current status: Pull Request <a href="https://github.com/flathub/flathub/pull/831" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/flathub/pull/831</a>) (LADSPA, LV2) - this one was actually the motivation to push this effort.</li>
 </ul>
 <p>Possibly other apps I haven’t listed here yet.</p>
 <p><strong>Update</strong>:</p>
 <p>The base app is necessary for plugins, not the apps. It only contains DSSI and LV2, but is used for all the plugin types supported. If is now base in freedesktop sdk only, with caveat. Just updated the PR for the base app:</p>
-<p><a href="https://github.com/flathub/flathub/pull/1460" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/flathub/pull/1460</a></p>
+<p><a href="https://github.com/flathub/flathub/pull/1460" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/flathub/pull/1460</a></p>
 <p><strong>Update2</strong>:</p>
 <p>The BaseExtension app now contain nothing, it is just necessary to declare the extension points so that extensions can be built. This is all that is needed. It also handle the runtime versioning.</p>
 <p>And this PR is now what’s blocking any further submissions.</p>
@@ -165,7 +166,7 @@ It is based off the KDE 5.14 runtime as to have Qt5 and has gtk2 built, as well 
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi <span class="mention">@hub</span> - thanks for your work on this. Can you confirm whether all of these plugins /themselves/ need all the dependencies you mention (Qt5, Gtk2, Gtk3, …) or are you trying to capture the dependencies of every program that needs these plugins so they can share the same app?</p>
-<p>The reason I ask is that you don’t need to use a base app just to inherit an extension point - you can also just manually duplicate the extension point - declare it with the same name in another unrelated app - and Flatpak will pick up the matching named extensions. This means if your plugins have more simple/modest requirements - eg they could be built in a <a href="http://freedesktop.org">freedesktop.org</a> runtime, your base app could be a stub, that exists only to build the plugins, and the apps can use any ABI compatible (eg, GNOME or KDE deriving from the same fd.o) runtime to provide their extensions, not use the base app, and then the apps can just import the plugin extension point by name.</p>
+<p>The reason I ask is that you don’t need to use a base app just to inherit an extension point - you can also just manually duplicate the extension point - declare it with the same name in another unrelated app - and Flatpak will pick up the matching named extensions. This means if your plugins have more simple/modest requirements - eg they could be built in a <a href="http://freedesktop.org" rel="noreferrer nofollow ugc">freedesktop.org</a> runtime, your base app could be a stub, that exists only to build the plugins, and the apps can use any ABI compatible (eg, GNOME or KDE deriving from the same fd.o) runtime to provide their extensions, not use the base app, and then the apps can just import the plugin extension point by name.</p>
 <p>If most/all of these extensions do need these dependencies, then I am inclined to agree this is the least bad approach. But it’s also a little sad because it will mean this base app has to keep piling up all of the dependencies that any audio app might need.</p>
       </div>
 
@@ -432,7 +433,7 @@ ssssam:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p>I have submitted some of the modules to <code>shared-modules</code>:</p>
-<p><a href="https://github.com/flathub/shared-modules/pull/102" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/shared-modules/pull/102</a></p>
+<p><a href="https://github.com/flathub/shared-modules/pull/102" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/shared-modules/pull/102</a></p>
       </div>
 
       <div class="post-footer">
@@ -878,7 +879,7 @@ gtk2/3/4 cannot co-exist in the same memory space, nor can QT4/5.</p>
 That choice was based on certain assumptions, but ignored that there are a few sets of plugins that build in multiple formats with one single source.</p>
 </li>
 </ol>
-<p><a href="https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1</a></p>
+<p><a href="https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension/issues/1</a></p>
 <p>When the runtime switches to 20.08, I intend to move all the plugins to “unified” format.</p>
       </div>
 
@@ -922,7 +923,7 @@ That choice was based on certain assumptions, but ignored that there are a few s
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi,</p>
-<p>I’ve created a manifest for ZybAddSubFx (Zyn-Fusion) Lv2 Plugins: <a href="https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion</a></p>
+<p>I’ve created a manifest for ZybAddSubFx (Zyn-Fusion) Lv2 Plugins: <a href="https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/takuvata/org.freedesktop.LinuxAudio.Plugins.ZynFusion</a></p>
 <p>Tested with Flathub versions of Ardour and lmms (via Carla) - seems to be working.</p>
 <p>I have no idea how to submit anything  to be distributed via Flathub. Could someone maybe take a look if that manifest is at all sane (had to do some weird stuff to get it working - details in the README) and give me some directions?</p>
 <p>Thanks.</p>
@@ -982,7 +983,7 @@ That choice was based on certain assumptions, but ignored that there are a few s
 <p>First, stream have crossed. I just changed the extension point to something that is what I call unified to allow shipping multiple formats at once. LMMS, Ardour and Muse3 have already been updated.<br>
 So you need to change the package id to <code>org.freedesktop.LinuxAudio.Plugins.ZynFusion</code>. This allow shipping both the VST and LV2.</p>
 <p>As for submitting it, it is the usual process:<br>
-<a href="https://github.com/flathub/flathub/wiki/App-Submission" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/flathub/wiki/App-Submission</a></p>
+<a href="https://github.com/flathub/flathub/wiki/App-Submission" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/flathub/wiki/App-Submission</a></p>
 <p>So basically how I would proceed is as follow:</p>
 <ul>
 <li>fork the flathub project above</li>

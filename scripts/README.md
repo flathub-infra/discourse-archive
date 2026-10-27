@@ -42,3 +42,34 @@ docker stop archive-test
 
 The map generator is covered by the standard unittest discovery command above;
 the HTTP checks run separately because they need a running nginx.
+
+## Color theme
+
+The shared archive stylesheet uses Flathub's palette and follows the system
+color scheme by default, including without JavaScript. The header's System /
+Light / Dark chooser is added by `output/assets/js/archive.js` and saves its
+override in local storage. Returning to System follows OS changes automatically.
+The styles use modern CSS `light-dark()` and `oklch()` colors.
+
+Run the theme preference tests with:
+
+```sh
+node --test scripts/test_theme.cjs
+```
+
+## Link privacy
+
+After replacing or regenerating `output/`, run:
+
+```sh
+python3 scripts/fix_link_privacy.py
+python3 scripts/fix_link_privacy.py --check
+python3 -m unittest discover -s scripts
+```
+
+The repair adds a `no-referrer` HTML policy on every page (also sent by nginx),
+and `noreferrer` on external web links. External links within archived post bodies
+also get `nofollow ugc`; internal archive links, fragments, and non-web links are
+left alone. New-tab links get `noopener`. Existing relation tokens and link
+destinations are preserved, including query parameters. This suppresses referrer
+disclosure, not destination-side tracking, cookies, or IP visibility.

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,9 +104,9 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>So today I did the following commit:<br>
-<a href="https://github.com/KDE/flatpak-kde-runtime/commit/94d6bc6ef868d9eb8d3ac6698b97e10c80c65ca3" class="onebox" target="_blank">https://github.com/KDE/flatpak-kde-runtime/commit/94d6bc6ef868d9eb8d3ac6698b97e10c80c65ca3</a></p>
+<a href="https://github.com/KDE/flatpak-kde-runtime/commit/94d6bc6ef868d9eb8d3ac6698b97e10c80c65ca3" class="onebox" target="_blank" rel="noreferrer nofollow ugc noopener">https://github.com/KDE/flatpak-kde-runtime/commit/94d6bc6ef868d9eb8d3ac6698b97e10c80c65ca3</a></p>
 <p>That solved this build issue:<br>
-<a href="https://flathub.org/builds/#/builders/32/builds/16945" class="onebox" target="_blank">https://flathub.org/builds/#/builders/32/builds/16945</a></p>
+<a href="https://flathub.org/builds/#/builders/32/builds/16945" class="onebox" target="_blank" rel="noreferrer nofollow ugc noopener">https://flathub.org/builds/#/builders/32/builds/16945</a></p>
 <p>But it seems somehow flathub is not picking up the last commit? Actually for some reason it didn’t trigger the build automatically.</p>
 <p>In fact, on the <code>checkout manifest</code> bit, it starts with:</p>
 <pre><code class="lang-auto">git reset --hard d8bd831099418275a8dd3c2bc5e67d70cb7bd620 --
@@ -149,7 +150,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I kicked off <a href="https://flathub.org/builds/#/builders/32/builds/16963">new build</a> and it seems to use correct commit. I suspect there was some mirroring delay between GitLab and GitHub.</p>
+        <p>I kicked off <a href="https://flathub.org/builds/#/builders/32/builds/16963" rel="noreferrer nofollow ugc">new build</a> and it seems to use correct commit. I suspect there was some mirroring delay between GitLab and GitHub.</p>
 <p>About builds not being trigerred, can you check whether GitHub or GitLab repo are configured to send push events to buildbot via webhook? Both also display if it was sent successfully or not.</p>
       </div>
 
@@ -201,7 +202,7 @@
 <div class="quote-controls"></div>
 barthalion:</div>
 <blockquote>
-<p>I kicked off <a href="https://flathub.org/builds/#/builders/32/builds/16963">new build</a> and it seems to use correct commit. I suspect there was some mirroring delay between GitLab and GitHub.</p>
+<p>I kicked off <a href="https://flathub.org/builds/#/builders/32/builds/16963" rel="noreferrer nofollow ugc">new build</a> and it seems to use correct commit. I suspect there was some mirroring delay between GitLab and GitHub.</p>
 </blockquote>
 </aside>
 <p>As a side note, we should probably reconfigure buildbot to use KDE GitLab directly instead.</p>

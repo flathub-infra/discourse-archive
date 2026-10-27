@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’m trying to make a Flatpak of this Flutter app: <a href="https://github.com/hamaluik/timecop" rel="noopener nofollow ugc">https://github.com/hamaluik/timecop</a> . I’m using FluffyChat as my inspiration.</p>
+        <p>I’m trying to make a Flatpak of this Flutter app: <a href="https://github.com/hamaluik/timecop" rel="noopener nofollow ugc noreferrer">https://github.com/hamaluik/timecop</a> . I’m using FluffyChat as my inspiration.</p>
 <p>There’s one place where I’m getting stuck: I can’t figure out how to include SQLite 3, which the app depends on. FluffyChat seems to accomplish this by including two cmake dependencies: olm and libjsoncpp. Both seem to yield a /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 file, even though neither are directly related to SQLite.</p>
 <p>I don’t have a need for any of these libraries, but I do need SQLite 3. How do I do that?</p>
 <p>For reference, this is my current Flatpak YAML draft:</p>
@@ -261,7 +262,7 @@ ln: failed to create symbolic link '/app/lib/libsqlite3.so': No such file or dir
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You have example sqlite3 builds <a href="https://github.com/flathub/org.qgis.qgis/blob/a96824bf6a6571e03d6497dc5ca9eb9c6dcfe55f/org.qgis.qgis.json#L161" rel="noopener nofollow ugc">here</a> , <a href="https://github.com/flathub/org.kde.kontact/blob/13dc3ee4e07c7f96dca249282d3387679ffa7b3c/org.kde.kontact.json#L177" rel="noopener nofollow ugc">here</a> and <a href="https://github.com/flathub/org.kde.akregator/blob/7a3d87987b3ff26528df78061943a0625300506a/org.kde.akregator.json#L123" rel="noopener nofollow ugc">here</a></p>
+        <p>You have example sqlite3 builds <a href="https://github.com/flathub/org.qgis.qgis/blob/a96824bf6a6571e03d6497dc5ca9eb9c6dcfe55f/org.qgis.qgis.json#L161" rel="noopener nofollow ugc noreferrer">here</a> , <a href="https://github.com/flathub/org.kde.kontact/blob/13dc3ee4e07c7f96dca249282d3387679ffa7b3c/org.kde.kontact.json#L177" rel="noopener nofollow ugc noreferrer">here</a> and <a href="https://github.com/flathub/org.kde.akregator/blob/7a3d87987b3ff26528df78061943a0625300506a/org.kde.akregator.json#L123" rel="noopener nofollow ugc noreferrer">here</a></p>
       </div>
 
       <div class="post-footer">
@@ -307,7 +308,7 @@ ln: failed to create symbolic link '/app/lib/libsqlite3.so': No such file or dir
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>SQLite 3.36 is already part of the Platform (<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/21.08/elements/components/sqlite.bst" rel="noopener nofollow ugc">freedesktop-sdk</a>). It shouldn’t be necessary and probably avoided to build it unless a specific or newer version is required.</p>
+        <p>SQLite 3.36 is already part of the Platform (<a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/21.08/elements/components/sqlite.bst" rel="noopener nofollow ugc noreferrer">freedesktop-sdk</a>). It shouldn’t be necessary and probably avoided to build it unless a specific or newer version is required.</p>
 <p>That’s not why the symbolic link fails, since the library exists (this works: <code>flatpak run --command=ls org.freedesktop.Platform//21.08  /usr/lib/x86_64-linux-gnu/libsqlite3.so.0</code>).</p>
       </div>
 
@@ -355,7 +356,7 @@ ln: failed to create symbolic link '/app/lib/libsqlite3.so': No such file or dir
 
       <div class="post-body cooked" itemprop="text">
         <p>Thanks a ton! Your tip helped me debug he problem. Beside the cp bug that you noted, I also needed to mkdir and then it worked. <img itemprop="image" src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
-<p>Now I’m dealing with a filesystem permission issue. It seems that both getDatabases() in SQFlite as well as getApplicationDocumentsDirectory() in <a href="https://pub.dev/packages/path_provider" rel="noopener nofollow ugc">path_provider</a> point to somewhere outside the sandbox in the home directory. I’ll look into it when I get the time and if I can’t figure it out, I’ll create a new thread.</p>
+<p>Now I’m dealing with a filesystem permission issue. It seems that both getDatabases() in SQFlite as well as getApplicationDocumentsDirectory() in <a href="https://pub.dev/packages/path_provider" rel="noopener nofollow ugc noreferrer">path_provider</a> point to somewhere outside the sandbox in the home directory. I’ll look into it when I get the time and if I can’t figure it out, I’ll create a new thread.</p>
 <p>For now, I’ll be setting the --filesystem=home permission.</p>
       </div>
 
@@ -405,8 +406,8 @@ ln: failed to create symbolic link '/app/lib/libsqlite3.so': No such file or dir
         <p>I can’t say anything about SQFlite, but <code>getApplicationDocumentsDirectory()</code> resolves into the user visible documents folder (usually $HOME/Documents) and therefore requires <code>--filesystem=xdg-documents</code>.</p>
 <p>If you want to hide your files inside <code>$XDG_DATA_HOME</code>, you have to use <code>getApplicationSupportDirectory</code> (this doesn’t require any filesystem-permissions).</p>
 <p>References:<br>
-<a href="https://github.com/flutter/flutter/issues/77628#issuecomment-793198280" rel="noopener nofollow ugc">path_provider on desktop stores app files in the user’s documents directory</a><br>
-<a href="https://github.com/flutter/plugins/pull/3691#issuecomment-794069250" rel="noopener nofollow ugc">When getApplicationDocumentsPath() is used, call getApplicationSupportPath()</a></p>
+<a href="https://github.com/flutter/flutter/issues/77628#issuecomment-793198280" rel="noopener nofollow ugc noreferrer">path_provider on desktop stores app files in the user’s documents directory</a><br>
+<a href="https://github.com/flutter/plugins/pull/3691#issuecomment-794069250" rel="noopener nofollow ugc noreferrer">When getApplicationDocumentsPath() is used, call getApplicationSupportPath()</a></p>
       </div>
 
       <div class="post-footer">

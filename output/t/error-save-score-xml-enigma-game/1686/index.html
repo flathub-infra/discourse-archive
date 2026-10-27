@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi,</p>
-<p>I’m currently doing some work to “flatpak” the <a href="https://github.com/Enigma-Game/Enigma" rel="noopener nofollow ugc">enigma game</a>. This is a private project to learn to work with flatpak-builder. The enigma project page explains, that they are happy with distributing their project, if I’m successful I’ll get in touch with the developer and ask for permission to publish on flathub.</p>
+<p>I’m currently doing some work to “flatpak” the <a href="https://github.com/Enigma-Game/Enigma" rel="noopener nofollow ugc noreferrer">enigma game</a>. This is a private project to learn to work with flatpak-builder. The enigma project page explains, that they are happy with distributing their project, if I’m successful I’ll get in touch with the developer and ask for permission to publish on flathub.</p>
 <p>I try to integrate the version 1.30 of enigma to flatpak. I’m on a good way and can build and run it without any problems.</p>
 <p>But if I “win” a level or try to exit it over the menu, enigma crashes with a SIGABRT. The following output is generated with gdb:</p>
 <pre><code class="lang-auto">/usr/include/c++/10.2.0/bits/stl_vector.h:1063: std::vector&lt;_Tp, _Alloc&gt;::const_reference std::vector&lt;_Tp, _Alloc&gt;::operator[](std::vector&lt;_Tp, _Alloc&gt;::size_type) const [with _Tp = unsigned char; _Alloc = std::allocator&lt;unsigned char&gt;; std::vector&lt;_Tp, _Alloc&gt;::const_reference = const unsigned char&amp;; std::vector&lt;_Tp, _Alloc&gt;::size_type = long unsigned int]: Assertion '__builtin_expect(__n &lt; this-&gt;size(), true)' failed.
@@ -151,7 +152,7 @@ Thread 1 "enigma" received signal SIGABRT, Aborted.
 #26 0x00005555556e5369 in enigma::gui::ShowMainMenu () at gui/MainMenu.cc:623
 #27 0x00005555555eddae in main (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;) at main.cc:994
 </code></pre>
-<p>First version of flatpak manifest can be found <a href="https://github.com/MrTarantoga/flathub/tree/org.nongnu.enigma" rel="noopener nofollow ugc">GitHub - MrTarantoga/flathub at org.nongnu.enigma</a>.</p>
+<p>First version of flatpak manifest can be found <a href="https://github.com/MrTarantoga/flathub/tree/org.nongnu.enigma" rel="noopener nofollow ugc noreferrer">GitHub - MrTarantoga/flathub at org.nongnu.enigma</a>.</p>
 <p>So what is the problem? Enigma tries to write the “score.xml” if you win a level or exit the game. But as you see in the gdb output a SIGABRT and the score.xml not written. I’ve built the same enigma version on a fresh debian virtual machine and the same error does not occur, I could play the game without any errors.</p>
 <p>I’m pretty sure I’ve done some sandbox configuration errors, but I’ve no idea what could possible go wrong. Does anyone see a soultion or can help me?</p>
 <p>Thank you<br>

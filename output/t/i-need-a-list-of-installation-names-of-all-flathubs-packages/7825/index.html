@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I am using fedora 40. fedora has rpm repo. also rpm fusion has free and non-free rpm repos. besides rpm repos fedora has fedora flatpaks repo called <a href="http://registry.fedoraproject.org" rel="noopener nofollow ugc">registry.fedoraproject.org</a>, also flathub repo called <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a>. I  want to write a script that deletes the rpm packages and installs the equivalent flatpak or flathub packages instead. the reason is that i want to use packages that are in isolated boxes to avoid conflicts, to avoid telemetry and data flow between applications and to avoid conflicts. I am going to write a script that will check the installation names of the rpm packages installed from the fedora rpm repository on my system, if there is a fedora flatpaks equivalent it will delete the rpm package and install the fedora flatpaks package. if there is no fedora flatpaks equivalent it will look for a flathub equivalent, if there is a flathub equivalent it will delete the rpm package and install the flathub package. Then it will do the same for rpm packages installed from rpm fusion free and rpm fusion non-free repos. if there is an equivalent, it will delete the rpm packages and install the equivalent fedora flatpak and/or flathub package. To do this, I need to identify the equivalents of rpm packages and flathub packages and fedora flatpaks packages. I need to prepare the rpm package list and flathub package list and the rpm package list and fedora flatpaks package list. Then I need to match the installation names in these lists and introduce the mathematically equal ones into the script.<br>
+        <p>I am using fedora 40. fedora has rpm repo. also rpm fusion has free and non-free rpm repos. besides rpm repos fedora has fedora flatpaks repo called <a href="http://registry.fedoraproject.org" rel="noopener nofollow ugc noreferrer">registry.fedoraproject.org</a>, also flathub repo called <a href="http://dl.flathub.org" rel="noopener nofollow ugc noreferrer">dl.flathub.org</a>. I  want to write a script that deletes the rpm packages and installs the equivalent flatpak or flathub packages instead. the reason is that i want to use packages that are in isolated boxes to avoid conflicts, to avoid telemetry and data flow between applications and to avoid conflicts. I am going to write a script that will check the installation names of the rpm packages installed from the fedora rpm repository on my system, if there is a fedora flatpaks equivalent it will delete the rpm package and install the fedora flatpaks package. if there is no fedora flatpaks equivalent it will look for a flathub equivalent, if there is a flathub equivalent it will delete the rpm package and install the flathub package. Then it will do the same for rpm packages installed from rpm fusion free and rpm fusion non-free repos. if there is an equivalent, it will delete the rpm packages and install the equivalent fedora flatpak and/or flathub package. To do this, I need to identify the equivalents of rpm packages and flathub packages and fedora flatpaks packages. I need to prepare the rpm package list and flathub package list and the rpm package list and fedora flatpaks package list. Then I need to match the installation names in these lists and introduce the mathematically equal ones into the script.<br>
 for example, the name of audacity in fedora’s rpm repository is audacity . install with<br>
 <code>sudo dnf install audacity</code><br>
 the name of audacity in the rpm fusion free rpm repository is audacity . although it is installed with the same command, it is necessary to install it with the following command to separate them:<br>
@@ -603,8 +604,8 @@ The reason I prepared these csv files was so that the artificial intelligence co
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>For scripts: <a href="https://drive.google.com/drive/folders/12VVveeowuYYbLAbDXlNpVSqmAI8ttyfV?usp=sharing" rel="noopener nofollow ugc">google drive scripts link</a><br>
-For lists: <a href="https://drive.google.com/drive/folders/17FQjIY8UTby0gShqpXYaJcbWBwwui6eo?usp=sharing" rel="noopener nofollow ugc">google drive link - packages lists txt and csv files</a></p>
+        <p>For scripts: <a href="https://drive.google.com/drive/folders/12VVveeowuYYbLAbDXlNpVSqmAI8ttyfV?usp=sharing" rel="noopener nofollow ugc noreferrer">google drive scripts link</a><br>
+For lists: <a href="https://drive.google.com/drive/folders/17FQjIY8UTby0gShqpXYaJcbWBwwui6eo?usp=sharing" rel="noopener nofollow ugc noreferrer">google drive link - packages lists txt and csv files</a></p>
       </div>
 
       <div class="post-footer">

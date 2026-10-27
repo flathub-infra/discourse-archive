@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Hello,<br>
 I see again and again for new Linux users, that they think apps are glitched because Flatpaks’ sandboxing is mostly just silent. Example: Discord. If you install it from Flatpak, it will just seem like some folders in the home directory are missing; without any kind of errors people will think it’s a bug or something like that.<br>
 My suggestion would be, if its possible: popups, like in macOS, if an application wants to access a folder or use a feature it doesn’t have permission for. I’m aware that could be complicated with the vast amounts of desktop environments out there, but the silent failures/restrictions from my experience just keep confusing users.<br>
-I originally talked about this on reddit, so <a href="https://www.reddit.com/r/linuxmasterrace/comments/sjg65v/why_flatpak_is_bad_and_how_to_fix_it/" rel="noopener nofollow ugc">here’s the thread!</a></p>
+I originally talked about this on reddit, so <a href="https://www.reddit.com/r/linuxmasterrace/comments/sjg65v/why_flatpak_is_bad_and_how_to_fix_it/" rel="noopener nofollow ugc noreferrer">here’s the thread!</a></p>
       </div>
 
       <div class="post-footer">
@@ -151,7 +152,7 @@ I originally talked about this on reddit, so <a href="https://www.reddit.com/r/l
 <p>if its possible: popups, like in macOS, if an application wants to access a folder or use a feature it doesn’t have permission for.</p>
 </blockquote>
 <p>That sounds like unnecessary work for an already (mostly) solved problem. I don’t know how mac os does it, but I can’t think of how that could be reasonably implemented here without still needing to update apps. The portal APIs exist, apps/toolkits just need to use them.</p>
-<p>The issue is discord. I’d recommend reading blogs <a href="https://thelion.website/posts/flathub-discord-permissions-explained/" rel="noopener nofollow ugc">like this</a> as this sort of question has been asked before.</p>
+<p>The issue is discord. I’d recommend reading blogs <a href="https://thelion.website/posts/flathub-discord-permissions-explained/" rel="noopener nofollow ugc noreferrer">like this</a> as this sort of question has been asked before.</p>
 <p>Discord does not yet use the file chooser portal, since they use an outdated version of electron.</p>
 <p>The way the file chooser portal works is the app asks the host to create a file chooser. When the user selects a file, that specific file is made available in the sandbox and the URI is passed back to the app.</p>
 <p>This means the user does not need to allow or disallow access with permission prompts, which is good since users tend to ignore and dislike being prompted. But a file chooser only implicitly asks for permission so it doesn’t appear like a permission prompt.</p>
@@ -514,7 +515,7 @@ obsidianical:</div>
         <blockquote>
 <p>Since you control the runtime these applications run on.</p>
 </blockquote>
-<p>Indeed it’s technically feasible to configure discord to use a different electron build. However, discord <a href="https://github.com/flathub/com.discordapp.Discord/issues/151" rel="noopener nofollow ugc">seemingly did not answer a question about if they’d allow that</a>. So the electron version used is under discord’s control unless discord formally allows/wants flathub to change it.</p>
+<p>Indeed it’s technically feasible to configure discord to use a different electron build. However, discord <a href="https://github.com/flathub/com.discordapp.Discord/issues/151" rel="noopener nofollow ugc noreferrer">seemingly did not answer a question about if they’d allow that</a>. So the electron version used is under discord’s control unless discord formally allows/wants flathub to change it.</p>
       </div>
 
       <div class="post-footer">
@@ -669,7 +670,7 @@ Conan_Kudo:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>That’s not what I’m saying. I’m saying that we need to educate people about this and help them fix such things if they decide to do so. Instead of them trying an app, not working, and then dump the whole idea of flatpaks entirely. A simple instruction or wiki on <a href="http://flathub.org" rel="noopener nofollow ugc">flathub.org</a> could perhaps make a much easier transition for not-so-advanced-users.</p>
+        <p>That’s not what I’m saying. I’m saying that we need to educate people about this and help them fix such things if they decide to do so. Instead of them trying an app, not working, and then dump the whole idea of flatpaks entirely. A simple instruction or wiki on <a href="http://flathub.org" rel="noopener nofollow ugc noreferrer">flathub.org</a> could perhaps make a much easier transition for not-so-advanced-users.</p>
       </div>
 
       <div class="post-footer">

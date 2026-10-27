@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -155,7 +156,7 @@
         <p>You can’t use the user data folders while building the app. The folder is only created when the app is first launched.</p>
 <p>Normally a program would initialize its configuration with some default values and then create the config file on its first run.</p>
 <p>If you for some reason need a file with default values, you can add it to the Flatpak as a data file. Save it in the <code>/app/share/app-name</code> folder. Then, if on runtime no local config file exists, you can copy the default file to the local data folder.</p>
-<p>Finally, the location of the data, cache and config folders are provided with the <code>XDG_DATA_HOME</code>, <code>XDG_CONFIG_HOME</code> and <code>XDG_CACHE_HOME</code> environment variables, as per the <a href="https://specifications.freedesktop.org/basedir-spec/latest/" rel="noopener nofollow ugc">XDG Base Directory Specification</a>.<br>
+<p>Finally, the location of the data, cache and config folders are provided with the <code>XDG_DATA_HOME</code>, <code>XDG_CONFIG_HOME</code> and <code>XDG_CACHE_HOME</code> environment variables, as per the <a href="https://specifications.freedesktop.org/basedir-spec/latest/" rel="noopener nofollow ugc noreferrer">XDG Base Directory Specification</a>.<br>
 If you use a toolkit like GTK, it most likely provides a helper function to access the folder in your program.</p>
       </div>
 
@@ -265,7 +266,7 @@ Is the <code>/run/build/</code> path is valid for the container? - I can’t fin
         <p>So, <code>/run/build</code> is where Flatpak Builder places the build sources during the build, with one folder for each module. However, it is not present when the app eventually runs.</p>
 <p>So, you want to hard-code the <code>htmldir</code> to <code>/app/share/html</code> here.</p>
 <p>Additionally, regarding the first two build commands:<br>
-You want to use a script source for this, as this will make it more readable. In <a href="https://docs.flatpak.org/en/latest/first-build.html" class="inline-onebox" rel="noopener nofollow ugc">Building your first Flatpak - Flatpak documentation</a>, you can find a good example in the manifest.</p>
+You want to use a script source for this, as this will make it more readable. In <a href="https://docs.flatpak.org/en/latest/first-build.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Building your first Flatpak - Flatpak documentation</a>, you can find a good example in the manifest.</p>
       </div>
 
       <div class="post-footer">
@@ -488,7 +489,7 @@ The app is working, but I can’t find the files from the host machine.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Sure, I understand,<br>
-this is <a href="http://twister.net.co/" rel="noopener nofollow ugc">old app</a>, I’m trying to upgrade it (including installation ability with the Flatpak)</p>
+this is <a href="http://twister.net.co/" rel="noopener nofollow ugc noreferrer">old app</a>, I’m trying to upgrade it (including installation ability with the Flatpak)</p>
 <p>But I can’t find for example guest’s profile <code>peers.dat</code> in my host filesystem. I expect that parent host (that launches app with <code>--user</code> flag) able to read files from Flatpak runtime, or not?</p>
 <p>When I launch the app, it creates a new profile, which indicates that it does not access my host profile (and should not, of course). Therefore, it stores these files somewhere I can’t find, under the Flatpak container, but where is it…</p>
 <p>Maybe that’s because I’m searching inside my host home dir (e.g. <code>~/.local</code> and <code>~/.var</code></p>
@@ -704,7 +705,7 @@ Otherwise, you could add the <code>xdg-data/appname</code> permission to gain se
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>After some time of reading the docs, I found <a href="https://gist.github.com/ziqiq/9498f030e503d59a10fdc9afc01a2a6a#file-com-sparrowwallet-sparrow-yml" rel="noopener nofollow ugc">this example</a> for bitcoind-based apps, where it seems I should really use <code>--persist</code> option <strong>with original app profile dirname</strong>. Before I’ve just tried this flag without the <code>=value</code>, and also expected that <code>--persist</code> argument will change flatpak locations to the host homedir, lol.</p>
+        <p>After some time of reading the docs, I found <a href="https://gist.github.com/ziqiq/9498f030e503d59a10fdc9afc01a2a6a#file-com-sparrowwallet-sparrow-yml" rel="noopener nofollow ugc noreferrer">this example</a> for bitcoind-based apps, where it seems I should really use <code>--persist</code> option <strong>with original app profile dirname</strong>. Before I’ve just tried this flag without the <code>=value</code>, and also expected that <code>--persist</code> argument will change flatpak locations to the host homedir, lol.</p>
 <p>now it works!</p>
 <pre data-code-wrap="json"><code class="lang-json">"finish-args":
 [

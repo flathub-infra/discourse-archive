@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,11 +104,11 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>so, i am kind of in the worst situation right now,<br>
-i have created a monorepo project for a tauri app using a new tool called <a href="https://bun.com/" rel="noopener nofollow ugc">Bun</a> as the package manager. i wanted to build it with inside of the manifest workflow in order to submit to flathub</p>
+i have created a monorepo project for a tauri app using a new tool called <a href="https://bun.com/" rel="noopener nofollow ugc noreferrer">Bun</a> as the package manager. i wanted to build it with inside of the manifest workflow in order to submit to flathub</p>
 <h2><a name="p-22029-hit-and-trial-with-bun-1" class="anchor" href="#p-22029-hit-and-trial-with-bun-1" aria-label="Heading link"></a>Hit and Trial with Bun</h2>
 <p>so, i am utilizing the bun’s workspaces (which is simmilar to npm workspaces) and bun’s catalogs (there no npm/yarn counter to that)</p>
 <p>so, my goal was to create a flatpak builder workflow that can build a tauri app managed by bun. but the thing is that i can’t figure out how to get the nodejs dependecies to be pre downloaded in a way that <code>bun install</code> can recognize it when running in the manifest workflow.</p>
-<p>to generate the <code>node-sources.json</code>, i used a new tool called <a href="https://github.com/MultiboxLabs/flatpak-bun-generator" rel="noopener nofollow ugc">Flatpak Bun Generator</a>, which can take a bun.lock file and generate a <code>node-sources.json</code> file which i can provide to the flatpak builder.</p>
+<p>to generate the <code>node-sources.json</code>, i used a new tool called <a href="https://github.com/MultiboxLabs/flatpak-bun-generator" rel="noopener nofollow ugc noreferrer">Flatpak Bun Generator</a>, which can take a bun.lock file and generate a <code>node-sources.json</code> file which i can provide to the flatpak builder.</p>
 <p>so this is by best attempt that <strong>didn’t work</strong> for bun</p>
 <pre data-code-wrap="yml"><code class="lang-yml">id: io.github.keshav_writes_code.cherit
 
