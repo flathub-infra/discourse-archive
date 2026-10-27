@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -277,7 +278,7 @@ Error: module: life: Can't find CMakeLists.txt
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Looking at your repo via <a href="https://github.com/tester0077/flcmlife" class="inline-onebox">GitHub - tester0077/flcmlife: Test code for flatpak creation of the wxWidgets Life demo using Cmake-Ninja build for linux</a> it seems like there only is a .tar.gz file, which I don’t think is something that cmake should/would pick up on it’s own. Maybe you did add this by mistake.</p>
+        <p>Looking at your repo via <a href="https://github.com/tester0077/flcmlife" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - tester0077/flcmlife: Test code for flatpak creation of the wxWidgets Life demo using Cmake-Ninja build for linux</a> it seems like there only is a .tar.gz file, which I don’t think is something that cmake should/would pick up on it’s own. Maybe you did add this by mistake.</p>
       </div>
 
       <div class="post-footer">
@@ -372,7 +373,7 @@ Can you please tell me what other file(s ) I need to add?</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>not really a cmake guy, but I would have thought that you need a CMakeLists.txt <a href="https://cmake.org/cmake/help/book/mastering-cmake/chapter/Writing%20CMakeLists%20Files.html" class="inline-onebox">Writing CMakeLists Files — Mastering CMake</a></p>
+        <p>not really a cmake guy, but I would have thought that you need a CMakeLists.txt <a href="https://cmake.org/cmake/help/book/mastering-cmake/chapter/Writing%20CMakeLists%20Files.html" class="inline-onebox" rel="noreferrer nofollow ugc">Writing CMakeLists Files — Mastering CMake</a></p>
 <p>And an archive is probably not really helpful without unarchiving it, but you might be doing that in your manifest</p>
       </div>
 
@@ -712,7 +713,7 @@ George:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>The sha checksum changing seems to be by design. See: <a href="https://www.reddit.com/r/programming/comments/10phfvm/github_sha256_change_broke_many_package_managers/" class="inline-onebox" rel="noopener nofollow ugc">Reddit - Dive into anything</a></p>
+        <p>The sha checksum changing seems to be by design. See: <a href="https://www.reddit.com/r/programming/comments/10phfvm/github_sha256_change_broke_many_package_managers/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Reddit - Dive into anything</a></p>
 <p>I will likely have to put this on the back burner for a bit. It is just too time consuming to almost have to reverse engineer this process <img itemprop="image" src="/images/emoji/twitter/hot_face.png?v=12" title=":hot_face:" class="emoji" alt=":hot_face:" loading="lazy" width="20" height="20"><br>
 But thank you all for sticking with me to this point <img itemprop="image" src="/images/emoji/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
       </div>
@@ -945,13 +946,13 @@ They are located in the parent directory from where the shell script - which als
 “name” : “wxwidgets”,<br>
 “sources” : [<br>
 {<br>
-“url” : “<a href="https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2" rel="noopener nofollow ugc">https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2</a>”,<br>
+“url” : “<a href="https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2" rel="noopener nofollow ugc noreferrer">https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2</a>”,<br>
 “sha256” : “dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02”,<br>
 “x-checker-data” : {<br>
 “type” : “anitya”,<br>
 “project-id” : 5150,<br>
 “stable-only” : true,<br>
-“url-template” : “<a href="https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2" rel="noopener nofollow ugc">https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2</a>”<br>
+“url-template” : “<a href="https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2" rel="noopener nofollow ugc noreferrer">https://github.com/wxWidgets/wxWidgets/releases/download/v/wxWidgets-.tar.bz2</a>”<br>
 },<br>
 “type” : “archive”<br>
 }<br>
@@ -975,7 +976,7 @@ They are located in the parent directory from where the shell script - which als
 ]<br>
 }</p>
 </blockquote>
-<p>According to <a href="https://github.com/flatpak/flatpak/issues/546" class="inline-onebox" rel="noopener nofollow ugc">flatpak-builder: document that cmake requires -DCMAKE_INSTALL_PREFIX=/app · Issue #546 · flatpak/flatpak · GitHub</a><br>
+<p>According to <a href="https://github.com/flatpak/flatpak/issues/546" class="inline-onebox" rel="noopener nofollow ugc noreferrer">flatpak-builder: document that cmake requires -DCMAKE_INSTALL_PREFIX=/app · Issue #546 · flatpak/flatpak · GitHub</a><br>
 I have added the install target</p>
 <blockquote>
 <p>install( TARGETS life  CONFIGURATIONS release  DESTINATION /app/usr/bin )</p>
@@ -983,7 +984,7 @@ I have added the install target</p>
 <p>What the destination ought to be I can’t sort out and I have tried several options from<br>
 /usr/bin<br>
 usr/bin<br>
-/app – see: <a href="https://github.com/flatpak/flatpak/issues/546" class="inline-onebox" rel="noopener nofollow ugc">flatpak-builder: document that cmake requires -DCMAKE_INSTALL_PREFIX=/app · Issue #546 · flatpak/flatpak · GitHub</a></p>
+/app – see: <a href="https://github.com/flatpak/flatpak/issues/546" class="inline-onebox" rel="noopener nofollow ugc noreferrer">flatpak-builder: document that cmake requires -DCMAKE_INSTALL_PREFIX=/app · Issue #546 · flatpak/flatpak · GitHub</a></p>
 <p>The 'install related output is:</p>
 <pre><code class="lang-auto">Install the project...
 -- Install configuration: ""

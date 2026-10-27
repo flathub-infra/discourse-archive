@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -110,7 +111,7 @@
 [📦 org.kicad.KiCad ~]$ du -hs /app/share/doc/kicad/
 118M	/app/share/doc/kicad/
 </code></pre>
-<p>So, I was looking into splitting the HTML documentation off into a dedicated .Docs extension, which would be not installed by default. This seemed straight-forward after I learned about <a href="https://docs.flatpak.org/en/latest/extension.html#bundled-extensions" rel="noopener nofollow ugc">bundled extensions</a>. So I went ahead and added a new .Docs extension to <code>add-extensions</code>, bundling <code>/app/share/doc/kicad</code>:</p>
+<p>So, I was looking into splitting the HTML documentation off into a dedicated .Docs extension, which would be not installed by default. This seemed straight-forward after I learned about <a href="https://docs.flatpak.org/en/latest/extension.html#bundled-extensions" rel="noopener nofollow ugc noreferrer">bundled extensions</a>. So I went ahead and added a new .Docs extension to <code>add-extensions</code>, bundling <code>/app/share/doc/kicad</code>:</p>
 <pre data-code-wrap="yaml"><code class="lang-yaml">add-extensions:
   org.kicad.KiCad.Docs:
     version: stable
@@ -152,7 +153,7 @@ drwxr-xr-x. 1 me me  31K Jan  1  1970 images
 -rw-r--r--. 3 me me 861K Jan  1  1970 pcbnew.html
 -rw-r--r--. 3 me me  66K Jan  1  1970 pl_editor.html
 </code></pre>
-<p>Great! So everything’s fine, <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc">let’s push and merge!</a></p>
+<p>Great! So everything’s fine, <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc noreferrer">let’s push and merge!</a></p>
 <p>But, wait! The help file is now not opening in the host browser anymore as it used to do!? Literally <em>nothing happens</em> when you click on Help → Help from KiCad (or any of the other editors) with the .Docs extension installed.</p>
 <p>Without the .Docs extension installed, KiCad detects the missing files and offers to open the online help instead. But with .Docs installed, <em>nothing happens.</em> The Help → Help (or any other help) menu entry seems to be dead.</p>
 <p>So I checked what was going on here, and it seems to be that the files from extensions are <em>not appearing</em> on the host file system. With the .Docs extension installed (and the being accessible <em>from within the flatpak</em>, see above), the path on the host is empty:</p>
@@ -175,7 +176,7 @@ drwxr-xr-x. 1 root root  31K  Jan 1 1970  images
 </code></pre>
 <p>This is the path, I see in my browser URL bar after opening Help → Help:</p>
 <p><div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93.png" data-download-href="/uploads/original/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93.png" title="Firefox showing the help file from the path mapped to the host" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_690x340.png" alt="Firefox showing the help file from the path mapped to the host" data-base62-sha1="2TKVTLWASdhTgzWO3ZbH1uOS6cz" width="690" height="340" srcset="/uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_690x340.png, /uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_1035x510.png 1.5x, /uploads/optimized/2X/1/1451dc2f80cc22fe031895b7e2b6697b07541c93_2_1380x680.png 2x" data-dominant-color="F1F2F2"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Firefox showing the help file from the path mapped to the host</span><span class="informations">1695×837 151 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
-<p>If you want to reproduce the issue locally, feel free to <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc">install KiCad and the .Docs extension from the PR</a> (assuming that the test build suceeds. The above tests and screenshots were done with a local build), and compare it to the currently available stable flathub version of org.kicad.KiCad.</p>
+<p>If you want to reproduce the issue locally, feel free to <a href="https://github.com/flathub/org.kicad.KiCad/pull/434" rel="noopener nofollow ugc noreferrer">install KiCad and the .Docs extension from the PR</a> (assuming that the test build suceeds. The above tests and screenshots were done with a local build), and compare it to the currently available stable flathub version of org.kicad.KiCad.</p>
       </div>
 
       <div class="post-footer">

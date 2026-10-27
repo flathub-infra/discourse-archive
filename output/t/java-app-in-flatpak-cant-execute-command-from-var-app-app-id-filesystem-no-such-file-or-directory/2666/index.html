@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -120,7 +121,7 @@ Caused by: java.io.IOException: error=2, No such file or directory
 <p>Looking at the source code, OpenRSC Launcher does the following steps:</p>
 <ul>
 <li>Downloads the game client</li>
-<li>Uses some CmdRunner (which takes a command and path to run the command on) to <a href="https://gitlab.com/open-runescape-classic/core/-/blob/develop/PC_Launcher/src/main/java/launcher/Utils/ClientLauncher.java#L285" rel="noopener nofollow ugc">run</a> <code>java -jar /home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/WinRune-master</code> inside the <code>/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/</code> directory</li>
+<li>Uses some CmdRunner (which takes a command and path to run the command on) to <a href="https://gitlab.com/open-runescape-classic/core/-/blob/develop/PC_Launcher/src/main/java/launcher/Utils/ClientLauncher.java#L285" rel="noopener nofollow ugc noreferrer">run</a> <code>java -jar /home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/WinRune-master</code> inside the <code>/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/</code> directory</li>
 </ul>
 <p>Based on the stacktrace, it seems CmdRunner can’t enter the <code>/home/wacket/.var/app/vet.rsc.OpenRSC.Launcher/extras/winrune/</code> directory (although the directory exists on my system; I can <code>cd</code> into it).</p>
 <p>Does anyone have any ideas on what I can do to make this work? I’m new to using Flatpak as a dev so I could be overlooking something simple.</p>
@@ -132,7 +133,7 @@ Caused by: java.io.IOException: error=2, No such file or directory
 <li>Not using <code>.var/app/APP_ID</code> to store the client’s downloads, and using filesystem access to specific folders instead</li>
 </ul>
 <p>As an aside, it seems to be able to download files into the directory and detect them no problem. It just can’t run <code>java</code> from inside the directory</p>
-<p>I have a copy of the Flatpak on my Github <a href="https://github.com/dginovker/flathub/tree/OpenRSC" rel="noopener nofollow ugc">here</a> if anyone wants to see specifics</p>
+<p>I have a copy of the Flatpak on my Github <a href="https://github.com/dginovker/flathub/tree/OpenRSC" rel="noopener nofollow ugc noreferrer">here</a> if anyone wants to see specifics</p>
       </div>
 
       <div class="post-footer">

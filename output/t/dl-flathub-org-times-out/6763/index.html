@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Connection to <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a> fails. As the result, Flatpak neither updates, nor new software installations work. Interestingly enough, it resolves successfully and responds to pings. It’s just HTTP(S) traffic that gets blocked.</p>
+        <p>Connection to <a href="http://dl.flathub.org" rel="noopener nofollow ugc noreferrer">dl.flathub.org</a> fails. As the result, Flatpak neither updates, nor new software installations work. Interestingly enough, it resolves successfully and responds to pings. It’s just HTTP(S) traffic that gets blocked.</p>
 <p>The problem started around a week ago, maybe a bit more.</p>
 <p>Here’s how “flatpak update -vv” fails:</p>
 <pre><code class="lang-auto">F: No installations directory in /etc/flatpak/installations.d. Skipping
@@ -286,7 +287,7 @@ F: Error updating: Error updating appstream2: No such ref 'appstream2/x86_64' in
 * Closing connection
 curl: (28) Failed to connect to dl.flathub.org port 443 after 300954 ms: Timeout was reached
 </code></pre>
-<p>And here’s what the output of “mtr -T -P 443 <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a>” after some time running looks like:</p>
+<p>And here’s what the output of “mtr -T -P 443 <a href="http://dl.flathub.org" rel="noopener nofollow ugc noreferrer">dl.flathub.org</a>” after some time running looks like:</p>
 <pre><code class="lang-auto"> Host                                                                                                                                                                                                               Loss%   Snt   Last   Avg  Best  Wrst StDev
  1. _gateway                                                                                                                                                                                                         0.0%   557    0.5   0.5   0.2  24.7   1.2
  2. 192.168.88.1                                                                                                                                                                                                     0.0%   557    0.9   1.0   0.5  11.2   1.1
@@ -295,7 +296,7 @@ curl: (28) Failed to connect to dl.flathub.org port 443 after 300954 ms: Timeout
  5. var1-kv0.ett.ua                                                                                                                                                                                                  0.0%   557   22.4  23.7  21.8  62.3   4.5
  6. (waiting for reply)
 </code></pre>
-<p>I should however point out that <a href="http://dl.flathub.org" rel="noopener nofollow ugc">dl.flathub.org</a> responds to pings for me and sending ICMP packets to it via mtr instead of TCP port 443 packets looks like this, actually:</p>
+<p>I should however point out that <a href="http://dl.flathub.org" rel="noopener nofollow ugc noreferrer">dl.flathub.org</a> responds to pings for me and sending ICMP packets to it via mtr instead of TCP port 443 packets looks like this, actually:</p>
 <pre><code class="lang-auto"> Host                                                                                                                                                                                                               Loss%   Snt   Last   Avg  Best  Wrst StDev
  1. _gateway                                                                                                                                                                                                         0.0%    68    0.3   0.3   0.2   1.5   0.3
  2. 192.168.88.1                                                                                                                                                                                                     0.0%    68    0.5   0.5   0.4   1.8   0.3
@@ -345,7 +346,7 @@ curl: (28) Failed to connect to dl.flathub.org port 443 after 300954 ms: Timeout
 
       <div class="post-body cooked" itemprop="text">
         <p>Are you in Kiev or Ukraine? If so your ISP or country blocks the CDN used by Flathub -  Fastly.</p>
-<p>This was confirmed by the reporter here who resides there <a href="https://github.com/flathub/flathub/issues/5286" class="inline-onebox" rel="noopener nofollow ugc">Flathub repository index is not accessible in Kyiv, Ukraine · Issue #5286 · flathub/flathub · GitHub</a></p>
+<p>This was confirmed by the reporter here who resides there <a href="https://github.com/flathub/flathub/issues/5286" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flathub repository index is not accessible in Kyiv, Ukraine · Issue #5286 · flathub/flathub · GitHub</a></p>
 <p>You have to contact them unfortunately.</p>
 <blockquote>
 <p>Flathub lacks any official repo mirrors (and I failed to find any unofficial mirrors too for that matter) which makes it tricky for me to resolve this problem by just using some other repo.</p>
@@ -453,9 +454,9 @@ Jiube:</div>
 <blockquote>
 <p>Or try one of the repos you suggested if it doesn’t work out. It’s a bummer those repos didn’t show up in my searches…</p>
 </blockquote>
-<p><a href="https://wiki.gnome.org/Apps/Nightly" class="onebox" target="_blank" rel="noopener nofollow ugc">https://wiki.gnome.org/Apps/Nightly</a></p>
-<p><a href="https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps" class="onebox" target="_blank" rel="noopener nofollow ugc">https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps</a></p>
-<p><a href="https://developer.fedoraproject.org/deployment/flatpak/flatpak-usage.html" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Usage — Fedora Developer Portal</a> (second one)</p>
+<p><a href="https://wiki.gnome.org/Apps/Nightly" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://wiki.gnome.org/Apps/Nightly</a></p>
+<p><a href="https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps</a></p>
+<p><a href="https://developer.fedoraproject.org/deployment/flatpak/flatpak-usage.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flatpak Usage — Fedora Developer Portal</a> (second one)</p>
       </div>
 
       <div class="post-footer">
@@ -490,7 +491,7 @@ Jiube:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can also easily build and host something from Flathub to your own repo. <a href="https://docs.flatpak.org/en/latest/hosting-a-repository.html#hosting-a-repository-on-gitlab-github-pages" class="inline-onebox" rel="noopener nofollow ugc">Hosting a repository - Flatpak documentation</a> has an example for hosting on <a href="http://gitlab.com" rel="noopener nofollow ugc">gitlab.com</a> pages</p>
+        <p>You can also easily build and host something from Flathub to your own repo. <a href="https://docs.flatpak.org/en/latest/hosting-a-repository.html#hosting-a-repository-on-gitlab-github-pages" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Hosting a repository - Flatpak documentation</a> has an example for hosting on <a href="http://gitlab.com" rel="noopener nofollow ugc noreferrer">gitlab.com</a> pages</p>
       </div>
 
       <div class="post-footer">

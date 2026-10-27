@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>I hope this forum is the right place for this kind of post. Please, let me know if it’s not.</p>
-<p><a href="https://github.com/flathub/io.gitlab.azymohliad.WatchMate" rel="noopener nofollow ugc">My app</a> was recently accepted to Flathub, but the CI build <a href="https://buildbot.flathub.org/#/builders/32/builds/105183" rel="noopener nofollow ugc">failed</a> from initial PR, then <a href="https://buildbot.flathub.org/#/builders/32/builds/105280" rel="noopener nofollow ugc">succeeded</a> form the second attempt, and then failed again after acceptance from <strong>exactly the same commit</strong>. I retried 2 more times after that, and it was stuck with the same issue (so I still can’t get it published on <a href="http://flathub.org" rel="noopener nofollow ugc">flathub.org</a>).</p>
+<p><a href="https://github.com/flathub/io.gitlab.azymohliad.WatchMate" rel="noopener nofollow ugc noreferrer">My app</a> was recently accepted to Flathub, but the CI build <a href="https://buildbot.flathub.org/#/builders/32/builds/105183" rel="noopener nofollow ugc noreferrer">failed</a> from initial PR, then <a href="https://buildbot.flathub.org/#/builders/32/builds/105280" rel="noopener nofollow ugc noreferrer">succeeded</a> form the second attempt, and then failed again after acceptance from <strong>exactly the same commit</strong>. I retried 2 more times after that, and it was stuck with the same issue (so I still can’t get it published on <a href="http://flathub.org" rel="noopener nofollow ugc noreferrer">flathub.org</a>).</p>
 <p>The issue seems to be with downloading dependencies for gtk-rs:</p>
 <pre><code class="lang-auto">Cloning into '/srv/buildbot/worker/build-x86_64-7/build/.flatpak-builder/build/watchmate-1/flatpak-cargo/git/gtk4-rs-6b7f5d5/gir-files'...
 fatal: did not receive expected object 3c426d639f8b5dbe3066b8a94becb1bfe5f4874e
@@ -117,7 +118,7 @@ fatal: clone of 'file:///srv/buildbot/worker/build-x86_64-7/build/.flatpak-build
 Failed to clone 'gir-files' a second time, aborting
 </code></pre>
 <p>But I can never reproduce this issue locally, and the CI succeeded occasionally (sometimes for just one arch, so overall the build fails). Does anybody have a clue what could be the reason here or what can I do to improve the situation?</p>
-<p>Here’s the <a href="https://github.com/flathub/flathub/pull/3416" rel="noopener nofollow ugc">publish PR</a> for full context.</p>
+<p>Here’s the <a href="https://github.com/flathub/flathub/pull/3416" rel="noopener nofollow ugc noreferrer">publish PR</a> for full context.</p>
       </div>
 
       <div class="post-footer">
@@ -254,7 +255,7 @@ Failed to clone 'gir-files' a second time, aborting
 
       <div class="post-body cooked" itemprop="text">
         <p>By default the builders use shallow clone to not pull a large amount of data on big repo. But sometime submodules refer to an object that shallow clone didn’t fetch.</p>
-<p>Shallow clone a “standard” feature for <code>git clone</code> <a href="https://www.git-scm.com/docs/git-clone" class="inline-onebox">Git - git-clone Documentation</a></p>
+<p>Shallow clone a “standard” feature for <code>git clone</code> <a href="https://www.git-scm.com/docs/git-clone" class="inline-onebox" rel="noreferrer nofollow ugc">Git - git-clone Documentation</a></p>
 <p>And on your local machine flatpak-builder doesn’t do it.</p>
 <p>As for the upload failure, usually retriggering is enough.</p>
       </div>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,11 +103,11 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Over at the KeepassXC password manager we had an <a href="https://github.com/keepassxreboot/keepassxc/issues/7352" rel="noopener nofollow ugc">issue</a> for a longer time, where the Firefox addon used to access our passwords was only operational if the Firefox/Librewolf flatpak app was started <em>after</em> KeepassXC.</p>
+        <p>Over at the KeepassXC password manager we had an <a href="https://github.com/keepassxreboot/keepassxc/issues/7352" rel="noopener nofollow ugc noreferrer">issue</a> for a longer time, where the Firefox addon used to access our passwords was only operational if the Firefox/Librewolf flatpak app was started <em>after</em> KeepassXC.</p>
 <p>Recently we figured out the reason it worked this way. We wanted to make filesystem access so tight that we only passed in the Unix socket file with the filesystem override configuration:</p>
 <pre><code class="lang-auto">flatpak override --filesystem=xdg-run/app/org.keepassxc.KeePassXC/org.keepassxc.KeePassXC.BrowserServer org.mozilla.firefox
 </code></pre>
-<p>But it <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2781802185" rel="noopener nofollow ugc">turns out</a> that this socket file gets recreated when Keepass starts up, even if it exists already. After that happens, software in the flatpak environment cant connect to the socket anymore.<br>
+<p>But it <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2781802185" rel="noopener nofollow ugc noreferrer">turns out</a> that this socket file gets recreated when Keepass starts up, even if it exists already. After that happens, software in the flatpak environment cant connect to the socket anymore.<br>
 It is like if flatpak would have done a bind-mount of this file for the app, and the app would still see the original copy of the socket file, while actually that has been replaced on the host system.</p>
 <p>My question is, what can we do to give access to this file for the flatpak app, but only this one, while making it so that it is reflected in the app’s view when it is recreated?</p>
 <p>Currently we solve it by passing in the file by its parent directory that is not normally recreated, like this:</p>
@@ -213,7 +214,7 @@ Thanks, Patrick
 <p>Anyway, I’ve found an issue on flatpak which may be related here:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/flatpak/flatpak/issues/5370">
   <header class="source">
 
-      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener">github.com/flatpak/flatpak</a>
+      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener noreferrer nofollow ugc">github.com/flatpak/flatpak</a>
   </header>
 
   <article class="onebox-body">
@@ -224,7 +225,7 @@ Thanks, Patrick
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener">[Bug]: if filesystem option point to a single file the application can't get the up-to-date content</a>
+      <a href="https://github.com/flatpak/flatpak/issues/5370" target="_blank" rel="noopener noreferrer nofollow ugc">[Bug]: if filesystem option point to a single file the application can't get the up-to-date content</a>
     </h4>
 
     <div class="github-info">
@@ -234,7 +235,7 @@ Thanks, Patrick
 
 
       <div class="user">
-        <a href="https://github.com/wengxt" target="_blank" rel="noopener">
+        <a href="https://github.com/wengxt" target="_blank" rel="noopener noreferrer nofollow ugc">
           <img itemprop="image" alt="" src="/uploads/original/2X/f/f6f78784a11974d5bf2392f941e3569f3c309a22.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="D0D0D0">
           wengxt
         </a>

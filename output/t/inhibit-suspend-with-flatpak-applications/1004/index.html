@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,9 +104,9 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Dear all,<br>
-using the debian derivate Mobian on the Pinephone, I would like to be able to inhibit suspend for <a href="https://wiki.gnome.org/Apps/Podcasts" rel="noopener nofollow ugc">gnome-podcasts</a> which is available only as  a flatpak app. Because, be default, the phone goes into suspend after two minutes or so.<br>
+using the debian derivate Mobian on the Pinephone, I would like to be able to inhibit suspend for <a href="https://wiki.gnome.org/Apps/Podcasts" rel="noopener nofollow ugc noreferrer">gnome-podcasts</a> which is available only as  a flatpak app. Because, be default, the phone goes into suspend after two minutes or so.<br>
 Wrapping it with gnome-session-inhibit does not work.<br>
-<a href="https://docs.flatpak.org/en/latest/desktop-integration.html?highlight=suspend#portals" rel="noopener nofollow ugc">The flatpak documentation says</a> that portals provide functions to allow apps to inhibit suspend. But I guess that’s what packagers / app developers have to implement. Or is there any way for a user to launch a flatpak app in such a way as to inhibit suspend?</p>
+<a href="https://docs.flatpak.org/en/latest/desktop-integration.html?highlight=suspend#portals" rel="noopener nofollow ugc noreferrer">The flatpak documentation says</a> that portals provide functions to allow apps to inhibit suspend. But I guess that’s what packagers / app developers have to implement. Or is there any way for a user to launch a flatpak app in such a way as to inhibit suspend?</p>
       </div>
 
       <div class="post-footer">
@@ -144,10 +145,10 @@ Wrapping it with gnome-session-inhibit does not work.<br>
 <p>You can do that by allowing the D-Bus interface like VLC does:<br>
 </p><aside class="onebox githubblob">
   <header class="source">
-      <a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc">github.com</a>
+      <a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc noreferrer">github.com</a>
   </header>
   <article class="onebox-body">
-    <h4><a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc">flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15</a></h4>
+    <h4><a href="https://github.com/flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15" target="_blank" rel="noopener nofollow ugc noreferrer">flathub/org.videolan.VLC/blob/master/org.videolan.VLC.json#L15</a></h4>
 <pre class="onebox"><code class="lang-json"><ol class="start lines" start="5" style="counter-reset: li-counter 4 ;">
 <li>"sdk": "org.kde.Sdk",</li><li>"command": "vlc",</li><li>"finish-args": [</li><li>  "--require-version=0.11.4",</li><li>  "--share=ipc",</li><li>  "--socket=x11",</li><li>  "--socket=pulseaudio",</li><li>  "--share=network",</li><li>  "--filesystem=host",</li><li>  "--talk-name=org.freedesktop.Notifications",</li><li class="selected">  "--talk-name=org.freedesktop.ScreenSaver",</li><li>  "--talk-name=org.freedesktop.secrets",</li><li>  "--talk-name=org.kde.kwalletd5",</li><li>  "--talk-name=org.kde.kwalletd",</li><li>  "--talk-name=org.mpris.MediaPlayer2.Player",</li><li>  "--own-name=org.mpris.MediaPlayer2.vlc",</li><li>  "--device=all",</li><li>  "--filesystem=xdg-run/gvfs"</li><li>],</li><li>"add-extensions": {</li><li>  "org.videolan.VLC.Plugin": {</li>
 </ol></code></pre>
@@ -254,7 +255,7 @@ BTW, for audio podcasts, it is not about the screensaver. The screen is supposed
 
       <div class="post-body cooked" itemprop="text">
         <p>It seems that the problem is with the upstream application:</p>
-<p><a href="https://gitlab.gnome.org/World/podcasts/-/issues/189" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gitlab.gnome.org/World/podcasts/-/issues/189</a></p>
+<p><a href="https://gitlab.gnome.org/World/podcasts/-/issues/189" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://gitlab.gnome.org/World/podcasts/-/issues/189</a></p>
 <p>So none of this will be useful.</p>
       </div>
 

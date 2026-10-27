@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I have created an app which can be built and runs properly as a Flatpak (the manifest was created for me by “exalm” quite a while ago). I have followed the guidelines on <a href="https://github.com/flathub/flathub/wiki/App-Submission" rel="noopener nofollow ugc">https://github.com/flathub/flathub/wiki/App-Submission</a>, but I am a newbie to Flatpak-ing and to Git/Github.</p>
+        <p>I have created an app which can be built and runs properly as a Flatpak (the manifest was created for me by “exalm” quite a while ago). I have followed the guidelines on <a href="https://github.com/flathub/flathub/wiki/App-Submission" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/flathub/wiki/App-Submission</a>, but I am a newbie to Flatpak-ing and to Git/Github.</p>
 <p>I am concerned to avoid either wasting the time of the Flathub administrators or be stuck with a repository location or application name that I don’t want. Before I submit it could I check that my assumptions are correct?</p>
 <p>Capitals - my desktop file contains Name=Myapp which I think is correct, and it is called Myapp.desktop, but is lower case more standard for the filename – myapp.desktop?</p>
 <p>I want to avoid the clumsy repetition of the name, for example org.gimp.GIMP, so I must use different names for my repository and the application. The name of my Github repository where I will have the manifest should be the same as the name I want the app to have, is that correct? Is it more standard for the names to be all lower case, or should the initial letters be capitalised?</p>
@@ -118,8 +119,8 @@
    - type: git
      url: https://github.com/{myaccountname}/{myapp}
 </code></pre>
-<p>Meson – The meson.build file works apart from losing an icon. I have found <a href="https://mesonbuild.com/" rel="noopener nofollow ugc">https://mesonbuild.com</a> but can’t find anything about copying files, is there a language reference or a forum?</p>
-<p>Manifest - A major dependency is align_image_stack which is part of Hugin. This is all built in to the manifest and works correctly. Having read <a href="https://docs.flatpak.org/en/latest/index.html" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/index.html</a> I am wondering whether Building&gt;Dependencies&gt;Base Apps shows a way to include another application which has already been built as a Flatpak to save work and time specifying and building modules for the new Flatpak? If that is the case it might be possible to simplify the manifest as Hugin is already available as a Flatpak. That would also be desirable, because as it stands it can only be built with an out-of-date runtime.</p>
+<p>Meson – The meson.build file works apart from losing an icon. I have found <a href="https://mesonbuild.com/" rel="noopener nofollow ugc noreferrer">https://mesonbuild.com</a> but can’t find anything about copying files, is there a language reference or a forum?</p>
+<p>Manifest - A major dependency is align_image_stack which is part of Hugin. This is all built in to the manifest and works correctly. Having read <a href="https://docs.flatpak.org/en/latest/index.html" rel="noopener nofollow ugc noreferrer">https://docs.flatpak.org/en/latest/index.html</a> I am wondering whether Building&gt;Dependencies&gt;Base Apps shows a way to include another application which has already been built as a Flatpak to save work and time specifying and building modules for the new Flatpak? If that is the case it might be possible to simplify the manifest as Hugin is already available as a Flatpak. That would also be desirable, because as it stands it can only be built with an out-of-date runtime.</p>
       </div>
 
       <div class="post-footer">
@@ -156,7 +157,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Don’t worry about the dependency. Base Application won’t really solve anything, not even time. The time saver is usually copying fragments of the manifest as “someone already figured that out”.</p>
 <p>The app name can be capitalised the way you want.</p>
-<p>For meson, to copy the icon with meson, check <a href="https://mesonbuild.com/Reference-manual.html#install_data" rel="noopener nofollow ugc">https://mesonbuild.com/Reference-manual.html#install_data</a><br>
+<p>For meson, to copy the icon with meson, check <a href="https://mesonbuild.com/Reference-manual.html#install_data" rel="noopener nofollow ugc noreferrer">https://mesonbuild.com/Reference-manual.html#install_data</a><br>
 But fundamentally this is not a flatpak issue.</p>
       </div>
 

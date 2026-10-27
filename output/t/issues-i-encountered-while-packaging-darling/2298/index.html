@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hello Everyone,</p>
-<p>I’m a member of the <a href="https://github.com/darlinghq/darling" rel="noopener nofollow ugc">Darling</a> team and I am currently assessing how viable it would be to run Darling as a Flatpak app.</p>
+<p>I’m a member of the <a href="https://github.com/darlinghq/darling" rel="noopener nofollow ugc noreferrer">Darling</a> team and I am currently assessing how viable it would be to run Darling as a Flatpak app.</p>
 <p>Right now I am trying to build <code>libfuse</code>. From what I observed, it seems like <code>libfuse</code> builds just fine, but Darling is not able to detect the built library for some reason (It uses <code>FindPkgConfig.cmake</code> to check for the ‘fuse’ library).</p>
 <pre><code class="lang-auto">-- Checking for module 'fuse'
 --   Package 'fuse', required by 'virtual:world', not found
@@ -191,7 +192,7 @@ build-dir/
     ├── run -&gt; /run
     └── tmp
 </code></pre>
-<p>Below is how I set the yml files. <a href="https://github.com/darlinghq/flathub" rel="noopener nofollow ugc">These files are also hosted on GitHub</a>.</p>
+<p>Below is how I set the yml files. <a href="https://github.com/darlinghq/flathub" rel="noopener nofollow ugc noreferrer">These files are also hosted on GitHub</a>.</p>
 <p><strong>org.darlinghq.darling.yml</strong></p>
 <pre><code class="lang-auto">app-id: org.darlinghq.Darling
 runtime: org.freedesktop.Platform
@@ -369,7 +370,7 @@ include(FindPkgConfig)
 message(WARNING "PKG_CONFIG_PATH: $ENV{PKG_CONFIG_PATH}")
 pkg_check_modules(FUSE REQUIRED fuse)
 </code></pre>
-<p>I uploaded <a href="https://github.com/CuriousTommy/flathub/tree/cmake_flatpak_pkg_check_modules_issue" rel="noopener nofollow ugc">a reproducible example on GitHub</a>.</p>
+<p>I uploaded <a href="https://github.com/CuriousTommy/flathub/tree/cmake_flatpak_pkg_check_modules_issue" rel="noopener nofollow ugc noreferrer">a reproducible example on GitHub</a>.</p>
       </div>
 
       <div class="post-footer">
@@ -649,7 +650,7 @@ struct msghdr;
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>After some trials and errors, I got Darling to successfully build! <a href="https://github.com/darlinghq/flathub/commit/4fd17fccbf55bdb80b9d3e69bb4a8107b553d125" rel="noopener nofollow ugc">I just needed to add some <code>build-options</code> flags to stop Flatpak from adding Linux specific compiler/linker flags</a>.</p>
+        <p>After some trials and errors, I got Darling to successfully build! <a href="https://github.com/darlinghq/flathub/commit/4fd17fccbf55bdb80b9d3e69bb4a8107b553d125" rel="noopener nofollow ugc noreferrer">I just needed to add some <code>build-options</code> flags to stop Flatpak from adding Linux specific compiler/linker flags</a>.</p>
 <hr>
 <p>With that being said, there are issues when trying to run Darling. Darling is currently designed to launch with root permissions so that it can mount overlayfs and create PID namespaces.</p>
 <p>It makes sense why the Darling executable doesn’t run with root permissions, but is it possible to mount and create PID namespaces in Flatpak without needing to be root?</p>
@@ -706,7 +707,7 @@ CuriousTommy:</div>
 <p>It makes sense why the Darling executable doesn’t run with root permissions, but is it possible to mount and create PID namespaces in Flatpak without needing to be root?</p>
 </blockquote>
 </aside>
-<p>You should probably ask the Flatpak developers directly (<a href="https://lists.freedesktop.org/mailman/listinfo/flatpak" rel="noopener nofollow ugc">Flatpak mailing list</a> or <a href="https://github.com/flatpak/flatpak" rel="noopener nofollow ugc">GitHub</a>).</p>
+<p>You should probably ask the Flatpak developers directly (<a href="https://lists.freedesktop.org/mailman/listinfo/flatpak" rel="noopener nofollow ugc noreferrer">Flatpak mailing list</a> or <a href="https://github.com/flatpak/flatpak" rel="noopener nofollow ugc noreferrer">GitHub</a>).</p>
       </div>
 
       <div class="post-footer">

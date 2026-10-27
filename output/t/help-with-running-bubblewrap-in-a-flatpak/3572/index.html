@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I have <a href="https://gitlab.com/portmod/portmod" rel="noopener nofollow ugc">this</a> CLI mod manager that I’m packaging, and it relies on using <code>bwrap</code> to sandbox package installation, so mod installation can’t somehow wipe out the home directory or do something malicious. The problem is, you can’t run bubblewrap nested, as sandboxed applications don’t have permission to create namespaces. One option is to just disable the nested bubblewrap, but I don’t want to do that because this application needs access to the home directory, but mod installation doesn’t. Is there some way to narrow Flatpak’s sandbox for just one internal process, or something like that?</p>
+        <p>I have <a href="https://gitlab.com/portmod/portmod" rel="noopener nofollow ugc noreferrer">this</a> CLI mod manager that I’m packaging, and it relies on using <code>bwrap</code> to sandbox package installation, so mod installation can’t somehow wipe out the home directory or do something malicious. The problem is, you can’t run bubblewrap nested, as sandboxed applications don’t have permission to create namespaces. One option is to just disable the nested bubblewrap, but I don’t want to do that because this application needs access to the home directory, but mod installation doesn’t. Is there some way to narrow Flatpak’s sandbox for just one internal process, or something like that?</p>
       </div>
 
       <div class="post-footer">
@@ -137,11 +138,11 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I think you can spawn a sub-sandbox via the Flatpak-Portal (<a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.Flatpak" class="inline-onebox" rel="noopener nofollow ugc">XDG Desktop Portal</a>).</p>
+        <p>I think you can spawn a sub-sandbox via the Flatpak-Portal (<a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.Flatpak" class="inline-onebox" rel="noopener nofollow ugc noreferrer">XDG Desktop Portal</a>).</p>
 <blockquote>
 <p>The flatpak portal exposes some interactions with flatpak on the host to the sandbox. For example, it allows you to restart the applications or start a more sandboxed instance.</p>
 </blockquote>
-<p>The simplest solution is probably via flatpak-spawn within your sandboxed application (<a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-spawn" rel="noopener nofollow ugc">man flatpak-spawn</a>).</p>
+<p>The simplest solution is probably via flatpak-spawn within your sandboxed application (<a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-spawn" rel="noopener nofollow ugc noreferrer">man flatpak-spawn</a>).</p>
       </div>
 
       <div class="post-footer">

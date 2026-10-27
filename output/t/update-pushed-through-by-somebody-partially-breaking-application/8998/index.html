@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’m maintaining a <a href="https://github.com/flathub/org.photoqt.PhotoQt" rel="noopener nofollow ugc">Flatpak for PhotoQt</a> for quite a while by now. Earlier this week <a href="https://github.com/flathub/org.photoqt.PhotoQt/pull/42" rel="noopener nofollow ugc">a pull request</a> was opened with some changes that would reduce the package size quite a bit. That was great, but before I was able to get to reviewing the pull request just over two days later, it was already merged and the app was updated on Flathub. The problem: The update removed about 1/3 of the supported image formats from the app - kinda a big deal for an image viewer.</p>
+        <p>I’m maintaining a <a href="https://github.com/flathub/org.photoqt.PhotoQt" rel="noopener nofollow ugc noreferrer">Flatpak for PhotoQt</a> for quite a while by now. Earlier this week <a href="https://github.com/flathub/org.photoqt.PhotoQt/pull/42" rel="noopener nofollow ugc noreferrer">a pull request</a> was opened with some changes that would reduce the package size quite a bit. That was great, but before I was able to get to reviewing the pull request just over two days later, it was already merged and the app was updated on Flathub. The problem: The update removed about 1/3 of the supported image formats from the app - kinda a big deal for an image viewer.</p>
 <p>Why was this pull request merged without waiting for any feedback? I verified my app on Flathub a while ago - but I was not able to “verify” this update, it happened behind my back. This is not a big deal for an image viewer, but tbh it doesn’t sit right that this is possible in general. I assume that the person who did that is part of the Flathub team (as I don’t think just anybody can merge randomly), but what is the point of the process of updating apps and verification if an update can be pushed through by others that alters the feature set of an application? Isn’t this what pull requests and reviews are supposed to prevent?</p>
 <p>I’m really a little annoyed (to put it mildly) that this happened. In an already busy week I’m now forced to debug these changes to find what caused this regression, or to simply revert the changes altogether. <a href="/t/flathub-safety-a-layered-approach-from-source-to-user/8940/index.html">Given the recent talk around security of Flathub</a> I would hope that things were handled a little more cautiously.</p>
 <p>Thank you for listening to my rant.</p>
@@ -447,7 +448,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Oh, I was referring to <code>.la</code> files. That specific cleanup rule was the source of the problems:</p>
 <p>“Some packages, such as [ImageMagick], use a libtool function, lt_dlopen, to load libraries as needed during execution and resolve their dependencies at run time. In this case, the .la files should remain.”<br>
-(Source: <a href="https://www.linuxfromscratch.org/~ken/fontconfig-systemd/introduction/la-files.html" class="inline-onebox" rel="noopener nofollow ugc">About Libtool Archive (.la) files</a>)</p>
+(Source: <a href="https://www.linuxfromscratch.org/~ken/fontconfig-systemd/introduction/la-files.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">About Libtool Archive (.la) files</a>)</p>
       </div>
 
       <div class="post-footer">

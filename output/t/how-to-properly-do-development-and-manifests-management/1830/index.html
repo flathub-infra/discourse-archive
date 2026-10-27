@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -107,9 +108,9 @@
 <p><strong>Consistent environments</strong><br>
 Develop and test your application in an environment that’s identical to the one users have.</p>
 </blockquote>
-<p>But what I see in action is that developers make a production manifest stored in a repo at <a href="https://github.com/flathub" rel="noopener nofollow ugc">Flathub’s GitHub</a>, and a “.Devel” manifest used for developing and testing at the project’s repo.</p>
+<p>But what I see in action is that developers make a production manifest stored in a repo at <a href="https://github.com/flathub" rel="noopener nofollow ugc noreferrer">Flathub’s GitHub</a>, and a “.Devel” manifest used for developing and testing at the project’s repo.</p>
 <p>The most notable difference of development manifests, is the usage of the “master” version of the runtime, while in production manifests, they specify the latest stable version. I feel like this alone breaks the concept of developing, testing and using in the same environment.</p>
-<p>However, it seems that the issue isn’t just in misuse. If I wanted to use a production manifest for developing a Rust project —  I couldn’t. That’s because Rust’s package manager, Cargo, is one of those that require network connection while building. It’s possible to download dependencies beforehand using <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" rel="noopener nofollow ugc">flatpak-builder-tools</a> to build offline. But to know which dependencies to download — the tool parses a “Cargo.lock” file, which is programmatically populated in the building process, when it already needs dependencies (recursion). I could, in theory, manually bundle all of the dependencies of dependencies, but… Too much work.</p>
+<p>However, it seems that the issue isn’t just in misuse. If I wanted to use a production manifest for developing a Rust project —  I couldn’t. That’s because Rust’s package manager, Cargo, is one of those that require network connection while building. It’s possible to download dependencies beforehand using <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/cargo" rel="noopener nofollow ugc noreferrer">flatpak-builder-tools</a> to build offline. But to know which dependencies to download — the tool parses a “Cargo.lock” file, which is programmatically populated in the building process, when it already needs dependencies (recursion). I could, in theory, manually bundle all of the dependencies of dependencies, but… Too much work.</p>
 <p>So, the question is — how to properly do development and manifests management?</p>
 <p>Thanks in advance.</p>
       </div>

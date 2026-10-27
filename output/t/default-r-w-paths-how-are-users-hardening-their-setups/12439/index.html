@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -526,7 +527,7 @@ And to re-iterate, with !home rule in place, I would expect the individual app <
 
       <div class="post-body cooked" itemprop="text">
         <p>A real-life example to show what I mean.</p>
-<p>Let’s take <a href="https://github.com/flathub/org.libreoffice.LibreOffice/blob/71f6606bd6f59e9abbbe544bf017aedcb4ba7fc0/org.libreoffice.LibreOffice.json#L146" rel="noopener nofollow ugc">libreoffice</a> with its <code>--filesystem=xdg-config/gtk-3.0</code> rule. This means I can run <code>flatpak run org.libreoffice.libreoffice ~/.config/gtk-3.0/myfile.xlsx</code> and it will open it, although there is a <code>!home</code> override in place. (note providing file on CLI bypasses portals, so it’s not it)</p>
+<p>Let’s take <a href="https://github.com/flathub/org.libreoffice.LibreOffice/blob/71f6606bd6f59e9abbbe544bf017aedcb4ba7fc0/org.libreoffice.LibreOffice.json#L146" rel="noopener nofollow ugc noreferrer">libreoffice</a> with its <code>--filesystem=xdg-config/gtk-3.0</code> rule. This means I can run <code>flatpak run org.libreoffice.libreoffice ~/.config/gtk-3.0/myfile.xlsx</code> and it will open it, although there is a <code>!home</code> override in place. (note providing file on CLI bypasses portals, so it’s not it)</p>
 <p>My issue with this is that user needs to know all the rules and their permutations. Intuitively I feel that !home should mean “everything in home is disallowed”, and individual apps shouldn’t be able to carve exceptions into its subdirectories.</p>
       </div>
 
@@ -656,7 +657,7 @@ Erick555:</div>
 <p>At same time they’re marginal for security</p>
 </blockquote>
 </aside>
-<p>Yes, but that’s debatable. If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
+<p>Yes, but that’s debatable. If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc noreferrer">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc noreferrer">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
 <aside class="quote no-group" data-username="Erick555" data-post="10" data-topic="12439">
 <div class="title">
 <div class="quote-controls"></div>
@@ -665,7 +666,7 @@ Erick555:</div>
 <p>BTW: probably LO should have read-only <code>--filesystem=xdg-config/gtk-3.0:ro</code></p>
 </blockquote>
 </aside>
-<p>Should these issues be raised with upstream problems, or is the <a href="https://github.com/flathub/org.libreoffice.LibreOffice" rel="noopener nofollow ugc">flathub/project</a> okay venue?</p>
+<p>Should these issues be raised with upstream problems, or is the <a href="https://github.com/flathub/org.libreoffice.LibreOffice" rel="noopener nofollow ugc noreferrer">flathub/project</a> okay venue?</p>
 <aside class="quote no-group" data-username="basher" data-post="6" data-topic="12439">
 <div class="title">
 <div class="quote-controls"></div>
@@ -722,10 +723,10 @@ basher:</div>
 <div class="quote-controls"></div>
 basher:</div>
 <blockquote>
-<p>If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
+<p>If a program asks permission to the entire xdg-data or xdg-config, then that often contains sensitive data. E.g. default <a href="https://github.com/atuinsh/atuin" rel="noopener nofollow ugc noreferrer">atuin</a> db is in the former, default <a href="https://github.com/hluk/CopyQ" rel="noopener nofollow ugc noreferrer">copyq</a> db is in the latter. Secrets may easily leak into either.</p>
 </blockquote>
 </aside>
-<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
+<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc noreferrer">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
       </div>
 
       <div class="post-footer">
@@ -818,7 +819,7 @@ basher:</div>
 <div class="quote-controls"></div>
 Erick555:</div>
 <blockquote>
-<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
+<p>I don’t see any fs permission in <a href="https://github.com/flathub/com.github.hluk.copyq/blob/master/com.github.hluk.copyq.yaml#L7" rel="noopener nofollow ugc noreferrer">copyq</a>. I can’t find atuin on flathub at all. Where do you see that?</p>
 </blockquote>
 </aside>
 <p>Atuin and/or copyq could be installed natively (which is the case for me), and whatever fp-installed program asking access to the entirety of <code>xdg-*</code> can pull my CC numbers that got accidentally copied to the clipboard or AWS token I used in a shell command.</p>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -137,7 +138,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can pass additional arguments at the end of <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc">flatpak run command</a>, e.g. <code>flatpak run de.willuhn.Jameica -f &lt;path&gt;</code> could work.</p>
+        <p>You can pass additional arguments at the end of <a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-run" rel="noopener nofollow ugc noreferrer">flatpak run command</a>, e.g. <code>flatpak run de.willuhn.Jameica -f &lt;path&gt;</code> could work.</p>
 <p>But it depends on the application. <code>flatpak run</code> executes a specific command from the Flatpak. If this is the <code>jameica.sh</code> (though the file could be renamed to, e.g., simply jameica) then this should work. If it’s running a different wrapper script then the argument could be missing there.</p>
 <p>You can check which command is executed with <code>flatpak info -m de.willuhn.Jameica</code> (look for <code>command=&lt;bin&gt;</code>).</p>
 <p>But keep in mind: As far as I know there is no mechanism to save the argument, it has to be added manually every time you run the application.</p>

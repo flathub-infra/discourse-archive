@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -114,8 +115,8 @@
   </div>
   <blockquote>
     <a name="p-782-problem-1" class="anchor" href="#p-782-problem-1" aria-label="Heading link"></a>Problem
-If KeePassXC is sandboxed <a href="https://flathub.org/apps/details/org.keepassxc.KeePassXC">in a Flatpak</a>, browsers can only access it, if they are not sandboxed, i.e. installed as an deb/rpm package or similar on the host. 
-Sandboxing both the browser, i.e. <a href="https://flathub.org/apps/details/org.mozilla.firefox">Firefox</a>, and KeePassXC – or at least the browser and installing KeePassXC natively, which you’d actually want for security reasons – is not possible. 
+If KeePassXC is sandboxed <a href="https://flathub.org/apps/details/org.keepassxc.KeePassXC" rel="noreferrer nofollow ugc">in a Flatpak</a>, browsers can only access it, if they are not sandboxed, i.e. installed as an deb/rpm package or similar on the host. 
+Sandboxing both the browser, i.e. <a href="https://flathub.org/apps/details/org.mozilla.firefox" rel="noreferrer nofollow ugc">Firefox</a>, and KeePassXC – or at least the browser and installing KeePassXC natively, which you’d actually want for security reasons – is not possible. 
 TL;DR: 
 
 this should work out-of-the box: Firefox (host-installed), KeePassXC (flatpak from flathub)
@@ -126,7 +127,7 @@ this does not: Firefox (sandboxed), KeePassXC (h…
 <h2><a name="p-16517-problem-1" class="anchor" href="#p-16517-problem-1" aria-label="Heading link"></a>Problem</h2>
 <p>The issue appears as follows:</p>
 <ol>
-<li>Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox">https://flathub.org/apps/details/org.mozilla.firefox</a></li>
+<li>Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox" rel="noreferrer nofollow ugc">https://flathub.org/apps/details/org.mozilla.firefox</a></li>
 <li>Install KeePassXC desktop application.</li>
 <li>Install the KeePassXC browser extension (add-on/WebExtension)<br>
  → Now try to connect → it will not work due to flatpak sandboxing.</li>
@@ -135,7 +136,7 @@ this does not: Firefox (sandboxed), KeePassXC (h…
 <p>Now, my proposed solution is based on this idea:</p><aside class="onebox githubissue" data-onebox-src="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2409096972">
   <header class="source">
 
-      <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2409096972" target="_blank" rel="noopener">github.com/keepassxreboot/keepassxc</a>
+      <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2409096972" target="_blank" rel="noopener noreferrer nofollow ugc">github.com/keepassxreboot/keepassxc</a>
   </header>
 
   <article class="onebox-body">
@@ -146,7 +147,7 @@ this does not: Firefox (sandboxed), KeePassXC (h…
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2409096972" target="_blank" rel="noopener">Unable to connect native KeePassXC to flatpak Firefox</a>
+      <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2409096972" target="_blank" rel="noopener noreferrer nofollow ugc">Unable to connect native KeePassXC to flatpak Firefox</a>
     </h4>
 
     <div class="github-info">
@@ -159,7 +160,7 @@ this does not: Firefox (sandboxed), KeePassXC (h…
         </div>
 
       <div class="user">
-        <a href="https://github.com/WineBottles" target="_blank" rel="noopener">
+        <a href="https://github.com/WineBottles" target="_blank" rel="noopener noreferrer nofollow ugc">
           <img itemprop="image" alt="" src="/uploads/original/2X/7/797788692b425831e5e5cb441a93c812e2bf50af.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="CBE7EC">
           WineBottles
         </a>
@@ -241,10 +242,10 @@ Graphics Platform: X11</span></p>
 <li>keepasxc-proxy binary to Firefox’s sandbox (it needs to be statically linked though, or the Rust version)</li>
 <li>Allowing Firefox to access the socket of KeePassXC which is just flatpak override --filesystem=xdg-run/app/org.keepassxc.KeePassXC/org.keepassxc.KeePassXC.BrowserServer org.mozilla.firefox</li>
 </ol>
-<p>This now can be shipped by a thing called flatpak extensions (which work like plugins), because flatpak supports this: <a href="https://docs.flatpak.org/en/latest/extension.html" class="inline-onebox">Extensions - Flatpak documentation</a></p>
+<p>This now can be shipped by a thing called flatpak extensions (which work like plugins), because flatpak supports this: <a href="https://docs.flatpak.org/en/latest/extension.html" class="inline-onebox" rel="noreferrer nofollow ugc">Extensions - Flatpak documentation</a></p>
 <p>So the setup whole step would become:</p>
 <ol>
-<li>Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox">https://flathub.org/apps/details/org.mozilla.firefox</a></li>
+<li>Install the official Firefox flatpak for Linux: <a href="https://flathub.org/apps/details/org.mozilla.firefox" rel="noreferrer nofollow ugc">https://flathub.org/apps/details/org.mozilla.firefox</a></li>
 <li>Install KeePassXC desktop application.</li>
 <li>Install the KeePassXC browser extension (add-on/WebExtension)</li>
 <li><strong>New:</strong> (at any point of time) Install the flatpak extension for KeePassXC.</li>
@@ -258,12 +259,12 @@ And as alternative solutions are not there yet, maybe this is a good idea?</p>
 <p>(Viewing GIMP in GNOME Software 47.2 though does not show any of these, I am unsure whether GIMP or GNOME-Software changed here.)</p>
 <p>In the end, if it is shown here, that would just be <em>one additional click</em>.</p>
 <h2><a name="p-16517-questions-3" class="anchor" href="#p-16517-questions-3" aria-label="Heading link"></a>Questions</h2>
-<p>I don’t know how difficult developing such a flatpak extension would be and I don’t know whether it would work as <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2589162064">problems have recently already been reported</a>.</p>
+<p>I don’t know how difficult developing such a flatpak extension would be and I don’t know whether it would work as <a href="https://github.com/keepassxreboot/keepassxc/issues/7352#issuecomment-2589162064" rel="noreferrer nofollow ugc">problems have recently already been reported</a>.</p>
 <h2><a name="p-16517-the-real-solution-4" class="anchor" href="#p-16517-the-real-solution-4" aria-label="Heading link"></a>The real solution</h2>
 <p>…unfortunately still awaits. The xdk-portal for native messaging has no solution yet:</p><aside class="onebox githubpullrequest" data-onebox-src="https://github.com/flatpak/xdg-desktop-portal/pull/705">
   <header class="source">
 
-      <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener">github.com/flatpak/xdg-desktop-portal</a>
+      <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener noreferrer nofollow ugc">github.com/flatpak/xdg-desktop-portal</a>
   </header>
 
   <article class="onebox-body">
@@ -280,7 +281,7 @@ And as alternative solutions are not there yet, maybe this is a good idea?</p>
 
 
       <h4>
-        <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener">webextensions: add a portal for managing WebExtensions native messaging servers</a>
+        <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener noreferrer nofollow ugc">webextensions: add a portal for managing WebExtensions native messaging servers</a>
       </h4>
 
     <div class="branches">
@@ -293,14 +294,14 @@ And as alternative solutions are not there yet, maybe this is a good idea?</p>
         </div>
 
         <div class="user">
-          <a href="https://github.com/jhenstridge" target="_blank" rel="noopener">
+          <a href="https://github.com/jhenstridge" target="_blank" rel="noopener noreferrer nofollow ugc">
             <img itemprop="image" alt="" src="/uploads/original/2X/2/2e7db4b5a3e21e4963c307b57d712a0b25563564.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="837678">
             jhenstridge
           </a>
         </div>
 
         <div class="lines" title="26 commits changed 16 files with 1747 additions and 0 deletions">
-          <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705/files" target="_blank" rel="noopener">
+          <a href="https://github.com/flatpak/xdg-desktop-portal/pull/705/files" target="_blank" rel="noopener noreferrer nofollow ugc">
             <span class="added">+1747</span>
             <span class="removed">-0</span>
           </a>
@@ -310,7 +311,7 @@ And as alternative solutions are not there yet, maybe this is a good idea?</p>
 </div>
 
   <div class="github-row">
-    <p class="github-body-container">This is an implementation of a slightly modified version of the interface propos<span class="show-more-container"><a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ed in #655  for starting WebExtensions native messaging servers on behalf of a confined web browser.
+    <p class="github-body-container">This is an implementation of a slightly modified version of the interface propos<span class="show-more-container"><a href="https://github.com/flatpak/xdg-desktop-portal/pull/705" target="_blank" rel="noopener noreferrer nofollow ugc" class="show-more">…</a></span><span class="excerpt hidden">ed in #655  for starting WebExtensions native messaging servers on behalf of a confined web browser.
 
 The main change was to remove the use of Request objects, as I'm not waiting for a backend impl server to do the work. It might be worth adding that back though to give more flexibility in the future though.
 
@@ -527,7 +528,7 @@ EOF
 </details>
 <p>When I run <code>keepassxc-proxy-wrapper.sh</code> inside mozilla flatpak <code>keepass-proxy</code> starts normally. But browser does not run this script, only logs error</p>
 <p>Fedora Kinoite 41,<br>
-Firefox 136.0.2 (mozilla-flatpak - 1.0) from <a href="https://flathub.org/apps/org.mozilla.firefox" class="inline-onebox" rel="noopener nofollow ugc">Install Firefox on Linux | Flathub</a></p>
+Firefox 136.0.2 (mozilla-flatpak - 1.0) from <a href="https://flathub.org/apps/org.mozilla.firefox" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Install Firefox on Linux | Flathub</a></p>
       </div>
 
       <div class="post-footer">

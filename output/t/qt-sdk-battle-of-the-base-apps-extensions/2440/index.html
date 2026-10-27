@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Hi,</p>
 <p>So I’ve noticed there is some controversy going on regarding SDK extensions or it would seem so anyway. I recently opened a PR to add SDK extensions for the Qt framework, personally I think it would be very useful to have Qt available in SDK extensions, however the common consensus so far seems to indicate that the flatpak/flathub community seems to disagree and prefers the KDE SDK in combination with Base apps.</p>
 <p>I’ve also noticed that the SDK and Base apps unfortunately in certain cases do not suffice. I guess that methodology is not the most flexible and comes with a set of challenges, for example when a package needs Qt WebEngine (for which a Base app exists) but also needs the python bindings (for which another Base app exists).<br>
-Another example is when a package requires other Qt modules that are for whatever reason not available in the KDE SDK, in this case the flatpak docs state that it would be better to bundle the modules with the package manually instead of using the KDE SDK (<a href="https://docs.flatpak.org/en/latest/qt.html" class="inline-onebox" rel="noopener nofollow ugc">Qt — Flatpak documentation</a>). However that will produce long build times and just adding the modules in the app package and still using the SDK makes it harder to keep the exact versions of the modules in sync (when you want to use the external data checker in your app package there is no guarantee that the SDK is already updated and uses the same minor/micro version).</p>
+Another example is when a package requires other Qt modules that are for whatever reason not available in the KDE SDK, in this case the flatpak docs state that it would be better to bundle the modules with the package manually instead of using the KDE SDK (<a href="https://docs.flatpak.org/en/latest/qt.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Qt — Flatpak documentation</a>). However that will produce long build times and just adding the modules in the app package and still using the SDK makes it harder to keep the exact versions of the modules in sync (when you want to use the external data checker in your app package there is no guarantee that the SDK is already updated and uses the same minor/micro version).</p>
 <p>So if we want to save (build) time and not build the same things over and over again (and maintain building those parts as well) for different apps we can use a Base app if we’re lucky enough to be in such a situation where we just require one, otherwise it doesn’t work for some part of it (in the case where we require multiple dependencies like that).</p>
 <p>To me it seems very similar to a polymorphism paradigm that we come across in Object Oriented Programming, especially in languages that do not support multiple-inheritance. As that is exactly what we’re facing here. We can only inherit from 1 source.<br>
 Now in software development we often solve this issue by using the composition over inheritance principle, which works quite nicely there, however in the case of flatpak we end up with losing out on disk space as we’d be copying things out of SDK extensions into our packages (although if we build/include it as modules it would be similar). It does provide much more flexibility that way though. As even the Base Apps and SDK’s could be composed using SDK extensions.<br>
@@ -156,16 +157,16 @@ It’s also common practice when building containers with Docker for example usi
       <div class="post-body cooked" itemprop="text">
         <p>Nobody wants to register with Qtc to pull down the “OpenSource” version which really isn’t OpenSource anymore. The sales team will continually badger you to buy a license once you do.</p>
 <p>There are no Ubuntu/Debian Qt maintainers anymore. Distros use what KDE has or they simply don’t include Qt and Qt based apps.</p>
-<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc">CopperSpice</a>.</p>
-<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc">CsScintilla</a>.</p>
-<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc">RedDiamond</a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
+<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc noreferrer">CopperSpice</a>.</p>
+<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc noreferrer">CsScintilla</a>.</p>
+<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc noreferrer">RedDiamond</a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
 <p>There are <em>huge</em> political and licensing issues with including Qt. The definition of who needs a commercial license seems to change by the hour. It appears that Qtc is not on sound financial footing given the licensing hi-jinks that went on over the past year. The Debian/Ubuntu maintainers stepped away at the time all of the licensing issues cropped up. The “official” reason was lack of time. The reality is they didn’t want to be the registered user drug into court for payment.</p>
 <p>Qt isn’t an OpenSource project. The community does not determine the contents, Qtc does. The community is barred from maintaining an LTS version at their own expense. Qtc wants the community to work for free donating code then to turn around a buy many licenses. You can’t even get a perpetual license anymore.</p>
 <p>CopperSpice on the other hand, is 100% OpenSource. It’s a fork of Qt 4.8 with all that nasty QML stuff removed. Long ago it moved to CMake. They’ve already made many of the container and other changes Qt community claims to want to make.</p>
 <p>They do not currently have an ARM release, but they do have Linux, Windows, and non-ARM MAC.</p>
 <p>A great many packages/companies are making the jump to CopperSpice.</p>
 <p>Oh, I may have misspoke. According to the timeline they added M1 Arm support January 2022.</p>
-<p><a href="https://www.copperspice.com/docs/cs_overview/timeline.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://www.copperspice.com/docs/cs_overview/timeline.html</a></p>
+<p><a href="https://www.copperspice.com/docs/cs_overview/timeline.html" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://www.copperspice.com/docs/cs_overview/timeline.html</a></p>
 <p>The bottom line is the legal liability. With Qtc changing the definition of who needs a commercial license on a whim, the only safe harbor is to let KDE be the legal shield.</p>
       </div>
 
@@ -228,9 +229,9 @@ RolandHughes:</div>
 <div class="quote-controls"></div>
 RolandHughes:</div>
 <blockquote>
-<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc">CopperSpice</a>.</p>
-<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc">CsScintilla </a>.</p>
-<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc">RedDiamond </a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
+<p>Many of us with many years of Qt have moved on to other libraries. In particular many/most desktop applications are migrating to <a href="https://www.copperspice.com/" rel="noopener nofollow ugc noreferrer">CopperSpice</a>.</p>
+<p>I’ve even ported Scintilla to CopperSpice. I call it <a href="https://sourceforge.net/u/roland_hughes/csscintilla/ci/default/tree/" rel="noopener nofollow ugc noreferrer">CsScintilla </a>.</p>
+<p>Currently redeveloping <a href="https://sourceforge.net/projects/reddiamond/" rel="noopener nofollow ugc noreferrer">RedDiamond </a> to use CsScintilla instead of the QPlainTextEdit widget the original port from Diamond used.</p>
 </blockquote>
 </aside>
 <p>That’s great, but this question isn’t about CopperSpice.</p>
@@ -517,7 +518,7 @@ Thanks for responding. Currently packages can and are distributing Qt modules be
 
       <div class="post-body cooked" itemprop="text">
         <p>In the meantime several PR’s for SDK extensions are just sitting in limbo. No single admin response.<br>
-<a href="https://github.com/flathub/flathub/pull/3077" rel="noopener nofollow ugc">https://github.com/flathub/flathub/pull/3077</a> being one of them.</p>
+<a href="https://github.com/flathub/flathub/pull/3077" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/flathub/pull/3077</a> being one of them.</p>
 <p>Having these kind of things available as extensions could prove very useful, but if no one is willing to even have a serious discussion about it… It’s a little disappointing when you invest your time and energy into something and it is just ignored. It is also very much possible to close the PR by denying it, or at least expressing that a policy is yet to be determined.</p>
       </div>
 
@@ -560,12 +561,12 @@ Thanks for responding. Currently packages can and are distributing Qt modules be
         <p>With CopperSpice it could be done. That is a true OpenSource project.<br>
 KDE is the <strong>only</strong> official OpenSource maintainer of Qt and per the Flathub rules, KDE has to be the one to provide Qt. You cannot. Qt is not your OpenSource project.</p>
 <p>What you have to ask yourself though is what do you want your flatpak to weigh in as? This?</p>
-<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://cdn3.vectorstock.com/i/1000x1000/80/67/feather-falling-light-small-vector-788067.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc" class="onebox">
+<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://cdn3.vectorstock.com/i/1000x1000/80/67/feather-falling-light-small-vector-788067.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc noreferrer" class="onebox">
             <img itemprop="image" src="/uploads/original/2X/7/71fd1916ee61751b777801c7ea362a261b62351d.jpeg" width="513" height="499">
           </a>
 </p>
 <p>or this?</p>
-<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://thumbs.dreamstime.com/b/red-brick-mountain-clipping-path-12181367.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc" class="onebox">
+<p>          <a href="https://external-content.duckduckgo.com/iu/?u=https://thumbs.dreamstime.com/b/red-brick-mountain-clipping-path-12181367.jpg&amp;f=1&amp;nofb=1" target="_blank" rel="noopener nofollow ugc noreferrer" class="onebox">
             <img itemprop="image" src="/uploads/original/2X/2/2b1beae589cd713b530118f4bdc51aa50903adcf.jpeg" width="690" height="457">
           </a>
 </p>
@@ -702,10 +703,10 @@ KDE is the <strong>only</strong> official OpenSource maintainer of Qt and per th
 <p>You want someone to do it for you rather than do it yourself</p>
 </li>
 <li>
-<p>Many of the Qt modules “missing” from the KDE SDK are missing because they aren’t really OpenSource due to the licensing shenanigans going on <strong>or</strong> they have a different non-compatible OpenSource license. This last part is pretty rampant in later Qt features. WebEngine in particular is a dog’s breakfast of <a href="https://doc.qt.io/qt-6/qtwebengine-licensing.html" rel="noopener nofollow ugc">conflicting licenses</a>. The “dual license” becomes a commercial-only license if you in any way make money or so the last interpretation I was given went. If you earn even a nickle with it you have to have a commercial license.</p>
+<p>Many of the Qt modules “missing” from the KDE SDK are missing because they aren’t really OpenSource due to the licensing shenanigans going on <strong>or</strong> they have a different non-compatible OpenSource license. This last part is pretty rampant in later Qt features. WebEngine in particular is a dog’s breakfast of <a href="https://doc.qt.io/qt-6/qtwebengine-licensing.html" rel="noopener nofollow ugc noreferrer">conflicting licenses</a>. The “dual license” becomes a commercial-only license if you in any way make money or so the last interpretation I was given went. If you earn even a nickle with it you have to have a commercial license.</p>
 </li>
 <li>
-<p>There’s no good documentation on how to create an extension that uses C/C++. One has to thieve <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.openjdk/blob/branch/21.08/org.freedesktop.Sdk.Extension.openjdk.yaml" rel="noopener nofollow ugc">the OpenJDK one</a> and hack it down to what you need. I’m actually investigating this right now to do it for CopperSpice.</p>
+<p>There’s no good documentation on how to create an extension that uses C/C++. One has to thieve <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.openjdk/blob/branch/21.08/org.freedesktop.Sdk.Extension.openjdk.yaml" rel="noopener nofollow ugc noreferrer">the OpenJDK one</a> and hack it down to what you need. I’m actually investigating this right now to do it for CopperSpice.</p>
 </li>
 <li>
 <p>The people creating the stuff for Flatpak aren’t getting paid to do it. Many of the KDE team are actually being paid via Qt Corporation. They do actually “maintain” webengine libraries for Debian.</p>
@@ -720,12 +721,12 @@ KDE is the <strong>only</strong> official OpenSource maintainer of Qt and per th
 <p>No new development is actually going on with Qt. People are maintaining “Legacy” products while porting to other libraries after the combination of licensing shenanigans at the end of Qt 5 and Qt 6 being mostly dysfunctional (especially QML) for desktops.</p>
 </li>
 <li>
-<p>I just followed your link and poked around to find <a href="https://github.com/flathub/flathub/pull/3013" rel="noopener nofollow ugc">this PR created by you</a>. <span class="mention">@Erick555</span> has valid concerns on their April 15 (tax day!) message. You should really have the KDE team add what you want. As far as wxWidgets, one of the platforms people are abandoning Qt for just because it is there, I didn’t see any valid concerns/issues with the PR. I did notice that there are only 15 people listed as being members of Flathub and wxWidgets is a 12,000 pound gorilla. It would be nice to not have to include CodeBlocks to get it, but . . . one has to make a good case for having it split off. (i.e. you have 8 other pull requests that will use it.)</p>
+<p>I just followed your link and poked around to find <a href="https://github.com/flathub/flathub/pull/3013" rel="noopener nofollow ugc noreferrer">this PR created by you</a>. <span class="mention">@Erick555</span> has valid concerns on their April 15 (tax day!) message. You should really have the KDE team add what you want. As far as wxWidgets, one of the platforms people are abandoning Qt for just because it is there, I didn’t see any valid concerns/issues with the PR. I did notice that there are only 15 people listed as being members of Flathub and wxWidgets is a 12,000 pound gorilla. It would be nice to not have to include CodeBlocks to get it, but . . . one has to make a good case for having it split off. (i.e. you have 8 other pull requests that will use it.)</p>
 </li>
 </ol>
 <p>After reading through all of the brew-ha-ha on several of the Extension PRs not yet in I <em>suspect</em> the philosophy is <strong>new RunTime</strong>.</p>
 <p>How does one find an extension? Until I saw this message I didn’t know they existed. There are a tiny list of SDK in the doc, but it took an awful lot of searching with DuckDuckGo and other engines to actually find Flatpak Extension and have it be something close to what I was looking for.</p>
-<p>Why don’t you build a new RunTime that can <a href="https://docs.flatpak.org/en/latest/available-runtimes.html" rel="noopener nofollow ugc">be listed here</a>? You probably cannot call it the Qt RunTime due to trademark issues.</p>
+<p>Why don’t you build a new RunTime that can <a href="https://docs.flatpak.org/en/latest/available-runtimes.html" rel="noopener nofollow ugc noreferrer">be listed here</a>? You probably cannot call it the Qt RunTime due to trademark issues.</p>
 <p>Otherwise beg KDE to add in the libraries you want. They are the ones maintaining the code you would need to use.</p>
       </div>
 

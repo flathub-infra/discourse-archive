@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,9 +103,9 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>What measures does Flathub take to prevent a malicious, established Flathub contributor from updating the manifest with a malicious source? As far as I know, there is a first-time verification and security audit of the manifest when it is first submitted, but only certain audits after that <a href="https://docs.flathub.org/blog/app-safety-layered-approach-source-to-user#:~:text=Critical%20MetaInfo%20changes%20are%20held%20for%20human%20review%2C%20e%2Eg%2E%20if%20an%20app%20name%2C%20developer%20name%2C%20app%20summary%2C%20or%20license%20changes" rel="noopener nofollow ugc">Flatpaks are flagged for human review when the following changes: app name, developer name, app summary, or license.</a> But no mention of review when URL or SHA1 changes.</p>
+        <p>What measures does Flathub take to prevent a malicious, established Flathub contributor from updating the manifest with a malicious source? As far as I know, there is a first-time verification and security audit of the manifest when it is first submitted, but only certain audits after that <a href="https://docs.flathub.org/blog/app-safety-layered-approach-source-to-user#:~:text=Critical%20MetaInfo%20changes%20are%20held%20for%20human%20review%2C%20e%2Eg%2E%20if%20an%20app%20name%2C%20developer%20name%2C%20app%20summary%2C%20or%20license%20changes" rel="noopener nofollow ugc noreferrer">Flatpaks are flagged for human review when the following changes: app name, developer name, app summary, or license.</a> But no mention of review when URL or SHA1 changes.</p>
 <p>So what happens if a malicious contributor were to change the source URL to a malicious domain? And if this were to happen, hypothetically, would the users of the compromised flatpak be alerted somehow?</p>
-<p>In the case that the manifest is compromised, sandboxing would not prevent confidential data from being exfiltrated from within the application. For example, if you were to use <a href="https://flathub.org/en/apps/me.proton.Pass" rel="noopener nofollow ugc">Proton Pass</a>, which is an unverified package for a password manager: a malicious actor could replace the source with their own malicious version and exfiltrate all user passwords in a smash and grab, until the package is corrected.</p>
+<p>In the case that the manifest is compromised, sandboxing would not prevent confidential data from being exfiltrated from within the application. For example, if you were to use <a href="https://flathub.org/en/apps/me.proton.Pass" rel="noopener nofollow ugc noreferrer">Proton Pass</a>, which is an unverified package for a password manager: a malicious actor could replace the source with their own malicious version and exfiltrate all user passwords in a smash and grab, until the package is corrected.</p>
 <p>What measures have been taken to prevent this scenario?</p>
       </div>
 
@@ -238,13 +239,13 @@
   <header class="source">
       <img itemprop="image" src="/uploads/original/2X/e/ed20a93b44424408ea854825a0215925bb9f8a45.svg" class="site-icon" alt="" data-dominant-color="" width="16" height="16">
 
-      <a href="https://docs.flathub.org/docs/for-app-authors/verification#what-is-verification" target="_blank" rel="noopener">docs.flathub.org</a>
+      <a href="https://docs.flathub.org/docs/for-app-authors/verification#what-is-verification" target="_blank" rel="noopener noreferrer nofollow ugc">docs.flathub.org</a>
   </header>
 
   <article class="onebox-body">
     <div class="aspect-image" style="--aspect-ratio:690/459;"><img itemprop="image" src="/uploads/optimized/2X/2/2382eb81a57f8161664101a6b6f0ada66186bbe0_2_690x459.png" class="thumbnail" alt="" data-dominant-color="3C8BE5" width="690" height="459"></div>
 
-<h3><a href="https://docs.flathub.org/docs/for-app-authors/verification#what-is-verification" target="_blank" rel="noopener">What is verification?​ - Verification | Flathub Documentation</a></h3>
+<h3><a href="https://docs.flathub.org/docs/for-app-authors/verification#what-is-verification" target="_blank" rel="noopener noreferrer nofollow ugc">What is verification?​ - Verification | Flathub Documentation</a></h3>
 
   <p>Verification is the process by which Flathub and developers confirm that an app is published by the original developer or an authorized party. | What is verification?</p>
 
@@ -347,9 +348,9 @@
       <div class="post-body cooked" itemprop="text">
         <p>The first question is very technical; I wish there were detailed documentation pages to answer your question. Here’s what I could find:</p>
 <ul>
-<li><a href="https://docs.flatpak.org/en/latest/basic-concepts.html" class="inline-onebox">Basic concepts - Flatpak documentation</a></li>
-<li><a href="https://docs.flatpak.org/en/latest/basic-concepts.html#sandboxes" class="inline-onebox">Basic concepts - Flatpak documentation</a></li>
-<li><a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" class="inline-onebox">Sandbox Permissions - Flatpak documentation</a></li>
+<li><a href="https://docs.flatpak.org/en/latest/basic-concepts.html" class="inline-onebox" rel="noreferrer nofollow ugc">Basic concepts - Flatpak documentation</a></li>
+<li><a href="https://docs.flatpak.org/en/latest/basic-concepts.html#sandboxes" class="inline-onebox" rel="noreferrer nofollow ugc">Basic concepts - Flatpak documentation</a></li>
+<li><a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" class="inline-onebox" rel="noreferrer nofollow ugc">Sandbox Permissions - Flatpak documentation</a></li>
 </ul>
 <p>Second question:</p>
 <p>Even modified source code must use the same sandbox permissions. Otherwise, some major changes made to the manifest file will automatically trigger certain alarms, and the application will not be released. We also track changes made to the manifest file. I wish there was a restriction preventing changes to the main repository. Sometimes applications change repository names, sometimes developers change usernames, and there is currently no strict restriction against changing the main repository URL.</p>
@@ -527,7 +528,7 @@ barthalion:</div>
         <aside class="onebox githubissue" data-onebox-src="https://github.com/flathub-infra/website/issues/2620">
   <header class="source">
 
-      <a href="https://github.com/flathub-infra/website/issues/2620" target="_blank" rel="noopener">github.com/flathub-infra/website</a>
+      <a href="https://github.com/flathub-infra/website/issues/2620" target="_blank" rel="noopener noreferrer nofollow ugc">github.com/flathub-infra/website</a>
   </header>
 
   <article class="onebox-body">
@@ -538,7 +539,7 @@ barthalion:</div>
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/flathub-infra/website/issues/2620" target="_blank" rel="noopener">Review source domain changes in Flatpak manifests</a>
+      <a href="https://github.com/flathub-infra/website/issues/2620" target="_blank" rel="noopener noreferrer nofollow ugc">Review source domain changes in Flatpak manifests</a>
     </h4>
 
     <div class="github-info">
@@ -548,7 +549,7 @@ barthalion:</div>
 
 
       <div class="user">
-        <a href="https://github.com/sonnyp" target="_blank" rel="noopener">
+        <a href="https://github.com/sonnyp" target="_blank" rel="noopener noreferrer nofollow ugc">
           <img itemprop="image" alt="" src="/uploads/original/2X/2/2795f024d6caacf26aafa821924b7de05d3bbbb5.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="86836E">
           sonnyp
         </a>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I am wondering how to cleanly synchronize the <code>master</code> and  <code>beta</code> branches of my flathub repositories. A typical workflow is that <code>beta</code> is updated more frequently than <code>master</code>, but that after an update to <code>master</code>, <code>beta</code> should be identical to it until new beta releases are attempted. In such cases I’d like <code>beta</code> and <code>master</code> to point to exactly the same commit SHA. But I haven’t found a way to do this. I can create a PR from <code>master</code> to <code>beta</code>, but with <a href="https://github.com/orgs/community/discussions/4618" rel="noopener nofollow ugc">GitHub’s inability to do proper fast-forward merges</a>, it always creates either a merge commit or a modified commit in the <code>beta</code> branch that make the branches point to different SHAs, even though the content is identical.</p>
+        <p>I am wondering how to cleanly synchronize the <code>master</code> and  <code>beta</code> branches of my flathub repositories. A typical workflow is that <code>beta</code> is updated more frequently than <code>master</code>, but that after an update to <code>master</code>, <code>beta</code> should be identical to it until new beta releases are attempted. In such cases I’d like <code>beta</code> and <code>master</code> to point to exactly the same commit SHA. But I haven’t found a way to do this. I can create a PR from <code>master</code> to <code>beta</code>, but with <a href="https://github.com/orgs/community/discussions/4618" rel="noopener nofollow ugc noreferrer">GitHub’s inability to do proper fast-forward merges</a>, it always creates either a merge commit or a modified commit in the <code>beta</code> branch that make the branches point to different SHAs, even though the content is identical.</p>
 <p>I have tried creating a PR, waiting for the build to finish and succeed, and then pushing the same head commit to <code>beta</code>, but it’s forbidden, too.</p>
 <p>Am I missing something? Is there a trick to achieve this?</p>
       </div>

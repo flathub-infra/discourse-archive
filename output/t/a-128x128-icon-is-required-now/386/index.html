@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Following <a href="https://github.com/flathub/flathub/wiki/App-Requirements#application-icons">app requirements</a>, buildbot checks now if application ships an icon of at least 128x128 size. This means that if your application ships just SVG or file bigger than 128x128, appstream-compose will take care of converting and/or downscaling it to required size which is later used by web store and desktop frontends.</p>
+        <p>Following <a href="https://github.com/flathub/flathub/wiki/App-Requirements#application-icons" rel="noreferrer nofollow ugc">app requirements</a>, buildbot checks now if application ships an icon of at least 128x128 size. This means that if your application ships just SVG or file bigger than 128x128, appstream-compose will take care of converting and/or downscaling it to required size which is later used by web store and desktop frontends.</p>
 <p>The check can be disabled by adding <code>"skip-icons-check": true</code> to <code>flathub.json</code>.</p>
       </div>
 
@@ -185,7 +186,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>I keep running into issues with this change. Let me give you the example of Flacon:<br>
-<a href="https://github.com/flathub/com.github.Flacon/pull/5" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/com.github.Flacon/pull/5</a></p>
+<a href="https://github.com/flathub/com.github.Flacon/pull/5" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/com.github.Flacon/pull/5</a></p>
 <p>Flacon has a full set of icons, both .png and .svg based, stored in <code>/share/icons/hicolor/</code></p>
 <p>When testing it locally, the display manager will display the right icons flawlessly. With the change to the server validation, the package that was fine in the past now fails the check. Still, the icons are there and the store has no trouble listing the package.</p>
 <p>I think this script needs some work and that there should be better support for existing icons in the default folder. Right now, I work around the issue by using a post-install hook to copy the extra images, but that feels messy and redundant.</p>

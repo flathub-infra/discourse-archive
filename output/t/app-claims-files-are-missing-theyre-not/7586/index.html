@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -856,7 +857,7 @@ drwxr-xr-x 2 evilsupahfly evilsupahfly 4096 Dec 31  1969 banner
       <div class="post-body cooked" itemprop="text">
         <p>Update:</p>
 <p>I rebuilt the package without my resource_pack call, reinstalled the Amulet flatpak, and the missing textures are still an issue, so I re-ran <code>ls</code> inside the sandbox, but this time I called flatpak with <code>-vv</code> to see if I could get an idea of what’s going on and why.</p>
-<p>Output exceeded character limit for posts, so I’ve posted it <a href="https://gist.github.com/EvilSupahFly/157fa4c259564e8a776a566850ccef65" rel="noopener nofollow ugc">as a snippet on GIST</a>.</p>
+<p>Output exceeded character limit for posts, so I’ve posted it <a href="https://gist.github.com/EvilSupahFly/157fa4c259564e8a776a566850ccef65" rel="noopener nofollow ugc noreferrer">as a snippet on GIST</a>.</p>
 <p>I see quite a few <code>[x] is not a symlink</code> messages, but I don’t know if that’s normal. Amulet has no trouble getting RW access to the Minecraft saves in my <code>$HOME</code> so it must not be that big a deal.</p>
       </div>
 
@@ -953,7 +954,7 @@ minecraft-resource-pack
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Previously, I was building and installing from a local source. So I used the workflow for <code>bilelmoussaoui/flatpak-github-actions</code> to build the Amulet flatpak in <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc">my GIT repository</a> instead, and the flatpak built by the workflow is also having these missing texture issues. Can somebody <em><strong>please</strong></em> explain to me what I’m doing wrong?<br>
+        <p>Previously, I was building and installing from a local source. So I used the workflow for <code>bilelmoussaoui/flatpak-github-actions</code> to build the Amulet flatpak in <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc noreferrer">my GIT repository</a> instead, and the flatpak built by the workflow is also having these missing texture issues. Can somebody <em><strong>please</strong></em> explain to me what I’m doing wrong?<br>
 <img itemprop="image" src="/images/emoji/twitter/face_with_spiral_eyes.png?v=12" title=":face_with_spiral_eyes:" class="emoji only-emoji" alt=":face_with_spiral_eyes:" loading="lazy" width="20" height="20"></p>
       </div>
 
@@ -1095,7 +1096,7 @@ minecraft-resource-pack
 
       <div class="post-body cooked" itemprop="text">
         <p>Sorry I took so long. I had a metric f*ck-tonne of tech support issues to resolve for friends and family all at once, around my normal job hours so this got pushed to the back burner for a while.</p>
-<p>Anyways, after I rebuilt the flatpak from scratch - now with added debugging features - and tried again, I ran it with Flatpak’s internal version of PDB. The results are posted in <a href="https://gist.github.com/EvilSupahFly/441969db911c99368ea9077c9e71fb81" rel="noopener nofollow ugc">this GIST</a> but be warned - it’s sixty five thousand seven hundred and something lines long.</p>
+<p>Anyways, after I rebuilt the flatpak from scratch - now with added debugging features - and tried again, I ran it with Flatpak’s internal version of PDB. The results are posted in <a href="https://gist.github.com/EvilSupahFly/441969db911c99368ea9077c9e71fb81" rel="noopener nofollow ugc noreferrer">this GIST</a> but be warned - it’s sixty five thousand seven hundred and something lines long.</p>
 <p>As far as I can tell, the .png files are actually being loaded properly. Running through PDB doesn’t really indicate why they’re not loading in the Flatpak environment. The error reported is not that the files weren’t found, only that they couldn’t be used. Also unclear is if the problem lies with the .JSON files or the .PNG files. Either way it’s a mystery since Amulet is able to download the official texture pack from the Minecraft servers and everything else shows up - bedrock, stone, sand, etc - meaning that .PNG and .JSON management within Amulet works just fine.</p>
 <p>So… Is this a Flatpak issue or a Python issue?</p>
       </div>
@@ -1306,7 +1307,7 @@ BlockMesh created with texture path: /app/lib/python3.12/site-packages/minecraft
         <p>As far as I know, the map is generated on the fly by reading .PNG files from one folder, and .JSON files from a different one, then matching them by name, using a <code>deepcopy</code> to construct the new compound list from the two individual components, meaning as long as both <code>water.json</code> and <code>water.png</code> exist, it should be fine.</p>
 <p>All this works flawlessly when installed in a normal Python virtual environment with PIP, yet when running as a Flatpak, “water” and “lava” always fail.</p>
 <p>Also, as far as I know, all paths are relative to Amulet’s install location, so it shouldn’t matter that it’s “Flatpak Python” or “Normal Python”.</p>
-<p>The complete <a href="https://github.com/gentlegiantJGC/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py" rel="noopener nofollow ugc">model reader API is here</a>, if you’re fluent in Python and are curious.</p>
+<p>The complete <a href="https://github.com/gentlegiantJGC/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py" rel="noopener nofollow ugc noreferrer">model reader API is here</a>, if you’re fluent in Python and are curious.</p>
       </div>
 
       <div class="post-footer">
@@ -1346,7 +1347,7 @@ BlockMesh created with texture path: /app/lib/python3.12/site-packages/minecraft
     log.warning(f"Texture path not found: {texture_path}. Defaulting to non-transparent.")
     self._texture_is_transparent[texture_path] = (0, False)  # Default to non-transparent if not found
 </code></pre>
-<p>– (<a href="https://github.com/EvilSupahFly/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py#L444" rel="noopener nofollow ugc">Modified Minecraft Model Reader</a>)</p>
+<p>– (<a href="https://github.com/EvilSupahFly/Minecraft-Model-Reader/blob/master/minecraft_model_reader/api/resource_pack/java/resource_pack_manager.py#L444" rel="noopener nofollow ugc noreferrer">Modified Minecraft Model Reader</a>)</p>
 <p>Problem solved, textures loading. The .JSON files were all where they were supposed to be, and the .PNG files were all right where they belonged too, and that’s the only reason this seems to work. As for why this ran fine as a “proper desktop app” but not as a Flatpak is still a mystery to me. For now, though, this work-around does the trick.</p>
       </div>
 

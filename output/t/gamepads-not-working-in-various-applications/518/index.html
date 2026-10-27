@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -106,8 +107,8 @@
 <p>There are many varied applications where gamepads do not work. This crops up most obviously in Steam, where about half of the native games I’ve tested don’t notice the gamepad at all. There are two things that make this even more confounding.</p>
 <p>The first: you can force these applications to use the Windows version via Proton, and gamepad input will suddenly start working. I would really not rather get into the habit of installing the Windows versions of native games, especially ones that have supported us for a long time.</p>
 <p>The second: they don’t even work in Steam Input. I have given /dev/uinput sufficient permissions to let Steam create virtual gamepads, and it works just fine in other games. But the games where gamepad input doesn’t work, Steam Input doesn’t work either. It’s my understanding that Steam Input just makes virtual 360 gamepads, but whatever method these games are trying to use to get input, it’s just not working.</p>
-<p>I thought this issue was specific to Steam because gamepads work in other Flatpaks; RetroArch, Dolphin, PCSX2. But then I tried to use a gamepad in Firefox, at <a href="http://gamepadviewer.com" rel="nofollow noopener">gamepadviewer.com</a>. It didn’t work. But it did work in the binary tarball version.</p>
-<p>I have had <a href="https://github.com/flathub/com.valvesoftware.Steam/issues/498" rel="nofollow noopener">an issue report</a> open on the Steam bug tracker for a while, but it has been ignored. Because I have just now noticed this issue in Firefox, I made <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1645955" rel="nofollow noopener">an issue report</a> on their bugzilla since they’re supporting the Flatpak themselves. Maybe they’ll have some insight, maybe that’ll get ignored too.</p>
+<p>I thought this issue was specific to Steam because gamepads work in other Flatpaks; RetroArch, Dolphin, PCSX2. But then I tried to use a gamepad in Firefox, at <a href="http://gamepadviewer.com" rel="nofollow noopener noreferrer ugc">gamepadviewer.com</a>. It didn’t work. But it did work in the binary tarball version.</p>
+<p>I have had <a href="https://github.com/flathub/com.valvesoftware.Steam/issues/498" rel="nofollow noopener noreferrer ugc">an issue report</a> open on the Steam bug tracker for a while, but it has been ignored. Because I have just now noticed this issue in Firefox, I made <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1645955" rel="nofollow noopener noreferrer ugc">an issue report</a> on their bugzilla since they’re supporting the Flatpak themselves. Maybe they’ll have some insight, maybe that’ll get ignored too.</p>
 <p>EDIT: I can do <code>flatpak run --command=sh org.mozilla.firefox</code> and <code>cat</code> both the <code>event*</code> and <code>js*</code> devices representing the gamepad. So it doesn’t feel like a permissions issue. But doing <code>ls -l /dev/input</code> shows they’re owned by <code>nfsnobody:nfsnobody</code> instead of <code>root:input</code> like on the base system. Could that make some sort of difference?</p>
 <p>So I thought I’d go ahead and make this topic here and see if there are people with more intimate knowledge who might know some things we can try to do to figure this issue out.</p>
       </div>
@@ -151,7 +152,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><a href="https://github.com/flatpak/flatpak/issues/7" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flatpak/flatpak/issues/7</a></p>
+        <p><a href="https://github.com/flatpak/flatpak/issues/7" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flatpak/flatpak/issues/7</a></p>
       </div>
 
       <div class="post-footer">
@@ -274,7 +275,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Are you talking Steam itself, or are you talking specific games within Steam? If it’s the second, you can poke a hole to <code>/run/udev</code> on the host to help a large number of older games. More information on that <a href="https://github.com/flatpak/xdg-desktop-portal/issues/536#issuecomment-767711661" rel="noopener nofollow ugc">here,</a> but do that at your own risk and with the understanding that it will almost certainly break someday.</p>
+        <p>Are you talking Steam itself, or are you talking specific games within Steam? If it’s the second, you can poke a hole to <code>/run/udev</code> on the host to help a large number of older games. More information on that <a href="https://github.com/flatpak/xdg-desktop-portal/issues/536#issuecomment-767711661" rel="noopener nofollow ugc noreferrer">here,</a> but do that at your own risk and with the understanding that it will almost certainly break someday.</p>
 <p>Valve is pushing developers toward Proton even for new games, so I imagine that will have to be most reliable solution for native games that rely on deprecated or discouraged behavior from an old version of the software stack.</p>
       </div>
 

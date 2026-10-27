@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I’ve tried to update my app’s version and am getting some errors from the <a href="https://buildbot.flathub.org/#/builders/5/builds/13875/steps/7/logs/stdio" rel="noopener nofollow ugc">buildbot run</a> I haven’t seen before (probably related to libappstream) and that I don’t see documented. Building locally shows no issues. The odder of the two errors is:</p>
+        <p>I’ve tried to update my app’s version and am getting some errors from the <a href="https://buildbot.flathub.org/#/builders/5/builds/13875/steps/7/logs/stdio" rel="noopener nofollow ugc noreferrer">buildbot run</a> I haven’t seen before (probably related to libappstream) and that I don’t see documented. Building locally shows no issues. The odder of the two errors is:</p>
 <pre><code class="lang-auto">general
   E: filters-but-no-output
 Refer to the generated issue report data for details on the individual problems.
@@ -229,7 +230,7 @@ Error: ERROR: appstreamcli compose failed: Child process exited with code 1
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Thanks to <a href="https://github.com/hfiguiere" rel="noopener nofollow ugc">hfiguiere</a> I think I’ve figure it out. It seems that it’s no longer sufficient to have merely internally-consistent naming between metainfo, desktop and icon files; they now all need to be in files named after the app ID. I added the <code>rename-desktop-file</code> and <code>rename-icon</code> properties to fix that and have moved on past that barrier at least.</p>
+        <p>Thanks to <a href="https://github.com/hfiguiere" rel="noopener nofollow ugc noreferrer">hfiguiere</a> I think I’ve figure it out. It seems that it’s no longer sufficient to have merely internally-consistent naming between metainfo, desktop and icon files; they now all need to be in files named after the app ID. I added the <code>rename-desktop-file</code> and <code>rename-icon</code> properties to fix that and have moved on past that barrier at least.</p>
       </div>
 
       <div class="post-footer">

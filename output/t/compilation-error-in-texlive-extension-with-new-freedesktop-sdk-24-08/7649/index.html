@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,8 +104,8 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Dear all,</p>
-<p>I created a pull request to <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.texlive/pull/164" rel="noopener nofollow ugc">update the texlive</a> extension to the freedesktop SDK 24.08 but now it throws an error and does not compile.<br>
-The difference is just in the <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.texlive/pull/164/files" rel="noopener nofollow ugc">runtime version</a> and I assume that the relevant gcc messages are</p>
+<p>I created a pull request to <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.texlive/pull/164" rel="noopener nofollow ugc noreferrer">update the texlive</a> extension to the freedesktop SDK 24.08 but now it throws an error and does not compile.<br>
+The difference is just in the <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.texlive/pull/164/files" rel="noopener nofollow ugc noreferrer">runtime version</a> and I assume that the relevant gcc messages are</p>
 <pre><code class="lang-auto">../../../texk/web2c/xetexdir/XeTeXLayoutInterface.cpp:43:10: fatal error: hb-graphite2.h: No such file or directory
    43 | #include &lt;hb-graphite2.h&gt;
       |          ^~~~~~~~~~~~~~~~
@@ -148,7 +149,7 @@ So could someone give me a hint how to solve issue?</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Looks like this got disabled when switching harfbuzz to meson.</p>
-<p><a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/21657" class="inline-onebox" rel="noopener nofollow ugc">harfbuzz: Enable graphite2 (!21657) · Merge requests · freedesktop-sdk / freedesktop-sdk · GitLab</a> is the fix for 24.08 but if we can’t land it due to ABI changes, you will have to build harfbuzz in the manifest until 25.08 is out.</p>
+<p><a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/21657" class="inline-onebox" rel="noopener nofollow ugc noreferrer">harfbuzz: Enable graphite2 (!21657) · Merge requests · freedesktop-sdk / freedesktop-sdk · GitLab</a> is the fix for 24.08 but if we can’t land it due to ABI changes, you will have to build harfbuzz in the manifest until 25.08 is out.</p>
       </div>
 
       <div class="post-footer">

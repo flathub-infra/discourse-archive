@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,8 +103,8 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi i am the author of  <a href="https://github.com/iDescriptor/iDescriptor" class="inline-onebox" rel="noopener nofollow ugc">GitHub - iDescriptor/iDescriptor: A free, open-source, and cross-platform iDevice management tool</a></p>
-<p>I am trying to publish iDescriptor on flathub but i need help with libimobiledevice. So currently we have a config file that builds fine <a href="https://github.com/iDescriptor/iDescriptor/blob/main/com.idescriptor.idescriptor.json" rel="noopener nofollow ugc">https://github.com/iDescriptor/iDescriptor/blob/main/com.idescriptor.idescriptor.json</a> but hotplug events do not fire off. I believe i passed all the needed finish-args for libimobiledevice to work but it just doesn’t work. By the way if the app is launched with a device connected it gets detected and when removed it gets removed but it works no longer than that. Also for some reason i get this even tho i am using the latest ffmpeg available</p>
+        <p>Hi i am the author of  <a href="https://github.com/iDescriptor/iDescriptor" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - iDescriptor/iDescriptor: A free, open-source, and cross-platform iDevice management tool</a></p>
+<p>I am trying to publish iDescriptor on flathub but i need help with libimobiledevice. So currently we have a config file that builds fine <a href="https://github.com/iDescriptor/iDescriptor/blob/main/com.idescriptor.idescriptor.json" rel="noopener nofollow ugc noreferrer">https://github.com/iDescriptor/iDescriptor/blob/main/com.idescriptor.idescriptor.json</a> but hotplug events do not fire off. I believe i passed all the needed finish-args for libimobiledevice to work but it just doesn’t work. By the way if the app is launched with a device connected it gets detected and when removed it gets removed but it works no longer than that. Also for some reason i get this even tho i am using the latest ffmpeg available</p>
 <p>libopenh264 @ 0x555618847700] [OpenH264] this = 0x0x5556168a6710, Error:DecodeCurrentAccessUnit()::::::PrefetchPic ERROR, pSps-&gt;iNumRefFrames:4.<br>
 [libopenh264 @ 0x555618847700] DecodeFrame failed<br>
 [libopenh264 @ 0x555618847700] [OpenH264] this = 0x0x5556168a6710, Warning:parse_nal(), no exist Sequence Parameter Sets ahead of sequence when try to decode NAL(type:1).<br>
@@ -624,7 +625,7 @@ C7: → org.freedesktop.DBus call org.freedesktop.DBus.RemoveMatch at /org/freed
 <aside class="onebox githubissue" data-onebox-src="https://github.com/libimobiledevice/libimobiledevice/issues/1701#issuecomment-3573015315">
   <header class="source">
 
-      <a href="https://github.com/libimobiledevice/libimobiledevice/issues/1701#issuecomment-3573015315" target="_blank" rel="noopener nofollow ugc">github.com/libimobiledevice/libimobiledevice</a>
+      <a href="https://github.com/libimobiledevice/libimobiledevice/issues/1701#issuecomment-3573015315" target="_blank" rel="noopener nofollow ugc noreferrer">github.com/libimobiledevice/libimobiledevice</a>
   </header>
 
   <article class="onebox-body">
@@ -635,7 +636,7 @@ C7: → org.freedesktop.DBus call org.freedesktop.DBus.RemoveMatch at /org/freed
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/libimobiledevice/libimobiledevice/issues/1701#issuecomment-3573015315" target="_blank" rel="noopener nofollow ugc">libimobiledevice in a sandbox environment</a>
+      <a href="https://github.com/libimobiledevice/libimobiledevice/issues/1701#issuecomment-3573015315" target="_blank" rel="noopener nofollow ugc noreferrer">libimobiledevice in a sandbox environment</a>
     </h4>
 
     <div class="github-info">
@@ -645,7 +646,7 @@ C7: → org.freedesktop.DBus call org.freedesktop.DBus.RemoveMatch at /org/freed
 
 
       <div class="user">
-        <a href="https://github.com/uncor3" target="_blank" rel="noopener nofollow ugc">
+        <a href="https://github.com/uncor3" target="_blank" rel="noopener nofollow ugc noreferrer">
           <img itemprop="image" alt="" src="/uploads/original/2X/1/1d63bbe068d1f697fe857694152034d97939703a.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="4F4E4F">
           uncor3
         </a>
@@ -1018,7 +1019,7 @@ plugs:
 <li>Instead of building <code>golang</code> yourself, you should use the SDK extension (<code>org.freedesktop.Sdk.Extension.golang</code>).</li>
 <li>In your last module, you’re using the <code>--share=network</code> build argument, presumably to get network during build.<br>
 When apps are build on Flathub, they are build without network access. All sources need to be declared in the manifest.<br>
-Check the <a href="https://github.com/flatpak/flatpak-builder-tools/" rel="noopener nofollow ugc">Flatpak Builder Tools</a> if you use packages that are usually pulled during build.</li>
+Check the <a href="https://github.com/flatpak/flatpak-builder-tools/" rel="noopener nofollow ugc noreferrer">Flatpak Builder Tools</a> if you use packages that are usually pulled during build.</li>
 </ul>
       </div>
 
@@ -1555,7 +1556,7 @@ uncore:</div>
 <p>if i remove these <code>"--filesystem=/sys/bus/usb:ro"</code>, <code>"--filesystem=/sys/devices:ro"</code> the app crashes if i unplug the device</p>
 </blockquote>
 </aside>
-<p>This is strange because flatpak automatically gives access to those <a href="https://github.com/flatpak/flatpak/blob/846b82bf8500c28ad10aa4c03480d7b420ad3ce4/common/flatpak-run.c#L2219-L2223" rel="noopener nofollow ugc">paths</a> . You need to debug why app crashes.</p>
+<p>This is strange because flatpak automatically gives access to those <a href="https://github.com/flatpak/flatpak/blob/846b82bf8500c28ad10aa4c03480d7b420ad3ce4/common/flatpak-run.c#L2219-L2223" rel="noopener nofollow ugc noreferrer">paths</a> . You need to debug why app crashes.</p>
       </div>
 
       <div class="post-footer">

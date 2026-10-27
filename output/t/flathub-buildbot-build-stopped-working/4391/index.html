@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,9 +104,9 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi,</p>
-<p>I am the maintainer of the <a href="https://github.com/flathub/eu.betterbird.Betterbird" rel="noopener nofollow ugc">Betterbird</a> flatpak. The last flatpak I shipped was built successfully on 27 May. I have not changed the <a href="https://github.com/flathub/eu.betterbird.Betterbird/blob/master/eu.betterbird.Betterbird.json" rel="noopener nofollow ugc">manifest</a> since then, but when I retry the build today (<a href="https://github.com/flathub/eu.betterbird.Betterbird/pull/83" rel="noopener nofollow ugc">PR</a>), it fails (<a href="https://buildbot.flathub.org/#/builders/33/builds/5682/steps/8/logs/stdio" rel="noopener nofollow ugc">Build log</a>).</p>
+<p>I am the maintainer of the <a href="https://github.com/flathub/eu.betterbird.Betterbird" rel="noopener nofollow ugc noreferrer">Betterbird</a> flatpak. The last flatpak I shipped was built successfully on 27 May. I have not changed the <a href="https://github.com/flathub/eu.betterbird.Betterbird/blob/master/eu.betterbird.Betterbird.json" rel="noopener nofollow ugc noreferrer">manifest</a> since then, but when I retry the build today (<a href="https://github.com/flathub/eu.betterbird.Betterbird/pull/83" rel="noopener nofollow ugc noreferrer">PR</a>), it fails (<a href="https://buildbot.flathub.org/#/builders/33/builds/5682/steps/8/logs/stdio" rel="noopener nofollow ugc noreferrer">Build log</a>).</p>
 <p>Has there been any change to the build environment recently? Do you have any suggestions how to debug this?</p>
-<p>EDIT: It seems that org.freedesktop.Sdk.Extension.rust-stable <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.rust-stable/blob/334baca4f0ace408a88c53b91d7780377c2c391c/org.freedesktop.Sdk.Extension.rust-stable.appdata.xml#LL15C1-L15C50" rel="noopener nofollow ugc">has been updated to provide rust 1.70.0 since 1 June</a>; before it provided rust 1.69.0. Maybe this unexpected update causes the issues. Is there any way to use a fixed version of rust for building the flatpak instead of a floating “stable” version?</p>
+<p>EDIT: It seems that org.freedesktop.Sdk.Extension.rust-stable <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.rust-stable/blob/334baca4f0ace408a88c53b91d7780377c2c391c/org.freedesktop.Sdk.Extension.rust-stable.appdata.xml#LL15C1-L15C50" rel="noopener nofollow ugc noreferrer">has been updated to provide rust 1.70.0 since 1 June</a>; before it provided rust 1.69.0. Maybe this unexpected update causes the issues. Is there any way to use a fixed version of rust for building the flatpak instead of a floating “stable” version?</p>
 <p>Best,<br>
 Martin</p>
       </div>

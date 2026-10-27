@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -218,7 +219,7 @@ os.environ.setdefault("LOG_DIR", platformdirs.user_log_dir("AmuletMapEditor", "A
 <p>So… Can somebody please explain to me why this works fine when I install it into a VENV with PIP but fails when the exact same code is built into a flatpak?</p>
 <p>The <code>java_vanilla_fix</code> folder bundled with <code>minecraft_model_reader</code> contains about 400 files, while the primary cache contains about 9,900 - am I up against a <code>ulimit</code> cap or limit, and if so, can I extend that ceiling within the flatpak or am I bound by the <code>ulimit</code> defined by the host system? If it’s not <code>ulimit</code>, what other reason is there for the app to successfully locate the files, then suddenly say it can’t find them?</p>
 <p>The Python code itself is sound, because there are no issues at all when installed inside a VENV. And while I suppose everybody could just do that, I figured making it into a flatpak would be easier for novice users who might not understand the complexities of creating and maintaining a Python virtual environment.</p>
-<p>If you need anything clarified or want to see anything, the entire flatpak project is located <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc">in my GIT repo</a>. The sum total of this project is all there: all the YAML/JSON manifest files, all the packages I modified for debug logging, even the shell scripts I run locally to automate everything so I don’t have to keep entering commands each step of the way. Literally <strong>EVERYTHING</strong>.</p>
+<p>If you need anything clarified or want to see anything, the entire flatpak project is located <a href="https://github.com/EvilSupahFly/Amulet-Flatpak" rel="noopener nofollow ugc noreferrer">in my GIT repo</a>. The sum total of this project is all there: all the YAML/JSON manifest files, all the packages I modified for debug logging, even the shell scripts I run locally to automate everything so I don’t have to keep entering commands each step of the way. Literally <strong>EVERYTHING</strong>.</p>
 <p>Amulet is a fantastic tool, but it’s not very effective with missing textures so I would love to get to the bottom of this!</p>
       </div>
 

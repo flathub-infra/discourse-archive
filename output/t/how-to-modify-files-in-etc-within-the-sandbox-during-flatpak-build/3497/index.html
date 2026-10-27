@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -104,7 +105,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>Hi,</p>
 <p>when building a flatpak, is there a way to modify or add files in /etc within the sandbox?</p>
-<p>Background: I am the maintainer of the eu.betterbird.Betterbird flatpak. Users have reported that under certain circumstances fonts are looking ugly in the flatpak app, but they look fine if the app is run outside of the sandbox. There is a <a href="https://github.com/flatpak/flatpak/issues/2861#issuecomment-851967628" rel="noopener nofollow ugc">known work-around to fix the issue</a>, which involves adding a configuration file in ~/.var/app/eu.betterbird.Betterbird/config/fontconfig.<br>
+<p>Background: I am the maintainer of the eu.betterbird.Betterbird flatpak. Users have reported that under certain circumstances fonts are looking ugly in the flatpak app, but they look fine if the app is run outside of the sandbox. There is a <a href="https://github.com/flatpak/flatpak/issues/2861#issuecomment-851967628" rel="noopener nofollow ugc noreferrer">known work-around to fix the issue</a>, which involves adding a configuration file in ~/.var/app/eu.betterbird.Betterbird/config/fontconfig.<br>
 Instead of requiring every user suffering from the issue to manually apply the workaround I’d rather ship the workaround in my flatpak. I think the easiest option to achieve this would be to add a config in /etc/fonts/conf.d within the sandbox, if that is possible at all.</p>
 <p>Best,<br>
 Martin</p>
@@ -279,7 +280,7 @@ Martin</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I think you can simply include your configuration to <code>/app/etc/fonts/local.conf</code> and it’ll be used by the runtime. At least that’s how I’d interpret this file: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/files/fontconfig-flatpak.conf" rel="noopener nofollow ugc">/etc/fonts/conf.d/50-flatpak.conf</a></p>
+        <p>I think you can simply include your configuration to <code>/app/etc/fonts/local.conf</code> and it’ll be used by the runtime. At least that’s how I’d interpret this file: <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/files/fontconfig-flatpak.conf" rel="noopener nofollow ugc noreferrer">/etc/fonts/conf.d/50-flatpak.conf</a></p>
       </div>
 
       <div class="post-footer">

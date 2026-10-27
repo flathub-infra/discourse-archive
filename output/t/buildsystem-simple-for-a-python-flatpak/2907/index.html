@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -324,7 +325,7 @@ blah
 <p>I think I’ve worked out what the Meson file does and why it can be replaced:</p>
 <p>It defines directories<br>
 The get_option statements are finding the OSs directories, so it is OS neutral. There’s no need for that for this app as it will only run on Linux and it’s in a Flatpak which has fixed standards anyway. It’s therefore OK that “buildsystem: simple” hard codes them.</p>
-<p>It copies (renaming if necessary) files into the appropriate directories. I thought “installation” was some special process. It isn’t. <a href="https://linuxhandbook.com/install-command/" rel="noopener nofollow ugc">Install command explanation</a> - it’s just a powerful combination of cp and mkdir commands.</p>
+<p>It copies (renaming if necessary) files into the appropriate directories. I thought “installation” was some special process. It isn’t. <a href="https://linuxhandbook.com/install-command/" rel="noopener nofollow ugc noreferrer">Install command explanation</a> - it’s just a powerful combination of cp and mkdir commands.</p>
 <p>So I think I can recommend someone writing a simple Flatpak to use “buildsystem: simple” and not bother with Meson.</p>
       </div>
 

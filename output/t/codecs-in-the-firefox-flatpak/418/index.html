@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -106,7 +107,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>On a fresh installation of Fedora, video streaming for many web sites does not work (things like Netflix, Amazon, etc.). To get them to work I install the ffmpeg-libs package from the RPM Fusion rpmfusion-free repositories. I noticed that the Firefox flatpak could play streaming videos out of the box. I always find issues around licensing confusing so I thought I would take this opportunity to ask about how Flathub views licensing concerns in this area (I’m not advocating for any change, just trying to understand):</p>
 <ol>
-<li>From what I can tell, the Firefox flatpak mostly just drops the standard Firefox release tarball into the org.freedesktop.Platform runtime from Flathub (looking at <a href="https://hg.mozilla.org/mozilla-central/file/7b21b61341c21a503f459ca322a8888e3e31a9b4/taskcluster/docker/firefox-flatpak/runme.sh" rel="nofollow noopener">this file</a>). Does video playback work because org.freedesktop.Platform contains the equivalent of ffmpeg-libs from rpmfusion-free? (Note that in the commit history for the runme.sh script linked above ffmpeg-full was experimented with but I don’t think it was included in a version I tried).</li>
+<li>From what I can tell, the Firefox flatpak mostly just drops the standard Firefox release tarball into the org.freedesktop.Platform runtime from Flathub (looking at <a href="https://hg.mozilla.org/mozilla-central/file/7b21b61341c21a503f459ca322a8888e3e31a9b4/taskcluster/docker/firefox-flatpak/runme.sh" rel="nofollow noopener noreferrer ugc">this file</a>). Does video playback work because org.freedesktop.Platform contains the equivalent of ffmpeg-libs from rpmfusion-free? (Note that in the commit history for the runme.sh script linked above ffmpeg-full was experimented with but I don’t think it was included in a version I tried).</li>
 <li>Does Flathub take a similar stance to codec licensing as RPM Fusion and Ubuntu – i.e. open source codecs are freely distributable regardless of patent issues in various countries (in contrast to the stance of Fedora and Red Hat which don’t include codecs covered by patents)?</li>
 </ol>
       </div>
@@ -217,9 +218,9 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p><span class="mention">@barthalion</span> Thanks for the information! One thing that was confusing me originally was that I couldn’t figure out where the org.freedesktop.Platform runtime was created because it was not in the Flathub GitHub organization. Then I discovered that the freedesktop-sdk is actually separate project hosted on GitLab. I found <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/elements/include/ffmpeg.yml" rel="nofollow noopener">this yaml file</a> which describes how the patent-free version of ffmpeg is built for the org.freedesktop.Platform runtime.</p>
+        <p><span class="mention">@barthalion</span> Thanks for the information! One thing that was confusing me originally was that I couldn’t figure out where the org.freedesktop.Platform runtime was created because it was not in the Flathub GitHub organization. Then I discovered that the freedesktop-sdk is actually separate project hosted on GitLab. I found <a href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/elements/include/ffmpeg.yml" rel="nofollow noopener noreferrer ugc">this yaml file</a> which describes how the patent-free version of ffmpeg is built for the org.freedesktop.Platform runtime.</p>
 <p>One thing that I still don’t understand is what Fedora and Red Hat’s stance is towards ffmpeg. The best I could find was Fedora’s page on software patents (can’t link to it because of the limit on the number of links but it is at fedoraproject dot org/wiki/Software_Patents) and various Red Hat bug tracker comments and support posts where they just say that Red Hat does not support ffmpeg. That is strange to me since org.freedesktop.Platform and the link I gave above show that it is possible to distribute ffmpeg in a way that does not use patent encumbered codecs. My best guess is that Red Hat does not support ffmpeg because the upstream project itself makes no effort to split out the patent encumbered codecs, so Red Hat providing a stripped down version would lead to many support requests related to missing codecs – better for users who need ffmpeg to get the full version from a third party instead.</p>
-<p>One other thing this made me wonder about was how the org.fedoraproject.Platform runtime was built. I found <a href="https://src.fedoraproject.org/modules/flatpak-runtime/tree/f32" rel="nofollow noopener">this project</a> that includes the scripts used to build it. It seems to pull data from org.freedesktop.Platform and from Fedora repos and combine them in a complicated way. I couldn’t find how it excluded ffmpeg from the result (I think it might be that it looks at every file in org.freedesktop.Platform and finds what rpm provides that files and ignores files like those of ffmpeg for which there is no corresponding rpm), but I confirmed that there were no ffmpeg files in org.fedoraproject.Platform/x86_64/f32.</p>
+<p>One other thing this made me wonder about was how the org.fedoraproject.Platform runtime was built. I found <a href="https://src.fedoraproject.org/modules/flatpak-runtime/tree/f32" rel="nofollow noopener noreferrer ugc">this project</a> that includes the scripts used to build it. It seems to pull data from org.freedesktop.Platform and from Fedora repos and combine them in a complicated way. I couldn’t find how it excluded ffmpeg from the result (I think it might be that it looks at every file in org.freedesktop.Platform and finds what rpm provides that files and ignores files like those of ffmpeg for which there is no corresponding rpm), but I confirmed that there were no ffmpeg files in org.fedoraproject.Platform/x86_64/f32.</p>
       </div>
 
       <div class="post-footer">
@@ -452,7 +453,7 @@ wshaos:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Yeah, ask at <a href="http://bugzilla.mozilla.org" rel="noopener nofollow ugc">bugzilla.mozilla.org</a></p>
+        <p>Yeah, ask at <a href="http://bugzilla.mozilla.org" rel="noopener nofollow ugc noreferrer">bugzilla.mozilla.org</a></p>
       </div>
 
       <div class="post-footer">

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -106,7 +107,7 @@
 My app is entirely build with CICD (in github actions).<br>
 I got the flatpak to build locally, but now i want to build it into a CICD workflow.</p>
 <p>I got at the root of my repository a “flatpak” folder containing the buildscript (build-flatpak.sh, app yaml).<br>
-The thing im confused about is: How is this supposed to function? I know that i have to fork the flathub repo and then put my .yml file there followed by a pr. From my understanding this now means that the app is available on flathup, problem being: I cant just tell the manifest to download “<a href="http://github.com/.../releases/lateast/linux-portable.tar.gz" rel="noopener nofollow ugc">github.com/.../releases/lateast/linux-portable.tar.gz</a>” for the building process, because it requires a sha hash. Please help me, i have no clue how to do it… (wget, curl, etc, all fail when i try to download the file in the build-flatpak.sh)</p>
+The thing im confused about is: How is this supposed to function? I know that i have to fork the flathub repo and then put my .yml file there followed by a pr. From my understanding this now means that the app is available on flathup, problem being: I cant just tell the manifest to download “<a href="http://github.com/.../releases/lateast/linux-portable.tar.gz" rel="noopener nofollow ugc noreferrer">github.com/.../releases/lateast/linux-portable.tar.gz</a>” for the building process, because it requires a sha hash. Please help me, i have no clue how to do it… (wget, curl, etc, all fail when i try to download the file in the build-flatpak.sh)</p>
 <pre><code class="lang-auto">
 # yaml-language-server: $schema=https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json
 
@@ -325,7 +326,7 @@ cp -r packaging/flatpak/$projectId.metainfo.xml $metadataDir/
 
       <div class="post-body cooked" itemprop="text">
         <p>You can write a script, that hashes the build and commits that to git.</p>
-<p>When external builds are allowed by flathub, you should also be able to use <a href="https://github.com/flatpak/flatpak-github-actions" class="inline-onebox">GitHub - flatpak/flatpak-github-actions: Build your Flatpak application using Github Actions</a> to publish</p>
+<p>When external builds are allowed by flathub, you should also be able to use <a href="https://github.com/flatpak/flatpak-github-actions" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flatpak/flatpak-github-actions: Build your Flatpak application using Github Actions</a> to publish</p>
       </div>
 
       <div class="post-footer">
@@ -595,8 +596,8 @@ Is there a “cheatsheet” for the flatpak manifest yml?</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Not that I know of.</p>
-<p>There is <a href="https://docs.flathub.org/">https://docs.flathub.org/</a> which you probably know.</p>
-<p>But with most advanced stuff, I end up searching through <a href="https://github.com/flathub/" class="inline-onebox">Flathub · GitHub</a> (code search) to see if somebody else solved it. (that might not help you with your pipeline itself)</p>
+<p>There is <a href="https://docs.flathub.org/" rel="noreferrer nofollow ugc">https://docs.flathub.org/</a> which you probably know.</p>
+<p>But with most advanced stuff, I end up searching through <a href="https://github.com/flathub/" class="inline-onebox" rel="noreferrer nofollow ugc">Flathub · GitHub</a> (code search) to see if somebody else solved it. (that might not help you with your pipeline itself)</p>
       </div>
 
       <div class="post-footer">

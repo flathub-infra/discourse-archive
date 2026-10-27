@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -107,7 +108,7 @@
 <p>This is partly in response to Elementary OS switching their SDK to a native Flatpak runtime (per <a href="/t/distributing-runtimes-and-sdk/1640/index.html" class="inline-onebox">Distributing runtimes and sdk</a>) and including it on Flathub would make a very smooth process for Elementary apps, and partly recognizing that folks like RedHat and Fedora are now publishing their own Flatpak runtimes which people are interested in using too.</p>
 <p>I appreciate this is a trade-off; the more runtimes we have, the more bandwidth, disk space and memory we’re using on people’s systems, so our recommendation is still that unless you have a specific need to change tracks (eg your app is already developed and tested against an existing platform and you want to maintain that environment in Flatpak too), you stick to Freedesktop SDK derived runtimes wherever possible.</p>
 <p>However ultimately Flathub is trying to reduce friction for app developers, so this move would allow them the choice of what works best for them and their users after evaluating the above caveats. We also want Flathub to remain neutral regarding OS/distro vendors, so there’s no benefit to us being strongly partisan on which runtime/SDK people use if it serves to locks platform providers out of our ecosystem in ways which could be unhelpful in the longer term.</p>
-<p>That said, we need to make sure Flathub continues to provide a good experience for our users and we mitigate some of those adverse affects, so I’ve tried to draft a definition of <a href="https://github.com/flathub/flathub/wiki/Runtimes">what we’d like to see in a Runtime</a> on the Wiki in order for Flathub to be willing to host it. I’d love any feedback and if folks have any suggestions about what a reasonable submission flow would be.</p>
+<p>That said, we need to make sure Flathub continues to provide a good experience for our users and we mitigate some of those adverse affects, so I’ve tried to draft a definition of <a href="https://github.com/flathub/flathub/wiki/Runtimes" rel="noreferrer nofollow ugc">what we’d like to see in a Runtime</a> on the Wiki in order for Flathub to be willing to host it. I’d love any feedback and if folks have any suggestions about what a reasonable submission flow would be.</p>
 <p>Thanks,<br>
 Rob</p>
       </div>
@@ -241,10 +242,10 @@ Rob</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>Here you can find the links to each repository.<br>
-<a href="https://docs.flatpak.org/en/latest/available-runtimes.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.flatpak.org/en/latest/available-runtimes.html</a></p>
+<a href="https://docs.flatpak.org/en/latest/available-runtimes.html" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://docs.flatpak.org/en/latest/available-runtimes.html</a></p>
 <p>Here is the conventions to the application’s (and runtime’s) ID.<br>
-The runtime’s ID in these case are their main website with reverse-DNS style (<a href="http://gnome.org" rel="noopener nofollow ugc">gnome.org</a>, <a href="http://kde.org" rel="noopener nofollow ugc">kde.org</a> and <a href="http://freedesktop.org" rel="noopener nofollow ugc">freedesktop.org</a>)<br>
-<a href="https://docs.flatpak.org/en/latest/conventions.html#application-ids" class="inline-onebox" rel="noopener nofollow ugc">Requirements &amp; Conventions — Flatpak documentation</a></p>
+The runtime’s ID in these case are their main website with reverse-DNS style (<a href="http://gnome.org" rel="noopener nofollow ugc noreferrer">gnome.org</a>, <a href="http://kde.org" rel="noopener nofollow ugc noreferrer">kde.org</a> and <a href="http://freedesktop.org" rel="noopener nofollow ugc noreferrer">freedesktop.org</a>)<br>
+<a href="https://docs.flatpak.org/en/latest/conventions.html#application-ids" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Requirements &amp; Conventions — Flatpak documentation</a></p>
       </div>
 
       <div class="post-footer">
@@ -290,7 +291,7 @@ The runtime’s ID in these case are their main website with reverse-DNS style (
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Right, those links are exactly what I followed. At least for KDE’s runtime, I found the <a href="https://invent.kde.org/packaging/flatpak-kde-runtime/-/blob/qt5.15lts/org.kde.Sdk.json.in" rel="noopener nofollow ugc">.in fle for the manifest.</a> But with GNOME’s it’s like… I don’t even know where to start looking to find something that would look like the manifest. It almost seems obfuscated on purpose.</p>
+        <p>Right, those links are exactly what I followed. At least for KDE’s runtime, I found the <a href="https://invent.kde.org/packaging/flatpak-kde-runtime/-/blob/qt5.15lts/org.kde.Sdk.json.in" rel="noopener nofollow ugc noreferrer">.in fle for the manifest.</a> But with GNOME’s it’s like… I don’t even know where to start looking to find something that would look like the manifest. It almost seems obfuscated on purpose.</p>
       </div>
 
       <div class="post-footer">
@@ -337,7 +338,7 @@ The runtime’s ID in these case are their main website with reverse-DNS style (
 
       <div class="post-body cooked" itemprop="text">
         <p>The GNOME SDK is built from this:</p>
-<p><a href="https://gitlab.gnome.org/GNOME/gnome-build-meta" class="onebox" target="_blank" rel="noopener nofollow ugc">https://gitlab.gnome.org/GNOME/gnome-build-meta</a></p>
+<p><a href="https://gitlab.gnome.org/GNOME/gnome-build-meta" class="onebox" target="_blank" rel="noopener nofollow ugc noreferrer">https://gitlab.gnome.org/GNOME/gnome-build-meta</a></p>
       </div>
 
       <div class="post-footer">
@@ -419,7 +420,7 @@ The runtime’s ID in these case are their main website with reverse-DNS style (
 
       <div class="post-body cooked" itemprop="text">
         <p>The manifest for each flatpak, be it runtime or app is always distributed inside the flatpak. To see the one for gnome platform you can do something like <code>flatpak run --command=bash org.gnome.Platform</code> and then <code>cat /usr/manifest.json</code>. If you run it with filesystem permissions you can copy it out of the container and examine in your favourite text editor.</p>
-<p>But you can make flatpaks in a number of ways, be it using flatpak-builder manifests, <a href="https://www.buildstream.build/">builstream</a> or likely other esoteric systems. I’m not sure that this is entirely relevant to the initial question though.</p>
+<p>But you can make flatpaks in a number of ways, be it using flatpak-builder manifests, <a href="https://www.buildstream.build/" rel="noreferrer nofollow ugc">builstream</a> or likely other esoteric systems. I’m not sure that this is entirely relevant to the initial question though.</p>
       </div>
 
       <div class="post-footer">

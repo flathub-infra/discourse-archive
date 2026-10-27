@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi all,</p>
-<p>Posting here to add more detail following my <a href="https://twitter.com/ramcq/status/1462837235166990341">Tweet last night</a> about contract work on Flathub. As some people know, the GNOME Foundation has been supporting Flathub with sysadmin time, legal and hosting costs, as is a strong believer in the importance of a vendor &amp; platform neutral app store for Linux end-user apps. GNOME has a donor who is interested in supporting financial sustainability for app developers and removing barriers to an inclusive ecosystem.</p>
+<p>Posting here to add more detail following my <a href="https://twitter.com/ramcq/status/1462837235166990341" rel="noreferrer nofollow ugc">Tweet last night</a> about contract work on Flathub. As some people know, the GNOME Foundation has been supporting Flathub with sysadmin time, legal and hosting costs, as is a strong believer in the importance of a vendor &amp; platform neutral app store for Linux end-user apps. GNOME has a donor who is interested in supporting financial sustainability for app developers and removing barriers to an inclusive ecosystem.</p>
 <p>Flathub would like to use these funds to work with a contractor for a short-term project and make steps towards supporting application developers being able to request payments (whether donations or subscriptions). We’re seeking diverse applications from individuals (or groups of individuals - this is something of a polyglot project) and FOSS-friendly companies who can help us move ahead - the funding is available to start right away subject to an agreed contract and statement of work.</p>
 <p>Before we get to that and moving anyone’s money around, we need to solve a few basic questions around developer identity and helping people to trust the applications, and we’d also like to address a long-standing request people have had about being able to only use FOSS applications from Flathub.<br>
 We have not fully scoped the project, so whoever we select will need to work with us to come up with the specific proposed approach in more detail. Our first sketch of the necessary work items is as follows:</p>
@@ -112,8 +113,8 @@ We have not fully scoped the project, so whoever we select will need to work wit
 <li>The frontend should make it easy to see such first party apps, and we’d also publish that kudo in the appstream so it can show up in GNOME Software and KDE Discover. Presenting it in those places is out of scope here - this is a Flathub project rather than a GNOME or KDE one.</li>
 <li>We’d also like Flathub to publish multiple Flatpak repos, so that people can choose to only see/access those first party apps, and not the community contributions which have third-party FOSS apps, extra data wrappers, etc. This will need support in flat-manager to produce multiple metadata and summary files for the different repos, and potentially publish commit objects that belong to multiple collections. We might need to work with Alex to nail down the design for this, but the ideal for Flathub and our CDNs is that the object store itself is shared between the multiple repo origins, so we can configure the CDN to cache identical objects from the “separate” repos with the same cache key. Generating multiple summaries/appdata refs for the same object store is a little subtle - it needs to work with pruning and per-architecture summaries and stuff.</li>
 <li>If we have this repo splitting functionality, it also makes sense to publish another repository that includes only those apps which are under a FOSS license, as this will correct another long-standing issue which people have given us feedback about. (We have a choice between whether this repository is free apps, verified or not, or only apps that are both free and verified. Ideally we’d prefer not to have four…!)</li>
-<li>Once that’s all sorted we might be able to think about a payment system that can collects payments and sends them to the app uploader. Adding payments with something such as <a href="https://stripe.com/connect">Stripe Connect</a> where the GNOME Foundation does not need to get involved in receiving/forwarding seems like an appealing path forward but we’re happy to consider anything that gets the job done without generating too much paperwork. Ideally we’d be able to take a contribution towards Flathub running costs from these payments, at the very least we need to take the transaction costs out.</li>
-<li>We need a place for developers to be able to log in and manage their payments, set recommended prices, etc somehow…? There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</li>
+<li>Once that’s all sorted we might be able to think about a payment system that can collects payments and sends them to the app uploader. Adding payments with something such as <a href="https://stripe.com/connect" rel="noreferrer nofollow ugc">Stripe Connect</a> where the GNOME Foundation does not need to get involved in receiving/forwarding seems like an appealing path forward but we’re happy to consider anything that gets the job done without generating too much paperwork. Ideally we’d be able to take a contribution towards Flathub running costs from these payments, at the very least we need to take the transaction costs out.</li>
+<li>We need a place for developers to be able to log in and manage their payments, set recommended prices, etc somehow…? There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard" rel="noreferrer nofollow ugc">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</li>
 </ul>
 <p>There are some future items that I don’t think we’ll get to right now, but for completeness / extra credit:</p>
 <ul>
@@ -122,7 +123,7 @@ We have not fully scoped the project, so whoever we select will need to work wit
 <li>We can probably rely on GitHub authentication for developers at present given Flathub is based there currently, but eventually it might be interesting to add an authentication system that can include users easily (or, integrate with a collection of OAuth2 providers and lazily provision accounts in our own identity system) so they can manage their subscriptions, donations, etc, as well as allowing developers from other ecosystems such as GitLab, GNOME or KDE to authenticate without going via GitHub.</li>
 <li>It would be nice to set up ways for developers to mark apps/extensions/versions as for subscribers/donors/etc only, so we would need to authenticate users when they access the repos themselves, check their subscriptions, and use the existing “entitlement” mechanism in Flatpak to give them access to the supporter-only content.</li>
 </ul>
-<p>The involved components would be <a href="https://github.com/flatpak/flat-manager/">flat-manager</a> which is the Rust repo manager that handles pushes to the Flathub repository and updates the repo metadata, the <a href="https://github.com/flathub/buildbot">buildbot</a> itself in Python, the <a href="https://github.com/flathub/linux-store-frontend">linux-store-frontend</a> which is the Node.js frontend that drives <a href="http://flathub.org">flathub.org</a>, and <a href="https://github.com/flathub/backend/">backend</a> which is the Python provider of the API that it uses.</p>
+<p>The involved components would be <a href="https://github.com/flatpak/flat-manager/" rel="noreferrer nofollow ugc">flat-manager</a> which is the Rust repo manager that handles pushes to the Flathub repository and updates the repo metadata, the <a href="https://github.com/flathub/buildbot" rel="noreferrer nofollow ugc">buildbot</a> itself in Python, the <a href="https://github.com/flathub/linux-store-frontend" rel="noreferrer nofollow ugc">linux-store-frontend</a> which is the Node.js frontend that drives <a href="http://flathub.org" rel="noreferrer nofollow ugc">flathub.org</a>, and <a href="https://github.com/flathub/backend/" rel="noreferrer nofollow ugc">backend</a> which is the Python provider of the API that it uses.</p>
 <p>We’d like the successful applicant to submit their work as pull requests against the above repositories, and allow for some time to solicit and respond to review feedback from the relevant module maintainers. Where test suites exist, they must continue to pass and the key parts of new functionality must be added to the suites.</p>
 <p>We’d like potential applicants to submit their applications to <a href="mailto:admins@flathub.org">admins@flathub.org</a>, including:</p>
 <ul>
@@ -130,7 +131,7 @@ We have not fully scoped the project, so whoever we select will need to work wit
 <li>a high-level overview of your intended approach for the work packages set out above and your estimation of the time required</li>
 <li>your proposed duration and rate for the project, whether based on fixed fees or time &amp; materials</li>
 </ul>
-<p>We’re hoping to select our contractor towards the middle of next month, so we request all submissions by noon UTC on 10th December 2021. We’re happy to take questions about the project from prospective applicants either on Matrix at <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc">#flathub-contract:matrix.org</a> or here on Discourse.</p>
+<p>We’re hoping to select our contractor towards the middle of next month, so we request all submissions by noon UTC on 10th December 2021. We’re happy to take questions about the project from prospective applicants either on Matrix at <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc noreferrer">#flathub-contract:matrix.org</a> or here on Discourse.</p>
 <p>Thanks,<br>
 Rob (on behalf of the Flathub admins)</p>
       </div>
@@ -186,7 +187,7 @@ Rob (on behalf of the Flathub admins)</p>
 <div class="quote-controls"></div>
 ramcq:</div>
 <blockquote>
-<p>There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard" rel="noopener nofollow ugc">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</p>
+<p>There may be scope to share/re-use code from Elementary’s <a href="https://github.com/elementary/appcenter-dashboard" rel="noopener nofollow ugc noreferrer">appcenter-dashboard</a> here, although I must profess to having no idea what Elixir is.</p>
 </blockquote>
 </aside>
 <p>Honestly after having used Elixir quite a bit, I’d say anyone with functional programming experience should be able to get up to par without too much effort.</p>
@@ -241,7 +242,7 @@ ramcq:</div>
 </ul>
 </blockquote>
 </aside>
-<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/">new summary format</a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
+<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/" rel="noreferrer nofollow ugc">new summary format</a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
       </div>
 
       <div class="post-footer">
@@ -299,7 +300,7 @@ ramcq:</div>
 <div class="quote-controls"></div>
 mwleeds:</div>
 <blockquote>
-<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/">new summary format </a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
+<p>The <a href="https://blogs.gnome.org/alexl/2020/11/20/scaling-flathub/" rel="noreferrer nofollow ugc">new summary format </a> supported by recent versions of Flatpak already has support for splitting a repo into subsets so I think this shouldn’t be terribly complicated.</p>
 </blockquote>
 </aside>
 <p>True, I think we considered that but at present Flatpak automatically selects those based on the architecture. If we wanted to add a 2nd dimension we’d need to define a way to map multiple variables into those paths, so it would be a 3 x 4 (or however many arches) list of summaries. Alex might remember the details but my idea was more like, could we set up a subdir of refs, eg ‘free/app/bla/bla’ and ‘verified/app/bla/bla’ that was served as the refs/ dir for the repo-free and repo-verified dir, link the objects/ dir together, add all three collection IDs to the commits, generate appdata refs inside those subdirs, generate filtered summaries, then only do prunes in the top level repo…?</p>
@@ -348,7 +349,7 @@ mwleeds:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hmm Alex said <a href="https://github.com/ostreedev/ostree/pull/1805#issuecomment-672731971">here</a> that we would want to use different collection IDs for the different repository subsets as you describe, but it would be nice if we could find a way to avoid that complexity and continue using <code>org.flathub.Stable</code> as the collection ID. But you would have to find a way to serve different appstream refs for the different subsets, and I don’t think there’s currently a way to do that without using different collection IDs.</p>
+        <p>Hmm Alex said <a href="https://github.com/ostreedev/ostree/pull/1805#issuecomment-672731971" rel="noreferrer nofollow ugc">here</a> that we would want to use different collection IDs for the different repository subsets as you describe, but it would be nice if we could find a way to avoid that complexity and continue using <code>org.flathub.Stable</code> as the collection ID. But you would have to find a way to serve different appstream refs for the different subsets, and I don’t think there’s currently a way to do that without using different collection IDs.</p>
       </div>
 
       <div class="post-footer">
@@ -441,7 +442,7 @@ mwleeds:</div>
 
       <div class="post-body cooked" itemprop="text">
         <p>Yeah I hadn’t considered that subset membership would be something that would need to have strong security guarantees around it, but if that is the case collection-ref bindings in commit metadata would be sufficient. We would need to do a lot of testing to check that when someone already has apps installed and they change their flathub remote to point to the free subset, the free ones are still updated and any non-free ones are handled gracefully (a warning?). And the case of offline sideloading would also need testing to make sure it works well with these subsets.</p>
-<p>We might also want to define a requirement that a collection ID for a repo subset has to have the main collection ID as a prefix (e.g. <code>org.flathub.Stable.free</code>), since currently it is <a href="https://github.com/flatpak/flatpak/blob/f513bf4710300e7339d6fd2d4178d92dd0448bd8/common/flatpak-dir.c#L14562">not allowed</a> to change a collection ID on a remote that was already set, but in the case of changing to a subset it would be safe I think. But then what if the user wants to see more than one subset from a remote? That wouldn’t come up if there’s only one but it could in the general case. You can’t set more than one collection ID on a remote. You could have more than one remote but that would get messy if you decide to change what subsets you want to see.</p>
+<p>We might also want to define a requirement that a collection ID for a repo subset has to have the main collection ID as a prefix (e.g. <code>org.flathub.Stable.free</code>), since currently it is <a href="https://github.com/flatpak/flatpak/blob/f513bf4710300e7339d6fd2d4178d92dd0448bd8/common/flatpak-dir.c#L14562" rel="noreferrer nofollow ugc">not allowed</a> to change a collection ID on a remote that was already set, but in the case of changing to a subset it would be safe I think. But then what if the user wants to see more than one subset from a remote? That wouldn’t come up if there’s only one but it could in the general case. You can’t set more than one collection ID on a remote. You could have more than one remote but that would get messy if you decide to change what subsets you want to see.</p>
 <p>It’s kind of too bad the support we already have for filtering remotes with blocklists/allowlists isn’t up to the task of implementing subsets. It might work for the online case if the filters could be updated from the remote, but it’s hard to imagine how it’d work for offline sideloading.</p>
       </div>
 
@@ -481,7 +482,7 @@ mwleeds:</div>
 <p>I wanted to give a quick update. The Flathub team and the GNOME Foundation would like to give our thanks to those who expressed interest and applied. Neil McGovern, Nick Richards, Bartłomiej Piotrowski and I received and reviewed four proposals for this project.</p>
 <p>We’re pleased to announce that we have awarded the contract to two different applicants who have started work this week. Codethink are the main contractor, and they provided a complete proposal and will have a number of engineers working on the project over the coming weeks. They will be supplemented by James Westman who made a proposal focused on the verification and web parts of the project, and will work closely with the Codethink team to deliver certain work packages.</p>
 <p>We were impressed by parts of both proposals and asked whether they would be happy to work together, allowing us to involve more of the community in the project, and share the knowledge about the work being done more widely.</p>
-<p>For those eager to follow the progress of the project, we’ve set up a <a href="https://github.com/orgs/flathub/projects/2">GitHub project board</a> to track the work items (which belong to different underlying Flathub modules) and are using the same <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc">Matrix chat room</a> to discuss the project, daily standups, etc.</p>
+<p>For those eager to follow the progress of the project, we’ve set up a <a href="https://github.com/orgs/flathub/projects/2" rel="noreferrer nofollow ugc">GitHub project board</a> to track the work items (which belong to different underlying Flathub modules) and are using the same <a href="https://matrix.to/#/#flathub-contract:matrix.org" rel="noopener nofollow ugc noreferrer">Matrix chat room</a> to discuss the project, daily standups, etc.</p>
 <p>Many Thanks,<br>
 Rob</p>
       </div>
@@ -718,7 +719,7 @@ Rob</p>
         <aside class="onebox githubissue" data-onebox-src="https://github.com/electron-userland/electron-builder/issues/7154">
   <header class="source">
 
-      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc">github.com/electron-userland/electron-builder</a>
+      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc noreferrer">github.com/electron-userland/electron-builder</a>
   </header>
 
   <article class="onebox-body">
@@ -729,7 +730,7 @@ Rob</p>
 
   <div class="github-info-container">
     <h4>
-      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc">Publish to flathub support</a>
+      <a href="https://github.com/electron-userland/electron-builder/issues/7154" target="_blank" rel="noopener nofollow ugc noreferrer">Publish to flathub support</a>
     </h4>
 
     <div class="github-info">
@@ -739,7 +740,7 @@ Rob</p>
 
 
       <div class="user">
-        <a href="https://github.com/soredake" target="_blank" rel="noopener nofollow ugc">
+        <a href="https://github.com/soredake" target="_blank" rel="noopener nofollow ugc noreferrer">
           <img itemprop="image" alt="soredake" src="/uploads/original/1X/6f8f8cfd9a1de267c766998eba03d37cc00d276a.jpeg" class="onebox-avatar-inline" width="20" height="20">
           soredake
         </a>

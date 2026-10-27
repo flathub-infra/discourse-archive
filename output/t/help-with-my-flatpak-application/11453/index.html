@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,7 +103,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I have recently made a Flatpak application <a href="https://github.com/zachvlat/plasma-layouts" class="inline-onebox" rel="noopener nofollow ugc">GitHub - zachvlat/plasma-layouts: A simple yet powerful tool that allows you to easily manage and switch between different KDE Plasma desktop layouts.</a></p>
+        <p>I have recently made a Flatpak application <a href="https://github.com/zachvlat/plasma-layouts" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - zachvlat/plasma-layouts: A simple yet powerful tool that allows you to easily manage and switch between different KDE Plasma desktop layouts.</a></p>
 <p>The problem I have is that I have to <code>plasmashell --replace</code> in order to change the layouts. I ‘m not actually a flatpak developer and I was wondering if you have any tips on how to make it work on flatpak.</p>
       </div>
 
@@ -179,7 +180,7 @@ But since this basically offers a very big and wide backdoor in the sandbox, you
 <p>There are a few permissions there which would open up some questions:</p>
 <ul>
 <li>Why do you need write access to <code>home</code> and read access to <code>host</code>? If you need access to certain folders and can’t use the FileChooser portal, you should only ask permission for the folders you actually need.</li>
-<li>Instead of using <code>--persist=.config</code>, ideally your application should use the <a href="https://specifications.freedesktop.org/basedir/latest/" rel="noopener nofollow ugc">XDG Base Directory Specification</a>, in this case reading the config path from <code>XDG_CONFIG_HOME</code>.</li>
+<li>Instead of using <code>--persist=.config</code>, ideally your application should use the <a href="https://specifications.freedesktop.org/basedir/latest/" rel="noopener nofollow ugc noreferrer">XDG Base Directory Specification</a>, in this case reading the config path from <code>XDG_CONFIG_HOME</code>.</li>
 <li><code>--env=PATH=/usr/bin:/bin:/app/bin</code> doesnt make sense inside Flatpak. Runtime and App directory should already be in PATH without it, and <code>/bin</code> doesn’t exists.</li>
 </ul>
       </div>

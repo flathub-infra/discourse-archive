@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,11 +103,11 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi, I’m having a problem with building my Flathub submission <a href="https://github.com/flathub/com.github.scrivanolabs.scrivano/pull/7" rel="noopener nofollow ugc">here</a>. The build fails because of the following error:</p>
+        <p>Hi, I’m having a problem with building my Flathub submission <a href="https://github.com/flathub/com.github.scrivanolabs.scrivano/pull/7" rel="noopener nofollow ugc noreferrer">here</a>. The build fails because of the following error:</p>
 <blockquote>
 <p>install: cannot stat ‘icons/icon.svg’: No such file or directory</p>
 </blockquote>
-<p>Now the source for the build is a zip file downloaded from <a href="https://github.com/scrivanolabs/ScrivanoFlatpak/releases/download/0.16.7/Scrivano_flatpak_files_0.16.7.zip" rel="noopener nofollow ugc">Github</a> which contains an “icon” folder containing a file called “icon.svg” and other png files.</p>
+<p>Now the source for the build is a zip file downloaded from <a href="https://github.com/scrivanolabs/ScrivanoFlatpak/releases/download/0.16.7/Scrivano_flatpak_files_0.16.7.zip" rel="noopener nofollow ugc noreferrer">Github</a> which contains an “icon” folder containing a file called “icon.svg” and other png files.</p>
 <p>To install the icons I am using the following commands:</p>
 <pre><code class="lang-auto">    - install -Dm644 icons/icon.svg /app/share/icons/hicolor/scalable/apps/com.github.scrivanolabs.scrivano.svg
     - install -Dm644 icons/scrivano_64.png /app/share/icons/hicolor/64x64/apps/com.github.scrivanolabs.scrivano.png
@@ -114,7 +115,7 @@
     - install -Dm644 icons/scrivano_256.png /app/share/icons/hicolor/256x256/apps/com.github.scrivanolabs.scrivano.png
     - install -Dm644 icons/scrivano_512.png /app/share/icons/hicolor/512x512/apps/com.github.scrivanolabs.scrivano.png
 </code></pre>
-<p>The build (see <a href="https://buildbot.flathub.org/#/builders/5/builds/2759" rel="noopener nofollow ugc">here</a>) successfully copies the png icons but somehow when copying the svg icon triggers an error.</p>
+<p>The build (see <a href="https://buildbot.flathub.org/#/builders/5/builds/2759" rel="noopener nofollow ugc noreferrer">here</a>) successfully copies the png icons but somehow when copying the svg icon triggers an error.</p>
 <p>Locally everything installs correctly using the following command:</p>
 <pre><code class="lang-auto">flatpak-builder --user --install --force-clean build-dir com.github.scrivanolabs.scrivano.yml
 </code></pre>

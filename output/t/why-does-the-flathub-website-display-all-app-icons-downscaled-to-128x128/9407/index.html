@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>I’m sorry if this has already been asked (I searched and couldn’t find anything), or if it’s documented somewhere I haven’t found.</p>
-<p>Flathub requires developers to make high-resolution icons. The <a href="https://docs.flathub.org/docs/for-app-authors/requirements#icons" rel="noopener nofollow ugc">requirements</a> say that an app must either have an SVG icon or at least a 256x256 PNG icon. I’m very supportive of this. High-DPI displays are becoming very common and it’s important to write software that looks good on them. However, when I look at app pages on the Flathub site, they’re all downscaled to 128x128 rather than the nice high-res icons that the authors created. This means that they all look fuzzy when viewed on a high-DPI display, especially the blown-up icons for featured apps. I attached a screenshot from my computer so you can see what I mean.</p>
+<p>Flathub requires developers to make high-resolution icons. The <a href="https://docs.flathub.org/docs/for-app-authors/requirements#icons" rel="noopener nofollow ugc noreferrer">requirements</a> say that an app must either have an SVG icon or at least a 256x256 PNG icon. I’m very supportive of this. High-DPI displays are becoming very common and it’s important to write software that looks good on them. However, when I look at app pages on the Flathub site, they’re all downscaled to 128x128 rather than the nice high-res icons that the authors created. This means that they all look fuzzy when viewed on a high-DPI display, especially the blown-up icons for featured apps. I attached a screenshot from my computer so you can see what I mean.</p>
 <p>I was wondering if there was a reason why all the icons are downscaled to 128x128, or if Flathub had any plans to display higher resolution app icons in the future.<br>
 <div class="lightbox-wrapper"><a class="lightbox" href="/uploads/original/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522.jpeg" data-download-href="/uploads/original/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522.jpeg" title="Screenshot From 2025-04-15 20-28-42" rel="noopener nofollow ugc"><img itemprop="image" src="/uploads/optimized/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522_2_690x355.jpeg" alt="Screenshot From 2025-04-15 20-28-42" data-base62-sha1="3bL6Twg4knmfE4uAe8T6RHDzlvk" width="690" height="355" srcset="/uploads/optimized/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522_2_690x355.jpeg, /uploads/optimized/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522_2_1035x532.jpeg 1.5x, /uploads/optimized/2X/1/165ad5043a91aea0680ca757a24117b58b3a0522_2_1380x710.jpeg 2x" data-dominant-color="E7CFD6"><div class="meta"><svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot From 2025-04-15 20-28-42</span><span class="informations">1858×956 195 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg></div></a></div></p>
       </div>
@@ -147,7 +148,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>See <a href="https://github.com/flathub-infra/website/issues/3176" class="inline-onebox">App icons are blurry with 200% scaling · Issue #3176 · flathub-infra/website · GitHub</a> which blocks using <code>@2</code> icons</p>
+        <p>See <a href="https://github.com/flathub-infra/website/issues/3176" class="inline-onebox" rel="noreferrer nofollow ugc">App icons are blurry with 200% scaling · Issue #3176 · flathub-infra/website · GitHub</a> which blocks using <code>@2</code> icons</p>
 <p>Appstream at most gives us 128x128@2 icons, not larger than that (provided the app supplies a PNG of at least that size or more or an SVG). If not it gives us 128px only.</p>
 <p>The minimum is set to 128px and enforced by the linter as there are lots of projects in the wild that do no supply larger icons and there are lots of projects who don’t even have a 128px (smaller icons needs to be enlarged).</p>
       </div>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,11 +103,11 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Hi! There is a specific flatpak runtime that I am using: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval" class="inline-onebox" rel="noopener nofollow ugc">GitHub - flathub/com.obsproject.Studio.Plugin.BackgroundRemoval</a> (it is an OBS plugin).</p>
+        <p>Hi! There is a specific flatpak runtime that I am using: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval" class="inline-onebox" rel="noopener nofollow ugc noreferrer">GitHub - flathub/com.obsproject.Studio.Plugin.BackgroundRemoval</a> (it is an OBS plugin).</p>
 <p>My problem is, somewhere along the way the package maintainers changed the pattern for versioning and now I am stuck on an old, 1.0.1 version (latest version on Flathub is 1.1.6).</p>
-<p>This is the issue right here: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/issues/5" class="inline-onebox" rel="noopener nofollow ugc">The 'x-checker-data' field of the 'obs-backgroundremoval' module doesn't catch new releases · Issue #5 · flathub/com.obsproject.Studio.Plugin.BackgroundRemoval · GitHub</a></p>
+<p>This is the issue right here: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/issues/5" class="inline-onebox" rel="noopener nofollow ugc noreferrer">The 'x-checker-data' field of the 'obs-backgroundremoval' module doesn't catch new releases · Issue #5 · flathub/com.obsproject.Studio.Plugin.BackgroundRemoval · GitHub</a></p>
 <p>While I understand the issue was fixed upstream, I am still unable to update. I tried removing currently installed version 1.0.1 and installing said runtime again but it installs yet again in the outdated version 1.0.1. And <code>flatpak remote-info --log</code> also shows that 1.0.1 is the latest one available for installation.</p>
-<p>I want to get the most recent version which is 1.1.6. And as I understand, it should be available for installation already: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml" rel="noopener nofollow ugc">https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml</a></p>
+<p>I want to get the most recent version which is 1.1.6. And as I understand, it should be available for installation already: <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml" rel="noopener nofollow ugc noreferrer">https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/blob/master/com.obsproject.Studio.Plugin.BackgroundRemoval.yaml</a></p>
 <p>Are there any steps I can take to force flatpak to install the latest version of the runtime? Thanks!</p>
       </div>
 
@@ -257,8 +258,8 @@ Collection: org.flathub.Stable
    Subject: v1.0.1 (78e6f48f)
       Date: 2023-06-08 14:50:34 +0000
 </code></pre>
-<p>The GitHub repo contains the current state of the manifest. But this has to be build &amp; then uploaded to the actual Flathub repo (see <a href="https://docs.flatpak.org/en/latest/repositories.html" rel="noopener nofollow ugc">Flatpak Repositories</a>). If this fails for any reason, then an application won’t be published until the issue is fixed by a maintainer.</p>
-<p>If you take a look at the <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/commits/master" rel="noopener nofollow ugc">history</a> then you’ll see the status of the automatic builds (check marks &amp; crosses). It’s missing for the latest commit, so it most likely never happened. The previous commit does have a check mark but this was a just test build which is not published to the stable Flathub repo (see <code>flathub_default_branch</code> in <code>Build properties</code> on a build details page, e.g. the <a href="https://buildbot.flathub.org/#/builders/25/builds/5687" rel="noopener nofollow ugc">last stable build</a>).</p>
+<p>The GitHub repo contains the current state of the manifest. But this has to be build &amp; then uploaded to the actual Flathub repo (see <a href="https://docs.flatpak.org/en/latest/repositories.html" rel="noopener nofollow ugc noreferrer">Flatpak Repositories</a>). If this fails for any reason, then an application won’t be published until the issue is fixed by a maintainer.</p>
+<p>If you take a look at the <a href="https://github.com/flathub/com.obsproject.Studio.Plugin.BackgroundRemoval/commits/master" rel="noopener nofollow ugc noreferrer">history</a> then you’ll see the status of the automatic builds (check marks &amp; crosses). It’s missing for the latest commit, so it most likely never happened. The previous commit does have a check mark but this was a just test build which is not published to the stable Flathub repo (see <code>flathub_default_branch</code> in <code>Build properties</code> on a build details page, e.g. the <a href="https://buildbot.flathub.org/#/builders/25/builds/5687" rel="noopener nofollow ugc noreferrer">last stable build</a>).</p>
       </div>
 
       <div class="post-footer">

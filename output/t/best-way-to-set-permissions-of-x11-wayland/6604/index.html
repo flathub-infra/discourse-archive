@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -154,13 +155,13 @@ Graphics Processor: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2</p>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>The flickering is most likely the result of a <a href="https://zamundaaa.github.io/wayland/2024/04/05/explicit-sync.html" rel="noopener nofollow ugc">nVidia driver issue</a> on XWayland (without <code>--socket=wayland</code>). This should be fixed in the current releases of GNOME Shell &amp; KDE Plasma (don’t know about other DEs/compositors) but requires an updated driver. The beta is supposed to be released on May 15th (<a href="https://github.com/NVIDIA/egl-wayland/pull/104#issuecomment-2010292221" class="inline-onebox" rel="noopener nofollow ugc">Implement Explicit Sync by amshafer · Pull Request #104 · NVIDIA/egl-wayland · GitHub</a>).</p>
+        <p>The flickering is most likely the result of a <a href="https://zamundaaa.github.io/wayland/2024/04/05/explicit-sync.html" rel="noopener nofollow ugc noreferrer">nVidia driver issue</a> on XWayland (without <code>--socket=wayland</code>). This should be fixed in the current releases of GNOME Shell &amp; KDE Plasma (don’t know about other DEs/compositors) but requires an updated driver. The beta is supposed to be released on May 15th (<a href="https://github.com/NVIDIA/egl-wayland/pull/104#issuecomment-2010292221" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Implement Explicit Sync by amshafer · Pull Request #104 · NVIDIA/egl-wayland · GitHub</a>).</p>
 <p>It’s not directly related to flatpak &amp; is always an issue if the application does not support Wayland natively. Though the actual severity can vary from application to application.</p>
 <hr>
 <p>Both <code>x11</code> &amp; <code>fallback-x11</code> get added to the applications for compatible reasons:</p>
 <blockquote>
 <p>The fallback-x11 option makes the X11 socket available only if there is no Wayland socket. This option was introduced in 0.11.3. To support older Flatpak releases, specify both x11 and fallback-x11. The fallback-x11 option takes precedence when both are supported.</p>
-<p><a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-finish" class="inline-onebox" rel="noopener nofollow ugc">Flatpak Command Reference - Flatpak documentation</a></p>
+<p><a href="https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-finish" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Flatpak Command Reference - Flatpak documentation</a></p>
 </blockquote>
 <p>If the application supports Wayland then <code>--socket=wayland</code> &amp; <code>--socket=fallback-x11</code> should be enough, but an additional <code>--socket=x11</code> does not change the behaviour.</p>
 <p>I think if an applications omits <code>--socket=fallback-x11</code> then it could decide to use X11 through XWayland instead of Wayland natively since both sockets are exposed. But this would be explicitly handled by the application, e.g. to work around bugs.</p>

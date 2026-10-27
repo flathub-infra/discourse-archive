@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Hi, Googled and tried following some posted suggestions for Chromium policies in Linux, but when I test with below json I can’t get it to work with /etc/opt/brave/policies/managed</p>
 <p>{<br>
 “BraveShieldsDisabledForUrls”: [<br>
-“<a href="https://malwaretips.com/" rel="noopener nofollow ugc">https://malwaretips.com</a>”<br>
+“<a href="https://malwaretips.com/" rel="noopener nofollow ugc noreferrer">https://malwaretips.com</a>”<br>
 ]<br>
 }</p>
 <p>I tried looking in<br>
@@ -153,13 +154,13 @@
   <header class="source">
       
 
-      <a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc">Brave Help Center</a>
+      <a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc noreferrer">Brave Help Center</a>
   </header>
 
   <article class="onebox-body">
     
 
-<h3><a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc">How do I configure global and site-specific Shields settings?</a></h3>
+<h3><a href="https://support.brave.com/hc/en-us/articles/360023646212-How-do-I-configure-global-and-site-specific-Shields-settings" target="_blank" rel="noopener nofollow ugc noreferrer">How do I configure global and site-specific Shields settings?</a></h3>
 
   <p>Shields protects you from tracking on the web but can sometimes cause sites to break. If your general Shields settings break a site, you can use the Shields panel to turn Shields off for that site,...</p>
 
@@ -243,7 +244,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>Well, if you only want to check them, according to <a href="https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:" rel="noopener nofollow ugc">https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:</a></p>
+        <p>Well, if you only want to check them, according to <a href="https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:" rel="noopener nofollow ugc noreferrer">https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy:</a></p>
 <blockquote>
 <p>Additionally, the <code>brave://policy</code> page is a great place to see what policies are in effect, so you know that they are being enforced.</p>
 </blockquote>
@@ -329,9 +330,9 @@
       <div class="post-body cooked" itemprop="text">
         <p>Well, seems I misunderstood you a bit then.</p>
 <p>I have looked a bit at this again, and it seems I have a few corrections to make.</p>
-<p>The proper solution would be to have a extension point for policies. As an example, the <a href="https://github.com/flathub/org.chromium.Chromium" rel="noopener nofollow ugc">Chromium Flatpak</a> offers an extension point. A extension containing the policy can be created and installed. This would be picked up by Chromium then.</p>
+<p>The proper solution would be to have a extension point for policies. As an example, the <a href="https://github.com/flathub/org.chromium.Chromium" rel="noopener nofollow ugc noreferrer">Chromium Flatpak</a> offers an extension point. A extension containing the policy can be created and installed. This would be picked up by Chromium then.</p>
 <p>However, Brave currently does not provide a extension point.</p>
-<p>But, as it turns out, the <a href="https://github.com/flathub/com.brave.Browser/blob/master/brave.sh" rel="noopener nofollow ugc">launch script</a> links the policy folder from the host <code>/etc</code> at startup, so it can actually read the policies in <code>/etc/brave/policies/</code>. This is possible as Brave sets the <code>filesystem=host-etc</code> permission, which gives it read access to the <code>/etc</code> folder.</p>
+<p>But, as it turns out, the <a href="https://github.com/flathub/com.brave.Browser/blob/master/brave.sh" rel="noopener nofollow ugc noreferrer">launch script</a> links the policy folder from the host <code>/etc</code> at startup, so it can actually read the policies in <code>/etc/brave/policies/</code>. This is possible as Brave sets the <code>filesystem=host-etc</code> permission, which gives it read access to the <code>/etc</code> folder.</p>
       </div>
 
       <div class="post-footer">

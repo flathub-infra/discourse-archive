@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -103,7 +104,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p>Hi, I have mostly finished my first adwaita application and I am trying to figure out how to build it with flatpak.</p>
-<p>The app is written in Zig, and I need to use a patched fork of the Zig compiler due to <a href="https://github.com/ziglang/zig/issues/11308" rel="noopener nofollow ugc">this issue</a>. The flatpak build fails because the <code>org.freedesktop.Sdk.Extension.llvm18</code> extension apparently does not have the arm target:</p>
+<p>The app is written in Zig, and I need to use a patched fork of the Zig compiler due to <a href="https://github.com/ziglang/zig/issues/11308" rel="noopener nofollow ugc noreferrer">this issue</a>. The flatpak build fails because the <code>org.freedesktop.Sdk.Extension.llvm18</code> extension apparently does not have the arm target:</p>
 <pre><code class="lang-auto">CMake Error at cmake/Findllvm.cmake:30 (message):
   LLVM (according to /usr/lib/sdk/llvm18/bin/llvm-config) is missing target
   ARM.  Zig requires LLVM to be built with all default targets enabled.
@@ -351,7 +352,7 @@ hub:</div>
 <p>Also <code>CMAKE_PREFIX_PATH</code> isn’t how you set the path. It’s just a fluke it seems to work.</p>
 </blockquote>
 </aside>
-<p>No, I am following the Zig documentation <a href="https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions" class="inline-onebox" rel="noopener nofollow ugc">Building Zig From Source · ziglang/zig Wiki · GitHub</a>, this is in fact how you set these paths when building the Zig compiler.</p>
+<p>No, I am following the Zig documentation <a href="https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Building Zig From Source · ziglang/zig Wiki · GitHub</a>, this is in fact how you set these paths when building the Zig compiler.</p>
 <p>If your intention is to be pedantic and correct me on non issues instead of addressing the problems I described, I would have you know that you can just ignore this post. You don’t have to help if you don’t want to <img itemprop="image" src="/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
       </div>
 
@@ -439,13 +440,13 @@ hub:</div>
   <header class="source">
       <img itemprop="image" src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
 
-      <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener noreferrer nofollow ugc">GitHub</a>
   </header>
 
   <article class="onebox-body">
     <div class="aspect-image" style="--aspect-ratio:690/344;"><img itemprop="image" src="/uploads/optimized/2X/6/68815e9bc78a4488aad950397c3bd1d3304b6ec9_2_690x345.png" class="thumbnail" data-dominant-color="F6F6F6" width="690" height="345"></div>
 
-<h3><a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener">GitHub - flathub/org.freedesktop.Sdk.Extension.ziglang</a></h3>
+<h3><a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang" target="_blank" rel="noopener noreferrer nofollow ugc">GitHub - flathub/org.freedesktop.Sdk.Extension.ziglang</a></h3>
 
   <p>Contribute to flathub/org.freedesktop.Sdk.Extension.ziglang development by creating an account on GitHub.</p>
 
@@ -509,7 +510,7 @@ hub:</div>
 <p>Zig is still a new, unstable language and changes really fast, an older version is unlikely to compile code written in newer Zig. There’s often breaking changes even in between releases.</p>
 <p>Zig also currently hardcodes too small of a minimum page size for aarch64-linux which prevents running precompiled Zig on Apple hardware. I’m not familiar with flatpak so I don’t know if it prevents this issue, but even if it does I still need the latest compiler.</p>
 <hr>
-<p>This is fine though, I can just cross compile the binaries and the flatpak can install them from a github release: <a href="https://github.com/TeamPuzel/Crates/blob/7ce851f432707fd96f1ccb24834e00af1cafddd7/build.zig#L366" class="inline-onebox" rel="noopener nofollow ugc">Crates/build.zig at 7ce851f432707fd96f1ccb24834e00af1cafddd7 · TeamPuzel/Crates · GitHub</a></p>
+<p>This is fine though, I can just cross compile the binaries and the flatpak can install them from a github release: <a href="https://github.com/TeamPuzel/Crates/blob/7ce851f432707fd96f1ccb24834e00af1cafddd7/build.zig#L366" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Crates/build.zig at 7ce851f432707fd96f1ccb24834e00af1cafddd7 · TeamPuzel/Crates · GitHub</a></p>
       </div>
 
       <div class="post-footer">
@@ -555,7 +556,7 @@ hub:</div>
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can help testing that new version here <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang/pull/25" class="inline-onebox">Update 2 modules by flathubbot · Pull Request #25 · flathub/org.freedesktop.Sdk.Extension.ziglang · GitHub</a></p>
+        <p>You can help testing that new version here <a href="https://github.com/flathub/org.freedesktop.Sdk.Extension.ziglang/pull/25" class="inline-onebox" rel="noreferrer nofollow ugc">Update 2 modules by flathubbot · Pull Request #25 · flathub/org.freedesktop.Sdk.Extension.ziglang · GitHub</a></p>
 <p>If the build is already gone comment with <code>bot, build</code></p>
       </div>
 

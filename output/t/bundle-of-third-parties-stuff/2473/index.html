@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -105,7 +106,7 @@
         <p>Hello,<br>
 I plan to build a flatpak application for voice recognition. This application uses pieces from different sources:</p>
 <ul>
-<li>vosk python bindings, available on <a href="http://pypi.org" rel="noopener nofollow ugc">pypi.org</a>
+<li>vosk python bindings, available on <a href="http://pypi.org" rel="noopener nofollow ugc noreferrer">pypi.org</a>
 </li>
 <li>nerd-dictation, a python script using vosk bindings</li>
 <li>parec for voice capture</li>
@@ -153,7 +154,7 @@ Is there recommendations about the way to package, i.e. has some pieces to be sp
 Could you please explain in more detail what you mean?</p>
 <p>Typically I would say that you would want to use separate modules for each component that you need. Also please refer to the licenses of the dependencies to see if there are any special requirements there.</p>
 <p>Since the sandbox cannot access the internet during the build process (except for setting up the environment), you might need to build some dependencies as you cannot just install them using pip.</p>
-<p>See: <a href="https://docs.flatpak.org/en/latest/python.html" class="inline-onebox" rel="noopener nofollow ugc">Python — Flatpak documentation</a> for more information.</p>
+<p>See: <a href="https://docs.flatpak.org/en/latest/python.html" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Python — Flatpak documentation</a> for more information.</p>
       </div>
 
       <div class="post-footer">
@@ -388,7 +389,7 @@ All these pieces are open source projects.</p>
 
       <div class="post-body cooked" itemprop="text">
         <p>it the same sandbox, flatpak-builder will run the build in the same sandbox (WITH the sdk) as the resulting package. Development support is provided by the SDK which is a superset of the platform. There is no network access during the build phase.</p>
-<p>As for python you might want to look at <a href="https://github.com/flatpak/flatpak-builder-tools" class="inline-onebox">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a> that contains tooling to generate manifests for python dependencies.</p>
+<p>As for python you might want to look at <a href="https://github.com/flatpak/flatpak-builder-tools" class="inline-onebox" rel="noreferrer nofollow ugc">GitHub - flatpak/flatpak-builder-tools: Various helper tools for flatpak-builder</a> that contains tooling to generate manifests for python dependencies.</p>
       </div>
 
       <div class="post-footer">

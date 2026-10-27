@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -187,7 +188,7 @@ modules:
 
       <div class="post-body cooked" itemprop="text">
         <p>Not much experience with Go but with Rust which has a similar problem with dependencies.</p>
-<p>From what I understand, the solutions would either be to build from a release tarball that already includes all dependencies (using <code>go mod vendor</code> I think), or to include the dependencies or include the dependencies as part of the flatpak manifest using the approach documented <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/go-modules" rel="noopener nofollow ugc">here</a>, which will not pre-download the dependencies, but will tell flatpak-builder where to find them.</p>
+<p>From what I understand, the solutions would either be to build from a release tarball that already includes all dependencies (using <code>go mod vendor</code> I think), or to include the dependencies or include the dependencies as part of the flatpak manifest using the approach documented <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/go-modules" rel="noopener nofollow ugc noreferrer">here</a>, which will not pre-download the dependencies, but will tell flatpak-builder where to find them.</p>
 <blockquote>
 <p>download the dependencies ahead of time and then pass the pre-obtained sources in to the builder, which I’m hoping to avoid.</p>
 </blockquote>

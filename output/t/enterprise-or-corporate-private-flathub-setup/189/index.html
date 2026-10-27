@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -147,7 +148,7 @@
       <div class="post-body cooked" itemprop="text">
         <p>I think all you need is:</p>
 <ol>
-<li>Use <a href="https://github.com/flatpak/flat-manager" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flatpak/flat-manager</a> , and</li>
+<li>Use <a href="https://github.com/flatpak/flat-manager" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/flatpak/flat-manager</a> , and</li>
 <li>Make sure your Flatpak repository is setup in your workstations (e.g. if you build these images yourself).</li>
 <li>GNOME software should be able to see your repo and present your internal apps, already.</li>
 </ol>
@@ -286,7 +287,7 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You can probably use ostree to pull/mirror refs you are interested in: <a href="https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories" class="inline-onebox-loading">https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories</a></p>
+        <p>You can probably use ostree to pull/mirror refs you are interested in: <a href="https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories" class="inline-onebox-loading" rel="noreferrer nofollow ugc">https://ostree.readthedocs.io/en/latest/manual/repository-management/#mirroring-repositories</a></p>
 <p>And then add such remote to flatpak.</p>
 <p><span class="mention">@nedrichards</span> and <span class="mention">@wjt</span>, do you remember if anything like this was ever done at Endless?</p>
       </div>
@@ -423,7 +424,7 @@ ostree --repo=repo pull --mirror flathub
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>You don’t actually need flat-manager to just serve an ostree-repo. flat-manager has some nice stuff that flathub uses for receiving builds from workers, but you just need any old HTTP server to provide an ostree repo. I always use nginx, but anything will work. Recently flat-manager gained support for per-commit authentication (see <a href="https://github.com/flatpak/flatpak/wiki/TestingPurchases" class="inline-onebox-loading" rel="nofollow noopener">https://github.com/flatpak/flatpak/wiki/TestingPurchases</a>), but it’s still early days for that.</p>
+        <p>You don’t actually need flat-manager to just serve an ostree-repo. flat-manager has some nice stuff that flathub uses for receiving builds from workers, but you just need any old HTTP server to provide an ostree repo. I always use nginx, but anything will work. Recently flat-manager gained support for per-commit authentication (see <a href="https://github.com/flatpak/flatpak/wiki/TestingPurchases" class="inline-onebox-loading" rel="nofollow noopener noreferrer ugc">https://github.com/flatpak/flatpak/wiki/TestingPurchases</a>), but it’s still early days for that.</p>
       </div>
 
       <div class="post-footer">
@@ -459,8 +460,8 @@ ostree --repo=repo pull --mirror flathub
 
       <div class="post-body cooked" itemprop="text">
         <p>Yet another option is to setup an HTTP reverse proxy with caching to flathub. Effectively be your own CDN endpoint. This is more complex and you have to deal with caching, but it would be a drop in solution. Flathub has a couple frontends between the actual repo server and the real CDN that do this. It’s basically a combination of these 2 things in nginx (with some ansible jinja templating):</p>
-<p><a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2</a><br>
-<a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2" class="onebox" target="_blank" rel="nofollow noopener">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2</a></p>
+<p><a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/conf.d/proxy_cache.conf.j2</a><br>
+<a href="https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2" class="onebox" target="_blank" rel="nofollow noopener noreferrer ugc">https://github.com/flathub/ansible-playbook/blob/master/roles/frontend/templates/default.d/repo.conf.j2</a></p>
 <p>With the reverse proxy you don’t have to worry at all about pulling or signing. But you do very much need to deal cached data that might not be synced correctly. The classical issue here is the summary and summary.sig files being out of sync because of caching.</p>
       </div>
 
@@ -499,7 +500,7 @@ ostree --repo=repo pull --mirror flathub
         <p>Hi Thank so much for this info, I am trying to set this up to be able to have a local repo from which install applications in a semi-offline environment,</p>
 <p>I was able to make it work using flatpack builder and recompiling apps to my repo, but I would like to know if it’s possible to just sync or download precompiled applictions from flathub and then add them to my repo.</p>
 <p>while trying to execute this suggested command I get the following error on a fresh centos8 vm</p>
-<p>ostree --repo=/opt/repo remote add --set gpg-verify-summary=true --gpg-import /opt/gpg flathub <a href="https://dl.flathub.org/repo/" rel="noopener nofollow ugc">https://dl.flathub.org/repo/</a></p>
+<p>ostree --repo=/opt/repo remote add --set gpg-verify-summary=true --gpg-import /opt/gpg flathub <a href="https://dl.flathub.org/repo/" rel="noopener nofollow ugc noreferrer">https://dl.flathub.org/repo/</a></p>
 <p>error: Remote configuration for “flathub” already exists: (in config)</p>
 <p>Thanks Again</p>
       </div>
@@ -536,9 +537,9 @@ ostree --repo=repo pull --mirror flathub
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I also tried to create a custom repo, using flatpak-builder then export the build to repo location, the I tried to sign the repo with a gpg key following this <a href="https://blogs.gnome.org/alexl/2017/02/10/maintaining-a-flatpak-repository/" class="inline-onebox" rel="noopener nofollow ugc">Maintaining a flatpak repository – Alexander Larsson</a></p>
+        <p>I also tried to create a custom repo, using flatpak-builder then export the build to repo location, the I tried to sign the repo with a gpg key following this <a href="https://blogs.gnome.org/alexl/2017/02/10/maintaining-a-flatpak-repository/" class="inline-onebox" rel="noopener nofollow ugc noreferrer">Maintaining a flatpak repository – Alexander Larsson</a></p>
 <p>then at the moment of adding the repo to the client with this command</p>
-<p>flatpak remote-add --gpg-import=example.gpg example <a href="http://example.com/repo" rel="noopener nofollow ugc">http://example.com/repo</a></p>
+<p>flatpak remote-add --gpg-import=example.gpg example <a href="http://example.com/repo" rel="noopener nofollow ugc noreferrer">http://example.com/repo</a></p>
 <p>I get the following error:</p>
 <p>error: GPG: Unable to export keys: GPGME: No data</p>
 <p>the when I try to install an app build and exported to the repo I get</p>

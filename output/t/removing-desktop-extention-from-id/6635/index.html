@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -106,7 +107,7 @@
 <p>There are several apps that use their ID with the <code>.desktop</code> extension.</p>
 <pre data-code-wrap="xml"><code class="lang-xml">&lt;id&gt;org.gnome.SwellFoop.desktop&lt;/id&gt;
 </code></pre>
-<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc">say</a> it’s not recommended?</p>
+<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc noreferrer">say</a> it’s not recommended?</p>
 <pre data-code-wrap="xml"><code class="lang-xml">&lt;!-- Good --&gt;
 &lt;id&gt;org.flatpak.qtdemo&lt;/id&gt;
 
@@ -118,7 +119,7 @@
 <p>Because the guidelines discourage renaming the app ID.</p>
 <blockquote>
 <h3>Renaming ID tag</h3>
-<p>The ID tag in the MetaInfo file is supposed to be a constant and unique identifier of an application and should not be renamed unless absolutely necessary. <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc">source</a></p>
+<p>The ID tag in the MetaInfo file is supposed to be a constant and unique identifier of an application and should not be renamed unless absolutely necessary. <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noopener nofollow ugc noreferrer">source</a></p>
 </blockquote>
 <p>If I understand correctly, after changing<br>
 <code>&lt;id&gt;org.gnome.SwellFoop.desktop</code> to<br>
@@ -186,14 +187,14 @@ yakushabb:</div>
 </aside>
 <p>Adding a <code>.desktop</code> suffix to appstream <code>id</code> tag is a legacy convention and should not be used today.</p>
 <blockquote>
-<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id">say</a> it’s not recommended?</p>
+<p>Can I simply remove the <code>.desktop</code> part, because the guidelines <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#id" rel="noreferrer nofollow ugc">say</a> it’s not recommended?</p>
 </blockquote>
 <p>That’s a recommendation for new apps.</p>
 <blockquote>
 <p>Because the guidelines discourage renaming the app ID.</p>
 </blockquote>
 <p>I would avoid renaming unless absolutely necessary. There is a possibility that the change causes multiple copies of the app to show up in Discover/Software.</p>
-<p>In general renaming should be avoided like <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag">https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag</a> says.</p>
+<p>In general renaming should be avoided like <a href="https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag" rel="noreferrer nofollow ugc">https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#renaming-id-tag</a> says.</p>
 <p>The issue with <code>replaces</code> is it is all theoretical and in the spec only, no software app supports that tag. So even if the tag is present software apps won’t merge the two separate instances.</p>
       </div>
 

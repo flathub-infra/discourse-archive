@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -102,9 +103,9 @@
       
 
       <div class="post-body cooked" itemprop="text">
-        <p>I want to Flatpak <a href="https://python-eduvpn-client.readthedocs.io/en/master/installation.html#pip-installation" rel="noopener nofollow ugc">this VPN app</a>. The installation steps and dependencies are listed in their wiki.</p>
-<p>The <a href="https://github.com/eduvpn/python-eduvpn-client/blob/master/doc/requirements.txt" rel="noopener nofollow ugc">Python requirements are also listed</a>. So simply running <code>flatpak-pip-generator --yaml --requirements-file=doc/requirements.txt</code> and then include that <code>python3-requirements.yaml</code> file as a module is a piece of cake.</p>
-<p>I’ve went through the basic tutorial and <a href="https://www.youtube.com/live/xnnJRP4t9gM?feature=share" rel="noopener nofollow ugc">a more elaborate one from YouTube</a>. But I’m still left with a few questions and hurdles that block me from completing the Flatpak.</p>
+        <p>I want to Flatpak <a href="https://python-eduvpn-client.readthedocs.io/en/master/installation.html#pip-installation" rel="noopener nofollow ugc noreferrer">this VPN app</a>. The installation steps and dependencies are listed in their wiki.</p>
+<p>The <a href="https://github.com/eduvpn/python-eduvpn-client/blob/master/doc/requirements.txt" rel="noopener nofollow ugc noreferrer">Python requirements are also listed</a>. So simply running <code>flatpak-pip-generator --yaml --requirements-file=doc/requirements.txt</code> and then include that <code>python3-requirements.yaml</code> file as a module is a piece of cake.</p>
+<p>I’ve went through the basic tutorial and <a href="https://www.youtube.com/live/xnnJRP4t9gM?feature=share" rel="noopener nofollow ugc noreferrer">a more elaborate one from YouTube</a>. But I’m still left with a few questions and hurdles that block me from completing the Flatpak.</p>
       </div>
 
       <div class="post-footer">
@@ -147,7 +148,7 @@
 
       <div class="post-body cooked" itemprop="text">
         <p><em>Sorry, as a new user I couldn’t create this post in one go, I can only include a limited amount of links, so here is part 2</em></p>
-<p>When looking at the runtimes and what they bundle, it seems like I should need the <a href="https://docs.flatpak.org/en/latest/available-runtimes.html#gnome" rel="noopener nofollow ugc">GNOME runtime</a>. Since that one seem to perfectly align with most of the <a href="https://github.com/eduvpn/python-eduvpn-client/blob/master/doc/requirements.txt" rel="noopener nofollow ugc">dependencies listed</a> such as; notify, secret, introspection, dbus (since the GNOME runtime builds upon the FreeDesktop runtime) and gobject.</p>
+<p>When looking at the runtimes and what they bundle, it seems like I should need the <a href="https://docs.flatpak.org/en/latest/available-runtimes.html#gnome" rel="noopener nofollow ugc noreferrer">GNOME runtime</a>. Since that one seem to perfectly align with most of the <a href="https://github.com/eduvpn/python-eduvpn-client/blob/master/doc/requirements.txt" rel="noopener nofollow ugc noreferrer">dependencies listed</a> such as; notify, secret, introspection, dbus (since the GNOME runtime builds upon the FreeDesktop runtime) and gobject.</p>
 <p>So with that information I guess the first bit of the Flatpak file is:</p>
 <pre><code class="lang-yaml">id: org.eduvpn.www
 runtime: org.gnome.Platform
@@ -234,7 +235,7 @@ modules:
         url: https://files.pythonhosted.org/packages/52/13/aba67ef397a97b6f671f5361bc14a5fbd68492cdec83f56ce2ad34737154/eduvpn_common-1.1.0-py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_28_x86_64.whl
         sha256: fa4d14d1602e4bfc89de0369ff423ca3fa7980eb628efa20d6ee1e0a45a4fa1c
 </code></pre>
-<p>Now I only have to solve some internal application errors. Which for now is <a href="https://github.com/eduvpn/python-eduvpn-client/blob/4.1.1/eduvpn/utils.py#L52-L67" rel="noopener nofollow ugc">in this piece of code</a>. Apparently it doesn’t look in <code>/app</code>?</p>
+<p>Now I only have to solve some internal application errors. Which for now is <a href="https://github.com/eduvpn/python-eduvpn-client/blob/4.1.1/eduvpn/utils.py#L52-L67" rel="noopener nofollow ugc noreferrer">in this piece of code</a>. Apparently it doesn’t look in <code>/app</code>?</p>
 <p><code>flatpak run --command=sh --devel org.eduvpn.www</code> and ran it interactively.</p>
 <pre><code class="lang-auto">F: Running '/usr/bin/bwrap --args 40 eduvpn-gui'
 Traceback (most recent call last):

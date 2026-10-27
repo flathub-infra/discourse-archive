@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -124,7 +125,7 @@ WantedBy = multi-user.target</p>
 </blockquote>
 <p>I’ve tried this but there are still issues. It seems Kodi wants access to <code>/usr</code> and all the music and movie files are in <code>/media</code>, and so I had to issue an override, but I’m guessing probably I should do everything in the <code>ExecStart</code> line.</p>
 <p>Basically, I don’t understand the <code>--filesystem</code> directives (i.e., why do I need <code>/run/udev</code>? Why <code>home:ro</code> and not <code>/home:rw</code>? How are <code>/usr</code> and <code>/media</code> accessed?), or what I should put here to make Kodi work as expected.</p>
-<p>I have looked at the Flatpak documentation, in particular <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" rel="noopener nofollow ugc">Sandbox Permissions</a>, and maybe(?) <code>host</code> is what I want but there are no examples to illustrate its usage and the whole discussion is pretty much above my pay grade.</p>
+<p>I have looked at the Flatpak documentation, in particular <a href="https://docs.flatpak.org/en/latest/sandbox-permissions.html" rel="noopener nofollow ugc noreferrer">Sandbox Permissions</a>, and maybe(?) <code>host</code> is what I want but there are no examples to illustrate its usage and the whole discussion is pretty much above my pay grade.</p>
 <p>How should I proceed?</p>
       </div>
 

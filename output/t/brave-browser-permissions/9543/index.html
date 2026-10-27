@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/css/topic.css">
   <link rel="stylesheet" href="/assets/css/post.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
+  <meta name="referrer" content="no-referrer">
 </head>
 <body class="topic-page">
   <header class="site-header">
@@ -152,7 +153,7 @@ bluetooth        file access [1]        dbus access [2]        system dbus acces
       <div class="post-body cooked" itemprop="text">
         <p>In general, it would be best to ask the Brave developers about this.</p>
 <p>But here are a few guesses as to why:</p>
-<p>The <code>org.bluez</code> permission for Bluetooth is most likely there to support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#browser_compatibility" rel="noopener nofollow ugc">Web Bluetooth API</a>, allowing web apps to communicate with Bluetooth devices.</p>
+<p>The <code>org.bluez</code> permission for Bluetooth is most likely there to support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#browser_compatibility" rel="noopener nofollow ugc noreferrer">Web Bluetooth API</a>, allowing web apps to communicate with Bluetooth devices.</p>
 <p><code>com.canonical.AppMenu.Registrar</code> is an legacy protocol for, I think, either system tray or global menu.</p>
 <p>Now, as for <code>/tmp</code>: if I recall correctly, without an sandbox hole you cant transfer images to <code>om.canonical.AppMenu.Registrar</code>, so you couldn’t show an icon in the system tray. So, the <code>/tmp</code> permission is used to have a folder over which to share the icon file from app to host.</p>
 <p>In short:<br>
@@ -690,7 +691,7 @@ compis1:</div>
 <div class="quote-controls"></div>
 CodedOre:</div>
 <blockquote>
-<p>The <code>org.bluez</code> permission for Bluetooth is most likely there to support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#browser_compatibility" rel="noopener nofollow ugc">Web Bluetooth API</a>, allowing web apps to communicate with Bluetooth devices.</p>
+<p>The <code>org.bluez</code> permission for Bluetooth is most likely there to support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#browser_compatibility" rel="noopener nofollow ugc noreferrer">Web Bluetooth API</a>, allowing web apps to communicate with Bluetooth devices.</p>
 </blockquote>
 </aside>
       </div>
