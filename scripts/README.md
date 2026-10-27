@@ -42,3 +42,17 @@ docker stop archive-test
 
 The map generator is covered by the standard unittest discovery command above;
 the HTTP checks run separately because they need a running nginx.
+
+## Color theme
+
+The shared archive stylesheet uses Flathub's palette and follows the system
+color scheme by default, including without JavaScript. The header's System /
+Light / Dark chooser is added by `output/assets/js/archive.js` and saves its
+override in local storage. Returning to System follows OS changes automatically.
+The styles use modern CSS `light-dark()` and `oklch()` colors.
+
+Run the theme preference tests with:
+
+```sh
+node --test scripts/test_theme.cjs
+```
